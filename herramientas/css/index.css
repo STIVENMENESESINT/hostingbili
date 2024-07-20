@@ -1,0 +1,458 @@
+/* FORMULARIO EMPRESA */
+:root {
+    --primary: #39a900;
+    --secondary: #98fe58;
+    --tertiary: #f2ffe5;
+    --alternate: #29690b;
+    --primary-text: black;
+    --secondary-text: #5d5d5d;
+    --alternate-text: #919191;
+    --primary-background: #fff;
+    --secondary-background: #E6E6E6;
+    --alternate-background: #04324d;
+    --color-success: #52d726;
+    --color-error: #e74c3c;
+    --color-warning: #f1c40f;
+    --color-info: #ffffff;
+    --primary-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    --primary-font-family: 'Work Sans Regular', sans-serif;
+    --secondary-font-family: 'Work Sans Bold', sans-serif;
+    --bp-small: 480px;
+    --bp-medium: 767px;
+    --bp-large: 1200px;
+    --web-margin: 1366px;
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--secondary);
+    background: url('../../imagenes/') no-repeat center center fixed;
+    background-size: cover;
+    
+   
+}
+
+.form-container {
+    background-color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-textarea {
+    resize: vertical;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.form-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-button-submit {
+    background-color: #28a745;
+    color: white;
+}
+
+.form-button-reset {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Estilos para el campo de entrada en el modal */
+.modal-textbox {
+    border: 2px solid purple;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 10px;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Efecto de luz que recorre el modal */
+.modal-light {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(128, 0, 128, 0.5);
+    border-radius: 50%;
+    animation: modalLightAnimation 2s linear infinite;
+}
+
+@keyframes modalLightAnimation {
+    0% {
+        left: -10px;
+        top: -10px;
+        box-shadow: 0 0 20px 10px rgba(128, 0, 128, 0.5);
+    }
+
+    50% {
+        left: calc(100% - 10px);
+        top: calc(100% - 10px);
+        box-shadow: 0 0 20px 10px rgba(128, 0, 128, 0.5);
+    }
+
+    100% {
+        left: -10px;
+        top: -10px;
+        box-shadow: 0 0 20px 10px rgba(128, 0, 128, 0.5);
+    }
+}
+
+/* Estilo para el botón de cierre del modal */
+.btn-close {
+    color: purple;
+    transition: color 0.3s ease;
+}
+
+.btn-close:hover {
+    color: #800080;
+}
+
+/* Otros estilos */
+.card {
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-header {
+    background-size: cover;
+    background-color: #2e7d32;
+    color: #ffffff;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    text-align: center;
+}
+
+.card-header .card-tools .btn-tool i {
+    color: #ffffff;
+}
+
+.card-body {
+    background-size: cover;
+    background-color: #e8f5e9;
+    padding: 2rem;
+}
+
+.card-footer {
+    background-size: cover;
+    background-color: #c8e6c9;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    text-align: center;
+}
+
+.btn-success {
+    background-color: #4caf50;
+    border-color: #4caf50;
+}
+
+.btn-success:hover {
+    background-color: #45a049;
+    border-color: #45a049;
+}
+.label-white {
+    color: white;
+}
+
+/* Diseño - INDEX */
+
+.input-with-icon input {
+    padding-left: 40px; /* Incrementa el espacio para el icono */
+    outline: none; /* Elimina el outline azul al seleccionar */
+}
+
+.input-with-icon input:focus {
+    /* Cambia el color del borde al seleccionar */
+    border-color: #45a049;
+    box-shadow: 0 0 0 0.2rem rgba(69, 160, 73, 0.25); /* Ejemplo de sombra al seleccionar */
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon .identificacion-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d; /* Color gris del icono */
+    cursor: pointer;
+}
+
+.input-with-icon:hover .identificacion-icon {
+    color: #45a049; /* Color azul al pasar el mouse */
+}
+
+.input-with-icon input {
+    padding-left: 40px; /* Espacio para el icono */
+}
+
+.input-with-icon .correo-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d; /* Color gris del icono */
+    cursor: pointer;
+}
+
+.input-with-icon:hover .correo-icon {
+    color: #45a049; /* Color azul al pasar el mouse */
+}
+
+.input-with-icon input {
+    padding-left: 40px; /* Espacio para el icono */
+}
+
+.input-with-icon .clave-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d; /* Color gris del icono */
+    cursor: pointer;
+}
+
+.input-with-icon:hover .clave-icon {
+    color: #45a049; /* Color azul al pasar el mouse */
+}
+
+.input-with-icon input {
+    padding-left: 40px; /* Espacio para el icono */
+}
+
+.register-link {
+    color: #45a049; /* Color inicial del texto */
+    text-decoration: none; /* Quita el subrayado por defecto */
+    cursor: pointer; /* Cambia el cursor a pointer al pasar por encima */
+}
+
+.register-link:hover {
+    text-decoration: underline; /* Subraya el texto al pasar el mouse */
+    color: #1a4d1d; /* Cambia el color del texto a azul (#007bff) al pasar el mouse */
+}
+
+
+#linkOlvideClave {
+    color: #45a049; /* Color inicial del texto */
+    text-decoration: none; /* Quita el subrayado por defecto */
+    cursor: pointer; /* Cambia el cursor a pointer al pasar por encima */
+}
+
+#linkOlvideClave:hover {
+    text-decoration: underline; /* Subraya el texto al pasar el mouse */
+    color: #1a4d1d; /* Cambia el color del texto al azul (#45a049) al pasar el mouse */
+}
+
+#footerText {
+    color: #000000; /* Color gris */
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+}
+
+/* "Recordar clave - checkbox"  */
+
+.form-switch .form-check-input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.form-switch .form-check-label {
+    position: relative;
+    cursor: pointer;
+    padding-left: 2.25rem;
+}
+
+.form-switch .form-check-label::before,
+.form-switch .form-check-label::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.form-switch .form-check-label::before {
+    width: 2rem;
+    height: 1rem;
+    background-color: #6C757D;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.form-switch .form-check-label::after {
+    width: 1rem;
+    height: 1rem;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.1);
+    transition: left 0.3s, background-color 0.3s;
+}
+
+.form-switch .form-check-input:checked + .form-check-label::before {
+    background-color: #45a049;
+}
+
+.form-switch .form-check-input:checked + .form-check-label::after {
+    left: 1rem;
+}
+
+
+/*loader*/
+ @-webkit-keyframes honeycomb {
+    0%,
+    20%,
+    80%,
+    100% {
+      opacity: 0;
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    }
+  
+    30%,
+    70% {
+      opacity: 1;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes honeycomb {
+    0%,
+    20%,
+    80%,
+    100% {
+      opacity: 0;
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    }
+  
+    30%,
+    70% {
+      opacity: 1;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+  
+  .honeycomb {
+    height: 24px;
+    position: relative;
+    width: 24px;
+  }
+  
+  .honeycomb div {
+    -webkit-animation: honeycomb 2.1s infinite backwards;
+    animation: honeycomb 2.1s infinite backwards;
+    background: #f3f3f3;
+    height: 12px;
+    margin-top: 6px;
+    position: absolute;
+    width: 24px;
+  }
+  
+  .honeycomb div:after, .honeycomb div:before {
+    content: '';
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+  
+  .honeycomb div:after {
+    top: -6px;
+    border-bottom: 6px solid #f3f3f3;
+  }
+  
+  .honeycomb div:before {
+    bottom: -6px;
+    border-top: 6px solid #f3f3f3;
+  }
+  
+  .honeycomb div:nth-child(1) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+    left: -28px;
+    top: 0;
+  }
+  
+  .honeycomb div:nth-child(2) {
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s;
+    left: -14px;
+    top: 22px;
+  }
+  
+  .honeycomb div:nth-child(3) {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+    left: 14px;
+    top: 22px;
+  }
+  
+  .honeycomb div:nth-child(4) {
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+    left: 28px;
+    top: 0;
+  }
+  
+  .honeycomb div:nth-child(5) {
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+    left: 14px;
+    top: -22px;
+  }
+  
+  .honeycomb div:nth-child(6) {
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+    left: -14px;
+    top: -22px;
+  }
+  
+  .honeycomb div:nth-child(7) {
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+    left: 0;
+    top: 0;
+  } 

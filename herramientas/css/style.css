@@ -1,0 +1,51 @@
+.sidebar-text img {
+  width: 50%;
+  /* Reduce el tamaño de la imagen */
+  padding: 1rem;
+  /* Ajusta el padding para la imagen */
+}
+
+
+.sidebar-text h1 {
+  font-size: 1.5rem;
+  /* Reduce el tamaño de la fuente para el nombre */
+}
+
+.sidebar-text p {
+  font-size: 1rem;
+  /* Reduce el tamaño de la fuente para la descripción */
+  margin-bottom: 1rem;
+  /* Ajusta el margen inferior */
+}
+
+.sidebar-text .btn {
+  font-size: 0.875rem;
+  /* Reduce el tamaño de la fuente para los botones */
+  padding: 0.5rem 1rem;
+  /* Ajusta el padding para los botones */
+}
+
+.sidebar-text .btn-outline-primary {
+  padding: 0.25rem 0.5rem;
+  /* Reduce el padding para los botones de redes sociales */
+}
+
+.sidebar-text .d-flex {
+  margin-bottom: 1rem;
+  /* Ajusta el margen inferior de la sección de redes sociales */
+}
+
+.sidebar-icon {
+  width: 33rem;
+  font-size: 1.5rem;
+  /* Reduce el tamaño del icono de la sidebar */
+}
+
+.btn-custom {
+  font-size: 0.875rem;
+  /* Tamaño de fuente más pequeño */
+  padding: 0.5rem 1rem;
+  /* Reducir padding */
+  width: 35rem;
+  /* Ajuste el ancho automáticamente */
+}
