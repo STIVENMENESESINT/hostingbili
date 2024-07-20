@@ -1,7 +1,8 @@
 
 <head>
     <!-- Incluir enlaces a los archivos CSS y otros metadatos necesarios -->
-    <?php include_once('cabecera.php'); ?>
+    <?php include_once('cabecera.php');
+    include_once('../../include/conex.php') ?>
     <link rel="stylesheet" type="text/css" href="../../herramientas/css/style.css">
     <link rel="stylesheet" type="text/css" href="../../herramientas/css/layout.css">
 
