@@ -21,6 +21,7 @@
     --bp-large: 1200px;
     --web-margin: 1366px;
 }
+
 /* Estilos generales para la barra de navegación */
 nav {
     position: absolute;
@@ -28,7 +29,7 @@ nav {
     bottom: 0;
     height: 100%;
     left: 0;
-    background-color:var(--alternate-background);
+    background-color: var(--alternate-background);
     border-radius: 4rem 0 0 4rem;
     width: 90px;
     overflow: hidden;
@@ -47,7 +48,6 @@ nav:hover {
     display: flex;
     transition: all 0.5s ease;
     margin: 30px 10px 10px 10px;
-    
 }
 
 .logo img {
@@ -122,11 +122,6 @@ a:hover {
     transition: all 300ms ease-in-out;
 }
 
-/* .menu__option:hover .menu__icon,
-.menu__link--active .menu__icon {
-    color: var(--color-segundario);
-} */
-
 .menu__overlay {
     position: absolute;
     left: 5rem;
@@ -155,114 +150,96 @@ a:hover {
     align-items: center;
     padding: 10px;
     width: 100%;
-    
 }
 
 .logout i {
     margin-right: 10px;
 }
 
-/* Media Queries para dispositivos móvils */
+/* Estilos para el ícono del menú */
+.menu-toggle {
+    display: none; /* Ocultar el ícono del menú por defecto */
+}
+
+/* Media Queries para dispositivos móviles */
 @media (max-width: 768px) {
+    .menu__list {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--alternate-background);
+        border-radius: 2rem 2rem 2rem 2rem;
+        padding: 0;
+    }
+
+    nav.active .menu__list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+        color: var(--primary-background);
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .menu-toggle:hover {
+        color: var(--secondary);
+    }
+
+    .logo {
+        display: none;
+    }
+
     nav {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         bottom: auto;
-        width: 100%;
-        height: 90px;
-        border-radius: 0 0 4rem 4rem;
-        transition: height 0.2s linear;
-    }
-
-    nav:hover {
-        height: 100px;
-        width: 500px;
-    }
-
-    .logo {
-        margin: 10px auto;
-        justify-content: center;
-    }
-
-    .logo span {
-        display: none;
-    }
-
-    .logo img {
-        margin: 0 auto;
-    }
-
-    .menu__list {
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 0;
-    }
-
-    a {
-        font-size: 12px;
-        width: auto;
-        padding: 10px;
+        width: 60px;
+        height: 60px;
+        /* border-radius: 50%; */
+        transition: width 0.2s linear, height 0.2s linear;
+        overflow: hidden;
         display: flex;
         align-items: center;
+        justify-content: center;
+        background-color: var(--alternate-background);
     }
 
-    .fas {
-        width: auto;
+    nav.active {
+        width: 200px;
         height: auto;
-        top: 0;
-        font-size: 18px;
-        box-shadow: none;
     }
 
-    .nav-item {
-        margin-left: 0;
-        margin-top: 5px;
-    }
-
-    .menu__icon {
-        font-size: 2.4rem;
-    }
-
-    .menu__overlay {
-        position: relative;
-        left: auto;
-        right: auto;
-        margin-top: 0;
-        padding: 0.3rem 0.8rem;
+    .menu__option {
+        display: block;
+        width: 100%;
+        text-align: center;
     }
 }
 
+/* Media Queries para dispositivos muy pequeños */
 @media (max-width: 480px) {
     nav {
+        width: 50px;
         height: 50px;
-        transition: height 0.2s linear;
     }
 
-    nav:hover {
-        height: 140px;
+    nav.active {
+        width: 140px;
     }
 
-    .logo img {
-        width: 35px;
-        height: 35px;
-    }
-
-    a {
-        font-size: 10px;
-        padding: 6px;
-    }
-
-    .fas {
-        font-size: 16px;
-    }
-
-    .menu__icon {
-        font-size: 2rem;
-    }
-
-    .menu__overlay {
-        padding: 0.2rem 0.6rem;
+    .menu-toggle {
+        font-size: 1.5rem;
     }
 }
