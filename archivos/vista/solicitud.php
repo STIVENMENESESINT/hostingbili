@@ -65,14 +65,14 @@ if (isset($_SESSION['id_userprofile'])){
         <div class="layout__content">
             <div class="content__page">
                 <br />
+                <div class="container">
                 <div class="cabecera_menu">
-                    
-                    <div class="container">
-                        <style>
-                            .container{
-                                margin: 3rem, 3rem;
+                    <style>
+                        .card-body{
+                                position: absolute;
+                                left: 3.5rem;
                             }
-                        </style>
+                    </style>
                         <div class="card-body">
                             <div class="row">
                                 <!-- BUSCADOR -->

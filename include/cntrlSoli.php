@@ -1199,71 +1199,78 @@ switch ($_REQUEST['action'])
         
             // Iniciar la construcción de la tabla
             $jTableResult['tabla'] .= '
-            <div class="container">
-                <table class="table table-bordered table-striped table-hover text-center">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>ID</th>';
-                                if ($_SESSION['id_rol'] == 3) {
-                                    $jTableResult['tabla'] .= '<th>Tipo Solicitud</th>
-                                                                <th>Solicitante</th>';
-                                } else {
-                                    $jTableResult['tabla'] .= '<th>Tipo Solicitud</th>';
-                                }
-            $jTableResult['tabla'] .= '<th>Descripción</th>
-                                        <th>Estado</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                            <tbody>';
-                // Consulta para obtener las solicitudes y sus detalles asociados
-                $busqueda = "SELECT solicitud.id_solicitud, detallesolicitud.descripcion, solicitud.id_estado, estado.nombre AS nombre_estado, tiposolicitud.id_tiposolicitud AS idtiposolicitud, 
-                                    tiposolicitud.nombre AS nombre_tipo, userprofile.nombre AS nombre_autor
-                                FROM solicitud
-                                JOIN estado ON solicitud.id_estado = estado.id_estado
-                                JOIN userprofile ON solicitud.id_userprofile = userprofile.id_userprofile
-                                JOIN detallesolicitud ON solicitud.id_detallesolicitud = detallesolicitud.id_detallesolicitud
-                                JOIN tiposolicitud ON detallesolicitud.id_tiposolicitud = tiposolicitud.id_tiposolicitud
-                                WHERE solicitud.id_estado = 3 
-                                ORDER BY solicitud.id_solicitud DESC";
-                $result = mysqli_query($conn, $busqueda);
-                
-                if (mysqli_num_rows($result) > 0) {
-                    $jTableResult['rs'] = "1";
-                    // Recorrer los resultados y construir la lista de opciones
-                    while($registro = mysqli_fetch_array($result)) {
-                        $jTableResult['tabla'] .= "<tr>
-                                                    <td>" . $registro['id_solicitud'] . "</td>
-                                                    <td>" . $registro['nombre_tipo'] . "</td>";
-                                                        if ($_SESSION['id_rol'] == 3) {
-                                                            $jTableResult['tabla'] .= "<td>" . $registro['nombre_autor'] . "</td>";
-                                                        }
-                                                        $jTableResult['tabla'] .= "<td>" . $registro['descripcion'] . "</td>
-                                                                                    <td>" . $registro['nombre_estado'] . "</td>
-                                                                                    <td>";
-                                                        if ($_SESSION['id_rol'] == 3) {
-                                                            $jTableResult['tabla'] .= '
-                                                                                        <button id="modalCancel" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#cancelSolicitudModal" data-id="' . $registro['id_solicitud'] . '">Denegar Soli</button>
-                                                                                        <button  class="btn btn-success"';
-                                                                if ($registro['idtiposolicitud'] == 1) {
-                                                                    $jTableResult['tabla'] .= ' id="btn_asign" data-bs-toggle="modal" data-bs-target="#AceptSolicitudModal" data-id="' . $registro['id_solicitud'] . '" > Asignar</button>';
+                <div class="container">
+                        <style>
+                            .container{
+                                position: absolute;
+                                left: 4rem;
+                            }
+
+                        </style>
+                        <table class="table table-bordered table-striped table-hover text-center">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>ID</th>';
+                                        if ($_SESSION['id_rol'] == 3) {
+                                            $jTableResult['tabla'] .= '<th>Tipo Solicitud</th>
+                                                                        <th>Solicitante</th>';
+                                        } else {
+                                            $jTableResult['tabla'] .= '<th>Tipo Solicitud</th>';
+                                        }
+                    $jTableResult['tabla'] .= '<th>Descripción</th>
+                                                <th>Estado</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                    <tbody>';
+                        // Consulta para obtener las solicitudes y sus detalles asociados
+                        $busqueda = "SELECT solicitud.id_solicitud, detallesolicitud.descripcion, solicitud.id_estado, estado.nombre AS nombre_estado, tiposolicitud.id_tiposolicitud AS idtiposolicitud, 
+                                            tiposolicitud.nombre AS nombre_tipo, userprofile.nombre AS nombre_autor
+                                        FROM solicitud
+                                        JOIN estado ON solicitud.id_estado = estado.id_estado
+                                        JOIN userprofile ON solicitud.id_userprofile = userprofile.id_userprofile
+                                        JOIN detallesolicitud ON solicitud.id_detallesolicitud = detallesolicitud.id_detallesolicitud
+                                        JOIN tiposolicitud ON detallesolicitud.id_tiposolicitud = tiposolicitud.id_tiposolicitud
+                                        WHERE solicitud.id_estado = 3 
+                                        ORDER BY solicitud.id_solicitud DESC";
+                        $result = mysqli_query($conn, $busqueda);
+                        
+                        if (mysqli_num_rows($result) > 0) {
+                            $jTableResult['rs'] = "1";
+                            // Recorrer los resultados y construir la lista de opciones
+                            while($registro = mysqli_fetch_array($result)) {
+                                $jTableResult['tabla'] .= "<tr>
+                                                            <td>" . $registro['id_solicitud'] . "</td>
+                                                            <td>" . $registro['nombre_tipo'] . "</td>";
+                                                                if ($_SESSION['id_rol'] == 3) {
+                                                                    $jTableResult['tabla'] .= "<td>" . $registro['nombre_autor'] . "</td>";
                                                                 }
-                                                                elseif ($registro['idtiposolicitud'] == 2) {
-                                                                    $jTableResult['tabla'] .= ' id="btn_pf" data-bs-toggle="modal" data-bs-target="#AceptSolicitud2Modal" data-id="' . $registro['id_solicitud'] . '"> Asignar</button>';
+                                                                $jTableResult['tabla'] .= "<td>" . $registro['descripcion'] . "</td>
+                                                                                            <td>" . $registro['nombre_estado'] . "</td>
+                                                                                            <td>";
+                                                                if ($_SESSION['id_rol'] == 3) {
+                                                                    $jTableResult['tabla'] .= '
+                                                                                                <button id="modalCancel" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#cancelSolicitudModal" data-id="' . $registro['id_solicitud'] . '">Denegar Soli</button>
+                                                                                                <button  class="btn btn-success"';
+                                                                        if ($registro['idtiposolicitud'] == 1) {
+                                                                            $jTableResult['tabla'] .= ' id="btn_asign" data-bs-toggle="modal" data-bs-target="#AceptSolicitudModal" data-id="' . $registro['id_solicitud'] . '" > Asignar</button>';
+                                                                        }
+                                                                        elseif ($registro['idtiposolicitud'] == 2) {
+                                                                            $jTableResult['tabla'] .= ' id="btn_pf" data-bs-toggle="modal" data-bs-target="#AceptSolicitud2Modal" data-id="' . $registro['id_solicitud'] . '"> Asignar</button>';
+                                                                        }
+                                                                        elseif ($registro['idtiposolicitud'] == 3) {
+                                                                            $jTableResult['tabla'] .= ' id="BtnAsesoramientoA" data-bs-toggle="modal" data-bs-target="#AceptSolicitud3Modal" data-id="' . $registro['id_solicitud'] . '"> Responder</button>';
+                                                                        }elseif ($registro['idtiposolicitud'] == 4) {
+                                                                            $jTableResult['tabla'] .= ' id="btn_subir"  data-bs-toggle="modal" data-bs-target="#AceptSolicitud2Modal" data-id="' . $registro['id_solicitud'] . '"> Subir</button>';
+                                                                        }elseif ($registro['idtiposolicitud'] == 10) {
+                                                                            $jTableResult['tabla'] .= ' id="instructorProto" data-bs-toggle="modal" data-bs-target="#AceptSolicitud4Modal" data-id="' . $registro['id_solicitud'] . '"> Responder</button>';
+                                                                        }elseif($registro['idtiposolicitud']== 23){
+                                                                            $jTableResult['tabla'].='<button id="detalleOferta" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#OfertaModal"  cursor:pointer;" data-id="' . $registro['id_solicitud'] . '">Mirar Oferta</button>';
+                                                                        }
                                                                 }
-                                                                elseif ($registro['idtiposolicitud'] == 3) {
-                                                                    $jTableResult['tabla'] .= ' id="BtnAsesoramientoA" data-bs-toggle="modal" data-bs-target="#AceptSolicitud3Modal" data-id="' . $registro['id_solicitud'] . '"> Responder</button>';
-                                                                }elseif ($registro['idtiposolicitud'] == 4) {
-                                                                    $jTableResult['tabla'] .= ' id="btn_subir"  data-bs-toggle="modal" data-bs-target="#AceptSolicitud2Modal" data-id="' . $registro['id_solicitud'] . '"> Subir</button>';
-                                                                }elseif ($registro['idtiposolicitud'] == 10) {
-                                                                    $jTableResult['tabla'] .= ' id="instructorProto" data-bs-toggle="modal" data-bs-target="#AceptSolicitud4Modal" data-id="' . $registro['id_solicitud'] . '"> Responder</button>';
-                                                                }elseif($registro['idtiposolicitud']== 23){
-                                                                    $jTableResult['tabla'].='<button id="detalleOferta" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#OfertaModal"  cursor:pointer;" data-id="' . $registro['id_solicitud'] . '">Mirar Oferta</button>';
-                                                                }
-                                                        }
-                        $jTableResult['tabla'] .= "</td></tr>";
-                    }
-                    $jTableResult['tabla'] .= "</tbody></table></div>"; // Cerrar la tabla y los elementos HTML
+                                $jTableResult['tabla'] .= "</td></tr>";
+                            }
+                            $jTableResult['tabla'] .= "</tbody></table></div></div>"; // Cerrar la tabla y los elementos HTML
             }
         
         print json_encode($jTableResult);
@@ -1275,66 +1282,76 @@ switch ($_REQUEST['action'])
         $jTableResult['tabla'] = ""; 
         // Iniciar la construcción de la tabla
         $jTableResult['tabla'] .= '
-        
-            <table class="table table-bordered table-striped table-hover text-center">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>';
-                            if ($_SESSION['id_rol'] == 3) {
-                                $jTableResult['tabla'] .= '<th>Tipo Solicitud</th>
-                                                            <th>Autor Oferta</th>';
-                            } else {
-                                $jTableResult['tabla'] .= '<th>Tipo Solicitud</th>';
+            <div class="container">
+                        <style>
+                            .container{
+                                position: relative;
+                                left: 4rem;
                             }
-        $jTableResult['tabla'] .= '<th>Descripción</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                        <tbody>';
-        
-        // Consulta para verificar si el id_userprofile está presente en la tabla solicitud
-        $query = "SELECT id_userprofile FROM solicitud WHERE id_userprofile='" . $_SESSION['id_userprofile'] . "'";
-        $resultado = mysqli_query($conn, $query);
-        // Verificar si se encontraron resultados
-        if (mysqli_num_rows($resultado) > 0) {
-            // Consulta para obtener las solicitudes y sus detalles asociados
-            $busqueda = "SELECT solicitud.id_solicitud, detallesolicitud.descripcion, solicitud.id_estado, estado.nombre AS nombre_estado,
-                            tiposolicitud.nombre AS nombre_tipo, userprofile.nombre AS nombre_autor,userprofile.correo
-                        FROM solicitud
-                        JOIN estado ON solicitud.id_estado = estado.id_estado 
-                        JOIN userprofile ON solicitud.id_userprofile = userprofile.id_userprofile
-                        JOIN detallesolicitud ON solicitud.id_detallesolicitud = detallesolicitud.id_detallesolicitud
-                        JOIN tiposolicitud ON detallesolicitud.id_tiposolicitud = tiposolicitud.id_tiposolicitud
-                        WHERE detallesolicitud.id_categoria = 3 AND solicitud.id_estado = 9 
-            ";
-                if ($_SESSION['id_rol'] != 3) {
-                $busqueda .= " AND solicitud.id_userprofile='" . $_SESSION['id_userprofile'] . "'";
-                }
-                $busqueda .= " ORDER BY solicitud.id_solicitud DESC"; 
-                $result = mysqli_query($conn, $busqueda);
-            if (mysqli_num_rows($result) > 0) {
-                $jTableResult['rs'] = "1";  
-                while($registro = mysqli_fetch_array($result)) {
-                    $jTableResult['tabla'] .= "<tr>
-                                                <td>" . $registro['id_solicitud'] . "</td>
-                                                <td>" . $registro['nombre_tipo'] . "</td>";
-                                                    if ($_SESSION['id_rol'] == 3) {
-                                                        $jTableResult['tabla'] .= "<td>
-                                                        
-                                                        " . $registro['nombre_autor'] . "<br>
+                            .card-body{
+                                position: relative;
+                                left: 6rem;
+                            }
+                        </style>
+                <table class="table table-bordered table-striped table-hover text-center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>';
+                                if ($_SESSION['id_rol'] == 3) {
+                                    $jTableResult['tabla'] .= '<th>Tipo Solicitud</th>
+                                                                <th>Autor Oferta</th>';
+                                } else {
+                                    $jTableResult['tabla'] .= '<th>Tipo Solicitud</th>';
+                                }
+            $jTableResult['tabla'] .= '<th>Descripción</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                            <tbody>';
+            
+            // Consulta para verificar si el id_userprofile está presente en la tabla solicitud
+            $query = "SELECT id_userprofile FROM solicitud WHERE id_userprofile='" . $_SESSION['id_userprofile'] . "'";
+            $resultado = mysqli_query($conn, $query);
+            // Verificar si se encontraron resultados
+            if (mysqli_num_rows($resultado) > 0) {
+                // Consulta para obtener las solicitudes y sus detalles asociados
+                $busqueda = "SELECT solicitud.id_solicitud, detallesolicitud.descripcion, solicitud.id_estado, estado.nombre AS nombre_estado,
+                                tiposolicitud.nombre AS nombre_tipo, userprofile.nombre AS nombre_autor,userprofile.correo
+                            FROM solicitud
+                            JOIN estado ON solicitud.id_estado = estado.id_estado 
+                            JOIN userprofile ON solicitud.id_userprofile = userprofile.id_userprofile
+                            JOIN detallesolicitud ON solicitud.id_detallesolicitud = detallesolicitud.id_detallesolicitud
+                            JOIN tiposolicitud ON detallesolicitud.id_tiposolicitud = tiposolicitud.id_tiposolicitud
+                            WHERE detallesolicitud.id_categoria = 3 AND solicitud.id_estado = 9 
+                ";
+                    if ($_SESSION['id_rol'] != 3) {
+                    $busqueda .= " AND solicitud.id_userprofile='" . $_SESSION['id_userprofile'] . "'";
+                    }
+                    $busqueda .= " ORDER BY solicitud.id_solicitud DESC"; 
+                    $result = mysqli_query($conn, $busqueda);
+                if (mysqli_num_rows($result) > 0) {
+                    $jTableResult['rs'] = "1";  
+                    while($registro = mysqli_fetch_array($result)) {
+                        $jTableResult['tabla'] .= "<tr>
+                                                    <td>" . $registro['id_solicitud'] . "</td>
+                                                    <td>" . $registro['nombre_tipo'] . "</td>";
+                                                        if ($_SESSION['id_rol'] == 3) {
+                                                            $jTableResult['tabla'] .= "<td>
+                                                            
+                                                            " . $registro['nombre_autor'] . "<br>
 
-                                                        " . $registro['correo'] . "
-                                                        </td>";
-                                                    }
-                                                    $jTableResult['tabla'] .= "<td>" . $registro['descripcion'] . "</td>
-                                                                                <td>" . $registro['nombre_estado'] . "</td>";
-                                                    $jTableResult['tabla'] .= '<td> 
-                                                                                <button id="modalCancel" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#cancelSolicitudModal" data-id="' . $registro['id_solicitud'] . '">Denegar Soli</button>
-                                                                                <button id="detalleOferta" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#OfertaModal"  cursor:pointer;" data-id="' . $registro['id_solicitud'] . '">Mirar Oferta</button>';
-                    $jTableResult['tabla'] .= "</td></tr>";
-                }
-                $jTableResult['tabla'] .= "</tbody></table></div>";
+                                                            " . $registro['correo'] . "
+                                                            </td>";
+                                                        }
+                                                        $jTableResult['tabla'] .= "<td>" . $registro['descripcion'] . "</td>
+                                                                                    <td>" . $registro['nombre_estado'] . "</td>";
+                                                        $jTableResult['tabla'] .= '<td> 
+                                                                                    <button id="modalCancel" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#cancelSolicitudModal" data-id="' . $registro['id_solicitud'] . '">Denegar Soli</button>
+                                                                                    <button id="detalleOferta" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#OfertaModal"  cursor:pointer;" data-id="' . $registro['id_solicitud'] . '">Mirar Oferta</button>';
+                        $jTableResult['tabla'] .= "</td></tr>";
+                    }
+                    $jTableResult['tabla'] .= "</tbody></table></div>";
             }else{
                 $jTableResult['rs'] = "2";
                 $jTableResult['Ms'] = "Tu Solicitud Aun no tiene una respuesta.";

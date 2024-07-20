@@ -1,8 +1,8 @@
 <nav class="dropdownmenu">
     <i class="menu-toggle fas fa-bars"></i>
-    <a href="actualizarusuariooriginal.php" class="logo">
+    <!-- <a href="actualizarusuariooriginal.php" class="logo">
         <img src="../../imagenes/logo.jpg" />
-    </a>
+    </a> -->
     <li>
         <a href="inicio.php">
             <i class="fas fa-home menu__icon"></i>

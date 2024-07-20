@@ -216,7 +216,7 @@ $varDateTime = date("Y-m-d H:i:s");
                             </div>
                             <div class="form-group">
                                 <label for="clave_registro" class="form-label">Clave:</label>
-                                <input type="password" class="form-input" id="clave_registro_rep" name="clave" title="Clave">
+                                <input type="password" class="form-input" id="clave_registro" name="clave" title="Clave">
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="form-button form-button-submit" id="btnGuardar" name="btnGuardar">Registrar</button>

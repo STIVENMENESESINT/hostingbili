@@ -203,17 +203,14 @@ $(document).ready(function(){
 							// los demas lo hacen ustedes.
 							$.post("include/ctrlIndex2.php", {
 							action:'registroUsuNew',
-							fechaNacimientoUsu:$("#fechaNacimientoUsu").val(),
 							id_tpdoc:$("#id_tpdoc").val(),
 							numeroiden_registro:$("#numeroiden_registro").val(),
 							nameusu:$("#nameusu").val(),
 							nombre_dos:$("#nombre_dos").val(),
-							direccion:$("#direccion").val(),
 							apellidoUsu:$("#apellidoUsu").val(),
 							apellidoUsu_dos:$("#apellidoUsu_dos").val(),
 							cod_dpto:$("#cod_dpto").val(),
 							correo_registro:$("#correo_registro").val(),
-							correo1:$("#correo1").val(),
 							celular:$("#celular").val(),
 							id_genero:$("#id_genero").val(),
 							cod_municipio:$("#cod_municipio").val(),

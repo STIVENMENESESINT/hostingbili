@@ -64,46 +64,58 @@ if (isset($_SESSION['id_userprofile'])){
         <div class="layout__content">
             <div class="content__page">
                 <br />
-                <div class="cabecera_menu">
-                    <div class="card-body">
-                        <div class="row">
-                            <!-- BUSCADOR -->
-                            <div class="col-sm-2">
-                                <input type='text' name='dato_txt' id='dato_txt' title='Dato a buscar'
-                                    placeholder='Dato a buscar' class="form-control mb-2 mr-sm-2 mb-sm-0">
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="button" name='btn_Buscar' id='btn_Buscar'
-                                    <?php echo $var_class_button_warnigB; ?>>
-                                    <i class="fa fa-search-plus" aria-hidden="true"></i></button>
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="button" name='btn_Nuevo' id='btn_Nuevo' data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop" <?php echo $var_class_button_warnigN; ?>>
-                                    <i class="fa fa-plus" aria-hidden="true"></i></button>
+                <div class="cabecera_menu">l
+                    <!-- <div class="container"> -->
+                        <!-- <style>
+                            .container{
+                                position: absolute;
+                                left: 6rem;
+                            }
+                            .card-body{
+                                position: absolute;
+                                left: 6rem;
+                            }
+                        </style> -->
+                        <div class="card-body">
+                            <div class="row">
+                                <!-- BUSCADOR -->
+                                <div class="col-sm-2">
+                                    <input type='text' name='dato_txt' id='dato_txt' title='Dato a buscar'
+                                        placeholder='Dato a buscar' class="form-control mb-2 mr-sm-2 mb-sm-0">
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" name='btn_Buscar' id='btn_Buscar'
+                                        <?php echo $var_class_button_warnigB; ?>>
+                                        <i class="fa fa-search-plus" aria-hidden="true"></i></button>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" name='btn_Nuevo' id='btn_Nuevo' data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop" <?php echo $var_class_button_warnigN; ?>>
+                                        <i class="fa fa-plus" aria-hidden="true"></i></button>
+                                </div>
                             </div>
                         </div>
+                        <!-- NO TOCAR -->
+                        <?php
+                            if ($_SESSION['id_rol'] == 3) {
+                                echo '<div id="sin_contenido"></div>
+                                <div id="oferta_curso"></div>';
+                            }
+                        ?>
+                        <?php
+                            if ($_SESSION['id_rol'] == 2) {
+                                echo '
+                                <div id="oferta_curso"></div>';
+                            }
+                        ?>
+                        <?php
+                            if ($_SESSION['id_rol'] != 3) {
+                                echo '<div id="contenido"></div>';
+                            }
+                        ?>
                     </div>
-                    <!-- NO TOCAR -->
-                    <?php
-                        if ($_SESSION['id_rol'] == 3) {
-                            echo '<div id="sin_contenido"></div>
-                            <div id="oferta_curso"></div>';
-                        }
-                    ?>
-                    <?php
-                        if ($_SESSION['id_rol'] == 2) {
-                            echo '
-                            <div id="oferta_curso"></div>';
-                        }
-                    ?>
-                    <?php
-                        if ($_SESSION['id_rol'] != 3) {
-                            echo '<div id="contenido"></div>';
-                        }
-                    ?>
+                    <div id="solisB"></div>
                 </div>
-                <div id="solisB"></div>
             </div>
         </div>
 
