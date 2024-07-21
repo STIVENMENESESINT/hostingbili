@@ -102,8 +102,8 @@ if (isset($_SESSION['id_userprofile'])){
         /* Centrar elementos verticalmente */
         border-radius: 15px;
     }
-    .container{
-        position: relative;
+    .container2{
+        position: absolute;
         left: 5rem;
     }
     </style>
@@ -125,13 +125,13 @@ if (isset($_SESSION['id_userprofile'])){
                     <div class="container pt-16 rounded-container ">
                         <h1>Panel De Acciones</h1>
                         <div class="row">
-                            <div class="container col-sm-12">
-                                <?php 
-                                    include_once('panel.php')
-                                ?>
+                            <div class="col-sm-12">
+                                    <div style="width: 70%; margin: 0 auto; ;">
+                                        <?php 
+                                        include_once('panel.php')
+                                        ?>
+                                    </div>
                             </div>
-
-
                         </div>
 </body>
 <!-- Regresar -->

@@ -40,12 +40,12 @@ if (isset($_SESSION['id_userprofile'])){
             <div class="content__page">
                 <br />
                 <div class="row">
-                            <div class="col-sm-12">
-                                <?php 
-                                    include_once('panel.php')
-                                ?>
-                            </div>
-                        </div>
+                    <div style="width: 70%; margin: 0 auto; ;">
+                        <?php 
+                            include_once('panel.php')
+                        ?>
+                    </div>
+                </div>
                 <div class="container">
                 <div class="cabecera_menu">
                     <style>

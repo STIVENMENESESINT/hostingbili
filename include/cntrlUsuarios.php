@@ -13,7 +13,18 @@ switch ($_REQUEST['action'])
         $jTableResult['rstl']="";
         $jTableResult['msj']="";
         $jTableResult['listaUsu']='
-                <table class="table table-bordered table-striped table-hover text-center">
+                <div class="container">
+                        <style>
+                            .container{
+                                position: relative;
+                                left: 2.6rem;
+                            }
+                                .card-body{
+                                position: relative;
+                                left: 6rem;
+                            }
+                        </style>
+                        <table class="table table-bordered table-striped table-hover text-center">
                     <thead class="thead-dark">
                         <tr>
                             <th>ID</th>
@@ -51,6 +62,7 @@ switch ($_REQUEST['action'])
                 $jTableResult['msj']= "";
                 $jTableResult['rslt']= "1";						
             }
+            $jTableResult['listaUsu']= "</div>";	
         print json_encode($jTableResult);
     break;
     
