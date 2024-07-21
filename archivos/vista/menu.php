@@ -28,7 +28,7 @@
         </a>
     </li>
     <li>
-        <a id="btnCerrarSession" href="">
+        <a id="btnCerrarSession">
             <i class="fas fa-sign-out-alt menu__icon"></i>
             <span class="nav-item">Salir</span>
         </a>

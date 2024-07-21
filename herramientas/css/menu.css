@@ -92,6 +92,10 @@ a:hover {
     position: relative;
     top: 12px;
     margin-left: 10px;
+    color: white;
+}
+.nav-item2 {
+    color: black;
 }
 
 /* Estilos para el menú */

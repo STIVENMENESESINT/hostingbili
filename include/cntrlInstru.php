@@ -69,7 +69,7 @@ switch ($_REQUEST['action'])
                                         <center><img src='' alt='' width='100' height='100' class='profile-photo'>
                                         </center> </a>
                                     <p class='heading'> ". $registro["nombre"] . "". $registro["nombre_dos"] . "". $registro["apellido"] . " </p>
-                                    <p class='follow'>". $registro["nombre_area"] . "
+                                    <p class='follow'>". $registro["nombre_jornada"] . "
                                     </p></div>
                                     <div class='back'>
                                     <p class='heading'>LICENCIADA EN LENGUAS MODERNAS</p>

@@ -69,7 +69,7 @@ if (isset($_SESSION['id_userprofile'])){
                 <div class="cabecera_menu">
                     <style>
                         .card-body{
-                                position: absolute;
+                                position: relative;
                                 left: 3.5rem;
                             }
                     </style>
@@ -145,7 +145,7 @@ if (isset($_SESSION['id_userprofile'])){
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div id="instructor"></div>
+                        <div id="Tjinstructor"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>

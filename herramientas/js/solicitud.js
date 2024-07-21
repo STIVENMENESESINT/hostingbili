@@ -549,7 +549,7 @@ $(document).on("click", "#btnEnviar", function() {
         formData.append('id_programaformacion', $("#id_programaformacion").val());
         formData.append('id_nivel_formacion', $("#id_nivel_formacion").val());
         var fileInput = document.getElementById('archivo');
-        if (fileInput.files.length > 0) {
+        if (fileInput && fileInput.files.length > 0) {
             formData.append('archivo', fileInput.files[0]);
         }
         console.log(formData);
@@ -950,12 +950,14 @@ $(document).on("click", "#modalCancel", function() {
     }, 'json');
 });
 $(document).on("click", "#instructorProto", function() {
+    var idSolicitud = $(this).data('id');
     $.post("../../include/cntrlSoli.php", {
-        action: 'instructorProto' 
+        action: 'instructorProto' ,
+        id_solicitud: idSolicitud
     },
     function(data) {
         if(data.rstl=="1"){	
-            $("#instructor").html(data.tarjeta); } 
+            $("#Tjinstructor").html(data.tarjeta); } 
             else{	
                 alert(data.msj);
             }
