@@ -1886,6 +1886,7 @@ switch ($_REQUEST['action'])
             $jTableResult['tarjeta'] = "";
             $id_solicitud = $_POST['id_solicitud'];
             $query = "SELECT 
+                        solicitud.id_solicitud,
                         solicitud.id_estado,
                         j.nombre AS nombre_jornada,
                         r.nombre AS nombre_rol, 
@@ -1938,7 +1939,7 @@ switch ($_REQUEST['action'])
                                     <p class='follow'>". $registro["nombre_jornada"] . "
                                     </p></div>
                                     <div class='back'>
-                                    <p class='heading'>LICENCIADA EN LENGUAS MODERNAS</p>
+                                    <p class='heading'>". $registro["nombre_rol"] . "</p>
                                     
                                     <a href='../../archivos/vista/enviarmensaje.php'>
                                         <center><img src='' alt='' width='100' height='100' class='profile-photo'>
@@ -1954,7 +1955,10 @@ switch ($_REQUEST['action'])
                         </ul>
                     </div>
                 </div>
-                    
+                <div class='modal-footer'>
+                    <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
+                    <button type='button' class='create-button' id='CrearInstru' data-id='" . $registro['id_solicitud'] . "'>Subir</button>
+                </div>
                         
                         
                     ";
@@ -1966,8 +1970,40 @@ switch ($_REQUEST['action'])
             }
             print json_encode($jTableResult);
     break;
+    case 'CrearInstru':
+        $jTableResult = array();
+        $jTableResult['rstl'] = "";
+        $jTableResult['msj'] = "";
+        $id_solicitud = $_POST['id_solicitud'];
+        $query = "UPDATE solicitud s
+            JOIN userprofile up ON up.id_userprofile = s.id_userprofile
+            SET s.fecha_respuesta = NOW(),
+                up.id_rol = '2',
+                s.id_estado ='4'
+            WHERE s.id_solicitud = '$id_solicitud'";
+
     
+        $result = mysqli_query($conn, $query);
     
+        // Verificar si la consulta fue exitosa
+        if ($result) {
+            // Verificar si se encontraron resultados
+            if (mysqli_affected_rows($conn) > 0) {
+                $jTableResult['msj'] = "Instructor Creado con Exito.";
+                $jTableResult['rstl'] = "1";
+            } else {
+                mysqli_rollback($conn);
+                $jTableResult['msj'] = "Error al Crear el Instructor.";
+                $jTableResult['rstl'] = "0";
+            }
+        } else {
+            // Manejar el error de la consulta
+            $jTableResult['msj'] = "Error en la consulta: " . mysqli_error($conn);
+            $jTableResult['rstl'] = "0";
+        }
+    
+        print json_encode($jTableResult);
+    break;
 }
 mysqli_close($conn);
 ?>

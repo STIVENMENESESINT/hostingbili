@@ -967,3 +967,23 @@ $(document).on("click", "#instructorProto", function() {
         console.error(error);
     });
 });
+$(document).on("click", "#CrearInstru", function() {
+    var idSolicitud = $(this).data('id');
+    $.post("../../include/cntrlSoli.php", {
+        action: 'CrearInstru',
+        id_solicitud: idSolicitud
+    },
+    function(data) {
+        if(data.rstl=="1"){	
+            alert(data.msj);
+            location.reload();
+            } 
+            else{	
+                alert(data.msj);
+            }
+    },
+    'json'
+    ).fail(function(xhr, status, error) {
+        console.error(error);
+    });
+});
