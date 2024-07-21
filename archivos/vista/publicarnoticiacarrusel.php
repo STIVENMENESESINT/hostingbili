@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Consulta para obtener las tres imágenes más recientes de detallesolicitud
-$sql = "SELECT Imagen AS imagen, nombre AS titulo, fecha_inicio AS fecha_mostrada, descripcion FROM detallesolicitud ORDER BY id_detallesolicitud DESC LIMIT 3";
+$sql = "SELECT Imagen AS imagen, nombre AS titulo, descripcion FROM detallesolicitud ORDER BY id_detallesolicitud DESC LIMIT 3";
 $result = $conn->query($sql);
 
 // Generar el HTML del carrusel
@@ -41,7 +41,7 @@ if ($result->num_rows > 0) {
     }
 } else {
     $carouselItems = '<div class="carousel-item active">
-                        <img class="w-100" src="path/to/default/image.jpg" alt="Image">
+                        <img class="w-100" src="/imagenes/" alt="Image">
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <h2 class="text-white font-weight-bold">No hay noticias disponibles</h2>
                         </div>
@@ -65,44 +65,38 @@ $conn->close();
     </div>
 </div>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#noticiaModal1">
-                        Publicar Noticia
-                    </button>
+    Publicar Noticia
+</button>
 
-                    <div class="modal fade" id="noticiaModal1" tabindex="-1" aria-labelledby="noticiaModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="noticiaModalLabel">Formulario de Publicación de Noticias</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form id="noticiaForm" method="post" enctype="multipart/form-data">
-                                        <div class="form-group">
-                                            <label for="titulo">Título de la Noticia:</label>
-                                            <input type="text" id="titulo" name="titulo" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="descripcion">Descripción:</label>
-                                            <textarea id="descripcion" name="descripcion" class="form-control" rows="4" required></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="imagen">Adjuntar Imagen:</label>
-                                            <input type="file" id="imagen" name="imagen" class="form-control-file" accept="image/*" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="fecha_inicio">Fecha de Inicio:</label>
-                                            <input type="datetime-local" id="fecha_inicio" name="fecha_inicio" class="form-control" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="fecha_fin">Fecha de Fin:</label>
-                                            <input type="datetime-local" id="fecha_fin" name="fecha_fin" class="form-control" required>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary" id="publicar_noti">Publicar Noticia</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+<div class="modal fade" id="noticiaModal1" tabindex="-1" aria-labelledby="noticiaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="noticiaModalLabel">Formulario de Publicación de Noticias</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="noticiaForm" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="titulo">Título de la Noticia:</label>
+                        <input type="text" id="titulo" name="titulo" class="form-control" required>
                     </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción:</label>
+                        <textarea id="descripcion" name="descripcion" class="form-control" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="imagen">Adjuntar Imagen:</label>
+                        <input type="file" id="imagen" name="imagen" class="form-control-file" accept="image/*"
+                            required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="publicar_noti">Publicar Noticia</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#carouselModal">
     Subir Contenido
 </button>

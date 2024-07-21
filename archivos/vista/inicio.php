@@ -53,7 +53,7 @@ if (isset($_SESSION['id_userprofile'])) {
 
 
 
-                <div class="container bg-black pt-16 rounded-container">
+                <div class="container bg-black  rounded-container">
                     <?php include_once('publicarnoticiacarrusel.php'); ?>
                 </div>
 
