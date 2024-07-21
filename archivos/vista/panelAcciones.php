@@ -102,6 +102,10 @@ if (isset($_SESSION['id_userprofile'])){
         /* Centrar elementos verticalmente */
         border-radius: 15px;
     }
+    .container{
+        position: relative;
+        left: 5rem;
+    }
     </style>
 </head>
 
@@ -115,97 +119,16 @@ if (isset($_SESSION['id_userprofile'])){
         </aside>
         <!-- Contenido principal -->
 
-        <button type="button" class="btn nav-link nav-item-hover fixed-top-right" onclick="goBack()">
-            <i class="fas fa-arrow-left fa-fw fa-lg"></i>
-            <span class="nav-item">Volver</span>
-        </button>
         <div class="layout__content">
             <div class="content__page">
                 <div id="contenido">
                     <div class="container pt-16 rounded-container ">
                         <h1>Panel De Acciones</h1>
                         <div class="row">
-                            <div class="col-sm-12">
-                                <ul class="navbar-nav">
-                                    <?php
-            if ($_SESSION['id_rol'] == 3) {
-                echo '
-                    <li>
-                        <a href="usuarios.php" class="nav-link nav-item-hover">
-                            <i class="fas fa-graduation-cap fa-fw fa-lg"></i>
-                            <span class="nav-item2">Administrar Usuarios</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="solicitud.php" class="nav-link nav-item-hover">
-                            <i class="fas fa-check-double fa-fw fa-lg"></i>
-                            <span class="nav-item2">Administrador de Solicitudes</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="GprogramaFormacion.php" class="nav-link nav-item-hover">
-                            <i class="fas fa-graduation-cap fa-fw fa-lg"></i>
-                            <span class="nav-item2">Programa Formación</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="instructor.php" class="nav-link nav-item-hover">
-                            <i class="fas fa-user-tie fa-fw fa-lg"></i>
-                            <span class="nav-item2">Instructores Bilinguismo</span>
-                        </a>
-                    </li>
-                ';
-            }
-            ?>
-                                    <?php
-            if ($_SESSION['id_rol'] == 2) {
-                echo '
-                    <li>
-                        <a href="solicitud.php" class="nav-link nav-item-hover">
-                            <i class="fas fa-check-double fa-fw fa-lg"></i>
-                            <span class="nav-item2">Solicitudes</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="asignaciones.php" class="nav-link nav-item-hover">
-                            <i class="fas fa-check-double fa-fw fa-lg"></i>
-                            <span class="nav-item2">Asignaciones</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="GprogramaFormacion.php" class="nav-link nav-item-hover">
-                            <i class="fas fa-graduation-cap fa-fw fa-lg"></i>
-                            <span class="nav-item2">Programa Formación</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="instructor.php" class="nav-link nav-item-hover">
-                            <i class="fas fa-user-tie fa-fw fa-lg"></i>
-                            <span class="nav-item2">Instructores Bilinguismo</span>
-                        </a>
-                    </li>
-                ';
-            }
-            ?>
-            <?php
-                if ($_SESSION['id_rol'] == 1) {
-                    echo '
-                        <li>
-                            <a href="solicitud.php" class="nav-link nav-item-hover">
-                                <i class="fas fa-check-double fa-fw fa-lg"></i>
-                                <span class="nav-item2">Solicitudes</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="instructor.php" class="nav-link nav-item-hover">
-                                <i class="fas fa-user-tie fa-fw fa-lg"></i>
-                                <span class="nav-item2">Instructores Bilinguismo</span>
-                            </a>
-                        </li>
-                    ';
-                }
-            ?>
-                                </ul>
+                            <div class="container col-sm-12">
+                                <?php 
+                                    include_once('panel.php')
+                                ?>
                             </div>
 
 

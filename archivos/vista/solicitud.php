@@ -36,35 +36,16 @@ if (isset($_SESSION['id_userprofile'])){
             </div>
         </aside>
         <!-- Contenido principal -->
-                    <style >
-                        .cabecera_menu {
-                            position: relative;
-                        }
-                        .fixed-top-right {
-                            position: absolute;
-                            top: 10px; /* Ajusta este valor según necesites */
-                            right: 10px; /* Ajusta este valor según necesites */
-                            z-index: 1000; /* Asegura que esté por encima de otros elementos */
-                            
-                            padding: 5px 10px; /* Espaciado interno */
-                        }
-                        .fixed-top-right .btn i {
-                            margin-right: 5px; /* Espacio entre el icono y el texto */
-                        }
-                    </style>
-                    <button type="button" class="btn nav-link nav-item-hover fixed-top-right" onclick="goBack()">
-                        <i class="fas fa-arrow-left fa-fw fa-lg"></i>
-                        <span class="nav-item">Volver</span>
-                    </button>
-
-                    <script>
-                    function goBack() {
-                        window.history.back();
-                    }
-                    </script>
         <div class="layout__content">
             <div class="content__page">
                 <br />
+                <div class="row">
+                            <div class="col-sm-12">
+                                <?php 
+                                    include_once('panel.php')
+                                ?>
+                            </div>
+                        </div>
                 <div class="container">
                 <div class="cabecera_menu">
                     <style>
