@@ -5,14 +5,11 @@
 
 	$(document).ready(function() {
 		$('#calendar').fullCalendar({
-
-
 		header: {
 			left: 'prev,next today',
 			center: 'title',
 			right: 'month,agendaWeek,agendaDay,listYear'
 		},
-
 		defaultDate:'<?php echo date('Y-m-d'); ?>',
 		editable: true,
 		navLinks: true,

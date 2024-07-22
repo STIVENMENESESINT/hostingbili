@@ -1,86 +1,124 @@
-<div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		  <div class="modal-dialog" role="document">
-			<div class="modal-content">
-			<form class="form-horizontal" method="POST" action="../../calendario/action/eventoAdd.php" onsubmit="return validaForm(this);">
-			
-			  <div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Programar</h4>
-			  </div>
-			  <div class="modal-body">
-				
-				  <div class="form-group">
-					<label for="titulo" class="col-sm-2 control-label">Titulo</label>
-					<div class="col-sm-10">
-					  <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Titulo" required>
-					</div>
-				  </div>
 
-				  <div class="form-group">
-					<label for="descricao" class="col-sm-2 control-label">Descripcion</label>
-					<div class="col-sm-10">
-					  <textarea type="text" name="descricao" class="form-control" id="descricao" placeholder="Descripcion"></textarea>
-					</div>
-				  </div>
-				  
-				  <div class="form-group">
-					<label for="cor" class="col-sm-2 control-label">Color</label>
-					<div class="col-sm-10">
-					  <select name="cor" class="form-control" id="cor">
-					  <option value="">Escolher</option>
-						  <option style="color:#0071c5" value="#0071c5">&#9724; Azul Escuro</option>
-						  <option style="color:#40E0D0" value="#40E0D0">&#9724; Turquesa</option>
-						  <option style="color:#008000" value="#008000">&#9724; Verde</option>						  
-						  <option style="color:#FFD700" value="#FFD700">&#9724; Amarillo</option>
-						  <option style="color:#FF8C00" value="#FF8C00">&#9724; Naranja</option>
-						  <option style="color:#FF0000" value="#FF0000">&#9724; Vermelo</option>
-						  <option style="color:#000" value="#000">&#9724; Preto</option>
-						  
-						</select>
-					</div>
-				  </div>
+		<div class="modal fade" id="ModalAdd" data-bs-backdrop="static" data-bs-keyboard="false"		
+            tabindex="-1" aria-labelledby="cancelSolicitudLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Estas Seguro de Denegar la Solicitud?
+                        </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+						<form class="form-horizontal" method="POST" action="../../calendario/action/eventoAdd.php" onsubmit="return validaForm(this);">
+							<script>
+								$(document).ready(function(){  
+									$.post("../../include/select.php", {
+										action: 'CrgrCompetencia' 
+									},
+									function(data) {
+										$("#id_competencia").html(data.listCmpt);
+										},
+										'json'
+										).fail(function(xhr, status, error) {
+											console.error(error);
+									});
+								});
+								$(document).on("change", "#id_competencia",function (){ 
+									$.post("../../include/select.php", {
+										action: 'CrgrRA' ,
+										id_competencia:$("#id_competencia").val()
+									},
+									function(data) {
+										$("#id_resultado_aprendizaje").html(data.listRa);
+										},
+										'json'
+										).fail(function(xhr, status, error) {
+											console.error(error);
+									});
+								});
+							</script>
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Programar</h4>
+							</div>
+							<div class="modal-body">
+								
+								<div class="form-group">
+									<label for="titulo" class="col-sm-2 control-label">Titulo</label>
+									<div class="col-sm-10">
+									<input type="text" name="titulo" class="form-control" id="titulo" placeholder="Titulo" required>
+									</div>
+								</div>
 
-				  <div class="form-group">
-					<label for="convidado" class="col-sm-2 control-label">Asignar</label>
-					<div class="col-sm-10">
-					  <select name="convidado" class="form-control" id="convidado">
-					  <option value="">seleccione...</option>
-					  <?php
-							$sql2 = "SELECT nombre, id_userprofile, apellido FROM userprofile WHERE id_userprofile !=$id_user AND id_rol=2";
-							$req = $db->prepare($sql2);
-							$req->execute();
-							$linhas = $req->rowCount();
-							while ($dados = $req->fetch(PDO::FETCH_ASSOC)) {
-								$id_usuario = $dados['id_userprofile'];
-								$nome_usuario = $dados['nombre'];
-								echo " <option value=\"$id_usuario\">$nome_usuario</option>";
-							}
-						?>				  
-						</select>
-					</div>
-				  </div>
+								<div class="form-group">
+									<label for="descricao" class="col-sm-2 control-label">Descripcion</label>
+									<div class="col-sm-10">
+									<textarea type="text" name="descricao" class="form-control" id="descricao" placeholder="Descripcion"></textarea>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="cor" class="col-sm-2 control-label">Color</label>
+									<div class="col-sm-10">
+									<select name="cor" class="form-control" id="cor">
+									<option value="">Escolher</option>
+										<option style="color:#0071c5" value="#0071c5">&#9724; Azul Escuro</option>
+										<option style="color:#40E0D0" value="#40E0D0">&#9724; Turquesa</option>
+										<option style="color:#008000" value="#008000">&#9724; Verde</option>						  
+										<option style="color:#FFD700" value="#FFD700">&#9724; Amarillo</option>
+										<option style="color:#FF8C00" value="#FF8C00">&#9724; Naranja</option>
+										<option style="color:#FF0000" value="#FF0000">&#9724; Vermelo</option>
+										<option style="color:#000" value="#000">&#9724; Preto</option>
+										
+										</select>
+									</div>
+								</div>
 
-
-				  <div class="form-group">
-					<label for="inicio" class="col-sm-2 control-label">Fecha Inicio </label>
-					<div class="col-sm-10">
-					  <input type="text" name="inicio" class="form-control" id="inicio" required>
+								<div class="form-group">
+									<label for="convidado" class="col-sm-2 control-label">Asignar</label>
+									<div class="col-sm-10">
+									<select name="convidado" class="form-control" id="convidado">
+									<option value="">seleccione...</option>
+									<?php
+											$sql2 = "SELECT nombre, id_userprofile, apellido FROM userprofile WHERE id_userprofile !=$id_user AND id_rol=2";
+											$req = $db->prepare($sql2);
+											$req->execute();
+											$linhas = $req->rowCount();
+											while ($dados = $req->fetch(PDO::FETCH_ASSOC)) {
+												$id_usuario = $dados['id_userprofile'];
+												$nome_usuario = $dados['nombre'];
+												echo " <option value=\"$id_usuario\">$nome_usuario</option>";
+											}
+										?>				  
+										</select>
+									</div>
+								</div>
+								<h6 class="modal-title">Sobre que Competencia quieres Programar</h6><br>
+														<select class="form-control modal-textbox" id="id_competencia"  title='' style='cursor:pointer;' >
+														</select><br>
+												<h6 class="modal-title">Resultado de Aprendizaje<h6><br>
+												<select class="form-control modal-textbox" id="id_resultado_aprendizaje"  title='' style='cursor:pointer;' >
+														</select><br>
+								<div class="form-group">
+									<label for="inicio" class="col-sm-2 control-label">Fecha Inicio </label>
+									<div class="col-sm-10">
+									<input type="text" name="inicio" class="form-control" id="inicio" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="termino" class="col-sm-2 control-label">Fecha Termino</label>
+									<div class="col-sm-10">
+									<input type="text" name="termino" class="form-control" id="termino" required>
+									</div>
+								</div>
+								
+							</div>
+						</form>
+                    </div>
+                    <div class="modal-footer">
+						<button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
+						<button type="submit" class="close-button">Agregar</button>
 					</div>
-				  </div>
-				  <div class="form-group">
-					<label for="termino" class="col-sm-2 control-label">Fecha Termino</label>
-					<div class="col-sm-10">
-					  <input type="text" name="termino" class="form-control" id="termino" required>
-					</div>
-				  </div>
-				
-			  </div>
-
-			  <div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-				<button type="submit" class="btn btn-primary">Agregar</button>
-			  </div>
-			</form>
-			</div>
-		</div>
-</div>
+                </div>
+            </div>
+        </div>

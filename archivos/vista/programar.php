@@ -1,20 +1,17 @@
 <?php
 
-require_once('../../calendario/action/conexao.php');
-// Establecer el tipo de contenido a HTML con el charset especificado en la configuración
-header('Content-Type: text/html; charset='.$charset);
+// Incluir el archivo de configuración de conexión a la base de datos
+    require_once('../../calendario/action/conexao.php');
 
-// Iniciar la sesión con el nombre de sesión configurado
-session_name($session_name);
-session_start();
+    // Establecer el tipo de contenido a HTML con el charset especificado en la configuración
+    header('Content-Type: text/html; charset='.$charset);
 
-// Verificar si existe una sesión activa con el id_userprofile
+    // Iniciar la sesión con el nombre de sesión configurado
+    session_name($session_name);
+    session_start();
     if(!isset ($_SESSION['id_userprofile'])) {
-        header('Location: index.php');
+        header('Location: ../../index.php');
     }
-	if(!isset($_SESSION)){
-    	session_start();
-	}
 	$id_user = $_SESSION['id_userprofile'];
 	date_default_timezone_set('America/Bogota');
 	$database = new Database();
@@ -22,15 +19,13 @@ session_start();
 
 	$sql = "SELECT id_evento, titulo, descricao, inicio, termino, cor, fk_id_destinatario, fk_id_remetente, status FROM eventos as e
 	LEFT JOIN convites as c ON e.id_evento = c.fk_id_evento
-	Where id_userprofile = $id_user";
+	Where fk_id_usuario = $id_user";
 	$req = $db->prepare($sql);
 	$req->execute();
 	$events = $req->fetchAll();
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
-
 	<head>
     <?php
         include_once('cabecera.php');
@@ -40,19 +35,14 @@ session_start();
     	<meta name="viewport" content="width=device-width, initial-scale=1">
     	<meta name="description" content="">
     	<meta name="author" content="">
-
-    	<title>Calendario - Home</title>
-
+    	<title>Calendario </title>
     	<!-- Bootstrap Core CSS -->
     	<link href="css/bootstrap.min.css" rel="stylesheet">
-	
 		<!-- FullCalendar -->
 		<link href='../../herramientas/css/fullcalendar.css' rel='stylesheet' />
 		<link href='../../herramientas/css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
-
     	<!-- Custom CSS Calendario -->
     	<link href='../../herramientas/css/calendar.css' rel='stylesheet' />
-
 	</head>
     <body>
         <div class="layout">
@@ -92,16 +82,16 @@ session_start();
                         </script>
             <div class="layout__content">
                 <div class="content__page">
+                    <br />
                     <?php
-                        // Incluir el menú de navegación
+                        // Incluir notificacion
                         include_once('notificacion.php');
                         ?>
-                    <br />
                     <div class="cabecera_menu">
                     <!-- INICIO CALENDARIO -->
                     <div class="container">
-
                         <div class="row">
+
                             <div class="col-lg-12 text-center">
                                 <p class="lead"></p>
                                 <div id="calendar" class="col-centered">
@@ -141,7 +131,7 @@ session_start();
                     <!-- FullCalendar -->
                     <script src='../../herramientas/js/moment.min.js'></script>
                     <script src='../../herramientas/js/fullcalendar.min.js'></script>
-                    <script src='../../herramientas/locale/pt-br.js'></script>
+                    <script src='../../herramientas/js/pt-br.js'></script>
                     <?php include_once('calendario.php'); ?>
                     
 

@@ -10,9 +10,7 @@
     date_default_timezone_set('America/Sao_Paulo');
     $database = new Database();
     $db = $database->conectar();
-
     $numNotificacao=0;
-
     $sql = "SELECT * FROM convites as c
     LEFT JOIN userprofile as u ON c.fk_id_remetente = u.id_userprofile
     LEFT JOIN eventos as e ON c.fk_id_evento = e.id_evento
@@ -37,8 +35,8 @@
         <?php
             while ($dados = $req->fetch(PDO::FETCH_ASSOC)) {
                 $id_convite = $dados['id_convite'];
-                $nome_usuario = $dados['nome'];
-                $id_usuario2 = $dados['id_usuario'];
+                $nome_usuario = $dados['nombre'];
+                $id_usuario2 = $dados['id_userprofile'];
                 $nome_evento = $dados['titulo'];
                 $descricao_evento = $dados['descricao'];
                 $data_inicio = $dados['inicio'];
@@ -48,7 +46,7 @@
                 $data_inicio = date('d/m/Y H:i:s', strtotime($data_inicio));
                 echo "
                 <div class=\"alert alert-info\" role=\"alert\">
-                <form class=\"form-horizontal\" method=\"POST\" action=\"menu/aceita.php\">
+                <form class=\"form-horizontal\" method=\"POST\" action=\"aceita.php\">
                 
                         <i class=\"fa fa-bell fa-fw\"></i> 
                         $nome_usuario, esta te convidando para o evento $nome_evento no
@@ -63,7 +61,7 @@
                         <input type=\"hidden\" name=\"cor\" class=\"form-control\" id=\"cor\" value=\"$cor_evento\">
                         <button type=\"submit\" class=\"btn btn-primary\">Aceitar</button>
                         </form>
-                        <form class=\"form-vertical\" method=\"POST\" action=\"menu/recusa.php\">
+                        <form class=\"form-vertical\" method=\"POST\" action=\"recusa.php\">
                         <div class=\"buttonAlign\">
                         <input type=\"hidden\" name=\"id_convite\" class=\"form-control\" id=\"id_convite\" value=\"$id_convite\">
                         <button type=\"submit\" class=\"btn btn-danger\">Recusar</button>
