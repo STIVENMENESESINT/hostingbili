@@ -5,11 +5,14 @@
 
 	$(document).ready(function() {
 		$('#calendar').fullCalendar({
+
+
 		header: {
 			left: 'prev,next today',
 			center: 'title',
 			right: 'month,agendaWeek,agendaDay,listYear'
 		},
+
 		defaultDate:'<?php echo date('Y-m-d'); ?>',
 		editable: true,
 		navLinks: true,
@@ -57,7 +60,7 @@
 						}else{
 							$end = $event['termino'];
 						}
-					?>,
+					?>
 					{
 						id: '<?php echo $event['id_evento']; ?>',
 						title: '<?php echo $event['titulo']; ?>',
@@ -89,7 +92,7 @@
 					Event[2] = end;
 					
 					$.ajax({
-					url: '../../calendario/action/eventoEditData.php',
+					url: 'evento/action/eventoEditData.php',
 					type: "POST",
 					data: {Event:Event},
 					success: function(rep) {
