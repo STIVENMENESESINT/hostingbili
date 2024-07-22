@@ -881,75 +881,66 @@ switch ($_REQUEST['action'])
                 $jTableResult['rst'] = "1";
                 $jTableResult['ms'] = "Exitoso";
                 $jTableResult['ListAA'] .= "
-                <div class='form-container'>
-                    <h5 class='label-identifier'>Nombre de la Persona</h5><br>
-                    <label class='data-field' id='solicitante'>
-                        " . $registro['nombre'] . " " . $registro['nombre_dos'] . " " . $registro['apellido'] . "
-                    </label>
-                    <br>
-                    <div class='row mt-3'>
-                        <div class='col-sm-12'>
-                            <h6 class='label-identifier'>Rol que cumple en Nuestro Sistema</h6>
-                            <label class='data-field'>" . $registro['r_nombre'] . "</label>
-                        </div>
-                    </div>
-                    <div class='row mt-3'>
-                        <div class='col-sm-12'>
-                            <h6 class='label-identifier'>Area Solicitante</h6>
-                            <label class='data-field'>" . $registro['area_usu'] . "</label>
-                        </div>
-                    </div>
-                    <br>
-                    <h5><strong>Informacion y Estado</strong></h5>
-                    <label class='label-identifier'>Nombre Curso Ofertado</label>
-                    <label class='data-field'>" . $registro['nom_pf'] . "</label>
-                    <br>
-                    <label class='label-identifier'>Jornada Curso Ofertado</label>
-                    <label class='data-field'>" . $registro['nom_jornada'] . "</label>
-                    <br>
-                    <label class='label-identifier'>Modalidad Curso Ofertado</label>
-                    <label class='data-field'>" . $registro['nom_modalidad'] . "</label>
-                    <br>
-                    <label class='label-identifier'>Nivel Academico Curso Ofertado</label>
-                    <label class='data-field'>" . $registro['nom_nf'] . "</label>
-                    <br>
-                    <label class='label-identifier'>Horas Totales de Curso Ofertado</label>
-                    <label class='data-field'>" . $registro['horas_curso'] . "</label>
-                    <br>
-                    <label class='label-identifier'>Fecha Inicio de Curso Ofertado</label>
-                    <label class='data-field'>" . $registro['fecha_inicio'] . "</label>
-                    <br>
-                    <label class='label-identifier'>Fecha Fin de Curso Ofertado</label>
-                    <label class='data-field'>" . $registro['fecha_cierre'] . "</label>
-                    <br>
-                    <label class='label-identifier'>Detalles</label>
-                    <br>
-                    <textarea id='detalles' name='detalles'>" . $registro['descripcion'] . "</textarea>
-                    <br>
-                    <label class='label-identifier'>Area Curso</label>
-                    <label class='data-field'>" . $registro['nom_area'] . "</label>
-                    <br>
-                    <hr>
-                            <h3 class='label-identifier'>Asignacion</h3>
-                            <hr>
-                            <h6 class='label-identifier'>Detalle Asignacion</h6>
-                            <textarea id='detalle_respuesta' name='detalles'></textarea>
-                            <h6 class='label-identifier'>Responsable</h6>
-                            <select id='id_responsable'></select>
-                            <h6 class='label-identifier'>Estado</h6>
-                            <select id='id_estado'></select>
-                            <div class='course-buttons'>
-                                <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
-                                <button type='button' class='create-button' id='btnGuardarCambios2'>Asignar</button>
+                    <div class='form-container'>
+                        <h5 class='label-identifier'>Nombre de la Persona</h5><br>
+                        <label class='data-field' id='solicitante'>
+                            " . $registro['nombre'] . " " . $registro['nombre_dos'] . " " . $registro['apellido'] . "
+                        </label>
+                        <br>
+                        <div class='row mt-3'>
+                            <div class='col-sm-12'>
+                                <h6 class='label-identifier'>Rol que cumple en Nuestro Sistema</h6>
+                                <label class='data-field'>" . $registro['r_nombre'] . "</label>
                             </div>
-                            <hr>
-                            <h3 class='label-identifier'>Responder</h3>
-                            <hr>
-                            <h6 class='label-identifier'>Detalle Respuesta</h6>
-                            <textarea id='detalle_respuesta' name='detalles'></textarea><br/>
-                            <button id='btnAceptarSoli' class='create-button' data-id='" . $registro['id_solicitud'] . "'>Dar Respuesta</button>
+                        </div>
+                        <br>
+                        <h5><strong>Informacion y Estado</strong></h5>
+                        <label class='label-identifier'>Nombre Curso Ofertado</label>
+                        <label class='data-field'>" . $registro['nom_pf'] . "</label>
+                        <br>
+                        <label class='label-identifier'>Jornada Curso Ofertado</label>
+                        <label class='data-field'>" . $registro['nom_jornada'] . "</label>
+                        <br>
+                        <label class='label-identifier'>Modalidad Curso Ofertado</label>
+                        <label class='data-field'>" . $registro['nom_modalidad'] . "</label>
+                        <br>
+                        <label class='label-identifier'>Nivel Academico Curso Ofertado</label>
+                        <label class='data-field'>" . $registro['nom_nf'] . "</label>
+                        <br>
+                        <label class='label-identifier'>Horas Totales de Curso Ofertado</label>
+                        <label class='data-field'>" . $registro['horas_curso'] . "</label>
+                        <br>
+                        <label class='label-identifier'>Fecha Inicio de Curso Ofertado</label>
+                        <label class='data-field'>" . $registro['fecha_inicio'] . "</label>
+                        <br>
+                        <label class='label-identifier'>Fecha Fin de Curso Ofertado</label>
+                        <label class='data-field'>" . $registro['fecha_cierre'] . "</label>
+                        <br>
+                        <label class='label-identifier'>Detalles</label>
+                        <br>
+                        <textarea id='detalles' name='detalles'>" . $registro['descripcion'] . "</textarea>
+                        <br>
+                        <hr>
+                                <h3 class='label-identifier'>Asignacion</h3>
+                                <hr>
+                                <h6 class='label-identifier'>Detalle Asignacion</h6>
+                                <textarea id='detalle_respuesta' name='detalles'></textarea>
+                                <h6 class='label-identifier'>Responsable</h6>
+                                <select id='id_responsable'></select>
+                                <h6 class='label-identifier'>Estado</h6>
+                                <select id='id_estado'></select>
+                                <div class='course-buttons'>
+                                    <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
+                                    <button type='button' class='create-button' id='btnGuardarCambios2'>Asignar</button>
+                                </div>
+                                <hr>
+                                <h3 class='label-identifier'>Responder</h3>
+                                <hr>
+                                <h6 class='label-identifier'>Detalle Respuesta</h6>
+                                <textarea id='detalle_respuesta' name='detalles'></textarea><br/>
+                                <button id='btnAceptarSoli' class='create-button' data-id='" . $registro['id_solicitud'] . "'>Dar Respuesta</button>
 
-                </div>
+                    </div>
                 ";
             }
         } else {
@@ -1271,6 +1262,8 @@ switch ($_REQUEST['action'])
                                                                             $jTableResult['tabla'] .= ' id="BtnAsesoramientoA" data-bs-toggle="modal" data-bs-target="#AceptSolicitud3Modal" data-id="' . $registro['id_solicitud'] . '"> Responder</button>';
                                                                         }elseif ($registro['idtiposolicitud'] == 4) {
                                                                             $jTableResult['tabla'] .= ' id="btn_subir"  data-bs-toggle="modal" data-bs-target="#AceptSolicitud2Modal" data-id="' . $registro['id_solicitud'] . '"> Subir</button>';
+                                                                        }elseif ($registro['idtiposolicitud'] == 5) {
+                                                                            $jTableResult['tabla'] .= ' id="Ecompetencia"  data-bs-toggle="modal" data-bs-target="#AceptSolicitud5Modal" data-id="' . $registro['id_solicitud'] . '"> Responder</button>';
                                                                         }elseif ($registro['idtiposolicitud'] == 10) {
                                                                             $jTableResult['tabla'] .= ' id="instructorProto" data-bs-toggle="modal" data-bs-target="#AceptSolicitud4Modal" data-id="' . $registro['id_solicitud'] . '"> Responder</button>';
                                                                         }elseif($registro['idtiposolicitud']== 23){
@@ -2003,6 +1996,95 @@ switch ($_REQUEST['action'])
         }
     
         print json_encode($jTableResult);
+    break;
+    case 'ListarEcompetencia':
+        $jTableResult = array();
+        $jTableResult['rst'] = "";
+        $jTableResult['ms'] = "";
+        $jTableResult['ListEc'] = "";
+        $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
+        $query = "SELECT 
+            td.nombre AS nom_doc,
+            r.nombre AS nom_rol,
+            s.id_solicitud,
+            s.id_estado, 
+            u.nombre,
+            u.nombre_dos,
+            u.apellido,
+            u.numeroiden, 
+            u.id_rol,
+            d.nombre_dpto AS nom_dpto, 
+            m_municipio.nombre_municipio AS nom_muni, 
+            p.nombre_poblado AS nom_vereda, 
+            u.nombre_dos,
+            u.apellido, 
+            ts.nombre AS Nombre_Solicitud, 
+            ds.id_tiposolicitud,
+            ds.descripcion
+            FROM 
+                solicitud s
+            LEFT JOIN  
+                userprofile u ON s.id_userprofile = u.id_userprofile
+            LEFT JOIN   
+                detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
+            LEFT JOIN  
+                departamentos d ON u.cod_dpto = d.cod_dpto
+            LEFT JOIN  
+                municipios m_municipio ON u.cod_municipio = m_municipio.cod_municipio
+            LEFT JOIN  
+                poblados p ON u.cod_poblado = p.cod_poblado
+            LEFT JOIN   
+                tiposolicitud ts ON ds.id_tiposolicitud = ts.id_tiposolicitud
+            LEFT JOIN   
+                tipodocumento td ON u.id_doc = td.id_doc
+            LEFT JOIN   
+                rol r ON u.id_rol = r.id_rol
+            WHERE 
+                s.id_solicitud = '$id_solicitud'
+        ";
+        $result = mysqli_query($conn, $query);
+        if ($result) {
+            while ($registro = mysqli_fetch_array($result)) {
+                $jTableResult['rst'] = "1";
+                $jTableResult['ms'] = "Exitoso";
+                $jTableResult['ListEc'] .= "
+                    <div class='form-container'>
+                        <h1>Datos Usuario</h1><br>
+                        <h4 class='label-identifier'>Nombre Usuario</h4>
+                        <label class='data-field'>" . $registro['nombre'] . " " . $registro['nombre_dos'] . " " . $registro['apellido'] . "</label><br>
+                        <h4 class='label-identifier'>Tipo Documento</h4><br>
+                        <label class='data-field'>" . $registro['nom_doc'] . "</label><br>
+                        <h4 class='label-identifier'>Numero Documento</h4><br>
+                        <label>" . $registro['numeroiden'] . "</label><br>
+                        <br>
+                        <h4 class='label-identifier'>Rol Usuario</h4>
+                            <label class='data-field'>" . $registro['nom_rol'] . "</label>
+                            <hr>
+                            <h3 class='label-identifier'>Asignacion</h3>
+                            <hr>
+                            <h6 class='label-identifier'>Detalle Asignacion</h6>
+                            <textarea id='detalle_respuesta' name='detalles'></textarea>
+                            <h6 class='label-identifier'>Responsable</h6>
+                            <select id='id_responsable'></select>
+                            <h6 class='label-identifier'>Estado</h6>
+                            <select id='id_estado'></select>
+                            <div class='course-buttons'>
+                                <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
+                                <button type='button' class='create-button' id='btnGuardarCambios2'>Asignar</button>
+                            </div>
+                            <hr>
+                            <h3 class='label-identifier'>Responder</h3>
+                            <hr>
+                            <h6 class='label-identifier'>Detalle Respuesta</h6>
+                            <textarea id='detalle_respuesta' name='detalles'></textarea><br/>
+                            <button id='btnAceptarSoli' class='create-button' data-id='" . $registro['id_solicitud'] . "'>Dar Respuesta</button>
+                    </div>";
+            }
+        } else {
+            $jTableResult['rst'] = "0";
+            $jTableResult['ms'] = "Error al obtener los datos.";
+        }
+        echo json_encode($jTableResult);
     break;
 }
 mysqli_close($conn);

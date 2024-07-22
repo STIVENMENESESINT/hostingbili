@@ -987,3 +987,17 @@ $(document).on("click", "#CrearInstru", function() {
         console.error(error);
     });
 });
+$(document).on("click", "#Ecompetencia",function ()	{
+    var idSolicitud = $(this).data('id');
+    console.log("ID de la solicitud: " + idSolicitud);
+    $.post("../../include/cntrlSoli.php", {
+        action:'ListarEcompetencia',
+        id_solicitud: idSolicitud
+    }, function(data){
+        if(data.rst=='1'){
+            $("#Ecompetencia_form").html(data.ListEc);
+        }
+            else { alert(data.ms); }
+        }, 'json');	
+    }
+);

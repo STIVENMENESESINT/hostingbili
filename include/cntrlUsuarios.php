@@ -19,10 +19,6 @@ switch ($_REQUEST['action'])
                                 position: relative;
                                 left: 2.6rem;
                             }
-                                .card-body{
-                                position: relative;
-                                left: 6rem;
-                            }
                         </style>
                         <table class="table table-bordered table-striped table-hover text-center">
                     <thead class="thead-dark">
@@ -59,10 +55,11 @@ switch ($_REQUEST['action'])
                                                 ";
                     $jTableResult['listaUsu'].="</tr>";
                 }
+                $jTableResult['listaUsu'].="</div>";
                 $jTableResult['msj']= "";
                 $jTableResult['rslt']= "1";						
             }
-            $jTableResult['listaUsu']= "</div>";	
+            
         print json_encode($jTableResult);
     break;
     
@@ -112,24 +109,26 @@ switch ($_REQUEST['action'])
         } else {
             while ($registro = mysqli_fetch_array($resultado)) {
                 $jTableResult['listaPermiso'] .= "
-                    <h2>Datos Usuario</h2><br>
-                    <h3>Imagen de perfil Usuario.</h3>
-                    <h4>Nombre Usuario</h4>
-                    <label>" . $registro['nom_usuario'] . " " . $registro['nombre_dos'] . " " . $registro['apellido'] . "</label><br>
-                    <h4>Tipo Documento</h4><br>
-                    <label>" . $registro['nom_doc'] . "</label><br>
-                    <h4>Numero Documento</h4><br>
-                    <label>" . $registro['numeroiden'] . "</label><br>
-                    <hr><br>
-                    <h2>Gestion Permisos</h2>
-                    <h4>Estado Usuario</h4>
-                    <select id='id_estado'>
-                        <option value='" . $registro['id_estado'] . "'>" . $registro['nom_estado'] . "</option>
-                    </select>
-                    <h4>Rol Usuario</h4>
-                    <select id='id_rol'>
-                        <option value='" . $registro['id_rol'] . "'>" . $registro['nom_rol'] . "</option>
-                    </select>";
+                    <div class='form-container'>
+                        <h2>Datos Usuario</h2><br>
+                        <h3>Imagen de perfil Usuario.</h3>
+                        <h4 class='label-identifier'>Nombre Usuario</h4>
+                        <label class='data-field'>" . $registro['nom_usuario'] . " " . $registro['nombre_dos'] . " " . $registro['apellido'] . "</label><br>
+                        <h4 class='label-identifier'>Tipo Documento</h4><br>
+                        <label class='data-field'>" . $registro['nom_doc'] . "</label><br>
+                        <h4 class='label-identifier'>Numero Documento</h4><br>
+                        <label>" . $registro['numeroiden'] . "</label><br>
+                        <hr><br>
+                        <h2>Gestion de Permisos</h2>
+                        <h4 class='label-identifier'>Estado Usuario</h4>
+                        <select id='id_estado'>
+                            <option value='" . $registro['id_estado'] . "'>" . $registro['nom_estado'] . "</option>
+                        </select>
+                        <h4 class='label-identifier'>Rol Usuario</h4>
+                        <select id='id_rol'>
+                            <option value='" . $registro['id_rol'] . "'>" . $registro['nom_rol'] . "</option>
+                        </select>
+                    </div>";
             }
             $jTableResult['msj'] = "";
             $jTableResult['rstl'] = "1";

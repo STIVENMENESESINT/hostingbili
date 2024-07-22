@@ -21,6 +21,7 @@ if (isset($_SESSION['id_userprofile'])){
         include_once ('parametros_index.php');
     ?>
     <script type='text/javascript' src="../../herramientas/js/usuarios.js"></script>
+    <link rel="stylesheet" href="../../herramientas/css/usuarios.css">
     <title>Administrar Perfiles de Usuario</title>
 
 </head>
@@ -53,6 +54,7 @@ if (isset($_SESSION['id_userprofile'])){
                                     top: 2rem;
                                     position: relative;
                                     left: 13rem;
+                                    padding-bottom: 5rem;
                                 }
                         </style>
                         <div class="card-body">

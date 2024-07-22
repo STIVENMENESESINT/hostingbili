@@ -45,10 +45,6 @@ switch ($_REQUEST['action'])
         // Devolver el resultado como JSON
         print json_encode($jTableResult);
         break;
-    
-    
-    
-    
     case 'crgrMuni':
         $jTableResult = array();                
         $jTableResult['listMuni']="";

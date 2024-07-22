@@ -1,8 +1,6 @@
 <?php
 
-// Incluir el archivo de configuración de conexión a la base de datos
-include_once('../../include/conex.php');
-
+require_once('../../calendario/action/conexao.php');
 // Establecer el tipo de contenido a HTML con el charset especificado en la configuración
 header('Content-Type: text/html; charset='.$charset);
 
@@ -11,7 +9,9 @@ session_name($session_name);
 session_start();
 
 // Verificar si existe una sesión activa con el id_userprofile
-    require_once('../../calendario/action/conexao.php');
+    if(!isset ($_SESSION['id_userprofile'])) {
+        header('Location: index.php');
+    }
 	if(!isset($_SESSION)){
     	session_start();
 	}
@@ -22,11 +22,10 @@ session_start();
 
 	$sql = "SELECT id_evento, titulo, descricao, inicio, termino, cor, fk_id_destinatario, fk_id_remetente, status FROM eventos as e
 	LEFT JOIN convites as c ON e.id_evento = c.fk_id_evento
-	Where fk_id_usuario = $id_user";
+	Where id_userprofile = $id_user";
 	$req = $db->prepare($sql);
 	$req->execute();
 	$events = $req->fetchAll();
-    if (isset($_SESSION['id_userprofile'])){
 ?>
 
 <!DOCTYPE html>
@@ -76,9 +75,6 @@ session_start();
                                 top: 10px; /* Ajusta este valor según necesites */
                                 right: 10px; /* Ajusta este valor según necesites */
                                 z-index: 1000; /* Asegura que esté por encima de otros elementos */
-                                background-color: white; /* Fondo blanco para mejor visibilidad */
-                                
-                                padding: 5px 10px; /* Espaciado interno */
                             }
                             .fixed-top-right .btn i {
                                 margin-right: 5px; /* Espacio entre el icono y el texto */
@@ -86,7 +82,7 @@ session_start();
                         </style>
                         <button type="button" class="btn nav-link nav-item-hover fixed-top-right" onclick="goBack()">
                             <i class="fas fa-arrow-left fa-fw fa-lg"></i>
-                            <span class="nav-item">Volver</span>
+                            <span class="nav-item2">Volver</span>
                         </button>
 
                         <script>
@@ -96,10 +92,15 @@ session_start();
                         </script>
             <div class="layout__content">
                 <div class="content__page">
+                    <?php
+                        // Incluir el menú de navegación
+                        include_once('notificacion.php');
+                        ?>
                     <br />
                     <div class="cabecera_menu">
                     <!-- INICIO CALENDARIO -->
                     <div class="container">
+
                         <div class="row">
                             <div class="col-lg-12 text-center">
                                 <p class="lead"></p>
@@ -140,7 +141,7 @@ session_start();
                     <!-- FullCalendar -->
                     <script src='../../herramientas/js/moment.min.js'></script>
                     <script src='../../herramientas/js/fullcalendar.min.js'></script>
-                    <script src='../../herramientas/locale/pt-br.js'></script>
+                    <script src='../../herramientas/js/pt-br.js'></script>
                     <?php include_once('calendario.php'); ?>
                     
 
@@ -151,9 +152,3 @@ session_start();
 		
 
 </html>
-<?php
-    // Si no hay sesión activa, redirigir al usuario a la página de inicio de sesión
-} else {
-    header("Location: ../../index.php");
-}
-?>

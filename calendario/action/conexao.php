@@ -1,4 +1,6 @@
 <?php
+$charset="utf-8";
+$session_name 	= "sesionBilinguismo";
     class Database{
         private $hostname = 'localhost';
         private $username = 'root';

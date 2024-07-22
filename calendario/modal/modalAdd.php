@@ -1,7 +1,7 @@
 <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  <div class="modal-dialog" role="document">
 			<div class="modal-content">
-			<form class="form-horizontal" method="POST" action="evento/action/eventoAdd.php" onsubmit="return validaForm(this);">
+			<form class="form-horizontal" method="POST" action="../../calendario/action/eventoAdd.php" onsubmit="return validaForm(this);">
 			
 			  <div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -19,7 +19,7 @@
 				  <div class="form-group">
 					<label for="descricao" class="col-sm-2 control-label">Descripcion</label>
 					<div class="col-sm-10">
-					  <textarea type="text" name="descricao" class="form-control" id="descricao" placeholder="Descrição"></textarea>
+					  <textarea type="text" name="descricao" class="form-control" id="descricao" placeholder="Descripcion"></textarea>
 					</div>
 				  </div>
 				  
@@ -31,9 +31,9 @@
 						  <option style="color:#0071c5" value="#0071c5">&#9724; Azul Escuro</option>
 						  <option style="color:#40E0D0" value="#40E0D0">&#9724; Turquesa</option>
 						  <option style="color:#008000" value="#008000">&#9724; Verde</option>						  
-						  <option style="color:#FFD700" value="#FFD700">&#9724; Amarelo</option>
-						  <option style="color:#FF8C00" value="#FF8C00">&#9724; Laranja</option>
-						  <option style="color:#FF0000" value="#FF0000">&#9724; Vermelho</option>
+						  <option style="color:#FFD700" value="#FFD700">&#9724; Amarillo</option>
+						  <option style="color:#FF8C00" value="#FF8C00">&#9724; Naranja</option>
+						  <option style="color:#FF0000" value="#FF0000">&#9724; Vermelo</option>
 						  <option style="color:#000" value="#000">&#9724; Preto</option>
 						  
 						</select>
@@ -46,7 +46,7 @@
 					  <select name="convidado" class="form-control" id="convidado">
 					  <option value="">seleccione...</option>
 					  <?php
-							$sql2 = "SELECT nombre, apellido FROM userprofile WHERE id_userprofile!=$id_user AND id_rol=2";
+							$sql2 = "SELECT nombre, id_userprofile, apellido FROM userprofile WHERE id_userprofile !=$id_user AND id_rol=2";
 							$req = $db->prepare($sql2);
 							$req->execute();
 							$linhas = $req->rowCount();
@@ -62,13 +62,13 @@
 
 
 				  <div class="form-group">
-					<label for="inicio" class="col-sm-2 control-label">Inicio</label>
+					<label for="inicio" class="col-sm-2 control-label">Fecha Inicio </label>
 					<div class="col-sm-10">
 					  <input type="text" name="inicio" class="form-control" id="inicio" required>
 					</div>
 				  </div>
 				  <div class="form-group">
-					<label for="termino" class="col-sm-2 control-label">Termino</label>
+					<label for="termino" class="col-sm-2 control-label">Fecha Termino</label>
 					<div class="col-sm-10">
 					  <input type="text" name="termino" class="form-control" id="termino" required>
 					</div>
