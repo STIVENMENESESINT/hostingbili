@@ -47,14 +47,14 @@ if (isset($_SESSION['id_userprofile'])) {
                         if ($_SESSION['id_rol'] != 1) {
                                 echo '
                             <li><a type="button" name="btn_Nuevo" id="btn_Nuevo" data-bs-toggle="modal"
-                                            data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
+                                            data-bs-target="#noticiaModal" class="nav-link nav-item2-hover">
                                 <i class="fas fa fa-plus fa-fw fa-lg" class=" aria-hidden="true"></i>
                                 
                                 <span class="nav-item">Crear </span>
                             </a></li>      
                             
                             <li><a type="button" name="btn_Nuevo" id="btn_Nuevo" data-bs-toggle="modal"
-                                            data-bs-target="#" class="nav-link nav-item-hover">
+                                            data-bs-target="#" class="nav-link nav-item2-hover">
                                 <i class="fas fa fa-plus fa-fw fa-lg" class=" aria-hidden="true"></i>
                                 
                                 <span class="nav-item">Mis Publicaciones</span>
@@ -163,6 +163,7 @@ if (isset($_SESSION['id_userprofile'])) {
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
+
 }
 
 /* Estilos adicionales */

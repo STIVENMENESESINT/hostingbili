@@ -52,13 +52,13 @@ h1, h2, h3, h4, h5, h6 {
 .layout {
     position: relative;
     min-width: 1290px;
-    width: 80%;
+    width: 90%;
     height: 80vh;
     min-height: 80vh;
     margin: 10vh auto 2vh;
     display: grid;
     grid-template-areas: "aside content";
-    grid-template-columns: 6% 100%;
+    grid-template-columns: 4% 100%;
     border-radius: 4rem;
     background-color: var(--secondary-background);
     
