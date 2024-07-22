@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Consulta para obtener las tres imágenes más recientes de detallesolicitud
-$sql = "SELECT Imagen AS imagen, nombre AS titulo, descripcion FROM detallesolicitud ORDER BY id_detallesolicitud DESC LIMIT 3";
+$sql = "SELECT Imagen AS imagen, nombre AS titulo, descripcion FROM detallesolicitud ORDER BY id_detallesolicitud DESC LIMIT 2";
 $result = $conn->query($sql);
 
 // Generar el HTML del carrusel
@@ -64,10 +64,12 @@ $conn->close();
         </a>
     </div>
 </div>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#noticiaModal1">
-    Publicar Noticia
-</button>
 
+<!-- boton publicar carrucel imagenes -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#noticiaModal1">
+    Publicar
+</button>
+<!-- Modal publicar carrucel imagenes -->
 <div class="modal fade" id="noticiaModal1" tabindex="-1" aria-labelledby="noticiaModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -91,16 +93,18 @@ $conn->close();
                             required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" id="publicar_noti">Publicar Noticia</button>
+                    <button type="submit" class="btn btn-primary" id="publicar_carucel">Publicar</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<!-- boton carrucel imagenes -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#carouselModal">
     Subir Contenido
 </button>
-<!-- Modal -->
+<!-- Modal carrucel imagenes -->
 <div class="modal fade" id="carouselModal" tabindex="-1" role="dialog" aria-labelledby="carouselModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
