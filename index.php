@@ -1,3 +1,4 @@
+
 <?php
 $varDateTime = date("Y-m-d H:i:s");
 ?>
@@ -20,13 +21,13 @@ $varDateTime = date("Y-m-d H:i:s");
 <body>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">
-                Inicio de Sesión
-            </h3>
+            <h2 class="card-title">
+                B-Team-Language 
+            </h2>
         </div>
         <div class="card-body">
             <div class="form-group">
-                <label> Identificación: </label>
+                <label> Identificación:</label>
                 <div class="input-with-icon">
                     <i class="fas fa-id-card identificacion-icon"></i>
                     <input type="text" class="form-control" id="numeroiden" name="numeroiden"
@@ -52,7 +53,7 @@ $varDateTime = date("Y-m-d H:i:s");
                 <input class="form-check-input" type="checkbox" id="exampleSwitch">
                 <label class="form-check-label" for="exampleSwitch">Recordar clave</label>
             </div>
-            <div class="card-footer" style="background-color: #c8e6c9;">
+            <div class="card-footer" style="background-color: #ffffff;">
                 <button type="button" id="btnEntrar" name="btnEntrar" class="btn btn-success w-100 d-block mx-auto mb-3">
                     Ingresar
                 </button>
@@ -85,20 +86,20 @@ $varDateTime = date("Y-m-d H:i:s");
                     <div id="formEmpresa" style="display: none;">
                         <div class="form-container">
                             <div class="form-group">
-                                <label for="nombre" class="form-label">Nombre de la Empresa</label>
-                                <input type="text" id="nombre_empresa" name="nombre" class="form-input" >
+                                <label for="nombre" class="form-label">Empresa </label>
+                                <input type="text" id="nombre_empresa" name="nombre" class="form-input" placeholder="Nombre de la empresa" >
                             </div>
                             <div class="form-group">
                                 <label for="nit" class="form-label">NIT</label>
-                                <input type="text" id="numeroiden_empresa" name="numeroiden_empresa" class="form-input" >
+                                <input type="text" id="numeroiden_empresa" name="numeroiden_empresa" class="form-input" placeholder="123456789">
                             </div>
                             <div class="form-group">
                                 <label  class="form-label">Contacto Empresa</label>
-                                <input type="tel" id="telefono_empresa"  class="form-input" >
+                                <input type="tel" id="telefono_empresa"  class="form-input" placeholder="empresa@gmail.com">
                             </div>
                             <div class="form-group">
                                 <label for="email" class="form-label">Correo Electrónico</label>
-                                <input type="email" id="correo_empresa" name="correo_empresa" class="form-input" >
+                                <input type="email" id="correo_empresa" name="correo_empresa" class="form-input" placeholder="usuario@gmail.com">
                             </div>
                             <hr>
                             <!-- REPRESENTANTE LEGAL -->
@@ -130,7 +131,7 @@ $varDateTime = date("Y-m-d H:i:s");
                             <!-- Número de Documento -->
                             <div class="form-group">
                                 <label for="numeroiden_registro" class="form-label">Número Documento:</label>
-                                <input type="text" class="form-input" id="numeroiden_registro_rep" name="numeroiden_registro" title="" style="cursor:pointer;" onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                                <input type="text" class="form-input" id="numeroiden_registro_rep" name="numeroiden_registro" title="" style="cursor:pointer;" onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="123456789">
                             </div>
                             <div class="form-group">
                                 <label for="id_genero" class="form-label">Sexo:</label>
@@ -138,7 +139,7 @@ $varDateTime = date("Y-m-d H:i:s");
                             </div>
                             <div class="form-group">
                                 <label for="celular" class="form-label">Celular:</label>
-                                <input type="text" class="form-input" id="celular_rep" name="celular" placeholder="Celular" title="Teléfono móvil">
+                                <input type="text" class="form-input" id="celular_rep" name="celular" placeholder="Celular" title="Teléfono móvil" placeholder="+1 (555) 123-4567">
                             </div>
                             <div class="form-group">
                                 <label for="correo_registro" class="form-label">Correo Electrónico:</label>
@@ -219,7 +220,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                 <input type="password" class="form-input" id="clave_registro" name="clave" title="Clave">
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="form-button form-button-submit" id="btnGuardar" name="btnGuardar">Registrar</button>
+                                <button type="submit" class="form-button btn-success" id="btnGuardar" name="btnGuardar">Registrar</button>
                                 <button type="reset" class="form-button form-button-reset" data-bs-dismiss="modal">Cancelar</button>
                             </div>
                         </div>

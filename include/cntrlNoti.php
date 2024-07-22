@@ -118,36 +118,45 @@ switch ($_REQUEST['action']) {
                 $jTableResult['noticia'] .= '
                     <div class="container bg-white rounded-container"
                         <div class="row blog-item px-3 pb-5">
-                            <div class="col-md-5" id="foto">
-                                <img src="../../include/' . $registro["imagen"] . '" class="img-fluid mb-4 mb-md-0" alt="Image">
+                        <div class="cards ">
+                        
+                            <div class="imagenta">
+                                <a href="">
+                                    <img src="../../include/' . $registro["imagen"] . '" alt="Image">
+                                </a>
                             </div>
-                            <div class="col-md-7">
-                                <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">' . $registro["titulo"] . '</h3>
-                                <div class="d-flex mb-3">
+                                
+                                                     
+                            <div class="cards__content">
+                                <h3 class="cards__title">' . $registro["titulo"] . '</h3>
+                                <div class="cards__description">
                                     <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> ' . $registro["fecha_mostrada"] . '</small>
                                     <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web Design</small>
                                     <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15 Comments</small>
                                 </div>
-                                <p>' . $registro["descripcion"] . '</p>';
+                            </div>
+                            
+                            <p>' . $registro["descripcion"] . '</p>';
             
                         if ($registro["id_categoria"] == 3) {
                             if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 4) {
                                 $jTableResult['noticia'] .= '
-                                        <button type="button"  data-bs-toggle="modal" data-bs-target="#OfertModal" id="detalle_oferta" class="btn btn-link p-0" data-id="' . $registro['id_solicitud'] . '">Me Interesa </button>
+                                        <button type="button"  data-bs-toggle="modal" data-bs-target="#OfertModal" id="detalle_oferta" class="cards__button" data-id="' . $registro['id_solicitud'] . '">Me Interesa </button>
                                     </div>
                                 </div>';
                             } else {
                                 $jTableResult['noticia'] .= '
-                                    <a class="btn btn-link p-0" href="">Read More <i class="fa fa-angle-right"></i></a>
+                                    <a class="cards__button btn btn-link p-0" href="">Read More <i class="fa fa-angle-right"></i></a>
                                     <div class="col-sm-2"></div>
                                 </div>
                             </div>';
                             }
                         } else {
                             $jTableResult['noticia'] .= '
-                                <a class="btn btn-link p-0" href="">Read More <i class="fa fa-angle-right"></i></a>
+                                <a class="cards__button btn btn-link p-0" href="">Read More <i class="fa fa-angle-right"></i></a>
                                 <div class="col-sm-2"></div>
-                            </div>
+                        </div>
+                       </div>
                         </div>';
                         }
                     }
