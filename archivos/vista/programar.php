@@ -141,7 +141,7 @@ session_start();
                     <!-- FullCalendar -->
                     <script src='../../herramientas/js/moment.min.js'></script>
                     <script src='../../herramientas/js/fullcalendar.min.js'></script>
-                    <script src='../../herramientas/js/pt-br.js'></script>
+                    <script src='../../herramientas/locale/pt-br.js'></script>
                     <?php include_once('calendario.php'); ?>
                     
 
