@@ -1,3 +1,4 @@
+
 /* FORMULARIO EMPRESA */
 :root {
     --primary: #39a900;
@@ -22,6 +23,7 @@
     --bp-large: 1200px;
     --web-margin: 1366px;
 }
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -30,10 +32,9 @@ body {
     height: 100vh;
     margin: 0;
     background-color: var(--secondary);
-    background: url('../../imagenes/') no-repeat center center fixed;
+    background: url('../../imagenes/f-6.jpg') no-repeat center center fixed;
     background-size: cover;
     
-   
 }
 
 .form-container {
@@ -154,7 +155,7 @@ body {
 
 .card-header {
     background-size: cover;
-    background-color: #2e7d32;
+    background-color: #04324d;
     color: #ffffff;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -167,7 +168,7 @@ body {
 
 .card-body {
     background-size: cover;
-    background-color: #e8f5e9;
+    background-color: #e6e6e6;
     padding: 2rem;
 }
 
@@ -180,13 +181,13 @@ body {
 }
 
 .btn-success {
-    background-color: #4caf50;
-    border-color: #4caf50;
+    background-color: #04324d;
+    border-color: #04324d;
 }
 
 .btn-success:hover {
-    background-color: #45a049;
-    border-color: #45a049;
+    background-color: #04324d;
+    border-color: #04324d;
 }
 .label-white {
     color: white;
@@ -195,14 +196,14 @@ body {
 /* Diseño - INDEX */
 
 .input-with-icon input {
-    padding-left: 40px; /* Incrementa el espacio para el icono */
-    outline: none; /* Elimina el outline azul al seleccionar */
+    padding-left: 40px; 
+    outline: none; 
 }
 
 .input-with-icon input:focus {
-    /* Cambia el color del borde al seleccionar */
-    border-color: #45a049;
-    box-shadow: 0 0 0 0.2rem rgba(69, 160, 73, 0.25); /* Ejemplo de sombra al seleccionar */
+
+    border-color: #04324d;; 
+    box-shadow: 0 0 0 0.2rem #04324d; 
 }
 
 .input-with-icon {
@@ -214,16 +215,16 @@ body {
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
-    color: #6c757d; /* Color gris del icono */
+    color: #919191;
     cursor: pointer;
 }
 
 .input-with-icon:hover .identificacion-icon {
-    color: #45a049; /* Color azul al pasar el mouse */
+    color: #f1c40f; 
 }
 
 .input-with-icon input {
-    padding-left: 40px; /* Espacio para el icono */
+    padding-left: 40px; 
 }
 
 .input-with-icon .correo-icon {
@@ -231,16 +232,16 @@ body {
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
-    color: #6c757d; /* Color gris del icono */
+    color: #919191; 
     cursor: pointer;
 }
 
 .input-with-icon:hover .correo-icon {
-    color: #45a049; /* Color azul al pasar el mouse */
+    color: #f1c40f;
 }
 
 .input-with-icon input {
-    padding-left: 40px; /* Espacio para el icono */
+    padding-left: 40px; 
 }
 
 .input-with-icon .clave-icon {
@@ -248,44 +249,44 @@ body {
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
-    color: #6c757d; /* Color gris del icono */
+    color: #919191; 
     cursor: pointer;
 }
 
 .input-with-icon:hover .clave-icon {
-    color: #45a049; /* Color azul al pasar el mouse */
+    color: #f1c40f;
 }
 
 .input-with-icon input {
-    padding-left: 40px; /* Espacio para el icono */
+    padding-left: 40px;
 }
 
 .register-link {
-    color: #45a049; /* Color inicial del texto */
-    text-decoration: none; /* Quita el subrayado por defecto */
-    cursor: pointer; /* Cambia el cursor a pointer al pasar por encima */
+    color: #39a900; 
+    text-decoration: none; 
+    cursor: pointer; 
 }
 
 .register-link:hover {
-    text-decoration: underline; /* Subraya el texto al pasar el mouse */
-    color: #1a4d1d; /* Cambia el color del texto a azul (#007bff) al pasar el mouse */
+    text-decoration: underline; 
+    color: #f1c40f; 
 }
 
 
 #linkOlvideClave {
-    color: #45a049; /* Color inicial del texto */
-    text-decoration: none; /* Quita el subrayado por defecto */
-    cursor: pointer; /* Cambia el cursor a pointer al pasar por encima */
+    color: #39a900; 
+    text-decoration: none; 
+    cursor: pointer;
 }
 
 #linkOlvideClave:hover {
-    text-decoration: underline; /* Subraya el texto al pasar el mouse */
-    color: #1a4d1d; /* Cambia el color del texto al azul (#45a049) al pasar el mouse */
+    text-decoration: underline; 
+    color: #f1c40f; 
 }
 
 #footerText {
-    color: #000000; /* Color gris */
-    font-size: 14px; /* Tamaño de fuente más pequeño */
+    color: black; 
+    font-size: 14px; 
 }
 
 /* "Recordar clave - checkbox"  */
@@ -313,7 +314,7 @@ body {
 .form-switch .form-check-label::before {
     width: 2rem;
     height: 1rem;
-    background-color: #6C757D;
+    background-color: #919191;
     border-radius: 0.5rem;
     transition: background-color 0.3s;
 }
@@ -323,12 +324,12 @@ body {
     height: 1rem;
     background-color: #FFFFFF;
     border-radius: 50%;
-    box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0.2rem 04324d;
     transition: left 0.3s, background-color 0.3s;
 }
 
 .form-switch .form-check-input:checked + .form-check-label::before {
-    background-color: #45a049;
+    background-color: #39a900;
 }
 
 .form-switch .form-check-input:checked + .form-check-label::after {
@@ -342,16 +343,16 @@ body {
     20%,
     80%,
     100% {
-      opacity: 0;
-      -webkit-transform: scale(0);
-      transform: scale(0);
+        opacity: 0;
+        -webkit-transform: scale(0);
+        transform: scale(0);
     }
   
     30%,
     70% {
-      opacity: 1;
-      -webkit-transform: scale(1);
-      transform: scale(1);
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
     }
   }
   
@@ -360,16 +361,16 @@ body {
     20%,
     80%,
     100% {
-      opacity: 0;
-      -webkit-transform: scale(0);
-      transform: scale(0);
+        opacity: 0;
+        -webkit-transform: scale(0);
+        transform: scale(0);
     }
   
     30%,
     70% {
-      opacity: 1;
-      -webkit-transform: scale(1);
-      transform: scale(1);
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
     }
   }
   
