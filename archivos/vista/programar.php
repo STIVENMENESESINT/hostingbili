@@ -16,13 +16,21 @@
 	date_default_timezone_set('America/Bogota');
 	$database = new Database();
 	$db = $database->conectar();
+    
+    $sql = "SELECT id_evento, titulo, descricao, inicio, termino, cor, fk_id_destinatario, fk_id_remetente, status 
+    FROM eventos as e
+    LEFT JOIN convites as c ON e.id_evento = c.fk_id_evento
+    WHERE fk_id_usuario  = :id_user";
 
-	$sql = "SELECT id_evento, titulo, descricao, inicio, termino, cor, fk_id_destinatario, fk_id_remetente, status FROM eventos as e
-	LEFT JOIN convites as c ON e.id_evento = c.fk_id_evento
-	Where fk_id_usuario = $id_user";
-	$req = $db->prepare($sql);
-	$req->execute();
-	$events = $req->fetchAll();
+    $req = $db->prepare($sql);
+    $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+    $req->execute();
+    $events = $req->fetchAll(PDO::FETCH_ASSOC); // Asegura que solo se devuelvan índices asociativos
+
+    // Depuración: Imprimir los eventos obtenidos ARRAY
+    // echo '<pre>';
+    // print_r($events);
+    // echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

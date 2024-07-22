@@ -44,48 +44,38 @@ if (isset($_SESSION['id_userprofile'])) {
                         <div class="container navbar-nav">
                             <!-- BUSCADOR -->
                             <?php
-                        if ($_SESSION['id_rol'] != 1) {
-                                echo '
-                            <li><a type="button" name="btn_Nuevo" id="btn_Nuevo" data-bs-toggle="modal"
-                                            data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
-                                <i class="fas fa fa-plus fa-fw fa-lg" class=" aria-hidden="true"></i>
+                                if ($_SESSION['id_rol'] != 1) {
+                                        echo '
+                                    <li><a type="button" name="btn_Nuevo" id="btn_Nuevo" data-bs-toggle="modal"
+                                                    data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
+                                        <i class="fas fa fa-plus fa-fw fa-lg" class=" aria-hidden="true"></i>
+                                        
+                                        <span class="nav-item2">Crear </span>
+                                    </a></li>      
+                                    
+                                    <li><a type="button" name="btn_Nuevo" id="btn_Nuevo" data-bs-toggle="modal"
+                                                    data-bs-target="#" class="nav-link nav-item-hover">
+                                        <i class="fas fa fa-plus fa-fw fa-lg" class=" aria-hidden="true"></i>
+                                        
+                                        <span class="nav-item2">Mis Publicaciones</span>
+                                    </a></li> 
+                                    
                                 
-                                <span class="nav-item">Crear </span>
-                            </a></li>      
-                            
-                            <li><a type="button" name="btn_Nuevo" id="btn_Nuevo" data-bs-toggle="modal"
-                                            data-bs-target="#" class="nav-link nav-item-hover">
-                                <i class="fas fa fa-plus fa-fw fa-lg" class=" aria-hidden="true"></i>
-                                
-                                <span class="nav-item">Mis Publicaciones</span>
-                            </a></li> 
-                            
-                        
-                                    ';
-                        }
-                        ?>
-
-
+                                            ';
+                                }
+                            ?>
                         </div>
-
-
                     </div>
                 </div>
-
-
-
                 <div class="container bg-black  rounded-container">
                     <h1>Revista Sena B-Team </h2>
                         <?php include_once('publicarnoticiacarrusel.php'); ?>
                 </div>
-
                 <!-- El contenido dinámico se cargará aquí -->
                 <br>
                 <br>
                 <br>
                 <br>
-
-
                 <div class=" container">
                     <h1>Nuevas Noticia</h2>
 
