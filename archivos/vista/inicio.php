@@ -75,7 +75,8 @@ if (isset($_SESSION['id_userprofile'])) {
 
 
                 <div class="container bg-black  rounded-container">
-                    <?php include_once('publicarnoticiacarrusel.php'); ?>
+                    <h1>Revista Sena B-Team </h2>
+                        <?php include_once('publicarnoticiacarrusel.php'); ?>
                 </div>
 
                 <!-- El contenido dinámico se cargará aquí -->
@@ -86,10 +87,11 @@ if (isset($_SESSION['id_userprofile'])) {
 
 
                 <div class=" container">
+                    <h1>Nuevas Noticia</h2>
 
 
-                    <div id="noticia_creada" class="grid-container ">
-                    </div>
+                        <div id="noticia_creada" class="grid-container ">
+                        </div>
 
                 </div>
             </div>
