@@ -27,18 +27,7 @@ if (isset($_SESSION['id_userprofile'])) {
 </head>
 
 <body>
-    <?php
-    // Ruta relativa al archivo a incluir
-    $file_path = __DIR__ . '/chap/index.php';
-    echo "Intentando incluir el archivo desde: " . $file_path . "<br>";
 
-    // Verificar si el archivo existe en la ruta especificada
-    if (file_exists($file_path)) {
-        include_once($file_path);
-    } else {
-        echo "El archivo no se encuentra en la ruta especificada: " . $file_path;
-    }
-?>
 
 
 
@@ -64,17 +53,17 @@ if (isset($_SESSION['id_userprofile'])) {
                         if ($_SESSION['id_rol'] != 1) {
                                 echo '
                             <li><a type="button" name="btn_Nuevo" id="btn_Nuevo" data-bs-toggle="modal"
-                                            data-bs-target="#noticiaModal" class="nav-link nav-item2-hover">
+                                            data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
                                 <i class="fas fa fa-plus fa-fw fa-lg" class=" aria-hidden="true"></i>
                                 
-                                <span class="nav-item">Crear </span>
+                                <span class="nav-item2">Crear </span>
                             </a></li>      
                             
                             <li><a type="button" name="btn_Nuevo" id="btn_Nuevo" data-bs-toggle="modal"
-                                            data-bs-target="#" class="nav-link nav-item2-hover">
+                                            data-bs-target="#" class="nav-link nav-item-hover">
                                 <i class="fas fa fa-plus fa-fw fa-lg" class=" aria-hidden="true"></i>
                                 
-                                <span class="nav-item">Mis Publicaciones</span>
+                                <span class="nav-item2">Mis Publicaciones</span>
                             </a></li> 
                             
                         
@@ -82,7 +71,9 @@ if (isset($_SESSION['id_userprofile'])) {
                         }
                         ?>
 
-
+                            <?php 
+                                include_once('../../chatp/index.php');
+                            ?>
                         </div>
                     </div>
                 </div>
