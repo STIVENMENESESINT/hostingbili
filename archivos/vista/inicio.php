@@ -23,9 +23,26 @@ if (isset($_SESSION['id_userprofile'])) {
 
     <script type='text/javascript' src="../../herramientas/js/noticia.js"></script>
     <link rel="stylesheet" href="../../herramientas/css/solicitud.css">
+    <link rel="stylesheet" href="../../archivos/vista/style.css">
 </head>
 
 <body>
+    <?php
+    // Ruta relativa al archivo a incluir
+    $file_path = __DIR__ . '/chap/index.php';
+    echo "Intentando incluir el archivo desde: " . $file_path . "<br>";
+
+    // Verificar si el archivo existe en la ruta especificada
+    if (file_exists($file_path)) {
+        include_once($file_path);
+    } else {
+        echo "El archivo no se encuentra en la ruta especificada: " . $file_path;
+    }
+?>
+
+
+
+
     <div class="layout">
         <!-- Menú de navegación -->
         <aside class="layout__aside">
@@ -134,6 +151,8 @@ if (isset($_SESSION['id_userprofile'])) {
         </div>
     </div>
 </div>
+
+
 
 </html>
 
