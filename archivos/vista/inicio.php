@@ -23,9 +23,18 @@ if (isset($_SESSION['id_userprofile'])) {
 
     <script type='text/javascript' src="../../herramientas/js/noticia.js"></script>
     <link rel="stylesheet" href="../../herramientas/css/solicitud.css">
+    <link rel="stylesheet" href="../../archivos/vista/style.css">
+    <link rel="stylesheet" href="../../chatp/style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 
 <body>
+
+
+
+
+
     <div class="layout">
         <!-- Menú de navegación -->
         <aside class="layout__aside">
@@ -47,17 +56,17 @@ if (isset($_SESSION['id_userprofile'])) {
                         if ($_SESSION['id_rol'] != 1) {
                                 echo '
                             <li><a type="button" name="btn_Nuevo" id="btn_Nuevo" data-bs-toggle="modal"
-                                            data-bs-target="#noticiaModal" class="nav-link nav-item2-hover">
+                                            data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
                                 <i class="fas fa fa-plus fa-fw fa-lg" class=" aria-hidden="true"></i>
                                 
-                                <span class="nav-item">Crear </span>
+                                <span class="nav-item2">Crear </span>
                             </a></li>      
                             
                             <li><a type="button" name="btn_Nuevo" id="btn_Nuevo" data-bs-toggle="modal"
-                                            data-bs-target="#" class="nav-link nav-item2-hover">
+                                            data-bs-target="#" class="nav-link nav-item-hover">
                                 <i class="fas fa fa-plus fa-fw fa-lg" class=" aria-hidden="true"></i>
                                 
-                                <span class="nav-item">Mis Publicaciones</span>
+                                <span class="nav-item2">Mis Publicaciones</span>
                             </a></li> 
                             
                         
@@ -65,7 +74,9 @@ if (isset($_SESSION['id_userprofile'])) {
                         }
                         ?>
 
-
+                            <?php 
+                                include_once('../../chatp/index.php');
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -134,6 +145,8 @@ if (isset($_SESSION['id_userprofile'])) {
         </div>
     </div>
 </div>
+
+
 
 </html>
 
