@@ -388,7 +388,7 @@ function MostrarTipo_soli() {
                                 <input  class="col-form-label" type="text" name='descripcion_local' id='descripcion_local' ><br>
                                 <label class="modal-title" >¿Requieres Cargar Algun Archivo?</label>
                                 <br>
-                                <label for="archivo">Cargar Archivo solicitud (solo archivos de tipo pdf)</label>
+                                <label class="modal-title" for="archivo">Formato Admitido (pdf)</label>
                                 <input type="file" id="archivo" name="archivo" accept=".pdf">
                             </div>
                     `;

@@ -117,16 +117,16 @@ if (isset($_SESSION['id_userprofile'])) {
                 <form class="card p-3 shadow-lg border-3 text-bg-light" action="" method="post"
                     enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label for="titulo" class="form-label">Título:</label>
-                        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="titulo" required>
+                        <label class="form-label">Título:</label>
+                        <input type="text" class="form-control" id="titulo" placeholder="titulo" required>
                     </div>
                     <div class="mb-3">
                         <label for="fecha_inicio" class="form-label">Fecha a Mostrar</label>
                         <input class="form-control" type="date" id="id_fecha_mostrada" name="fecha_inicio" required>
                     </div>
                     <div class="mb-3">
-                        <label for="cuerpo" class="form-label">Descripción</label>
-                        <textarea rows="10" class="form-control" id="cuerpo" name="cuerpo" required></textarea>
+                        <label class="form-label">Descripción</label>
+                        <textarea rows="10" class="form-control" id="descripcion" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="imagen" class="form-label">Adjuntar Imagen:</label>

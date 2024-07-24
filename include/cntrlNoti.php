@@ -141,7 +141,7 @@ switch ($_REQUEST['action']) {
                         if ($registro["id_categoria"] == 3) {
                             if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 4) {
                                 $jTableResult['noticia'] .= '
-                                        <button type="button"  data-bs-toggle="modal" data-bs-target="#OfertModal" id="detalle_oferta" class="cards__button" data-id="' . $registro['id_solicitud'] . '">Me Interesa </button>
+                                        <button type="button"  data-bs-toggle="modal" data-bs-target="#OfertModal" id="detalle_oferta" class="" data-id="' . $registro['id_solicitud'] . '">Me Interesa </button>
                                     </div>
                                 </div>';
                             } else {

@@ -32,7 +32,7 @@ if (isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['inici
         $termino = date('Y/m/d H:i:s', strtotime($termino));
 
         // Preparar la consulta SQL
-        $sql = "INSERT INTO eventos(id_userprofile, titulo, descricao, inicio, termino, cor,id_competencia,id_resultado_aprendizaje) values (?, ?, ?, ?, ?, ?,?,?)";
+        $sql = "INSERT INTO eventos(fk_id_usuario, titulo, descricao, inicio, termino, cor,id_competencia,id_resultado_aprendizaje) values (?, ?, ?, ?, ?, ?,?,?)";
 
         // Preparar y ejecutar la consulta
         $query = $db->prepare($sql);

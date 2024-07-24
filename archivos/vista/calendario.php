@@ -1,12 +1,13 @@
+<script src='../../locale/es.js'></script>
 <script>
+
 	function modalShow() {
 		$('#modalShow').modal('show');
 	}
 
 	$(document).ready(function() {
 		$('#calendar').fullCalendar({
-
-
+		locale:'es',
 		header: {
 			left: 'prev,next today',
 			center: 'title',
@@ -92,7 +93,7 @@
 					Event[2] = end;
 					
 					$.ajax({
-					url: 'evento/action/eventoEditData.php',
+					url: '../../calendario/action/eventoEditData.php',
 					type: "POST",
 					data: {Event:Event},
 					success: function(rep) {

@@ -118,7 +118,11 @@ if (isset($_SESSION['id_userprofile'])){
             </div>
         </aside>
         <!-- Contenido principal -->
-
+        <?php 
+            if($_SESSION['id_rol']==1){
+                include_once('notificacion.php');
+            }
+        ?>
         <div class="layout__content">
             <div class="content__page">
                 <div id="contenido">

@@ -1,11 +1,9 @@
 $(document).on("click", "#publicar_noti", function (event) {
-    event.preventDefault();
-
-    if ($("#titulo").val() === "") {
+    if ($("#titulo").val() == "") {
         alert('Debe ingresar el Titulo');
         $("#titulo").focus();
     } else {
-        if ($("#imagen").val() === "") {
+        if ($("#imagen").val() == "") {
             alert('Debe ingresar la Imagen');
             $("#imagen").focus();
         } else {
@@ -17,7 +15,6 @@ $(document).on("click", "#publicar_noti", function (event) {
             formData.append("imagen", $("#imagen")[0].files[0]);
             formData.append("fecha_inicio", $("#id_fecha_mostrada").val());
             formData.append("id_url", $("#id_url").val());
-
             $.ajax({
                 url: "../../include/cntrlNoti.php",
                 type: "POST",
@@ -55,14 +52,14 @@ $(document).on("click", "#publicar_noti", function (event) {
                 alert('Debe ingresar la Imagen');
                 $("#imagen").focus();
             } else {
-                if ($("#nombre").val() === "") {
+                if ($("#nombre").val() == "") {
                     alert('Debe Digitar un Nombre de Curso ');
                     $("#nombre").focus();
                 } else {
                         confirm("¿Está seguro de Ofertar este Curso de " + $("#nombre").val() + "?");
                         var formData = new FormData();
                         formData.append("action", "registroCursoNew");
-                        formData.append("nombre", $("#nombre").val());
+                        formData.append("nombre", $("#titulo").val());
                         formData.append("fecha_inicio", $("#fecha_inicio").val());
                         formData.append("fecha_cierre", $("#fecha_cierre").val());
                         formData.append("horas_curso", $("#horas").val());
@@ -96,14 +93,14 @@ $(document).on("click", "#publicar_noti", function (event) {
                 }
             }
     });
- 
+
 // ALERTAS SM
 $(document).ready(function() {
     $("#noticiaForm").on("submit", function(event) {
         // Validación adicional con jQuery
         let valid = true;
 
-        if ($("#id_nombre").val().trim() === "") {
+        if ($("#titulo").val().trim() === "") {
             alert("El título es requerido.");
             valid = false;
         }
@@ -222,77 +219,7 @@ function MostrarTipo_Categoria() {
 
         case "2":
             tipo_soliDiv.innerHTML = `
-                <div class="mb-3">
-                    <label for="id_descripcion" class="form-label">Fecha Fin Evento</label>
-                         <div class="modal-body" style="color:#228B22;">
-                                <form class="form-horizontal" method="POST" action="proceso.php">
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Titulo</label>
-                                        <div class="col-sm-5">
-                                            <input type="text" class="form-control" name="titulo" placeholder="Titulo del Evento">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Color</label>
-                                        <div class="col-sm-5">
-                                            <select name="color" class="form-control" id="color">
-                                                <option value="">Selecione</option>
-                                                <option style="color:#FFD700;" value="#FFD700">Amarillo
-                                                </option>
-                                                <option style="color:#0071c5;" value="#0071c5">Azul
-                                                    Turquesa</option>
-                                                <option style="color:#FF4500;" value="#FF4500">Naranja
-                                                </option>
-                                                <option style="color:#8B4513;" value="#8B4513">Marron
-                                                </option>
-                                                <option style="color:#1C1C1C;" value="#1C1C1C">Negro
-                                                </option>
-                                                <option style="color:#436EEE;" value="#436EEE">Azul Real
-                                                </option>
-                                                <option style="color:#A020F0;" value="#A020F0">Purpura
-                                                </option>
-                                                <option style="color:#40E0D0;" value="#40E0D0">Turquesa
-                                                </option>
-                                                <option style="color:#228B22;" value="#228B22">Verde
-                                                </option>
-                                                <option style="color:#8B0000;" value="#8B0000">Rojo
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Fecha
-                                            Inicial</label>
-                                        <div class="col-sm-5">
-                                            <input type="text" class="form-control" name="inicio" id="start"
-                                                onKeyPress="DataHora(event, this)">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Fecha
-                                            Final</label>
-                                        <div class="col-sm-5">
-                                            <input type="text" class="form-control" name="fin" id="end"
-                                                onKeyPress="DataHora(event, this)">
-                                        </div>
-                                    </div>
-                                   
-                            </form>
-                        </div>
-                </div>
-                <div class="modal fade" id="cadastrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    data-backdrop="static">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                           
-                        </div>
-                    </div>
-                </div>
-                </div>
-                <div class="mb-3">
-                    <button type="button" class="btn btn-sm btn-outline-primary" id="publicar_noti">Publicar</button>
-                    <a type="button" class="btn btn-sm btn-outline-danger" href="" role="button">Cancelar</a>
-                </div>
+                
             `;
             break;
 
