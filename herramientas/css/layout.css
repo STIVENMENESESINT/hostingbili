@@ -45,7 +45,7 @@ body {
 
 /* Estilos para los títulos */
 h1, h2, h3, h4, h5, h6 {
-    color: var(--color-titles);
+    color: var(--primary-text);
 }
 
 /* Estilos para el contenedor principal (layout) */
@@ -58,10 +58,10 @@ h1, h2, h3, h4, h5, h6 {
     margin: 10vh auto 2vh;
     display: grid;
     grid-template-areas: "aside content";
-    grid-template-columns: 4% 100%;
+    grid-template-columns: 15% 85%;
     border-radius: 4rem;
     background-color: var(--secondary-background);
-    
+    border: 2px solid black; /* Añadir esta línea para el contorno negro */
 }
 
 /* Estilos para el aside (barra lateral) */  
