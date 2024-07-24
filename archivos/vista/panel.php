@@ -9,15 +9,12 @@
         margin-bottom: 0;
         list-style: none;
     }
-
-    /* Estilos adicionales */
     .navbar-dark .navbar-nav {
         display: flex;
-        /* Alinea los elementos horizontalmente */
+        
     }
 
     .navbar-dark .navbar-nav .nav-link {
-        color: #fff;
         transition: all 0.3s ease;
         padding: 18px 15px;
         text-decoration: none;
@@ -34,14 +31,8 @@
         /* Asegura que los elementos de la lista estén en línea */
     }
 
-    .nav-link {
-        display: block;
-        padding: 10px 15px;
-        color: #333;
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
 
+/* hover iconos */
     .nav-item-hover:hover {
         transform: scale(1.1);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -67,7 +58,10 @@
         margin-right: 5px;
         /* Espacio entre el icono y el texto */
     }
-
+    .fas{
+        border-radius: 3rem;
+        top: 5px;
+    }
     .grid-container {
         display: grid;
 
@@ -87,19 +81,19 @@
                                             echo '
                                                 <li>
                                                     <a href="usuarios.php" class="nav-link nav-item-hover">
-                                                        <i class="fas fa-graduation-cap fa-fw fa-lg"></i>
+                                                        <i class="fas fa-graduation-cap "></i>
                                                         <span class="nav-item2">Administrar Usuarios</span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="solicitud.php" class="nav-link nav-item-hover">
-                                                        <i class="fas fa-check-double fa-fw fa-lg"></i>
+                                                        <i class="fas fa-check-double"></i>
                                                         <span class="nav-item2">Administrador de Solicitudes</span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="GprogramaFormacion.php" class="nav-link nav-item-hover">
-                                                        <i class="fas fa-graduation-cap fa-fw fa-lg"></i>
+                                                        <i class="fas fa-graduation-cap "></i>
                                                         <span class="nav-item2">Programa Formación</span>
                                                     </a>
                                                 </li>
@@ -111,7 +105,7 @@
                                             echo '
                                                 <li>
                                                     <a href="solicitud.php" class="nav-link nav-item-hover">
-                                                        <i class="fas fa-check-double fa-fw fa-lg"></i>
+                                                        <i class="fas fa-check-double "></i>
                                                         <span class="nav-item2">Solicitudes</span>
                                                     </a>
                                                 </li>

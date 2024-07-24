@@ -6,18 +6,27 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3"></button>
     </div>
-    <div class="carousel-inner">
+    <style>
+        .carousel-inner img {
+            max-width: 100%;
+            max-height: 500px; /* Ajusta esta altura según sea necesario */
+            width: auto;
+            height: auto;
+            margin: 0 auto; /* Centra la imagen horizontalmente */
+        }
+    </style>
+    <div class="carousel-inner movImg">
         <div class="carousel-item active">
         <img src="../../imagenes/img/revista/Revista B2_pages-to-jpg-0001.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-        <img src="../../imagenes/img/revista/Revista B2_pages-to-jpg-0003.jpg" class="d-block w-100" alt="...">
+        <img src="../../imagenes/img/revista/Revista B2_pages-to-jpg-0002.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+        <img src="../../imagenes/img/revista/Revista B2_pages-to-jpg-0004.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
         <img src="../../imagenes/img/revista/Revista B2_pages-to-jpg-0007.jpg" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-        <img src="../../imagenes/img/revista/Revista B2_pages-to-jpg-0006.jpg" class="d-block w-100" alt="...">
         </div>
         
     </div>
