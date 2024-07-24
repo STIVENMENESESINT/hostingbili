@@ -185,44 +185,219 @@ $(document).ready(function(){
 					clear();
 				});
 				
-				$(document).on("click", "#btnGuardar",function (){
-					//alert('Dentro del boton Guardar Registro Usuario.');
-					if($("#edadUsu").val()==""){
-						alert('Debe ingresar la fecha de nacimiento');
-						$("#fechaNacimientoUsu").focus();
-					}
-					else
-					{
-						if($("#id_tpdoc").val()=="0" ){
-							alert('Debe Seleccionar un tipo de documento');
-							$("#id_tpdoc").focus();
-						}
-						else
-						{
-							// seguir preguntando con otra caja de texto. 
-							// los demas lo hacen ustedes.
-							$.post("include/ctrlIndex2.php", {
-							action:'registroUsuNew',
-							id_tpdoc:$("#id_tpdoc").val(),
-							numeroiden_registro:$("#numeroiden_registro").val(),
-							nameusu:$("#nameusu").val(),
-							nombre_dos:$("#nombre_dos").val(),
-							apellidoUsu:$("#apellidoUsu").val(),
-							apellidoUsu_dos:$("#apellidoUsu_dos").val(),
-							cod_dpto:$("#cod_dpto").val(),
-							correo_registro:$("#correo_registro").val(),
-							celular:$("#celular").val(),
-							id_genero:$("#id_genero").val(),
-							cod_municipio:$("#cod_municipio").val(),
-							cod_poblado:$("#cod_poblado").val(),
-							clave_registro:$("#clave_registro").val()
-							
-							}, function(data){
-								if(data.rstl=="1"){	alert(data.msj); location.reload();} else{	alert(data.msj); }
-							}, 'json');
-						}
-					}
-				});
+
+
+
+
+//GUARDAR - USUARIO 
+
+
+$(document).on("click", "#btnGuardar", function () {
+    // Función para validar el correo electrónico
+    function validarCorreo(correo) {
+        const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regexCorreo.test(correo);
+    }
+
+	function validarClave(clave) {
+		// Expresión regular para validar que haya al menos 6 letras y un número
+		const regexClave = /^(?=.*[A-Za-z]{6,})(?=.*\d)[A-Za-z\d]{7,20}$/;
+		return regexClave.test(clave);
+	}
+
+// Función para validar el número de documento
+	function validarNumeroDocumento(numero) {
+		return numero.length >= 8 && numero.length <= 15;
+	}
+
+
+    if ($("#edadUsu").val() == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe ingresar la fecha de nacimiento',
+        }).then(() => {
+            $("#fechaNacimientoUsu").focus();
+        });
+    } else if ($("#id_tpdoc").val() == "0") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe seleccionar un tipo de documento',
+        }).then(() => {
+            $("#id_tpdoc").focus();
+        });
+    } else if ($("#numeroiden_registro").val() == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe ingresar el número de identificación',
+        }).then(() => {
+            $("#numeroiden_registro").focus();
+        });
+    } else if (!validarNumeroDocumento($("#numeroiden_registro").val())) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'El número de documento debe tener al menos 8 caracteres',
+        }).then(() => {
+            $("#numeroiden_registro").focus();
+        });
+    } else if ($("#nameusu").val() == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe ingresar el nombre',
+        }).then(() => {
+            $("#nameusu").focus();
+        });
+    } else if ($("#apellidoUsu").val() == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe ingresar el primer apellido',
+        }).then(() => {
+            $("#apellidoUsu").focus();
+        });
+    } else if ($("#apellidoUsu_dos").val() == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe ingresar el segundo apellido',
+        }).then(() => {
+            $("#apellidoUsu_dos").focus();
+        });
+    } else if ($("#cod_dpto").val() == "0") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe seleccionar un departamento',
+        }).then(() => {
+            $("#cod_dpto").focus();
+        });
+    } else if ($("#correo_registro").val() == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe ingresar el correo electrónico',
+        }).then(() => {
+            $("#correo_registro").focus();
+        });
+    } else if (!validarCorreo($("#correo_registro").val())) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'El formato del correo electrónico es inválido',
+        }).then(() => {
+            $("#correo_registro").focus();
+        });
+    } else if ($("#celular").val() == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe ingresar el número de celular',
+        }).then(() => {
+            $("#celular").focus();
+        });
+    } else if ($("#id_genero").val() == "0") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe seleccionar un género',
+        }).then(() => {
+            $("#id_genero").focus();
+        });
+    } else if ($("#cod_municipio").val() == "0") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe seleccionar un municipio',
+        }).then(() => {
+            $("#cod_municipio").focus();
+        });
+    } else if ($("#cod_poblado").val() == "0") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe seleccionar un poblado',
+        }).then(() => {
+            $("#cod_poblado").focus();
+        });
+    } else if ($("#clave_registro").val() == "") {
+		Swal.fire({
+			icon: 'error',
+			title: 'Error',
+			text: 'Debe ingresar la clave',
+		}).then(() => {
+			$("#clave_registro").focus();
+		});
+	} else if (!validarClave($("#clave_registro").val())) {
+		Swal.fire({
+			icon: 'error',
+			title: 'Error',
+			text: 'La clave debe tener al menos 6 letras y un número',
+		}).then(() => {
+			$("#clave_registro").focus();
+		});
+
+
+
+
+
+
+
+
+
+    } else {
+        $.post("include/ctrlIndex2.php", {
+            action: 'registroUsuNew',
+            id_tpdoc: $("#id_tpdoc").val(),
+            numeroiden_registro: $("#numeroiden_registro").val(),
+            nameusu: $("#nameusu").val(),
+            apellidoUsu: $("#apellidoUsu").val(),
+            apellidoUsu_dos: $("#apellidoUsu_dos").val(),
+            cod_dpto: $("#cod_dpto").val(),
+            correo_registro: $("#correo_registro").val(),
+            celular: $("#celular").val(),
+            id_genero: $("#id_genero").val(),
+            cod_municipio: $("#cod_municipio").val(),
+            cod_poblado: $("#cod_poblado").val(),
+            clave_registro: $("#clave_registro").val()
+        }, function (data) {
+            if (data.rstl == "1") {
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: 'Registro guardado con éxito',
+                    showConfirmButton: false,
+                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                }).then(() => {
+                    location.reload();
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.msj
+                });
+            }
+        }, 'json').fail(function (jqXHR, textStatus, errorThrown) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Ocurrió un error en la solicitud'
+            });
+        });
+
+
+		
+		
+    }
+});
+
+
+
+
 			});
 			
 				
@@ -256,64 +431,152 @@ document.addEventListener('DOMContentLoaded', function() {
             checkbox.addEventListener('click', FormEmpresa);
         }
 	);
-	$(document).on("click", "#btnGuardarEmpresa",function (){
-		//alert('Dentro del boton Guardar Registro Usuario.');
-		if($("#nombre_empresa").val()==""){
-			alert('Debe ingresar Nombre de la empresa');
-			$("#nombre_empresa").focus();
-		}
-		else
-		{
-			if($("#numeroiden_empresa").val()=="0" ){
-				alert('Debe digitar NIT de la Empresa');
-				$("#numeroiden_empresa").focus();
-			}
-			else
-			{
-				$.post("include/ctrlIndex2.php", {
-				action:'registroEmpNew',
-				nombre_empresa:$("#nombre_empresa").val(),
-				numeroiden_empresa:$("#numeroiden_empresa").val(),
-				telefono_empresa:$("#telefono_empresa").val(),
-				correo_empresa:$("#correo_empresa").val()
-				}, function(data){
-					if(data.rstl=="1"){	
-						if($("#numeroiden_registro_rep").val()==""){
-							alert('Debe Su numero de Identificacion');
-							$("#numeroiden_registro_rep").focus();
-						}
-						else
-						{
-							if($("#id_tpdoc_rep").val()=="0" ){
-								alert('Debe Seleccionar un tipo de documento');
-								$("#id_tpdoc_rep").focus();
-							}
-							else
-							{
-								$.post("include/ctrlIndex2.php", {
-								action:'registroUsuNewE',
-								id_tpdoc:$("#id_tpdoc_rep").val(),
-								numeroiden_registro:$("#numeroiden_registro_rep").val(),
-								nameusu:$("#nameusu_rep").val(),
-								nombre_dos:$("#nombre_dos_rep").val(),
-								apellidoUsu:$("#apellidoUsu_rep").val(),
-								apellidoUsu_dos:$("#apellidoUsu_dos_rep").val(),
-								correo_registro:$("#correo_registro_rep").val(),
-								celular:$("#celular_rep").val(),
-								id_genero:$("#id_genero_rep").val(),
-								clave_registro:$("#clave_registro_rep").val()
-								
-								}, function(data){
-									if(data.rstl=="1"){	alert(data.msj);  } else{	alert(data.msj); }
-								}, 'json');
-							}
-						}
-					} else{	alert(data.msj); }
-				}, 'json');
-			}
-		}
-		limpiar();
-	});
+
+// EMPRESA - REGISTRO
+
+
+$(document).on("click", "#btnGuardarEmpresa", function() {
+    // Validación del campo nombre_empresa
+    if ($("#nombre_empresa").val() === "") {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Campo Vacío',
+            text: 'Debe ingresar el nombre de la empresa',
+            confirmButtonText: 'Ok'
+        }).then(() => {
+            $("#nombre_empresa").focus();
+        });
+        return; // Salir de la función si hay un error
+    }
+    
+    // Validación del campo numeroiden_empresa
+    var nit = $("#numeroiden_empresa").val();
+    if (nit === "0" || nit.length < 6) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Campo Inválido',
+            text: 'El NIT debe tener al menos 6 dígitos',
+            confirmButtonText: 'Ok'
+        }).then(() => {
+            $("#numeroiden_empresa").focus();
+        });
+        return; // Salir de la función si hay un error
+    }
+    
+    // Validación del campo correo_empresa
+    var email = $("#correo_empresa").val();
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Correo Inválido',
+            text: 'Debe ingresar un correo electrónico válido',
+            confirmButtonText: 'Ok'
+        }).then(() => {
+            $("#correo_empresa").focus();
+        });
+        return; // Salir de la función si hay un error
+    }
+    
+    // Enviar datos si no hay errores
+    $.post("include/ctrlIndex2.php", {
+        action: 'registroEmpNew',
+        nombre_empresa: $("#nombre_empresa").val(),
+        numeroiden_empresa: $("#numeroiden_empresa").val(),
+        telefono_empresa: $("#telefono_empresa").val(),
+        correo_empresa: $("#correo_empresa").val()
+    }, function(data) {
+        if (data.rstl === "1") {
+            // Validación del campo numeroiden_registro_rep
+            if ($("#numeroiden_registro_rep").val() === "") {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Campo Vacío',
+                    text: 'Debe ingresar su número de identificación',
+                    confirmButtonText: 'Ok'
+                }).then(() => {
+                    $("#numeroiden_registro_rep").focus();
+                });
+                return; // Salir de la función si hay un error
+            }
+            
+            // Validación del campo id_tpdoc_rep
+            if ($("#id_tpdoc_rep").val() === "0") {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Campo Vacío',
+                    text: 'Debe seleccionar un tipo de documento',
+                    confirmButtonText: 'Ok'
+                }).then(() => {
+                    $("#id_tpdoc_rep").focus();
+                });
+                return; // Salir de la función si hay un error
+            }
+            
+            // Validación de la clave_registro
+            var clave = $("#clave_registro_rep").val();
+            if (clave.length < 6 || !/\d/.test(clave)) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Clave Inválida',
+                    text: 'La clave debe tener al menos 6 caracteres y contener al menos un número',
+                    confirmButtonText: 'Ok'
+                }).then(() => {
+                    $("#clave_registro_rep").focus();
+                });
+                return; // Salir de la función si hay un error
+            }
+            
+            // Enviar datos si no hay errores
+            $.post("include/ctrlIndex2.php", {
+                action: 'registroUsuNewE',
+                id_tpdoc: $("#id_tpdoc_rep").val(),
+                numeroiden_registro: $("#numeroiden_registro_rep").val(),
+                nameusu: $("#nameusu_rep").val(),
+                nombre_dos: $("#nombre_dos_rep").val(),
+                apellidoUsu: $("#apellidoUsu_rep").val(),
+                apellidoUsu_dos: $("#apellidoUsu_dos_rep").val(),
+                correo_registro: $("#correo_registro_rep").val(),
+                celular: $("#celular_rep").val(),
+                id_genero: $("#id_genero_rep").val(),
+                clave_registro: $("#clave_registro_rep").val()
+            }, function(data) {
+                Swal.fire({
+                    icon: data.rstl === "1" ? 'success' : 'error',
+                    title: data.rstl === "1" ? 'Éxito' : 'Error',
+                    text: data.msj,
+                    confirmButtonText: 'Ok'
+                });
+            }, 'json');
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.msj,
+                confirmButtonText: 'Ok'
+            });
+        }
+    }, 'json');
+
+    limpiar(); // Llamar a la función para limpiar los campos si es necesario
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 // Restablecer contraseña 
 	$(document).ready(function() {

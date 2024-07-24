@@ -54,72 +54,24 @@ if (isset($_SESSION['id_userprofile'])){
 
 
     <style>
-    .container {
-        height: 294px;
-        width: 296px;
-        color: white;
-        perspective: 800px;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
-
-
-
-
-
-    .card-top-para {
-        font-size: 16px;
-        font-weight: bold;
-    }
-
-    .container:hover>.card {
-        cursor: pointer;
-        transform: rotateX(180deg) rotateZ(-180deg);
-    }
-
-
-
-
     .heading {
         font-size: 22px;
         font-weight: bold;
     }
-
-
-
-
-
-    .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-    .fixed-top-right {
-        position: absolute;
-        top: 10px;
-        /* Ajusta este valor según necesites */
-        right: 10px;
-        /* Ajusta este valor según necesites */
-        z-index: 1000;
-        /* Asegura que esté por encima de otros elementos */
-        background-color: white;
-        /* Fondo blanco para mejor visibilidad */
-
-        padding: 5px 10px;
-        /* Espaciado interno */
-    }
-
-
-
 
     .card-container {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
         /* Espacio entre tarjetas */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
+
     .col-sm-10 {
-        padding: 100px;
+        padding: 144px;
         /* Añadir padding al contenedor de la columna */
     }
     </style>
@@ -138,26 +90,8 @@ if (isset($_SESSION['id_userprofile'])){
             </div>
         </aside>
         <!-- Contenido principal -->
-                <style >
-                        .cabecera_menu {
-                            position: relative;
-                        }
-                        .fixed-top-right {
-                            position: absolute;
-                            top: 10px; /* Ajusta este valor según necesites */
-                            right: 10px; /* Ajusta este valor según necesites */
-                            z-index: 1000; /* Asegura que esté por encima de otros elementos */
-                            
-                            padding: 5px 10px; /* Espaciado interno */
-                        }
-                        .fixed-top-right .btn i {
-                            margin-right: 5px; /* Espacio entre el icono y el texto */
-                        }
-                    </style>
-        <button type="button" class="btn nav-link nav-item-hover fixed-top-right" onclick="goBack()">
-            <i class="fas fa-arrow-left fa-fw fa-lg"></i>
-            <span class="nav-item">Volver</span>
-        </button>
+
+
 
         <script>
         function goBack() {
@@ -170,10 +104,11 @@ if (isset($_SESSION['id_userprofile'])){
 
                 <div>
                     <div class="col-sm-10 gb-white" class="">
+
                         <h1>INSTRUCTORES Bilingüismo</h1>
-                        <di>
+                        <div>
                             <div id="id_cardInstru" class="card-container"></div>
-                        </di>
+                        </div>
 
                     </div>
                 </div>

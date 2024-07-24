@@ -45,26 +45,27 @@ body {
 
 /* Estilos para los títulos */
 h1, h2, h3, h4, h5, h6 {
-    color: var(--color-titles);
+    color: var(--primary-text);
 }
 
 /* Estilos para el contenedor principal (layout) */
 .layout {
     position: relative;
     min-width: 1290px;
-    width: 80%;
+    width: 90%;
     height: 80vh;
     min-height: 80vh;
     margin: 10vh auto 2vh;
     display: grid;
     grid-template-areas: "aside content";
-    grid-template-columns: 6% 100%;
+    grid-template-columns: 15% 85%;
     border-radius: 4rem;
     background-color: var(--secondary-background);
-    
+    border: 2px solid black; /* Añadir esta línea para el contorno negro */
 }
 
-/* Estilos para el aside (barra lateral) */  .layout__aside {
+/* Estilos para el aside (barra lateral) */  
+.layout__aside {
     grid-area: aside;
     border-radius: 4rem 0 0 4rem;
     overflow: auto;
@@ -96,7 +97,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     min-height: 100%;
     
-    border-radius: 0 10rem 10rem 0;
+    border-radius: 0 6rem 7rem 0;
     overflow-y: auto;
 }
 

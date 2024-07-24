@@ -93,12 +93,12 @@
 										</select>
 									</div>
 								</div>
-								<h6 class="modal-title">Sobre que Competencia quieres Programar</h6><br>
-														<select class="form-control modal-textbox" id="id_competencia"  title='' style='cursor:pointer;' >
-														</select><br>
-												<h6 class="modal-title">Resultado de Aprendizaje<h6><br>
-												<select class="form-control modal-textbox" id="id_resultado_aprendizaje"  title='' style='cursor:pointer;' >
-														</select><br>
+								<h6 class="col-sm-2 control-label">Competencia</h6><br>
+														<select class="form-control" id="id_competencia"  title='' style='cursor:pointer;' >
+														</select>
+												<h6 class="col-sm-2 control-label">Resultado de Aprendizaje<h6><br>
+												<select class="form-control" id="id_resultado_aprendizaje"  title='' style='cursor:pointer;' >
+														</select>
 								<div class="form-group">
 									<label for="inicio" class="col-sm-2 control-label">Fecha Inicio </label>
 									<div class="col-sm-10">

@@ -35,6 +35,7 @@ $varDateTime = date("Y-m-d H:i:s");
                         title='Ingrese solo números' placeholder="123456789" style='cursor:pointer;'
                         oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                 </div>
+                
             </div>
             <div class="form-group">
                 <label> Correo: </label>

@@ -91,10 +91,19 @@
             <div class="layout__content">
                 <div class="content__page">
                     <br />
-                    <?php
-                        // Incluir notificacion
-                        include_once('notificacion.php');
-                        ?>
+                    <div class="content_notification">
+                        <style>
+                            .content_notification{
+                                position: absolute;
+                                left: 20rem;
+                            }
+                        </style>
+                        <?php
+                            // Incluir notificacion
+                            include_once('notificacion.php');
+                            ?>
+                    </div>
+
                     <div class="cabecera_menu">
                     <!-- INICIO CALENDARIO -->
                     <div class="container">

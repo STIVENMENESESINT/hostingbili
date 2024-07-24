@@ -1204,7 +1204,7 @@ switch ($_REQUEST['action'])
                         <style>
                             .container{
                                 position: absolute;
-                                left: 2.6rem;
+                                left: 1.7rem;
                             }
                         </style>
                         <table class="table table-bordered table-striped table-hover text-center">
@@ -1288,11 +1288,7 @@ switch ($_REQUEST['action'])
                         <style>
                             .container{
                                 position: relative;
-                                left: 2.6em;
-                            }
-                            .card-body{
-                                position: relative;
-                                left: 6rem;
+                                left: 1.7rem;
                             }
                         </style>
                 <table class="table table-bordered table-striped table-hover text-center">
