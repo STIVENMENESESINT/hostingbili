@@ -46,11 +46,12 @@
                 $data_inicio = date('d/m/Y H:i:s', strtotime($data_inicio));
                 echo "
                 <div class=\"alert alert-info\" role=\"alert\">
-                <form class=\"form-horizontal\" method=\"POST\" action=\"aceita.php\">
+                    <form class=\"form-horizontal\" method=\"POST\" action=\"aceita.php\">
                 
                         <i class=\"fa fa-bell fa-fw\"></i> 
-                        $nome_usuario, esta te convidando para o evento $nome_evento no
-                        dia $data_inicio, o que acha?
+                        Coordinacion 
+                        $nome_usuario, te a programado para la competencia  $nome_evento el
+                        dia $data_inicio.
                         <br>
                         <input type=\"hidden\" name=\"id_convite\" class=\"form-control\" id=\"id_convite\" value=\"$id_convite\">
                         <input type=\"hidden\" name=\"id_usuario2\" class=\"form-control\" id=\"id_usuario2\" value=\"$id_usuario2\">
@@ -59,13 +60,13 @@
                         <input type=\"hidden\" name=\"inicio\" class=\"form-control\" id=\"inicio\" value=\"$data_inicio\">
                         <input type=\"hidden\" name=\"termino\" class=\"form-control\" id=\"termino\" value=\"$data_termino\">
                         <input type=\"hidden\" name=\"cor\" class=\"form-control\" id=\"cor\" value=\"$cor_evento\">
-                        <button type=\"submit\" class=\"btn btn-primary\">Aceitar</button>
-                        </form>
+                        <button type=\"submit\" class=\"btn btn-primary\">Aceptar</button>
+                    </form>
                         <form class=\"form-vertical\" method=\"POST\" action=\"recusa.php\">
-                        <div class=\"buttonAlign\">
-                        <input type=\"hidden\" name=\"id_convite\" class=\"form-control\" id=\"id_convite\" value=\"$id_convite\">
-                        <button type=\"submit\" class=\"btn btn-danger\">Recusar</button>
-                        </div>
+                            <div class=\"buttonAlign\">
+                            <input type=\"hidden\" name=\"id_convite\" class=\"form-control\" id=\"id_convite\" value=\"$id_convite\">
+                            <button type=\"submit\" class=\"btn btn-danger\">Rechazar</button>
+                            </div>
                         </form>
                 </div>";
             }

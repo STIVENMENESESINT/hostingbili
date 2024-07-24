@@ -64,7 +64,8 @@ h1, h2, h3, h4, h5, h6 {
     
 }
 
-/* Estilos para el aside (barra lateral) */  .layout__aside {
+/* Estilos para el aside (barra lateral) */  
+.layout__aside {
     grid-area: aside;
     border-radius: 4rem 0 0 4rem;
     overflow: auto;

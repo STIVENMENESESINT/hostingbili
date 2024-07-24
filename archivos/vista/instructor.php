@@ -103,10 +103,6 @@ if (isset($_SESSION['id_userprofile'])){
 
 
                 <div>
-                    <button type="button" class="btn nav-link nav-item-hover fixed-top-right" onclick="goBack()">
-                        <i class="fas fa-arrow-left fa-fw fa-lg"></i>
-                        <span class="nav-item">Volver</span>
-                    </button>
                     <div class="col-sm-10 gb-white" class="">
 
                         <h1>INSTRUCTORES Bilingüismo</h1>

@@ -1,68 +1,34 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "bilinguismo";
 
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-
-// Consulta para obtener las tres imágenes más recientes de detallesolicitud
-$sql = "SELECT Imagen AS imagen, nombre AS titulo, descripcion FROM detallesolicitud ORDER BY id_detallesolicitud DESC LIMIT 2";
-$result = $conn->query($sql);
-
-// Generar el HTML del carrusel
-$carouselItems = "";
-$firstItem = true;
-
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $activeClass = $firstItem ? "active" : "";
-        $carouselItems .= '
-        <div class="carousel-item ' . $activeClass . '">
-            <div class="d-flex justify-content-center">
-                <img class="w-50" src="' . $row["imagen"] . '" alt="Image">
-            </div>
-            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                <h2 class="text-white font-weight-bold">' . $row["titulo"] . '</h2>
-                <div class="d-flex text-white">
-                    <small class="mr-3"><i class="fa fa-calendar-alt"></i> ' . $row["fecha_mostrada"] . '</small>
-                </div>
-                <p class="text-white">' . $row["descripcion"] . '</p>
-                <a href="#" class="btn btn-lg btn-outline-light mt-4">Leer más</a>
-            </div>
-        </div>';
-        $firstItem = false;
-    }
-} else {
-    $carouselItems = '<div class="carousel-item active">
-                        <img class="w-100" src="/imagenes/" alt="Image">
-                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                            <h2 class="text-white font-weight-bold">No hay noticias disponibles</h2>
-                        </div>
-                      </div>';
-}
-
-$conn->close();
-?>
-
-<div class="container p-0">
-    <div id="blog-carousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <?php echo $carouselItems; ?>
-        </div>
-        <a class="carousel-control-prev" href="#blog-carousel" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#blog-carousel" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </a>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3"></button>
     </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+        <img src="../../imagenes/img/revista/Revista B2_pages-to-jpg-0001.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+        <img src="../../imagenes/img/revista/Revista B2_pages-to-jpg-0003.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+        <img src="../../imagenes/img/revista/Revista B2_pages-to-jpg-0007.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+        <img src="../../imagenes/img/revista/Revista B2_pages-to-jpg-0006.jpg" class="d-block w-100" alt="...">
+        </div>
+        
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
 
 <!-- boton publicar carrucel imagenes -->
@@ -81,7 +47,7 @@ $conn->close();
                 <form id="noticiaForm" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="titulo">Título de la Noticia:</label>
-                        <input type="text" id="titulo" name="titulo" class="form-control" required>
+                        <input type="text" id="titulo_carrousel" name="titulo" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="descripcion">Descripción:</label>

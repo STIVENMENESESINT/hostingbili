@@ -41,12 +41,19 @@
 				  </div>
 
 				  <div class="form-group">
-					<label for="convidado" class="col-sm-2 control-label">Asignar</label>
+					<label for="convidado" class="col-sm-2 control-label">Asignado</label>
 					<div class="col-sm-10">
 					  <select name="convidado" class="form-control" id="convidado" disabled>
 					  <option value="">Ninguno</option>
 					  <?php
-							$sql6 = "SELECT * FROM userprofile WHERE id_rol='2'";
+							if (isset($_POST['Event'])) {
+								$event = $_POST['Event'];
+								$id = $event['id'];
+							}
+							$sql6 = "SELECT u.nombre, u.id_userprofile FROM convites c
+							JOIN 
+								userprofile u ON c.fk_id_destinatario = u.id_userprofile
+							WHERE u.id_rol=2 AND c.fk_id_evento = '$id'";
 							$req = $db->prepare($sql6);
 							$req->execute();
 							$linhas = $req->rowCount();
@@ -68,7 +75,14 @@
 					  <select name="remetente" class="form-control" id="remetente" disabled>
 					  <option value="">Ninguno</option>
 					  <?php
-							$sql5 = "SELECT * FROM userprofile WHERE id_rol='2'";
+							if (isset($_POST['Event'])) {
+								$event = $_POST['Event'];
+								$id = $event['id'];
+							}
+							$sql5 = "SELECT u.nombre, u.id_userprofile FROM convites c
+							JOIN 
+								userprofile u ON c.fk_id_destinatario = u.id_userprofile
+							WHERE c.fk_id_evento = '$id'";
 							$req = $db->prepare($sql5);
 							$req->execute();
 							$linhas = $req->rowCount();

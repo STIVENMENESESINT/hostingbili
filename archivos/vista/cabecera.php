@@ -4,7 +4,10 @@
 <link rel="stylesheet" href="../../herramientas/css/assets/fonts/poppins/poppins.css ">
 <!-- Archivo de estilos de la fuente Poppins -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
-<!-- Archivo de estilos de Bootstrap Icons -->
+<!-- Archivo Calendario -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale/es.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale/es.js"></script>
+
 
 <!-- CSS Libraries -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">

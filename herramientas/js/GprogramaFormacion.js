@@ -16,7 +16,7 @@ $(document).ready(function(){
     }, 'json');
 });
 $(document).on("click", "#btn_ListPf", function () { 
-    var idSolicitud = $(this).data('id');
+    var id_programaformacion = $(this).data('id');
     $.post("../../include/cntrlGprogramaFormacion.php", {
         action: 'Listar_pf',
         id_solicitud: idSolicitud
