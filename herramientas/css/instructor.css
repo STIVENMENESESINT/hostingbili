@@ -4,6 +4,8 @@
   background: #f5f5f5;
   padding: 2rem 1.5rem;
   transition: box-shadow .3s ease, transform .2s ease;
+  
+  border-radius: 10px; /* Borde redondeado */
  }
  
  .card-info {
@@ -65,6 +67,8 @@
  /*Hover*/
  .card:hover {
   box-shadow: 0 8px 50px #23232333;
+  border: 2px solid black; /* Contorno negro */
+  border-radius: 10px; /* Borde redondeado */
  }
  
  .card:hover .card-info {
@@ -84,3 +88,21 @@
  .card-avatar:hover {
   transform: scale(1.1);
  }
+/* espacios de tarjetas  */
+.heading {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.card-container {
+  gap: 10px; /* Espacio entre tarjetas */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+.col-sm-10 {
+  padding: 14px;
+  /* Añadir padding al contenedor de la columna */
+}

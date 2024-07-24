@@ -53,28 +53,7 @@ if (isset($_SESSION['id_userprofile'])){
 
 
 
-    <style>
-    .heading {
-        font-size: 22px;
-        font-weight: bold;
-    }
 
-    .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        /* Espacio entre tarjetas */
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-
-    .col-sm-10 {
-        padding: 144px;
-        /* Añadir padding al contenedor de la columna */
-    }
-    </style>
 
 </head>
 
@@ -103,7 +82,7 @@ if (isset($_SESSION['id_userprofile'])){
 
 
                 <div>
-                    <div class="col-sm-10 gb-white" class="">
+                    <div class="col-sm-10 ">
 
                         <h1>INSTRUCTORES Bilingüismo</h1>
                         <div>
