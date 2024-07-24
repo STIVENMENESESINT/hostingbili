@@ -17,25 +17,18 @@ if (isset($_SESSION['id_userprofile'])) {
 
 <head>
     <?php
-                    // Incluir el archivo de cabecera que probablemente contiene enlaces a CSS y otros metadatos
-                    include_once('cabecera.php');
-                    ?>
+    // Incluir el archivo de cabecera que probablemente contiene enlaces a CSS y otros metadatos
+    include_once('cabecera.php');
+    ?>
 
     <script type='text/javascript' src="../../herramientas/js/noticia.js"></script>
     <link rel="stylesheet" href="../../herramientas/css/solicitud.css">
     <link rel="stylesheet" href="../../herramientas/css/about.css">
     <link rel="stylesheet" href="../../archivos/vista/style.css">
     <link rel="stylesheet" href="../../chatp/style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 
 <body>
-
-
-
-
-
     <div class="layout">
         <!-- Menú de navegación -->
         <aside class="layout__aside">
@@ -52,41 +45,42 @@ if (isset($_SESSION['id_userprofile'])) {
                 <div id="conten">
                     <div class="card-body">
                         <div class="container navbar-nav">
+                            <style>
+                                .fas{
+                                    border-radius: 3rem;
+                                    top: 5px;
+                                }
+                            </style>
                             <!-- BUSCADOR -->
                             <?php
-                        if ($_SESSION['id_rol'] != 1) {
-                                echo '
-                            <li><a type="button" name="btn_Nuevo" id="btn_Nuevo" data-bs-toggle="modal"
-                                            data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
-                                <i class="fas fa fa-plus fa-fw fa-lg" class=" aria-hidden="true"></i>
+                                if ($_SESSION['id_rol'] != 1) {
+                                        echo '
+                                    <li><a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
+                                        <i class="fas fa-plus " ></i>
+                                        
+                                        <span class="nav-item2">Crear </span>
+                                    </a></li>      
+                                    <li><a type="button" class="nav-link nav-item-hover">
+                                        <i class="fas fa-plus " ></i>
+                                        
+                                        <span class="nav-item2">Mis Publicaciones</span>
+                                    </a></li> 
+                                    
                                 
-                                <span class="nav-item2">Crear </span>
-                            </a></li>      
-                            
-                            <li><a type="button" name="btn_Nuevo" id="btn_Nuevo" data-bs-toggle="modal"
-                                            data-bs-target="#" class="nav-link nav-item-hover">
-                                <i class="fas fa fa-plus fa-fw fa-lg" class=" aria-hidden="true"></i>
-                                
-                                <span class="nav-item2">Mis Publicaciones</span>
-                            </a></li> 
-                            
-                        
-                                    ';
-                        }
-                        ?>
-
-
+                                            ';
+                                }
+                                ?>
+                            <?php 
+                                include_once('../../chatp/index.php');
+                            ?>
                         </div>
                     </div>
                 </div>
-                <div class="container bg-black  rounded-container">
+                <div class="container  rounded-container">
                     <h1>Revista Sena B-Team </h2>
                         <?php include_once('publicarnoticiacarrusel.php'); ?>
                 </div>
                 <!-- El contenido dinámico se cargará aquí -->
-                <br>
-                <br>
-                <br>
                 <br>
                 <div class=" container">
 
