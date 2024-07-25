@@ -51,47 +51,56 @@ if (isset($_SESSION['id_userprofile'])) {
                                 top: 5px;
                             }
                             </style>
-                            <!-- BUSCADOR -->
-                            <?php
-                                if ($_SESSION['id_rol'] != 1) {
-                                        echo '
-                                    <li><a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
-                                        <i class="fas fa-plus " ></i>
-                                        
-                                        <span class="nav-item2">Crear </span>
-                                    </a></li>      
-                                    <li><a type="button" class="nav-link nav-item-hover">
-                                        <i class="fas fa-plus " ></i>
-                                        
-                                        <span class="nav-item2">Mis Publicaciones</span>
-                                    </a></li> 
-                                    
-                                
-                                            ';
-                                }
-                                ?>
-                            <?php 
-                                include_once('../../chatp/index.php');
-                            ?>
                         </div>
                     </div>
                 </div>
-                <div class="container  rounded-container">
+                <style>
+                    .carrousel{
+                        width: 90%;
+                        height: 90%;
+                    }
+                </style>
+                <div class="carrousel">
                     <h1>Revista Sena B-Team </h2>
-                        <?php include_once('publicarnoticiacarrusel.php'); ?>
+                    <?php
+                        if ($_SESSION['id_rol'] == 3) {
+                            echo '
+                                <li><a type="button" data-bs-toggle="modal" data-bs-target="#revistaModal" class="nav-link nav-item-hover">
+                                    <i class="fas fa-plus " ></i>
+                                    <span class="nav-item2">Nueva Revista</span>
+                                    </a>
+                                </li>      
+                        ';
+                    }
+                    ?>
+                    <div>
+                        <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="100%" height="500px" />
+                    </div>
                 </div>
                 <!-- El contenido dinámico se cargará aquí -->
                 <br>
                 <div class=" container">
-
                     <?php 
-                                include_once('../../chatp/index.php');
-                                
-                            ?>
-
+                        include_once('../../chatp/index.php');
+                    ?>
+                    <?php
+                        if ($_SESSION['id_rol'] != 1) {
+                            echo '
+                                <li><a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
+                                    <i class="fas fa-plus " ></i>
+                                    <span class="nav-item2">Crear </span>
+                                    </a>
+                                </li>      
+                                <li><a type="button" class="nav-link nav-item-hover">
+                                    <i class="fas fa-plus " ></i>
+                                            
+                                    <span class="nav-item2">Mis Publicaciones</span>
+                                    </a>
+                                </li> 
+                        ';
+                    }
+                    ?>
                     <h1>Nuevas Noticia</h2>
-
-
                         <div id="noticia_creada" class="grid-container ">
                         </div>
 
@@ -144,7 +153,27 @@ if (isset($_SESSION['id_userprofile'])) {
         </div>
     </div>
 </div>
-
+<div class="modal fade" id="revistaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="">Subir Imágenes al Carrusel</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="image">Selecciona una imagen:</label>
+                            <input type="file" name="image[]" id="image" class="form-control" multiple>
+                        </div>
+                        
+                    </form>                       
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+                        <input class="btn btn-primary" type="button" id="actualizarPermisousu" value="Gestionar">
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 </html>

@@ -46,9 +46,6 @@ if (isset($_SESSION['id_userprofile'])){
 
         <!-- Contenido principal -->
             <div class="layout__content">
-                <div class="content__page">
-                    <!-- INICIO A CONSTRUIR CONTENIDO DENTRO DEL LAYOUT -->
-                    <div class="cabecera_menu">
                         <style>
                             .card-body{
                                     top: 2rem;
@@ -72,11 +69,9 @@ if (isset($_SESSION['id_userprofile'])){
                                 </div>		
                             </div>
                         </div>
-                    </div>
+                    
                     <!-- TABLA -->
                     <div id="usuarios"></div>
-                    
-                </div>
             </div>
         </div>
     </div>
