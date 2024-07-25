@@ -17,6 +17,6 @@ if (mysqli_num_rows($run_query) > 0) {
     $replay = $fetch_data['replies'];
     echo $replay;
 } else {
-    echo "¡Lo siento, no puedo ayudarte con este inconveniente! Favor comunícate con el administrador en el siguiente enlace:<br/><a href='https://www.configuroweb.com/contacto/'>Contacto</a>";
+    echo "¡Lo siento, no puedo ayudarte con este inconveniente! Favor comunícate con el administrador en el siguiente enlace:<br/><a href='https://www.configuroweb.com/'>Contacto</a>";
 }
 ?>
