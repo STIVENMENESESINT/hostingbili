@@ -22,6 +22,7 @@ if (isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['inici
     $convidado = $_POST['convidado'];
     $competencia = $_POST['id_competencia'];
     $ra = $_POST['id_resultado_aprendizaje'];
+    $id_programaformacion = $_POST['id_programaformacion'];
 
     // Asegurarse de que la variable de sesión está definida
     if (isset($_SESSION['id_userprofile'])) {
@@ -32,8 +33,7 @@ if (isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['inici
         $termino = date('Y/m/d H:i:s', strtotime($termino));
 
         // Preparar la consulta SQL
-        $sql = "INSERT INTO eventos(fk_id_usuario, titulo, descricao, inicio, termino, cor,id_competencia,id_resultado_aprendizaje) values (?, ?, ?, ?, ?, ?,?,?)";
-
+        $sql = "INSERT INTO eventos(fk_id_usuario, titulo, descricao, inicio, termino, cor,id_competencia,id_resultado_aprendizaje,id_programaformacion) values (?, ?, ?, ?, ?, ?,?,?,?)";
         // Preparar y ejecutar la consulta
         $query = $db->prepare($sql);
         if ($query === false) {
@@ -41,7 +41,7 @@ if (isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['inici
             die('Erro ao carregar');
         }
 
-        $sth = $query->execute([$id_usuario, $titulo, $descricao, $inicio, $termino, $cor, $competencia, $ra]);
+        $sth = $query->execute([$id_usuario, $titulo, $descricao, $inicio, $termino, $cor, $competencia, $ra,$id_programaformacion]);
         if ($sth === false) {
             print_r($query->errorInfo());
             die('Erro ao executar');

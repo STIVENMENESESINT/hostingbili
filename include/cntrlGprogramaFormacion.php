@@ -164,7 +164,7 @@ switch ($_REQUEST['action'])
                         <style>
                             .container{
                                 position: absolute;
-                                left: 8rem;
+                                left: 20rem;
                             }
                         </style>
             <table class="table table-bordered table-striped table-hover text-center">
@@ -199,7 +199,8 @@ switch ($_REQUEST['action'])
                         LEFT JOIN 
                             estado e ON p.id_estado = e.id_estado
                         WHERE 
-                            p.id_estado = 7";
+                            p.id_estado = 7 
+                        ORDER BY p.id_programaformacion DESC";
             $result = mysqli_query($conn, $busqueda);
             
             if (mysqli_num_rows($result) > 0) {
@@ -232,43 +233,28 @@ switch ($_REQUEST['action'])
         $jTableResult['rst'] = "";
         $jTableResult['ms'] = "";
         $jTableResult['ListPf'] = "";
-        $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
-                        $query = "SELECT 
-                                    s.id_solicitud, 
+        $id_programaformacion = mysqli_real_escape_string($conn, $_POST['id_programaformacion']);
+                        $query = "SELECT  
+                                    pf.id_programaformacion,
                                     u.nombre, 
                                     d.nombre_dpto AS nom_dpto, 
                                     m.nombre_municipio AS nom_muni, 
                                     p.nombre_poblado AS nom_vereda, 
                                     u.nombre_dos,
                                     u.apellido, 
-                                    e.nombre AS nom_Empresa, 
-                                    ts.nombre AS Nombre_Solicitud, 
-                                    ds.id_tiposolicitud,
-                                    ds.descripcion,
-                                    a.nombre AS nom_area,
                                     pf.nombre AS nom_pf
                                 FROM 
-                                    solicitud s
-                                LEFT JOIN
-                                    programaformacion pf ON s.id_programaformacion = pf.id_programaformacion
+                                    programaformacion pf
                                 LEFT JOIN  
-                                    userprofile u ON s.id_userprofile = u.id_userprofile
-                                LEFT JOIN   
-                                    detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
+                                    userprofile u ON pf.fk_responsable = u.id_userprofile
                                 LEFT JOIN  
                                     departamentos d ON u.cod_dpto = d.cod_dpto
                                 LEFT JOIN  
                                     municipios m ON u.cod_municipio = m.cod_municipio
                                 LEFT JOIN  
                                     poblados p ON u.cod_poblado = p.cod_poblado
-                                LEFT JOIN   
-                                    empresa e ON u.id_empresa = e.id_empresa
-                                LEFT JOIN   
-                                    tiposolicitud ts ON ds.id_tiposolicitud = ts.id_tiposolicitud
-                                LEFT JOIN  
-                                    area a ON pf.id_area = a.id_area
                                 WHERE 
-                                    s.id_solicitud = '$id_solicitud';";
+                                    pf.id_programaformacion = '$id_programaformacion';";
         $result = mysqli_query($conn, $query);
         if ($result) {
             while ($registro = mysqli_fetch_array($result)) {
@@ -295,7 +281,7 @@ switch ($_REQUEST['action'])
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='modal-title'>Competencia</h6>
-                                <h6 class='modal-title'>" . $registro['nom_vereda'] . "</h6>  <a href='programar.php'>programar</a>
+                                <h6 class='modal-title'>" . $registro['nom_vereda'] . "</h6>  <button type='button' id='calendario' href='programar.php' data-id='" . $registro['id_programaformacion'] . "' >programar</button>
                             </div>
                         </div>
                         <div class='row mt-3'>
@@ -338,7 +324,7 @@ switch ($_REQUEST['action'])
                         <br>
                         <label>Detalles</label>
                         <br>
-                        <textarea id='detalles' name='detalles'>" . $registro['descripcion'] . "</textarea>
+                        <textarea id='detalles' name='detalles'>" . $registro['nom_muni'] . "</textarea>
                         <br>
                         <hr>
                         <h3>Control de Desercion</h3>
@@ -352,9 +338,8 @@ switch ($_REQUEST['action'])
                         <input type='text'><br>
                         <h6>Nuevo</h6>
                         <button class='create-button' id='create'> Agregar</button>
-                        <button id='btnAceptarSoli' class='close-button' data-id='" . $registro['id_solicitud'] . "' >Desertar</button>
+                        <button id='btnAceptarSoli' class='close-button'  >Desertar</button>
                         <hr>
-
                     </div>";
             }
         } else {

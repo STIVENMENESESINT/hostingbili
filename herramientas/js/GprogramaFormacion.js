@@ -19,7 +19,7 @@ $(document).on("click", "#btn_ListPf", function () {
     var id_programaformacion = $(this).data('id');
     $.post("../../include/cntrlGprogramaFormacion.php", {
         action: 'Listar_pf',
-        id_solicitud: idSolicitud
+        id_programaformacion: id_programaformacion
 
     }, function(data) {
         if (data.rst === "1") {
@@ -30,6 +30,22 @@ $(document).on("click", "#btn_ListPf", function () {
             alert("Error")
         }
     }, 'json');
+});
+$(document).on("click", "#calendario", function() {
+    var id_programaformacion = $(this).data('id');
+    console.log(id_programaformacion);
+    $.ajax({
+        type: "POST",
+        url: "../../include/programar.php",
+        data: { id_programaformacion: id_programaformacion },
+        dataType: 'json',
+        success: function(response) {
+            console.log("ID Programa Formación enviado correctamente: " + id_programaformacion);
+        },
+        error: function(xhr, status, error) {
+            console.error("Error al enviar el ID Programa Formación: " + error);
+        }
+    });
 });
 $(document).on("click", "#create", function () { 
     // Crear una nueva sección de formulario

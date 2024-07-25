@@ -52,16 +52,6 @@ if (isset($_SESSION['id_userprofile'])){
                             </div>
                         </div>
 </body>
-<!-- Regresar -->
-<!--            
-            </div>
-        </div>
-    </div>    </div><a href="inicio.php">
-                            <i class="fas fa-arrow-circle-left"></i>
-                            <span class="nav-item">Regresar</span>
-                        </a> -->
-
-
 </body>
 
 <?php

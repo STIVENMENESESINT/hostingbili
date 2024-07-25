@@ -53,7 +53,7 @@ if (isset($_SESSION['id_userprofile'])){
                             .card-body{
                                     top: 2rem;
                                     position: relative;
-                                    left: 13rem;
+                                    left: 8rem;
                                     padding-bottom: 5rem;
                                 }
                         </style>

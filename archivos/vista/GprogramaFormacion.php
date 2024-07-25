@@ -44,8 +44,6 @@ if (isset($_SESSION['id_userprofile'])){
                         include_once('panel.php')
                     ?>
                 </div>
-                <div class="cabecera_menu">l
-                    <div class="container">
                         <style>
                             .container{
                                 position: absolute;
@@ -53,7 +51,7 @@ if (isset($_SESSION['id_userprofile'])){
                             }
                             .card-body{
                                 position: relative;
-                                left: 6rem;
+                                left: 4rem;
                             }
                         </style>
                         <div class="card-body">
@@ -76,25 +74,9 @@ if (isset($_SESSION['id_userprofile'])){
                             </div>
                         </div>
                         <!-- NO TOCAR -->
-                        <?php
-                            if ($_SESSION['id_rol'] == 3) {
-                                echo '<div id="sin_contenido"></div>
-                                <div id="oferta_curso"></div>';
-                            }
-                        ?>
-                        <?php
-                            if ($_SESSION['id_rol'] == 2) {
-                                echo '
-                                <div id="oferta_curso"></div>';
-                            }
-                        ?>
-                        <?php
-                            if ($_SESSION['id_rol'] != 3) {
-                                echo '<div id="contenido"></div>';
-                            }
-                        ?>
+                        <div id="sin_contenido"></div>
                     </div>
-                    <div id="solisB"></div>
+                    <div id="pfB"></div>
                 </div>
             </div>
         </div>

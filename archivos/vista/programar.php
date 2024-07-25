@@ -1,36 +1,45 @@
 <?php
 
 // Incluir el archivo de configuración de conexión a la base de datos
-    require_once('../../calendario/action/conexao.php');
+require_once('../../calendario/action/conexao.php');
 
-    // Establecer el tipo de contenido a HTML con el charset especificado en la configuración
-    header('Content-Type: text/html; charset='.$charset);
+// Establecer el tipo de contenido a HTML con el charset especificado en la configuración
+header('Content-Type: text/html; charset='.$charset);
 
-    // Iniciar la sesión con el nombre de sesión configurado
-    session_name($session_name);
-    session_start();
-    if(!isset ($_SESSION['id_userprofile'])) {
-        header('Location: ../../index.php');
-    }
-	$id_user = $_SESSION['id_userprofile'];
-	date_default_timezone_set('America/Bogota');
-	$database = new Database();
-	$db = $database->conectar();
-    
-    $sql = "SELECT id_evento, titulo, descricao, inicio, termino, cor, fk_id_destinatario, fk_id_remetente, status 
-    FROM eventos as e
-    LEFT JOIN convites as c ON e.id_evento = c.fk_id_evento
-    WHERE fk_id_usuario  = :id_user";
+// Iniciar la sesión con el nombre de sesión configurado
+session_name($session_name);
+session_start();
+if (!isset($_SESSION['id_userprofile'])) {
+    header('Location: ../../index.php');
+    exit;
+}
+
+// Verificar si se ha enviado el ID del programa de formación
+if (isset($_POST['id_programaformacion'])) {
+    $id_programaformacion = $_POST['id_programaformacion'];
+    $id_user = $_SESSION['id_userprofile'];
+    date_default_timezone_set('America/Bogota');
+
+    $database = new Database();
+    $db = $database->conectar();
+
+    $sql = "SELECT id_evento, titulo, descricao, inicio, termino, cor, fk_id_destinatario, fk_id_remetente, status, id_programaformacion
+            FROM eventos as e
+            LEFT JOIN convites as c ON e.id_evento = c.fk_id_evento
+            WHERE fk_id_usuario = :id_user AND id_programaformacion = :id_programaformacion";
 
     $req = $db->prepare($sql);
     $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+    $req->bindParam(':id_programaformacion', $id_programaformacion, PDO::PARAM_INT);
     $req->execute();
     $events = $req->fetchAll(PDO::FETCH_ASSOC); // Asegura que solo se devuelvan índices asociativos
 
-    // Depuración: Imprimir los eventos obtenidos ARRAY
-    // echo '<pre>';
-    // print_r($events);
-    // echo '</pre>';
+    // Depuración: Imprimir los eventos obtenidos
+    echo json_encode($events);
+} else {
+    echo json_encode(['error' => 'ID del programa de formación no enviado']);
+}
+?>
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

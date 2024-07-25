@@ -46,8 +46,6 @@ if (isset($_SESSION['id_userprofile'])){
                         ?>
                     </div>
                 </div>
-                <div class="container">
-                <div class="cabecera_menu">
                     <style>
                         .card-body{
                                 position: relative;

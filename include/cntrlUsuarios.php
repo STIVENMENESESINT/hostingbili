@@ -13,11 +13,11 @@ switch ($_REQUEST['action'])
         $jTableResult['rstl']="";
         $jTableResult['msj']="";
         $jTableResult['listaUsu']='
-                <div class="container">
+            <div class="container">
                         <style>
                             .container{
-                                position: relative;
-                                left: 2.6rem;
+                                position: absolute;
+                                left: 20rem;
                             }
                         </style>
                         <table class="table table-bordered table-striped table-hover text-center">
@@ -55,7 +55,8 @@ switch ($_REQUEST['action'])
                                                 ";
                     $jTableResult['listaUsu'].="</tr>";
                 }
-                $jTableResult['listaUsu'].="</div>";
+                $jTableResult['listaUsu'].="</div>
+                </div>";
                 $jTableResult['msj']= "";
                 $jTableResult['rslt']= "1";						
             }
