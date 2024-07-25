@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bili</title>
-    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
@@ -45,7 +45,7 @@
 
             // iniciar el código ajax
             $.ajax({
-                url: 'message.php',
+                url: '../../chatp/message.php',
                 type: 'POST',
                 data: 'text=' + $value,
                 success: function(result) {
