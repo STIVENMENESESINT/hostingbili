@@ -46,10 +46,10 @@ if (isset($_SESSION['id_userprofile'])) {
                     <div class="card-body">
                         <div class="container navbar-nav">
                             <style>
-                                .fas{
-                                    border-radius: 3rem;
-                                    top: 5px;
-                                }
+                            .fas {
+                                border-radius: 3rem;
+                                top: 5px;
+                            }
                             </style>
                             <!-- BUSCADOR -->
                             <?php
@@ -86,7 +86,9 @@ if (isset($_SESSION['id_userprofile'])) {
 
                     <?php 
                                 include_once('../../chatp/index.php');
+                                
                             ?>
+
                     <h1>Nuevas Noticia</h2>
 
 
@@ -146,6 +148,7 @@ if (isset($_SESSION['id_userprofile'])) {
 
 
 </html>
+
 
 <?php
     // Si no hay sesión activa, redirigir al usuario a la página de inicio de sesión
