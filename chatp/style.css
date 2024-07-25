@@ -117,6 +117,12 @@ html, body {
     color: #333;
     background: #efefef;
 }
+.wrapper {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 9999; /* Asegúrate de que esté sobre otros elementos */
+}
 
 .wrapper .typing-field {
     display: flex;
