@@ -61,22 +61,34 @@ session_start();
                 <h2 class="subtitle">¡Bienvenido a tu espacio de conocimiento!</h2>
                 
                 <div class="info-cards">
-                    <div class="info-card">
+                <div class="info-card">
+                    <div class="icon-circle">
                         <i class="fas fa-search"></i>
-                        <h3>Explora</h3>
-                        <p>Descubre una amplia variedad de recursos educativos.</p>
                     </div>
-                    <div class="info-card">
+                    <h3>Explora</h3>
+                    <div class="description">
+                        <p>Descubre variedad de recursos educativos.</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="icon-circle">
                         <i class="fas fa-book-reader"></i>
-                        <h3>Aprende</h3>
+                    </div>
+                    <h3>Aprende</h3>
+                    <div class="description">
                         <p>Amplía tus horizontes con nuevos conocimientos.</p>
                     </div>
-                    <div class="info-card">
+                </div>
+                <div class="info-card">
+                    <div class="icon-circle">
                         <i class="fas fa-hands-helping"></i>
-                        <h3>Contribuye</h3>
+                    </div>
+                    <h3>Contribuye</h3>
+                    <div class="description">
                         <p>Comparte tu sabiduría con la comunidad.</p>
                     </div>
                 </div>
+            </div>
                 
                 <p class="info-text">
                     Este sistema te permite publicar libros y contenidos que enriquecen nuestra comunidad educativa.
@@ -84,56 +96,87 @@ session_start();
                 <p class="highlight-text">
                     ¡Tu participación es fundamental para construir un entorno de aprendizaje colaborativo y accesible para todos!
                 </p>
-            </div>
+            </div>      
 
-            <!-- Menú de navegación -->
-            <div class="navbar-columns">
-                <div class="navbar-column">
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">Usuarios <i class="fas fa-users"></i></a>
-                        <div class="navbar-dropdown">
-                            <?php
-                                if(isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1'){
-                                    echo '<a href="index.php?vista=user_new" class="navbar-item">Nuevo</a>';
-                                }
-                            ?>
-                            <a href="index.php?vista=user_list" class="navbar-item">Lista</a>
-                            <a href="index.php?vista=user_search" class="navbar-item">Buscar</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="navbar-column">
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">Ingresar a la Biblioteca <i class="fas fa-calendar-day"></i></a>
-                        <div class="navbar-dropdown">
-                            <?php
-                                if(isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1'){
-                                    echo '<a href="category_new.php" class="navbar-item">Ingresar Nueva Sesión</a>';
-                                }
-                            ?>
-                            <a href="category_list.php" class="navbar-item">Lista de Sesiones</a>
-                            <a href="category_search.php" class="navbar-item">Buscar Sesión</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="navbar-column">
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">Ingresar a los Libros <i class="fas fa-book"></i></a>
-                        <div class="navbar-dropdown">
-                            <?php
-                                if(isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1'){
-                                    echo '<a href="product_new.php" class="navbar-item">Nuevo Libro</a>';
-                                }
-                            ?>
-                            <a href="product_list.php" class="navbar-item">Lista de Libros</a>
-                            <a href="product_category.php" class="navbar-item">Buscar Libros por Categoría</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
+
+
+
+
+<!-- Menú de navegación -->
+<div class="navbar">
+    <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link" href="#">Usuarios <i class="fas fa-users"></i></a>
+        <div class="navbar-dropdown">
+            <?php
+                if(isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1'){
+                    echo '<a href="index.php?vista=user_new" class="navbar-dropdown-item">Nuevo</a>';
+                }
+            ?>
+            <a href="index.php?vista=user_list" class="navbar-dropdown-item">Lista</a>
+            <a href="index.php?vista=user_search" class="navbar-dropdown-item">Buscar</a>
         </div>
     </div>
+
+    <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link" href="#">Ingresar a la Biblioteca <i class="fas fa-calendar-day"></i></a>
+        <div class="navbar-dropdown">
+            <?php
+                if(isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1'){
+                    echo '<a href="category_new.php" class="navbar-dropdown-item">Ingresar Nueva Sesión</a>';
+                }
+            ?>
+            <a href="category_list.php" class="navbar-dropdown-item">Lista de Sesiones</a>
+            <a href="category_search.php" class="navbar-dropdown-item">Buscar Sesión</a>
+        </div>
+    </div>
+
+    <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link" href="#">Ingresar a los Libros <i class="fas fa-book"></i></a>
+        <div class="navbar-dropdown">
+            <?php
+                if(isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1'){
+                    echo '<a href="product_new.php" class="navbar-dropdown-item">Nuevo Libro</a>';
+                }
+            ?>
+            <a href="product_list.php" class="navbar-dropdown-item">Lista de Libros</a>
+            <a href="product_category.php" class="navbar-dropdown-item">Buscar Libros por Categoría</a>
+        </div>
+    </div>
+</div>
+
+<!-- Imagen grande debajo del menú -->
+<div class="large-image">
+    <img src="../vista/img/biblioteca1.png" alt="Imagen Grande">
+</div>
+
+
+
+
+
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-left">
+            <img src="../vista/img/footer.png" alt="Logo">
+        </div>
+        <div class="footer-right">
+            <p>Servicio Nacional de Aprendizaje SENA - Dirección General</p>
+            <p>Calle 57 No. 8 - 69 Bogotá D.C. (Cundinamarca), Colombia</p>
+            <p>Atención presencial: lunes a viernes 8:00 a.m. a 5:30 p.m. - Resto del país sedes y horarios</p>
+            <p>Atención telefónica: lunes a viernes 7:00 a.m. a 7:00 p.m. - sábados 8:00 a.m. a 1:00 p.m</p>
+            <p>Lineas gratuitas atención al ciudadano: Bogotá (57 1) 3430111 - Resto del país 018000 910270</p>
+            <p>Lineas gratuitas atención al empresario: Bogotá (57 1) 3430101 - Resto del país 018000 910682</p>
+            <p>Conmutador Nacional (57 1) 5461500 - Extensiones 12586 - 13021 - 12535 - 12542</p>
+            <p>biblioteca.sena@misena.edu.co</p>
+        </div>
+    </div>
+</footer>
+
+
 </body>
 </html>

@@ -103,100 +103,188 @@ body, html {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra del texto */
 }
 
+/* Sistema */
+
 /* Estilo para los textos informativos */
 .info-text {
-    font-size: 1.2em; /* Tamaño de la fuente */
-    color: var(--secondary-text); /* Color del texto */
-    text-align: center; /* Centra el texto */
-    margin-top: 30px; /* Espaciado en la parte superior del texto */
-    line-height: 1.8; /* Altura de la línea para mayor legibilidad */
+    font-size: 18px; /* Tamaño del texto */
+    color: #5d5d5d; /* Color gris para texto informativo */
+    text-align: center;
+    margin: 20px 0; /* Espaciado vertical */
+    line-height: 1.6; /* Espaciado entre líneas para mejorar la legibilidad */
+    padding: 10px;
+    background-color: #E6E6E6; /* Fondo suave para resaltar el texto */
+    border-left: 5px solid #3498db; /* Línea vertical a la izquierda para añadir un toque de color */
+    border-radius: 5px; /* Bordes redondeados para suavizar el contenedor */
 }
 
-/* Estilo para la estructura del menú de navegación */
-.navbar-columns {
-    display: flex; /* Usa flexbox para alinear los elementos */
-    justify-content: space-around; /* Espacia los elementos de manera uniforme */
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias líneas */
-    margin-top: 50px; /* Espaciado en la parte superior del contenedor del menú */
+/* Particiáción */
+
+.highlight-text {
+    font-size: 24px !important; /* Tamaño del texto con alta prioridad para asegurar que se aplique */
+    color: #fff; /* Color blanco para destacar sobre un fondo oscuro */
+    text-align: center;
+    margin: 20px auto; /* Espaciado vertical y centrado horizontal */
+    line-height: 1.6; /* Espaciado entre líneas para mejorar la legibilidad */
+    padding: 15px;
+    background-color: #04324d; /* Fondo azul oscuro para contraste */
+    border: 2px solid #29690b; /* Borde verde oscuro para resaltar el texto */
+    border-radius: 10px; /* Bordes redondeados para un toque elegante */
+    font-weight: bold; /* Negrita para mayor énfasis */
+    display: inline-block; /* Asegura que el tamaño del elemento se ajuste al contenido */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del elemento */
+    max-width: 100%; /* Evita que el elemento exceda el ancho de su contenedor */
+    overflow: hidden; /* Oculta el contenido que exceda el área del elemento */
 }
 
-/* Estilo para cada columna del menú de navegación */
-.navbar-column {
-    flex: 1; /* Permite que las columnas se expandan para ocupar el espacio disponible */
-    min-width: 250px; /* Establece un ancho mínimo para cada columna */
-    margin: 15px; /* Espaciado alrededor de cada columna */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos del menú de navegación */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #04324d;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo para los ítems del menú de navegación que tienen un dropdown */
-.navbar-item.has-dropdown {
-    position: relative; /* Posiciona el dropdown relativo al ítem del menú */
+.navbar-item {
+    position: relative;
+    margin: 0 15px;
 }
 
-/* Estilo para los enlaces del menú de navegación */
 .navbar-link {
-    display: block; /* Hace que el enlace ocupe todo el ancho del contenedor */
-    padding: 15px 25px; /* Espaciado interno del enlace */
-    color: var(--primary-text); /* Color del texto */
-    text-decoration: none; /* Sin decoración en el texto (sin subrayado) */
-    background-color: var(--secondary); /* Color de fondo del enlace */
-    border-radius: 15px; /* Bordes redondeados */
-    transition: all 0.4s ease; /* Transición suave para todos los cambios */
-    font-weight: bold; /* Fuente en negrita */
-    text-align: center; /* Centra el texto dentro del enlace */
-    font-size: 1.2em; /* Tamaño de la fuente */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra alrededor del enlace */
+    color: #ecf0f1;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
 }
 
-/* Estilo cuando el enlace del menú se encuentra en estado hover */
-.navbar-link:hover {
-    background-color: var(--primary); /* Cambia el color de fondo al pasar el mouse */
-    color: var(--primary-background); /* Cambia el color del texto al pasar el mouse */
-    transform: translateY(-5px); /* Desplaza el enlace hacia arriba */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Aumenta la sombra al pasar el mouse */
-}
-
-/* Estilo para el icono dentro del enlace del menú */
 .navbar-link i {
-    margin-right: 10px; /* Espaciado a la derecha del icono */
-    font-size: 1.3em; /* Tamaño del icono */
+    margin-left: 10px;
+    font-size: 18px;
 }
 
-/* Estilo para el menú desplegable */
+.navbar-link:hover {
+    background-color: #34495e;
+    color: #2ecc71;
+    transform: translateY(-2px);
+}
+
 .navbar-dropdown {
-    display: none; /* Oculta el dropdown por defecto */
-    position: absolute; /* Posiciona el dropdown de manera absoluta respecto al ítem del menú */
-    top: 100%; /* Ubica el dropdown justo debajo del ítem del menú */
-    left: 0; /* Alinea el dropdown al borde izquierdo del ítem del menú */
-    right: 0; /* Alinea el dropdown al borde derecho del ítem del menú */
-    background-color: var(--primary-background); /* Color de fondo del dropdown */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra alrededor del dropdown */
-    border-radius: 15px; /* Bordes redondeados */
-    overflow: hidden; /* Oculta cualquier contenido que desborde los bordes del dropdown */
-    z-index: 10; /* Asegura que el dropdown esté sobre otros elementos */
+    display: none;
+    position: absolute;
+    background-color: #34495e;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 220px;
+    padding: 10px 0;
+    margin-top: 10px;
 }
 
-/* Estilo cuando el ítem del menú con dropdown está en estado hover */
-.navbar-item.has-dropdown:hover .navbar-dropdown {
-    display: block; /* Muestra el dropdown al pasar el mouse */
-    animation: fadeIn 0.4s ease-out; /* Animación de aparición del dropdown */
+.navbar-item:hover .navbar-dropdown {
+    display: block;
+    animation: fadeIn 0.3s ease;
 }
 
-/* Estilo para los ítems dentro del dropdown */
-.navbar-dropdown .navbar-item {
-    padding: 15px 25px; /* Espaciado interno de los ítems del dropdown */
-    color: var(--secondary-text); /* Color del texto */
-    text-decoration: none; /* Sin decoración en el texto (sin subrayado) */
-    transition: all 0.3s ease; /* Transición suave para todos los cambios */
-    display: block; /* Hace que el ítem ocupe todo el ancho del contenedor */
-    font-size: 1.1em; /* Tamaño de la fuente */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px) translateX(-50%); }
+    to { opacity: 1; transform: translateY(0) translateX(-50%); }
 }
 
-/* Estilo cuando el ítem del dropdown está en estado hover */
-.navbar-dropdown .navbar-item:hover {
-    background-color: var(--secondary-background); /* Cambia el color de fondo al pasar el mouse */
-    color: var(--primary); /* Cambia el color del texto al pasar el mouse */
-    transform: translateX(10px); /* Desplaza el ítem hacia la derecha */
+.navbar-dropdown-item {
+    padding: 12px 20px;
+    color: #ecf0f1;
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s ease;
+    font-size: 14px;
 }
+
+.navbar-dropdown-item:hover {
+    background-color: #2c3e50;
+    color: #2ecc71;
+    padding-left: 25px;
+}
+
+/* Estilos para la imagen grande */
+.large-image {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.large-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.large-image img:hover {
+    transform: scale(1.02);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Estilo para la sección de bienvenida */
 .welcome-section {
@@ -223,14 +311,85 @@ body, html {
 
 /* Estilo para cada tarjeta de información */
 .info-card {
-    background-color: #39a900; /* Color de fondo con opacidad */
-    border-radius: 20px; /* Bordes redondeados */
-    padding: 30px; /* Espaciado interno de la tarjeta */
-    width: calc(33% - 30px); /* Ancho de la tarjeta (tercio del contenedor menos margen) */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra alrededor de la tarjeta */
-    transition: all 0.4s ease; /* Transición suave para todos los cambios */
-    margin-bottom: 30px; /* Espaciado en la parte inferior de la tarjeta */
+    text-align: center;
+    margin-bottom: 50px;
+    background-color: #ffeb3b; /* Fondo amarillo para las cartas */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 300px; /* Ancho de la carta */
+    height: 350px; /* Alto de la carta */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.4s ease; /* Transición suave para cambios de fondo */
 }
+
+/* Efecto hover para la tarjeta completa */
+.info-card:hover {
+    background-color: #4caf50; /* Cambia el color de fondo de la tarjeta al pasar el mouse */
+}
+
+/* Cambios - 3 CARD */
+
+.icon-circle {
+    width: 140px; /* Tamaño del círculo */
+    height: 140px; /* Tamaño del círculo */
+    border-radius: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3498db; /* Color del icono */
+    color: white;
+    margin: 0 auto;
+    transition: background-color 0.4s ease, color 0.4s ease; /* Transición para el color */
+    margin-bottom: 20px; /* Separación entre el ícono y el texto */
+}
+
+.info-card {
+    text-align: center;
+    margin-bottom: 50px;
+    background-color: #E6E6E6; /* Fondo de la tarjeta */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 300px; /* Ancho de la tarjeta */
+    height: 350px; /* Alto de la tarjeta */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.4s ease; /* Transición para el color de fondo */
+}
+
+/* Efecto hover para la tarjeta completa */
+.info-card:hover {
+    background-color: #f1c40f; /* Cambia el color de fondo de la tarjeta al pasar el mouse */
+}
+
+.info-card:hover .icon-circle {
+    background-color: #e74c3c; /* Cambia el color de fondo del icono al pasar el mouse */
+    color: #3498db; /* Cambia el color del texto del icono al pasar el mouse */
+}
+
+.description {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Estilo cuando la tarjeta está en estado hover */
 .info-card:hover {
@@ -278,6 +437,43 @@ body, html {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Aumenta la sombra al pasar el mouse */
 }
 
+
+
+/* Estilos del footer */
+.footer {
+    background-color: #e6e6e6;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.footer-left img {
+    max-width: 300px; /* Ajusta el tamaño de la imagen aquí */
+    height: auto; /* Mantiene la relación de aspecto de la imagen */
+}
+
+.footer-right {
+    color: #5d5d5d;
+    font-size: 14px;
+}
+
+.footer-right p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+
+
+
 /* Estilos específicos para pantallas más pequeñas */
 @media (max-width: 1200px) {
     /* Ajusta el ancho de las tarjetas de información en pantallas más pequeñas */
@@ -304,3 +500,7 @@ body, html {
         font-size: 2em; /* Tamaño de la fuente más pequeño para el subtítulo en pantallas más pequeñas */
     }
 }
+
+
+
+
