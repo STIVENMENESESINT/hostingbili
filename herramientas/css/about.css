@@ -74,13 +74,12 @@
 }
 
 .rounded-container {
-    border-radius: 30px;
-    /* Puedes ajustar este valor según el grado de redondez que desees */
-    padding: 50px;
-    /* Ajusta el padding si es necesario */
+    border-radius: 16px;
+    padding: 28px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Añade una sombra suave para mejor visibilidad del contorno */
-}
+    width: auto; /* Ajuste inicial del ancho */
+    height: auto; /* Ajuste inicial del alto */
+  }
 
 /* estosson estilos de la tarjetas de noticias  */
 .cards {

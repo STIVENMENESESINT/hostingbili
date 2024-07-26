@@ -28,6 +28,12 @@
         </a>
     </li>
     <li>
+        <a href="perfil.php">
+            <i class="fas fa-cog menu__icon"></i>
+            <span class="nav-item">configuraciones</span>
+        </a>
+    </li>
+    <li>
         <a id="btnCerrarSession">
             <i class="fas fa-sign-out-alt menu__icon"></i>
             <span class="nav-item">Salir</span>

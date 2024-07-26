@@ -61,7 +61,7 @@ if (isset($_SESSION['id_userprofile'])) {
                     }
                 </style>
                 <div class="carrousel">
-                    <h1>Revista Sena B-Team </h2>
+                    <h1 class="modal-title w-100 text-center">Revista Sena B-Team </h2>
                     <?php
                         if ($_SESSION['id_rol'] == 3) {
                             echo '
@@ -100,7 +100,7 @@ if (isset($_SESSION['id_userprofile'])) {
                         ';
                     }
                     ?>
-                    <h1>Nuevas Noticia</h2>
+                    <h1 class="modal-title w-100 text-center">Nuevas Noticia</h2>
                         <div id="noticia_creada" class="grid-container ">
                         </div>
 
