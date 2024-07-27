@@ -138,7 +138,7 @@ switch ($_REQUEST['action']) {
                             </div>
                             ';
                             
-                            <p>' . $registro["descripcion"] . '</p>';
+                            
             
                         if ($registro["id_categoria"] == 3) {
                             if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 4) {
