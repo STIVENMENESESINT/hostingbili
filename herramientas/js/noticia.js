@@ -43,7 +43,7 @@ $(document).on("click", "#publicar_noti", function (event) {
     }
 });
 
-    $(document).on("click", "#publicar_noti2", function () {
+$(document).on("click", "#publicar_noti2", function () {
         if ($("#titulo").val() == "") {
             alert('Debe ingresar Titulo a la Oferta');
             $("#titulo").focus();
@@ -93,7 +93,15 @@ $(document).on("click", "#publicar_noti", function (event) {
                 }
             }
     });
-
+    $(document).on("click", "#hideRevista", function () {
+        $("#revista").hide();
+    });
+$(document).on("click", "#showRevista", function () {
+        $("#revista").show();
+    });
+$(document).ready(function() {
+        $("#revista").hide();
+    });
 // ALERTAS SM
 $(document).ready(function() {
     $("#noticiaForm").on("submit", function(event) {

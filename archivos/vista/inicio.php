@@ -59,26 +59,46 @@ if (isset($_SESSION['id_userprofile'])) {
                         width: 90%;
                         height: 90%;
                     }
+                    .revista{
+                        width: 90%;
+                        height: 90%;
+                    }
+                    .nav-link{
+                        display: inline-block;
+                    }
                 </style>
                 <div class="carrousel">
-                    <h1>Revista Sena B-Team </h2>
-                    <?php
-                        if ($_SESSION['id_rol'] == 3) {
-                            echo '
-                                <li><a type="button" data-bs-toggle="modal" data-bs-target="#revistaModal" class="nav-link nav-item-hover">
-                                    <i class="fas fa-plus " ></i>
-                                    <span class="nav-item2">Nueva Revista</span>
-                                    </a>
-                                </li>      
-                        ';
-                    }
+                    <?php 
+                        include_once('publicarnoticiacarrusel.php');
                     ?>
-                    <div>
-                        <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="100%" height="500px" />
-                    </div>
+                    <!-- <div>
+                        
+                    </div> -->
                 </div>
                 <!-- El contenido dinámico se cargará aquí -->
-                <br>
+                <a id="showRevista" type="button" class="nav-link nav-item-hover">
+                    <i class="fas fa-plus " ></i>
+                    <span class="nav-item2">Desplegar Revista</span>
+                </a>
+                <div id="revista">
+                    <h1>Revista Sena B-Team </h2>
+                        <a id="hideRevista" type="button" class="nav-link nav-item-hover">
+                            <i class="fas fa-plus " ></i>
+                            <span class="nav-item2">Ocultar Revista</span>
+                        </a>
+                        <?php
+                            if ($_SESSION['id_rol'] == 3) {
+                                echo '
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#revistaModal" class="nav-link nav-item-hover">
+                                        <i class="fas fa-plus " ></i>
+                                        <span class="nav-item2">Nueva Revista</span>
+                                    </a>
+                            ';
+                        }
+                        ?>
+                        <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%" height="500px" />
+                    <br>
+                </div>
                 <div class=" container">
                     <?php 
                         include_once('../../chatp/index.php');
@@ -86,17 +106,14 @@ if (isset($_SESSION['id_userprofile'])) {
                     <?php
                         if ($_SESSION['id_rol'] != 1) {
                             echo '
-                                <li><a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
+                                <a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
                                     <i class="fas fa-plus " ></i>
                                     <span class="nav-item2">Crear </span>
-                                    </a>
-                                </li>      
-                                <li><a type="button" class="nav-link nav-item-hover">
+                                </a>
+                                <a type="button" class="nav-link nav-item-hover">
                                     <i class="fas fa-plus " ></i>
-                                            
                                     <span class="nav-item2">Mis Publicaciones</span>
-                                    </a>
-                                </li> 
+                                </a>
                         ';
                     }
                     ?>
