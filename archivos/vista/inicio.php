@@ -79,9 +79,9 @@ img {
         align-items: center;
     }
 
-    .navbar__cpv--logo {
-        height: 2.2rem !important;
-    }
+.navbar__cpv--logo {
+    height: 2.2rem !important;
+}
 
     .navbar-brand__logo {
         height: 4rem;

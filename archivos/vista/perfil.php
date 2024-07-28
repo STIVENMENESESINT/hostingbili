@@ -77,7 +77,7 @@ if (isset($_SESSION['id_userprofile'])) {
         </aside>
         <!-- Contenido principal -->
         <div class="layout__content">
-            <div class="content__page">
+            j4 <div class="container content__page">
                 <div id="contenido">
                     <!-- Sección para mostrar y editar el perfil del usuario -->
          
@@ -114,7 +114,8 @@ if (isset($_SESSION['id_userprofile'])) {
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="correo_sena" class="col-form-label">Correo Electrónico mi sena:</label>
-                                    <input type="email" class="form-control" id="correo_sena" name="correo_sena" value="<?php echo htmlspecialchars($fila['correo_sena'] ?? ''); ?>">
+                                    <input type="email" class="form-control" id="correo_sena" name="correo_sena"
+                                        value="<?php echo htmlspecialchars($fila['correo_sena'] ?? ''); ?>">
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="estadoUsu" class="col-form-label">Estado:</label>

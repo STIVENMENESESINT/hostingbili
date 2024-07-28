@@ -5,17 +5,20 @@
     </a> -->
 
     <li>
-        <a href="inicio.php"> 
-            <span class="nav-item">            
-                <i class="fas fa-home "></i>               
-                Inicio    
+        <a href="inicio.php">
+            <span class="nav-item">
+                <i class="fas fa-home "></i>
+                Inicio
             </span>
         </a>
     </li>
     <li>
         <a href="panelAcciones.php">
-            <i class="fas fa-th menu__icon"></i>
-            <span class="nav-item">Acciones</span>
+
+            <span class="nav-item">
+                <i class="fas fa-th"></i>
+                Acciones
+            </span>
         </a>
     </li>
     <li>
@@ -47,7 +50,7 @@
     </li>
     <li>
         <a id="btnCerrarSession">
-            
+
             <span class="nav-item">
                 <i class="fas fa-sign-out-alt "></i>
                 Salir
@@ -71,11 +74,12 @@ $(document).ready(function() {
         }, 'json');
     });
 
-        // Cierra el menú si se hace clic fuera de él
-        $(document).on("click", function(event) {
-            if (!$("nav").is(event.target) && $("nav").has(event.target).length === 0 && $("nav").hasClass("active")) {
-                $("nav").removeClass("active");
-            }
-        });
+    // Cierra el menú si se hace clic fuera de él
+    $(document).on("click", function(event) {
+        if (!$("nav").is(event.target) && $("nav").has(event.target).length === 0 && $("nav").hasClass(
+                "active")) {
+            $("nav").removeClass("active");
+        }
     });
+});
 </script>
