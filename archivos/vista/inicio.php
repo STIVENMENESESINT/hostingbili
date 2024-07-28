@@ -28,17 +28,17 @@ if (isset($_SESSION['id_userprofile'])) {
     <link rel="stylesheet" href="../../chatp/style.css">
 </head>
 <style>
-    .container {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 50px;
-        padding-right: 50px;
-        padding-left: 50px;
-        border-radius: 30px;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-        animation: fadeInUp 1s ease-out;
-        max-width: 1400px;
-        width: 95%;
-    }
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out;
+    max-width: 1400px;
+    width: 95%;
+}
 
     .navbar {
         display: flex;

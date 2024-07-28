@@ -206,7 +206,7 @@ if (isset($_SESSION['id_userprofile'])) {
             var alertMessage = ""; // Mensaje de alerta
 
             // Enviar solicitud AJAX para actualizar usuario
-            $.post("../../include/ctrlIndex3.php", {
+            $.post("../../include/ctrlIndex.php", {
                 action: 'actualizarusuario',
                 fecha_nacimiento: $("#fecha_nacimiento").val(),
                 nombre: $("#nombre").val(),
@@ -236,7 +236,7 @@ if (isset($_SESSION['id_userprofile'])) {
         });
     });
     </script>
-</body>
+    </body>
 
 </html>
 
