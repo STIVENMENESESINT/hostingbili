@@ -141,7 +141,8 @@ img {
         <!-- Contenido principal -->
         <div class="layout__content">
             <div class="content__page">
-                <div id="conten">
+                <!-- algo blanco que no entiendo -->
+                <!-- <div id="conten">
                     <div class="card-body">
                         <div class="container navbar-nav">
                             <style>
@@ -152,7 +153,8 @@ img {
                             </style>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                <!-- Estilos Carrousel -->
                 <style>
                     .carrousel{
                         width: 90%;
@@ -170,19 +172,15 @@ img {
                     <?php 
                         include_once('publicarnoticiacarrusel.php');
                     ?>
-                    <!-- <div>
-                        
-                    </div> -->
                 </div>
-                <!-- El contenido dinámico se cargará aquí -->
                 <a id="showRevista" type="button" class="nav-link nav-item-hover">
-                    <i class="fas fa-plus " ></i>
+                    <i class="fas fa-book-open"></i>
                     <span class="nav-item2">Desplegar Revista</span>
                 </a>
                 <div id="revista">
                     <h1>Revista Sena B-Team </h2>
                         <a id="hideRevista" type="button" class="nav-link nav-item-hover">
-                            <i class="fas fa-plus " ></i>
+                            <i class="fas fa-book"></i>
                             <span class="nav-item2">Ocultar Revista</span>
                         </a>
                         <?php
@@ -221,12 +219,6 @@ img {
                 </div>
                 <div class="carrousel" class="grid-container">
                     <h1 class="title">Bilingüismo<br>B-Team-Language </h1>
-                    <div class="divider"></div>
-                    <br>
-
-                    <div>
-                        <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="100%" height="500px" />
-                    </div>
                 </div>
                 <!-- El contenido dinámico se cargará aquí -->
                 <br>

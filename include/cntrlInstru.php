@@ -65,17 +65,13 @@ switch ($_REQUEST['action'])
                                             </a>                                                                 
                                         </div>
                                         
-                                        <div class='card-title'><p class='heading'> ". $registro["nombre"] . "". $registro["apellido"] . " </p>s</div>
+                                        <div class='card-title'><p class='heading'> ". $registro["nombre"] . "". $registro["apellido"] . " </p></div>
                                         
-                                        <div class='card-subtitle'><p class='follow'>". $registro["nombre_jornada"] . "<p class='card-title'>LICENCIADA EN LENGUAS MODERNAS</p></div>
+                                        <div class='card-subtitle'><p class='follow'>". $registro["nombre_rol"] . "</p></div>
                                         
                                     </div>
                                         
                                         <div class='back'>
-                                        
-                                        
-                                        
-
                                         <ul class='card-social'>
                                             <li class='card-social__item'>
                                                 <svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
@@ -89,12 +85,9 @@ switch ($_REQUEST['action'])
                                             </li>
                                             
                                         </ul>
-                                            
-                                    
                                         </div>
                                     </div>
                                 </div>
-                            
                         </ul>
                     </div>
                 </div>
