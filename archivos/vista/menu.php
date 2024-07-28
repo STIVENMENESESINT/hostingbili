@@ -41,12 +41,11 @@
     </li>
 </nav>
 <script>
-    
-    $(document).ready(function() {
-        // Maneja el clic en el ícono del menú para abrir/cerrar el menú
-        $(document).on("click", ".menu-toggle", function() {
-            $("nav").toggleClass("active");
-        });
+$(document).ready(function() {
+    // Maneja el clic en el ícono del menú para abrir/cerrar el menú
+    $(document).on("click", ".menu-toggle", function() {
+        $("nav").toggleClass("active");
+    });
 
         // Maneja el clic en el botón de cerrar sesión
         $(document).on("click", "#btnCerrarSession", function() {

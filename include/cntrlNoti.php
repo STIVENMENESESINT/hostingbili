@@ -116,7 +116,7 @@ switch ($_REQUEST['action']) {
             while ($registro = mysqli_fetch_array($result)) {
                 // Concatenar el contenido HTML para las tarjetas
                 $jTableResult['noticia'] .= '
-                    <div class="container bg-white rounded-container"
+                    <div class=" rounded-container"
                         <div class="row blog-item px-3 pb-5">
                         <div class="cards ">
                         

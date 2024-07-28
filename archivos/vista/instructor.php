@@ -56,6 +56,38 @@ if (isset($_SESSION['id_userprofile'])){
 
 
 </head>
+<style>
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out;
+    max-width: 1400px;
+    width: 95%;
+
+}
+
+.title {
+    color: #3498db;
+    font-size: 7em;
+    margin-bottom: 0px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.divider {
+    height: 6px;
+    width: 150px;
+    background-color: #04324d;
+    margin: 30px auto;
+    border-radius: 3px;
+}
+</style>
 
 <body>
     <div class="layout">
@@ -78,13 +110,16 @@ if (isset($_SESSION['id_userprofile'])){
         }
         </script>
         <div class="layout__content">
-            <div class="content__page">
+            <div class="container content__page">
+                <h1 class="title">INSTRUCTORES Bilingüismo<br>B-Team-Language </h1>
+
+                <div class="divider"></div>
 
 
                 <div>
                     <div class="col-sm-10 ">
 
-                        <h1>INSTRUCTORES Bilingüismo</h1>
+
                         <div>
                             <div id="id_cardInstru" class="card-container"></div>
                         </div>

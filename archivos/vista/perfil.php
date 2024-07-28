@@ -39,8 +39,9 @@ if (isset($_SESSION['id_userprofile'])) {
     <link rel="stylesheet" href="styles.css"> <!-- Enlaza tu archivo de estilos CSS -->
 
 
-<!-- Incluye Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Incluye Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
 <!-- Incluye jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -49,14 +50,28 @@ if (isset($_SESSION['id_userprofile'])) {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-b4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy0sF/xTkqlj6Qrg/x2O9f7E3UJFpxoY+J" crossorigin="anonymous"></script>
 
 </head>
-<body>
+
+<style>
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out;
+    max-width: 1400px;
+    width: 95%;
+}
+</style>
+< <body>
     <div class="layout">
         <!-- Menú de navegación -->
         <aside class="layout__aside">
             <div class="aside__user-info">
                 <?php include_once('menu.php'); ?>
             </div>
-            
+
         </aside>
         <!-- Contenido principal -->
         <div class="layout__content">
@@ -103,8 +118,8 @@ if (isset($_SESSION['id_userprofile'])) {
                                     <input type="text" class="form-control" id="estadoUsu" name="estadoUsu" value="<?php echo htmlspecialchars($fila['id_estado']); ?>">
                                 </div>
                             </div>
-                            
-                            
+
+
 
                                
                             <!-- <div class="col-sm-6">
