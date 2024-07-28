@@ -40,35 +40,35 @@ if (isset($_SESSION['id_userprofile'])) {
     width: 95%;
 }
 
-    .navbar {
-        display: flex;
-        justify-content: center;
-        background-color: #04324d;
-        padding: 15px 0;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #04324d;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-    .nav-link {
-        color: #ecf0f1;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        padding: 12px 20px;
-        border-radius: 25px;
-        transition: all 0.3s ease;
-    }
+.nav-link {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
 
-    .nav-link:hover {
-        background-color: #34495e;
-        color: #2ecc71;
-        transform: translateY(-2px);
-    }
+.nav-link:hover {
+    background-color: #34495e;
+    color: #2ecc71;
+    transform: translateY(-2px);
+}
 
-    img {
-        border-style: none;
-    }
+img {
+    border-style: none;
+}
 
     .navbar-brand {
         display: flex;
@@ -149,30 +149,30 @@ if (isset($_SESSION['id_userprofile'])) {
                         <?php
                         if ($_SESSION['id_rol'] == 3) {
                             echo '
-                                <li><a type="button" data-bs-toggle="modal" data-bs-target="#revistaModal" class="nav-link nav-item-hover">
-                                    <i class="fas fa-plus " ></i>
-                                    <span class="nav-item2">Nueva Revista</span>
+                                <li>
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#revistaModal" class="nav-link">
+                                    
+                                        <span class="nav-link">
+                                            Nueva Revista
+                                            <i class="fas fa-newspaper" ></i>
+                                        </span>
+                                    
                                     </a>
                                 </li>      
                         ';
-                    }
-                    ?>
-                    <div>
-                        <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="100%" height="500px" />
-                    </div>
-                </div>
-                <!-- El contenido dinámico se cargará aquí -->
-                <br>
-                <div class=" container">
-                    <?php 
-                        include_once('../../chatp/index.php');
-                    ?>
-                    <?php
+                        }
+                        ?>
+                        <?php
                         if ($_SESSION['id_rol'] != 1) {
                             echo '
-                                <li><a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
-                                    <i class="fas fa-plus " ></i>
-                                    <span class="nav-item2">Crear </span>
+                                <li>   
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-link">
+                                    
+                                        <span class="nav-link"> 
+                                            Crear  
+                                            <i class="fas fa-plus " ></i>   
+                                        </span>
+                                       
                                     </a>
                                 </li>      
                                 <li>
@@ -192,6 +192,25 @@ if (isset($_SESSION['id_userprofile'])) {
                         ?>
                     </div>
 
+                </div>
+                <div class="carrousel" class="grid-container">
+                    <h1 class="title">Bilingüismo<br>B-Team-Language </h1>
+                    <div class="divider"></div>
+                    <br>
+
+                    <div>
+                        <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="100%" height="500px" />
+                    </div>
+                </div>
+                <!-- El contenido dinámico se cargará aquí -->
+                <br>
+                <?php 
+                        include_once('../../chatp/index.php');
+                    ?>
+
+                <h1 class="title">NOTICIAS</h1>
+                <div class="divider"></div>
+                <div id="noticia_creada" class="grid-container ">
                 </div>
             </div>
         </div>
@@ -241,27 +260,28 @@ if (isset($_SESSION['id_userprofile'])) {
         </div>
     </div>
 </div>
-<div class="modal fade" id="revistaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="">Subir Imágenes al Carrusel</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form action="upload.php" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="image">Selecciona una imagen:</label>
-                            <input type="file" name="image[]" id="image" class="form-control" multiple>
-                        </div>
-                        
-                    </form>                       
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
-                        <input class="btn btn-primary" type="button" id="actualizarPermisousu" value="Gestionar">
-                    </div>
+<div class="modal fade" id="revistaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="">Subir Imágenes al Carrusel</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="image">Selecciona una imagen:</label>
+                    <input type="file" name="image[]" id="image" class="form-control" multiple>
                 </div>
+
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+                <input class="btn btn-primary" type="button" id="actualizarPermisousu" value="Gestionar">
             </div>
         </div>
+    </div>
+</div>
 
 
 </html>

@@ -3,6 +3,7 @@
     <!-- <a href="actualizarusuariooriginal.php" class="logo">
         <img src="../../imagenes/logo.jpg" />
     </a> -->
+
     <li>
         <a href="inicio.php"> 
             <span class="nav-item">            
@@ -19,19 +20,25 @@
     </li>
     <li>
         <a href="instructor.php">
-            <i class="fas fa-users menu__icon"></i>
-            <span class="nav-item">B-Team</span>
+
+            <span class="nav-item">
+                <i class="fas fa-users"></i>
+                B-Team
+            </span>
         </a>
     </li>
     <li>
         <a href="home.php">
-            <i class="fas fa-book menu__icon"></i>
-            <span class="nav-item">Biblioteca</span>
+
+            <span class="nav-item">
+                <i class="fas fa-book"></i>
+                Biblíoteca
+            </span>
         </a>
     </li>
     <li>
-        <a  href="perfil.php">
-            
+        <a href="perfil.php">
+
             <span class="nav-item">
                 <i class="fas fa-cog"></i>
                 Perfíl
@@ -55,14 +62,14 @@ $(document).ready(function() {
         $("nav").toggleClass("active");
     });
 
-        // Maneja el clic en el botón de cerrar sesión
-        $(document).on("click", "#btnCerrarSession", function() {
-            $.post("../../include/ctrlIndex2.php", {
-                action: 'salir'
-            }, function(data) {
-                location.href = "../../index.php";
-            }, 'json');
-        });
+    // Maneja el clic en el botón de cerrar sesión
+    $(document).on("click", "#btnCerrarSession", function() {
+        $.post("../../include/ctrlIndex2.php", {
+            action: 'salir'
+        }, function(data) {
+            location.href = "../../index.php";
+        }, 'json');
+    });
 
         // Cierra el menú si se hace clic fuera de él
         $(document).on("click", function(event) {

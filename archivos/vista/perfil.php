@@ -43,11 +43,13 @@ if (isset($_SESSION['id_userprofile'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-<!-- Incluye jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Incluye jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- Incluye Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-b4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy0sF/xTkqlj6Qrg/x2O9f7E3UJFpxoY+J" crossorigin="anonymous"></script>
+    <!-- Incluye Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-b4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy0sF/xTkqlj6Qrg/x2O9f7E3UJFpxoY+J" crossorigin="anonymous">
+    </script>
 
 </head>
 
@@ -103,7 +105,8 @@ if (isset($_SESSION['id_userprofile'])) {
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="celular" class="col-form-label">Número de Celular:</label>
-                                    <input type="text" class="form-control" id="celular" name="celular" value="<?php echo htmlspecialchars($fila['celular']); ?>">
+                                    <input type="text" class="form-control" id="celular" name="celular"
+                                        value="<?php echo htmlspecialchars($fila['celular']); ?>">
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="correo" class="col-form-label">Correo Electrónico:</label>
@@ -130,8 +133,10 @@ if (isset($_SESSION['id_userprofile'])) {
 
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-primary" name="btnActualizarUsuario" id="btnActualizarUsuario">Actualizar</button>
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary" name="btnActualizarUsuario"
+                                    id="btnActualizarUsuario">Actualizar</button>
                             </div>
                         </div>
                     </form>
@@ -237,6 +242,7 @@ if (isset($_SESSION['id_userprofile'])) {
     });
     </script>
     </body>
+
 
 </html>
 
