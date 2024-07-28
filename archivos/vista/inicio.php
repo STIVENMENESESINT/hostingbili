@@ -70,22 +70,22 @@ img {
     border-style: none;
 }
 
-    .navbar-brand {
-        display: flex;
-        justify-content: space-between;
-        margin: auto;
-        max-width: var(--web-margin);
-        padding: 1.0rem 1.5rem;
-        align-items: center;
-    }
+.navbar-brand {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    max-width: var(--web-margin);
+    padding: 1.0rem 1.5rem;
+    align-items: center;
+}
 
 .navbar__cpv--logo {
     height: 2.2rem !important;
 }
 
-    .navbar-brand__logo {
-        height: 4rem;
-    }
+.navbar-brand__logo {
+    height: 4rem;
+}
 
     .nav-link i {
         margin-left: 10px;
