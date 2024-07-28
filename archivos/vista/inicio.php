@@ -127,6 +127,7 @@ if (isset($_SESSION['id_userprofile'])) {
 </div> -->
 
 <body>
+
     <div class="layout">
         <!-- Menú de navegación -->
         <aside class="layout__aside">
@@ -139,28 +140,13 @@ if (isset($_SESSION['id_userprofile'])) {
         </aside>
         <!-- Contenido principal -->
         <div class="layout__content">
-            <div class="content__page">
-                <div id="conten">
-                    <div class="card-body">
-                        <div class="container navbar-nav">
-                            <style>
-                            .fas {
-                                border-radius: 3rem;
-                                top: 5px;
-                            }
-                            </style>
-                        </div>
-                    </div>
-                </div>
-                <style>
-                    .carrousel{
-                        width: 90%;
-                        height: 90%;
-                    }
-                </style>
-                <div class="carrousel">
-                    <h1 class="modal-title w-100 text-center">Revista Sena B-Team </h2>
-                    <?php
+            <div class="container content__page">
+                <div id="conten navbar">
+
+
+                    <div class="navbar">
+
+                        <?php
                         if ($_SESSION['id_rol'] == 3) {
                             echo '
                                 <li><a type="button" data-bs-toggle="modal" data-bs-target="#revistaModal" class="nav-link nav-item-hover">
@@ -189,18 +175,22 @@ if (isset($_SESSION['id_userprofile'])) {
                                     <span class="nav-item2">Crear </span>
                                     </a>
                                 </li>      
-                                <li><a type="button" class="nav-link nav-item-hover">
-                                    <i class="fas fa-plus " ></i>
+                                <li>
+                                    <a type="button" class="nav-link">
+                                    
                                             
-                                    <span class="nav-item2">Mis Publicaciones</span>
+                                        <span class="nav-link">
+                                            Mis Publicaciones
+                                            <i class="fas fa-thin fa-folder-open" >
+                                            </i>    
+                                        </span>
+                                    
                                     </a>
                                 </li> 
                         ';
-                    }
-                    ?>
-                    <h1 class="modal-title w-100 text-center">Nuevas Noticia</h2>
-                        <div id="noticia_creada" class="grid-container ">
-                        </div>
+                        }
+                        ?>
+                    </div>
 
                 </div>
             </div>

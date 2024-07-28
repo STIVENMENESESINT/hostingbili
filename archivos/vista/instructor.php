@@ -111,7 +111,7 @@ if (isset($_SESSION['id_userprofile'])){
         </script>
         <div class="layout__content">
             <div class="container content__page">
-                <h1 class="title">INSTRUCTORES Bilingüismo<br>B-Team-Language </h1>
+                <h1 class="title">INSTRUCTORES Bilingüismo<br> </h1>
 
                 <div class="divider"></div>
 

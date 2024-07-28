@@ -4,9 +4,11 @@
         <img src="../../imagenes/logo.jpg" />
     </a> -->
     <li>
-        <a href="inicio.php">
-            <i class="fas fa-home menu__icon"></i>
-            <span class="nav-item">Inicio</span>
+        <a href="inicio.php"> 
+            <span class="nav-item">            
+                <i class="fas fa-home "></i>               
+                Inicio    
+            </span>
         </a>
     </li>
     <li>
