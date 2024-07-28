@@ -1,3 +1,27 @@
+:root {
+    --primary: #39a900;
+    --secondary: #98fe58;
+    --tertiary: #f2ffe5;
+    --alternate: #29690b;
+    --primary-text: black;
+    --secondary-text: #5d5d5d;
+    --alternate-text: #919191;
+    --primary-background: #fff;
+    --secondary-background: #E6E6E6;
+    --alternate-background: #04324d;
+    --color-success: #52d726;
+    --color-error: #e74c3c;
+    --color-warning: #f1c40f;
+    --color-info: #ffffff;
+    --primary-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    --primary-font-family: 'Work Sans Regular', sans-serif;
+    --secondary-font-family: 'Work Sans Bold', sans-serif;
+    --bp-small: 480px;
+    --bp-medium: 767px;
+    --bp-large: 1200px;
+    --web-margin: 1366px;
+}
+
 .imagenta {
     width: auto;
     /* Ajusta el ancho según tus necesidades */
@@ -74,13 +98,13 @@
 }
 
 .rounded-container {
-    border-radius: 30px;
-    /* Puedes ajustar este valor según el grado de redondez que desees */
-    padding: 50px;
-    /* Ajusta el padding si es necesario */
+    border-radius: 16px;
+    background-color: #f2f2f2;
+    padding: 28px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Añade una sombra suave para mejor visibilidad del contorno */
-}
+    width: auto; /* Ajuste inicial del ancho */
+    height: auto; /* Ajuste inicial del alto */
+  }
 
 /* estosson estilos de la tarjetas de noticias  */
 .cards {
@@ -122,10 +146,11 @@
     height: 100%;
     padding: 20px;
     box-sizing: border-box;
-    background-color: #f2f2f2;
+    background-color: var(--primary-background);
+    
     transform: rotateX(-90deg);
     transform-origin: bottom;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .cards:hover .cards__content {

@@ -116,7 +116,7 @@ switch ($_REQUEST['action']) {
             while ($registro = mysqli_fetch_array($result)) {
                 // Concatenar el contenido HTML para las tarjetas
                 $jTableResult['noticia'] .= '
-                    <div class="container bg-white rounded-container"
+                    <div class=" rounded-container"
                         <div class="row blog-item px-3 pb-5">
                         <div class="cards ">
                         
@@ -133,15 +133,18 @@ switch ($_REQUEST['action']) {
                                     <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> ' . $registro["fecha_mostrada"] . '</small>
                                     <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web Design</small>
                                     <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15 Comments</small>
+                                    <p>' . $registro["descripcion"] . '</p>
                                 </div>
                             </div>
+                            ';
                             
-                            <p>' . $registro["descripcion"] . '</p>';
+                            
             
                         if ($registro["id_categoria"] == 3) {
                             if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 4) {
                                 $jTableResult['noticia'] .= '
-                                        <button type="button"  data-bs-toggle="modal" data-bs-target="#OfertModal" id="detalle_oferta" class="" data-id="' . $registro['id_solicitud'] . '">Me Interesa </button>
+                                        <a class="cards__button btn btn-link p-0" href="">Read More <i class="fa fa-angle-right"></i></a>
+                                        <button type="button"  data-bs-toggle="modal" data-bs-target="#OfertModal" id="detalle_oferta" class="cards__button" data-id="' . $registro['id_solicitud'] . '">Me Interesa </button>
                                     </div>
                                 </div>';
                             } else {

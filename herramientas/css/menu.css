@@ -74,8 +74,9 @@ a {
 }
 
 a:hover {
-    background: #ffffff15;
-    border-radius: 50px;
+    background-color: #34495e;
+color: #2ecc71;
+transform: translateY(-2px);
 }
 
 .fas {
@@ -92,7 +93,17 @@ a:hover {
     position: relative;
     top: 12px;
     margin-left: 10px;
-    color: white;
+    
+    color: #ecf0f1;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    
+}
+.nav-item:hover {
+    background-color: #34495e;
+    color: #2ecc71;
+    transform: translateY(-2px);
 }
 .nav-item2 {
     color: black;
