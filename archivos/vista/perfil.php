@@ -80,7 +80,7 @@ if (isset($_SESSION['id_userprofile'])) {
             <div class="container content__page">
                 <div id="contenido">
                     <!-- Sección para mostrar y editar el perfil del usuario -->
-
+         
                     <form action="actualizar_perfil.php" method="POST" id="formActualizarUsuario">
                         <!-- Campos del formulario -->
                         <h1 class="modal-title w-100 text-center">Actualizar Usuario</h1>

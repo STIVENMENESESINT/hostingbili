@@ -14,12 +14,7 @@ switch ($_REQUEST['action'])
         $jTableResult['msj']="";
         $jTableResult['listaUsu']='
             <div class="container">
-                        <style>
-                            .container{
-                                position: absolute;
-                                left: 20rem;
-                            }
-                        </style>
+                        
                         <table class="table table-bordered table-striped table-hover text-center">
                     <thead class="thead-dark">
                         <tr>
