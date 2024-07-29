@@ -48,7 +48,7 @@ if (isset($_SESSION['id_userprofile'])){
                 </div>
 
                 <div class="card-body">
-                    <div class="navbar">
+                    <div class="navbar2">
                         <!-- BUSCADOR -->
                         <div class="col-sm-2">
                             <input type='text' name='dato_txt' id='dato_txt' title='Dato a buscar'

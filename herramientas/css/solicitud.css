@@ -80,7 +80,9 @@ label.data-field {
 .navbar {
     display: flex;
     justify-content: center;
+    background-color: #04324d;
     padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .local {
     width: 70%; /* Ajusta el tamaño según tus necesidades */
@@ -89,3 +91,10 @@ label.data-field {
     text-align: center;
     vertical-align: middle;
     }
+.navbar2 {
+        display: flex;
+        justify-content: center;
+        
+        padding: 15px 0;
+        
+}

@@ -74,66 +74,75 @@
         /* Centrar elementos verticalmente */
         border-radius: 15px;
     }
-    </style>
+</style>
 <ul class="navbar-nav">
-                                    <?php
-                                        if ($_SESSION['id_rol'] == 3) {
-                                            echo '
-                                                <li>
-                                                    <a href="usuarios.php" class="nav-link nav-item-hover">
-                                                        <i class="fas fa-graduation-cap "></i>
-                                                        <span class="nav-item2">Administrar Usuarios</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="solicitud.php" class="nav-link nav-item-hover">
-                                                        <i class="fas fa-check-double"></i>
-                                                        <span class="nav-item2">Administrador de Solicitudes</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="GprogramaFormacion.php" class="nav-link nav-item-hover">
-                                                        <i class="fas fa-graduation-cap "></i>
-                                                        <span class="nav-item2">Programa Formación</span>
-                                                    </a>
-                                                </li>
-                                            ';
-                                        }
-                                        ?>
-                                                                <?php
-                                        if ($_SESSION['id_rol'] == 2) {
-                                            echo '
-                                                <li>
-                                                    <a href="solicitud.php" class="nav-link nav-item-hover">
-                                                        <i class="fas fa-check-double "></i>
-                                                        <span class="nav-item2">Solicitudes</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="asignaciones.php" class="nav-link nav-item-hover">
-                                                        <i class="fas fa-check-double fa-fw fa-lg"></i>
-                                                        <span class="nav-item2">Asignaciones</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="GprogramaFormacion.php" class="nav-link nav-item-hover">
-                                                        <i class="fas fa-graduation-cap fa-fw fa-lg"></i>
-                                                        <span class="nav-item2">Programa Formación</span>
-                                                    </a>
-                                                </li>
-                                            ';
-                                        }
-                                        ?>
-                                        <?php
-                                            if ($_SESSION['id_rol'] == 1) {
-                                                echo '
-                                                    <li>
-                                                        <a href="solicitud.php" class="nav-link nav-item-hover">
-                                                            <i class="fas fa-check-double fa-fw fa-lg"></i>
-                                                            <span class="nav-item2">Solicitudes</span>
-                                                        </a>
-                                                    </li>
-                                            ';
-                                        }
-                                    ?>
-                                </ul>
+    <?php
+        if ($_SESSION['id_rol'] == 3) {
+            echo '
+                <li>
+                    <a href="usuarios.php" class="nav-link nav-item-hover">
+                        <span class="nav-item">
+                            Administrar Usuarios
+                            <i class="fas fa-graduation-cap "></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="solicitud.php" class="nav-link nav-item-hover">
+                        <span class="nav-item">
+                            Administrar Solicitudes
+                            <i class="fas fa-check-double"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="GprogramaFormacion.php" class="nav-link nav-item-hover">
+                        <span class="nav-item">Programa Formación
+                            <i class="fas fa-graduation-cap "></i>
+                        </span>
+                    </a>
+                </li>
+            ';
+        }
+    ?>
+    <?php
+        if ($_SESSION['id_rol'] == 2) {
+            echo '
+                <li>
+                    <a href="solicitud.php" class="nav-link nav-item-hover">
+                        <span class="nav-item">Solicitudes
+                            <i class="fas fa-check-double "></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="asignaciones.php" class="nav-link nav-item-hover">
+                        <span class="nav-item">Asignaciones
+                            <i class="fas fa-check-double fa-fw fa-lg"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="GprogramaFormacion.php" class="nav-link nav-item-hover">
+                        <span class="nav-item">Programa Formación
+                            <i class="fas fa-graduation-cap fa-fw fa-lg"></i>
+                        </span>
+                    </a>
+                </li>
+            ';
+        }
+    ?>
+    <?php
+        if ($_SESSION['id_rol'] == 1) {
+            echo '
+                <li>
+                    <a href="solicitud.php" class="nav-link nav-item-hover">
+                        <span class="nav-item">Solicitudes
+                            <i class="fas fa-check-double fa-fw fa-lg"></i>
+                        </span>
+                    </a>
+                </li>
+            ';
+        }
+    ?>
+</ul>

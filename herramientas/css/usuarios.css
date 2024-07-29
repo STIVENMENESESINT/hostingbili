@@ -63,3 +63,17 @@ label.data-field {
     margin-top: 5px;
     margin-bottom: 15px;
 }
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #04324d;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.navbar2 {
+    display: flex;
+    justify-content: center;
+    
+    padding: 15px 0;
+    
+}

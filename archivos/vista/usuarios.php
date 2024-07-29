@@ -37,12 +37,6 @@ if (isset($_SESSION['id_userprofile'])){
         max-width: 1400px;
         width: 95%;
     }
-
-    .navbar {
-        display: flex;
-        justify-content: center;
-        padding: 15px 0;
-    }
     </style>
 
 </head>
@@ -72,7 +66,7 @@ if (isset($_SESSION['id_userprofile'])){
                                 </div>
 
                                 <div class="card-body">
-                                    <div class="navbar">
+                                    <div class="navbar2">
                                         <div class="col-sm-2">
                                             <input type='text' name='dato_txt' id='dato_txt' title='Dato a buscar'
                                                 placeholder='Dato a buscar' class="form-control mb-2 mr-sm-2 mb-sm-0">
