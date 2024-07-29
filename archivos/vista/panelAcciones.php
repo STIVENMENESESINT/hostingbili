@@ -56,7 +56,7 @@ if (isset($_SESSION['id_userprofile'])){
         </aside>
         <!-- Contenido principal -->
         <?php 
-            if($_SESSION['id_rol']==1){
+            if($_SESSION['id_rol']==2){
                 include_once('notificacion.php');
             }
         ?>

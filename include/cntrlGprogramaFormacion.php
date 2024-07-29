@@ -161,12 +161,6 @@ switch ($_REQUEST['action'])
         // Iniciar la construcción de la tabla
         $jTableResult['tabla'] .= '
         <div class="container">
-                        <style>
-                            .container{
-                                position: absolute;
-                                left: 20rem;
-                            }
-                        </style>
             <table class="table table-bordered table-striped table-hover text-center">
                 <thead class="thead-dark">
                     <tr>
@@ -218,8 +212,8 @@ switch ($_REQUEST['action'])
                                                                                 <td>";
                                                     if ($_SESSION['id_rol'] == 3) {
                                                         $jTableResult['tabla'] .= '
-                                                                                    <button id="modalCancel" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#cancelSolicitudModal" data-id="' . $registro['id_programaformacion'] . '">Denegar Soli</button>
-                                                                                    <button  class="btn btn-success" id="btn_ListPf" data-bs-toggle="modal" data-bs-target="#AceptSolicitudModal" data-id="' . $registro['id_programaformacion'] . '" > Seguimiento</button>';
+                                                                                    <button id="modalCancel" class="btn btn-danger btn-sm local" data-bs-toggle="modal" data-bs-target="#cancelSolicitudModal" data-id="' . $registro['id_programaformacion'] . '">Denegar Soli</button>
+                                                                                    <button  class="btn btn-success local" id="btn_ListPf" data-bs-toggle="modal" data-bs-target="#AceptSolicitudModal" data-id="' . $registro['id_programaformacion'] . '" > Seguimiento</button>';
                                                     }
                     $jTableResult['tabla'] .= "</td></tr>";
                 }

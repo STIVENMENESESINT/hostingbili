@@ -27,7 +27,7 @@ if (isset($_SESSION['id_userprofile'])){
         background: rgba(255, 255, 255, 0.95);
         padding: 50px;
         padding-right: 50px;
-        padding-left: 50px;
+
         padding-right: 50px;
         padding-left: 50px;
         border-radius: 30px;
@@ -40,9 +40,7 @@ if (isset($_SESSION['id_userprofile'])){
     .navbar {
         display: flex;
         justify-content: center;
-        background-color: #04324d;
         padding: 15px 0;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     </style>
 </head>
@@ -66,28 +64,6 @@ if (isset($_SESSION['id_userprofile'])){
                     <?php 
                         include_once('panel.php')
                     ?>
-                </div>
-                <div class="card-body">
-                    <div>
-                        <div class="navbar">
-                            <!-- BUSCADOR -->
-                            <div class="col-sm-2">
-                                <input type='text' name='dato_txt' id='dato_txt' title='Dato a buscar'
-                                    placeholder='Dato a buscar' class="form-control mb-2 mr-sm-2 mb-sm-0">
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="button" name='btn_Buscar' id='btn_Buscar'
-                                    <?php echo $var_class_button_warnigB; ?>>
-                                    <i class="fa fa-search-plus" aria-hidden="true"></i></button>
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="button" name='btn_Nuevo' id='btn_Nuevo' data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop" <?php echo $var_class_button_warnigN; ?>>
-                                    <i class="fa fa-plus" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
                 <!-- NO TOCAR -->
                 <div id="sin_contenido"></div>

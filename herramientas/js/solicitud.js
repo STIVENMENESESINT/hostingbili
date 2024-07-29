@@ -645,6 +645,21 @@ function AsignacionesCargar(idSolicitud){
         });
     });
 }
+$(document).on("click", "#btnGuardarCambios2", function() {
+    var idSolicitud = $(this).data('id');
+    $.post("../../include/cntrlSoli.php", {
+        action: 'actualizarSolicitud',
+        id_solicitud: idSolicitud,
+        id_responsable:$("#id_responsable").val()
+    }, function(data) {
+        if (data.rstl == "1") {
+            alert(data.msj);
+            location.reload();
+        } else {
+            alert(data.msj);
+        }
+    }, 'json');
+});
 $(document).on("click", "#btn_asign",function ()	{
     var idSolicitud = $(this).data('id');
     console.log("ID de la solicitud: " + idSolicitud);
@@ -655,21 +670,6 @@ $(document).on("click", "#btn_asign",function ()	{
         if(data.rst=='1'){
             $("#form_asignaciones").html(data.ListAsign);
             AsignacionesCargar(idSolicitud)
-            $(document).on("click", "#btnGuardarCambios2", function() {
-                $.post("../../include/cntrlSoli.php", {
-                    action: 'actualizarSolicitud',
-                    id_solicitud: idSolicitud,
-                    id_responsable:$("#id_responsable").val(),
-                    id_estado:$("#id_estado").val()
-                }, function(data) {
-                    if (data.rstl == "1") {
-                        alert(data.msj);
-                        location.reload();
-                    } else {
-                        alert(data.msj);
-                    }
-                }, 'json');
-            });
         }
             else { alert(data.ms); }
         }, 'json');	

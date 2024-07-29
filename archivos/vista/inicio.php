@@ -140,53 +140,77 @@ img {
         </aside>
         <!-- Contenido principal -->
         <div class="layout__content">
-            <div class="container content__page">
-                <div id="conten navbar">
-
-
-                    <div class="navbar">
-
+            <div class="content__page">
+                <!-- algo blanco que no entiendo -->
+                <!-- <div id="conten">
+                    <div class="card-body">
+                        <div class="container navbar-nav">
+                            <style>
+                            .fas {
+                                border-radius: 3rem;
+                                top: 5px;
+                            }
+                            </style>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Estilos Carrousel -->
+                <style>
+                    .carrousel{
+                        width: 90%;
+                        height: 90%;
+                    }
+                    .revista{
+                        width: 90%;
+                        height: 90%;
+                    }
+                    .nav-link{
+                        display: inline-block;
+                    }
+                </style>
+                <div class="carrousel">
+                    <?php 
+                        include_once('publicarnoticiacarrusel.php');
+                    ?>
+                </div>
+                <a id="showRevista" type="button" class="nav-link nav-item-hover">
+                    <i class="fas fa-book-open"></i>
+                    <span class="nav-item2">Desplegar Revista</span>
+                </a>
+                <div id="revista">
+                    <h1>Revista Sena B-Team </h2>
+                        <a id="hideRevista" type="button" class="nav-link nav-item-hover">
+                            <i class="fas fa-book"></i>
+                            <span class="nav-item2">Ocultar Revista</span>
+                        </a>
                         <?php
-                        if ($_SESSION['id_rol'] == 3) {
-                            echo '
-                                <li>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#revistaModal" class="nav-link">
-                                    
-                                        <span class="nav-link">
-                                            Nueva Revista
-                                            <i class="fas fa-newspaper" ></i>
-                                        </span>
-                                    
+                            if ($_SESSION['id_rol'] == 3) {
+                                echo '
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#revistaModal" class="nav-link nav-item-hover">
+                                        <i class="fas fa-plus " ></i>
+                                        <span class="nav-item2">Nueva Revista</span>
                                     </a>
-                                </li>      
-                        ';
+                            ';
                         }
                         ?>
-                        <?php
+                        <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%" height="500px" />
+                    <br>
+                </div>
+                <div class=" container">
+                    <?php 
+                        include_once('../../chatp/index.php');
+                    ?>
+                    <?php
                         if ($_SESSION['id_rol'] != 1) {
                             echo '
-                                <li>   
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-link">
-                                    
-                                        <span class="nav-link"> 
-                                            Crear  
-                                            <i class="fas fa-plus " ></i>   
-                                        </span>
-                                       
-                                    </a>
-                                </li>      
-                                <li>
-                                    <a type="button" class="nav-link">
-                                    
-                                            
-                                        <span class="nav-link">
-                                            Mis Publicaciones
-                                            <i class="fas fa-thin fa-folder-open" >
-                                            </i>    
-                                        </span>
-                                    
-                                    </a>
-                                </li> 
+                                <a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
+                                    <i class="fas fa-plus " ></i>
+                                    <span class="nav-item2">Crear </span>
+                                </a>
+                                <a type="button" class="nav-link nav-item-hover">
+                                    <i class="fas fa-plus " ></i>
+                                    <span class="nav-item2">Mis Publicaciones</span>
+                                </a>
                         ';
                         }
                         ?>
@@ -195,12 +219,6 @@ img {
                 </div>
                 <div class="carrousel" class="grid-container">
                     <h1 class="title">Bilingüismo<br>B-Team-Language </h1>
-                    <div class="divider"></div>
-                    <br>
-
-                    <div>
-                        <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="100%" height="500px" />
-                    </div>
                 </div>
                 <!-- El contenido dinámico se cargará aquí -->
                 <br>
