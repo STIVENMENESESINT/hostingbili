@@ -120,6 +120,15 @@ img {
     width: 90%;
     height: 90%;
 }
+
+.revista {
+    width: 90%;
+    height: 90%;
+}
+
+.nav-link {
+    display: inline-block;
+}
 </style>
 <!-- <div class="navbar-brand">
     <img class="navbar-brand_logo navbar__cpv--logo" src="" alt="logo de bilinguismo">
@@ -141,90 +150,88 @@ img {
         <!-- Contenido principal -->
         <div class="container layout__content">
             <div class="content__page">
-                <!-- algo blanco que no entiendo -->
-                <!-- <div id="conten">
-                    <div class="card-body">
-                        <div class="container navbar-nav">
-                            <style>
-                            .fas {
-                                border-radius: 3rem;
-                                top: 5px;
-                            }
-                            </style>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- Estilos Carrousel -->
-                <style>
-                .carrousel {
-                    width: 90%;
-                    height: 90%;
-                }
 
-                .revista {
-                    width: 90%;
-                    height: 90%;
-                }
-
-                .nav-link {
-                    display: inline-block;
-                }
-                </style>
                 <div class="carrousel">
+                    <!--este es mi carrucel principal -->
                     <?php 
                         include_once('publicarnoticiacarrusel.php');
                     ?>
                 </div>
 
-
-
             </div>
-            <div class="carrousel" class="grid-container">
+
+            <div class="divider"></div>
+            <div>
                 <h1 class="title">Bilingüismo<br>B-Team-Language </h1>
+                <div class="divider"></div>
             </div>
             <!-- El contenido dinámico se cargará aquí -->
-            <div id="revista">
-                <h1>Revista Sena B-Team </h2>
-                    <a id="hideRevista" type="button" class="nav-link nav-item-hover">
-                        <i class="fas fa-book"></i>
-                        <span class="nav-item2">Ocultar Revista</span>
+
+            <div id="conten navbar">
+
+
+                <div class="navbar">
+
+
+                    <a id="showRevista" type="button" class="nav-link nav-item-hover">
+
+                        <span class="nav-item">Desplegar Revista<i class="fas fa-book-open"></i></span>
                     </a>
+
+
                     <?php
+                        if ($_SESSION['id_rol'] != 1) {
+                            echo '
+                                <li>   
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-link">
+                                    
+                                        <span class="nav-link"> 
+                                            Crear  
+                                            <i class="fas fa-plus " ></i>   
+                                        </span>
+                                       
+                                    </a>
+                                </li>      
+                                <li>
+                                    <a type="button" class="nav-link">
+                                    
+                                            
+                                        <span class="nav-link">
+                                            Mis Publicaciones
+                                            <i class="fas fa-thin fa-folder-open" >
+                                            </i>    
+                                        </span>
+                                    
+                                    </a>
+                                </li> 
+                        ';
+                        }
+                        ?>
+                </div>
+                <div id="revista">
+                    <h1>Revista Sena B-Team </h2>
+                        <div class="divider"></div>
+                        <a id="hideRevista" type="button" class="nav-link nav-item-hover">
+
+                            <span class="nav-item">Ocultar Revista<i class="fas fa-book"></i></span>
+                        </a>
+                        <?php
                             if ($_SESSION['id_rol'] == 3) {
                                 echo '
                                     <a type="button" data-bs-toggle="modal" data-bs-target="#revistaModal" class="nav-link nav-item-hover">
-                                        <i class="fas fa-plus " ></i>
-                                        <span class="nav-item2">Nueva Revista</span>
+                                        
+                                        <span class="nav-item">Nueva Revista<i class="fas fa-plus " ></i></span>
                                     </a>
                             ';
                         }
                         ?>
-                    <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%" height="500px" />
-                    <br>
+                        <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%" height="500px" />
+                        <br>
+                </div>
+                <div class="divider"></div>
+
             </div>
-            <div class=" nav">
-                <a id="showRevista" type="button" class="nav-link nav-item-hover">
-                    <i class="fas fa-book-open"></i>
-                    <span class="nav-item2">Desplegar Revista</span>
-                </a>
-                <?php 
-                        include_once('../../chatp/index.php');
-                    ?>
-                <?php
-                        if ($_SESSION['id_rol'] != 1) {
-                            echo '
-                                <a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
-                                    <i class="fas fa-plus " ></i>
-                                    <span class="nav-item2">Crear </span>
-                                </a>
-                                <a type="button" class="nav-link nav-item-hover">
-                                    <i class="fas fa-plus " ></i>
-                                    <span class="nav-item2">Mis Publicaciones</span>
-                                </a>
-                        ';
-                        }
-                        ?>
-            </div>
+            <!-- Bili asistente virtual -->
             <?php 
                         include_once('../../chatp/index.php');
                     ?>
@@ -340,6 +347,8 @@ img {
                     </div>
                 </div> -->
             <div class="divider"></div>
+
+
             <div id="noticia_creada" class="grid-container ">
             </div>
         </div>
