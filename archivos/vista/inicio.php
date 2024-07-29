@@ -173,10 +173,6 @@ img {
                         include_once('publicarnoticiacarrusel.php');
                     ?>
                 </div>
-                <a id="showRevista" type="button" class="nav-link nav-item-hover">
-                    <i class="fas fa-book-open"></i>
-                    <span class="nav-item2">Desplegar Revista</span>
-                </a>
                 <div id="revista">
                     <h1>Revista Sena B-Team </h2>
                         <a id="hideRevista" type="button" class="nav-link nav-item-hover">
@@ -197,6 +193,10 @@ img {
                     <br>
                 </div>
                 <div class=" container">
+                <a id="showRevista" type="button" class="nav-link nav-item-hover">
+                    <i class="fas fa-book-open"></i>
+                    <span class="nav-item2">Desplegar Revista</span>
+                </a>
                     <?php 
                         include_once('../../chatp/index.php');
                     ?>
