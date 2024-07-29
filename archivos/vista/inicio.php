@@ -139,7 +139,7 @@ img {
             </div>
         </aside>
         <!-- Contenido principal -->
-        <div class="layout__content">
+        <div class="container layout__content">
             <div class="content__page">
                 <!-- algo blanco que no entiendo -->
                 <!-- <div id="conten">
@@ -156,30 +156,40 @@ img {
                 </div> -->
                 <!-- Estilos Carrousel -->
                 <style>
-                    .carrousel{
-                        width: 90%;
-                        height: 90%;
-                    }
-                    .revista{
-                        width: 90%;
-                        height: 90%;
-                    }
-                    .nav-link{
-                        display: inline-block;
-                    }
+                .carrousel {
+                    width: 90%;
+                    height: 90%;
+                }
+
+                .revista {
+                    width: 90%;
+                    height: 90%;
+                }
+
+                .nav-link {
+                    display: inline-block;
+                }
                 </style>
                 <div class="carrousel">
                     <?php 
                         include_once('publicarnoticiacarrusel.php');
                     ?>
                 </div>
-                <div id="revista">
-                    <h1>Revista Sena B-Team </h2>
-                        <a id="hideRevista" type="button" class="nav-link nav-item-hover">
-                            <i class="fas fa-book"></i>
-                            <span class="nav-item2">Ocultar Revista</span>
-                        </a>
-                        <?php
+
+
+
+            </div>
+            <div class="carrousel" class="grid-container">
+                <h1 class="title">Bilingüismo<br>B-Team-Language </h1>
+            </div>
+            <!-- El contenido dinámico se cargará aquí -->
+            <div id="revista">
+                <h1>Revista Sena B-Team </h2>
+                    <a id="hideRevista" type="button" class="nav-link nav-item-hover">
+                        <i class="fas fa-book"></i>
+                        <span class="nav-item2">Ocultar Revista</span>
+                    </a>
+                    <?php
                             if ($_SESSION['id_rol'] == 3) {
                                 echo '
                                     <a type="button" data-bs-toggle="modal" data-bs-target="#revistaModal" class="nav-link nav-item-hover">
@@ -189,18 +199,18 @@ img {
                             ';
                         }
                         ?>
-                        <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%" height="500px" />
+                    <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%" height="500px" />
                     <br>
-                </div>
-                <div class=" container">
+            </div>
+            <div class=" nav">
                 <a id="showRevista" type="button" class="nav-link nav-item-hover">
                     <i class="fas fa-book-open"></i>
                     <span class="nav-item2">Desplegar Revista</span>
                 </a>
-                    <?php 
+                <?php 
                         include_once('../../chatp/index.php');
                     ?>
-                    <?php
+                <?php
                         if ($_SESSION['id_rol'] != 1) {
                             echo '
                                 <a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
@@ -214,20 +224,13 @@ img {
                         ';
                         }
                         ?>
-                    </div>
-
-                </div>
-                <div class="carrousel" class="grid-container">
-                    <h1 class="title">Bilingüismo<br>B-Team-Language </h1>
-                </div>
-                <!-- El contenido dinámico se cargará aquí -->
-                <br>
-                <?php 
+            </div>
+            <?php 
                         include_once('../../chatp/index.php');
                     ?>
 
-                <h1 class="title">NOTICIAS</h1>
-                <!-- <div class="bilinguismo__ingles-cards">
+            <h1 class="title">NOTICIAS</h1>
+            <!-- <div class="bilinguismo__ingles-cards">
                     <div class="bilinguismo__ingles-niveles">
                         <a target="_blank"
                             href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240087"><img
@@ -336,11 +339,11 @@ img {
                             fluidez a partir de contextos sociales actuales.</p>
                     </div>
                 </div> -->
-                <div class="divider"></div>
-                <div id="noticia_creada" class="grid-container ">
-                </div>
+            <div class="divider"></div>
+            <div id="noticia_creada" class="grid-container ">
             </div>
         </div>
+    </div>
 
 
 
