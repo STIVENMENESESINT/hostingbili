@@ -126,6 +126,7 @@ img {
     height: 90%;
 }
 
+
 .nav-link {
     display: inline-block;
 }
