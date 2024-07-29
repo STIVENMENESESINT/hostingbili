@@ -66,7 +66,10 @@
  
  /*Hover*/
  .card:hover {
-  box-shadow: 0 8px 50px #23232333;
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+} .card:hover {
+  
   border: 2px solid black; /* Contorno negro */
   border-radius: 10px; /* Borde redondeado */
  }
@@ -95,10 +98,10 @@
 }
 
 .card-container {
-  gap: 15px; /* Espacio entre tarjetas */
+  gap: 63px; /* Espacio entre tarjetas */
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 

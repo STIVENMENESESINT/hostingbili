@@ -87,39 +87,39 @@ img {
     height: 4rem;
 }
 
-    .nav-link i {
-        margin-left: 10px;
-        font-size: 18px;
-    }
+.nav-link i {
+    margin-left: 10px;
+    font-size: 18px;
+}
 
-    .fa-solid,
-    .fas {
+.fa-solid,
+.fas {
 
-        font-weight: 900;
-    }
+    font-weight: 900;
+}
 
-    .title {
-        color: #3498db;
-        font-size: 7em;
-        margin-bottom: 0px;
-        text-align: center;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        font-weight: bold;
-        letter-spacing: 1px;
-    }
+.title {
+    color: #3498db;
+    font-size: 7em;
+    margin-bottom: 0px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
 
-    .divider {
-        height: 6px;
-        width: 150px;
-        background-color: #04324d;
-        margin: 30px auto;
-        border-radius: 3px;
-    }
+.divider {
+    height: 6px;
+    width: 150px;
+    background-color: #04324d;
+    margin: 30px auto;
+    border-radius: 3px;
+}
 
-    .carrousel {
-        width: 90%;
-        height: 90%;
-    }
+.carrousel {
+    width: 90%;
+    height: 90%;
+}
 </style>
 <!-- <div class="navbar-brand">
     <img class="navbar-brand_logo navbar__cpv--logo" src="" alt="logo de bilinguismo">
@@ -227,6 +227,115 @@ img {
                     ?>
 
                 <h1 class="title">NOTICIAS</h1>
+                <!-- <div class="bilinguismo__ingles-cards">
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240087"><img
+                                loading="lazy" src="../../imagenes/img/banner/ingles1-banner.webp" alt="ingles 1 banner"
+                                class="bilinguismo__ingles-imgs"></a>
+                        <p class="bilinguismo__ingles-text">Afianzamiento de herramientas básicas para la
+                            comunicación en inglés.</p>
+                    </div>
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240088"><img
+                                loading="lazy" src="../../imagenes/img/banner/ingles2-banner.webp"
+                                alt=" ingles 2 banner" class="bilinguismo__ingles-imgs"></a>
+                        <p class="bilinguismo__ingles-text">Comunicación en contextos personales
+                            y laborales en inglés</p>
+                    </div>
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240089"><img
+                                loading="lazy" src="../../imagenes/img/banner/ingles3-banner.webp" alt="ingles 3 banner"
+                                class="bilinguismo__ingles-imgs"></a>
+                        <p class="bilinguismo__ingles-text">Comunicación en contextos personales
+                            y laborales en inglés.</p>
+                    </div>
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240090"><img
+                                loading="lazy" src="../../imagenes/img/banner/ingles4-banner.webp" alt="ingles 4 banner"
+                                class="bilinguismo__ingles-imgs"></a>
+                        <p class="bilinguismo__ingles-text">Consolidación y comprensión de diferentes textos
+                            orales
+                            y escritos en inglés.</p>
+                    </div>
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240091"><img
+                                loading="lazy" src="../../imagenes/img/banner/ingles5-banner.webp" alt="ingles 5 banner"
+                                class="bilinguismo__ingles-imgs"></a>
+                        <p class="bilinguismo__ingles-text">Interacción en diferentes contextos expresando gustos
+                            y preferencias en inglés.</p>
+                    </div>
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240092"><img
+                                loading="lazy" src="../../imagenes/img/banner/ingles6-banner.webp" alt="ingles 6 banner"
+                                class="bilinguismo__ingles-imgs"></a>
+                        <p class="bilinguismo__ingles-text">Afianzamiento de herramientas para la comunicación en
+                            inglés. </p>
+                    </div>
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240093"><img
+                                loading="lazy" src="../../imagenes/img/banner/ingles7-banner.webp" alt="ingles 7 banner"
+                                class="bilinguismo__ingles-imgs"></a>
+                        <p class="bilinguismo__ingles-text">Consolidación de herramientas para la
+                            comunicación efectiva en diferentes contextos.</p>
+                    </div>
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240094"><img
+                                loading="lazy" src="../../imagenes/img/banner/ingles8-banner.webp" alt="ingles 8 banner"
+                                class="bilinguismo__ingles-imgs"></a>
+                        <p class="bilinguismo__ingles-text">Construir textos orales y escritos de acuerdo con las
+                            características e intencionalidad del contexto.</p>
+                    </div>
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240095"><img
+                                loading="lazy" src="../../imagenes/img/banner/ingles9-banner.webp" alt="ingles 9 banner"
+                                class="bilinguismo__ingles-imgs"></a>
+                        <p class="bilinguismo__ingles-text">Opinar de hechos ocurridos o planeados en inglés con
+                            base en textos narrativos.</p>
+                    </div>
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240096"><img
+                                loading="lazy" src="../../imagenes/img/banner/ingles10-banner.webp"
+                                alt="ingles 10 banner" class="bilinguismo__ingles-imgs"></a>
+                        <p class="bilinguismo__ingles-text">Construir textos orales y escritos en lengua
+                            inglesa acerca de sucesos futuros.</p>
+                    </div>
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240097"><img
+                                loading="lazy" src="../../imagenes/img/banner/ingles11-banner.webp"
+                                alt="ingles 11 banner" class="bilinguismo__ingles-imgs"></a>
+                        <p class="bilinguismo__ingles-text">Elaborar textos argumentativos en inglés con
+                            coherencia y
+                            cohesión según la intencionalidad comunicativa.</p>
+                    </div>
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240098"><img
+                                loading="lazy" src="../../imagenes/img/banner/ingles12-banner.webp"
+                                alt="ingles 12 banner" class="bilinguismo__ingles-imgs"></a>
+                        <p class="bilinguismo__ingles-text">Justificar opiniones orales y escritas según el
+                            contexto social o laboral en inglés. </p>
+                    </div>
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240099"><img
+                                loading="lazy" src="../../imagenes/img/banner/ingles13-banner.webp"
+                                alt="ingles 13 banner" class="bilinguismo__ingles-imgs"></a>
+                        <p class="bilinguismo__ingles-text">Interactuar en actos comunicativos con independencia
+                            y
+                            fluidez a partir de contextos sociales actuales.</p>
+                    </div>
+                </div> -->
                 <div class="divider"></div>
                 <div id="noticia_creada" class="grid-container ">
                 </div>
