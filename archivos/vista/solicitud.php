@@ -22,6 +22,7 @@ if (isset($_SESSION['id_userprofile'])){
     ?>
     <script type='text/javascript' src="../../herramientas/js/solicitud.js"></script>
     <link rel="stylesheet" href="../../herramientas/css/solicitud.css">
+
 </head>
 
 <body>
@@ -135,7 +136,11 @@ if (isset($_SESSION['id_userprofile'])){
                 </div>
                 <div class="modal-body">
                     <div id="form_AA"></div>
-                
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="create-button" id="subirNoti">Subir</button>
+                </div>
             </div>
         </div>
     </div>
@@ -156,7 +161,7 @@ if (isset($_SESSION['id_userprofile'])){
         </div>
     </div>
     <!-- MODAL DETALLE OFERTA CURSO -->
-    <div class="modal fade" id="AceptSolicitud2Modal" tabindex="-1" aria-labelledby="OfertaLabel" aria-hidden="true">
+    <div class="modal fade" id="OfertaModal" tabindex="-1" aria-labelledby="OfertaLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -173,16 +178,17 @@ if (isset($_SESSION['id_userprofile'])){
         </div>
     </div>
     <!-- MODAL 5 ASIGNACIONES [2]-->
-    <div class="modal fade" id="detallesolicitud" tabindex="-1" aria-labelledby="AceptSolicitudLabel"
+    <div class="modal fade" id="AceptSolicitud2Modal" tabindex="-1" aria-labelledby="AceptSolicitudLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="">Detalle SOLICITUD</h1>
+                    <h1 class="modal-title fs-5" id=""> Prototipo de Noticia/Oferta</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div id="datlleSolicitud"></div>
+                    <div id="noticia_creada"></div>
+                    <div id="form_Of"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
@@ -221,6 +227,10 @@ if (isset($_SESSION['id_userprofile'])){
                 <div class="modal-body">
                     <div id="form_asignaciones"></div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="create-button" id="btnGuardarCambios2">Asignar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -238,6 +248,7 @@ if (isset($_SESSION['id_userprofile'])){
                     <div id="cancel"></div>
                 </div>
                 <div class="modal-footer">
+
                 </div>
             </div>
         </div>
