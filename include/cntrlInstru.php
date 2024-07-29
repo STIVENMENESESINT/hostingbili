@@ -53,6 +53,11 @@ switch ($_REQUEST['action'])
                 <div class='row'>
                     <div class='col-sm-5'>
                         <ul class='navbar-nav'>
+                         <style>
+                                .card {
+                                    background-color: #f2f2f2;
+                                }
+                        </style>
                            
                                 <div class='card'>
                                     <div class='card-info'>
