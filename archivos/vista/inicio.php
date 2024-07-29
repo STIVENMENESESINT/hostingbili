@@ -120,6 +120,15 @@ img {
     width: 90%;
     height: 90%;
 }
+
+.revista {
+    width: 90%;
+    height: 90%;
+}
+
+.nav-link {
+    display: inline-block;
+}
 </style>
 <!-- <div class="navbar-brand">
     <img class="navbar-brand_logo navbar__cpv--logo" src="" alt="logo de bilinguismo">
@@ -141,72 +150,41 @@ img {
         <!-- Contenido principal -->
         <div class="container layout__content">
             <div class="content__page">
-                <!-- algo blanco que no entiendo -->
-                <!-- <div id="conten">
-                    <div class="card-body">
-                        <div class="container navbar-nav">
-                            <style>
-                            .fas {
-                                border-radius: 3rem;
-                                top: 5px;
-                            }
-                            </style>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- Estilos Carrousel -->
-                <style>
-                .carrousel {
-                    width: 90%;
-                    height: 90%;
-                }
 
-                .revista {
-                    width: 90%;
-                    height: 90%;
-                }
-
-                .nav-link {
-                    display: inline-block;
-                }
-                </style>
                 <div class="carrousel">
+                    <!--este es mi carrucel principal -->
                     <?php 
                         include_once('publicarnoticiacarrusel.php');
                     ?>
                 </div>
 
-
-
             </div>
             <div class="carrousel" class="grid-container">
-            <h1 class="title" 
-                data-lang-es="Bilingüismo<br>B-Team-Language" 
-                data-lang-en="Bilingualism<br>B-Team-Language" 
-                data-lang-fr="Bilinguisme<br>B-Team-Language">
-                Bilingüismo
-                B-Team-Language 
-            </h1>
+                <h1 class="title" data-lang-es="Bilingüismo<br>B-Team-Language"
+                    data-lang-en="Bilingualism<br>B-Team-Language" data-lang-fr="Bilinguisme<br>B-Team-Language">
+                    Bilingüismo
+                    B-Team-Language
+                </h1>
 
             </div>
             <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                    const languageSelect = document.getElementById("language-select");
+            document.addEventListener("DOMContentLoaded", () => {
+                const languageSelect = document.getElementById("language-select");
 
-                    languageSelect.addEventListener("change", (event) => {
-                        const selectedLanguage = event.target.value;
-                        setLanguage(selectedLanguage);
-                    });
-
-                    function setLanguage(language) {
-                        document.querySelectorAll("[data-lang-es]").forEach(element => {
-                            element.textContent = element.getAttribute(`data-lang-${language}`);
-                        });
-                    }
-
-                    // Set default language
-                    setLanguage(languageSelect.value);
+                languageSelect.addEventListener("change", (event) => {
+                    const selectedLanguage = event.target.value;
+                    setLanguage(selectedLanguage);
                 });
+
+                function setLanguage(language) {
+                    document.querySelectorAll("[data-lang-es]").forEach(element => {
+                        element.textContent = element.getAttribute(`data-lang-${language}`);
+                    });
+                }
+
+                // Set default language
+                setLanguage(languageSelect.value);
+            });
             </script>
             <div>
                 <label for="language-select">Select Language:</label>
@@ -217,10 +195,12 @@ img {
                 </select>
             </div>
             <div id="revista">
-                <h1  data-lang-es="Revista Sena B-Team" data-lang-en="Sena B-Team Magazine" data-lang-fr="Magazine de l'équipe B de Sena">Revista Sena B-Team </h2>
+                <h1 data-lang-es="Revista Sena B-Team" data-lang-en="Sena B-Team Magazine"
+                    data-lang-fr="Magazine de l'équipe B de Sena">Revista Sena B-Team </h2>
                     <a id="hideRevista" type="button" class="nav-link nav-item-hover">
                         <i class="fas fa-book"></i>
-                        <span class="nav-item2" data-lang-es="Ocultar Revista" data-lang-en="Hide Magazine" data-lang-fr="Cacher le Magazine">Ocultar Revista</span>
+                        <span class="nav-item2" data-lang-es="Ocultar Revista" data-lang-en="Hide Magazine"
+                            data-lang-fr="Cacher le Magazine">Ocultar Revista</span>
                     </a>
                     <?php
                             if ($_SESSION['id_rol'] == 3) {
@@ -238,7 +218,8 @@ img {
             <div class=" nav">
                 <a id="showRevista" type="button" class="nav-link nav-item-hover">
                     <i class="fas fa-book-open"></i>
-                    <span class="nav-item2" data-lang-es="Desplegar Revista" data-lang-en="Expand Magazine" data-lang-fr="Déplier le Magazine">Desplegar Revista</span>
+                    <span class="nav-item2" data-lang-es="Desplegar Revista" data-lang-en="Expand Magazine"
+                        data-lang-fr="Déplier le Magazine">Desplegar Revista</span>
                 </a>
                 <?php 
                         include_once('../../chatp/index.php');
@@ -258,6 +239,7 @@ img {
                         }
                         ?>
             </div>
+            <!-- Bili asistente virtual -->
             <?php 
                         include_once('../../chatp/index.php');
                     ?>
@@ -374,6 +356,8 @@ img {
                     </div>
                 </div> -->
             <div class="divider"></div>
+
+
             <div id="noticia_creada" class="grid-container ">
             </div>
         </div>
@@ -386,61 +370,74 @@ img {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h1 class="text-center" data-lang-es="Crear publicación" data-lang-en="Create Publication" data-lang-fr="Créer une publication">Crear publicación</h1>
+                <h1 class="text-center" data-lang-es="Crear publicación" data-lang-en="Create Publication"
+                    data-lang-fr="Créer une publication">Crear publicación</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="card p-3 shadow-lg border-3 text-bg-light" action="" method="post" enctype="multipart/form-data">
+                <form class="card p-3 shadow-lg border-3 text-bg-light" action="" method="post"
+                    enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label class="form-label" data-lang-es="Título:" data-lang-en="Title:" data-lang-fr="Titre:">Título:</label>
+                        <label class="form-label" data-lang-es="Título:" data-lang-en="Title:"
+                            data-lang-fr="Titre:">Título:</label>
                         <input type="text" class="form-control" id="titulo" placeholder="titulo" required>
                     </div>
                     <div class="mb-3">
-                        <label for="fecha_inicio" class="form-label" data-lang-es="Fecha a Mostrar" data-lang-en="Display Date" data-lang-fr="Date à Afficher">Fecha a Mostrar</label>
+                        <label for="fecha_inicio" class="form-label" data-lang-es="Fecha a Mostrar"
+                            data-lang-en="Display Date" data-lang-fr="Date à Afficher">Fecha a Mostrar</label>
                         <input class="form-control" type="date" id="id_fecha_mostrada" name="fecha_inicio" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" data-lang-es="Descripción" data-lang-en="Description" data-lang-fr="Description">Descripción</label>
+                        <label class="form-label" data-lang-es="Descripción" data-lang-en="Description"
+                            data-lang-fr="Description">Descripción</label>
                         <textarea rows="10" class="form-control" id="descripcion" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="imagen" class="form-label" data-lang-es="Adjuntar Imagen:" data-lang-en="Attach Image:" data-lang-fr="Joindre une Image:">Adjuntar Imagen:</label>
+                        <label for="imagen" class="form-label" data-lang-es="Adjuntar Imagen:"
+                            data-lang-en="Attach Image:" data-lang-fr="Joindre une Image:">Adjuntar Imagen:</label>
                         <input type="file" class="form-control" id="imagen" name="imagen" required>
                     </div>
                     <div class="mb-3">
-                        <label for="id_categoria" class="form-label" data-lang-es="Categoría" data-lang-en="Category" data-lang-fr="Catégorie">Categoría</label>
-                        <select class="form-control" id="id_categoria" name="id_categoria" onchange="MostrarTipo_Categoria()">
+                        <label for="id_categoria" class="form-label" data-lang-es="Categoría" data-lang-en="Category"
+                            data-lang-fr="Catégorie">Categoría</label>
+                        <select class="form-control" id="id_categoria" name="id_categoria"
+                            onchange="MostrarTipo_Categoria()">
                             <!-- Opciones de categorías aquí -->
                         </select>
                     </div>
                     <div class="mb-3" id="tipo_cate">
                         <!-- Contenido dependiente de la categoría -->
                     </div>
-                </div>
             </div>
         </div>
     </div>
-            <div class="modal fade" id="revistaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" data-lang-es="Subir Imágenes al Carrusel" data-lang-en="Upload Carousel Images" data-lang-fr="Télécharger des Images pour le Carrousel">Subir Imágenes al Carrusel</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form action="upload.php" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="image" data-lang-es="Selecciona una imagen:" data-lang-en="Select an image:" data-lang-fr="Sélectionnez une image:">Selecciona una imagen:</label>
-                                <input type="file" name="image[]" id="image" class="form-control" multiple>
-                            </div>
-                        </form>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-lang-es="Salir" data-lang-en="Exit" data-lang-fr="Sortir">Salir</button>
-                            <input class="btn btn-primary" type="button" id="actualizarPermisousu" value="Gestionar" data-lang-es="Gestionar" data-lang-en="Manage" data-lang-fr="Gérer">
-                        </div>
-                    </div>
-                </div>
+</div>
+<div class="modal fade" id="revistaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" data-lang-es="Subir Imágenes al Carrusel"
+                    data-lang-en="Upload Carousel Images" data-lang-fr="Télécharger des Images pour le Carrousel">Subir
+                    Imágenes al Carrusel</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="image" data-lang-es="Selecciona una imagen:" data-lang-en="Select an image:"
+                        data-lang-fr="Sélectionnez une image:">Selecciona una imagen:</label>
+                    <input type="file" name="image[]" id="image" class="form-control" multiple>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-lang-es="Salir"
+                    data-lang-en="Exit" data-lang-fr="Sortir">Salir</button>
+                <input class="btn btn-primary" type="button" id="actualizarPermisousu" value="Gestionar"
+                    data-lang-es="Gestionar" data-lang-en="Manage" data-lang-fr="Gérer">
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
