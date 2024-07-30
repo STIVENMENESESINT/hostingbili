@@ -98,3 +98,8 @@ label.data-field {
         padding: 15px 0;
         
 }
+.notificacion{
+    position: absolute;
+    left: 125rem;
+    top: 3rem;
+}

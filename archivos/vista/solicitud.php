@@ -36,6 +36,13 @@ if (isset($_SESSION['id_userprofile'])){
                     ?>
             </div>
         </aside>
+        <div class="notificacion">
+            <?php 
+                if($_SESSION['id_rol']==2){
+                    include_once('notificacion.php');
+                }
+            ?>
+        </div>
         <!-- Contenido principal -->
         <div class="layout__content">
             <div class="container content__page">

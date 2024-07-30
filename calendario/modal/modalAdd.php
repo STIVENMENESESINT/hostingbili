@@ -10,6 +10,18 @@
                     <script>
                         $(document).ready(function(){  
                             $.post("../../include/select.php", {
+                                action: 'crgrprogramaFormacion' 
+                            },
+                            function(data) {
+                                $("#id_programa_formacion").html(data.lisTiposPF);
+                                },
+                                'json'
+                            ).fail(function(xhr, status, error) {
+                                console.error(error);
+                            });
+                        });
+                        $(document).ready(function(){  
+                            $.post("../../include/select.php", {
                                 action: 'CrgrCompetencia' 
                             },
                             function(data) {
@@ -78,6 +90,14 @@
                                         echo "<option value=\"$id_usuario\">$nome_usuario</option>";
                                     }
                                 ?>                
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_competencia" class="col-sm-2 control-label">Programa de Formacion</label>
+                        <div class="col-sm-10">
+                            <select name="id_programa_formacion" class="form-control" id="id_programa_formacion">
+                                <option value="">seleccione...</option>
                             </select>
                         </div>
                     </div>

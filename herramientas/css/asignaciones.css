@@ -89,3 +89,8 @@ label.data-field {
     text-align: center;
     vertical-align: middle;
     }
+.notificacion{
+    position: absolute;
+    left: 125rem;
+    top: 3rem;
+    }

@@ -204,11 +204,11 @@ switch ($_REQUEST['action'])
         }
         print json_encode($jTableResult);
     break;
-    case 'crgrTiposprogramaFormacion':
+    case 'crgrprogramaFormacion':
         $jTableResult = array();                
         $jTableResult['lisTiposPF']="";
         $jTableResult['lisTiposPF']="<option value='0' selected >seleccione:.</option>";
-        $query="SELECT id_programaformacion, nombre FROM programaformacion";
+        $query="SELECT id_programaformacion, nombre FROM programaformacion WHERE id_estado = 7";
         $resultado = mysqli_query($conn, $query);
         while($registro = mysqli_fetch_array($resultado))
         {

@@ -193,8 +193,13 @@ switch ($_REQUEST['action'])
                         LEFT JOIN 
                             estado e ON p.id_estado = e.id_estado
                         WHERE 
-                            p.id_estado = 7 
-                        ORDER BY p.id_programaformacion DESC";
+                            p.id_estado = 7 ";
+                            if($_SESSION['id_rol']==2){
+                                $busqueda .= "AND fk_programado = " . $_SESSION['id_userprofile'] . "";
+                                
+                            }
+                            
+                            $busqueda .= "ORDER BY p.id_programaformacion DESC";
             $result = mysqli_query($conn, $busqueda);
             
             if (mysqli_num_rows($result) > 0) {
