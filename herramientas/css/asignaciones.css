@@ -83,8 +83,10 @@ label.data-field {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .local {
-    width: 70%; /* Ajusta el tamaño según tus necesidades */
-    height: 40%; /* Ajusta el tamaño según tus necesidades */
+    left: 20px;
+    width: 10rem; /* Ajusta el tamaño según tus necesidades */
+    height: 2rem; /* Ajusta el tamaño según tus necesidades */
+    margin-bottom: 1rem;
     display: inline-block;
     text-align: center;
     vertical-align: middle;
@@ -94,3 +96,14 @@ label.data-field {
     left: 125rem;
     top: 3rem;
     }
+
+    .create-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+    .close-button {
+        background-color: #f44336;
+        color: white;
+    }
+

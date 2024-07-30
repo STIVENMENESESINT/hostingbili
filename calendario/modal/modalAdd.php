@@ -94,7 +94,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="id_competencia" class="col-sm-2 control-label">Programa de Formacion</label>
+                        <label for="id_programa_formacion" class="col-sm-2 control-label">Programa de Formacion</label>
                         <div class="col-sm-10">
                             <select name="id_programa_formacion" class="form-control" id="id_programa_formacion">
                                 <option value="">seleccione...</option>

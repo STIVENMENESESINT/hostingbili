@@ -8,7 +8,7 @@ session_start();
 $database = new Database();
 $db = $database->conectar();
 
-if (isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['inicio']) && isset($_POST['termino']) && isset($_POST['cor']) && isset($_POST['id_competencia']) && isset($_POST['id_resultado_aprendizaje']) && isset($_POST['convidado']) && isset($_POST['id_programaformacion'])) {
+if (isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['inicio']) && isset($_POST['termino']) && isset($_POST['cor']) && isset($_POST['id_competencia']) && isset($_POST['id_resultado_aprendizaje']) && isset($_POST['convidado']) && isset($_POST['id_programa_formacion'])) {
 
     $titulo = $_POST['titulo'];
     $descricao = $_POST['descricao'];
@@ -18,7 +18,7 @@ if (isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['inici
     $convidado = $_POST['convidado'];
     $competencia = $_POST['id_competencia'];
     $ra = $_POST['id_resultado_aprendizaje'];
-    $pf = $_POST['id_programaformacion'];
+    $pf = $_POST['id_programa_formacion'];
 
     if (isset($_SESSION['id_userprofile'])) {
         $id_usuario = $_SESSION['id_userprofile'];
