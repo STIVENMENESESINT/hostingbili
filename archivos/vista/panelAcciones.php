@@ -43,8 +43,13 @@ if (isset($_SESSION['id_userprofile'])){
     background-color: #04324d;
     padding: 15px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    /* Ajusta el valor según el nivel de redondez deseado */
+    margin: 10px;
+    /* Añade un margen para separarlo de otros elementos */
 }
-.notificacion{
+
+.notificacion {
     position: absolute;
     left: 125rem;
     top: 3rem;

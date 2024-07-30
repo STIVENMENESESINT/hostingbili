@@ -46,6 +46,10 @@ if (isset($_SESSION['id_userprofile'])) {
     background-color: #04324d;
     padding: 15px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    /* Ajusta el valor según el nivel de redondez deseado */
+    margin: 10px;
+    /* Añade un margen para separarlo de otros elementos */
 }
 
 .nav-link {
@@ -202,18 +206,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 margin: 20px 0;
             }
 
-            .bilinguismo__ingles-cards {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(2, auto);
-                gap: 10px;
+            .bilingualism__english-cards-container {
                 max-width: 800px;
                 margin: 0 auto;
                 padding: 20px;
                 background-color: #f9f9f9;
+                overflow-y: scroll;
+                height: 400px;
+                /* Adjust the height as needed */
             }
 
-            .bilinguismo__ingles-niveles {
+            .bilingualism__english-cards {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(7, auto);
+                /* Adjust the number of rows if needed */
+                gap: 10px;
+            }
+
+            .bilingualism__english-levels {
                 border: 1px solid #ddd;
                 border-radius: 8px;
                 padding: 10px;
@@ -221,73 +232,163 @@ document.addEventListener("DOMContentLoaded", () => {
                 text-align: center;
             }
 
-            .bilinguismo__ingles-imgs {
+            .bilingualism__english-imgs {
                 width: 100%;
                 height: auto;
                 border-radius: 8px;
             }
 
-            .bilinguismo__ingles-text {
+            .bilingualism__english-text {
                 margin-top: 10px;
-                font-size: 0.9em;
+                font-size: 1.3em;
                 color: #333;
             }
             </style>
+            <!-- Cursos Sena Bilinguismo -->
             <div>
+
+
                 <div>
-                    <h1 class="title" data-lang-es="Curosos Bilingüismo" data-lang-en="Courses Bilingualism"
+                    <h1 class="title" data-lang-es="Cursos Bilingüismo" data-lang-en="Courses Bilingualism"
                         data-lang-fr="Cours Bilinguisme">
                         Cursos Bilingüismo
                     </h1>
                 </div>
 
-                <div class="bilinguismo__ingles-cards">
-                    <div class="bilinguismo__ingles-niveles">
-                        <a target="_blank"
-                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240087">
-                            <img loading="lazy" src="../../imagenes/img/banner/ingles1-banner.webp"
-                                alt="ingles 1 banner" class="bilinguismo__ingles-imgs">
-                        </a>
-                        <p class="bilinguismo__ingles-text">Afianzamiento de herramientas básicas para la comunicación
-                            en inglés.</p>
-                    </div>
-                    <div class="bilinguismo__ingles-niveles">
-                        <a target="_blank"
-                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240088">
-                            <img loading="lazy" src="../../imagenes/img/banner/ingles2-banner.webp"
-                                alt="ingles 2 banner" class="bilinguismo__ingles-imgs">
-                        </a>
-                        <p class="bilinguismo__ingles-text">Comunicación en contextos personales y laborales en inglés.
-                        </p>
-                    </div>
-                    <div class="bilinguismo__ingles-niveles">
-                        <a target="_blank"
-                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240089">
-                            <img loading="lazy" src="../../imagenes/img/banner/ingles3-banner.webp"
-                                alt="ingles 3 banner" class="bilinguismo__ingles-imgs">
-                        </a>
-                        <p class="bilinguismo__ingles-text">Comunicación en contextos personales y laborales en inglés.
-                        </p>
-                    </div>
-                    <div class="bilinguismo__ingles-niveles">
-                        <a target="_blank"
-                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240090">
-                            <img loading="lazy" src="../../imagenes/img/banner/ingles4-banner.webp"
-                                alt="ingles 4 banner" class="bilinguismo__ingles-imgs">
-                        </a>
-                        <p class="bilinguismo__ingles-text">Consolidación y comprensión de diferentes textos orales y
-                            escritos en inglés.</p>
+                <div class="bilingualism__english-cards-container">
+                    <div class="bilingualism__english-cards">
+                        <div class="bilingualism__english-levels">
+                            <a target="_blank"
+                                href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240087">
+                                <img loading="lazy" src="../../imagenes/img/banner/ingles1-banner.webp"
+                                    alt="English 1 banner" class="bilingualism__english-imgs">
+                            </a>
+                            <p class="bilingualism__english-text">Strengthening basic tools for communication in
+                                English.</p>
+                        </div>
+                        <div class="bilingualism__english-levels">
+                            <a target="_blank"
+                                href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240088">
+                                <img loading="lazy" src="../../imagenes/img/banner/ingles2-banner.webp"
+                                    alt="English 2 banner" class="bilingualism__english-imgs">
+                            </a>
+                            <p class="bilingualism__english-text">Communication in personal and professional contexts in
+                                English.</p>
+                        </div>
+                        <div class="bilingualism__english-levels">
+                            <a target="_blank"
+                                href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240089">
+                                <img loading="lazy" src="../../imagenes/img/banner/ingles3-banner.webp"
+                                    alt="English 3 banner" class="bilingualism__english-imgs">
+                            </a>
+                            <p class="bilingualism__english-text">Communication in personal and professional contexts in
+                                English.</p>
+                        </div>
+                        <div class="bilingualism__english-levels">
+                            <a target="_blank"
+                                href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240090">
+                                <img loading="lazy" src="../../imagenes/img/banner/ingles4-banner.webp"
+                                    alt="English 4 banner" class="bilingualism__english-imgs">
+                            </a>
+                            <p class="bilingualism__english-text">Consolidation and understanding of different oral and
+                                written texts in English.</p>
+                        </div>
+                        <div class="bilingualism__english-levels">
+                            <a target="_blank"
+                                href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240091">
+                                <img loading="lazy" src="../../imagenes/img/banner/ingles5-banner.webp"
+                                    alt="English 5 banner" class="bilingualism__english-imgs">
+                            </a>
+                            <p class="bilingualism__english-text">Interaction in different contexts expressing tastes
+                                and preferences in English.</p>
+                        </div>
+                        <div class="bilingualism__english-levels">
+                            <a target="_blank"
+                                href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240092">
+                                <img loading="lazy" src="../../imagenes/img/banner/ingles6-banner.webp"
+                                    alt="English 6 banner" class="bilingualism__english-imgs">
+                            </a>
+                            <p class="bilingualism__english-text">Strengthening tools for communication in English.</p>
+                        </div>
+                        <div class="bilingualism__english-levels">
+                            <a target="_blank"
+                                href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240093">
+                                <img loading="lazy" src="../../imagenes/img/banner/ingles7-banner.webp"
+                                    alt="English 7 banner" class="bilingualism__english-imgs">
+                            </a>
+                            <p class="bilingualism__english-text">Consolidation of tools for effective communication in
+                                different contexts.</p>
+                        </div>
+                        <div class="bilingualism__english-levels">
+                            <a target="_blank"
+                                href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240094">
+                                <img loading="lazy" src="../../imagenes/img/banner/ingles8-banner.webp"
+                                    alt="English 8 banner" class="bilingualism__english-imgs">
+                            </a>
+                            <p class="bilingualism__english-text">Construct oral and written texts according to the
+                                characteristics and intentionality of the context.</p>
+                        </div>
+                        <div class="bilingualism__english-levels">
+                            <a target="_blank"
+                                href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240095">
+                                <img loading="lazy" src="../../imagenes/img/banner/ingles9-banner.webp"
+                                    alt="English 9 banner" class="bilingualism__english-imgs">
+                            </a>
+                            <p class="bilingualism__english-text">Comment on events that have occurred or are planned in
+                                English based on narrative texts.</p>
+                        </div>
+                        <div class="bilingualism__english-levels">
+                            <a target="_blank"
+                                href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240096">
+                                <img loading="lazy" src="../../imagenes/img/banner/ingles10-banner.webp"
+                                    alt="English 10 banner" class="bilingualism__english-imgs">
+                            </a>
+                            <p class="bilingualism__english-text">Construct oral and written texts in English about
+                                future events.</p>
+                        </div>
+                        <div class="bilingualism__english-levels">
+                            <a target="_blank"
+                                href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240097">
+                                <img loading="lazy" src="../../imagenes/img/banner/ingles11-banner.webp"
+                                    alt="English 11 banner" class="bilingualism__english-imgs">
+                            </a>
+                            <p class="bilingualism__english-text">Write argumentative texts in English with coherence
+                                and cohesion according to the communicative intentionality.</p>
+                        </div>
+                        <div class="bilingualism__english-levels">
+                            <a target="_blank"
+                                href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240098">
+                                <img loading="lazy" src="../../imagenes/img/banner/ingles12-banner.webp"
+                                    alt="English 12 banner" class="bilingualism__english-imgs">
+                            </a>
+                            <p class="bilingualism__english-text">Justify oral and written opinions according to the
+                                social or professional context in English.</p>
+                        </div>
+                        <div class="bilingualism__english-levels">
+                            <a target="_blank"
+                                href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240099">
+                                <img loading="lazy" src="../../imagenes/img/banner/ingles13-banner.webp"
+                                    alt="English 13 banner" class="bilingualism__english-imgs">
+                            </a>
+                            <p class="bilingualism__english-text">Interact in communicative acts with independence and
+                                fluency based on current social contexts.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="divider"></div>
             </div>
+            <!-- Fin Cursos Sena Bilinguismo -->
             <!-- El contenido dinámico se cargará aquí -->
 
             <div id="conten navbar">
                 <div class="navbar">
-                    <a id="showRevista" type="button" class="nav-link nav-item-hover">
-                        <span class="nav-item" data-lang-es="Desplegar Revista" data-lang-en="Expand Magazine"
-                            data-lang-fr="Déplier le Magazine">Desplegar Revista<i class="fas fa-book-open"></i></span>
+                    <a id="showRevista" type="button" class="nav-link ">
+
+                        <span class="nav-link" data-lang-es="Desplegar Revista" data-lang-en="Expand Magazine"
+                            data-lang-fr="Déplier le Magazine">
+                            Desplegar Revista
+                            <i class="fas fa-book-open"></i>
+                        </span>
                     </a>
                     <?php
                         if ($_SESSION['id_rol'] != 1) {
@@ -297,7 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     
                                         <span class="nav-link" data-lang-es="Crear" data-lang-en="Create" data-lang-fr="Créer"> 
                                             Crear  
-                                            <i class="fas fa-plus " ></i>   
+                                            
                                         </span>
                                     </a>
                                 </li>      
@@ -307,8 +408,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                             
                                         <span class="nav-link" data-lang-es="Mis Publicaciones" data-lang-en="My Publications" data-lang-fr="Mes Publications">
                                             Mis Publicaciones
-                                            <i class="fas fa-thin fa-folder-open" >
-                                            </i>    
+                                           <i class="fas fa-thin fa-folder-open nav-link"></i>
+                                              
                                         </span>
                                     
                                     </a>
