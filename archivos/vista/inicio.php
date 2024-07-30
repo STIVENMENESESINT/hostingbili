@@ -195,10 +195,90 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             <div class="divider"></div>
+            <style>
+            .title {
+                font-size: 2em;
+                text-align: center;
+                margin: 20px 0;
+            }
+
+            .bilinguismo__ingles-cards {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, auto);
+                gap: 10px;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #f9f9f9;
+            }
+
+            .bilinguismo__ingles-niveles {
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 10px;
+                background-color: #fff;
+                text-align: center;
+            }
+
+            .bilinguismo__ingles-imgs {
+                width: 100%;
+                height: auto;
+                border-radius: 8px;
+            }
+
+            .bilinguismo__ingles-text {
+                margin-top: 10px;
+                font-size: 0.9em;
+                color: #333;
+            }
+            </style>
             <div>
-                <h1 class="title" data-lang-es="Bilingüismo B-Team-Language" data-lang-en="Bilingualism B-Team-Language"
-                    data-lang-fr="Bilinguisme B-Team-Language">
-                    Bilingüismo B-Team-Language </h1>
+                <div>
+                    <h1 class="title" data-lang-es="Curosos Bilingüismo" data-lang-en="Courses Bilingualism"
+                        data-lang-fr="Cours Bilinguisme">
+                        Cursos Bilingüismo
+                    </h1>
+                </div>
+
+                <div class="bilinguismo__ingles-cards">
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240087">
+                            <img loading="lazy" src="../../imagenes/img/banner/ingles1-banner.webp"
+                                alt="ingles 1 banner" class="bilinguismo__ingles-imgs">
+                        </a>
+                        <p class="bilinguismo__ingles-text">Afianzamiento de herramientas básicas para la comunicación
+                            en inglés.</p>
+                    </div>
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240088">
+                            <img loading="lazy" src="../../imagenes/img/banner/ingles2-banner.webp"
+                                alt="ingles 2 banner" class="bilinguismo__ingles-imgs">
+                        </a>
+                        <p class="bilinguismo__ingles-text">Comunicación en contextos personales y laborales en inglés.
+                        </p>
+                    </div>
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240089">
+                            <img loading="lazy" src="../../imagenes/img/banner/ingles3-banner.webp"
+                                alt="ingles 3 banner" class="bilinguismo__ingles-imgs">
+                        </a>
+                        <p class="bilinguismo__ingles-text">Comunicación en contextos personales y laborales en inglés.
+                        </p>
+                    </div>
+                    <div class="bilinguismo__ingles-niveles">
+                        <a target="_blank"
+                            href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240090">
+                            <img loading="lazy" src="../../imagenes/img/banner/ingles4-banner.webp"
+                                alt="ingles 4 banner" class="bilinguismo__ingles-imgs">
+                        </a>
+                        <p class="bilinguismo__ingles-text">Consolidación y comprensión de diferentes textos orales y
+                            escritos en inglés.</p>
+                    </div>
+                </div>
                 <div class="divider"></div>
             </div>
             <!-- El contenido dinámico se cargará aquí -->
@@ -265,7 +345,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         include_once('../../chatp/index.php');
                     ?>
 
-                <h1 class="title" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">NOTICIAS</h1>
+                <h1 class="title" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">NOTICIAS
+                </h1>
                 <!-- <div class="bilinguismo__ingles-cards">
                     <div class="bilinguismo__ingles-niveles">
                         <a target="_blank"
