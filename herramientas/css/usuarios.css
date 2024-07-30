@@ -82,3 +82,13 @@ label.data-field {
     left: 125rem;
     top: 3rem;
 }
+.local {
+    left: 20px;
+    width: 10rem; /* Ajusta el tamaño según tus necesidades */
+    height: 2rem; /* Ajusta el tamaño según tus necesidades */
+    margin-bottom: 1rem;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    }
+    
