@@ -117,8 +117,9 @@ img {
 }
 
 .carrousel {
-    width: 90%;
+    width: 99%;
     height: 90%;
+
 }
 
 .revista {
@@ -157,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <body>
 
+
     <div class="layout">
         <!-- Menú de navegación -->
         <aside class="layout__aside">
@@ -169,9 +171,20 @@ document.addEventListener("DOMContentLoaded", () => {
         </aside>
         <!-- Contenido principal -->
         <div class="container layout__content">
+
+            <div>
+
+                <select id="language-select">
+                    <option value="es"><label for="language-select">Language:</label></option>
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                </select>
+            </div>
+
             <div class="content__page">
 
-                <div class="carrousel">
+                <div class="">
                     <!--este es mi carrucel principal -->
                     <?php 
                         include_once('publicarnoticiacarrusel.php');
@@ -179,18 +192,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <!-- este es el traductor -->
-            <div>
-                <label for="language-select">Select Language:</label>
-                <select id="language-select">
-                    <option value="es">Español</option>
-                    <option value="en">English</option>
-                    <option value="fr">Français</option>
-                </select>
-            </div>
+
+
             <div class="divider"></div>
             <div>
-                <h1 class="title" data-lang-es="Bilingüismo<br>B-Team-Language"
-                    data-lang-en="Bilingualism<br>B-Team-Language" data-lang-fr="Bilinguisme<br>B-Team-Language">
+                <h1 class="title" data-lang-es="Bilingüismo B-Team-Language" data-lang-en="Bilingualism B-Team-Language"
+                    data-lang-fr="Bilinguisme B-Team-Language">
                     Bilingüismo B-Team-Language </h1>
                 <div class="divider"></div>
             </div>
@@ -455,8 +462,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 </html>
+<style>
+.language-select-container {
+    position: absolute;
+    top: 20px;
+    /* Ajusta esto para mover el contenedor hacia abajo o hacia arriba */
+    left: 20px;
+    /* Ajusta esto para mover el contenedor hacia la derecha o hacia la izquierda */
+    background-color: rgba(240, 240, 240, 0.5);
+    /* Fondo semi-transparente */
+    padding: 10px;
+    /* Espaciado interno */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    /* Sombra para dar profundidad */
+}
 
+#language-select {
+    width: 80px;
+    /* Ajusta el ancho del select */
+    padding: 5px;
+    /* Espaciado interno para el select */
+    border: 2px solid rgba(204, 204, 204, 0.7);
+    /* Borde semi-transparente */
+    border-radius: 64px;
+    /* Bordes redondeados */
+    font-size: 14px;
+    /* Tamaño de la fuente dentro del select */
+    background-color: rgba(240, 240, 240, 0.3);
+    /* Fondo semi-transparente */
+    color: rgba(0, 0, 0, 0.8);
+    /* Color del texto */
+}
 
+label {
+    margin-right: 10px;
+    /* Espaciado entre la etiqueta y el select */
+    font-size: 14px;
+    /* Tamaño de la fuente de la etiqueta */
+    color: rgba(0, 0, 0, 0.8);
+    /* Color del texto de la etiqueta */
+}
+</style>
 <?php
     // Si no hay sesión activa, redirigir al usuario a la página de inicio de sesión
 } else {
