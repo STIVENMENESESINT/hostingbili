@@ -44,6 +44,11 @@ if (isset($_SESSION['id_userprofile'])){
     padding: 15px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.notificacion{
+    position: absolute;
+    left: 125rem;
+    top: 3rem;
+}
 </style>
 
 <body>
@@ -54,12 +59,13 @@ if (isset($_SESSION['id_userprofile'])){
                 <?php include_once('menu.php'); ?>
             </div>
         </aside>
-        <!-- Contenido principal -->
+        <div class="notificacion">
         <?php 
             if($_SESSION['id_rol']==2){
                 include_once('notificacion.php');
             }
         ?>
+        </div>
         <div class="layout__content">
             <div class="container content__page">
                 <div id="contenido">

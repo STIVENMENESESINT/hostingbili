@@ -455,11 +455,6 @@ switch ($_REQUEST['action'])
                         <br>
                         <textarea id='detalles' name='detalles'>" . $registro['descripcion'] . "</textarea>
                         <br>
-                        
-                        <label class='label-identifier'>Area</label>
-                        <label class='data-field'>" . $registro['nom_area'] . "</label>
-                        <br>
-                        
                         <label class='label-identifier' for='archivo'>Cargar Archivo solicitud (solo archivos de tipo pdf)</label>
                         <input type='file' id='archivo' name='archivo' accept='.pdf'>
                         <br/>
@@ -468,9 +463,6 @@ switch ($_REQUEST['action'])
                         <h3>Asignacion</h3>
                         <h6 class='label-identifier'>Responsable</h6>
                         <select id='id_responsable'></select>
-                        
-                        <h6 class='label-identifier'>Estado</h6>
-                        <select id='id_estado'></select>
                     </div>
                     <div class='modal-footer'>
                         <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
@@ -764,7 +756,6 @@ switch ($_REQUEST['action'])
                         $jTableResult['ListOf'] .= "
                             <hr>
                             <h3 class='label-identifier'>Asignacion</h3>
-                            <hr>
                             <h6 class='label-identifier'>Detalle Asignacion</h6>
                             <textarea id='detalle_respuesta' name='detalles'></textarea>
                             <h6 class='label-identifier'>Responsable</h6>
@@ -781,7 +772,8 @@ switch ($_REQUEST['action'])
                             <br>
                             <h6 class='label-identifier'>Detalle Respuesta</h6>
                             <textarea id='detalle_respuesta' name='detalles'></textarea><br/>
-                            <button id='btnAceptarSoli' class='create-button' data-id='" . $registro['id_solicitud'] . "'>Dar Respuesta</button>";
+                            <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
+                            <button id='btnAceptarSoliOf' class='create-button' data-id='" . $registro['id_solicitud'] . "'>Dar Respuesta</button>";
                     } 
                     
                 }else  {
@@ -911,16 +903,19 @@ switch ($_REQUEST['action'])
         $jTableResult['rstl'] = "";
         $jTableResult['msj'] = "";
         $id_solicitud = $_POST['id_solicitud'];
+        $mensaje = $_POST['detalle_respuesta'];
+        $correo=$_SESSION['correo'];
         $ficha = isset($_POST['ficha']) && !empty($_POST['ficha']) ? $_POST['ficha'] : NULL;
         // $mensaje = $_POST['mensaje'];
         $query = "UPDATE solicitud s  
-        SET s.id_estado = 7, pf.ficha='.$ficha.'
+        SET  pf.ficha='.$ficha.'
         JOIN detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
         JOIN programaformacion pf ON ds.id_programaformacion = pf.id_programaformacion
         WHERE id_solicitud = '$id_solicitud'";
         if ($result = mysqli_query($conn, $query)) {
             mysqli_commit($conn);
             // enviar correo URGENTE MIRAR SI SE HACE DESDE PHPMAILER O SOLO EMAIL
+            @mail($correo, 'Solicitud Exitosa', $mensaje);
             $jTableResult['msj'] = "Solicitud Confimada con éxito.";
             $jTableResult['rstl'] = "1";
         } else {
@@ -935,6 +930,8 @@ switch ($_REQUEST['action'])
                 $jTableResult['rstl'] = "";
                 $jTableResult['msj'] = "";
                 $id_solicitud = $_POST['id_solicitud'];
+                $mensaje = $_POST['detalle_respuesta'];
+                $correo=$_SESSION['correo'];
                 // $mensaje = $_POST['mensaje'];
                 $query = "UPDATE solicitud 
                 SET id_estado = 4, fecha_respuesta = NOW() 
@@ -942,6 +939,7 @@ switch ($_REQUEST['action'])
                 if ($result = mysqli_query($conn, $query)) {
                     mysqli_commit($conn);
                     // enviar correo URGENTE MIRAR SI SE HACE DESDE PHPMAILER O SOLO EMAIL
+                    @mail($correo, 'Solicitud Exitosa', $mensaje);
                     $jTableResult['msj'] = "Solicitud Confimada con éxito.";
                     $jTableResult['rstl'] = "1";
                 } else {
@@ -990,11 +988,14 @@ switch ($_REQUEST['action'])
         $jTableResult['rstl'] = "";
         $jTableResult['msj'] = "";
         $id_solicitud = $_POST['id_solicitud'];
+        $mensaje = $_POST['detalle_cancel'];
+        $correo=$_SESSION['correo'];
         $query = "UPDATE solicitud 
         SET id_estado = 5
         WHERE id_solicitud = '$id_solicitud'";
         if ($result = mysqli_query($conn, $query)) {
             mysqli_commit($conn);
+            @mail($correo, 'Solicitud Cancelada', $mensaje);
             $jTableResult['msj'] = "Solicitud Denegada con éxito.";
             $jTableResult['rstl'] = "1";
         } else {
@@ -1424,7 +1425,7 @@ switch ($_REQUEST['action'])
                                                     $jTableResult['tabla'] .= "<td>" . $registro['descripcion'] . "</td>
                                                                                 <td>" . $registro['nombre_estado'] . "</td>
                                                                                 <td>";
-                                                    $jTableResult['tabla'] .= '<button id="btnEditarSoli" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editSolicitudModal" data-id="' . $registro['id_solicitud'] . '">Ver Soli</button>
+                                                    $jTableResult['tabla'] .= '
                                                                                 <button id="modalCancel" class="btn btn-danger btn-sm  local" data-bs-toggle="modal" data-bs-target="#cancelSolicitudModal" data-id="' . $registro['id_solicitud'] . '">Denegar Soli</button>
                                                                                 <button  class="btn btn-success  local"';
                                                     if ($registro['idtiposolicitud'] == 1) {
@@ -1434,9 +1435,9 @@ switch ($_REQUEST['action'])
                                                                     $jTableResult['tabla'] .= ' id="" data-bs-toggle="modal" data-bs-target="#AceptSolicitudModal" data-id="' . $registro['id_solicitud'] . '"> Asignar</button>';
                                                                 }
                                                                 elseif ($registro['idtiposolicitud'] == 3) {
-                                                                    $jTableResult['tabla'] .= ' id="" data-bs-toggle="modal" data-bs-target="#AceptSolicitudModal" data-id="' . $registro['id_solicitud'] . '"> Asignar</button>';
-                                                                }elseif ($registro['idtiposolicitud'] == 4) {
-                                                                    $jTableResult['tabla'] .= ' id=""  data-bs-toggle="modal" data-bs-target="#AceptSolicitudModal" data-id="' . $registro['id_solicitud'] . '"> Subir</button>';
+                                                                    $jTableResult['tabla'] .= ' id="btn_LRa" data-bs-toggle="modal" data-bs-target="#ListRaAsignModal" data-id="' . $registro['id_solicitud'] . '"> Dar Respuesta</button>';
+                                                                }elseif ($registro['idtiposolicitud'] == 5) {
+                                                                    $jTableResult['tabla'] .= ' id="btn_LEc"  data-bs-toggle="modal" data-bs-target="#ListEcAsignModal" data-id="' . $registro['id_solicitud'] . '">  Dar Respuesta</button>';
                                                                 }elseif ($registro['idtiposolicitud'] == 10) {
                                                                     $jTableResult['tabla'] .= ' id="" data-bs-toggle="modal" data-bs-target="#AceptSolicitudModal" data-id="' . $registro['id_solicitud'] . '"> Responder</button>';
                                                                 }
@@ -1505,7 +1506,7 @@ switch ($_REQUEST['action'])
                 $jTableResult['rst'] = "1";
                 $jTableResult['ms'] = "Exitoso";
                 $jTableResult['Asignform'] .= "
-                    <div class='form-container'>
+                    <div class='container'>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Empresa</label>
                             <label class='data-field'>" . $registro['nom_Empresa'] . "</label>
@@ -1534,10 +1535,6 @@ switch ($_REQUEST['action'])
                             <br>
                             <textarea id='detalles' name='detalles' class='form-control'>" . $registro['descripcion'] . "</textarea>
                         </div>
-                        <div class='course-data-field'>
-                            <label class='label-identifier'>Área</label>
-                            <h6 class='form-control'>" . $registro['nom_area'] . "</h6>
-                        </div>
                         <br>
                         <div class='course-data-field'>
                             <label class='label-identifier' for='archivo'>Cargar Archivo solicitud (solo archivos de tipo pdf)</label>
@@ -1550,10 +1547,7 @@ switch ($_REQUEST['action'])
                         <div class='course-data-field'>
                             <h6 class='label-identifier'>Estado</h6>
                             <label class=form-control'>" . $registro['nom_estado'] . "</label>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class='course-data-container'>
+                        </div><br>
                         <h2 class='label-identifier'>DATOS DE CURSO</h2>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Nombre curso</label>
@@ -1622,7 +1616,7 @@ switch ($_REQUEST['action'])
     
         // Preparar la consulta SQL para insertar en programaformacion
         $query = "INSERT INTO programaformacion (nombre, fecha_cierre, fecha_inicio, id_modalidad, id_jornada, id_nivel_formacion, matriculados, id_estado, horas_curso, ficha) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    VALUES (?, ?, ?, ?, ?, ?, ?, 7, ?, ?)";
     
         // Preparar la consulta SQL
         if ($stmt = mysqli_prepare($conn, $query)) {
@@ -1635,7 +1629,6 @@ switch ($_REQUEST['action'])
                 $_POST['id_jornada'],
                 $_POST['id_nivel_formacion'],
                 $_POST['matriculados'],
-                $_POST['id_estado'],
                 $_POST['horas_curso'],
                 $_POST['ficha']
             );
@@ -1771,7 +1764,7 @@ switch ($_REQUEST['action'])
                 <div class="row mt-3">
                             <div class="col-sm-12">
                                 <h6 class="modal-title">Motivo Denegacion...</h6>
-                                <input type="text" class="form-control modal-textbox" id="Denegacion" name="Denegacion"
+                                <input type="text" class="form-control modal-textbox" id="detalle_cancel" name="detalle_cancel"
                                     placeholder="Motivo Denegacion Solicitud" title="Motivo Denegacion">
                             </div>
                         </div>
@@ -2000,6 +1993,159 @@ switch ($_REQUEST['action'])
         }
         echo json_encode($jTableResult);
     break;
+    case 'asignacion_Listar_Ec':
+        $jTableResult = array();
+        $jTableResult['rst'] = "";
+        $jTableResult['ms'] = "";
+        $jTableResult['ListEc'] = "";
+        $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
+        $query = "SELECT 
+            td.nombre AS nom_doc,
+            r.nombre AS nom_rol,
+            s.id_solicitud,
+            s.id_estado, 
+            u.nombre,
+            u.nombre_dos,
+            u.apellido,
+            u.numeroiden, 
+            u.id_rol,
+            d.nombre_dpto AS nom_dpto, 
+            m_municipio.nombre_municipio AS nom_muni, 
+            p.nombre_poblado AS nom_vereda, 
+            u.nombre_dos,
+            u.apellido, 
+            ts.nombre AS Nombre_Solicitud, 
+            ds.id_tiposolicitud,
+            ds.descripcion
+            FROM 
+                solicitud s
+            LEFT JOIN  
+                userprofile u ON s.id_userprofile = u.id_userprofile
+            LEFT JOIN   
+                detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
+            LEFT JOIN  
+                departamentos d ON u.cod_dpto = d.cod_dpto
+            LEFT JOIN  
+                municipios m_municipio ON u.cod_municipio = m_municipio.cod_municipio
+            LEFT JOIN  
+                poblados p ON u.cod_poblado = p.cod_poblado
+            LEFT JOIN   
+                tiposolicitud ts ON ds.id_tiposolicitud = ts.id_tiposolicitud
+            LEFT JOIN   
+                tipodocumento td ON u.id_doc = td.id_doc
+            LEFT JOIN   
+                rol r ON u.id_rol = r.id_rol
+            WHERE 
+                s.id_solicitud = '$id_solicitud'
+        ";
+        $result = mysqli_query($conn, $query);
+        if ($result) {
+            while ($registro = mysqli_fetch_array($result)) {
+                $jTableResult['rst'] = "1";
+                $jTableResult['ms'] = "Exitoso";
+                $jTableResult['ListEc'] .= "
+                    <div class='form-container'>
+                        <h1>Datos Usuario</h1><br>
+                        <h4 class='label-identifier'>Nombre Usuario</h4>
+                        <label class='data-field'>" . $registro['nombre'] . " " . $registro['nombre_dos'] . " " . $registro['apellido'] . "</label><br>
+                        <h4 class='label-identifier'>Tipo Documento</h4><br>
+                        <label class='data-field'>" . $registro['nom_doc'] . "</label><br>
+                        <h4 class='label-identifier'>Numero Documento</h4><br>
+                        <label>" . $registro['numeroiden'] . "</label><br>
+                        <br>
+                        <h4 class='label-identifier'>Rol Usuario</h4>
+                            <label class='data-field'>" . $registro['nom_rol'] . "</label>
+                            <hr>
+                            <h3 class='label-identifier'>Responder</h3>
+                            <h6 class='label-identifier'>Detalle Respuesta</h6>
+                            <textarea id='detalle_respuesta' name='detalles'></textarea><br/>
+                            <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
+                            <button id='btnAceptarSoli' class='create-button' data-id='" . $registro['id_solicitud'] . "'>Dar Respuesta</button>
+                    </div>";
+            }
+        } else {
+            $jTableResult['rst'] = "0";
+            $jTableResult['ms'] = "Error al obtener los datos.";
+        }
+        echo json_encode($jTableResult);
+    break;
+    case 'asignacion_Listar_Ra':
+        $jTableResult = array();
+        $jTableResult['rst'] = "";
+        $jTableResult['ms'] = "";
+        $jTableResult['ListRa'] = "";
+        $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
+        $query = "SELECT 
+            td.nombre AS nom_doc,
+            r.nombre AS nom_rol,
+            s.id_solicitud,
+            s.id_estado, 
+            u.nombre,
+            u.nombre_dos,
+            u.apellido,
+            u.numeroiden, 
+            u.id_rol,
+            d.nombre_dpto AS nom_dpto, 
+            m_municipio.nombre_municipio AS nom_muni, 
+            p.nombre_poblado AS nom_vereda, 
+            u.nombre_dos,
+            u.apellido, 
+            ts.nombre AS Nombre_Solicitud, 
+            ds.id_tiposolicitud,
+            ds.descripcion
+            FROM 
+                solicitud s
+            LEFT JOIN  
+                userprofile u ON s.id_userprofile = u.id_userprofile
+            LEFT JOIN   
+                detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
+            LEFT JOIN  
+                departamentos d ON u.cod_dpto = d.cod_dpto
+            LEFT JOIN  
+                municipios m_municipio ON u.cod_municipio = m_municipio.cod_municipio
+            LEFT JOIN  
+                poblados p ON u.cod_poblado = p.cod_poblado
+            LEFT JOIN   
+                tiposolicitud ts ON ds.id_tiposolicitud = ts.id_tiposolicitud
+            LEFT JOIN   
+                tipodocumento td ON u.id_doc = td.id_doc
+            LEFT JOIN   
+                rol r ON u.id_rol = r.id_rol
+            WHERE 
+                s.id_solicitud = '$id_solicitud'
+        ";
+        $result = mysqli_query($conn, $query);
+        if ($result) {
+            while ($registro = mysqli_fetch_array($result)) {
+                $jTableResult['rst'] = "1";
+                $jTableResult['ms'] = "Exitoso";
+                $jTableResult['ListRa'] .= "
+                    <div class='form-container'>
+                        <h1>Datos Usuario</h1><br>
+                        <h4 class='label-identifier'>Nombre Usuario</h4>
+                        <label class='data-field'>" . $registro['nombre'] . " " . $registro['nombre_dos'] . " " . $registro['apellido'] . "</label><br>
+                        <h4 class='label-identifier'>Tipo Documento</h4><br>
+                        <label class='data-field'>" . $registro['nom_doc'] . "</label><br>
+                        <h4 class='label-identifier'>Numero Documento</h4><br>
+                        <label>" . $registro['numeroiden'] . "</label><br>
+                        <br>
+                        <h4 class='label-identifier'>Rol Usuario</h4>
+                            <label class='data-field'>" . $registro['nom_rol'] . "</label>
+                            <hr>
+                            <h3 class='label-identifier'>Responder</h3>
+                            <h6 class='label-identifier'>Detalle Respuesta</h6>
+                            <textarea id='detalle_respuesta' name='detalles'></textarea><br/>
+                            <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
+                            <button id='btnAceptarSoli' class='create-button' data-id='" . $registro['id_solicitud'] . "'>Dar Respuesta</button>
+                    </div>";
+            }
+        } else {
+            $jTableResult['rst'] = "0";
+            $jTableResult['ms'] = "Error al obtener los datos.";
+        }
+        echo json_encode($jTableResult);
+    break;
+
 }
 mysqli_close($conn);
 ?>

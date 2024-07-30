@@ -275,7 +275,7 @@ switch ($_REQUEST['action'])
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='modal-title'>Competencia</h6>
-                                <h6 class='modal-title'>" . $registro['nom_vereda'] . "</h6>  <button type='button' id='calendario' href='programar.php' data-id='" . $registro['id_programaformacion'] . "' >programar</button>
+                                <h6 class='modal-title'>" . $registro['nom_vereda'] . "</h6>  <a type='button' id='calendario' href='programar.php'  >programar</a>
                             </div>
                         </div>
                         <div class='row mt-3'>

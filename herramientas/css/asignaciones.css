@@ -61,3 +61,31 @@ label.data-field {
     margin-top: 5px;
     margin-bottom: 15px;
 }
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out;
+    max-width: 1400px;
+    width: 95%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #04324d;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.local {
+    width: 70%; /* Ajusta el tamaño según tus necesidades */
+    height: 40%; /* Ajusta el tamaño según tus necesidades */
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    }

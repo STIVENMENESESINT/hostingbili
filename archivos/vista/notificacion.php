@@ -12,7 +12,7 @@
     $db = $database->conectar();
     $numNotificacao=0;
     $sql = "SELECT * FROM convites as c
-    LEFT JOIN userprofile as u ON c.fk_id_remetente = u.id_userprofile
+    LEFT JOIN userprofile as u ON c.fk_id_destinatario = u.id_userprofile
     LEFT JOIN eventos as e ON c.fk_id_evento = e.id_evento
     WHERE fk_id_destinatario=$id_user AND status IS null";
     $req = $db->prepare($sql);

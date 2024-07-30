@@ -53,7 +53,7 @@
 							$sql6 = "SELECT u.nombre, u.id_userprofile FROM convites c
 							JOIN 
 								userprofile u ON c.fk_id_destinatario = u.id_userprofile
-							WHERE u.id_rol=2 AND c.fk_id_evento = '$id'";
+							WHERE c.fk_id_evento = '$id'";
 							$req = $db->prepare($sql6);
 							$req->execute();
 							$linhas = $req->rowCount();

@@ -157,7 +157,8 @@ $(document).on("click", "#btnAceptarSoli", function() {
         confirm("Estas seguro de responder esta solicitud?")
         $.post("../../include/cntrlSoli.php", {
             action: 'aceptarSolicitud',
-            id_solicitud: idSolicitud
+            id_solicitud: idSolicitud,
+            detalle_respuesta:$("#detalle_respuesta").val()
         }, function(data) {
             if (data.rstl == "1") {
                 alert(data.msj);
@@ -617,6 +618,19 @@ $(document).on("click", "#btn_Buscar",function ()	{
         }, 'json');	
     }
 );
+$(document).ready(function(){  
+    $.post("../../include/select.php", {
+        action: 'crgrResponsable',
+        id_solicitud: idSolicitud 
+    },
+    function(data) {
+        $("#id_responsable").html(data.listResponsable);
+        },
+        'json'
+        ).fail(function(xhr, status, error) {
+            console.error(error);
+    });
+});
 function AsignacionesCargar(idSolicitud){
     
     $(document).ready(function(){  
@@ -995,6 +1009,7 @@ $(document).on("click", "#Ecompetencia",function ()	{
         id_solicitud: idSolicitud
     }, function(data){
         if(data.rst=='1'){
+            AsignacionesCargar(idSolicitud)
             $("#Ecompetencia_form").html(data.ListEc);
         }
             else { alert(data.ms); }

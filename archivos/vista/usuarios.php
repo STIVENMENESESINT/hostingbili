@@ -83,9 +83,6 @@ if (isset($_SESSION['id_userprofile'])){
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- TABLA -->
-
                             </div>
                             <div id="usuarios"></div>
                         </div>

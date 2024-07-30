@@ -107,3 +107,66 @@ function cargarMetadatos() {
         console.error(error);
     });
 }
+$(document).on("click", "#btn_LEc", function() {
+    var idSolicitud = $(this).data('id');
+    $.post("../../include/cntrlSoli.php", {
+        action: 'asignacion_Listar_Ec',
+        id_solicitud: idSolicitud
+    }, function(data) {
+        if (data.rst == "1") {
+            $("#form_Ec").html(data.ListEc);
+        } else {
+            alert(data.ms);
+            
+        }
+    }, 'json');
+});
+$(document).on("click", "#btn_LRa", function() {
+    var idSolicitud = $(this).data('id');
+    $.post("../../include/cntrlSoli.php", {
+        action: 'asignacion_Listar_Ra',
+        id_solicitud: idSolicitud
+    }, function(data) {
+        if (data.rst == "1") {
+            $("#form_Ra").html(data.ListRa);
+        } else {
+            alert(data.ms);
+            
+        }
+    }, 'json');
+});
+$(document).on("click", "#modalCancel", function() {
+    var idSolicitud = $(this).data('id');
+    console.log("ID de la solicitud: " + idSolicitud);
+    $.post("../../include/cntrlSoli.php", {
+        action: 'Cancel',
+        id_solicitud: idSolicitud
+    }, function(data) {
+        if (data.rst == '1') {
+            $("#cancel").html(data.cancel);
+            $('#btnCancelarSoli').on("click", function() {
+                if ($("#Denegacion").val()==""){
+                    alert('Debe Digitar Mensaje de Confirmacion Para su Cancelacion...');
+                    focus('#Denegacion');
+                }else{
+                    
+                        var idSolicitud = $(this).data('id');
+                        console.log("ID de la solicitud a cancelar: " + idSolicitud);
+                        $.post("../../include/cntrlSoli.php", {
+                            action: 'denegarSolicitud',
+                            id_solicitud: idSolicitud
+                        }, function(data) {
+                            if (data.rstl == "1") {
+                                alert(data.msj);
+                                location.reload(); // Recargar la página para ver los cambios
+                            } else {
+                                alert(data.msj);
+                            }
+                        }, 'json');
+                }
+            });
+        } else {
+            alert(data.ms);
+        }
+    }, 'json');
+});

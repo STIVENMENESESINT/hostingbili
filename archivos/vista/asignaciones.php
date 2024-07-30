@@ -25,21 +25,6 @@ if (isset($_SESSION['id_userprofile'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>asignaciones</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="styles.css"> <!-- Enlaza tu archivo de estilos CSS -->
-
-
-<!-- Incluye Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-<!-- Incluye jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- Incluye Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-b4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy0sF/xTkqlj6Qrg/x2O9f7E3UJFpxoY+J" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -53,56 +38,15 @@ if (isset($_SESSION['id_userprofile'])){
                     ?>
             </div>
         </aside>
-        <style >
-                        .cabecera_menu {
-                            position: relative;
-                        }
-                        .fixed-top-right {
-                            position: absolute;
-                            top: 10px; /* Ajusta este valor según necesites */
-                            right: 10px; /* Ajusta este valor según necesites */
-                            z-index: 1000; /* Asegura que esté por encima de otros elementos */
-                            background-color: white; /* Fondo blanco para mejor visibilidad */
-                            
-                            padding: 5px 10px; /* Espaciado interno */
-                        }
-                        .fixed-top-right .btn i {
-                            margin-right: 5px; /* Espacio entre el icono y el texto */
-                        }
-                    </style>
-                    <button type="button" class="btn nav-link nav-item-hover fixed-top-right" onclick="goBack()">
-                        <i class="fas fa-arrow-left fa-fw fa-lg"></i>
-                        <span class="nav-item">Volver</span>
-                    </button>
-
-                    <script>
-                    function goBack() {
-                        window.history.back();
-                    }
-                    </script>
         <!-- Contenido principal -->
         <div class="layout__content">
-            <div class="content__page">
-				<!-- INICIO A CONSTRUIR CONTENIDO DENTRO DEL LAYOUT -->
-                <!-- BUSCADOR -->
-				<div class="cabecera_menu">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-sm-2" >
-								<input type='text' name='dato_txt' id='dato_txt' title='Dato a buscar' placeholder='Dato a buscar' class="form-control mb-2 mr-sm-2 mb-sm-0" >
-							</div>
-							<div class="col-sm-2" >
-								<button type="button" name='btn_Buscar' id='btn_Buscar' <?php echo $var_class_button_warnigB; ?>  >
-								<i class="fa fa-search-plus" aria-hidden="true"></i></button>
-							</div>
-							<div class="col-sm-2" >
-								<button type="button" name='btn_Nuevo' id='btn_permiso'  <?php echo $var_class_button_warnigN; ?>  >
-								<i class="fa fa-plus" aria-hidden="true"></i></button>
-							</div>		
-						</div>
-					</div>
-				</div>
-				<!-- TABLA -->
+            <div class="container content__page">
+                <br />
+                <div class="navbar">
+                    <?php 
+                        include_once('panel.php')
+                    ?>
+                </div>
 				<div id="tablecontenido"></div>
             </div>
         </div>
@@ -125,6 +69,54 @@ if (isset($_SESSION['id_userprofile'])){
                     </div>
                 </div>
             </div>
+    </div>
+    <!-- cancel modal -->
+    <div class="modal fade" id="cancelSolicitudModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="cancelSolicitudLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Estas Seguro de Denegar la Solicitud?
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cancel"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Ac -->
+    <div class="modal fade" id="ListRaAsignModal" tabindex="-1" aria-labelledby="AceptSolicitudLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id=""> Gestion de Respuesta</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="form_Ra"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- rA -->
+    <div class="modal fade" id="ListEcAsignModal" tabindex="-1" aria-labelledby="ListEcAsignLabel
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id=""> Gestion de Respuesta</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="form_Ec"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
         <?php

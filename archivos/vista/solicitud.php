@@ -103,10 +103,6 @@ if (isset($_SESSION['id_userprofile'])){
                 <div class="modal-body">
                     <div id="Ecompetencia_form"></div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="create-button" id="ActuaInstru">Subir</button>
-                </div>
             </div>
         </div>
     </div>
@@ -136,10 +132,6 @@ if (isset($_SESSION['id_userprofile'])){
                 </div>
                 <div class="modal-body">
                     <div id="form_AA"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="create-button" id="subirNoti">Subir</button>
                 </div>
             </div>
         </div>
@@ -227,10 +219,6 @@ if (isset($_SESSION['id_userprofile'])){
                 <div class="modal-body">
                     <div id="form_asignaciones"></div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="create-button" id="btnGuardarCambios2">Asignar</button>
-                </div>
             </div>
         </div>
     </div>
@@ -248,7 +236,6 @@ if (isset($_SESSION['id_userprofile'])){
                     <div id="cancel"></div>
                 </div>
                 <div class="modal-footer">
-
                 </div>
             </div>
         </div>

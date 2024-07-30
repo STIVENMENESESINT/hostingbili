@@ -1,18 +1,14 @@
 <?php
-
 require_once('conexao.php');
 
-// Establecer el tipo de contenido a HTML con el charset especificado en la configuración
-header('Content-Type: text/html; charset='.$charset);
-
-// Iniciar la sesión con el nombre de sesión configurado
+header('Content-Type: text/html; charset=' . $charset);
 session_name($session_name);
 session_start();
 
 $database = new Database();
 $db = $database->conectar();
 
-if (isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['inicio']) && isset($_POST['termino']) && isset($_POST['cor'])) {
+if (isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['inicio']) && isset($_POST['termino']) && isset($_POST['cor']) && isset($_POST['id_competencia']) && isset($_POST['id_resultado_aprendizaje'])) {
 
     $titulo = $_POST['titulo'];
     $descricao = $_POST['descricao'];
@@ -22,32 +18,26 @@ if (isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['inici
     $convidado = $_POST['convidado'];
     $competencia = $_POST['id_competencia'];
     $ra = $_POST['id_resultado_aprendizaje'];
-    $id_programaformacion = $_POST['id_programaformacion'];
 
-    // Asegurarse de que la variable de sesión está definida
     if (isset($_SESSION['id_userprofile'])) {
         $id_usuario = $_SESSION['id_userprofile'];
 
-        // Convertir las fechas a formato MySQL
-        $inicio = date('Y/m/d H:i:s', strtotime($inicio));
-        $termino = date('Y/m/d H:i:s', strtotime($termino));
+        $inicio = date('Y-m-d H:i:s', strtotime($inicio));
+        $termino = date('Y-m-d H:i:s', strtotime($termino));
 
-        // Preparar la consulta SQL
-        $sql = "INSERT INTO eventos(fk_id_usuario, titulo, descricao, inicio, termino, cor,id_competencia,id_resultado_aprendizaje,id_programaformacion) values (?, ?, ?, ?, ?, ?,?,?,?)";
-        // Preparar y ejecutar la consulta
+        $sql = "INSERT INTO eventos(fk_id_usuario, titulo, descricao, inicio, termino, cor, id_competencia, id_resultado_aprendizaje) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $query = $db->prepare($sql);
         if ($query === false) {
             print_r($db->errorInfo());
-            die('Erro ao carregar');
+            die('Error al preparar la consulta.');
         }
 
-        $sth = $query->execute([$id_usuario, $titulo, $descricao, $inicio, $termino, $cor, $competencia, $ra,$id_programaformacion]);
+        $sth = $query->execute([$id_usuario, $titulo, $descricao, $inicio, $termino, $cor, $competencia, $ra]);
         if ($sth === false) {
             print_r($query->errorInfo());
-            die('Erro ao executar');
+            die('Error al ejecutar la consulta.');
         }
 
-        // Seleccionar el último evento insertado y agregar un registro en la tabla 'convites' si es necesario
         $ultimoEvento = "SELECT * FROM eventos ORDER BY id_evento DESC LIMIT 1";
         $req = $db->prepare($ultimoEvento);
         $req->execute();
@@ -56,7 +46,7 @@ if (isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['inici
             $dados = $req->fetch(PDO::FETCH_ASSOC);
             $id_evento = $dados['id_evento'];
 
-            $sql2 = "INSERT INTO convites(fk_id_destinatario, fk_id_remetente, fk_id_evento, status) values (?, ?, ?, null)";
+            $sql2 = "INSERT INTO convites(fk_id_destinatario, fk_id_remetente, fk_id_evento, status) VALUES (?, ?, ?, null)";
             $query2 = $db->prepare($sql2);
             $query2->execute([$convidado, $id_usuario, $id_evento]);
         }
@@ -64,5 +54,5 @@ if (isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['inici
         die('Error: Variable de sesión no está definida.');
     }
 }
-header('Location: '.$_SERVER['HTTP_REFERER']);
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
