@@ -35,7 +35,7 @@ switch ($_REQUEST['action'])
         $id_programaformacion = sanitize_input($_POST['id_programaformacion']);
         
         // Manejo de la carga del archivo
-        $uploadDir = 'C:/xampp/htdocs/practica/archivos/vista/doc_usu/';
+        $uploadDir = 'doc_usu/';
         $archivoPath = "NULL";
         if (isset($_FILES['archivo']) && $_FILES['archivo']['error'] == UPLOAD_ERR_OK) {
             $archivoPath = $uploadDir . basename($_FILES['archivo']['name']);
