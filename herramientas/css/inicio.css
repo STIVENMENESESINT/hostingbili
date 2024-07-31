@@ -220,16 +220,17 @@ main {
 }
 
 /* titulos mas ajustes finales  */
+
 .container {
     background: rgba(255, 255, 255, 0.95);
-    padding: 50px;
+    padding: 16px;
     padding-right: 50px;
     padding-left: 50px;
     border-radius: 30px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     animation: fadeInUp 1s ease-out;
     max-width: 1400px;
-    width: 95%;
+    width: 99%;
 }
 
 .navbar {
@@ -327,4 +328,19 @@ img {
 
 .nav-link {
     display: inline-block;
+}
+
+#noticia_creada {
+    width: 100%;
+    /* Ajusta el ancho según sea necesario */
+    height: 400px;
+    /* Ajusta la altura según sea necesario */
+    overflow-y: auto;
+    /* Permite el desplazamiento vertical */
+    overflow-x: hidden;
+    /* Oculta el desplazamiento horizontal si no es necesario */
+
+    /* Añade un borde para visualización */
+    padding: 10px;
+    /* Añade padding si es necesario */
 }

@@ -26,6 +26,7 @@ if (isset($_SESSION['id_userprofile'])) {
     <link rel="stylesheet" href="../../herramientas/css/about.css">
     <link rel="stylesheet" href="../../archivos/vista/style.css">
     <link rel="stylesheet" href="../../chatp/style.css">
+    <link rel="stylesheet" href="../../herramientas/css/inicio.css">
 </head>
 <style>
 .container {
