@@ -54,6 +54,17 @@ if (isset($_SESSION['id_userprofile'])){
     left: 125rem;
     top: 3rem;
 }
+
+.title {
+    color: #3498db;
+
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 3em;
+    text-align: center;
+    margin: -6px 0;
+}
 </style>
 
 <body>
@@ -75,7 +86,7 @@ if (isset($_SESSION['id_userprofile'])){
             <div class="container content__page">
                 <div id="contenido">
                     <div class=" pt-16 rounded-container ">
-                        <h1>Panel De Acciones</h1>
+                        <h1 class="title">Panel De Acciones</h1>
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="navbar">

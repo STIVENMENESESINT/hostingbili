@@ -72,12 +72,13 @@ if (isset($_SESSION['id_userprofile'])){
 
 .title {
     color: #3498db;
-    font-size: 7em;
-    margin-bottom: 0px;
-    text-align: center;
+
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     font-weight: bold;
     letter-spacing: 1px;
+    font-size: 3em;
+    text-align: center;
+    margin: -6px 0;
 }
 
 .divider {
