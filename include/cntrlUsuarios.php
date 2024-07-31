@@ -160,6 +160,65 @@ switch ($_REQUEST['action'])
     
         print json_encode($jTableResult);
     break;
+    case 'actualizarusuario': 
+        $jTableResult = array();
+        $jTableResult['rstl'] = "";
+        $jTableResult['msj'] = "";
+    
+        $id_userprofile = mysqli_real_escape_string($conn, $_SESSION['id_userprofile']);
+        $nombre_imagen = '';
+    
+        // Procesar la carga de la imagen
+        if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == UPLOAD_ERR_OK) {
+            $imagen_temp = $_FILES['imagen']['tmp_name'];
+            $nombre_imagen = basename($_FILES['imagen']['name']);
+            $ruta_destino = "uploads/" . $nombre_imagen; // Ruta donde se guardará la imagen
+    
+            // Mover la imagen al directorio de destino
+            if (!move_uploaded_file($imagen_temp, $ruta_destino)) {
+                $jTableResult['msj'] = "Error al guardar la imagen.";
+                $jTableResult['rstl'] = "0";
+                print json_encode($jTableResult);
+                break;
+            }
+        }
+        // Construir la consulta SQL
+        $query = "UPDATE userprofile SET 
+                        nombre = '".$_POST['nombre']."', 
+                        nombre_dos = '".$_POST['nombre_dos']."', 
+                        celular = '".$_POST['celular']."',
+                        correo = '".$_POST['correo']."',
+                        apellido = '".$_POST['apellido']."', 
+                        apellido_dos = '".$_POST['apellido_dos']."'";
+        
+        // Si se ha cargado una imagen, agregarla a la consulta
+        if ($nombre_imagen !== '') {
+            $query .= ", imagen = '$nombre_imagen'";
+        }
+    
+        $query .= " WHERE id_userprofile = '$id_userprofile';";
+    
+        try {
+            if ($result = mysqli_query($conn, $query)) {
+                mysqli_commit($conn);
+                $jTableResult['msj'] = "Registro guardado con éxito.";
+                $jTableResult['rstl'] = "1";
+            } else {
+                throw new Exception(mysqli_error($conn));
+            }
+        } catch (mysqli_sql_exception $e) {
+            mysqli_rollback($conn);
+            if (strpos($e->getMessage(), 'Duplicate entry') !== false) {
+                $jTableResult['msj'] = "Error: la identificación está duplicada. Por favor ingrese otra.";
+            } else {
+                $jTableResult['msj'] = "Error al guardar: " . $e->getMessage();
+            }
+            $jTableResult['rstl'] = "0";
+        }
+        
+        print json_encode($jTableResult);
+    break;
+    
 }
 
 mysqli_close($conn);

@@ -56,53 +56,48 @@ switch ($_REQUEST['action'])
 					// exit();
 			print json_encode($jTableResult);
 		break;
+		case 'registroUsuNew': 
+			$jTableResult = array();
+			$jTableResult['rstl'] = "";
+			$jTableResult['msj'] = "";
+			$query = "INSERT INTO userprofile SET
+					id_doc = '".$_POST['id_tpdoc']."', 
+					numeroiden = '".$_POST['numeroiden_registro']."', 
+					clave = '".$_POST['clave_registro']."', 
+					nombre = '".$_POST['nameusu']."', 
+					fecha_registro = NOW(),
+					id_estado = 1,
+					id_rol = 5,
+					id_genero = '".$_POST['id_genero']."',
+					celular = '".$_POST['celular']."',
+					correo = '".$_POST['correo_registro']."',
+					apellido = '".$_POST['apellidoUsu']."', 
+					apellido_dos = '".$_POST['apellidoUsu_dos']."',
+					cod_dpto = '".$_POST['cod_dpto']."', 
+					cod_municipio = '".$_POST['cod_municipio']."', 
+					cod_poblado = '".$_POST['cod_poblado']."';";
 
-
-
-
-
-
-case 'registroUsuNew': 
-    $jTableResult = array();
-    $jTableResult['rstl'] = "";
-    $jTableResult['msj'] = "";
-    $query = "INSERT INTO userprofile SET
-            id_doc = '".$_POST['id_tpdoc']."', 
-            numeroiden = '".$_POST['numeroiden_registro']."', 
-            clave = '".$_POST['clave_registro']."', 
-            nombre = '".$_POST['nameusu']."', 
-            fecha_registro = NOW(),
-            id_estado = 1,
-            id_rol = 5,
-            id_genero = '".$_POST['id_genero']."',
-            celular = '".$_POST['celular']."',
-            correo = '".$_POST['correo_registro']."',
-            apellido = '".$_POST['apellidoUsu']."', 
-            apellido_dos = '".$_POST['apellidoUsu_dos']."',
-            cod_dpto = '".$_POST['cod_dpto']."', 
-            cod_municipio = '".$_POST['cod_municipio']."', 
-            cod_poblado = '".$_POST['cod_poblado']."';";
-
-    try {
-        if ($result = mysqli_query($conn, $query)) {
-            mysqli_commit($conn);
-            $jTableResult['msj'] = "Registro guardado con éxito.";
-            $jTableResult['rstl'] = "1";
-        } else {
-            throw new Exception(mysqli_error($conn));
-        }
-    } catch (mysqli_sql_exception $e) {
-        mysqli_rollback($conn);
-        if (strpos($e->getMessage(), 'Duplicate entry') !== false) {
-            $jTableResult['msj'] = "Error: la identificación está duplicada. Por favor ingrese otra.";
-        } else {
-            $jTableResult['msj'] = "Error al guardar: " . $e->getMessage();
-        }
-        $jTableResult['rstl'] = "0";
-    }
-    
-    print json_encode($jTableResult);
-    break;
+			try {
+				if ($result = mysqli_query($conn, $query)) {
+					mysqli_commit($conn);
+					$jTableResult['msj'] = "Registro guardado con éxito.";
+					$jTableResult['rstl'] = "1";
+				} else {
+					throw new Exception(mysqli_error($conn));
+				}
+			} catch (mysqli_sql_exception $e) {
+				mysqli_rollback($conn);
+				if (strpos($e->getMessage(), 'Duplicate entry') !== false) {
+					$jTableResult['msj'] = "Error: la identificación está duplicada. Por favor ingrese otra.";
+				} else {
+					$jTableResult['msj'] = "Error al guardar: " . $e->getMessage();
+				}
+				$jTableResult['rstl'] = "0";
+			}
+			
+			print json_encode($jTableResult);
+		break;
+		
 
 
 

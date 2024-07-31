@@ -114,3 +114,13 @@ a:hover {
 color: #2ecc71;
 transform: translateY(-2px);
 }
+/* botones */
+.create-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.close-button {
+  background-color: #f44336;
+  color: white;
+}

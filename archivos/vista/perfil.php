@@ -23,50 +23,17 @@ if (isset($_SESSION['id_userprofile'])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
-
 <head>
     <!-- Incluir enlaces a los archivos CSS y otros metadatos necesarios -->
     <?php include_once('cabecera.php'); ?>
-    <link rel="stylesheet" type="text/css" href="../../herramientas/css/css/styles.css">
-    <link rel="stylesheet" type="text/css" href="../../herramientas/css/css/layout.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Usuario </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="styles.css"> <!-- Enlaza tu archivo de estilos CSS -->
-
-
-    <!-- Incluye Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <!-- Incluye jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- Incluye Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-b4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy0sF/xTkqlj6Qrg/x2O9f7E3UJFpxoY+J" crossorigin="anonymous">
-    </script>
-
+    <link rel="stylesheet" href="../../herramientas/css/perfil.css">
 </head>
 
-<style>
-.container {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 50px;
-    padding-right: 50px;
-    padding-left: 50px;
-    border-radius: 30px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 1s ease-out;
-    max-width: 1400px;
-    width: 95%;
-}
-</style>
-< <body>
+<body>
     <div class="layout">
         <!-- Menú de navegación -->
         <aside class="layout__aside">
@@ -80,15 +47,39 @@ if (isset($_SESSION['id_userprofile'])) {
             <div class="container content__page">
                 <div id="contenido">
                     <!-- Sección para mostrar y editar el perfil del usuario -->
-         
-                    <form action="actualizar_perfil.php" method="POST" id="formActualizarUsuario">
+                    <?php
+                        $rutaImagen = '../../include/uploads/' . htmlspecialchars($fila['imagen']);
+                        if (file_exists($rutaImagen) && !empty($fila['imagen'])) {
+                            echo '<img class="circle" src="' . $rutaImagen . '" alt="Foto de Perfil">';
+                        } else {
+                            echo '<div class="upload-container">
+                                    <div class="circle">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <label for="imagen" class="upload-label">Sube tu imagen
+                                        <div class="image-upload">
+                                            <label for="file-input">
+                                                <div class="upload-icon">
+                                                    <i class="fa fa-upload"></i>
+                                                </div>
+                                            </label>
+                                            <input type="file" id="imagen" name="imagen" accept="image/*">
+                                        </div>
+                                        
+                                    </label>
+                                </div>';
+                        }
+                    ?>
+                </div>
                         <!-- Campos del formulario -->
                         <h1 class="modal-title w-100 text-center">Actualizar Usuario</h1>
                         
-                        <div class="modal-body">
+                        <div class="container">
                             <div class="row mt-3">
+
                                 <div class="col-sm-6">
                                     <label for="nombre" class="col-form-label">Primer Nombre:</label>
+                                    
                                     <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo htmlspecialchars($fila['nombre']); ?>">
                                 </div>
                                 <div class="col-sm-6">
@@ -113,16 +104,6 @@ if (isset($_SESSION['id_userprofile'])) {
                                     <input type="email" class="form-control" id="correo" name="correo"
                                         value="<?php echo htmlspecialchars($fila['correo']); ?>">
                                 </div>
-                                <div class="col-sm-6">
-                                    <label for="correo_sena" class="col-form-label">Correo Electrónico mi sena:</label>
-                                    <input type="email" class="form-control" id="correo_sena" name="correo_sena"
-                                        value="<?php echo htmlspecialchars($fila['correo_sena'] ?? ''); ?>">
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="estadoUsu" class="col-form-label">Estado:</label>
-                                    <input type="text" class="form-control" id="estadoUsu" name="estadoUsu"
-                                        value="<?php echo htmlspecialchars($fila['id_estado']); ?>">
-                                </div>
                             </div>
 
 
@@ -136,113 +117,73 @@ if (isset($_SESSION['id_userprofile'])) {
 
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
+                                <button type="button" class="close-button"
                                     data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-primary" name="btnActualizarUsuario"
+                                <button type="button" class="create-button" name="btnActualizarUsuario"
                                     id="btnActualizarUsuario">Actualizar</button>
                             </div>
                         </div>
-                    </form>
+
                 </div>
             </div>
         </div>
     </div>
-    <!-- Scripts necesarios -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-    $(document).ready(function() {
-        $.post("../../include/select.php", {
-                action: 'crgrDepto'
-            },
-            function(data) {
-                $("#cod_dpto").html(data.listDepto);
-            },
-            'json'
-        );
-
-
-        $(document).on("change", "#cod_dpto", function() {
-            $.post("../../include/select.php", {
-                action: 'crgrMuni',
-                cod_dpto: $("#cod_dpto").val()
-            }, function(data) {
-                $("#cod_municipio").html(data.listMuni);
-            }, 'json');
-        });
-
-        $(document).on("change", "#cod_municipio", function() {
-            $.post("../../include/select.php", {
-                action: 'crgrPoblados',
-                cod_municipio: $("#cod_municipio").val()
-            }, function(data) {
-                $("#cod_poblado").html(data.listPoblado);
-            }, 'json');
-        });
-
-
-        $.post("../../include/select.php", {
-                action: 'crgrTiposDoc'
-            },
-            function(data) {
-                $("#id_doc").html(data.lisTiposD);
-            },
-            'json').fail(function(xhr, status, error) {
-            console.error(error);
-        });
-
-        $.post("../../include/ctrlIndex3.php", {
-                action: 'crgrRoles'
-            },
-            function(data) {
-                $("#id_rol").html(data.listRoles);
-            },
-            'json'
-        );
-
-        $.post("../../include/select.php", {
-                action: 'crgrEstadoUsuario'
-            },
-            function(data) {
-                $("#estadoUsu").html(data.listEstadoUsu);
-            },
-            'json'
-        );
 
         // Manejar el clic del botón de actualizar usuario
         $(document).on("click", "#btnActualizarUsuario", function() {
-            var alertMessage = ""; // Mensaje de alerta
+    // Crear un objeto FormData
+    var formData = new FormData();
 
-            // Enviar solicitud AJAX para actualizar usuario
-            $.post("../../include/ctrlIndex.php", {
-                action: 'actualizarusuario',
-                fecha_nacimiento: $("#fecha_nacimiento").val(),
-                nombre: $("#nombre").val(),
-                nombre_dos: $("#nombre_dos").val(),
-                direccion: $("#direccion").val(),
-                apellido: $("#apellido").val(),
-                apellido_dos: $("#apellido_dos").val(),
-                clave: $("#clave").val(),
-                id_rol: $("#id_rol").val(),
-                correo: $("#correo").val(),
-                correo_sena: $("#correo_sena").val(),
-                id_doc: $("#id_doc").val(),
-                numeroiden: $("#numeroiden").val(),
-                celular: $("#celular").val(),
-                estadoUsu: $("#estadoUsu").val(),
-                cod_dpto: $("#cod_dpto").val(),
-                cod_municipio: $("#cod_municipio").val(),
-                cod_poblado: $("#cod_poblado").val()
-            }, function(data) {
-                if (data.rstl == "1") {
-                    alert('Usuario actualizado con éxito');
-                    clearForm(); // Limpiar el formulario
-                } else {
-                    alert('Error al actualizar el usuario: ' + data.msj);
-                }
-            }, 'json');
-        });
+    // Añadir los datos del formulario a formData
+    formData.append('action', 'actualizarusuario');
+    formData.append('nombre', $("#nombre").val());
+    formData.append('nombre_dos', $("#nombre_dos").val());
+    formData.append('apellido', $("#apellido").val());
+    formData.append('apellido_dos', $("#apellido_dos").val());
+    formData.append('correo', $("#correo").val());
+    formData.append('numeroiden', $("#numeroiden").val());
+    formData.append('celular', $("#celular").val());
+
+    // Añadir el archivo de imagen si se ha seleccionado uno
+    var imagen = $('#imagen')[0].files[0];
+    if (imagen) {
+        formData.append('imagen', imagen);
+    }
+
+    // Enviar solicitud AJAX con FormData
+    $.ajax({
+        url: "../../include/cntrlUsuarios.php",
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        dataType: 'json',
+        success: function(data) {
+            if (data.rstl == "1") {
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: 'Registro Actualizado con éxito',
+                    showConfirmButton: false,
+                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                }).then(() => {
+                    location.reload();
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.msj
+                });
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert('Error en la solicitud: ' + textStatus);
+        }
     });
+});
+
     </script>
     </body>
 
