@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 90%;
     height: 80vh;
     min-height: 80vh;
-    margin: 10vh auto 2vh;
+    margin: 5vh auto 2vh;
     display: grid;
     grid-template-areas: "aside content";
     grid-template-columns: 15% 85%;

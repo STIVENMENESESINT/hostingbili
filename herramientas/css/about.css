@@ -100,7 +100,7 @@
 .rounded-container {
     border-radius: 16px;
     background-color: #f2f2f2;
-    padding: 28px;
+    padding: 19px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: auto; /* Ajuste inicial del ancho */
     height: auto; /* Ajuste inicial del alto */

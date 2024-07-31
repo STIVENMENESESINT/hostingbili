@@ -53,30 +53,39 @@ switch ($_REQUEST['action'])
                 <div class='row'>
                     <div class='col-sm-5'>
                         <ul class='navbar-nav'>
-                         <style>
-                                .card {
-                                    background-color: #f2f2f2;
-                                }
-                        </style>
+                            <style>
+                                    .card {
+                                        background-color: #f2f2f2;
+                                    }
+                                    .card-avatar {
+                                        text-align: center;
+                                        margin: 20px;
+                                    }
+
+                                    .profile-photo {
+                                        width: 70px;  /* Ajusta el tamaño según tus necesidades */
+                                        height: 70px; /* Ajusta el tamaño según tus necesidades */
+                                        border-radius: 50%; /* Hace la imagen redonda */
+                                    }
+                            </style>
                            
                                 <div class='card'>
                                     <div class='card-info'>
-                                        
-                                        <div class='card-avatar'>
-                                            <a href=''>
-                                                <center>    
-                                                    <img src='' alt='' class='profile-photo'>
-                                                </center> 
-                                            </a>                                                                 
+                                        <a class='card-avatar' href=''>
+                                            <center>    
+                                                <img src='../../imagenes/user1.png' alt='Foto de perfil' class='profile-photo'>
+                                            </center> 
+                                        </a>  
+                                        <div >
+                                                                                                   
                                         </div>
-                                        
                                         <div class='card-title'><p class='heading'> ". $registro["nombre"] . "". $registro["apellido"] . " </p></div>
                                         
                                         <div class='card-subtitle'><p class='follow'>". $registro["nombre_rol"] . "</p></div>
                                         
                                     </div>
                                         
-                                        <div class='back'>
+                                    <div class='back'>
                                         <ul class='card-social'>
                                             <li class='card-social__item'>
                                                 <svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
@@ -90,9 +99,9 @@ switch ($_REQUEST['action'])
                                             </li>
                                             
                                         </ul>
-                                        </div>
                                     </div>
                                 </div>
+                                
                         </ul>
                     </div>
                 </div>
