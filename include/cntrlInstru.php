@@ -68,7 +68,6 @@ switch ($_REQUEST['action'])
                                         border-radius: 50%; /* Hace la imagen redonda */
                                     }
                             </style>
-                           
                                 <div class='card'>
                                     <div class='card-info'>
                                         <a class='card-avatar' href=''>
@@ -77,7 +76,6 @@ switch ($_REQUEST['action'])
                                             </center> 
                                         </a>  
                                         <div >
-                                                                                                   
                                         </div>
                                         <div class='card-title'><p class='heading'> ". $registro["nombre"] . "". $registro["apellido"] . " </p></div>
                                         

@@ -453,7 +453,9 @@ document.addEventListener("DOMContentLoaded", () => {
                             ';
                         }
                         ?>
+                        <center>
                         <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%" height="500px" />
+                        </center>
                         <br>
                 </div>
 
