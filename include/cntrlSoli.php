@@ -1776,7 +1776,7 @@ switch ($_REQUEST['action'])
             }
         } else {
             mysqli_rollback($conn);
-            $jTableResult['msj'] = "Error al Crear la noticia.";
+            $jTableResult['msj'] = "Error al Crear.";
             $jTableResult['rst'] = "0";
         }
         print json_encode($jTableResult);

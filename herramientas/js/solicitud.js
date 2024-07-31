@@ -44,10 +44,22 @@ $(document).ready(function(){
         action: 'AlertaOferta'
     }, function(data) {
         if (data.rst === "1") {
-            alert("Hay demasiados usuarios Interesados en tu oferta " + data.ms + " Vamos a Revisarla!!!");
+            Swal.fire({
+                icon: 'success',
+                title: '¡Éxito!',
+                text: 'Hay demasiados usuarios Interesados en tu oferta'  + data.ms + 'Vamos a Revisarla!!!',
+                showConfirmButton: false,
+                timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+            });
         } else if (data.rst === "2") {
-            alert("Hay una Empresa Interesada en tu oferta " + data.ms + " Vamos a Revisarla!!!");
-        }
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: 'Hay una Empresa Interesada en tu oferta',
+                    showConfirmButton: false,
+                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                });
+            }
     }, 'json');
 });
 
@@ -94,7 +106,11 @@ $(document).on("click", "#btnEditarSoli", function() {
             }
             
         } else {
-            alert(data.msj);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.msj
+            });
         }
 
         $(document).on("click", "#btnGuardarCambios", function() {
@@ -112,10 +128,21 @@ $(document).on("click", "#btnEditarSoli", function() {
             // Enviar una solicitud AJAX al servidor para actualizar los datos de la solicitud
             $.post("../../include/cntrlSoli.php", updatedData, function(data) {
                 if (data.rstl == "1") {
-                    alert(data.msj);
-                    location.reload();
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        text: data.msj,
+                        showConfirmButton: false,
+                        timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                    }).then(() => {
+                        location.reload();
+                    });
                 } else {
-                    alert(data.msj);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: data.msj
+                    });
                 }
             }, 'json');
         });
@@ -132,12 +159,23 @@ $(document).on("click", "#btnEliminarSoli", function() {
             id_solicitud: idSolicitud
         }, function(data) {
             if (data.rstl == "1") {
-                alert(data.msj);
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: data.msj,
+                    showConfirmButton: false,
+                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                })
                 // Eliminar la fila de la tabla correspondiente a la solicitud eliminada
                 $(`#btnEliminarSoli[data-id='${idSolicitud}']`).closest('tr').remove();
                 location.reload();
             } else {
-                alert(data.msj);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.msj
+                });
+
             }
         }, 'json');
     }
@@ -150,7 +188,11 @@ $(document).on("click", "#btnAceptarSoli", function() {
     var idSolicitud = $(this).data('id');
     console.log("ID de la solicitud: " + idSolicitud);
     if ($("#detalle_respuesta").val()==""){
-        alert('Debe Digitar Mensaje de Confirmacion...');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text:'Debe Digitar Mensaje de Confirmacion...'
+        });
     }
     else
     {
@@ -161,10 +203,21 @@ $(document).on("click", "#btnAceptarSoli", function() {
             detalle_respuesta:$("#detalle_respuesta").val()
         }, function(data) {
             if (data.rstl == "1") {
-                alert(data.msj);
-                location.reload();
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: data.msj,
+                    showConfirmButton: false,
+                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                }).then(() => {
+                    location.reload();
+                });
             } else {
-                alert(data.msj);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.msj
+                });
             }
         }, 'json');
     }
@@ -174,7 +227,11 @@ $(document).on("click", "#btnAceptarSoliOf", function() {
     var idSolicitud = $(this).data('id');
     console.log("ID de la solicitud: " + idSolicitud);
     if ($("#detalle_respuesta").val()==""){
-        alert('Debe Digitar Mensaje de Confirmacion...');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text:'Debe Digitar Mensaje de Confirmacion...'
+        });
     }
     else
     {
@@ -185,10 +242,21 @@ $(document).on("click", "#btnAceptarSoliOf", function() {
             id_solicitud: idSolicitud
         }, function(data) {
             if (data.rstl == "1") {
-                alert(data.msj);
-                location.reload();
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: data.msj,
+                    showConfirmButton: false,
+                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                }).then(() => {
+                    location.reload();
+                });
             } else {
-                alert(data.msj);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.msj
+                });
             }
         }, 'json');
     }
@@ -499,12 +567,20 @@ function toggleProfilePhotoInput() {
 $(document).on("click", "#btnNewSoli",function (){
     //alert('Dentro del boton Guardar Registro Usuario.');
         if ($("input[name='tipo_rol']:checked").length === 0){
-            alert('El tipo de solicitud debe tener un Usuario asignado');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'El tipo de solicitud debe tener un Usuario asignado'
+            });
         }
         else
         {
             if($("#nombre").val()=="" ){
-            alert('Debe Seleccionar un tu nuevo tipo de Solicitud');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Debe Seleccionar un tu nuevo tipo de Solicitud'
+                });
             $("#nombre").focus();
             }
             else
@@ -515,9 +591,21 @@ $(document).on("click", "#btnNewSoli",function (){
                     nombre:$("#nombre").val()
                     }, function(data){
                         if(data.rst=="1"){ 
-                            alert(data.ms);
-                            location.reload();
-                        } else{	alert(data.ms); }
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Éxito!',
+                                text: data.ms,
+                                showConfirmButton: false,
+                                timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                            }).then(() => {
+                                location.reload();
+                            });
+                        } else{
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: data.ms
+                                }); }
                     }, 'json');
                 }
             }
@@ -525,7 +613,11 @@ $(document).on("click", "#btnNewSoli",function (){
 );
 $(document).on("click", "#btnEnviar", function() {
     if ($("input[name='tipo_solicitud']:checked").length === 0) {
-        alert('Debe Elegir un Tipo de Solicitud');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe Elegir un Tipo de Solicitud'
+        });
     } else {
         var formData = new FormData();
         formData.append('action', 'RegistroSoliNew');
@@ -567,14 +659,30 @@ $(document).on("click", "#btnEnviar", function() {
                         id_empresa: $("#id_empresa").val()
                     }, function(data) {
                         if (data.rst == "1") {
-                            alert(data.ms);
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Éxito!',
+                                text: data.ms,
+                                showConfirmButton: false,
+                                timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                            }).then(() => {
+                                location.reload();
+                            });
                             location.reload();
                         } else {
-                            alert(data.ms);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: data.ms
+                            });
                         }
                     }, 'json');
                 } else {
-                    alert(data.ms);
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.ms
+                });
                 }
             },
             dataType: 'json'
@@ -667,10 +775,21 @@ $(document).on("click", "#btnGuardarCambios2", function() {
         id_responsable:$("#id_responsable").val()
     }, function(data) {
         if (data.rstl == "1") {
-            alert(data.msj);
-            location.reload();
+            Swal.fire({
+                icon: 'success',
+                title: '¡Éxito!',
+                text: data.msj,
+                showConfirmButton: false,
+                timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+            }).then(() => {
+                location.reload();
+            });
         } else {
-            alert(data.msj);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.msj
+            });
         }
     }, 'json');
 });
@@ -685,7 +804,11 @@ $(document).on("click", "#btn_asign",function ()	{
             $("#form_asignaciones").html(data.ListAsign);
             AsignacionesCargar(idSolicitud)
         }
-            else { alert(data.ms); }
+            else { Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.ms
+            });}
         }, 'json');	
     }
 );
@@ -829,7 +952,11 @@ $(document).on("click", "#detalleSolicitud", function() {
         if (data.rst == '1') {
             $("#datlleSolicitud").html(data.ListDetalle);
         } else {
-            alert(data.ms);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.ms
+            });
         }
     }, 'json');
 });
@@ -844,7 +971,11 @@ $(document).on("click", "#btn_pf",function ()	{
             $("#form_pf").html(data.ListPf);
             AsignacionesCargar(idSolicitud)
         }
-            else { alert(data.ms); }
+            else { Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.ms
+            }); }
         }, 'json');	
     }
 );
@@ -859,7 +990,11 @@ $(document).on("click", "#BtnAsesoramientoA",function ()	{
             $("#form_AA").html(data.ListAA);
             AsignacionesCargar(idSolicitud)
         }
-            else { alert(data.ms); }
+            else { Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.ms
+            }); }
         }, 'json');	
     }
 );
@@ -880,22 +1015,36 @@ $(document).on("click", "#detalleOferta",function ()	{
                     id_solicitud: idSolicitud
                 }, function(data){
                     if(data.rst=='1'){
-                        alert(data.ms);
-                        location.reload();
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Éxito!',
+                            text: data.ms,
+                            showConfirmButton: false,
+                            timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                        }).then(() => {
+                            location.reload();
+                        });
                     }
-                        else { alert(data.ms); }
+                        else { Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: data.ms
+                        }); }
                     }, 'json');	
                 }
             );
         }
-            else { alert(data.ms); }
+            else { Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.ms
+            }); }
         }, 'json');	
     }
 );
 $(document).on("click", "#btn_subir",function ()	{
     var idSolicitud = $(this).data('id');
     console.log("ID de la solicitud: " + idSolicitud);
-
     $.post("../../include/cntrlSoli.php", {
         action: 'noticiaCreado' ,
         id_solicitud: idSolicitud
@@ -911,10 +1060,21 @@ $(document).on("click", "#btn_subir",function ()	{
                     id_solicitud: idSolicitud
                 }, function(data){
                     if(data.rst=='1'){
-                        alert(data.ms);
-                        location.reload();
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Éxito!',
+                            text: data.ms,
+                            showConfirmButton: false,
+                            timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                        }).then(() => {
+                            location.reload();
+                        });
                     }
-                        else { alert(data.ms); }
+                        else { Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: data.ms
+                        }); }
                     }, 'json');	
                 }
             );
@@ -938,28 +1098,47 @@ $(document).on("click", "#modalCancel", function() {
         if (data.rst == '1') {
             $("#cancel").html(data.cancel);
             $('#btnCancelarSoli').on("click", function() {
-                if ($("#Denegacion").val()==""){
-                    alert('Debe Digitar Mensaje de Confirmacion Para su Cancelacion...');
-                    focus('#Denegacion');
+                if ($("#detalle_cancel").val()==""){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Debe Digitar Mensaje de Confirmacion Para su Cancelacion...'
+                    });
+                    focus('#detalle_cancel');
                 }else{
-                    
-                        var idSolicitud = $(this).data('id');
                         console.log("ID de la solicitud a cancelar: " + idSolicitud);
                         $.post("../../include/cntrlSoli.php", {
                             action: 'denegarSolicitud',
-                            id_solicitud: idSolicitud
+                            id_solicitud: idSolicitud,
+                            detalle_cancel:$("#detalle_cancel").val()
                         }, function(data) {
                             if (data.rstl == "1") {
-                                alert(data.msj);
-                                location.reload(); // Recargar la página para ver los cambios
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: '¡Éxito!',
+                                    text: data.msj,
+                                    showConfirmButton: false,
+                                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                                }).then(() => {
+                                    location.reload();
+                                });// Recargar la página para ver los cambios
                             } else {
-                                alert(data.msj);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: data.msj
+                                });
                             }
                         }, 'json');
                 }
             });
         } else {
-            alert(data.ms);
+            // DUIDADO CON EL ,SJ O MS
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.ms
+            });
         }
     }, 'json');
 });
@@ -973,7 +1152,11 @@ $(document).on("click", "#instructorProto", function() {
         if(data.rstl=="1"){	
             $("#Tjinstructor").html(data.tarjeta); } 
             else{	
-                alert(data.msj);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.msj
+                });
             }
     },
     'json'
@@ -989,11 +1172,22 @@ $(document).on("click", "#CrearInstru", function() {
     },
     function(data) {
         if(data.rstl=="1"){	
-            alert(data.msj);
-            location.reload();
+            Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: data.msj,
+                    showConfirmButton: false,
+                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                }).then(() => {
+                    location.reload();
+                });
             } 
             else{	
-                alert(data.msj);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.msj
+                });
             }
     },
     'json'
@@ -1012,7 +1206,11 @@ $(document).on("click", "#Ecompetencia",function ()	{
             AsignacionesCargar(idSolicitud)
             $("#Ecompetencia_form").html(data.ListEc);
         }
-            else { alert(data.ms); }
+            else { Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.ms
+            }); }
         }, 'json');	
     }
 );

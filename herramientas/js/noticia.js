@@ -1,10 +1,18 @@
 $(document).on("click", "#publicar_noti", function (event) {
     if ($("#titulo").val() == "") {
-        alert('Debe ingresar el Titulo');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe ingresar el Titulo'
+        });
         $("#titulo").focus();
     } else {
         if ($("#imagen").val() == "") {
-            alert('Debe ingresar la Imagen');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Debe ingresar la Imagen'
+            });
             $("#imagen").focus();
         } else {
             var formData = new FormData();
@@ -27,10 +35,21 @@ $(document).on("click", "#publicar_noti", function (event) {
                             action: 'Solicitud'
                         }, function (data) {
                             if (data.rst == "1") {
-                                alert(data.ms);
-                                location.reload();
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: '¡Éxito!',
+                                    text: data.ms,
+                                    showConfirmButton: false,
+                                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                                }).then(() => {
+                                    location.reload();
+                                });
                             } else {
-                                alert(data.ms);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: data.ms
+                                });
                             }
                         }, 'json');
                     } else {
@@ -184,10 +203,21 @@ $(document).on("click", "#detalle_oferta", function () {
                     dataType: "json",
                     success: function(data) {
                         if (data.rst == '1') {
-                            alert(data.ms);
-                            location.reload();
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Éxito!',
+                                text: data.ms,
+                                showConfirmButton: false,
+                                timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                            }).then(() => {
+                                location.reload();
+                            });
                         } else {
-                            alert(data.ms);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: data.ms
+                            });
                         }
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
@@ -197,7 +227,11 @@ $(document).on("click", "#detalle_oferta", function () {
             });
         }
         else{
-            alert(data.ms)
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.ms
+            });
         }
         
     },
