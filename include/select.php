@@ -216,6 +216,79 @@ switch ($_REQUEST['action'])
         }
         print json_encode($jTableResult);
     break;
+    case 'Cgridioma':
+        $jTableResult = array();                
+        $jTableResult['idioma']="";
+        $jTableResult['idioma']="<option value='0' selected >seleccione:.</option>";
+        $query="SELECT id_idioma, nombre FROM idiomas";
+        $resultado = mysqli_query($conn, $query);
+        while($registro = mysqli_fetch_array($resultado))
+        {
+            $jTableResult['idioma'].="<option value='".$registro['id_idioma']."'>".$registro['nombre']."</option>";
+        }
+        print json_encode($jTableResult);
+    break;
+    case 'CgrSeccion':
+        $jTableResult = array();                
+        $jTableResult['seccion']="";
+        $query="SELECT i.nombre AS nombre_idioma, s.nombre AS nombre_Seccion, s.descripcion FROM secciones s JOIN idiomas i ON s.id_idioma = i.id_idioma";
+        $resultado = mysqli_query($conn, $query);
+        while($registro = mysqli_fetch_array($resultado))
+        {
+            $jTableResult['seccion'].='
+                            <div class="info-cards2">
+                                <h2 class="subtitle2">'.$registro['nombre_Seccion'].'</h2>
+                                <div class="info-card2">
+                                    <div class="icon-circle2">
+                                        <i class="fa-solid fa-comment"></i>
+                                    </div>
+                                    <h3>Descripcion de la Seccion</h3>
+                                    <div class="description2">
+                                        <p class="descripcion">'.$registro['descripcion'].'</p>
+                                    </div>
+                                </div>
+                            </div>
+                    <div class="divider"></div>';
+        }
+        print json_encode($jTableResult);
+    break;
+    case 'CgrLibros':
+        $jTableResult = array();                
+        $jTableResult['libro']="";
+        $query="SELECT l.anio_publicacion,l.titulo, l.autor, l.archivo_pdf, l.descripcion_autor, l.prologo, s.nombre,l.archivo_pdf FROM libros l JOIN secciones s ON l.fk_seccion  = s.id_seccion";
+        $resultado = mysqli_query($conn, $query);
+        while($registro = mysqli_fetch_array($resultado))
+        {
+            $jTableResult['libro'].='
+                            <div class="info-cards3">
+                                <h2 class="subtitle3">'.$registro['titulo'].'</h2>
+                                <div class="info-card3">
+                                    <div class="icon-circle3">
+                                        <i class="fa-solid fa-comment"></i>
+                                    </div>
+                                    <h3>Libro</h3>
+                                    <embed src="../../include/'.$registro['archivo_pdf'].'" type="application/pdf" width="50%" height="200px" />
+                                    <h3>Descripcion de la Seccion</h3>
+                                    <div class="description3">
+                                        <p class="descripcion">'.$registro['prologo'].'</p>
+                                    </div>
+                                </div>
+                            </div>
+                    <div class="divider"></div>';
+        }
+        print json_encode($jTableResult);
+    break;
+    case 'CgrSeccionL':
+        $jTableResult = array();                
+        $jTableResult['seccionL'] = '';
+        $jTableResult['seccionL']="<option value='0' selected >seleccione:.</option>";
+        $query = "SELECT id_seccion, nombre FROM secciones";
+        $resultado = mysqli_query($conn, $query);
+        while ($registro = mysqli_fetch_array($resultado)) {
+            $jTableResult['seccionL'] .= '<option value="'.$registro['id_seccion'].'">'.$registro['nombre'].'</option>';
+        }
+        print json_encode($jTableResult);
+    break;
     case 'crgrTipoCategoria':
         $jTableResult = array();                
         $jTableResult['lisTiposC']="";

@@ -137,44 +137,6 @@ body, html {
     overflow: hidden; /* Oculta el contenido que exceda el área del elemento */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Estilos del menú de navegación */
 .navbar {
     display: flex;
@@ -229,7 +191,7 @@ body, html {
 
 .navbar-item:hover .navbar-dropdown {
     display: block;
-    animation: fadeIn 0.3s ease;
+    animation: fadeIn 0.15s ease;
 }
 
 @keyframes fadeIn {
@@ -242,7 +204,7 @@ body, html {
     color: #ecf0f1;
     text-decoration: none;
     display: block;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
     font-size: 14px;
 }
 
@@ -272,6 +234,15 @@ body, html {
 
 
 
+.create-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+    .close-button {
+        background-color: #f44336;
+        color: white;
+    }
 
 
 
@@ -377,7 +348,14 @@ body, html {
     background-color: #fff;
     border-radius: 10px;
 }
-
+.description2 {
+    background-color: #fff;
+    border-radius: 10px;
+    height: auto;
+}
+.descripcion{
+    font-size: 1rem;
+}
 
 
 
@@ -502,5 +480,51 @@ body, html {
 }
 
 
+/* estylos dentro de las acciones de la biblioteca */
+.info-cards2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px; /* Espacio entre las tarjetas */
+    margin: 60px 0;
+    position: absolute;
+}
 
+.info-card2 {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.icon-circle2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: #48a9a6;
+    border-radius: 50%;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.subtitle2 {
+    color: #333;
+    font-size: 1.5em;
+    top: 10rem;
+}
+
+.description2 {
+    color: #555;
+    font-size: 1em;
+}
+.title2 {
+    color: #3498db; /* Cambia esto por el color deseado */
+    font-size: 3rem; /* Cambia el tamaño de la fuente a tu preferencia */
+    margin-bottom: 0px; /* Espaciado en la parte inferior del título */
+    text-align: center; /* Centra el texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra del texto */
+    font-weight: bold; /* Fuente en negrita */
+    letter-spacing: 1px; /* Espaciado entre letras */
+}
 

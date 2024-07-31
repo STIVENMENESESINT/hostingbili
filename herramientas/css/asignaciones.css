@@ -31,15 +31,6 @@
     cursor: pointer;
 }
 
-.create-button {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.close-button {
-    background-color: #f44336;
-    color: white;
-}
 h5, h6.label-identifier {
     font-weight: bold;
     color: #333;
