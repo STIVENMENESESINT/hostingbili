@@ -25,21 +25,29 @@ if (isset($_SESSION['id_userprofile'])) {
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../vista/css/biblioteca.css">
-    <link rel="stylesheet" href="../../herramientas/css/style.css">
+    <!-- Incluye Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Incluye jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Incluye Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-b4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy0sF/xTkqlj6Qrg/x2O9f7E3UJFpxoY+J" crossorigin="anonymous">
+    </script>
 
-   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 <div class="layout">
-   <!-- Menú de navegación -->
-   <aside class="layout__aside">
-            <div class="aside__user-info">
-                <?php
+    <!-- Menú de navegación -->
+    <aside class="layout__aside">
+        <div class="aside__user-info">
+            <?php
                     // Incluir el menú de navegación
                     include_once('menu.php');
                     ?>
-            </div>
-        </aside>
+        </div>
+    </aside>
     <!-- Contenido principal -->
     <div class="container layout__content">
         <div class="content__page">
@@ -58,7 +66,7 @@ if (isset($_SESSION['id_userprofile'])) {
 
                 <!-- Contenedor de la imagen de fondo -->
                 <div class="background-image-container">
-                    <div >
+                    <div class="container">
                         <div class="welcome-section">
                             <h1 class="title">Biblioteca Bilingüismo<br>B-Team-Language </h1>
                             <div class="divider"></div>
@@ -103,29 +111,55 @@ if (isset($_SESSION['id_userprofile'])) {
                                 accesible para todos!
                             </p>
                         </div>
+
+
+
+
+
+
+
+
+
                         <!-- Menú de navegación -->
                         <div class="navbar">
+                            <div class="navbar-item has-dropdown is-hoverable">
+                                <a class="navbar-link" href="#">Usuarios <i class="fas fa-users"></i></a>
+                                <div class="navbar-dropdown">
+                                    <?php
+                if(isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1'){
+                    echo '<a href="index.php?vista=user_new" class="navbar-dropdown-item">Nuevo</a>';
+                }
+            ?>
+                                    <a href="index.php?vista=user_list" class="navbar-dropdown-item">Lista</a>
+                                    <a href="index.php?vista=user_search" class="navbar-dropdown-item">Buscar</a>
+                                </div>
+                            </div>
+
                             <div class="navbar-item has-dropdown is-hoverable">
                                 <a class="navbar-link" href="#">Ingresar a la Biblioteca <i
                                         class="fas fa-calendar-day"></i></a>
                                 <div class="navbar-dropdown">
                                     <?php
-                                        if(isset($_SESSION['id_rol']) && $_SESSION['id_rol'] == '3'){
-                                            echo '<a href="category_new.php" class="navbar-dropdown-item">Ingresar Nueva Sesión</a>';
-                                        }
-                                    ?>
-                                    <a href="category_list.php" class="navbar-dropdown-item">Lista de Seccioones</a>
+                if(isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1'){
+                    echo '<a href="category_new.php" class="navbar-dropdown-item">Ingresar Nueva Sesión</a>';
+                }
+            ?>
+                                    <a href="category_list.php" class="navbar-dropdown-item">Lista de Sesiones</a>
+                                    <a href="category_search.php" class="navbar-dropdown-item">Buscar Sesión</a>
                                 </div>
                             </div>
+
                             <div class="navbar-item has-dropdown is-hoverable">
-                                <a class="navbar-link" href="#"> Libros <i class="fas fa-book"></i></a>
+                                <a class="navbar-link" href="#">Ingresar a los Libros <i class="fas fa-book"></i></a>
                                 <div class="navbar-dropdown">
                                     <?php
-                                        if(isset($_SESSION['id_rol']) && $_SESSION['id_rol'] == '3'){
-                                            echo '<a href="product_new.php" class="navbar-dropdown-item">Nuevo Libro</a>';
-                                        }
-                                    ?>
+                if(isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1'){
+                    echo '<a href="product_new.php" class="navbar-dropdown-item">Nuevo Libro</a>';
+                }
+            ?>
                                     <a href="product_list.php" class="navbar-dropdown-item">Lista de Libros</a>
+                                    <a href="product_category.php" class="navbar-dropdown-item">Buscar Libros por
+                                        Categoría</a>
                                 </div>
                             </div>
                         </div>
@@ -134,6 +168,12 @@ if (isset($_SESSION['id_userprofile'])) {
                         <div class="large-image">
                             <img src="../vista/img/biblioteca1.png" alt="Imagen Grande">
                         </div>
+
+
+
+
+
+
                         <!-- Footer -->
                         <footer class="footer">
                             <div class="footer-content">
@@ -157,11 +197,12 @@ if (isset($_SESSION['id_userprofile'])) {
                                 </div>
                             </div>
                         </footer>
-                    </div>
+
+
             </body>
 
-            </html>
-            <?php
+</html>
+<?php
     // Si no hay sesión activa, redirigir al usuario a la página de inicio de sesión
 } else {
     header("Location: ../../index.php");

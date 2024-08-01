@@ -8,10 +8,21 @@ $(document).ready(function() {
         },
         function(data) {
             if(data.rst == "1"){    
-                alert(data.ms);
-                location.reload();
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: data.ms,
+                    showConfirmButton: false,
+                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                }).then(() => {
+                    location.reload();
+                });
             } else {    
-                alert(data.ms);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.ms
+                });
             }
         },
         'json'
@@ -88,10 +99,22 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(data) {
                 if (data.rst == "1") {
-                    alert(data.ms);
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        text: data.ms,
+                        showConfirmButton: false,
+                        timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                    }).then(() => {
+                        location.reload();
+                    });
                     $('#addBookForm')[0].reset();
                 } else {
-                    alert(data.ms);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: data.ms
+                    });
                 }
             },
             error: function(xhr, status, error) {

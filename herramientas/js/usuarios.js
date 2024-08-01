@@ -21,7 +21,11 @@ $(document).on("click", "#btn_permiso", function () {
             // Llamar a función para cargar permisos y gestionar eventos de permisos
             cargarPermisos(iduserprofile);
         } else {
-            alert(data.msj);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.msj
+            });
         }
     }, 'json');
 });
@@ -53,11 +57,21 @@ function cargarPermisos(iduserprofile) {
             id_rol: $("#id_rol").val()
         }, function (data) {
             if (data.rstl == '1') {
-                alert(data.msj);
-                location.reload();
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: data.msj,
+                    showConfirmButton: false,
+                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                }).then(() => {
+                    location.reload();
+                });
             } else {
-                alert(data.msj);
-                location.reload();
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.msj
+                });
             }
         }, 'json');
     });

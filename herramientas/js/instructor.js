@@ -6,7 +6,11 @@ $(document).ready(function(){
         if(data.rstl=="1"){	
             $("#id_cardInstru").html(data.tarjeta); } 
             else{	
-                alert(data.msj);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.msj
+                });
             }
     },
     'json'

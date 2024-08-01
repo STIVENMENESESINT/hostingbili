@@ -28,13 +28,21 @@ $(document).on("click", "#btn_asign", function() {
             $(document).on("click", "#btn_curso",function (){
                 console.log("ID de la solicitud: " + idSolicitud);
                 if($("#ficha").val()==""){
-                    alert('Debe ingresar la ficha del curso');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Debe ingresar la ficha del curso'
+                    });
                     $("#ficha").focus();
                 }
                 else
                 {
                     if($("#nombre").val()=="" ){
-                        alert('Debe Digitar un Nombre de Curso');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Debe Digitar un Nombre de Curso'
+                        });
                         $("#nombre").focus();
                     }
                     else
@@ -56,13 +64,31 @@ $(document).on("click", "#btn_asign", function() {
                         id_estado:$("#id_estado").val(),
                         id_solicitud: idSolicitud
                         }, function(data){
-                            if(data.rstl=="1"){	alert(data.msj); location.reload();} else{	alert(data.msj); }
+                            if(data.rstl=="1"){	
+                                Swal.fire({
+                                icon: 'success',
+                                title: '¡Éxito!',
+                                text: data.msj,
+                                showConfirmButton: false,
+                                timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                            }).then(() => {
+                                location.reload();
+                            });} else{	
+                                Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: data.msj
+                            }); }
                         }, 'json');
                     }
                 }
             });
         } else {
-            alert(data.ms);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.ms
+            });
         }
     }, 'json');
 });
@@ -116,7 +142,11 @@ $(document).on("click", "#btn_LEc", function() {
         if (data.rst == "1") {
             $("#form_Ec").html(data.ListEc);
         } else {
-            alert(data.ms);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.ms
+            });
             
         }
     }, 'json');
@@ -130,7 +160,11 @@ $(document).on("click", "#btn_LRa", function() {
         if (data.rst == "1") {
             $("#form_Ra").html(data.ListRa);
         } else {
-            alert(data.ms);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.ms
+            });
             
         }
     }, 'json');
@@ -146,7 +180,11 @@ $(document).on("click", "#modalCancel", function() {
             $("#cancel").html(data.cancel);
             $('#btnCancelarSoli').on("click", function() {
                 if ($("#Denegacion").val()==""){
-                    alert('Debe Digitar Mensaje de Confirmacion Para su Cancelacion...');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Debe Digitar Mensaje de Confirmacion Para su Cancelacion...'
+                    });
                     focus('#Denegacion');
                 }else{
                     
@@ -157,10 +195,21 @@ $(document).on("click", "#modalCancel", function() {
                             id_solicitud: idSolicitud
                         }, function(data) {
                             if (data.rstl == "1") {
-                                alert(data.msj);
-                                location.reload(); // Recargar la página para ver los cambios
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: '¡Éxito!',
+                                    text: data.msj,
+                                    showConfirmButton: false,
+                                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                                }).then(() => {
+                                    location.reload();
+                                }); // Recargar la página para ver los cambios
                             } else {
-                                alert(data.msj);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: data.msj
+                                });
                             }
                         }, 'json');
                 }

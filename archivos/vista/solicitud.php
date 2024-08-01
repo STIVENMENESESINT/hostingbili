@@ -187,11 +187,6 @@ if (isset($_SESSION['id_userprofile'])){
                 </div>
                 <div class="modal-body">
                     <div id="noticia_creada"></div>
-                    <div id="form_Of"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="create-button" id="subirNoti">Subir</button>
                 </div>
             </div>
         </div>
