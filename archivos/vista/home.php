@@ -113,18 +113,7 @@ if (isset($_SESSION['id_userprofile'])) {
 
                         <!-- Menú de navegación -->
                         <div class="navbar">
-                            <div class="navbar-item has-dropdown is-hoverable">
-                                <a class="navbar-link" href="#">Usuarios <i class="fas fa-users"></i></a>
-                                <div class="navbar-dropdown">
-                                    <?php
-                if(isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1'){
-                    echo '<a href="index.php?vista=user_new" class="navbar-dropdown-item">Nuevo</a>';
-                }
-            ?>
-                                    <a href="index.php?vista=user_list" class="navbar-dropdown-item">Lista</a>
-                                    <a href="index.php?vista=user_search" class="navbar-dropdown-item">Buscar</a>
-                                </div>
-                            </div>
+
 
                             <div class="navbar-item has-dropdown is-hoverable">
                                 <a class="navbar-link" href="#">Ingresar a la Biblioteca <i
