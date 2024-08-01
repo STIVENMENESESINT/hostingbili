@@ -171,6 +171,26 @@ $(document).ready(function(){
         console.error(error);
     });
 });
+$(document).on("click", "#MisSoliActivate", function () {
+    $.post("../../include/select.php", {
+        action: 'MisNoti' 
+    },
+    function(data) {
+        if(data.rs=="1"){	
+            $("#MisSoliForm").html(data.tabla); } 
+            else{	
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.ms
+                });
+            }
+    },
+    'json'
+    ).fail(function(xhr, status, error) {
+        console.error(error);
+    });
+});
 $(document).ready(function(){  
     $.post("../../include/select.php", {
         action: 'crgrTipoCategoria' 
