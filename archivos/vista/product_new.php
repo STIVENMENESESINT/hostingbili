@@ -38,14 +38,15 @@ if (isset($_SESSION['id_userprofile'])){
 
 
 
-        <div class="content__page">
+    <div class="content__page">
+
+
+        <div class="container">
             <div class="is-fluid mb-6">
                 <h1 class="title">Biblioteca Bilingüismo<br>Nuevo libro B-Team-Language </h1>
             </div>
-
-            <div class="container">
             <div class="buttons">
-                <div class="">
+                <div class="container">
                     <a href="" class="navbar-item">Publicar Libro </a>
                     <form id="addBookForm" enctype="multipart/form-data">
                         <div class="columns">

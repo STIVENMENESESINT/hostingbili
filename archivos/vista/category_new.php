@@ -113,14 +113,15 @@ if (isset($_SESSION['id_userprofile'])){
             <div class="content__page">
 
 
-                <div class=" is-fluid mb-6">
-                    <h1 class="title">Biblioteca Bilingüismo<br>Secciones B-Team-Language </h1>
-                </div>
+
                 <div class=" pb-6 pt-6">
-                    <form id="addSectionForm">
-                        <div class="columns">
-                            <div class="column">
-                                <div class="field">
+                    <form id="addSectionForm" class="container">
+                        <div class=" is-fluid mb-6">
+                            <h1 class="title">Biblioteca Bilingüismo<br>Secciones B-Team-Language </h1>
+                        </div>
+                        <div class="columns container">
+                            <div class="column ">
+                                <div class="field ">
                                     <label class="label">Nombre de la Sección a Ingresar:</label>
                                     <div class="control">
                                         <input class="input" type="text" id="nombre"
@@ -145,12 +146,13 @@ if (isset($_SESSION['id_userprofile'])){
                                     </div>
                                 </div>
                             </div>
+                            <div class="field">
+                                <p class="control has-text-centered">
+                                    <button type="button" id="guardar_seccion" class="create-button">Guardar</button>
+                                </p>
+                            </div>
                         </div>
-                        <div class="field">
-                            <p class="control has-text-centered">
-                                <button type="button" id="guardar_seccion" class="create-button">Guardar</button>
-                            </p>
-                        </div>
+
                     </form>
                 </div>
 </body>

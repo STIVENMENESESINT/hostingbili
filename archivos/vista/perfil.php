@@ -23,6 +23,7 @@ if (isset($_SESSION['id_userprofile'])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Incluir enlaces a los archivos CSS y otros metadatos necesarios -->
     <?php include_once('cabecera.php'); ?>
@@ -62,7 +63,21 @@ if (isset($_SESSION['id_userprofile'])) {
                         <?php
                         $rutaImagen = '../../include/uploads/' . htmlspecialchars($fila['imagen']);
                         if (file_exists($rutaImagen) && !empty($fila['imagen'])) {
-                            echo '<img class="circle" src="' . $rutaImagen . '" alt="Foto de Perfil">';
+                            echo '<img class="circle" src="' . $rutaImagen . '" alt="Foto de Perfil">
+                            <div class="upload-container">
+                                    
+                                    <label for="imagen" class="upload-label">Cambia Tu Imagen tu imagen
+                                        <div class="image-upload">
+                                            <label for="file-input">
+                                                <div class="upload-icon">
+                                                    <i class="fa fa-upload"></i>
+                                                </div>
+                                            </label>
+                                            <input type="file" id="imagen" name="imagen" accept="image/*">
+                                        </div>
+                                        
+                                    </label>
+                                </div>';
                         } else {
                             echo '<div class="upload-container">
                                     <div class="circle">
@@ -82,41 +97,38 @@ if (isset($_SESSION['id_userprofile'])) {
                                 </div>';
                         }
                     ?>
-                </div>
-                        <!-- Campos del formulario -->
-                        <h1 class="modal-title w-100 text-center">Actualizar Usuario</h1>
-                        
-                        <div class="container">
-                            <div class="row mt-3">
+                        <div class="col-sm-6">
+                            <label for="nombre" class="col-form-label">Primer Nombre:</label>
 
-                                <div class="col-sm-6">
-                                    <label for="nombre" class="col-form-label">Primer Nombre:</label>
-                                    
-                                    <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo htmlspecialchars($fila['nombre']); ?>">
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="nombre_dos" class="col-form-label">Segundo Nombre:</label>
-                                    <input type="text" class="form-control" id="nombre_dos" name="nombre_dos" value="<?php echo htmlspecialchars($fila['nombre_dos'] ?? ''); ?>">
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="apellido" class="col-form-label">Primer Apellido:</label>
-                                    <input type="text" class="form-control" id="apellido" name="apellido" value="<?php echo htmlspecialchars($fila['apellido']); ?>">
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="apellido_dos" class="col-form-label">Segundo Apellido:</label>
-                                    <input type="text" class="form-control" id="apellido_dos" name="apellido_dos" value="<?php echo htmlspecialchars($fila['apellido_dos'] ?? ''); ?>">
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="celular" class="col-form-label">Número de Celular:</label>
-                                    <input type="text" class="form-control" id="celular" name="celular"
-                                        value="<?php echo htmlspecialchars($fila['celular']); ?>">
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="correo" class="col-form-label">Correo Electrónico:</label>
-                                    <input type="email" class="form-control" id="correo" name="correo"
-                                        value="<?php echo htmlspecialchars($fila['correo']); ?>">
-                                </div>
-                            </div>
+                            <input type="text" class="form-control" id="nombre" name="nombre"
+                                value="<?php echo htmlspecialchars($fila['nombre']); ?>">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="nombre_dos" class="col-form-label">Segundo Nombre:</label>
+                            <input type="text" class="form-control" id="nombre_dos" name="nombre_dos"
+                                value="<?php echo htmlspecialchars($fila['nombre_dos'] ?? ''); ?>">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="apellido" class="col-form-label">Primer Apellido:</label>
+                            <input type="text" class="form-control" id="apellido" name="apellido"
+                                value="<?php echo htmlspecialchars($fila['apellido']); ?>">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="apellido_dos" class="col-form-label">Segundo Apellido:</label>
+                            <input type="text" class="form-control" id="apellido_dos" name="apellido_dos"
+                                value="<?php echo htmlspecialchars($fila['apellido_dos'] ?? ''); ?>">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="celular" class="col-form-label">Número de Celular:</label>
+                            <input type="text" class="form-control" id="celular" name="celular"
+                                value="<?php echo htmlspecialchars($fila['celular']); ?>">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="correo" class="col-form-label">Correo Electrónico:</label>
+                            <input type="email" class="form-control" id="correo" name="correo"
+                                value="<?php echo htmlspecialchars($fila['correo']); ?>">
+                        </div>
+                    </div>
 
 
 
@@ -128,77 +140,74 @@ if (isset($_SESSION['id_userprofile'])) {
 
 
 
-                            <div class="modal-footer">
-                                <button type="button" class="close-button"
-                                    data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="create-button" name="btnActualizarUsuario"
-                                    id="btnActualizarUsuario">Actualizar</button>
-                            </div>
-                        </div>
-
+                    <div class="modal-footer">
+                        <button type="button" class="close-button" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="create-button" name="btnActualizarUsuario"
+                            id="btnActualizarUsuario">Actualizar</button>
+                    </div>
                 </div>
+
+            </div>
 
         </div>
     </div>
     </div>
     <script>
+    // Manejar el clic del botón de actualizar usuario
+    $(document).on("click", "#btnActualizarUsuario", function() {
+        // Crear un objeto FormData
+        var formData = new FormData();
 
-        // Manejar el clic del botón de actualizar usuario
-        $(document).on("click", "#btnActualizarUsuario", function() {
-    // Crear un objeto FormData
-    var formData = new FormData();
+        // Añadir los datos del formulario a formData
+        formData.append('action', 'actualizarusuario');
+        formData.append('nombre', $("#nombre").val());
+        formData.append('nombre_dos', $("#nombre_dos").val());
+        formData.append('apellido', $("#apellido").val());
+        formData.append('apellido_dos', $("#apellido_dos").val());
+        formData.append('correo', $("#correo").val());
+        formData.append('numeroiden', $("#numeroiden").val());
+        formData.append('celular', $("#celular").val());
 
-    // Añadir los datos del formulario a formData
-    formData.append('action', 'actualizarusuario');
-    formData.append('nombre', $("#nombre").val());
-    formData.append('nombre_dos', $("#nombre_dos").val());
-    formData.append('apellido', $("#apellido").val());
-    formData.append('apellido_dos', $("#apellido_dos").val());
-    formData.append('correo', $("#correo").val());
-    formData.append('numeroiden', $("#numeroiden").val());
-    formData.append('celular', $("#celular").val());
-
-    // Añadir el archivo de imagen si se ha seleccionado uno
-    var imagen = $('#imagen')[0].files[0];
-    if (imagen) {
-        formData.append('imagen', imagen);
-    }
-
-    // Enviar solicitud AJAX con FormData
-    $.ajax({
-        url: "../../include/cntrlUsuarios.php",
-        type: "POST",
-        data: formData,
-        contentType: false,
-        processData: false,
-        dataType: 'json',
-        success: function(data) {
-            if (data.rstl == "1") {
-                Swal.fire({
-                    icon: 'success',
-                    title: '¡Éxito!',
-                    text: 'Registro Actualizado con éxito',
-                    showConfirmButton: false,
-                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
-                }).then(() => {
-                    location.reload();
-                });
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: data.msj
-                });
-            }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            alert('Error en la solicitud: ' + textStatus);
+        // Añadir el archivo de imagen si se ha seleccionado uno
+        var imagen = $('#imagen')[0].files[0];
+        if (imagen) {
+            formData.append('imagen', imagen);
         }
-    });
-});
 
+        // Enviar solicitud AJAX con FormData
+        $.ajax({
+            url: "../../include/cntrlUsuarios.php",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            success: function(data) {
+                if (data.rstl == "1") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        text: 'Registro Actualizado con éxito',
+                        showConfirmButton: false,
+                        timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                    }).then(() => {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: data.msj
+                    });
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Error en la solicitud: ' + textStatus);
+            }
+        });
+    });
     </script>
-    </body>
+</body>
 
 
 </html>
