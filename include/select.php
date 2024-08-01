@@ -292,7 +292,6 @@ switch ($_REQUEST['action'])
     case 'crgrTipoCategoria':
         $jTableResult = array();                
         $jTableResult['lisTiposC']="";
-        $jTableResult['lisTiposC']="<option value='0' selected >seleccione:.</option>";
         $query="SELECT id_categoria, nombre FROM categoria";
         $resultado = mysqli_query($conn, $query);
         while($registro = mysqli_fetch_array($resultado))
@@ -357,14 +356,14 @@ switch ($_REQUEST['action'])
                 if (mysqli_num_rows($resultado) > 0) {
                     // Consulta para obtener las solicitudes y sus detalles asociados
                     $busqueda = "SELECT solicitud.id_solicitud, detallesolicitud.descripcion, solicitud.id_estado, estado.nombre AS nombre_estado,
-                                    tiposolicitud.nombre AS nombre_tipo, userprofile.nombre AS nombre_autor, solicitud.fecha_respuesta
+                                    tiposolicitud.nombre AS nombre_tipo, userprofile.nombre AS nombre_autor
                                 FROM solicitud
                                 JOIN estado ON solicitud.id_estado = estado.id_estado 
                                 JOIN userprofile ON solicitud.id_userprofile = userprofile.id_userprofile
                                 JOIN detallesolicitud ON solicitud.id_detallesolicitud = detallesolicitud.id_detallesolicitud
                                 JOIN tiposolicitud ON detallesolicitud.id_tiposolicitud = tiposolicitud.id_tiposolicitud
-                                WHERE  (detallesolicitud.id_tiposolicitud = 23 OR detallesolicitud.id_tiposolicitud = 4) AND 
-                                            (solicitud.id_estado = 4 OR solicitud.id_estado = 9)";
+                                WHERE  solicitud.id_estado != 3 AND solicitud.id_estado != 9 AND solicitud.id_estado != 6 
+                                ";
                                 if ($_SESSION['id_rol'] != 3) {
                                     $busqueda .= " AND solicitud.id_userprofile='" . $_SESSION['id_userprofile'] . "'";
                                 }
@@ -379,23 +378,26 @@ switch ($_REQUEST['action'])
                                                             if ($_SESSION['id_rol'] == 3) {
                                                                 $jTableResult['tabla'] .= "<td>" . $registro['nombre_autor'] . "</td>";
                                                             }
-                                                            $jTableResult['tabla'] .= "<td>" . $registro['fecha_respuesta'] . "</td>
+                                                            $jTableResult['tabla'] .= "<td>" . $registro['descripcion'] . "</td>
                                                                                         <td>" . $registro['nombre_estado'] . "</td>
                                                                                         <td>";
                                                             if ($_SESSION['id_rol'] == 3) {
-                                                                $jTableResult['tabla'] .= '
-                                                                                            <button id="modalCancel" class="btn btn-danger btn-sm  local" data-bs-toggle="modal" data-bs-target="#cancelSolicitudModal" data-id="' . $registro['id_solicitud'] . '">Denegar Soli</button>';
+                                                                $jTableResult['tabla'] .= '<button id="btnEditarSoli" class="btn btn-warning btn-sm  local" data-bs-toggle="modal" data-bs-target="#editSolicitudModal" data-id="' . $registro['id_solicitud'] . '">Ver Soli</button>
+                                                                                            <button id="modalCancel" class="btn btn-danger btn-sm  local" data-bs-toggle="modal" data-bs-target="#cancelSolicitudModal" data-id="' . $registro['id_solicitud'] . '">Denegar Soli</button>
+                                                                                            <button id="btnAceptarSoli" class="btn btn-success cursor:pointer;  local" data-id="' . $registro['id_solicitud'] . '">Aceptar Soli</button>';
+                                                            } elseif ($registro['id_estado'] == 4){
+                                                                $jTableResult['tabla'].='<button id="detalleSolicitud" class="btn btn-warning btn-sm  local" data-bs-toggle="modal" data-bs-target="#detallesolicitud" data-id="' . $registro['id_solicitud'] . '">Ver Solicitud</button>';
                                                             }
                                                             else {
-                                                                $jTableResult['tabla'] .= '
-                                                                                            <button id="modalCancel" class="btn btn-danger btn-sm  local" data-bs-toggle="modal" data-bs-target="#cancelSolicitudModal" data-id="' . $registro['id_solicitud'] . '">Denegar Soli</button>';
+                                                                $jTableResult['tabla'] .= '<button id="btnEditarSoli" class="btn btn-warning btn-sm  local" data-bs-toggle="modal" data-bs-target="#editSolicitudModal"  data-id="' . $registro['id_solicitud'] . '">Editar</button>
+                                                                                            <button id="btnEliminarSoli" class="btn btn-danger btn-sm  local">Cancelar</button>';
                                                             }
                             $jTableResult['tabla'] .= "</td></tr>";
                         }
                 $jTableResult['tabla'] .= "</tbody></table></div></div>";
             }else{
                 $jTableResult['rs'] = "2";
-                $jTableResult['Ms'] = "Tus Solicitud Aun no es Publicada";
+                $jTableResult['Ms'] = "Tu Solicitud Aun no tiene una respuesta.";
             }
         } else {
             $jTableResult['rs'] = "3";
@@ -403,7 +405,7 @@ switch ($_REQUEST['action'])
         }
     
         print json_encode($jTableResult);
-    break;
+break;
     
 }
 mysqli_close($conn);

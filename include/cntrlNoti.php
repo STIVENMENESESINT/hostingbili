@@ -537,7 +537,7 @@ switch ($_REQUEST['action']) {
         $jTableResult['ms'] = "";
         $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
         $query ="UPDATE solicitud s
-                    SET s.id_estado = 4, fecha_aceptada=NOW();
+                    SET s.id_estado = 4
                 WHERE s.id_solicitud = '$id_solicitud'";
         if($result= mysqli_query($conn,$query)){
             mysqli_commit($conn);
@@ -547,70 +547,6 @@ switch ($_REQUEST['action']) {
         else{
             $jTableResult['rst']= "2";
             $jTableResult['ms'] = " NO Ofertado con exito";
-        }
-        print json_encode($jTableResult);
-    break;
-    case 'Cancel':
-        $jTableResult = array();
-        $jTableResult['rst'] = "";
-        $jTableResult['msj'] = "";
-        $jTableResult['cancel'] = "";
-        $id_solicitud = $_POST['id_solicitud'];
-        // Identifica que la variable $id_solicitud está correctamente escapada para evitar inyección SQL
-        $id_solicitud = mysqli_real_escape_string($conn, $id_solicitud);
-            $query = "SELECT 
-                            s.id_solicitud
-                        FROM 
-                            solicitud s
-                        WHERE 
-                            s.id_solicitud = '$id_solicitud'";
-        $result = mysqli_query($conn, $query);
-        // Verificar si se encontraron resultados
-        if (mysqli_num_rows($result) > 0) {
-            while ($registro = mysqli_fetch_array($result)) {
-                $jTableResult['msj'] = "Cancel Creada con Exito.";
-                $jTableResult['rst'] = "1";
-                // Concatenar el contenido HTML para las tarjetas
-                $jTableResult['cancel'] .= '
-                <div class="row mt-3">
-                            <div class="col-sm-12">
-                                <h6 class="modal-title">Motivo Denegacion...</h6>
-                                <input type="text" class="form-control modal-textbox" id="detalle_cancel" name="detalle_cancel"
-                                    placeholder="Motivo Denegacion Solicitud" title="Motivo Denegacion">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
-                        <button id="btnCancelarSoli" type="button" class="create-button" data-id="' . $registro['id_solicitud'] . '">Confirmar</button>
-                    </div>';
-            }
-        } else {
-            mysqli_rollback($conn);
-            $jTableResult['msj'] = "Error al Crear.";
-            $jTableResult['rst'] = "0";
-        }
-        print json_encode($jTableResult);
-    break;
-    case 'denegarSolicitud':
-        $jTableResult = array();
-        $jTableResult['rstl'] = "";
-        $jTableResult['msj'] = "";
-        $id_solicitud = $_POST['id_solicitud'];
-        $mensaje = $_POST['detalle_cancel'];
-        $correo=$_SESSION['correo'];
-        $query = "UPDATE solicitud 
-        SET id_estado = 5
-        WHERE id_solicitud = '$id_solicitud'";
-        if ($result = mysqli_query($conn, $query)) {
-            mysqli_commit($conn);
-            @mail($correo, 'Solicitud Cancelada', $mensaje);
-            $jTableResult['msj'] = "Solicitud Denegada con éxito.";
-            $jTableResult['rstl'] = "1";
-        } else {
-            mysqli_rollback($conn);
-            $jTableResult['msj'] = "Error al Denegar la solicitud.";
-            $jTableResult['rstl'] = "0";
         }
         print json_encode($jTableResult);
     break;
