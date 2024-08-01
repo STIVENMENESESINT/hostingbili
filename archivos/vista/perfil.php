@@ -98,25 +98,15 @@ if (isset($_SESSION['id_userprofile'])) {
                         }
                     ?>
                         <div class="col-sm-6">
-                            <label for="nombre" class="col-form-label">Primer Nombre:</label>
+                            <label for="nombre" class="col-form-label">Nombres:</label>
 
                             <input type="text" class="form-control" id="nombre" name="nombre"
                                 value="<?php echo htmlspecialchars($fila['nombre']); ?>">
                         </div>
                         <div class="col-sm-6">
-                            <label for="nombre_dos" class="col-form-label">Segundo Nombre:</label>
-                            <input type="text" class="form-control" id="nombre_dos" name="nombre_dos"
-                                value="<?php echo htmlspecialchars($fila['nombre_dos'] ?? ''); ?>">
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="apellido" class="col-form-label">Primer Apellido:</label>
+                            <label for="apellido" class="col-form-label"> Apellidos:</label>
                             <input type="text" class="form-control" id="apellido" name="apellido"
                                 value="<?php echo htmlspecialchars($fila['apellido']); ?>">
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="apellido_dos" class="col-form-label">Segundo Apellido:</label>
-                            <input type="text" class="form-control" id="apellido_dos" name="apellido_dos"
-                                value="<?php echo htmlspecialchars($fila['apellido_dos'] ?? ''); ?>">
                         </div>
                         <div class="col-sm-6">
                             <label for="celular" class="col-form-label">Número de Celular:</label>

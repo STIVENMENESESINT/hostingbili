@@ -157,23 +157,12 @@ $varDateTime = date("Y-m-d H:i:s");
                     <!-- FORMULARIO USUARIOS -->
                     <div id="formRegisUsu">
                     <div class="form-group">
-                                <label for="nameusu" class="form-label">Primer Nombre:</label>
+                                <label for="nameusu" class="form-label">Nombres Completos:</label>
                                 <input type="text" class="form-input" id="nameusu" name="nameusu" title="Primer Nombre" style="cursor:pointer;">
                             </div>
-
                             <div class="form-group">
-                                <label for="nombre_dos" class="form-label">Segundo Nombre:</label>
-                                <input type="text" class="form-input" id="nombre_dos" name="nombre_dos" title="Segundo Nombre">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="apellidoUsu" class="form-label">Primer Apellido:</label>
+                                <label for="apellidoUsu" class="form-label">Apellidos Completos</label>
                                 <input type="text" class="form-input" id="apellidoUsu" name="apellidoUsu" title="Primer Apellido">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="apellidoUsu_dos" class="form-label">Segundo Apellido:</label>
-                                <input type="text" class="form-input" id="apellidoUsu_dos" name="apellidoUsu_dos" title="Segundo Apellido">
                             </div>
                             <div class="form-group">
                                 <label for="id_tpdoc" class="form-label">Tipo de Documento:</label>

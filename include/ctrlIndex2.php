@@ -60,10 +60,15 @@ switch ($_REQUEST['action'])
 			$jTableResult = array();
 			$jTableResult['rstl'] = "";
 			$jTableResult['msj'] = "";
+		
+			// Encriptar la contraseña
+			$clave = password_hash($_POST['clave_registro'], PASSWORD_BCRYPT);
+		
+			// Construir la consulta SQL
 			$query = "INSERT INTO userprofile SET
 					id_doc = '".$_POST['id_tpdoc']."', 
 					numeroiden = '".$_POST['numeroiden_registro']."', 
-					clave = '".$_POST['clave_registro']."', 
+					clave = '".$clave."', 
 					nombre = '".$_POST['nameusu']."', 
 					fecha_registro = NOW(),
 					id_estado = 1,
@@ -72,11 +77,10 @@ switch ($_REQUEST['action'])
 					celular = '".$_POST['celular']."',
 					correo = '".$_POST['correo_registro']."',
 					apellido = '".$_POST['apellidoUsu']."', 
-					apellido_dos = '".$_POST['apellidoUsu_dos']."',
 					cod_dpto = '".$_POST['cod_dpto']."', 
 					cod_municipio = '".$_POST['cod_municipio']."', 
 					cod_poblado = '".$_POST['cod_poblado']."';";
-
+		
 			try {
 				if ($result = mysqli_query($conn, $query)) {
 					mysqli_commit($conn);
