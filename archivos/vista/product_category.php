@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio Administrador</title>
+    <link rel="stylesheet" href="../../herramientas/css/style.css">
 
 
 
@@ -67,11 +68,6 @@
                 <h2 class="subtitle">Lista de Libros Por Secciones O Categorias</h2>
             </div>
             <div class=" pb-6 pt-6">
-                <?php
-		include "../inc/btn_back.php";
-
-	;
-	?>
 
                 <div class="ner pb-6 pt-6">
                     <?php
@@ -143,3 +139,6 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
