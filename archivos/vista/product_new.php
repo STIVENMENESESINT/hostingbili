@@ -36,16 +36,6 @@ if (isset($_SESSION['id_userprofile'])){
         </div>
     </aside>
 
-    <div class="container layout__content">
-        <button type="button" class="btn nav-link nav-item-hover fixed-top-right" onclick="goBack()">
-            <i class="fas fa-arrow-left fa-fw fa-lg"></i>
-            <span class="nav-item">Volver</span>
-        </button>
-        <script>
-        function goBack() {
-            window.history.back();
-        }
-        </script>
 
 
         <div class="content__page">
@@ -53,10 +43,9 @@ if (isset($_SESSION['id_userprofile'])){
                 <h1 class="title">Biblioteca Bilingüismo<br>Nuevo libro B-Team-Language </h1>
             </div>
 
-
+            <div class="container">
             <div class="buttons">
                 <div class="">
-                    <?php require_once "../php/main.php"; ?>
                     <a href="" class="navbar-item">Publicar Libro </a>
                     <form id="addBookForm" enctype="multipart/form-data">
                         <div class="columns">

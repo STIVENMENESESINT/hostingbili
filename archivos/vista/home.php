@@ -20,7 +20,9 @@ if (isset($_SESSION['id_userprofile'])) {
     ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Sistema de biblioteca bilinguismo</title>
+    <title data-lang-es="Sistema de biblioteca bilingüismo" data-lang-en="Bilingualism Library System" data-lang-fr="Système de bibliothèque bilinguisme">
+        Sistema de biblioteca bilingüismo
+    </title>
 
     <link rel="stylesheet" href="../vista/css/biblioteca.css">
 
@@ -28,7 +30,25 @@ if (isset($_SESSION['id_userprofile'])) {
     <link rel="stylesheet" href="../../herramientas/css/style.css">
 
 </head>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const languageSelect = document.getElementById("language-select");
 
+    languageSelect.addEventListener("change", (event) => {
+        const selectedLanguage = event.target.value;
+        setLanguage(selectedLanguage);
+    });
+
+    function setLanguage(language) {
+        document.querySelectorAll("[data-lang-es]").forEach(element => {
+            element.textContent = element.getAttribute(`data-lang-${language}`);
+        });
+    }
+
+    // Set default language
+    setLanguage(languageSelect.value);
+});
+</script>
 <body>
     <div class="layout">
         <!-- Menú de navegación -->
@@ -43,117 +63,111 @@ if (isset($_SESSION['id_userprofile'])) {
         <!-- Contenido principal -->
         <div class="container layout__content">
             <div class="content__page">
-
-
-
-
-
-                <!-- Script para la función de volver atrás -->
-                <script>
-                function goBack() {
-                    window.history.back();
-                }
-                </script>
-
                 <!-- Contenedor de la imagen de fondo -->
                 <div class="background-image-container">
                     <div>
+                    <div>
+                        <select id="language-select">
+                            <option value="es"><label for="language-select">Idioma:</label></option>
+                            <option value="es">Español</option>
+                            <option value="en">English</option>
+                            <option value="fr">Français</option>
+                        </select>
+                        </div>
                         <div class="welcome-section">
-                            <h1 class="title">Biblioteca Bilingüismo<br>B-Team-Language </h1>
-                            <div class="divider"></div>
-                            <h2 class="subtitle">¡Bienvenido a tu espacio de conocimiento!</h2>
-
+                        <h1 class="title" data-lang-es="Biblioteca Bilingüismo<br>B-Team-Language" data-lang-en="Bilingualism Library<br>B-Team-Language" data-lang-fr="Bibliothèque Bilinguisme<br>B-Team-Language">
+                            Biblioteca Bilingüismo<br>B-Team-Language
+                        </h1>
+                        <div class="divider"></div>
+                        <h2 class="subtitle" data-lang-es="¡Bienvenido a tu espacio de conocimiento!" data-lang-en="Welcome to your space of knowledge!" data-lang-fr="Bienvenue dans votre espace de connaissance !">
+                            ¡Bienvenido a tu espacio de conocimiento!
+                        </h2>
                             <div class="info-cards">
                                 <div class="info-card">
                                     <div class="icon-circle">
                                         <i class="fas fa-search"></i>
                                     </div>
-                                    <h3>Explora</h3>
+                                    <h3 data-lang-es="Explora" data-lang-en="Explore" data-lang-fr="Explore">
+                                        Explora
+                                    </h3>
                                     <div class="description">
-                                        <p>Descubre variedad de recursos educativos.</p>
+                                        <p data-lang-es="Descubre variedad de recursos educativos." data-lang-en="Discover a variety of educational resources." data-lang-fr="Découvrez une variété de ressources éducatives.">
+                                            Descubre variedad de recursos educativos.
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="info-card">
                                     <div class="icon-circle">
                                         <i class="fas fa-book-reader"></i>
                                     </div>
-                                    <h3>Aprende</h3>
+                                    <h3 data-lang-es="Aprende" data-lang-en="Learn" data-lang-fr="Apprends">
+                                        Aprende
+                                    </h3>
                                     <div class="description">
-                                        <p>Amplía tus horizontes con nuevos conocimientos.</p>
+                                        <p data-lang-es="Amplía tus horizontes con nuevos conocimientos." data-lang-en="Expand your horizons with new knowledge." data-lang-fr="Élargis tes horizons avec de nouvelles connaissances.">
+                                            Amplía tus horizontes con nuevos conocimientos.
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="info-card">
                                     <div class="icon-circle">
                                         <i class="fas fa-hands-helping"></i>
                                     </div>
-                                    <h3>Contribuye</h3>
+                                    <h3 data-lang-es="Contribuye" data-lang-en="Contribute" data-lang-fr="Contribue">
+                                        Contribuye
+                                    </h3>
                                     <div class="description">
-                                        <p>Comparte tu sabiduría con la comunidad.</p>
+                                        <p data-lang-es="Comparte tu sabiduría con la comunidad." data-lang-en="Share your wisdom with the community." data-lang-fr="Partage ta sagesse avec la communauté.">
+                                            Comparte tu sabiduría con la comunidad.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-
-                            <p class="info-text">
-                                Este sistema te permite publicar libros y contenidos que enriquecen nuestra comunidad
-                                educativa.
+                            <p class="info-text" data-lang-es="Este sistema te permite publicar libros y contenidos que enriquecen nuestra comunidad educativa." data-lang-en="This system allows you to publish books and content that enrich our educational community." data-lang-fr="Ce système vous permet de publier des livres et du contenu qui enrichissent notre communauté éducative.">
+                                Este sistema te permite publicar libros y contenidos que enriquecen nuestra comunidad educativa.
                             </p>
-                            <p class="highlight-text">
-                                ¡Tu participación es fundamental para construir un entorno de aprendizaje colaborativo y
-                                accesible para todos!
+                            <p class="highlight-text" data-lang-es="¡Tu participación es fundamental para construir un entorno de aprendizaje colaborativo y accesible para todos!" data-lang-en="Your participation is crucial to building a collaborative and accessible learning environment for everyone!" data-lang-fr="Votre participation est essentielle pour créer un environnement d'apprentissage collaboratif et accessible à tous !">
+                                ¡Tu participación es fundamental para construir un entorno de aprendizaje colaborativo y accesible para todos!
                             </p>
                         </div>
-
-
-
-
-
-
-
-
-
                         <!-- Menú de navegación -->
                         <div class="navbar">
-
-
                             <div class="navbar-item has-dropdown is-hoverable">
-                                <a class="navbar-link" href="#">Ingresar a la Biblioteca <i
-                                        class="fas fa-calendar-day"></i></a>
+                                <a class="navbar-link" href="#" data-lang-es="Secciones Biblioteca" data-lang-en="Library Sections" data-lang-fr="Sections de la Bibliothèque">
+                                    Secciones Biblioteca <i class="fas fa-calendar-day"></i>
+                                </a>
                                 <div class="navbar-dropdown">
                                     <?php
-                if(isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1'){
-                    echo '<a href="category_new.php" class="navbar-dropdown-item">Ingresar Nueva Sesión</a>';
-                }
-            ?>
-                                    <a href="category_list.php" class="navbar-dropdown-item">Lista de Sesiones</a>
-                                    <a href="category_search.php" class="navbar-dropdown-item">Buscar Sesión</a>
+                                    if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1') {
+                                        echo '<a href="category_new.php" class="navbar-dropdown-item" data-lang-es="Ingresar Nueva Sesión" data-lang-en="Enter New Session" data-lang-fr="Entrer Nouvelle Session">Ingresar Nueva Sesión</a>';
+                                    }
+                                    ?>
+                                    <a href="category_list.php" class="navbar-dropdown-item" data-lang-es="Lista de Sesiones" data-lang-en="Session List" data-lang-fr="Liste des Sessions">
+                                        Lista de Sesiones
+                                    </a>
                                 </div>
                             </div>
 
                             <div class="navbar-item has-dropdown is-hoverable">
-                                <a class="navbar-link" href="#">Ingresar a los Libros <i class="fas fa-book"></i></a>
+                                <a class="navbar-link" href="#" data-lang-es="Ingresar a los Libros" data-lang-en="Enter the Books" data-lang-fr="Entrer les Livres">
+                                    Ingresar a los Libros <i class="fas fa-book"></i>
+                                </a>
                                 <div class="navbar-dropdown">
                                     <?php
-                if(isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1'){
-                    echo '<a href="product_new.php" class="navbar-dropdown-item">Nuevo Libro</a>';
-                }
-            ?>
-                                    <a href="product_list.php" class="navbar-dropdown-item">Lista de Libros</a>
-                                    <a href="product_category.php" class="navbar-dropdown-item">Buscar Libros por
-                                        Categoría</a>
+                                    if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1') {
+                                        echo '<a href="product_new.php" class="navbar-dropdown-item" data-lang-es="Nuevo Libro" data-lang-en="New Book" data-lang-fr="Nouveau Livre">Nuevo Libro</a>';
+                                    }
+                                    ?>
+                                    <a href="product_list.php" class="navbar-dropdown-item" data-lang-es="Lista de Libros" data-lang-en="Book List" data-lang-fr="Liste des Livres">
+                                        Lista de Libros
+                                    </a>
                                 </div>
                             </div>
                         </div>
-
                         <!-- Imagen grande debajo del menú -->
                         <div class="large-image">
                             <img src="../vista/img/biblioteca1.png" alt="Imagen Grande">
                         </div>
-
-
-
-
-
-
                         <!-- Footer -->
                         <footer class="footer">
                             <div class="footer-content">
@@ -161,19 +175,47 @@ if (isset($_SESSION['id_userprofile'])) {
                                     <img src="../vista/img/footer.png" alt="Logo">
                                 </div>
                                 <div class="footer-right">
-                                    <p>Servicio Nacional de Aprendizaje SENA - Dirección General</p>
-                                    <p>Calle 57 No. 8 - 69 Bogotá D.C. (Cundinamarca), Colombia</p>
-                                    <p>Atención presencial: lunes a viernes 8:00 a.m. a 5:30 p.m. - Resto del país sedes
-                                        y horarios</p>
-                                    <p>Atención telefónica: lunes a viernes 7:00 a.m. a 7:00 p.m. - sábados 8:00 a.m. a
-                                        1:00 p.m</p>
-                                    <p>Lineas gratuitas atención al ciudadano: Bogotá (57 1) 3430111 - Resto del país
-                                        018000 910270</p>
-                                    <p>Lineas gratuitas atención al empresario: Bogotá (57 1) 3430101 - Resto del país
-                                        018000 910682</p>
-                                    <p>Conmutador Nacional (57 1) 5461500 - Extensiones 12586 - 13021 - 12535 - 12542
+                                <p data-lang-es="Servicio Nacional de Aprendizaje SENA - Dirección General"
+                                    data-lang-en="National Learning Service SENA - General Directorate"
+                                    data-lang-fr="Service National d'Apprentissage SENA - Direction Générale">
+                                        Servicio Nacional de Aprendizaje SENA - Dirección General
                                     </p>
-                                    <p>biblioteca.sena@misena.edu.co</p>
+                                    <p data-lang-es="Calle 57 No. 8 - 69 Bogotá D.C. (Cundinamarca), Colombia"
+                                    data-lang-en="57th Street No. 8 - 69 Bogotá D.C. (Cundinamarca), Colombia"
+                                    data-lang-fr="Rue 57 No. 8 - 69 Bogotá D.C. (Cundinamarca), Colombie">
+                                        Calle 57 No. 8 - 69 Bogotá D.C. (Cundinamarca), Colombia
+                                    </p>
+                                    <p data-lang-es="Atención presencial: lunes a viernes 8:00 a.m. a 5:30 p.m. - Resto del país sedes y horarios"
+                                    data-lang-en="In-person service: Monday to Friday 8:00 a.m. to 5:30 p.m. - Rest of the country branches and schedules"
+                                    data-lang-fr="Service en personne : du lundi au vendredi de 8h00 à 17h30 - Reste du pays agences et horaires">
+                                        Atención presencial: lunes a viernes 8:00 a.m. a 5:30 p.m. - Resto del país sedes y horarios
+                                    </p>
+                                    <p data-lang-es="Atención telefónica: lunes a viernes 7:00 a.m. a 7:00 p.m. - sábados 8:00 a.m. a 1:00 p.m"
+                                    data-lang-en="Phone service: Monday to Friday 7:00 a.m. to 7:00 p.m. - Saturdays 8:00 a.m. to 1:00 p.m"
+                                    data-lang-fr="Service téléphonique : du lundi au vendredi de 7h00 à 19h00 - Samedi de 8h00 à 13h00">
+                                        Atención telefónica: lunes a viernes 7:00 a.m. a 7:00 p.m. - sábados 8:00 a.m. a 1:00 p.m
+                                    </p>
+                                    <p data-lang-es="Líneas gratuitas atención al ciudadano: Bogotá (57 1) 3430111 - Resto del país 018000 910270"
+                                    data-lang-en="Toll-free citizen service lines: Bogotá (57 1) 3430111 - Rest of the country 018000 910270"
+                                    data-lang-fr="Lignes gratuites pour service citoyen : Bogotá (57 1) 3430111 - Reste du pays 018000 910270">
+                                        Líneas gratuitas atención al ciudadano: Bogotá (57 1) 3430111 - Resto del país 018000 910270
+                                    </p>
+                                    <p data-lang-es="Líneas gratuitas atención al empresario: Bogotá (57 1) 3430101 - Resto del país 018000 910682"
+                                    data-lang-en="Toll-free business service lines: Bogotá (57 1) 3430101 - Rest of the country 018000 910682"
+                                    data-lang-fr="Lignes gratuites pour service aux entreprises : Bogotá (57 1) 3430101 - Reste du pays 018000 910682">
+                                        Líneas gratuitas atención al empresario: Bogotá (57 1) 3430101 - Resto del país 018000 910682
+                                    </p>
+                                    <p data-lang-es="Conmutador Nacional (57 1) 5461500 - Extensiones 12586 - 13021 - 12535 - 12542"
+                                    data-lang-en="National Switchboard (57 1) 5461500 - Extensions 12586 - 13021 - 12535 - 12542"
+                                    data-lang-fr="Standard National (57 1) 5461500 - Postes 12586 - 13021 - 12535 - 12542">
+                                        Conmutador Nacional (57 1) 5461500 - Extensiones 12586 - 13021 - 12535 - 12542
+                                    </p>
+                                    <p data-lang-es="biblioteca.sena@misena.edu.co"
+                                    data-lang-en="biblioteca.sena@misena.edu.co"
+                                    data-lang-fr="biblioteca.sena@misena.edu.co">
+                                        biblioteca.sena@misena.edu.co
+                                    </p>
+
                                 </div>
                             </div>
                         </footer>
