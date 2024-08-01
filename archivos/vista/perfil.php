@@ -126,8 +126,8 @@ if (isset($_SESSION['id_userprofile'])) {
 
                 </div>
 
-            </div>
         </div>
+    </div>
     </div>
     <script>
 
