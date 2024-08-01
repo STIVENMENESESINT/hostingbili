@@ -26,6 +26,7 @@ if (isset($_SESSION['id_userprofile'])){
 
     <title>Libros</title>
 </head>
+
 <body>
     <div class="layout">
         <!-- Menú de navegación -->
@@ -38,11 +39,20 @@ if (isset($_SESSION['id_userprofile'])){
             </div>
         </aside>
 
-<div class="container is-fluid mb-6">
-    <h1 class="title">Libros</h1>
-    <h2 class="subtitle">Lista De libros</h2>
-    <div  id="libros"></div>
-</div>
+        <div class="container is-fluid mb-6"> <button type="button" class="btn nav-link nav-item-hover fixed-top-right"
+                onclick="goBack()">
+                <i class="fas fa-arrow-left fa-fw fa-lg"></i>
+                <span class="nav-item">Volver</span>
+            </button>
+            <script>
+            function goBack() {
+                window.history.back();
+            }
+            </script>
+            <h1 class="title">Libros</h1>
+            <h2 class="subtitle">Lista De libros</h2>
+            <div id="libros"></div>
+        </div>
 </body>
 
 </html>

@@ -21,40 +21,31 @@ if (isset($_SESSION['id_userprofile'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Sistema de biblioteca bilinguismo</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../vista/css/biblioteca.css">
-    <!-- Incluye Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <!-- Incluye jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Incluye Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-b4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy0sF/xTkqlj6Qrg/x2O9f7E3UJFpxoY+J" crossorigin="anonymous">
-    </script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../vista/css/biblioteca.css">
+
+
+    <link rel="stylesheet" href="../../herramientas/css/style.css">
 
 </head>
-<div class="layout">
-    <!-- Menú de navegación -->
-    <aside class="layout__aside">
-        <div class="aside__user-info">
-            <?php
+
+<body>
+    <div class="layout">
+        <!-- Menú de navegación -->
+        <aside class="layout__aside">
+            <div class="aside__user-info">
+                <?php
                     // Incluir el menú de navegación
                     include_once('menu.php');
                     ?>
-        </div>
-    </aside>
-    <!-- Contenido principal -->
-    <div class="container layout__content">
-        <div class="content__page">
+            </div>
+        </aside>
+        <!-- Contenido principal -->
+        <div class="container layout__content">
+            <div class="content__page">
 
-            </head>
 
-            <body>
+
 
 
                 <!-- Script para la función de volver atrás -->
@@ -66,7 +57,7 @@ if (isset($_SESSION['id_userprofile'])) {
 
                 <!-- Contenedor de la imagen de fondo -->
                 <div class="background-image-container">
-                    <div class="container">
+                    <div>
                         <div class="welcome-section">
                             <h1 class="title">Biblioteca Bilingüismo<br>B-Team-Language </h1>
                             <div class="divider"></div>
@@ -199,7 +190,7 @@ if (isset($_SESSION['id_userprofile'])) {
                         </footer>
 
 
-            </body>
+</body>
 
 </html>
 <?php
