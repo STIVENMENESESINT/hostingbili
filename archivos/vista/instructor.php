@@ -1,14 +1,14 @@
 <?php
-// Incluir el archivo de configuración de conexión a la base de datos
+// Incluir el archivo de conexión a la base de datos y otras configuraciones necesarias
 include_once('../../include/conex.php');
-
-// Establecer el tipo de contenido a HTML con el charset especificado en la configuración
-header('Content-Type: text/html; charset='.$charset);
-
-// Iniciar la sesión con el nombre de sesión configurado
+header('Content-Type: text/html; charset=' . $charset);
+header('Cache-Control: no-cache, must-revalidate');
 session_name($session_name);
 session_start();
+$conn = Conectarse();
+$sql="SELECT * FROM `chat`";
 
+	$query = mysqli_query($conn,$sql);
 // Verificar si existe una sesión activa con el id_userprofile
 if (isset($_SESSION['id_userprofile'])){
 ?>
@@ -47,14 +47,6 @@ if (isset($_SESSION['id_userprofile'])){
             </div>
         </aside>
         <!-- Contenido principal -->
-
-
-
-        <script>
-        function goBack() {
-            window.history.back();
-        }
-        </script>
         <div class="container layout__content">
             <div class=" content__page">
                 <h1 class="title">INSTRUCTORES Bilingüismo<br> </h1>
@@ -71,6 +63,12 @@ if (isset($_SESSION['id_userprofile'])){
                         </div>
 
                     </div>
+
+                        <?php
+                        if ($_SESSION['id_rol'] == '2' || $_SESSION['id_rol'] == '3') {
+                            include_once('chatpage.php');}
+                        // Incluir el 
+                        ?>
                 </div>
 
 </body>

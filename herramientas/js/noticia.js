@@ -159,7 +159,11 @@ $(document).ready(function(){
         if(data.rstl=="1"){	
             $("#noticia_creada").html(data.noticia); } 
             else{	
-                alert(data.msj);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.msj
+                });
             }
     },
     'json'

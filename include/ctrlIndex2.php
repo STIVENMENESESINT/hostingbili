@@ -97,15 +97,6 @@ switch ($_REQUEST['action'])
 			
 			print json_encode($jTableResult);
 		break;
-		
-
-
-
-
-
-
-
-		
 		case 'registroUsuNewE': 
 			$jTableResult = array();
 			$jTableResult['rstl']="";

@@ -54,7 +54,7 @@ if (isset($_SESSION['id_userprofile'])) {
 
                 <div class="container">
                     <h1 class="title">Actualizar Usuario</h1>
-                    <h2 class="title">Bienvenido <span style="">
+                    <h2 class="title">Bienvenido <span>
                             <?php echo htmlspecialchars($fila['nombre']); ?>!</span>
                     </h2>
 

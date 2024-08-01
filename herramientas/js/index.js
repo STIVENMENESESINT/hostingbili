@@ -340,14 +340,6 @@ $(document).on("click", "#btnGuardar", function () {
 			$("#clave_registro").focus();
 		});
 
-
-
-
-
-
-
-
-
     } else {
         $.post("include/ctrlIndex2.php", {
             action: 'registroUsuNew',

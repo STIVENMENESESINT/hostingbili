@@ -18,7 +18,7 @@ if (isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['inici
     $convidado = $_POST['convidado'];
     $competencia = $_POST['id_competencia'];
     $ra = $_POST['id_resultado_aprendizaje'];
-    $pf = $_POST['id_programa_formacion'];
+    $pf = $_POST['id_programaformacion'];
 
     if (isset($_SESSION['id_userprofile'])) {
         $id_usuario = $_SESSION['id_userprofile'];
@@ -26,14 +26,14 @@ if (isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['inici
         $inicio = date('Y-m-d H:i:s', strtotime($inicio));
         $termino = date('Y-m-d H:i:s', strtotime($termino));
 
-        $sql = "INSERT INTO eventos(fk_id_usuario, titulo, descricao, inicio, termino, cor, id_competencia, id_resultado_aprendizaje) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO eventos(fk_id_usuario, titulo, descricao, inicio, termino, cor, id_competencia, id_resultado_aprendizaje,id_programaformacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
         $query = $db->prepare($sql);
         if ($query === false) {
             print_r($db->errorInfo());
             die('Error al preparar la consulta.');
         }
 
-        $sth = $query->execute([$id_usuario, $titulo, $descricao, $inicio, $termino, $cor, $competencia, $ra]);
+        $sth = $query->execute([$id_usuario, $titulo, $descricao, $inicio, $termino, $cor, $competencia, $ra, $pf]);
         if ($sth === false) {
             print_r($query->errorInfo());
             die('Error al ejecutar la consulta.');
@@ -50,10 +50,6 @@ if (isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['inici
             $sql2 = "INSERT INTO convites(fk_id_destinatario, fk_id_remetente, fk_id_evento, status) VALUES (?, ?, ?, null)";
             $query2 = $db->prepare($sql2);
             $query2->execute([$convidado, $id_usuario, $id_evento]);
-
-            $sql3 = "UPDATE programaformacion SET fk_programado = ? WHERE id_programaformacion = ?";
-            $query3 = $db->prepare($sql3);
-            $query3->execute([$convidado, $pf]);
         }
     } else {
         die('Error: Variable de sesión no está definida.');
