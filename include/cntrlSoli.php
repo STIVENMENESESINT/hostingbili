@@ -695,9 +695,6 @@ switch ($_REQUEST['action'])
                     <label class='label-identifier'>Modalidad Curso Ofertado</label>
                     <label class='data-field'>" . $registro['nom_modalidad'] . "</label>
                     <br>
-                    <label class='label-identifier'>Horas Totales de Curso Ofertado</label>
-                    <label class='data-field'>" . $registro['horas_curso'] . "</label>
-                    <br>
                     <label class='label-identifier'>Fecha Inicio de Curso Ofertado</label>
                     <label class='data-field'>" . $registro['fecha_inicio'] . "</label>
                     <br>

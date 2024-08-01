@@ -171,7 +171,7 @@ switch ($_REQUEST['action'])
                             } else {
                                 $jTableResult['tabla'] .= '<th>Tipo Solicitud</th>';
                             }
-        $jTableResult['tabla'] .= '<th>Descripción</th>
+        $jTableResult['tabla'] .= '<th>Jornada</th>
                                     <th>Estado</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -185,13 +185,16 @@ switch ($_REQUEST['action'])
                             u.nombre AS nombre_responsable,
                             u.apellido,
                             e.nombre AS nombre_estado,
-                            p.ficha
+                            p.ficha,
+                            j.nombre AS nombre_jornada
                         FROM 
                             programaformacion p
                         LEFT JOIN 
                             userprofile u ON p.fk_responsable = u.id_userprofile
                         LEFT JOIN 
                             estado e ON p.id_estado = e.id_estado
+                        LEFT JOIN 
+                            jornada j ON p.id_jornada = j.id_jornada
                         WHERE 
                             p.id_estado = 7 ";
                             if($_SESSION['id_rol']==2){
@@ -212,7 +215,7 @@ switch ($_REQUEST['action'])
                                                     if ($_SESSION['id_rol'] == 3) {
                                                         $jTableResult['tabla'] .= "<td>" . $registro['nombre_responsable'] . "" . $registro['apellido'] . "</td>";
                                                     }
-                                                    $jTableResult['tabla'] .= "<td>" . $registro['ficha'] . "</td>
+                                                    $jTableResult['tabla'] .= "<td>" . $registro['nombre_jornada'] . "</td>
                                                                                 <td>" . $registro['nombre_estado'] . "</td>
                                                                                 <td>";
                                                     if ($_SESSION['id_rol'] == 3) {
@@ -280,7 +283,7 @@ switch ($_REQUEST['action'])
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='modal-title'>Competencia</h6>
-                                <h6 class='modal-title'>" . $registro['nom_vereda'] . "</h6>  <a type='button' id='calendario' href='programar.php'  >programar</a>
+                                <h6 class='modal-title'>" . $registro['nom_vereda'] . "
                             </div>
                         </div>
                         <div class='row mt-3'>
