@@ -22,10 +22,6 @@ $conn = Conectarse();
     <title>Chat</title>
     <link rel="stylesheet" href="path/to/bootstrap.min.css">
     <style>
-    body {
-        background-color: #333;
-    }
-
     h2 {
         color: white;
     }
@@ -44,7 +40,7 @@ $conn = Conectarse();
         bottom: 0;
         left: 0;
         width: 50%;
-        
+
         transition: transform 0.3s ease-in-out;
         transform: translateY(90%);
     }
@@ -53,14 +49,6 @@ $conn = Conectarse();
         transform: translateY(0%);
     }
 
-    .container {
-        width: 60%;
-        background-color: rgba(38, 38, 43, 0.9);
-        padding: 20px;
-        border-radius: 10px;
-        margin: 0 auto;
-        margin-top: 3%;
-    }
 
     .btn-primary {
         background-color: #673AB7;
@@ -68,7 +56,7 @@ $conn = Conectarse();
 
     .display-chat {
         height: 300px;
-        
+
         margin-bottom: 4%;
         overflow: auto;
         padding: 15px;
@@ -98,7 +86,7 @@ $conn = Conectarse();
     <div class="chat-container">
         <div class="container">
             <center>
-            
+
                 <label>Acá puedes hablar tranquil@</label>
             </center>
             <br />
