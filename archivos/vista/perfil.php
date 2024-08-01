@@ -47,7 +47,19 @@ if (isset($_SESSION['id_userprofile'])) {
             <div class="content__page">
                 <div id="contenido">
                     <!-- Sección para mostrar y editar el perfil del usuario -->
-                    <?php
+
+                </div>
+                <!-- Campos del formulario -->
+
+
+                <div class="container">
+                    <h1 class="title">Actualizar Usuario</h1>
+                    <h2 class="title">Bienvenido <span style="">
+                            <?php echo htmlspecialchars($fila['nombre']); ?>!</span>
+                    </h2>
+
+                    <div class="row mt-3">
+                        <?php
                         $rutaImagen = '../../include/uploads/' . htmlspecialchars($fila['imagen']);
                         if (file_exists($rutaImagen) && !empty($fila['imagen'])) {
                             echo '<img class="circle" src="' . $rutaImagen . '" alt="Foto de Perfil">';
