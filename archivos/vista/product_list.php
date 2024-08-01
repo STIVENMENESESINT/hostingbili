@@ -12,14 +12,21 @@ session_start();
 // Verificar si existe una sesión activa con el id_userprofile
 if (isset($_SESSION['id_userprofile'])){
 ?>
+<!DOCTYPE html>
+<html lang="es">
+
 <head>
     <!-- Incluir enlaces a los archivos CSS y otros metadatos necesarios -->
     <?php include_once('cabecera.php'); ?>
-    <link rel="stylesheet" type="text/css" href="css/biblioteca.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio Administrador</title>
     <script src="../../herramientas/js/biblioteca.js"></script>
+    <link rel="stylesheet" href="../../herramientas/css/style.css">
+
     <title>Libros</title>
 </head>
-
+<body>
     <div class="layout">
         <!-- Menú de navegación -->
         <aside class="layout__aside">
@@ -36,8 +43,9 @@ if (isset($_SESSION['id_userprofile'])){
     <h2 class="subtitle">Lista De libros</h2>
     <div  id="libros"></div>
 </div>
+</body>
 
-
+</html>
 <?php
     // Si no hay sesión activa, redirigir al usuario a la página de inicio de sesión
 } else {

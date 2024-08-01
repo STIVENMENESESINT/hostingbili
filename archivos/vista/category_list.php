@@ -18,8 +18,9 @@ if (isset($_SESSION['id_userprofile'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio Administrador</title>
-    <link rel="stylesheet" href="css/biblioteca.css"> <!-- Enlaza tu archivo de estilos CSS -->
     <script src="../../herramientas/js/biblioteca.js"></script>
+    <link rel="stylesheet" href="../../herramientas/css/style.css">
+
 </head>
 
     <div class="layout">
@@ -33,7 +34,7 @@ if (isset($_SESSION['id_userprofile'])){
             </div>
         </aside>
         <!-- Contenido principal -->
-        <div class="layout__content">
+        <div class="container layout__content">
             <div class="content__page">
                 <div class="welcome-section">
                     <h1 class="title">Biblioteca Bilingüismo<br>Secciones B-Team-Language </h1>

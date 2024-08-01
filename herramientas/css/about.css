@@ -21,7 +21,7 @@
     --bp-large: 1200px;
     --web-margin: 1366px;
 }
-
+/* estas en las tarjetas de las noticias no borrar y hacer response  */
 .imagenta {
     width: auto;
     /* Ajusta el ancho según tus necesidades */
@@ -188,3 +188,58 @@
     color: #777;
     border: 1px solid #777;
 }
+#noticia_creada {
+    width: 100%;
+    /* Ajusta el ancho según sea necesario */
+    height: 648px;
+    /* Ajusta la altura según sea necesario */
+    overflow-y: auto;
+    /* Permite el desplazamiento vertical */
+    overflow-x: hidden;
+    /* Oculta el desplazamiento horizontal si no es necesario */
+
+    /* Añade un borde para visualización */
+    padding: 10px;
+    /* Añade padding si es necesario */
+}
+/* fin de las tarjetas de las noticias no borrar y hacer response  */
+
+/* estos son los stilos de los banner de los cursos */
+.bilingualism__english-cards-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    overflow-y: scroll;
+    height: 400px;
+    /* Adjust the height as needed */
+}
+
+.bilingualism__english-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(7, auto);
+    /* Adjust the number of rows if needed */
+    gap: 10px;
+}
+
+.bilingualism__english-levels {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.bilingualism__english-imgs {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.bilingualism__english-text {
+    margin-top: 10px;
+    font-size: 1.3em;
+    color: #333;
+}
+/* fin de los estilos de los banner de los cursos */

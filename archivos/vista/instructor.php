@@ -27,68 +27,13 @@ if (isset($_SESSION['id_userprofile'])){
 
     <script type='text/javascript' src="../../herramientas/js/instructor.js"></script>
     <link rel="stylesheet" href="../../herramientas/css/instructor.css">
+    <link rel="stylesheet" href="../../herramientas/css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>instructores de bilinguismo</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="styles.css"> <!-- Enlaza tu archivo de estilos CSS -->
-
-
-    <!-- Incluye Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <!-- Incluye jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- Incluye Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-b4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy0sF/xTkqlj6Qrg/x2O9f7E3UJFpxoY+J" crossorigin="anonymous">
-    </script>
-
-
-
-
-
-
-
-
+    
 </head>
-<style>
-.container {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 50px;
-    padding-right: 50px;
-    padding-left: 50px;
-    border-radius: 30px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 1s ease-out;
-    max-width: 1400px;
-    width: 95%;
 
-}
-
-.title {
-    color: #3498db;
-
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    font-weight: bold;
-    letter-spacing: 1px;
-    font-size: 3em;
-    text-align: center;
-    margin: -6px 0;
-}
-
-.divider {
-    height: 6px;
-    width: 150px;
-    background-color: #04324d;
-    margin: 30px auto;
-    border-radius: 3px;
-}
-</style>
 
 <body>
     <div class="layout">
@@ -110,8 +55,8 @@ if (isset($_SESSION['id_userprofile'])){
             window.history.back();
         }
         </script>
-        <div class="layout__content">
-            <div class="container content__page">
+        <div class="container layout__content">
+            <div class=" content__page">
                 <h1 class="title">INSTRUCTORES Bilingüismo<br> </h1>
 
                 <div class="divider"></div>

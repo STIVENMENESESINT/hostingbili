@@ -19,53 +19,15 @@ if (isset($_SESSION['id_userprofile'])){
 <head>
     <!-- Incluir enlaces a los archivos CSS y otros metadatos necesarios -->
     <?php include_once('cabecera.php'); ?>
+    <link rel="stylesheet" href="../../herramientas/css/style.css">
+
 
     <title>Acciones Bili</title>
+    <style>
+
+    </style>
 </head>
-<style>
-.container {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 50px;
-    padding-right: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-left: 50px;
-    border-radius: 30px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 1s ease-out;
-    max-width: 1400px;
-    width: 95%;
-}
 
-.navbar {
-    display: flex;
-    justify-content: center;
-    background-color: #04324d;
-    padding: 15px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    /* Ajusta el valor según el nivel de redondez deseado */
-    margin: 10px;
-    /* Añade un margen para separarlo de otros elementos */
-}
-
-.notificacion {
-    position: absolute;
-    left: 125rem;
-    top: 3rem;
-}
-
-.title {
-    color: #3498db;
-
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    font-weight: bold;
-    letter-spacing: 1px;
-    font-size: 3em;
-    text-align: center;
-    margin: -6px 0;
-}
-</style>
 
 <body>
     <div class="layout">
@@ -82,11 +44,12 @@ if (isset($_SESSION['id_userprofile'])){
                 }
             ?>
         </div>
-        <div class="layout__content">
-            <div class="container content__page">
+        <div class="container layout__content">
+            <div class=" content__page">
                 <div id="contenido">
                     <div class=" pt-16 rounded-container ">
                         <h1 class="title">Panel De Acciones</h1>
+                        <div class="divider"></div>
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="navbar">

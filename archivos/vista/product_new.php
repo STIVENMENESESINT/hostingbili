@@ -15,8 +15,12 @@ if (isset($_SESSION['id_userprofile'])){
 <head>
     <!-- Incluir enlaces a los archivos CSS y otros metadatos necesarios -->
     <?php include_once('cabecera.php'); ?>
-    <link rel="stylesheet" type="text/css" href="css/biblioteca.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio Administrador</title>
     <script src="../../herramientas/js/biblioteca.js"></script>
+    <link rel="stylesheet" href="../../herramientas/css/style.css">
+
     <title>Libros</title>
 </head>
 
@@ -30,13 +34,13 @@ if (isset($_SESSION['id_userprofile'])){
                     ?>
             </div>
         </aside>
-        <div class="layout__content">
+        <div class="container layout__content">
             <div class="content__page">
-                <div class="container is-fluid mb-6">
-                    <h1 class="title2">Biblioteca Bilingüismo<br>Nuevo libro B-Team-Language </h1>
+                <div class="is-fluid mb-6">
+                    <h1 class="title">Biblioteca Bilingüismo<br>Nuevo libro B-Team-Language </h1>
                 </div>
                 <div class="buttons">
-                    <div class="container ">
+                    <div class="">
                         <?php require_once "../php/main.php"; ?>
                         <a href="" class="navbar-item">Publicar Libro </a>
                         <form id="addBookForm" enctype="multipart/form-data" class="container">

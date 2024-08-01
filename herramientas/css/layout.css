@@ -28,8 +28,8 @@ html {
 
 /* Estilos generales para el cuerpo del documento */
 body {
-    width: 100%;
-    height: 100%;
+    
+   
     font-family: "poppins", Helvetica, sans-serif;
     font-size: 1.5rem;
     background-color: var(--color-background);
@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 90%;
     height: 80vh;
     min-height: 80vh;
-    margin: 5vh auto 2vh;
+    margin: 9vh auto 2vh;
     display: grid;
     grid-template-areas: "aside content";
     grid-template-columns: 15% 85%;
@@ -105,7 +105,7 @@ h1, h2, h3, h4, h5, h6 {
 .content__page {
     
         min-height: 50%;
-        background-color: var(--secondary-background);
+       
         border-radius: 3.2rem;
         display: flow-root;
         

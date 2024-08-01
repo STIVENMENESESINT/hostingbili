@@ -28,16 +28,9 @@ if (isset($_SESSION['id_userprofile'])) {
 <head>
     <!-- Incluir enlaces a los archivos CSS y otros metadatos necesarios -->
     <?php include_once('cabecera.php'); ?>
-    <link rel="stylesheet" type="text/css" href="../../herramientas/css/css/styles.css">
-    <link rel="stylesheet" type="text/css" href="../../herramientas/css/css/layout.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Actualizar Usuario </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="styles.css"> <!-- Enlaza tu archivo de estilos CSS -->
-
+   
 
     <!-- Incluye Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -45,7 +38,7 @@ if (isset($_SESSION['id_userprofile'])) {
 
     <!-- Incluye jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <link rel="stylesheet" href="../../herramientas/css/style.css">
     <!-- Incluye Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-b4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy0sF/xTkqlj6Qrg/x2O9f7E3UJFpxoY+J" crossorigin="anonymous">
@@ -53,19 +46,7 @@ if (isset($_SESSION['id_userprofile'])) {
 
 </head>
 
-<style>
-.container {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 50px;
-    padding-right: 50px;
-    padding-left: 50px;
-    border-radius: 30px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 1s ease-out;
-    max-width: 1400px;
-    width: 95%;
-}
-</style>
+
 < <body>
     <div class="layout">
         <!-- Menú de navegación -->
@@ -76,14 +57,14 @@ if (isset($_SESSION['id_userprofile'])) {
 
         </aside>
         <!-- Contenido principal -->
-        <div class="layout__content">
-            <div class="container content__page">
+        <div class="container layout__content">
+            <div class="content__page">
                 <div id="contenido">
                     <!-- Sección para mostrar y editar el perfil del usuario -->
          
                     <form action="actualizar_perfil.php" method="POST" id="formActualizarUsuario">
                         <!-- Campos del formulario -->
-                        <h1 class="modal-title w-100 text-center">Actualizar Usuario</h1>
+                        <h1 class="title">Actualizar Usuario</h1>
                         
                         <div class="modal-body">
                             <div class="row mt-3">

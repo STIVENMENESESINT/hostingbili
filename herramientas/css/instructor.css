@@ -98,10 +98,10 @@
 }
 
 .card-container {
-  gap: 63px; /* Espacio entre tarjetas */
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
+  gap: 73px;
 }
 
 
