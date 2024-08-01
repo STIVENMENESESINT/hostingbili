@@ -87,9 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 <!-- Cursos Sena Bilinguismo -->
                 <div>
                     <div>
-                        <h1 class="title" data-lang-es="Cursos Virtuales Bilingüismo" data-lang-en="Virtual Bilingualism Courses"
-                            data-lang-fr=" Cours Virtuels de Bilinguisme">
-                            
+                        <h1 class="title" data-lang-es="Cursos Virtuales Bilingüismo"
+                            data-lang-en="Virtual Bilingualism Courses" data-lang-fr=" Cours Virtuels de Bilinguisme">
+
                         </h1>
                     </div>
                     <div class="bilingualism__english-cards-container">
@@ -195,7 +195,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                     data-lang-es="Construcción de textos orales y escritos según las características e intencionalidad del contexto."
                                     data-lang-en="Construct oral and written texts according to the characteristics and intentionality of the context."
                                     data-lang-fr="Construire des textes oraux et écrits selon les caractéristiques et l'intentionnalité du contexte.">
-                                    Construcción de textos orales y escritos según las características e intencionalidad del contexto.
+                                    Construcción de textos orales y escritos según las características e intencionalidad
+                                    del contexto.
                                 </p>
                             </div>
                             <div class="bilingualism__english-levels">
@@ -208,7 +209,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                     data-lang-es="Comentar sobre eventos que han ocurrido o están planificados en inglés basándose en textos narrativos."
                                     data-lang-en="Comment on events that have occurred or are planned in English based on narrative texts."
                                     data-lang-fr="Commenter des événements qui se sont produits ou sont prévus en anglais en se basant sur des textes narratifs.">
-                                    Comentar sobre eventos que han ocurrido o están planificados en inglés basándose en textos narrativos.
+                                    Comentar sobre eventos que han ocurrido o están planificados en inglés basándose en
+                                    textos narrativos.
                                 </p>
                             </div>
                             <div class="bilingualism__english-levels">
@@ -234,31 +236,32 @@ document.addEventListener("DOMContentLoaded", () => {
                                     data-lang-es="Escribir textos argumentativos en inglés con coherencia y cohesión según la intencionalidad comunicativa."
                                     data-lang-en="Write argumentative texts in English with coherence and cohesion according to the communicative intentionality."
                                     data-lang-fr="Rédiger des textes argumentatifs en anglais avec cohérence et cohésion selon l'intentionnalité communicative.">
-                                    Escribir textos argumentativos en inglés con coherencia y cohesión según la intencionalidad comunicativa.
+                                    Escribir textos argumentativos en inglés con coherencia y cohesión según la
+                                    intencionalidad comunicativa.
                                 </p>
                             </div>
                         </div>
 
-                    <div class="divider"></div>
-                </div>
-                <!-- Fin Cursos Sena Bilinguismo -->
-                <!-- El contenido dinámico se cargará aquí -->
+                        <div class="divider"></div>
+                    </div>
+                    <!-- Fin Cursos Sena Bilinguismo -->
+                    <!-- El contenido dinámico se cargará aquí -->
 
-                <div id="conten navbar">
-                    <div class="navbar">
-                        <ul class="navbar-nav"> 
-                           <a id="showRevista" type="button" class="nav-link ">
-                            
-                            <i class="fas fa-book-open nav-link"><br>
-                                <span class="" data-lang-es="Desplegar Revista" data-lang-en="Expand Magazine"
-                                    data-lang-fr="Déplier le Magazine">
-                                    Desplegar Revista
+                    <div id="conten navbar">
+                        <div class="navbar">
+                            <ul class="navbar-nav">
+                                <a id="showRevista" type="button" class="nav-link ">
 
-                                </span>
-                            </i>
+                                    <i class="fas fa-book-open nav-link"><br>
+                                        <span class="" data-lang-es="Desplegar Revista" data-lang-en="Expand Magazine"
+                                            data-lang-fr="Déplier le Magazine">
+                                            Desplegar Revista
 
-                        </a>
-                        <?php
+                                        </span>
+                                    </i>
+
+                                </a>
+                                <?php
                         if ($_SESSION['id_rol'] != 1) {
                             echo '
                                 <li>   
@@ -276,7 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     <a type="button" class="nav-link">
                                     
                                         <i class="fas fa-thin fa-folder-open nav-link">
-                                            <span class="" data-lang-es="Mis Publicaciones" data-lang-en="My Publications" data-lang-fr="Mes Publications">
+                                            <span id="MisSoliActivate" data-bs-toggle="modal" data-bs-target="#MisSoli" class="" data-lang-es="Mis Publicaciones" data-lang-en="My Publications" data-lang-fr="Mes Publications">
                                                 Mis Publicaciones
                                             
                                                 
@@ -288,17 +291,17 @@ document.addEventListener("DOMContentLoaded", () => {
                         ';
                         }
                         ?>
-                    </div>
-                    <div id="revista">
-                        <h1 data-lang-es="Revista Sena B-Team" data-lang-en="Sena B-Team Magazine"
-                            data-lang-fr="Magazine de l'équipe B de Sena">Revista Sena B-Team </h2>
-                            <div class="divider"></div>
-                            <a id="hideRevista" type="button" class="nav-link nav-item-hover">
-                                <i class="fas fa-book"></i>
-                                <span class="nav-item" data-lang-es="Ocultar Revista" data-lang-en="Hide Magazine"
-                                    data-lang-fr="Cacher le Magazine">Ocultar Revista</span>
-                            </a>
-                            <?php
+                        </div>
+                        <div id="revista">
+                            <h1 data-lang-es="Revista Sena B-Team" data-lang-en="Sena B-Team Magazine"
+                                data-lang-fr="Magazine de l'équipe B de Sena">Revista Sena B-Team </h2>
+                                <div class="divider"></div>
+                                <a id="hideRevista" type="button" class="nav-link nav-item-hover">
+                                    <i class="fas fa-book"></i>
+                                    <span class="nav-item" data-lang-es="Ocultar Revista" data-lang-en="Hide Magazine"
+                                        data-lang-fr="Cacher le Magazine">Ocultar Revista</span>
+                                </a>
+                                <?php
                             if ($_SESSION['id_rol'] == 3) {
                                 echo '
                                     <a type="button" data-bs-toggle="modal" data-bs-target="#revistaModal" class="nav-link nav-item-hover">
@@ -308,34 +311,49 @@ document.addEventListener("DOMContentLoaded", () => {
                             ';
                         }
                         ?>
-                            <center>
-                                <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%"
-                                    height="500px" />
-                            </center>
-                            <br>
-                    </div>      
+                                <center>
+                                    <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%"
+                                        height="500px" />
+                                </center>
+                                <br>
+                        </div>
                         </ul>
-                       
 
-                    <!-- Bili asistente virtual -->
-                    <?php 
+
+                        <!-- Bili asistente virtual -->
+                        <?php 
                         include_once('../../chatp/index.php');
                     ?>
-                    <div class="divider"></div>
+                        <div class="divider"></div>
 
-                    <h1 class="title" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">NOTICIAS
-                    </h1>
+                        <h1 class="title" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">NOTICIAS
+                        </h1>
 
 
 
-                    <div id="noticia_creada" class=" grid-container ">
+                        <div id="noticia_creada" class=" grid-container ">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </body>
-
+<div class="modal fade" id="MisSoli" tabindex="-1" aria-labelledby="MisSoliLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="">Mis Publicaciones</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="MisSoliForm"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="noticiaModal" tabindex="-1" aria-labelledby="noticiaModalLabel" aria-hidden="true">
     <div class="modal-dialog">
