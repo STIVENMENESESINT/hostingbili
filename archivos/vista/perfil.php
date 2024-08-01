@@ -23,6 +23,7 @@ if (isset($_SESSION['id_userprofile'])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Incluir enlaces a los archivos CSS y otros metadatos necesarios -->
     <?php include_once('cabecera.php'); ?>
