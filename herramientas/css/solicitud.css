@@ -32,6 +32,11 @@
     border-radius: 4px;
     cursor: pointer;
 }
+.notificacion{
+            position: absolute;
+            left: 150rem;
+            
+        }
 /* botones */
 .create-button {
     background-color: #4CAF50;
@@ -84,6 +89,7 @@ label.data-field {
 }
 .notificacion{
     position: absolute;
-    left: 125rem;
-    top: 3rem;
+    left: 150rem;
+    bottom: 10rem;
+
 }

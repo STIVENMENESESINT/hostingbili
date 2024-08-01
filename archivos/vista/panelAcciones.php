@@ -20,11 +20,13 @@ if (isset($_SESSION['id_userprofile'])){
     <!-- Incluir enlaces a los archivos CSS y otros metadatos necesarios -->
     <?php include_once('cabecera.php'); ?>
     <link rel="stylesheet" href="../../herramientas/css/style.css">
-
-
     <title>Acciones Bili</title>
     <style>
-
+        .notificacion{
+            position: absolute;
+            left: 150rem;
+            
+        }
     </style>
 </head>
 

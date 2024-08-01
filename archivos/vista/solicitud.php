@@ -24,7 +24,9 @@ if (isset($_SESSION['id_userprofile'])){
     <link rel="stylesheet" href="../../herramientas/css/solicitud.css">
     <link rel="stylesheet" href="../../herramientas/css/style.css">
 </head>
-
+<style>
+        
+    </style>
 <body>
     <div class="layout">
         <!-- Menú de navegación -->

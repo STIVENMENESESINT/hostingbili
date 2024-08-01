@@ -59,7 +59,7 @@
                 $data_inicio = date('d/m/Y H:i:s', strtotime($data_inicio));
                 echo "
                 <div class=\"alert alert-info\" role=\"alert\">
-                <form class=\"form-horizontal\" method=\"POST\" action=\"menu/aceita.php\">
+                <form class=\"form-horizontal\" method=\"POST\" action=\"../../calendario/action/aceita.php\">
                 
                         <i class=\"fa fa-bell fa-fw\"></i> 
                         $nome_usuario, Te asigno esta tarea $nome_evento inicia el dia: $data_inicio, Aceptas?
@@ -73,7 +73,7 @@
                         <input type=\"hidden\" name=\"cor\" class=\"form-control\" id=\"cor\" value=\"$cor_evento\">
                         <button type=\"submit\" class=\"create-button\">Aceptar</button>
                         </form>
-                        <form class=\"form-vertical\" method=\"POST\" action=\"menu/recusa.php\">
+                        <form class=\"form-vertical\" method=\"POST\" action=\"../../calendario/action/recusa.php\">
                         <div class=\"buttonAlign\">
                         <input type=\"hidden\" name=\"id_convite\" class=\"form-control\" id=\"id_convite\" value=\"$id_convite\">
                         <button type=\"submit\" class=\"Close-button\">Cancelar</button>
