@@ -1684,7 +1684,7 @@ switch ($_REQUEST['action'])
     
         // Imprimir la consulta para depuración
             $query = "SELECT 
-                            solicitud.id_solicitud
+                            solicitud.id_solicitud,
                             detallesolicitud.imagen AS imagen, 
                             detallesolicitud.nombre AS titulo, 
                             detallesolicitud.fecha_inicio AS fecha_mostrada, 
