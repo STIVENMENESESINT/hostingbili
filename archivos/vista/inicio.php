@@ -418,9 +418,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                     </a>
                                 </li>      
                                 <li>
-                                    <a type="button" class="nav-link">
+                                    <a id="Publicaciones" data-bs-toggle="modal" data-bs-target="#MisPublicacionesModal" class="nav-link">
                                     
-                                        <i class="fas fa-thin fa-folder-open nav-link">
+                                        <i   class="fas fa-thin fa-folder-open nav-link">
                                             <span class="" data-lang-es="Mis Publicaciones" data-lang-en="My Publications" data-lang-fr="Mes Publications">
                                                 Mis Publicaciones
                                             
@@ -554,6 +554,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 </html>
+<!-- MODAL MIS PUBLICACIONES -->
+<div class="modal fade" id="MisPublicacionesModal" tabindex="-1" aria-labelledby="MisPublicacionesLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="">Mis Publicaiones</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="MisPublicaciones"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-lang-es="Salir"
+                        data-lang-en="Exit" data-lang-fr="Sortir">Salir</button>
+                    <input class="btn btn-primary" type="button" id="actualizarPermisousu" value="Gestionar"
+                        data-lang-es="Gestionar" data-lang-en="Manage" data-lang-fr="Gérer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="cancelSolicitudModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="cancelSolicitudLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Estas Seguro de Denegar la Solicitud?
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cancel"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
 <style>
 .language-select-container {
     position: absolute;

@@ -53,7 +53,11 @@ $(document).on("click", "#publicar_noti", function (event) {
                             }
                         }, 'json');
                     } else {
-                        alert(data.msj);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: data.msj
+                        });
                     }
                 },
                 dataType: 'json'
@@ -64,15 +68,27 @@ $(document).on("click", "#publicar_noti", function (event) {
 
 $(document).on("click", "#publicar_noti2", function () {
         if ($("#titulo").val() == "") {
-            alert('Debe ingresar Titulo a la Oferta');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Debe ingresar Titulo a la Oferta'
+            });
             $("#titulo").focus();
         } else {
             if ($("#imagen").val() == "") {
-                alert('Debe ingresar la Imagen');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Debe ingresar la Imagen'
+                });
                 $("#imagen").focus();
             } else {
                 if ($("#nombre").val() == "") {
-                    alert('Debe Digitar un Nombre de Curso ');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Debe Digitar un Nombre de Curso'
+                    });
                     $("#nombre").focus();
                 } else {
                         confirm("¿Está seguro de Ofertar este Curso de " + $("#nombre").val() + "?");
@@ -101,10 +117,21 @@ $(document).on("click", "#publicar_noti2", function () {
                             dataType: 'json',
                             success: function (data) {
                                 if (data.rstl == "1") {
-                                    alert(data.msj);
-                                    location.reload();
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: '¡Éxito!',
+                                        text: data.msj,
+                                        showConfirmButton: false,
+                                        timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                                    }).then(() => {
+                                        location.reload();
+                                    });
                                 } else {
-                                    alert(data.msj);
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Error',
+                                        text: data.msj
+                                    });
                                 }
                             }
                         });
@@ -118,8 +145,29 @@ $(document).on("click", "#publicar_noti2", function () {
 $(document).on("click", "#showRevista", function () {
         $("#revista").show();
     });
+    // REVISTA
 $(document).ready(function() {
         $("#revista").hide();
+    });
+    $(document).on("click", "#Publicaciones", function () { 
+        $.post("../../include/select.php", {
+            action: 'MisNoti' 
+        },
+        function(data) {
+            if(data.rs =="1"){	
+                $("#MisPublicaciones").html(data.tabla); } 
+                else{	
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: data.Ms
+                    });
+                }
+        },
+        'json'
+        ).fail(function(xhr, status, error) {
+            console.error(error);
+        });
     });
 // ALERTAS SM
 $(document).ready(function() {
@@ -363,3 +411,57 @@ function cargarDatos(){
         console.error(error);
     });
 }
+$(document).on("click", "#modalCancel", function() {
+    var idSolicitud = $(this).data('id');
+    console.log("ID de la solicitud: " + idSolicitud);
+    $.post("../../include/cntrlSoli.php", {
+        action: 'Cancel',
+        id_solicitud: idSolicitud
+    }, function(data) {
+        if (data.rst == '1') {
+            $("#cancel").html(data.cancel);
+            $('#btnCancelarSoli').on("click", function() {
+                if ($("#detalle_cancel").val()==""){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Debe Digitar Mensaje de Confirmacion Para su Cancelacion...'
+                    });
+                    focus('#detalle_cancel');
+                }else{
+                        console.log("ID de la solicitud a cancelar: " + idSolicitud);
+                        $.post("../../include/cntrlSoli.php", {
+                            action: 'denegarSolicitud',
+                            id_solicitud: idSolicitud,
+                            detalle_cancel:$("#detalle_cancel").val()
+                        }, function(data) {
+                            if (data.rstl == "1") {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: '¡Éxito!',
+                                    text: data.msj,
+                                    showConfirmButton: false,
+                                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                                }).then(() => {
+                                    location.reload();
+                                });// Recargar la página para ver los cambios
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: data.msj
+                                });
+                            }
+                        }, 'json');
+                }
+            });
+        } else {
+            // DUIDADO CON EL ,SJ O MS
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.ms
+            });
+        }
+    }, 'json');
+});
