@@ -55,7 +55,7 @@ $(document).ready(function(){
                 Swal.fire({
                     icon: 'success',
                     title: '¡Éxito!',
-                    text: 'Hay una Empresa Interesada en tu oferta',
+                    text: 'Hay una Empresa Interesada en tu oferta' + data.ms ,
                     showConfirmButton: false,
                     timer: 1500 // Tiempo en milisegundos (1.5 segundos)
                 });

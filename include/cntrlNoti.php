@@ -542,7 +542,7 @@ switch ($_REQUEST['action']) {
         if($result= mysqli_query($conn,$query)){
             mysqli_commit($conn);
             $jTableResult['rst']= "1";
-            $jTableResult['ms'] = "Ofertado con exito";
+            $jTableResult['ms'] = "Subido con exito";
         }
         else{
             $jTableResult['rst']= "2";

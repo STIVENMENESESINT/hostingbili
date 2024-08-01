@@ -777,11 +777,7 @@ switch ($_REQUEST['action'])
                     } 
                     
                 }else  {
-                    $jTableResult['ListOf'].='
-                    <div class="course-buttons">
-                        <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="create-button" id="subirNoti">Subir</button>
-                    </div>';
+                    $jTableResult['ListOf'].='<h1>....</h1>';
                 }
                 $jTableResult['ListOf'] .= "</div>";
             }
@@ -1691,6 +1687,7 @@ switch ($_REQUEST['action'])
     
         // Imprimir la consulta para depuración
             $query = "SELECT 
+                            solicitud.id_solicitud
                             detallesolicitud.imagen AS imagen, 
                             detallesolicitud.nombre AS titulo, 
                             detallesolicitud.fecha_inicio AS fecha_mostrada, 
@@ -1730,6 +1727,10 @@ switch ($_REQUEST['action'])
                         <a class="btn btn-link p-0" href="">Read More <i class="fa fa-angle-right"></i></a>
                         <div class="col-sm-2"></div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="create-button" id="subirNoti">Subir</button>
                 </div>';
             }
         } else {
