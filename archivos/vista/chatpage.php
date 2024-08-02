@@ -22,8 +22,15 @@ $conn = Conectarse();
     <title>Chat</title>
     <link rel="stylesheet" href="path/to/bootstrap.min.css">
     <style>
+    :root {
+        --alternate-text: #919191;
+        --primary-background: #fff;
+        --secondary-background: #E6E6E6;
+        --alternate-background: #04324d;
+    }
+
     h2 {
-        color: white;
+        color: var(--alternate-text);
     }
 
     label {
@@ -31,7 +38,7 @@ $conn = Conectarse();
     }
 
     span {
-        color: #673ab7;
+        color: #673;
         font-weight: bold;
     }
 
@@ -39,52 +46,46 @@ $conn = Conectarse();
         position: fixed;
         bottom: 0;
         left: 0;
-        width: 50%;
-
-        transition: transform 0.3s ease-in-out;
-        transform: translateY(90%);
+        width: 50px;
+        height: 50px;
+        transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out;
+        transform: translateY(calc(100% - 50px));
+        background-color: var(--alternate-background);
+        border-radius: 5px;
     }
 
     .chat-container:hover {
         transform: translateY(0%);
+        width: 50%;
+        height: 500px;
     }
 
-
     .btn-primary {
-        background-color: #673AB7;
+        background-color: var(--alternate-background);
     }
 
     .display-chat {
-        height: 300px;
-
+        height: 337px;
         margin-bottom: 4%;
         overflow: auto;
-        padding: 15px;
+        padding: 26px;
         border-radius: 5px;
+        background-color: var(--primary-background);
     }
 
     .message {
-        background-color: #c616e469;
-        color: white;
+        background-color: var(--secondary-background);
+        color: var(--alternate-text);
         border-radius: 5px;
         padding: 10px;
         margin-bottom: 10px;
-    }
-
-    textarea {
-        width: 100%;
-        height: 80px;
-        resize: none;
-        border-radius: 5px;
-        padding: 10px;
-        border: 1px solid #ccc;
     }
     </style>
 </head>
 
 <body>
     <div class="chat-container">
-        <div class="container">
+        <div>
             <center>
 
                 <label>Acá puedes hablar tranquil@</label>
