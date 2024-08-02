@@ -510,26 +510,29 @@ switch ($_REQUEST['action']) {
         }
         echo json_encode($jTableResult);
     break;
-    case'SubirContenido':
+    case 'SubirContenido':
         $jTableResult = array();
         $jTableResult['rst'] = "";
         $jTableResult['ms'] = "";
         $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
+        
         $query = "UPDATE solicitud s
-            JOIN programaformacion pf ON s.id_programaformacion = pf.id_programaformacion
-            SET s.id_estado = 9, pf.id_estado = 9
-            WHERE s.id_solicitud = '$id_solicitud'";
-        if($result= mysqli_query($conn,$query)){
+                  JOIN programaformacion pf ON s.id_programaformacion = pf.id_programaformacion
+                  SET s.id_estado = 9, pf.id_estado = 9
+                  WHERE s.id_solicitud = '$id_solicitud'";
+    
+    
+        if($result = mysqli_query($conn, $query)){
             mysqli_commit($conn);
-            $jTableResult['rst']= "1";
-            $jTableResult['ms'] = "Ofertado con exito";
+            $jTableResult['rst'] = "1";
+            $jTableResult['ms'] = "Ofertado con éxito";
+        } else {
+            $jTableResult['rst'] = "2";
+            $jTableResult['ms'] = "NO Ofertado con éxito: " . mysqli_error($conn);
         }
-        else{
-            $jTableResult['rst']= "2";
-            $jTableResult['ms'] = " NO Ofertado con exito";
-        }
+    
         print json_encode($jTableResult);
-    break;
+    break;    
     case'SubirContenidoN':
         $jTableResult = array();
         $jTableResult['rst'] = "";
