@@ -83,10 +83,6 @@ if (isset($_SESSION['id_userprofile'])){
                 <div class="modal-body">
                     <div id="List_Gestion"></div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="create-button" id="btnGuardarCambios2">Asignar</button>
-                </div>
             </div>
         </div>
     </div>

@@ -22,11 +22,11 @@ if (isset($_SESSION['id_userprofile'])){
     <link rel="stylesheet" href="../../herramientas/css/style.css">
     <title>Acciones Bili</title>
     <style>
-        .notificacion{
-            position: absolute;
-            left: 150rem;
-            
-        }
+        .notificacion2{
+        position: absolute;
+        left: 85%;
+    
+    }
     </style>
 </head>
 
@@ -39,7 +39,7 @@ if (isset($_SESSION['id_userprofile'])){
                 <?php include_once('menu.php'); ?>
             </div>
         </aside>
-        <div class="notificacion">
+        <div class="notificacion2">
             <?php 
                 if($_SESSION['id_rol']==2){
                     include_once('notificacion.php');

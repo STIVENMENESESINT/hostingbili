@@ -769,9 +769,13 @@ switch ($_REQUEST['action'])
                             <textarea id='ficha' name='ficha'></textarea>
                             <br>
                             <h6 class='label-identifier'>Detalle Respuesta</h6>
-                            <textarea id='detalle_respuesta' name='detalles'></textarea><br/>
+                            <input type='text' id='detalle_respuesta' name='detalles'></input><br/>
+                            <h6>Cargue Archivo de Aprendices</h6>
+                            <label class='modal-title' for='archivo'>Cargar Archivo solicitud</label>
+                            <input type='file' id='archivo' name='archivo'>
                             <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
-                            <button id='btnAceptarSoliOf' class='create-button' data-id='" . $registro['id_solicitud'] . "'>Dar Respuesta</button>";
+                            <button id='btnAceptarSoliOf' class='create-button' data-id='" . $registro['id_solicitud'] . "'>Dar Respuesta</button>
+                            ";
                     } 
                     
                 }else  {
@@ -906,10 +910,11 @@ switch ($_REQUEST['action'])
         $ficha = isset($_POST['ficha']) && !empty($_POST['ficha']) ? $_POST['ficha'] : NULL;
         // $mensaje = $_POST['mensaje'];
         $query = "UPDATE solicitud s  
-        SET  pf.ficha='.$ficha.'
-        JOIN detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
-        JOIN programaformacion pf ON ds.id_programaformacion = pf.id_programaformacion
-        WHERE id_solicitud = '$id_solicitud'";
+          JOIN detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
+          JOIN programaformacion pf ON ds.id_programaformacion = pf.id_programaformacion
+          SET pf.ficha = '$ficha', pf.id_estado = '7',s.id_estado = '7'
+          WHERE s.id_solicitud = '$id_solicitud'";
+
         if ($result = mysqli_query($conn, $query)) {
             mysqli_commit($conn);
             // enviar correo URGENTE MIRAR SI SE HACE DESDE PHPMAILER O SOLO EMAIL
