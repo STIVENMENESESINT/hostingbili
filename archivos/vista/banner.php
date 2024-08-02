@@ -1,9 +1,3 @@
-<div>
-    <h1 class="title" data-lang-es="Cursos Virtuales Bilingüismo" data-lang-en="Virtual Bilingualism Courses"
-        data-lang-fr=" Cours Virtuels de Bilinguisme">
-
-    </h1>
-</div>
 <div class="bilingualism__english-cards-container">
     <div class="bilingualism__english-cards">
         <div class="bilingualism__english-levels">

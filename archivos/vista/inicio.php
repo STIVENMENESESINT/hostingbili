@@ -86,6 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="divider"></div>
                 <!-- Cursos Sena Bilinguismo -->
                 <div>
+                    <div>
+                        <h1 class="title" data-lang-es="Cursos Virtuales Bilingüismo"
+                            data-lang-en="Virtual Bilingualism Courses" data-lang-fr=" Cours Virtuels de Bilinguisme">
+
+                        </h1>
+                    </div>
                     <?php 
                         include_once('banner.php');
                     ?>
@@ -97,6 +103,33 @@ document.addEventListener("DOMContentLoaded", () => {
                         <?php 
                             include_once('panelinicio.php');
                         ?>
+
+                    </div>
+                    <div id="revista">
+                        <h1 class="title" data-lang-es="Revista Sena B-Team" data-lang-en="Sena B-Team Magazine"
+                            data-lang-fr="Magazine de l'équipe B de Sena">Revista Sena B-Team </h2>
+                            <div class="divider"></div>
+                            <a id="hideRevista" type="button" class="nav-link nav-item-hover">
+                                <i class="fas fa-book nav-link"></i>
+                                <span class="nav-item" data-lang-es="Ocultar Revista" data-lang-en="Hide Magazine"
+                                    data-lang-fr="Cacher le Magazine">Ocultar
+                                    Revista</span>
+                            </a>
+                            <?php
+                            if ($_SESSION['id_rol'] == 3) {
+                                echo '
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#revistaModal" class="nav-link nav-item-hover">
+                                        <i class="fas fa-plus nav-link" ></i>
+                                        <span class="nav-item"  data-lang-es="Nueva Revista" data-lang-en="New Magazine" data-lang-fr="Nouveau Magazine">Nueva Revista</span>
+                                    </a>
+                            ';
+                        }
+                        ?>
+                            <center>
+                                <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%"
+                                    height="500px" />
+                            </center>
+                            <br>
                     </div>
                     <!-- Bili asistente virtual -->
                     <?php 

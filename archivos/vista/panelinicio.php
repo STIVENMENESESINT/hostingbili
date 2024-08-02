@@ -1,6 +1,6 @@
 <div class="navbar">
     <ul class="navbar-nav">
-        <a id="showRevista" type="button" class="nav-link ">
+        <a id="showRevista" type="button" class="nav-item ">
 
             <i class="fas fa-book-open nav-link"><br>
 
@@ -16,7 +16,7 @@
                                     if ($_SESSION['id_rol'] != 1 && $_SESSION['id_rol'] != 5) {
                                         echo '
                                             <li>   
-                                                <a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-link">
+                                                <a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-item">
                                                     <i class="fas fa-plus nav-link">
                                                         <span class="" data-lang-es="Crear" data-lang-en="Create" data-lang-fr="Créer"> 
                                                             Crear  
@@ -27,10 +27,10 @@
                                                 </a>
                                             </li>      
                                             <li>
-                                                <a type="button" class="nav-link">
+                                                <a type="button" class="nav-item">
                                                 
                                                     <i class="fas fa-thin fa-folder-open nav-link">
-                                                        <span id="MisSoliActivate" data-bs-toggle="modal" data-bs-target="#MisSoli" class="" data-lang-es="Mis Publicaciones" data-lang-en="My Publications" data-lang-fr="Mes Publications">
+                                                        <span id="MisSoliActivate" data-bs-toggle="modal" data-bs-target="#MisSoli" class="title2" data-lang-es="Mis Publicaciones" data-lang-en="My Publications" data-lang-fr="Mes Publications">
                                                             Mis Publicaciones
                                                         
                                                             
@@ -43,29 +43,50 @@
                                     }
                                 ?>
 
-        <div id="revista">
-            <h1 data-lang-es="Revista Sena B-Team" data-lang-en="Sena B-Team Magazine"
-                data-lang-fr="Magazine de l'équipe B de Sena">Revista Sena B-Team </h2>
-                <div class="divider"></div>
-                <a id="hideRevista" type="button" class="nav-link nav-item-hover">
-                    <i class="fas fa-book"></i>
-                    <span class="nav-item" data-lang-es="Ocultar Revista" data-lang-en="Hide Magazine"
-                        data-lang-fr="Cacher le Magazine">Ocultar
-                        Revista</span>
-                </a>
-                <?php
-                            if ($_SESSION['id_rol'] == 3) {
-                                echo '
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#revistaModal" class="nav-link nav-item-hover">
-                                        <i class="fas fa-plus " ></i>
-                                        <span class="nav-item"  data-lang-es="Nueva Revista" data-lang-en="New Magazine" data-lang-fr="Nouveau Magazine">Nueva Revista</span>
-                                    </a>
-                            ';
-                        }
-                        ?>
-                <center>
-                    <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%" height="500px" />
-                </center>
-                <br>
-        </div>
+
     </ul>
+
+    <style>
+    .navbar-nav {
+        list-style: none;
+        padding: 0;
+        display: contents;
+        flex-direction: column;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: #fff;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+    }
+
+
+
+    #revista {
+        display: none;
+        padding: 2rem 0;
+
+        color: #000;
+    }
+
+    .title2 {
+        position: relative;
+        top: 12px;
+        margin-left: 10px;
+
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .nav-item {
+        position: relative;
+        top: 12px;
+        margin-left: 10px;
+        color: #ecf0f1;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    </style>
