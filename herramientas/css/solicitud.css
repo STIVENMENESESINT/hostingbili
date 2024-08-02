@@ -92,3 +92,68 @@ label.data-field {
     left: 85%;
 
 }
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.course-data-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.label-identifier {
+    font-weight: bold;
+    color: #333;
+}
+
+.data-field {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    color: #333;
+    font-size: 16px;
+}
+
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+input[type="file"] {
+    padding: 5px;
+}
+
+input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+.course-data-container {
+    border-top: 2px solid #007bff;
+    padding-top: 15px;
+}

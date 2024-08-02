@@ -175,39 +175,95 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="card p-3 shadow-lg border-3 text-bg-light" action="" method="post"
-                    enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label class="form-label" data-lang-es="Título:" data-lang-en="Title:"
-                            data-lang-fr="Titre:">Título:</label>
-                        <input type="text" class="form-control" id="titulo" placeholder="titulo" required>
+            <style>
+            #formRegisUsu, .formulario {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .form-group-group, .form-group-group-2 {
+                display: flex;
+                justify-content: space-between;
+                gap: 15px;
+            }
+
+            .form-group {
+                flex: 1;
+            }
+
+            .modal-footer, .form-footer {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .form-label {
+                font-weight: bold;
+            }
+
+            .form-input, .form-control {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ced4da;
+                border-radius: 4px;
+            }
+
+            .form-button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                color: #fff;
+                cursor: pointer;
+                font-size: 16px;
+            }
+
+            .btn-success {
+                background-color: #28a745;
+            }
+
+            .form-button-reset {
+                background-color: #6c757d;
+            }
+
+            .form-control[required] {
+                background-color: #f8f9fa;
+            }
+        </style>
+
+            <form class="formulario" action="" method="post" enctype="multipart/form-data">
+                <div class="form-group-group">
+                    <div class="form-group">
+                        <label class="form-label" for="titulo">Título:</label>
+                        <input type="text" class="form-input form-control" id="titulo" name="titulo" placeholder="Título" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="fecha_inicio" class="form-label" data-lang-es="Fecha a Mostrar"
-                            data-lang-en="Display Date" data-lang-fr="Date à Afficher">Fecha a Mostrar</label>
-                        <input class="form-control" type="date" id="id_fecha_mostrada" name="fecha_inicio" required>
+                </div>
+                <div class="form-group-group">
+                    <div class="form-group">
+                        <label class="form-label" for="id_fecha_mostrada">Fecha a Mostrar:</label>
+                        <input type="date" class="form-input form-control" id="id_fecha_mostrada" name="fecha_inicio" required>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" data-lang-es="Descripción" data-lang-en="Description"
-                            data-lang-fr="Description">Descripción</label>
-                        <textarea rows="10" class="form-control" id="descripcion" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="imagen" class="form-label" data-lang-es="Adjuntar Imagen:"
-                            data-lang-en="Attach Image:" data-lang-fr="Joindre une Image:">Adjuntar Imagen:</label>
-                        <input type="file" class="form-control" id="imagen" name="imagen" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="id_categoria" class="form-label" data-lang-es="Categoría" data-lang-en="Category"
-                            data-lang-fr="Catégorie">Categoría</label>
-                        <select class="form-control" id="id_categoria" name="id_categoria"
-                            onchange="MostrarTipo_Categoria()">
-                            <!-- Opciones de categorías aquí -->
-                        </select>
-                    </div>
-                    <div class="mb-3" id="tipo_cate">
-                        <!-- Contenido dependiente de la categoría -->
-                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="descripcion">Descripción:</label>
+                    <textarea rows="10" class="form-input form-control" id="descripcion" name="descripcion" placeholder="Descripción" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="imagen">Adjuntar Imagen:</label>
+                    <input type="file" class="form-input form-control" id="imagen" name="imagen" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="id_categoria">Categoría:</label>
+                    <select class="form-input form-control" id="id_categoria" name="id_categoria" onchange="MostrarTipo_Categoria()">
+                        <!-- Opciones de categorías aquí -->
+                    </select>
+                </div>
+                <div class="form-group-group-2" id="tipo_cate">
+                    <!-- Contenido dependiente de la categoría -->
+                </div>
+            </form>
+
             </div>
         </div>
     </div>

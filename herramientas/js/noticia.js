@@ -284,10 +284,6 @@ function MostrarTipo_Categoria() {
         case "1":
             tipo_soliDiv.innerHTML = `
                 <div class="mb-3">
-                    <label for="id_descripcion" class="form-label">(PREGUNTAR) Fecha Fin Noticia?</label>
-                    <input class="form-control" type="date" id="fecha_fin" name="fecha_fin">
-                </div>
-                <div class="mb-3">
                     <button type="button" class="btn btn-sm btn-outline-primary" id="publicar_noti">Publicar</button>
                     <a type="button" class="btn btn-sm btn-outline-danger" href="" role="button">Cancelar</a>
                 </div>
@@ -296,40 +292,97 @@ function MostrarTipo_Categoria() {
 
         case "3":
             tipo_soliDiv.innerHTML = `
+            <style>
+                .form-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    padding: 15px;
+                    border: 1px solid #ced4da;
+                    border-radius: 4px;
+                    background-color: #f8f9fa;
+                }
+
+                .course-data-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+
+                .course-data-field {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                }
+
+                .modal-title {
+                    font-weight: bold;
+                }
+
+                .form-control, .col-form-label, .modal-textbox {
+                    width: 100%;
+                    padding: 8px;
+                    border: 1px solid #ced4da;
+                    border-radius: 4px;
+                }
+
+                .create-button, .close-button {
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 4px;
+                    color: #fff;
+                    cursor: pointer;
+                    font-size: 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+
+                .create-button {
+                    background-color: #28a745;
+                }
+
+                .close-button {
+                    background-color: #6c757d;
+                }
+            </style>
+
             <hr>
             <div class="form-container">
-                <div class='course-data-container'>
+                <div class="course-data-container">
                     <h2>DATOS DE CURSO</h2>
-                    <div class='course-data-field'>
-                        <label class="modal-title">Nombre curso</label><br>
-                        <input class="col-form-label" type='text' id='nombre' />
+                    <div class="course-data-field">
+                        <label class="modal-title" for="nombre">Nombre curso</label>
+                        <input class="form-control" type="text" id="nombre" />
                     </div>
-                    <div class='course-data-field'>
-                        <label class="modal-title">Fecha inicio</label><br>
-                        <input class="col-form-label" type='date' id='fecha_inicio' />
+                    <div class="course-data-field">
+                        <label class="modal-title" for="fecha_inicio">Fecha inicio</label>
+                        <input class="form-control" type="date" id="fecha_inicio" />
                     </div>
-                    <div class='course-data-field'>
-                        <label class="modal-title">Fecha cierre</label><br>
-                        <input class="col-form-label" type='date' id='fecha_cierre' />
+                    <div class="course-data-field">
+                        <label class="modal-title" for="fecha_cierre">Fecha cierre</label>
+                        <input class="form-control" type="date" id="fecha_cierre" />
                     </div>
-                    <div class='course-data-field'>
-                        <label class="modal-title">Modalidad</label><br>
-                        <select class="form-control modal-textbox" id='id_modalidad'></select>
+                    <div class="course-data-field">
+                        <label class="modal-title" for="id_modalidad">Modalidad</label>
+                        <select class="form-control" id="id_modalidad"></select>
                     </div>
-                    <div class='course-data-field'>
-                        <label class="modal-title">Jornada</label><br>
-                        <select class="form-control modal-textbox" id='id_jornada'></select>
+                    <div class="course-data-field">
+                        <label class="modal-title" for="id_jornada">Jornada</label>
+                        <select class="form-control" id="id_jornada"></select>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="id_descripcion" class="modal-title">Fecha Fin Evento</label><br>
-                    <input class="col-form-label" type="date" id="id_fecha_mostrada" name="fecha_inicio">
+                    <label class="modal-title" for="id_fecha_mostrada">Fecha Fin Evento</label>
+                    <input class="form-control" type="date" id="id_fecha_mostrada" name="fecha_inicio">
                 </div>
                 <div class="mb-3">
                     <a type="button" class="create-button" id="publicar_noti2">Publicar</a>
                     <a type="button" class="close-button" href="" role="button">Cancelar</a>
                 </div>
             </div>
+
             `;
             cargarDatos();
             break;
