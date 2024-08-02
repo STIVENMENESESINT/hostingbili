@@ -112,7 +112,7 @@
                 <li>
                     <a href="solicitud.php" class="nav-item">
                         <i class="fas fa-check-double "></i>
-                        <span class="nav-item">Solicitudes
+                        <span class="">Solicitudes
                             
                         </span>
                     </a>
@@ -127,8 +127,9 @@
                 </li>
                 <li>
                     <a href="GprogramaFormacion.php" class="nav-item ">
+                        <i class="fas fa-graduation-cap fa-fw fa-lg"></i>
                         <span class="">Programa Formación
-                            <i class="fas fa-graduation-cap fa-fw fa-lg"></i>
+                            
                         </span>
                     </a>
                 </li>
