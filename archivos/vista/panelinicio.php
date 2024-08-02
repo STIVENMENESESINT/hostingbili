@@ -45,48 +45,78 @@
 
 
     </ul>
+</div>
+<style>
+.navbar-nav {
+    margin-top: 1.5rem;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
 
-    <style>
-    .navbar-nav {
-        list-style: none;
-        padding: 0;
-        display: contents;
-        flex-direction: column;
-    }
+.navbar-dark .navbar-nav {
+    display: flex;
 
-    .nav-link {
-        text-decoration: none;
-        color: #fff;
-        margin-bottom: 0.5rem;
-        cursor: pointer;
-    }
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    transition: all 0.3s ease;
+    padding: 18px 15px;
+    text-decoration: none;
+    display: inline-block;
+    /* Asegura que los enlaces estén en línea */
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    background-color: #007bff;
+}
+
+.navbar-dark .navbar-nav li {
+    display: inline-block;
+    /* Asegura que los elementos de la lista estén en línea */
+}
+
+
+/* hover iconos */
+.nav-item-hover:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
 
 
-    #revista {
-        display: none;
-        padding: 2rem 0;
+.fixed-top-right {
+    position: absolute;
+    top: 10px;
+    /* Ajusta este valor según necesites */
+    right: 10px;
+    /* Ajusta este valor según necesites */
+    z-index: 1000;
+    /* Asegura que esté por encima de otros elementos */
+    padding: 5px 10px;
+    /* Espaciado interno */
+}
 
-        color: #000;
-    }
+.fixed-top-right .btn i {
+    margin-right: 5px;
+    /* Espacio entre el icono y el texto */
+}
 
-    .title2 {
-        position: relative;
-        top: 12px;
-        margin-left: 10px;
 
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 16px;
-    }
+.grid-container {
+    display: grid;
 
-    .nav-item {
-        position: relative;
-        top: 12px;
-        margin-left: 10px;
-        color: #ecf0f1;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 16px;
-    }
-    </style>
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 2fr);
+    gap: 3px;
+    justify-items: center;
+    /* Centrar elementos horizontalmente */
+    align-items: center;
+    /* Centrar elementos verticalmente */
+    border-radius: 15px;
+}
+</style>
