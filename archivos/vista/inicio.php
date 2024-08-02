@@ -290,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             </li> 
                                     ';
                                     }
-                                ?>
+                                    ?>
                         </div>
                         <div id="revista">
                             <h1 data-lang-es="Revista Sena B-Team" data-lang-en="Sena B-Team Magazine"

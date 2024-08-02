@@ -37,9 +37,9 @@ if (isset($_SESSION['id_userprofile'])){
                     ?>
             </div>
         </aside>
-        <div class="notificacion">
+        <div class="notificacion2">
             <?php 
-                if($_SESSION['id_rol']==2){
+                if($_SESSION['id_rol']=='2'){
                     include_once('notificacion.php');
                 }
             ?>
@@ -55,7 +55,15 @@ if (isset($_SESSION['id_userprofile'])){
                 </div>
                 <!-- NO 
                 TOCAR -->
-                <a href="programar.php">Programar</a>
+                <?php 
+                    if($_SESSION['id_rol']=='2'){
+                        echo'<a href="programar.php">Programacion</a>';
+                    }
+                    elseif($_SESSION['id_rol']=='3'){
+                        echo'<a href="programar.php">Programar</a>';
+                    }
+                ?>
+                
                 <div id="sin_contenido"></div>
             </div>
             <div id="pfB"></div>

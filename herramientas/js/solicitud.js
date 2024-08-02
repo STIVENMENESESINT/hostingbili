@@ -339,7 +339,7 @@ function MostrarTipo_soli() {
                             <label class="modal-title" >Programa de Formacion de Interes</label><br>
                             <select  class="form-control modal-textbox"  id="id_programaformacion"></select>
                             <br>
-                            <label class="modal-title"Jornada de Interes</label><br>
+                            <label class="modal-title">Jornada de Interes</label><br>
                             <select class="form-control modal-textbox"  id="id_jornada"></select>
                             <br>
                             <label class="modal-title">Modalidad de Interes</label><br>
@@ -363,7 +363,7 @@ function MostrarTipo_soli() {
                         <div class="form-container">
                             <div class="col-sm-12" >
                                 <h6 class="modal-title">Programa de Formacion<h6>
-                                <select class="form-control modal-textbox" id="id_programaformacion" name="id_programaformacion"  title='' style='cursor:pointer;' >
+                                <select class="form-control modal-textbox" id="id_programaformacion" name="id_programaformacion"  title='' style='cursor:pointer;'required >
                                 </select>
                                 <h6 class="modal-title" >Ficha</h6><br>
                                 <input class="col-form-label" type="number" name="ficha" id="ficha" ><br>
@@ -389,9 +389,8 @@ function MostrarTipo_soli() {
                 case "4":
                         tipo_soliDiv.innerHTML = `
                             <div class="form-container">
-                                <div class="px-4 py-2">
+                                <div class="col-sm-12">
                                     <h1 class="text-center">Crear publicación</h1>
-                
                                     <form class="card p-3 shadow-lg border-3 text-bg-light" action=""
                                         method="post" enctype="multipart/form-data">
                                         <div class="mb-3">
@@ -825,7 +824,7 @@ function Cargar() {
         console.error(error);
     });
     $.post("../../include/select.php", {
-        action: 'crgrTiposprogramaFormacion'
+        action: 'crgrprogramaFormacion'
     },
     function(data) {
         $("#id_programaformacion").html(data.lisTiposPF);
@@ -1042,6 +1041,7 @@ $(document).on("click", "#detalleOferta",function ()	{
         }, 'json');	
     }
 );
+
 $(document).on("click", "#btn_subir",function ()	{
     var idSolicitud = $(this).data('id');
     console.log("ID de la solicitud: " + idSolicitud);
