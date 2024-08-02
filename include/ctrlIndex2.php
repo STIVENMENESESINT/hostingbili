@@ -10,60 +10,59 @@ switch ($_REQUEST['action'])
 	{
 		case 'confirmar':
 			$jTableResult = array();
-			$jTableResult['validacion']="";
-			$jTableResult['estado']="";
-				$query= " 	SELECT correo, numeroiden, clave   
-							FROM   userprofile
-							WHERE  correo ='".$_POST['correo']."'
-							AND numeroiden ='".$_POST['numeroiden']."'
-							AND    clave = '".$_POST['clave']."' "; 
-							$regis = mysqli_query($conn, $query);
-							$numero = mysqli_num_rows($regis);
-							if($numero==0)
-								{
-									$jTableResult['validacion']="no";  
-								}
-							else
-								{	
-									$jTableResult['validacion']="si";
-									$query="SELECT id_userprofile, id_estado, nombre, apellido, id_rol, correo, numeroiden, clave
-											FROM userprofile
-											WHERE  correo ='".$_POST['correo']."' 
-											AND    numeroiden = '".$_POST['numeroiden']."' 
-											AND    clave = '".$_POST['clave']."'";
-									$arreglo = mysqli_query($conn, $query);
-									while($result=mysqli_fetch_array($arreglo)){
-										if($result['id_estado']=='1'){
-												$jTableResult['estado']="A";
-												$_SESSION['usuLog']=$result['nombre']." ".$result['apellido'];
-												$_SESSION['id_userprofile']=$result['id_userprofile'];
-												$_SESSION['id_rol']=$result['id_rol'];
-												$_SESSION['correo']=$result['correo'];
-												// $jTableResult['nombreRol']=$result['?'];													
-											}
-										else
-											{
-												$jTableResult['estado']="I";
-											}	
-									}
-								}
-					// echo "<pre>";
-					// print_r($_SESSION['usuLog']);					
-					// echo "</pre>";		
-					// echo "<pre>";
-					// print_r($_SESSION['idUsuario']);
-					// echo "</pre>";					
-					// exit();
+			$jTableResult['validacion'] = "";
+			$jTableResult['estado'] = "";
+		
+			// Buscar el hash de la contraseña basada en correo y número de identificación
+			$query = "SELECT id_userprofile, id_estado, nombre, apellido, id_rol, correo, numeroiden, clave 
+					  FROM userprofile
+					  WHERE correo = ? 
+					  AND numeroiden = ?";
+			$stmt = $conn->prepare($query);
+			$stmt->bind_param("ss", $_POST['correo'], $_POST['numeroiden']);
+			$stmt->execute();
+			$result = $stmt->get_result();
+		
+			if ($result->num_rows == 0) {
+				$jTableResult['validacion'] = "no";
+			} else {
+				$user = $result->fetch_assoc();
+		
+				// Verificar la contraseña usando password_verify
+				if (password_verify($_POST['clave'], $user['clave'])) {
+					$jTableResult['validacion'] = "si";
+		
+					if ($user['id_estado'] == '1') {
+						$jTableResult['estado'] = "A";
+						$_SESSION['usuLog'] = $user['nombre'] . " " . $user['apellido'];
+						$_SESSION['id_userprofile'] = $user['id_userprofile'];
+						$_SESSION['id_rol'] = $user['id_rol'];
+						$_SESSION['correo'] = $user['correo'];
+					} else {
+						$jTableResult['estado'] = "I";
+					}
+				} else {
+					$jTableResult['validacion'] = "no"; // Contraseña incorrecta
+				}
+			}
+		
+			$stmt->close();
 			print json_encode($jTableResult);
-		break;
+			break;
+		
 		case 'registroUsuNew': 
 			$jTableResult = array();
 			$jTableResult['rstl'] = "";
 			$jTableResult['msj'] = "";
+		
+			// Encriptar la contraseña
+			$clave = password_hash($_POST['clave_registro'], PASSWORD_BCRYPT);
+		
+			// Construir la consulta SQL
 			$query = "INSERT INTO userprofile SET
 					id_doc = '".$_POST['id_tpdoc']."', 
 					numeroiden = '".$_POST['numeroiden_registro']."', 
-					clave = '".$_POST['clave_registro']."', 
+					clave = '".$clave."', 
 					nombre = '".$_POST['nameusu']."', 
 					fecha_registro = NOW(),
 					id_estado = 1,
@@ -72,11 +71,10 @@ switch ($_REQUEST['action'])
 					celular = '".$_POST['celular']."',
 					correo = '".$_POST['correo_registro']."',
 					apellido = '".$_POST['apellidoUsu']."', 
-					
 					cod_dpto = '".$_POST['cod_dpto']."', 
 					cod_municipio = '".$_POST['cod_municipio']."', 
 					cod_poblado = '".$_POST['cod_poblado']."';";
-
+		
 			try {
 				if ($result = mysqli_query($conn, $query)) {
 					mysqli_commit($conn);

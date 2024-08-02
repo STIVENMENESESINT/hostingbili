@@ -184,108 +184,67 @@ $varDateTime = date("Y-m-d H:i:s");
                                  </div>
                              </div>
                          </div>
-                         <style>
-                         .form-container {
-                             display: flex;
-                             flex-direction: column;
-                             align-items: center;
-                         }
-
-                         .form-title {
-                             width: 100%;
-                             text-align: center;
-                             margin-bottom: 20px;
-                         }
-
-                         .form-content {
-                             display: flex;
-                             justify-content: space-between;
-                             width: 100%;
-                         }
-
-                         .form-column {
-                             flex: 1;
-                             padding: 0 10px;
-                         }
-
-                         .form-group {
-                             margin-bottom: 15px;
-                         }
-
-                         .modal-footer {
-                             display: flex;
-                             justify-content: center;
-                             margin-top: 20px;
-                             width: 100%;
-                         }
-
-                         .form-button {
-                             margin: 0 10px;
-                         }
-                         </style>
                          <!-- FORMULARIO USUARIOS -->
                          <div id="formRegisUsu">
-                             <div class="form-content">
-                                 <div class="form-column">
-                                     <div class="form-group">
-                                         <label for="nameusu" class="form-label">Nombres:</label>
-                                         <input type="text" class="form-input" id="nameusu" name="nameusu"
-                                             title="Primer Nombre" style="cursor:pointer;">
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="apellidoUsu" class="form-label">Apellidos:</label>
-                                         <input type="text" class="form-input" id="apellidoUsu" name="apellidoUsu"
-                                             title="Primer Apellido">
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="id_tpdoc" class="form-label">Tipo de Documento:</label>
-                                         <select class="form-input" id="id_tpdoc" name="id_tpdoc"
-                                             title="Tipo de Documento"></select>
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="numeroiden_registro" class="form-label">Número Documento:</label>
-                                         <input type="text" class="form-input" id="numeroiden_registro"
-                                             name="numeroiden_registro" title="" style="cursor:pointer;"
-                                             onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
-                                     </div>
-                                     <div class="form-group">
-                                         <label class="form-label">Sexo:</label>
-                                         <select class="form-input" id="id_genero" name="id_genero"></select>
-                                     </div>
-                                 </div>
-                                 <div class="form-column">
-                                     <div class="form-group">
-                                         <label for="celular" class="form-label">Celular:</label>
-                                         <input type="text" class="form-input" id="celular" name="celular"
-                                             placeholder="Celular" title="Teléfono móvil">
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="correo_registro" class="form-label">Correo Electrónico:</label>
-                                         <input type="text" class="form-input" id="correo_registro"
-                                             name="correo_registro" placeholder="Correo Electrónico"
-                                             title="@example.com">
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="cod_dpto" class="form-label">Departamento:</label>
-                                         <select class="form-input" id="cod_dpto" name="cod_dpto" title="Departamento"
-                                             style="cursor:pointer;"></select>
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="cod_municipio" class="form-label">Municipio:</label>
-                                         <select class="form-input" id="cod_municipio" name="cod_municipio"
-                                             title="Municipio" style="cursor:pointer;"></select>
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="cod_poblado" class="form-label">Poblado:</label>
-                                         <select class="form-input" id="cod_poblado" name="cod_poblado" title="Poblado"
-                                             style="cursor:pointer;"></select>
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="clave_registro" class="form-label">Clave:</label>
-                                         <input type="password" class="form-input" id="clave_registro" name="clave"
-                                             title="Clave">
-                                     </div>
-                                 </div>
+                             <div class="form-group">
+                                 <label for="nameusu" class="form-label">Nombres Completos:</label>
+                                 <input type="text" class="form-input" id="nameusu" name="nameusu" title="Primer Nombre"
+                                     style="cursor:pointer;">
+                             </div>
+                             <div class="form-group">
+                                 <label for="apellidoUsu" class="form-label">Apellidos Completos</label>
+                                 <input type="text" class="form-input" id="apellidoUsu" name="apellidoUsu"
+                                     title="Primer Apellido">
+                             </div>
+                             <div class="form-group">
+                                 <label for="id_tpdoc" class="form-label">Tipo de Documento:</label>
+                                 <select class="form-input" id="id_tpdoc" name="id_tpdoc"
+                                     title="Tipo de Documento"></select>
+                             </div>
+
+                             <!-- Número de Documento -->
+                             <div class="form-group">
+                                 <label for="numeroiden_registro" class="form-label">Número Documento:</label>
+                                 <input type="text" class="form-input" id="numeroiden_registro"
+                                     name="numeroiden_registro" title="" style="cursor:pointer;"
+                                     onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                             </div>
+                             <div class="form-group">
+                                 <label class="form-label">Sexo:</label>
+                                 <select class="form-input" id="id_genero" name="id_genero"></select>
+                             </div>
+                             <div class="form-group">
+                                 <label for="celular" class="form-label">Celular:</label>
+                                 <input type="text" class="form-input" id="celular" name="celular" placeholder="Celular"
+                                     title="Teléfono móvil">
+                             </div>
+                             <div class="form-group">
+                                 <label for="correo_registro" class="form-label">Correo Electrónico:</label>
+                                 <input type="text" class="form-input" id="correo_registro" name="correo_registro"
+                                     placeholder="Correo Electrónico" title="@example.com">
+                             </div>
+                             <!-- Departamento, Municipio y Poblado -->
+                             <div class="form-group">
+                                 <label for="cod_dpto" class="form-label">Departamento:</label>
+                                 <select class="form-input" id="cod_dpto" name="cod_dpto" title="Departamento"
+                                     style="cursor:pointer;"></select>
+                             </div>
+
+                             <div class="form-group">
+                                 <label for="cod_municipio" class="form-label">Municipio:</label>
+                                 <select class="form-input" id="cod_municipio" name="cod_municipio" title="Municipio"
+                                     style="cursor:pointer;"></select>
+                             </div>
+
+                             <div class="form-group">
+                                 <label for="cod_poblado" class="form-label">Poblado:</label>
+                                 <select class="form-input" id="cod_poblado" name="cod_poblado" title="Poblado"
+                                     style="cursor:pointer;"></select>
+                             </div>
+                             <div class="form-group">
+                                 <label for="clave_registro" class="form-label">Clave:</label>
+                                 <input type="password" class="form-input" id="clave_registro" name="clave"
+                                     title="Clave">
                              </div>
                              <div class="modal-footer">
                                  <button type="submit" class="form-button btn-success" id="btnGuardar"
@@ -294,10 +253,12 @@ $varDateTime = date("Y-m-d H:i:s");
                                      data-bs-dismiss="modal">Cancelar</button>
                              </div>
                          </div>
-
                      </div>
              </div>
          </div>
+     </div>
+     </div>
+     </div>
 
 
 
@@ -305,50 +266,49 @@ $varDateTime = date("Y-m-d H:i:s");
 
 
 
-         <!-- Restablecer contraseña -->
-         <div class="modal fade" id="RestablecerContraseña">
-             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                 <div class="modal-content">
-                     <div class="modal-header">
-                         <h5 class="modal-title" id="exampleModalLabel">Restablecer contraseña</h5>
-                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                     </div>
-                     <div class="modal-body">
-                         <div class="form-group">
-                             <label> Identificación: </label>
-                             <div class="input-with-icon">
-                                 <i class="fas fa-id-card identificacion-icon"></i>
-                                 <input type="text" class="form-control" id="numeroiden" name="numeroiden"
-                                     title='Ingrese solo números' placeholder="123456789" style='cursor:pointer;'
-                                     oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                             </div>
-                         </div>
-                         <div class="form-group">
-                             <label> Correo: </label>
-                             <div class="input-with-icon">
-                                 <i class="fas fa-envelope correo-icon"></i>
-                                 <input type="email" class="form-control" id="correo" name="correo" title=''
-                                     placeholder="usuario@soysena.edu.co" style='cursor:pointer;'>
-                             </div>
+     <!-- Restablecer contraseña -->
+     <div class="modal fade" id="RestablecerContraseña">
+         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Restablecer contraseña</h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                 </div>
+                 <div class="modal-body">
+                     <div class="form-group">
+                         <label> Identificación: </label>
+                         <div class="input-with-icon">
+                             <i class="fas fa-id-card identificacion-icon"></i>
+                             <input type="text" class="form-control" id="numeroiden" name="numeroiden"
+                                 title='Ingrese solo números' placeholder="123456789" style='cursor:pointer;'
+                                 oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                          </div>
                      </div>
-                     <div class="modal-footer">
-                         <button type="button" class="btn btn-success" data-bs-dismiss="modal" id='btnRecordar'
-                             name='btnRecordar'>Recordar</button> <!-- Botón de recordar contraseña -->
-                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id='btnCancelar'
-                             name='btnCancelar'>Cancelar</button> <!-- Botón de cancelar -->
+                     <div class="form-group">
+                         <label> Correo: </label>
+                         <div class="input-with-icon">
+                             <i class="fas fa-envelope correo-icon"></i>
+                             <input type="email" class="form-control" id="correo" name="correo" title=''
+                                 placeholder="usuario@soysena.edu.co" style='cursor:pointer;'>
+                         </div>
                      </div>
+                 </div>
+                 <div class="modal-footer">
+                     <button type="button" class="btn btn-success" data-bs-dismiss="modal" id='btnRecordar'
+                         name='btnRecordar'>Recordar</button> <!-- Botón de recordar contraseña -->
+                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id='btnCancelar'
+                         name='btnCancelar'>Cancelar</button> <!-- Botón de cancelar -->
                  </div>
              </div>
          </div>
+     </div>
 
 
 
 
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
-             integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
-             crossorigin="anonymous">
-         </script> <!-- Script de Bootstrap -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
+     </script> <!-- Script de Bootstrap -->
 
 
 
