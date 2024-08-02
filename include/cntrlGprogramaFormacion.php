@@ -236,27 +236,35 @@ switch ($_REQUEST['action'])
         $jTableResult['ms'] = "";
         $jTableResult['ListPf'] = "";
         $id_programaformacion = mysqli_real_escape_string($conn, $_POST['id_programaformacion']);
-                        $query = "SELECT  
-                                    pf.id_programaformacion,
-                                    u.nombre, 
-                                    d.nombre_dpto AS nom_dpto, 
-                                    m.nombre_municipio AS nom_muni, 
-                                    p.nombre_poblado AS nom_vereda, 
-                                    u.nombre_dos,
-                                    u.apellido, 
-                                    pf.nombre AS nom_pf
-                                FROM 
-                                    programaformacion pf
-                                LEFT JOIN  
-                                    userprofile u ON pf.fk_responsable = u.id_userprofile
-                                LEFT JOIN  
-                                    departamentos d ON u.cod_dpto = d.cod_dpto
-                                LEFT JOIN  
-                                    municipios m ON u.cod_municipio = m.cod_municipio
-                                LEFT JOIN  
-                                    poblados p ON u.cod_poblado = p.cod_poblado
-                                WHERE 
-                                    pf.id_programaformacion = '$id_programaformacion';";
+            $query = "SELECT  
+            pf.id_programaformacion,
+            pf.fecha_inicio,
+            pf.fecha_cierre,
+            u.nombre AS nom_usu, 
+            u.numeroiden,
+            u.apellido, 
+            pf.nombre AS nom_pf,
+            c.nombre AS nom_compe,
+            ra.nombre AS nom_ra,
+            m.nombre AS nom_modalidad,
+            pf.matriculados,
+            r.nombre AS nom_rol,
+            pf.ficha
+        FROM 
+            programaformacion pf
+        LEFT JOIN  
+            userprofile u ON pf.fk_programado = u.id_userprofile
+        LEFT JOIN
+            competencia c ON pf.id_competencia = c.id_competencia
+        LEFT JOIN
+            resultadosaprendizaje ra ON pf.id_resultado_aprendizaje = ra.id_resultado_aprendizaje
+        LEFT JOIN
+            modalidad m ON pf.id_modalidad = m.id_modalidad
+        LEFT JOIN
+            rol r ON u.id_rol = r.id_rol
+        WHERE 
+            pf.id_programaformacion = '$id_programaformacion';";
+
         $result = mysqli_query($conn, $query);
         if ($result) {
             while ($registro = mysqli_fetch_array($result)) {
@@ -266,68 +274,72 @@ switch ($_REQUEST['action'])
                     <div class='form-container'>
                         <label> Nombre Programa de Formacion</label><br>
                         <label id='solicitante'>
-                        " . $registro['nombre'] . "" . $registro['nombre_dos'] . "" . $registro['apellido'] . "</label>
+                        " . $registro['nom_pf'] . "</label>
                         <br>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='modal-title'>Fecha inicio Programa</h6>
-                                <h6 class='modal-title'>" . $registro['nom_vereda'] . "</h6>
+                                <h6 class='modal-title'>" . $registro['fecha_inicio'] . "</h6>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='modal-title'>Fecha Fin Programa</h6>
-                                <h6 class='modal-title'>" . $registro['nom_vereda'] . "</h6>
+                                <h6 class='modal-title'>" . $registro['fecha_cierre'] . "</h6>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='modal-title'>Competencia</h6>
-                                <h6 class='modal-title'>" . $registro['nom_vereda'] . "
+                                <h6 class='modal-title'>" . $registro['nom_compe'] . "
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='modal-title'>Resultado de Aprendizaje</h6>
-                                <h6 class='modal-title'>" . $registro['nom_vereda'] . "</h6>
+                                <h6 class='modal-title'>" . $registro['nom_ra'] . "</h6>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='modal-title'>Modalidad</h6>
-                                <h6 class='modal-title'>" . $registro['nom_vereda'] . "</h6>
+                                <h6 class='modal-title'>" . $registro['nom_modalidad'] . "</h6>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='modal-title'>Numero Matriculados</h6>
-                                <h6 class='modal-title'>" . $registro['nom_vereda'] . "</h6>
+                                <h6 class='modal-title'>" . $registro['matriculados'] . "</h6>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
-                                <h6 class='modal-title'>Descargar Matriculados</h6>
-                                <h6 class='modal-title'>" . $registro['nom_vereda'] . "</h6>
+                                <h6 class='modal-title'>Ficha</h6>
+                                <h6 class='modal-title'>" . $registro['ficha'] . "</h6>
                             </div>
                         </div>
-                        <h5>Nombre Encargado</h5>
+                        <div class='row mt-3'>
+                            <div class='col-sm-12'>
+                                <label class='label-identifier' for='archivo'>Descargar Informacion Cargada por Usuario</label>
+                                <label class='data-field'><a href='' download>Descargar Documento</a></label>
+                            </div>
+                        </div>
+                        <h5>Datos Instructor Programado</h5>
+                        <label>" . $registro['nom_usu'] . "</label>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='modal-title'>Numero de Documento</h6>
-                                <h6 class='modal-title'>" . $registro['nom_dpto'] . "</h6>
+                                <h6 class='modal-title'>" . $registro['numeroiden'] . "</h6>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='modal-title'>Cargo en el Aplicativo</h6>
-                                <h6 class='modal-title'>" . $registro['nom_muni'] . "</h6>
+                                <h6 class='modal-title'>" . $registro['nom_rol'] . "</h6>
                             </div>
                         </div>
                         <br>
                         <label>Detalles</label>
-                        <br>
-                        <textarea id='detalles' name='detalles'>" . $registro['nom_muni'] . "</textarea>
-                        <br>
                         <hr>
                         <h3>Control de Desercion</h3>
                         <hr>
@@ -342,7 +354,11 @@ switch ($_REQUEST['action'])
                         <button class='create-button' id='create'> Agregar</button>
                         <button id='btnAceptarSoli' class='close-button'  >Desertar</button>
                         <hr>
-                    </div>";
+                    </div>
+                                    <div class='modal-footer'>
+                    <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
+                    <button type='button' class='create-button' id='btnGuardarCambios3' data-id='" . $registro['id_programaformacion'] ." '>Terminar</button>
+                </div>";
             }
         } else {
             $jTableResult['rst'] = "0";
@@ -350,6 +366,28 @@ switch ($_REQUEST['action'])
         }
         echo json_encode($jTableResult);
     break;
+    case 'aceptarSolicitudPf':
+        $jTableResult = array();
+        $jTableResult['rstl'] = "";
+        $jTableResult['msj'] = "";
+        $id_programaformacion = $_POST['id_programaformacion'];
+        // $mensaje = $_POST['mensaje'];
+        $query = "UPDATE programaformacion 
+        SET id_estado = 4
+        WHERE id_programaformacion = '$id_programaformacion'";
+        if ($result = mysqli_query($conn, $query)) {
+            mysqli_commit($conn);
+            // enviar correo URGENTE MIRAR SI SE HACE DESDE PHPMAILER O SOLO EMAIL
+            @mail($correo, 'Solicitud Exitosa', $mensaje);
+            $jTableResult['msj'] = "Solicitud Confimada con éxito.";
+            $jTableResult['rstl'] = "1";
+        } else {
+            mysqli_rollback($conn);
+            $jTableResult['msj'] = "Error al Confirmar la solicitud.";
+            $jTableResult['rstl'] = "0";
+        }
+        print json_encode($jTableResult);
+break;
  
 }
 

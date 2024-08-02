@@ -239,7 +239,8 @@ $(document).on("click", "#btnAceptarSoliOf", function() {
         $.post("../../include/cntrlSoli.php", {
             action: 'aceptarSolicitudOf',
             ficha:$("#ficha").val(),
-            id_solicitud: idSolicitud
+            id_solicitud: idSolicitud,
+            detalle_respuesta:$("#detalle_respuesta").val()
         }, function(data) {
             if (data.rstl == "1") {
                 Swal.fire({
@@ -303,7 +304,7 @@ function MostrarTipo_soli() {
             var SelectipoSoli = radios[i].value;
             switch (SelectipoSoli) {
                 case "1":
-                    tipo_soliDiv.innerHTML = `
+                    tipo_soliDiv.innerHTML = ` 
                         <div class="form-container">
                             <h5><strong>Ubicacion Sugerida Para Solicitud</strong></h5>
                             <div class="row mt-3">
@@ -347,7 +348,7 @@ function MostrarTipo_soli() {
                             <br>
                             <label class="modal-title">¿Requieres Cargar tus Usuarios interesados?</label>
                             <br>
-                            <label class="modal-title" for="archivo">Cargar Archivo solicitud (solo archivos de tipo pdf)</label>
+                            <label class="modal-title" for="archivo">Cargar Archivo solicitud</label>
                             <input type="file" id="archivo" name="archivo" accept=".pdf">
                         </div>
                     `;

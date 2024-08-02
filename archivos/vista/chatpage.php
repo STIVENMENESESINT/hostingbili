@@ -1,11 +1,5 @@
 <?php
-// Incluir el archivo de conexión a la base de datos y otras configuraciones necesarias
-include_once('../../include/conex.php');
-header('Content-Type: text/html; charset=' . $charset);
-header('Cache-Control: no-cache, must-revalidate');
-session_name($session_name);
-session_start();
-$conn = Conectarse();
+
     $sql = "SELECT * FROM `chat`";
     $query = mysqli_query($conn, $sql);
 

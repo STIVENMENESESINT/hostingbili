@@ -299,7 +299,7 @@ if (isset($_SESSION['id_userprofile'])) {
                 <div class="form-group">
                     <label> Contraseña: </label>
                     <div class="input-with-icon">
-                        <i class="fas fa-envelope correo-icon"></i>
+                    <i class="fas fa-lock password-icon"></i>
                         <input type="password" class="form-control" id="contraseña"  title='password'  style='cursor:pointer;'>
                     </div>
                 </div>

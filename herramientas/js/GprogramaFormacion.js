@@ -63,3 +63,29 @@ $(document).on("click", "#create", function () {
     // Añadir la nueva sección de formulario al contenedor
     $('#form_container').append(newFormSection);
 });
+$(document).on("click", "#btnGuardarCambios3",function ()	{
+    var id_programaformacion = $(this).data('id');
+    console.log(id_programaformacion);
+    $.post("../../include/cntrlGprogramaFormacion.php", {
+        action:'aceptarSolicitudPf',
+        id_programaformacion: id_programaformacion
+    }, function(data){
+        if(data.rst=='1'){
+            Swal.fire({
+                icon: 'success',
+                title: '¡Éxito!',
+                text: data.ms,
+                showConfirmButton: false,
+                timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+            }).then(() => {
+                location.reload();
+            });
+        }
+            else { Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.ms
+            }); }
+        }, 'json');	
+    }
+);

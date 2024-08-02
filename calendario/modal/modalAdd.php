@@ -70,7 +70,7 @@
                                 <option style="color:#FFD700" value="#FFD700">&#9724; Amarillo</option>
                                 <option style="color:#FF8C00" value="#FF8C00">&#9724; Naranja</option>
                                 <option style="color:#FF0000" value="#FF0000">&#9724; Vermelo</option>
-                                <option style="color:#000" value="#000">&#9724; Preto</option>
+                                <option style="color:#000" value="#000">&#9724; rojo</option>
                             </select>
                         </div>
                     </div>
