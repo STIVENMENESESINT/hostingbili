@@ -361,7 +361,20 @@ $(document).on("click", "#actualizarPermisousu", function () {
 
 </html>
 <style>
+.modal-content {
+    font-size: 2.1rem;
+    /* Aumenta el tamaño de la fuente para todo el contenido del modal */
+}
 
+.modal-header h1,
+.modal-body label,
+.modal-body input,
+.modal-body textarea,
+.modal-body select,
+.modal-footer button {
+    font-size: 1.5rem;
+    /* Ajusta el tamaño de la fuente para títulos y otros elementos específicos */
+}
 </style>
 <?php
     // Si no hay sesión activa, redirigir al usuario a la página de inicio de sesión
