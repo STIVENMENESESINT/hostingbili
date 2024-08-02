@@ -72,7 +72,7 @@ switch ($_REQUEST['action'])
 					celular = '".$_POST['celular']."',
 					correo = '".$_POST['correo_registro']."',
 					apellido = '".$_POST['apellidoUsu']."', 
-					apellido_dos = '".$_POST['apellidoUsu_dos']."',
+					
 					cod_dpto = '".$_POST['cod_dpto']."', 
 					cod_municipio = '".$_POST['cod_municipio']."', 
 					cod_poblado = '".$_POST['cod_poblado']."';";
