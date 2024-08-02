@@ -149,4 +149,18 @@
             ';
         }
     ?>
+    <?php
+        if ($_SESSION['id_rol'] == 5) {
+            echo '
+                <li>
+                    <a href="solicitud.php" class="nav-item">
+                        <i class="fas fa-check-double fa-fw fa-lg"></i>
+                        <span class="">Solicitudes
+                            
+                        </span>
+                    </a>
+                </li>
+            ';
+        }
+    ?>
 </ul>

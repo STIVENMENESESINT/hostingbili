@@ -48,8 +48,7 @@ switch ($_REQUEST['action'])
 		
 			$stmt->close();
 			print json_encode($jTableResult);
-			break;
-		
+		break;
 		case 'registroUsuNew': 
 			$jTableResult = array();
 			$jTableResult['rstl'] = "";
@@ -153,26 +152,39 @@ switch ($_REQUEST['action'])
 						$jTableResult['rstl']= "0";  }
 			print json_encode($jTableResult);
 		break;
-
+		case 'confirmarCcontraseña':
+			$jTableResult = array();
+			$jTableResult['validacion'] = "";
+			$jTableResult['estado'] = "";
 		
-
-
-
-
-
-
-
-
-
+			// Buscar el hash de la contraseña basada en número de identificación y el id de usuario en la sesión
+			$query = "SELECT id_userprofile, numeroiden, clave, id_estado 
+					  FROM userprofile
+					  WHERE numeroiden = ? 
+					  AND id_userprofile = ?";
+			$stmt = $conn->prepare($query);
+			$stmt->bind_param("si", $_POST['numeroiden'], $_SESSION['id_userprofile']);
+			$stmt->execute();
+			$result = $stmt->get_result();
 		
-
-
-
-
-
-
-
-
+			if ($result->num_rows == 0) {
+				$jTableResult['validacion'] = "no";
+			} else {
+				$user = $result->fetch_assoc();
+		
+				// Verificar la contraseña usando password_verify
+				if (password_verify($_POST['contraseña'], $user['clave'])) {
+					$jTableResult['validacion'] = "si";
+					$jTableResult['estado'] = $user['id_estado'] == '1' ? "A" : "I";
+				} else {
+					$jTableResult['msj'] = "Contraseña Incorrecta"; // Contraseña incorrecta
+				}
+			}
+		
+			$stmt->close();
+			print json_encode($jTableResult);
+		break;
+		
 		case 'actualizarusuario':
 			
 			$jTableResult = array(); 

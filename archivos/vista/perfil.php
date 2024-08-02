@@ -31,9 +31,84 @@ if (isset($_SESSION['id_userprofile'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Usuario </title>
-    <link rel="stylesheet" href="../../herramientas/css/perfil.css">
+    <link rel="stylesheet" href="../../herramientas/css/perfil.css"> 
 </head>
-
+<script>
+    $(document).on("click", "#btnActualizarContraseña", function () {
+					if ($("#numeroiden").val() == "") {
+						// Validación de número de identificación vacío
+						Swal.fire({
+							icon: 'error',
+							title: 'Error',
+							text: 'Debe ingresar número de identificación...',
+						});
+						$("#numeroiden").focus();
+					} else if (!(/^\d{8,}$/.test($("#numeroiden").val()))) {
+						// Validación de formato de número de identificación (al menos 8 dígitos)
+						Swal.fire({
+							icon: 'error',
+							title: 'Error',
+							text: 'El número de identificación debe contener al menos 8 dígitos numéricos.',
+						});
+						$("#numeroiden").focus();
+					} else if ($("#contraseña").val() == "") {
+						// Validación de número de identificación vacío
+						Swal.fire({
+							icon: 'error',
+							title: 'Error',
+							text: 'Debe ingresar número de identificación...',
+						});
+						$("#contraseña").focus();
+					} else if (!(/^\d{8,}$/.test($("#numeroiden").val()))) {
+						// Validación de formato de número de identificación (al menos 8 dígitos)
+						Swal.fire({
+							icon: 'error',
+							title: 'Error',
+							text: 'La contraseña debe contener al menos 6 Caracteres.',
+						});
+						$("#contrasña").focus();
+					} else {
+						// Envío de datos al servidor
+						$.post("../../include/ctrlIndex2.php", {
+							action: 'confirmarCcontraseña',
+							numeroiden: $("#numeroiden").val(),
+							contraseña: $("#contraseña").val()
+						}, function (data) {
+							if (data.validacion == "no") {
+								// Manejo de errores del servidor
+								Swal.fire({
+									icon: 'error',
+									title: 'Error',
+									text: 'Credenciales de acceso no existen',
+								});
+								limpiar();
+							} else {
+								if (data.estado == "I") {
+									// Usuario inactivo
+									Swal.fire({
+										icon: 'warning',
+										title: 'Advertencia',
+										text: 'El usuario existe pero está inactivo',
+									});
+									limpiar();
+								} else if (data.estado == "A") {
+									// Acceso autorizado
+									Swal.fire({
+										icon: 'success',
+										title: 'Correcto',
+										text: ' Redirigiendo...',
+										showConfirmButton: false,
+										timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+									});
+									setTimeout(function () {
+										location.href = "Ccontraseña.php";
+									}, 1500); // Redirige después de mostrar la alerta
+								}
+							}
+						}, 'json');
+					}
+				});
+</script>
 <body>
     <div class="layout">
         <!-- Menú de navegación -->
@@ -120,7 +195,10 @@ if (isset($_SESSION['id_userprofile'])) {
                         </div>
                     </div>
 
-
+                    <div class="">
+                        <button type="button" class="create-button" name="btnActualizarUsuario"
+                            data-bs-toggle="modal" data-bs-target="#CambiarCModal">Cambiar contraseña</button>
+                    </div>
 
 
                     <!-- <div class="col-sm-6">
@@ -198,7 +276,42 @@ if (isset($_SESSION['id_userprofile'])) {
     });
     </script>
 </body>
-
+<!-- MODAL CAMBIO CONTRASEÑA -->
+<div class="modal fade" id="CambiarCModal" tabindex="-1" aria-labelledby="CambiarCLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editSolicitudLabel">Cambiar Contraseña</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <div class="form-group">
+                <label> Identificación:</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-id-card identificacion-icon"></i>
+                    <input type="text" class="form-control" id="numeroiden" name="numeroiden"
+                        title='Ingrese solo números' placeholder="123456789" style='cursor:pointer;'
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                </div>
+                
+                </div>
+                <div class="form-group">
+                    <label> Contraseña: </label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope correo-icon"></i>
+                        <input type="password" class="form-control" id="contraseña"  title='password'  style='cursor:pointer;'>
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="create-button" id="btnActualizarContraseña" >Guardar
+                        Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </html>
 
