@@ -208,7 +208,7 @@ switch ($_REQUEST['action'])
         $jTableResult = array();                
         $jTableResult['lisTiposPF']="";
         $jTableResult['lisTiposPF']="<option value='0' selected >seleccione:.</option>";
-        $query="SELECT id_programaformacion, nombre FROM programaformacion WHERE id_estado = 7";
+        $query="SELECT id_programaformacion, nombre FROM programaformacion WHERE id_estado = 8";
         $resultado = mysqli_query($conn, $query);
         while($registro = mysqli_fetch_array($resultado))
         {
@@ -292,6 +292,7 @@ switch ($_REQUEST['action'])
     case 'crgrTipoCategoria':
         $jTableResult = array();                
         $jTableResult['lisTiposC']="";
+        $jTableResult['lisTiposC']="<option value='0' selected >seleccione:.</option>";
         $query="SELECT id_categoria, nombre FROM categoria";
         $resultado = mysqli_query($conn, $query);
         while($registro = mysqli_fetch_array($resultado))

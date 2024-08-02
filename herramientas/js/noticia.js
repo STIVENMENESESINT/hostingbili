@@ -101,10 +101,21 @@ $(document).on("click", "#publicar_noti2", function () {
                             dataType: 'json',
                             success: function (data) {
                                 if (data.rstl == "1") {
-                                    alert(data.msj);
-                                    location.reload();
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: '¡Éxito!',
+                                        text: data.msj,
+                                        showConfirmButton: false,
+                                        timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                                    }).then(() => {
+                                        location.reload();
+                                    });
                                 } else {
-                                    alert(data.msj);
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Error',
+                                        text: data.msj
+                                    });
                                 }
                             }
                         });
@@ -283,12 +294,6 @@ function MostrarTipo_Categoria() {
             `;
             break;
 
-        case "2":
-            tipo_soliDiv.innerHTML = `
-                
-            `;
-            break;
-
         case "3":
             tipo_soliDiv.innerHTML = `
             <hr>
@@ -306,10 +311,6 @@ function MostrarTipo_Categoria() {
                     <div class='course-data-field'>
                         <label class="modal-title">Fecha cierre</label><br>
                         <input class="col-form-label" type='date' id='fecha_cierre' />
-                    </div>
-                    <div class='course-data-field'>
-                        <label class="modal-title">Horas de curso</label><br>
-                        <input class="col-form-label" type='number' id='horas' value='0' />
                     </div>
                     <div class='course-data-field'>
                         <label class="modal-title">Modalidad</label><br>

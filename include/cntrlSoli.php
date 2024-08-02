@@ -395,6 +395,7 @@ switch ($_REQUEST['action'])
                                     ts.nombre AS Nombre_Solicitud, 
                                     ds.id_tiposolicitud,
                                     ds.descripcion,
+                                    ds.documento,
                                     a.nombre AS nom_area
                                 FROM 
                                     solicitud s
@@ -455,8 +456,8 @@ switch ($_REQUEST['action'])
                         <br>
                         <textarea id='detalles' name='detalles'>" . $registro['descripcion'] . "</textarea>
                         <br>
-                        <label class='label-identifier' for='archivo'>Cargar Archivo solicitud (solo archivos de tipo pdf)</label>
-                        <input type='file' id='archivo' name='archivo' accept='.pdf'>
+                        <label class='label-identifier' for='archivo'>Descargar Informacion Cargada por Usuario</label>
+                        <label class='data-field'><a href='../../include/" . $registro['documento'] . "' download>Descargar Documento</a></label>
                         <br/>
                         <hr>
                         
@@ -738,7 +739,7 @@ switch ($_REQUEST['action'])
                                     <label class='data-field'>" . $regis['numeroiden'] . "</label>
                                     
                                     <h1 class='label-identifier'>Documento para Descargar</h1>
-                                    <label class='data-field'><a href='" . $documentURL . "' download>Descargar Documento</a></label>";
+                                    <label class='data-field'><a href='../../include/" . $regis['documento'] . "' download>Descargar Documento</a></label>";
                             }
                         } else {
                             $jTableResult['ListOf'] .= "
@@ -774,7 +775,11 @@ switch ($_REQUEST['action'])
                     } 
                     
                 }else  {
-                    $jTableResult['ListOf'].='<h1>....</h1>';
+                    $jTableResult['ListOf'].='
+                    <div class="modal-footer">
+                    <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="create-button" id="subirNoti">Subir</button>
+                </div>';
                 }
                 $jTableResult['ListOf'] .= "</div>";
             }
@@ -1223,10 +1228,6 @@ switch ($_REQUEST['action'])
                                 </thead>
                             <tbody>';
             // Consulta para verificar si el id_userprofile está presente en la tabla solicitud
-            $query = "SELECT id_userprofile FROM solicitud WHERE id_userprofile='" . $_SESSION['id_userprofile'] . "'";
-            $resultado = mysqli_query($conn, $query);
-            // Verificar si se encontraron resultados
-            if (mysqli_num_rows($resultado) > 0) {
                 // Consulta para obtener las solicitudes y sus detalles asociados
                 $busqueda = "SELECT solicitud.id_solicitud, detallesolicitud.descripcion, solicitud.id_estado, estado.nombre AS nombre_estado,
                                 tiposolicitud.nombre AS nombre_tipo, userprofile.nombre AS nombre_autor,userprofile.correo, programaformacion.nombre AS nombre_pf, programaformacion.ficha
@@ -1268,10 +1269,6 @@ switch ($_REQUEST['action'])
                 $jTableResult['rs'] = "2";
                 $jTableResult['Ms'] = "Tu Solicitud Aun no tiene una respuesta.";
             }
-        } else {
-            $jTableResult['rs'] = "3";
-            $jTableResult['Ms'] = "No has realizado ninguna Solicitud.";
-        }
     
         print json_encode($jTableResult);
     break;

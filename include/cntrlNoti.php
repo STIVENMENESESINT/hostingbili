@@ -176,25 +176,24 @@ switch ($_REQUEST['action']) {
         $jTableResult = array();
         $jTableResult['rstl'] = "";
         $jTableResult['msj'] = "";
-        
+    
         // Preparar la consulta SQL para insertar en programaformacion
-        $query = "INSERT INTO programaformacion (nombre, fecha_cierre, fecha_inicio, id_modalidad, id_jornada, id_estado, horas_curso) 
-                    VALUES (?, ?, ?, ?, ?, 9, ?)";
+        $query = "INSERT INTO programaformacion (nombre, fecha_cierre, fecha_inicio, id_modalidad, id_jornada, id_estado) 
+                  VALUES (?, ?, ?, ?, ?, 9)";
         if ($stmt = mysqli_prepare($conn, $query)) {
-            mysqli_stmt_bind_param($stmt, "sssiii",
+            mysqli_stmt_bind_param($stmt, "sssii",
                 $_POST['nombre'],
                 $_POST['fecha_cierre'],
                 $_POST['fecha_inicio'],
                 $_POST['id_modalidad'],
-                $_POST['id_jornada'],
-                $_POST['horas_curso']
+                $_POST['id_jornada']
             );
             if (mysqli_stmt_execute($stmt)) {
                 $id_programaformacion = mysqli_insert_id($conn);
     
                 // Insertar en detallesolicitud
-                $query_detalle = "INSERT INTO detallesolicitud (nombre, descripcion, imagen, fecha_inicio, fecha_fin, url, id_programaformacion, id_categoria,id_tiposolicitud) 
-                                    VALUES (?, ?, ?, ?, ?, ?, ?,3,23)";
+                $query_detalle = "INSERT INTO detallesolicitud (nombre, descripcion, imagen, fecha_inicio, fecha_fin, url, id_programaformacion, id_categoria, id_tiposolicitud) 
+                                  VALUES (?, ?, ?, ?, ?, ?, ?, 3, 23)";
                 if ($stmt_detalle = mysqli_prepare($conn, $query_detalle)) {
                     mysqli_stmt_bind_param($stmt_detalle, "ssssssi",
                         $_POST['titulo'],
@@ -204,22 +203,21 @@ switch ($_REQUEST['action']) {
                         $_POST['fecha_fin'],
                         $_POST['url'],
                         $id_programaformacion
-
                     );
                     if (mysqli_stmt_execute($stmt_detalle)) {
                         $id_detallesolicitud = mysqli_insert_id($conn);
-                        
+    
                         // Insertar en solicitud
-                        $query_solicitud = "INSERT INTO solicitud (id_detallesolicitud, id_userprofile,id_estado,fecha_creacion) VALUES (?, ?,3,NOW())";
+                        $query_solicitud = "INSERT INTO solicitud (id_detallesolicitud, id_userprofile, id_estado, fecha_creacion) 
+                                            VALUES (?, ?, 3, NOW())";
                         if ($stmt_solicitud = mysqli_prepare($conn, $query_solicitud)) {
-                            mysqli_stmt_bind_param($stmt_solicitud, "iis",
+                            mysqli_stmt_bind_param($stmt_solicitud, "ii",
                                 $id_detallesolicitud,
-                                $_SESSION['id_userprofile'],
-                                
+                                $_SESSION['id_userprofile']
                             );
                             if (mysqli_stmt_execute($stmt_solicitud)) {
                                 mysqli_commit($conn);
-                                $jTableResult['msj'] = "El primer paso esta echo..";
+                                $jTableResult['msj'] = "El primer paso está hecho.";
                                 $jTableResult['rstl'] = "1";
                             } else {
                                 mysqli_rollback($conn);
@@ -517,9 +515,10 @@ switch ($_REQUEST['action']) {
         $jTableResult['rst'] = "";
         $jTableResult['ms'] = "";
         $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
-        $query ="UPDATE solicitud s
-                    SET s.id_estado = 9
-                WHERE s.id_solicitud = '$id_solicitud'";
+        $query = "UPDATE solicitud s
+            JOIN programaformacion pf ON s.id_programaformacion = pf.id_programaformacion
+            SET s.id_estado = 9, pf.id_estado = 9
+            WHERE s.id_solicitud = '$id_solicitud'";
         if($result= mysqli_query($conn,$query)){
             mysqli_commit($conn);
             $jTableResult['rst']= "1";

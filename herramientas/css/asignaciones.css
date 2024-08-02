@@ -82,9 +82,10 @@ label.data-field {
     text-align: center;
     vertical-align: middle;
     }
-.notificacion{
-    position: absolute;
-    left: 150rem;
+    .notificacion2{
+        position: absolute;
+        left: 85%;
+    
     }
 /* botones */
     .create-button {
