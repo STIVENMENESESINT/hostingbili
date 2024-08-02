@@ -49,6 +49,44 @@ switch ($_REQUEST['action'])
 			$stmt->close();
 			print json_encode($jTableResult);
 		break;
+		case 'actualizarContraseña':
+			$jTableResult = array();
+			$jTableResult['validacion'] = "";
+			$jTableResult['estado'] = "";
+		
+			// Obtener la nueva contraseña y el id del usuario desde el POST
+			$nuevaContraseña = $_POST['nuevaContraseña'];
+			$idUsuario = $_SESSION['id_userprofile'];
+		
+			// Validar que la nueva contraseña no esté vacía
+			if (empty($nuevaContraseña)) {
+				$jTableResult['validacion'] = "no";
+				$jTableResult['msj'] = "La nueva contraseña no puede estar vacía.";
+			} else {
+				// Cifrar la nueva contraseña
+				$nuevaContraseñaHash = password_hash($nuevaContraseña, PASSWORD_BCRYPT);
+		
+				// Actualizar la contraseña en la base de datos
+				$query = "UPDATE userprofile 
+						  SET clave = ?
+						  WHERE id_userprofile = ?";
+				$stmt = $conn->prepare($query);
+				$stmt->bind_param("si", $nuevaContraseñaHash, $idUsuario);
+				
+				if ($stmt->execute()) {
+					$jTableResult['validacion'] = "si";
+					$jTableResult['msj'] = "Contraseña actualizada con éxito.";
+				} else {
+					$jTableResult['validacion'] = "no";
+					$jTableResult['msj'] = "Error al actualizar la contraseña.";
+				}
+		
+				$stmt->close();
+			}
+		
+			print json_encode($jTableResult);
+		break;
+		
 		case 'registroUsuNew': 
 			$jTableResult = array();
 			$jTableResult['rstl'] = "";

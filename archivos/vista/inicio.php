@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                         ?>
                             <center>
-                                <embed src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%"
+                                <embed d="pdfEmbed" src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%"
                                     height="500px" />
                             </center>
                             <br>
@@ -212,32 +212,94 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
 </div>
-<div class="modal fade" id="revistaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="revistaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" data-lang-es="Subir Imágenes al Carrusel"
-                    data-lang-en="Upload Carousel Images" data-lang-fr="Télécharger des Images pour le Carrousel">Subir
-                    Imágenes al Carrusel</h1>
+                <h1 class="modal-title fs-5" data-lang-es="Subir Imágenes al Carrusel" data-lang-en="Upload Carousel Images" data-lang-fr="Télécharger des Images pour le Carrousel">Subir Nueva Revista</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="upload.php" method="post" enctype="multipart/form-data">
+            <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="image" data-lang-es="Selecciona una imagen:" data-lang-en="Select an image:"
-                        data-lang-fr="Sélectionnez une image:">Selecciona una imagen:</label>
-                    <input type="file" name="image[]" id="image" class="form-control" multiple>
+                    <label for="pdf" data-lang-es="Selecciona un archivo PDF:" data-lang-en="Select a PDF file:" data-lang-fr="Sélectionnez un fichier PDF:">Selecciona un Archivo PDF:</label>
+                    <input type="file" name="pdf" id="pdf" class="form-control" accept=".pdf">
                 </div>
             </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-lang-es="Salir"
-                    data-lang-en="Exit" data-lang-fr="Sortir">Salir</button>
-                <input class="btn btn-primary" type="button" id="actualizarPermisousu" value="Gestionar"
-                    data-lang-es="Gestionar" data-lang-en="Manage" data-lang-fr="Gérer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-lang-es="Salir" data-lang-en="Exit" data-lang-fr="Sortir">Salir</button>
+                <input class="btn btn-primary" type="button" id="actualizarPermisousu" value="Actualizar" data-lang-es="Actualizar" data-lang-en="Update" data-lang-fr="Mettre à jour">
             </div>
         </div>
     </div>
 </div>
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['pdf'])) {
+    $file = $_FILES['pdf'];
+    $uploadDir = '../../imagenes/'; // Cambia esto a la ruta donde quieras guardar el archivo
+    $uploadFile = $uploadDir . basename($file['name']);
+    
+    // Verifica que el archivo sea un PDF
+    if ($file['type'] === 'application/pdf') {
+        if (move_uploaded_file($file['tmp_name'], $uploadFile)) {
+            echo "El archivo ha sido cargado con éxito.";
+        } else {
+            echo "Error al cargar el archivo.";
+        }
+    } else {
+        echo "Por favor, sube un archivo PDF.";
+    }
+}
+?>
+
+<script>
+$(document).on("click", "#actualizarPermisousu", function () {
+    // Obtén el formulario
+    // Obtén el formulario
+    var form = document.getElementById('uploadForm');
+        
+        // Verifica si el formulario se ha encontrado correctamente
+        if (!form) {
+            console.error('Formulario no encontrado.');
+            return;
+        }
+        
+        // Verifica si el formulario es un objeto HTMLFormElement
+        if (!(form instanceof HTMLFormElement)) {
+            console.error('El elemento con el ID "uploadForm" no es un formulario.');
+            return;
+        }
+        
+        // Verifica si hay un archivo seleccionado
+        var fileInput = document.getElementById('pdf');
+        if (fileInput.files.length === 0) {
+            alert('Por favor selecciona un archivo PDF.');
+            return;
+        }
+        
+        // Envía el formulario usando AJAX
+        var formData = new FormData(form);
+        
+        fetch(form.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(result => {
+            // Muestra el resultado de la carga
+            alert(result);
+            // Actualiza el PDF en la página
+            document.getElementById('pdfEmbed').src = '../../imagenes/Revista B2.pdf?' + new Date().getTime();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+
+
+
+</script>
+
+
 
 
 
