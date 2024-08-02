@@ -120,7 +120,7 @@ switch ($_REQUEST['action']) {
                         <div class="row blog-item px-3 pb-5">
                         <div class="cards ">
                         
-                            <div class="imagenta">
+                            <div class="img">
                                 <a href="">
                                     <img src="../../include/' . $registro["imagen"] . '" alt="Image">
                                 </a>
