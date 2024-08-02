@@ -64,11 +64,7 @@ if (isset($_SESSION['id_userprofile'])){
                                                 <?php echo $var_class_button_warnigB; ?>>
                                                 <i class="fa fa-search-plus" aria-hidden="true"></i></button>
                                         </div>
-                                        <div class="col-sm-2">
-                                            <button type="button" name='btn_Nuevo' id='btn_permiso'
-                                                <?php echo $var_class_button_warnigN; ?>>
-                                                <i class="fa fa-plus" aria-hidden="true"></i></button>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>

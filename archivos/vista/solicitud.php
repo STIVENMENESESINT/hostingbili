@@ -25,8 +25,31 @@ if (isset($_SESSION['id_userprofile'])){
     <link rel="stylesheet" href="../../herramientas/css/style.css">
 </head>
 <style>
-        
-    </style>
+.modal-content {
+    font-size: 2.1rem;
+    /* Aumenta el tamaño de la fuente para todo el contenido del modal */
+}
+
+.modal-header h1,
+.modal-body label,
+.modal-body input,
+.modal-body textarea,
+.modal-body select,
+.modal-footer button,
+.modal-footer input {
+    font-size: 1.2rem;
+    /* Ajusta el tamaño de la fuente para títulos y otros elementos específicos */
+}
+
+#tipo_soli .form-container h6,
+#tipo_soli .form-container select,
+#tipo_soli .form-container input,
+#tipo_soli .form-container label {
+    font-size: 1.5rem;
+    /* Ajusta el tamaño de la fuente para los elementos específicos dentro del div #tipo_soli */
+}
+</style>
+
 <body>
     <div class="layout">
         <!-- Menú de navegación -->
