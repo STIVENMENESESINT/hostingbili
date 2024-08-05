@@ -20,7 +20,7 @@ if (isset($_SESSION['id_userprofile'])){
         include_once('cabecera.php');
         include_once ('parametros_index.php');
     ?>
-    <script type='text/javascript' src="../../herramientas/js/solicitud.js"></script>
+    <script type='text/javascript' src="../../herramientas/js/ofertas.js"></script>
     <link rel="stylesheet" href="../../herramientas/css/solicitud.css">
     <link rel="stylesheet" href="../../herramientas/css/style.css">
 </head>
@@ -103,6 +103,12 @@ if (isset($_SESSION['id_userprofile'])){
                 <?php
                             if ($_SESSION['id_rol'] == 3) {
                                 echo '<div id="sin_contenido"></div>
+                                <div id="oferta_curso"></div>';
+                            }
+                        ?>
+                <?php
+                            if ($_SESSION['id_rol'] == 2) {
+                                echo '
                                 <div id="oferta_curso"></div>';
                             }
                         ?>

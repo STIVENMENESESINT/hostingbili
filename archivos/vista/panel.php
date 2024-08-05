@@ -103,6 +103,14 @@
                         </span>
                     </a>
                 </li>
+                <li>
+                    <a href="ofertas.php" class="nav-item ">
+                        <i class="fas fa-graduation-cap "></i>
+                        <span class="">
+                            Ofertas
+                        </span>
+                    </a>
+                </li>
             ';
         }
     ?>
@@ -119,9 +127,9 @@
                 </li>
                 <li>
                     <a href="asignaciones.php" class="nav-item">
-                         <i class="fas fa-check-double fa-fw fa-lg"></i>
+                        <i class="fas fa-check-double fa-fw fa-lg"></i>
                         <span class="">Asignaciones
-                           
+                        
                         </span>
                     </a>
                 </li>
