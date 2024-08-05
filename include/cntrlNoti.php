@@ -215,9 +215,7 @@ switch ($_REQUEST['action']) {
                                         <p>' . $registro["descripcion"] . '</p>
                                     </div>
                                 </div>
-                                <a class="cards__button btn btn-link p-0">
-                                    <button type="button" class="cards__button me-interesa-btn" data-id="' . $registro['id_solicitud'] . '">Me Interesa</button>
-                                </a>
+                               
                             </div>
                         </div>
                     </div>';
