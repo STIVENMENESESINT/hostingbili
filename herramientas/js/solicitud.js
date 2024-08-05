@@ -1008,8 +1008,7 @@ $(document).on("click", "#detalleOferta",function ()	{
         if(data.rst=='1'){
             $("#form_Of").html(data.ListOf);
             AsignacionesCargar(idSolicitud)
-            $(document).on("click", "#subirNoti",function ()	{
-                console.log("ID de la solicitud: " + idSolicitud);
+            $(document).on("click", "#subirNoti2",function ()	{
                 $.post("../../include/cntrlNoti.php", {
                     action:'SubirContenido',
                     id_solicitud: idSolicitud

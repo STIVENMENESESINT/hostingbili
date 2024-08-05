@@ -179,9 +179,6 @@ if (isset($_SESSION['id_userprofile'])){
                 <div class="modal-body">
                     <div id="form_Of"></div>
                 </div>
-                <div class='modal-footer'>
-                    <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
-                </div>
             </div>
         </div>
     </div>
@@ -211,9 +208,6 @@ if (isset($_SESSION['id_userprofile'])){
                 </div>
                 <div class="modal-body">
                     <div id="datlleSolicitud"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
@@ -245,8 +239,6 @@ if (isset($_SESSION['id_userprofile'])){
                 </div>
                 <div class="modal-body">
                     <div id="cancel"></div>
-                </div>
-                <div class="modal-footer">
                 </div>
             </div>
         </div>

@@ -347,24 +347,27 @@ switch ($_REQUEST['action']) {
             }
             
             if (move_uploaded_file($_FILES['documentos_usuarios']['tmp_name'], $uploadFile)) {
-                $query = "INSERT INTO usersxoferta (id_userprofile, id_solicitud, documento,detalle) VALUES ('$userprofile', '" . $_POST['id_solicitud'] . "', '$uploadFile','" . $_POST['detalle'] . "')";
-                if ($result = mysqli_query($conn, $query)) {
-                    mysqli_commit($conn);
-                    $jTableResult['rst'] = "1";
-                    $jTableResult['ms'] = "Ofertado con éxito";
-                } else {
-                    $jTableResult['rst'] = "2";
-                    $jTableResult['ms'] = "No ofertado con éxito";
-                }
+                $query = "INSERT INTO usersxoferta (id_userprofile, id_solicitud, documento, detalle) VALUES ('$userprofile', '" . $_POST['id_solicitud'] . "', '$uploadFile', '" . $_POST['detalle'] . "')";
             } else {
                 $jTableResult['rst'] = "2";
                 $jTableResult['ms'] = "Error al mover el archivo";
+                print json_encode($jTableResult);
+                exit();
             }
         } else {
-            $jTableResult['rst'] = "2";
-            $jTableResult['ms'] = "Error al subir el archivo: " . $_FILES['documentos_usuarios']['error'];
+            // Si no se ha subido ningún archivo, inserta NULL en el campo `documento`
+            $query = "INSERT INTO usersxoferta (id_userprofile, id_solicitud, documento, detalle) VALUES ('$userprofile', '" . $_POST['id_solicitud'] . "', NULL, '" . $_POST['detalle'] . "')";
         }
-        
+    
+        if ($result = mysqli_query($conn, $query)) {
+            mysqli_commit($conn);
+            $jTableResult['rst'] = "1";
+            $jTableResult['ms'] = "Ofertado con éxito";
+        } else {
+            $jTableResult['rst'] = "2";
+            $jTableResult['ms'] = "No ofertado con éxito";
+        }
+    
         print json_encode($jTableResult);
     break;
     case 'ListarSolicitud_of':
@@ -444,12 +447,6 @@ switch ($_REQUEST['action']) {
                                 <h6 class='form-control'>" . $registro['nom_rol'] . "</h6>
                             </div>
                         </div>
-                        <div class='row mt-3'>
-                            <div class='col-sm-12'>
-                                <h6 class='label-identifier'>Area Publicitante</h6>
-                                <h6 class='form-control'>" . $registro['area_usu'] . "</h6>
-                            </div>
-                        </div>
                         <br>
                         <h5><strong>Informacion y Estado</strong></h5>
                         <label class='label-identifier'>Nombre Curso Ofertado</label>
@@ -461,12 +458,6 @@ switch ($_REQUEST['action']) {
                         <label class='label-identifier'>Modalidad Curso Ofertado</label>
                         <h6 class='form-control'>" . $registro['nom_modalidad'] . "</h6>
                         <br>
-                        <label class='label-identifier'>Nivel Academico Curso Ofertado</label>
-                        <h6 class='form-control'>" . $registro['nom_nf'] . "</h6>
-                        <br>
-                        <label class='label-identifier'>Horas Totales de Curso Ofertado</label>
-                        <h6 class='form-control'>" . $registro['horas_curso'] . "</h6>
-                        <br>
                         <label class='label-identifier'>Fecha Inicio de Curso Ofertado</label>
                         <h6 class='form-control'>" . $registro['fecha_inicio'] . "</h6>
                         <br>
@@ -477,9 +468,6 @@ switch ($_REQUEST['action']) {
                         <br>
                         <label id='detalles' name='detalles' class='form-control'>" . $registro['descripcion'] . "</label>
                         <br>
-                        <label class='label-identifier'>Area Curso</label>
-                        <h6 class='form-control'>" . $registro['nom_area'] . "</h6>
-                        <br>
                         <hr>";
 
                     if ($_SESSION['id_rol'] == '1') {
@@ -488,7 +476,10 @@ switch ($_REQUEST['action']) {
                             <label class='form-label'>Motivo Postulacion:</label>
                             <textarea rows='5' class='form-control' id='detalle' name='detalle'></textarea>
                         </div>
-                        </form>";
+                        <div class='modal-footer'>
+                            <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
+                            <button type='button' class='create-button' id='ofertarme'>Ofertarme</button>
+                        </div>";
                     } else {
                         $jTableResult ['Listof'] .= "
                         <div class='mb-3'>
@@ -499,7 +490,10 @@ switch ($_REQUEST['action']) {
                             <label class='form-label'>Descripción:</label>
                             <textarea rows='5' class='form-control' id='detalle' name='detalle'></textarea>
                         </div>
-                        </form>
+                        <div class='modal-footer'>
+                            <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
+                            <button type='button' class='create-button' id='ofertarme'>Ofertarme</button>
+                        </div>
                     ";
                 }
                 $jTableResult['Listof'] .= "</form>";
@@ -515,14 +509,13 @@ switch ($_REQUEST['action']) {
         $jTableResult['rst'] = "";
         $jTableResult['ms'] = "";
         $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
-        
         $query = "UPDATE solicitud s
-                  JOIN programaformacion pf ON s.id_programaformacion = pf.id_programaformacion
-                  SET s.id_estado = 9, pf.id_estado = 9
-                  WHERE s.id_solicitud = '$id_solicitud'";
-    
-    
-        if($result = mysqli_query($conn, $query)){
+            JOIN detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
+            JOIN programaformacion pf ON ds.id_programaformacion = pf.id_programaformacion
+            SET s.id_estado = 9, pf.id_estado = 9
+            WHERE s.id_solicitud = '$id_solicitud'";
+
+        if ($result = mysqli_query($conn, $query)) {
             mysqli_commit($conn);
             $jTableResult['rst'] = "1";
             $jTableResult['ms'] = "Ofertado con éxito";
@@ -548,7 +541,7 @@ switch ($_REQUEST['action']) {
         }
         else{
             $jTableResult['rst']= "2";
-            $jTableResult['ms'] = " NO Ofertado con exito";
+            $jTableResult['ms'] = " NO Subido con exito";
         }
         print json_encode($jTableResult);
     break;

@@ -387,6 +387,7 @@ switch ($_REQUEST['action'])
                         $query = "SELECT 
                                     s.id_solicitud, 
                                     u.nombre, 
+                                    u.id_rol,
                                     d.nombre_dpto AS nom_dpto, 
                                     m.nombre_municipio AS nom_muni, 
                                     p.nombre_poblado AS nom_vereda, 
@@ -425,43 +426,47 @@ switch ($_REQUEST['action'])
                 $jTableResult['ms'] = "Exitoso";
                 $jTableResult['ListAsign'] .= "
                     <div class='form-container'>
-                        <label class='label-identifier'>Empresa</label>
-                        <label class='data-field'></label>
+                        ";
+                        if ($registro['id_rol'] == 4){
+                            echo
+                            "
+                            <label class='label-identifier'>Empresa</label>
+                            <label class='data-field'>" . $registro['nom_Empresa'] . "</label>";
+                        }
                         
-                        <label class='label-identifier'>Solicitante</label>
-                        <label class='data-field' id='solicitante'></label>
+                        $jTableResult['ListAsign'] .= " <label class='label-identifier'>Solicitante</label>
+                        <label class='data-field' id='solicitante'>" . $registro['nombre'] . "</label>
                         <br>
                         
                         <h5 class='label-identifier'><strong>Ubicación Sugerida Para Solicitud</strong></h5>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='label-identifier'>Departamento</h6>
-                                <label class='data-field'></label>
+                                <label class='data-field'>" . $registro['nom_dpto'] . "</label>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='label-identifier'>Municipio</h6>
-                                <label class='data-field'></label>
+                                <label class='data-field'>" . $registro['nom_muni'] . "</label>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='label-identifier'>Vereda</h6>
-                                <label class='data-field'></label>
+                                <label class='data-field'>" . $registro['nom_vereda'] . "</label>
                             </div>
                         </div>
                         <br>
                         
                         <label class='label-identifier' for='detalles'>Detalles</label>
                         <br>
-                        <textarea id='detalles' name='detalles'></textarea>
+                        <textarea id='detalles' name='detalles'>" . $registro['descripcion'] . "</textarea>
                         <br>
                         <label class='label-identifier' for='archivo'>Descargar Información Cargada por Usuario</label>
-                        <label class='data-field'><a href='' download>Descargar Documento</a></label>
+                        <label class='data-field'><a href='../../include/" . $registro['documento'] . "' download>Descargar Documento</a></label>
                         <br/>
                         <hr>
-                        
                         <h3 class='label-identifier'>Asignación</h3>
                         <h6 class='label-identifier'>Responsable</h6>
                         <select id='id_responsable'></select>
@@ -785,7 +790,7 @@ switch ($_REQUEST['action'])
                     $jTableResult['ListOf'].='
                     <div class="modal-footer">
                     <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="create-button" id="subirNoti">Subir</button>
+                    <button type="button" class="create-button" id="subirNoti2">Subir</button>
                 </div>';
                 }
                 $jTableResult['ListOf'] .= "</div>";
