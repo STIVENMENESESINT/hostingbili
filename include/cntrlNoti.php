@@ -172,6 +172,65 @@ switch ($_REQUEST['action']) {
         print json_encode($jTableResult);
         
     break;
+    // noticias y ofertas index
+    case 'noticiaCreado2':
+        $jTableResult = array();
+        $jTableResult['rstl'] = "";
+        $jTableResult['msj'] = "";
+        $jTableResult['noticia'] = "";
+        $query = "
+                    SELECT id_solicitud, imagen AS imagen, nombre AS titulo, fecha_inicio AS fecha_mostrada, descripcion, detallesolicitud.id_categoria
+                    FROM 
+                        solicitud
+                    JOIN 
+                        detallesolicitud ON solicitud.id_detallesolicitud = detallesolicitud.id_detallesolicitud
+                    WHERE 
+                        (detallesolicitud.id_tiposolicitud = 23 OR detallesolicitud.id_tiposolicitud = 4) AND 
+                        (solicitud.id_estado = 4 OR solicitud.id_estado = 9)"; 
+    
+        $result = mysqli_query($conn, $query);
+        // Verificar si se encontraron resultados
+        if (mysqli_num_rows($result) > 0) {
+            $jTableResult['msj'] = "Noticia Creada con Exito.";
+            $jTableResult['rstl'] = "1";
+            $jTableResult['noticia'] = ''; // Inicializar la variable
+    
+            while ($registro = mysqli_fetch_array($result)) {
+                // Concatenar el contenido HTML para las tarjetas
+                $jTableResult['noticia'] .= '
+                    <div class="rounded-container">
+                        <div class="row blog-item px-3 pb-5">
+                            <div class="cards">
+                                <div class="img">
+                                    <a href="">
+                                        <img src="../../include/' . $registro["imagen"] . '" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="cards__content">
+                                    <h3 class="cards__title">' . $registro["titulo"] . '</h3>
+                                    <div class="cards__description">
+                                        <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> ' . $registro["fecha_mostrada"] . '</small>
+                                        <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web Design</small>
+                                        <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15 Comments</small>
+                                        <p>' . $registro["descripcion"] . '</p>
+                                    </div>
+                                </div>
+                                <a class="cards__button btn btn-link p-0">
+                                    <button type="button" class="cards__button me-interesa-btn" data-id="' . $registro['id_solicitud'] . '">Me Interesa</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>';
+                    }
+                } else {
+                    mysqli_rollback($conn);
+                    $jTableResult['msj'] = "Error al Crear la noticia.";
+                    $jTableResult['rstl'] = "0";
+                }
+            $jTableResult['noticia'] .= '</div';
+        print json_encode($jTableResult);
+        
+    break;
     case 'registroCursoNew':
         $jTableResult = array();
         $jTableResult['rstl'] = "";
