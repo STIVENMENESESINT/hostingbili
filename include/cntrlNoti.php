@@ -18,7 +18,7 @@ function uploadFile($file, $destinationDir) {
     $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
     // Verificar el tamaño del archivo
-    if ($file["size"] > 5000000) { // Límite de 5MB
+    if ($file["size"] > 50000000) { // Límite de 100MB
         echo "Lo siento, tu archivo es demasiado grande.";
         $uploadOk = 0;
     }
