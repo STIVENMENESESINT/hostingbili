@@ -1207,7 +1207,13 @@ switch ($_REQUEST['action'])
                                                                         }elseif ($registro['idtiposolicitud'] == 10) {
                                                                             $jTableResult['tabla'] .= ' id="instructorProto" data-bs-toggle="modal" data-bs-target="#AceptSolicitud4Modal" data-id="' . $registro['id_solicitud'] . '"> Responder</button>';
                                                                         }elseif($registro['idtiposolicitud']== 23){
-                                                                            $jTableResult['tabla'].='<button id="detalleOferta" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#OfertaModal"  cursor:pointer;" data-id="' . $registro['id_solicitud'] . '">Mirar Oferta</button>';
+                                                                            $jTableResult['tabla'].='<button id="detalleOferta" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#OfertaModal"  cursor:pointer;" data-id="' . $registro['id_solicitud'] . '">Mirar Oferta</button>
+                                                                        ';
+                                                                        $query2="SELECT id_solicitud, COUNT(id_userprofile) AS total_users
+                                                                                        FROM usersxoferta
+                                                                                        GROUP BY id_solicitud
+                                                                                        ORDER BY total_users DESC
+                                                                                        LIMIT 1;";
                                                                         }
                                                                 }
                                 $jTableResult['tabla'] .= "</td></tr>";

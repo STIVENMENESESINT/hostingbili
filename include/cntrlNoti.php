@@ -203,7 +203,7 @@ switch ($_REQUEST['action']) {
                             <div class="cards">
                                 <div class="img">
                                     <a href="">
-                                        <img src="../../include/' . $registro["imagen"] . '" alt="Image">
+                                        <img src="include/' . $registro["imagen"] . '" alt="Image">
                                     </a>
                                 </div>
                                 <div class="cards__content">

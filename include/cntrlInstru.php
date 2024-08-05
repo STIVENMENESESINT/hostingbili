@@ -34,7 +34,6 @@ if (mysqli_num_rows($result) > 0) {
     while($registro = mysqli_fetch_array($result)) {
         $jTableResult['msj'] = "Instructor Creado con Éxito.";
         $jTableResult['rstl'] = "1";
-
                 // Verificar si la imagen existe y no está vacía
                 $rutaImagen = 'uploads/' . htmlspecialchars($registro['imagen']);
                 $imagenHTML = "";

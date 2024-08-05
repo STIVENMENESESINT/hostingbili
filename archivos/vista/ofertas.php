@@ -99,24 +99,8 @@ if (isset($_SESSION['id_userprofile'])){
                         </div>
                     </div>
                 </div>
-                <!-- NO TOCAR -->
-                <?php
-                            if ($_SESSION['id_rol'] == 3) {
-                                echo '<div id="sin_contenido"></div>
-                                <div id="oferta_curso"></div>';
-                            }
-                        ?>
-                <?php
-                            if ($_SESSION['id_rol'] == 2) {
-                                echo '
-                                <div id="oferta_curso"></div>';
-                            }
-                        ?>
-                <?php
-                            if ($_SESSION['id_rol'] != 3) {
-                                echo '<div id="contenido"></div>';
-                            }
-                        ?>
+                
+                    <div id="oferta_curso"></div>';
 
                 <div id="solisB"></div>
             </div>
