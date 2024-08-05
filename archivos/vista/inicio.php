@@ -288,6 +288,21 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
 </div>
+<div class="modal fade" id="OfertModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" data-lang-es="Subir Imágenes al Carrusel" data-lang-en="Upload Carousel Images" data-lang-fr="Télécharger des Images pour le Carrousel">Subir Nueva Revista</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-lang-es="Salir" data-lang-en="Exit" data-lang-fr="Sortir">Salir</button>
+                <input class="btn btn-primary" type="button" id="actualizarPermisousu" value="Actualizar" data-lang-es="Actualizar" data-lang-en="Update" data-lang-fr="Mettre à jour">
+            </div>
+        </div>
+    </div>
+</div>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['pdf'])) {
     $file = $_FILES['pdf'];
