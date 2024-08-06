@@ -18,7 +18,7 @@ $(document).on("click", "#publicar_noti", function (event) {
             var formData = new FormData();
             formData.append("action", "guardarNoticia");
             formData.append("titulo", $("#titulo").val());
-            formData.append("descripcion", $("#descripcion_local").val());
+            formData.append("descripcion", $("#descripcion_Publi").val());
             formData.append("fecha_fin", $("#fecha_fin").val());
             formData.append("imagen", $("#imagen")[0].files[0]);
             formData.append("fecha_inicio", $("#id_fecha_mostrada").val());
@@ -61,72 +61,82 @@ $(document).on("click", "#publicar_noti", function (event) {
         }
     }
 });
-
-$(document).on("click", "#publicar_noti2", function () {
-        if ($("#titulo").val() == "") {
+function crearPf(){
+    $(document).on("click", "#publicar_noti2", function () {
+        // Validación de campos requeridos
+        if ($("#titulo").val() === "") {
             alert('Debe ingresar Titulo a la Oferta');
             $("#titulo").focus();
-        } else {
-            if ($("#imagen").val() == "") {
-                alert('Debe ingresar la Imagen');
-                $("#imagen").focus();
-            } else {
-                if ($("#nombre").val() == "") {
-                    alert('Debe Digitar un Nombre de Curso ');
-                    $("#nombre").focus();
+            return;
+        } 
+        if ($("#imagen").val() === "") {
+            alert('Debe ingresar la Imagen');
+            $("#imagen").focus();
+            return;
+        }
+        if ($("#nombre").val() === "") {
+            alert('Debe Digitar un Nombre de Curso');
+            $("#nombre").focus();
+            return;
+        }
+
+        // Confirmación
+        if (!confirm("¿Está seguro de Ofertar este Curso de " + $("#nombre").val() + "?")) {
+            return;
+        }
+
+        // Creación del FormData y agregar los datos
+        var formData = new FormData();
+        formData.append("action", "registroCursoNew");
+
+        var selectedOption = $("#id_programaformacion").find("option:selected");
+        formData.append("id_programaformacion", selectedOption.val());
+        formData.append("nombre", selectedOption.text());
+        formData.append("fecha_inicio", $("#fecha_inicio").val());
+        formData.append("fecha_cierre", $("#fecha_cierre").val());
+        formData.append("modalidad", $("#id_modalidad_label").text().trim()); // Modalidad desde el label
+        formData.append("nivel_formacion", $("#nivel_formacion_label").text().trim()); // Nivel de formación desde el label
+        formData.append("tipo_formacion", $("#tipo_formacion_label").text().trim()); // Tipo de formación desde el label
+        formData.append("horas_curso", $("#horas_curso_label").text().trim()); // Horas del curso desde el label
+        formData.append("titulo", $("#titulo").val());
+        formData.append("descripcion", $("#descripcion_Publi").val());
+        formData.append("fecha_mostrada", $("#id_fecha_mostrada").val());
+        formData.append("imagen", $("#imagen")[0].files[0]);
+        formData.append("fecha_fin", $("#id_fecha_fin").val());
+        formData.append("url", $("#id_url").val());
+
+        // Enviar los datos mediante AJAX
+        $.ajax({
+            url: "../../include/cntrlNoti.php",
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data.rstl == "1") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        text: data.msj,
+                        showConfirmButton: false,
+                        timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                    }).then(() => {
+                        location.reload();
+                    });
                 } else {
-                        confirm("¿Está seguro de Ofertar este Curso de " + $("#nombre").val() + "?");
-                        var formData = new FormData();
-                        formData.append("action", "registroCursoNew");
-                        var selectedOption = $("#id_programaformacion").find("option:selected");
-                        formData.append("id_programaformacion", selectedOption.val());
-                        formData.append("nombre", selectedOption.text());
-                        formData.append("fecha_inicio", $("#fecha_inicio").val());
-                        formData.append("fecha_cierre", $("#fecha_cierre").val());
-                        formData.append("horas_curso", $("#horas").val());
-                        formData.append("modalidad", $("#modalidad").val());
-                        formData.append("nivel_formacion", $("#nivel_formacion").val());
-                        formData.append("tipo_formacion", $("#tipo_formacion").val());
-                        formData.append("horas_curso", $("#horas_curso").val());
-                        formData.append("id_jornada", $("#id_jornada").val());
-                        formData.append("titulo", $("#titulo").val());
-                        formData.append("descripcion", $("#descripcion").val());
-                        formData.append("fecha_mostrada", $("#id_fecha_mostrada").val());
-                        formData.append("imagen", $("#imagen")[0].files[0]);
-                        formData.append("fecha_inicio", $("#fecha_inicio").val());
-                        formData.append("fecha_fin", $("#id_fecha_fin").val());
-                        formData.append("url", $("#id_url").val());
-                        $.ajax({
-                            url: "../../include/cntrlNoti.php",
-                            type: 'POST',
-                            data: formData,
-                            contentType: false,
-                            processData: false,
-                            dataType: 'json',
-                            success: function (data) {
-                                if (data.rstl == "1") {
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: '¡Éxito!',
-                                        text: data.msj,
-                                        showConfirmButton: false,
-                                        timer: 1500 // Tiempo en milisegundos (1.5 segundos)
-                                    }).then(() => {
-                                        location.reload();
-                                    });
-                                } else {
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Error',
-                                        text: data.msj
-                                    });
-                                }
-                            }
-                        });
-                    }
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: data.msj
+                    });
                 }
             }
+        });
     });
+}
+
+
     $(document).on("click", "#hideRevista", function () {
         $("#revista").hide();
     });
@@ -343,6 +353,7 @@ function MostrarTipo_Categoria() {
                     <a type="button" class="btn btn-sm btn-outline-danger" href="" role="button">Cancelar</a>
                 </div>
             `;
+            crearPf()
             break;
 
         case "3":
@@ -432,6 +443,7 @@ function MostrarTipo_Categoria() {
 
             `;
             cargarcosas()
+            crearPf()
             break;
         // Agrega más casos según sea necesario para otras categorías
     }

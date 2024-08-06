@@ -272,15 +272,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     </for>
 
                 </div>
-                <div id="librerias">
-                    <script>
-                    $(document).ready(function() {
-                        $('#descripcion').summernote({
-                            height: 200
-                        });
-                    });
-                    </script>
-                </div>
             </div>
         </div>
     </div>

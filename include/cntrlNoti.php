@@ -53,7 +53,7 @@ switch ($_REQUEST['action']) {
         $url = $_POST["id_url"] ?? null;
         $imagen = $_FILES["imagen"] ?? null;
         if ($imagen) {
-            $imagenPath = uploadFile($imagen, "include/uploads/images/");
+            $imagenPath = uploadFile($imagen, "uploads/");
 
             if ($imagenPath) {
                 // Preparar declaración SQL
@@ -232,85 +232,98 @@ switch ($_REQUEST['action']) {
         print json_encode($jTableResult);
         
     break;
+    // solicitud de oferta
     case 'registroCursoNew':
         $jTableResult = array();
         $jTableResult['rstl'] = "";
         $jTableResult['msj'] = "";
-    
+        $imagen = $_FILES["imagen"] ?? null;
+        if ($imagen) {
+            $imagenPath = uploadFile($imagen, "uploads/");
+
+            if ($imagenPath) {
         // Preparar la consulta SQL para insertar en programaformacion
-        $query = "INSERT INTO programaformacion (nombre, fecha_cierre, fecha_inicio, modalidad, nivel_formacion, tipo_formacion,horas_curso,id_estado) 
-                  VALUES (?, ?, ?, ?, ?, ?,?,3)";
-        if ($stmt = mysqli_prepare($conn, $query)) {
-                    mysqli_stmt_bind_param($stmt, "ssssssi",
-            $_POST['nombre'],
-            $_POST['fecha_cierre'],
-            $_POST['fecha_inicio'],
-            $_POST['modalidad'],
-            $_POST['nivel_formacion'],
-            $_POST['tipo_formacion'],
-            $_POST['horas_curso']
-        );
-            if (mysqli_stmt_execute($stmt)) {
-                $id_programaformacion = mysqli_insert_id($conn);
-    
-                // Insertar en detallesolicitud
-                $query_detalle = "INSERT INTO detallesolicitud (nombre, descripcion, imagen, fecha_inicio, fecha_fin, url, id_programaformacion, id_categoria, id_tiposolicitud) 
-                                  VALUES (?, ?, ?, ?, ?, ?, ?, 3, 23)";
-                if ($stmt_detalle = mysqli_prepare($conn, $query_detalle)) {
-                    mysqli_stmt_bind_param($stmt_detalle, "ssssssi",
-                        $_POST['titulo'],
-                        $_POST['descripcion'],
-                        $_POST['imagen'],
-                        $_POST['fecha_mostrada'],
-                        $_POST['fecha_fin'],
-                        $_POST['url'],
-                        $id_programaformacion
-                    );
-                    if (mysqli_stmt_execute($stmt_detalle)) {
-                        $id_detallesolicitud = mysqli_insert_id($conn);
-    
-                        // Insertar en solicitud
-                        $query_solicitud = "INSERT INTO solicitud (id_detallesolicitud, id_userprofile, id_estado, fecha_creacion) 
-                                            VALUES (?, ?, 3, NOW())";
-                        if ($stmt_solicitud = mysqli_prepare($conn, $query_solicitud)) {
-                            mysqli_stmt_bind_param($stmt_solicitud, "ii",
-                                $id_detallesolicitud,
-                                $_SESSION['id_userprofile']
+                $query = "INSERT INTO programaformacion (nombre, fecha_cierre, fecha_inicio, modalidad, nivel_formacion, tipo_formacion, horas_curso, id_estado) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, 3)";
+                    if ($stmt = mysqli_prepare($conn, $query)) {
+                        mysqli_stmt_bind_param($stmt, "ssssssi",
+                            $_POST['nombre'],
+                            $_POST['fecha_cierre'],
+                            $_POST['fecha_inicio'],
+                            $_POST['modalidad'],
+                            $_POST['nivel_formacion'],
+                            $_POST['tipo_formacion'],
+                            $_POST['horas_curso']
+                        );
+                    if (mysqli_stmt_execute($stmt)) {
+                        $id_programaformacion = mysqli_insert_id($conn);
+            
+                        // Insertar en detallesolicitud
+                        $query_detalle = "INSERT INTO detallesolicitud (nombre, descripcion, imagen, fecha_inicio, fecha_fin, url, id_programaformacion, id_categoria, id_tiposolicitud) 
+                                        VALUES (?, ?, ?, ?, ?, ?, ?, 3, 23)";
+                        if ($stmt_detalle = mysqli_prepare($conn, $query_detalle)) {
+                            mysqli_stmt_bind_param($stmt_detalle, "ssssssi",
+                                $_POST['titulo'],
+                                $_POST['descripcion'],
+                                $imagenPath,
+                                $_POST['fecha_mostrada'],
+                                $_POST['fecha_fin'],
+                                $_POST['url'],
+                                $id_programaformacion
                             );
-                            if (mysqli_stmt_execute($stmt_solicitud)) {
-                                mysqli_commit($conn);
-                                $jTableResult['msj'] = "El primer paso está hecho.";
-                                $jTableResult['rstl'] = "1";
+                            if (mysqli_stmt_execute($stmt_detalle)) {
+                                $id_detallesolicitud = mysqli_insert_id($conn);
+            
+                                // Insertar en solicitud
+                                $query_solicitud = "INSERT INTO solicitud (id_detallesolicitud, id_userprofile, id_estado, fecha_creacion) 
+                                                    VALUES (?, ?, 3, NOW())";
+                                if ($stmt_solicitud = mysqli_prepare($conn, $query_solicitud)) {
+                                    mysqli_stmt_bind_param($stmt_solicitud, "ii",
+                                        $id_detallesolicitud,
+                                        $_SESSION['id_userprofile']
+                                    );
+                                    if (mysqli_stmt_execute($stmt_solicitud)) {
+                                        mysqli_commit($conn);
+                                        $jTableResult['msj'] = "El primer paso está hecho.";
+                                        $jTableResult['rstl'] = "1";
+                                    } else {
+                                        mysqli_rollback($conn);
+                                        $jTableResult['msj'] = "Error al guardar en solicitud.";
+                                        $jTableResult['rstl'] = "0";
+                                    }
+                                    mysqli_stmt_close($stmt_solicitud);
+                                } else {
+                                    mysqli_rollback($conn);
+                                    $jTableResult['msj'] = "Error al preparar la consulta para guardar en solicitud.";
+                                    $jTableResult['rstl'] = "0";
+                                }
                             } else {
                                 mysqli_rollback($conn);
-                                $jTableResult['msj'] = "Error al guardar en solicitud.";
+                                $jTableResult['msj'] = "Error al guardar en detallesolicitud.";
                                 $jTableResult['rstl'] = "0";
                             }
-                            mysqli_stmt_close($stmt_solicitud);
+                            mysqli_stmt_close($stmt_detalle);
                         } else {
                             mysqli_rollback($conn);
-                            $jTableResult['msj'] = "Error al preparar la consulta para guardar en solicitud.";
+                            $jTableResult['msj'] = "Error al preparar la consulta para guardar en detallesolicitud.";
                             $jTableResult['rstl'] = "0";
                         }
                     } else {
                         mysqli_rollback($conn);
-                        $jTableResult['msj'] = "Error al guardar en detallesolicitud.";
+                        $jTableResult['msj'] = "Error al guardar en programaformacion.";
                         $jTableResult['rstl'] = "0";
                     }
-                    mysqli_stmt_close($stmt_detalle);
+                    mysqli_stmt_close($stmt);
                 } else {
-                    mysqli_rollback($conn);
-                    $jTableResult['msj'] = "Error al preparar la consulta para guardar en detallesolicitud.";
+                    $jTableResult['msj'] = "Error al preparar la consulta para guardar en programaformacion.";
                     $jTableResult['rstl'] = "0";
                 }
             } else {
-                mysqli_rollback($conn);
-                $jTableResult['msj'] = "Error al guardar en programaformacion.";
+                $jTableResult['msj'] = "Error al Capturar Imagen";
                 $jTableResult['rstl'] = "0";
             }
-            mysqli_stmt_close($stmt);
         } else {
-            $jTableResult['msj'] = "Error al preparar la consulta para guardar en programaformacion.";
+            $jTableResult['msj'] = "Error al Guardar Imagen";
             $jTableResult['rstl'] = "0";
         }
         echo json_encode($jTableResult);
@@ -400,7 +413,7 @@ switch ($_REQUEST['action']) {
     
         // Verificar si el archivo se ha subido sin errores
         if (isset($_FILES['documentos_usuarios']) && $_FILES['documentos_usuarios']['error'] == UPLOAD_ERR_OK) {
-            $uploadDir = 'C:/xampp/htdocs/practica/archivos/vista/doc_usu/'; // Asegúrate de usar una ruta absoluta correcta
+            $uploadDir = 'doc_usu/'; // Asegúrate de usar una ruta absoluta correcta
             $uploadFile = $uploadDir . basename($_FILES['documentos_usuarios']['name']);
             
             // Crear el directorio si no existe
