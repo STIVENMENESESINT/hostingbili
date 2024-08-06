@@ -163,6 +163,64 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 </div>
 <!-- Noticia -->
+<style>
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+}
+
+.course-data-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.course-data-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.form-control,
+.col-form-label,
+.modal-textbox {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.create-button,
+.close-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.create-button {
+    background-color: #28a745;
+}
+
+.close-button {
+    background-color: #6c757d;
+}
+</style>
 <div class="modal fade" id="noticiaModal" tabindex="-1" aria-labelledby="noticiaModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -191,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 name="fecha_inicio" required>
                         </div>
                     </div>
-                    <div class="form-group-group-2">
+                    <div class="form-group-group-2" id="descripcion">
                         <label class="form-label" for="descripcion">Descripción:</label>
                         <textarea rows="10" class="form-input form-control" id="descripcion" name="descripcion"
                             placeholder="Descripción" required></textarea>
