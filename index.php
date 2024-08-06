@@ -376,25 +376,26 @@ $varDateTime = date("Y-m-d H:i:s");
                  </div>
              </div>
          </div>
-<script>
-    $(document).ready(function() {
-    $('.me-interesa-btn').on('click', function() {
-        var solicitudId = $(this).data('id');
+         <script>
+         $(document).ready(function() {
+             $('.me-interesa-btn').on('click', function() {
+                 var solicitudId = $(this).data('id');
 
-        // Aquí puedes verificar si el usuario está autenticado
-        var isAuthenticated = <?php echo isset($_SESSION['id_userprofile']) ? 'true' : 'false'; ?>;
+                 // Aquí puedes verificar si el usuario está autenticado
+                 var isAuthenticated =
+                     <?php echo isset($_SESSION['id_userprofile']) ? 'true' : 'false'; ?>;
 
-        if (!isAuthenticated) {
-            // Mostrar el modal de login
-            $('#loginModal').modal('show');
-        } else {
-            // Aquí puedes manejar la lógica si el usuario está autenticado
-            // Por ejemplo, abrir un modal con los detalles de la oferta
-            $('#OfertModal').modal('show');
-        }
-    });
-});
-</script>
+                 if (!isAuthenticated) {
+                     // Mostrar el modal de login
+                     $('#loginModal').modal('show');
+                 } else {
+                     // Aquí puedes manejar la lógica si el usuario está autenticado
+                     // Por ejemplo, abrir un modal con los detalles de la oferta
+                     $('#OfertModal').modal('show');
+                 }
+             });
+         });
+         </script>
          <!-- Login Modal -->
          <div class=" modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
              <div class="modal-dialog">
@@ -564,7 +565,7 @@ $varDateTime = date("Y-m-d H:i:s");
                          }
 
                          .modal-dialog-scrollable .modal-content {
-                             max-height: calc(76vh - 3.5rem);
+                             max-height: calc(100vh - 3.5rem);
                          }
 
                          .form-group-group {
