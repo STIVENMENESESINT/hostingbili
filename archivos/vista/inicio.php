@@ -192,8 +192,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                     </div>
                     <div class="form-group-group-2">
-                        <label class="form-label" for="descripcion">Descripción:</label>
-                        <textarea rows="10" class="form-input form-control" id="descripcion" name="descripcion"
+                        <label class="form-label">Descripción:</label>
+                        <textarea rows="10" class="form-input form-control" id="descripcion_Publi" 
                             placeholder="Descripción" required></textarea>
                     </div>
                     <div class="form-group-group-2">
@@ -213,15 +213,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     </for>
 
-                </div>
-                <div id="librerias">
-                    <script>
-                    $(document).ready(function() {
-                        $('#descripcion').summernote({
-                            height: 200
-                        });
-                    });
-                    </script>
                 </div>
             </div>
         </div>

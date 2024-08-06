@@ -641,9 +641,9 @@ switch ($_REQUEST['action'])
             s.id_estado, 
             u.nombre, 
             u.id_rol,
-            j.nombre AS nom_jornada,
-            m.nombre AS nom_modalidad,
-            nf.nombre AS nom_nf,
+            pf.tipo_formacion,
+            pf.modalidad,
+            pf.nivel_formacion,
             d.nombre_dpto AS nom_dpto, 
             m_municipio.nombre_municipio AS nom_muni, 
             p.nombre_poblado AS nom_vereda, 
@@ -699,10 +699,13 @@ switch ($_REQUEST['action'])
                     <label class='data-field'>" . $registro['nom_pf'] . "</label>
                     <br>
                     <label class='label-identifier'>Jornada Curso Ofertado</label>
-                    <label class='data-field'>" . $registro['nom_jornada'] . "</label>
+                    <label class='data-field'>" . $registro['tipo_formacion'] . "</label>
                     <br>
                     <label class='label-identifier'>Modalidad Curso Ofertado</label>
-                    <label class='data-field'>" . $registro['nom_modalidad'] . "</label>
+                    <label class='data-field'>" . $registro['modalidad'] . "</label>
+                    <br>
+                    <label class='label-identifier'>Nivel Formacion</label>
+                    <label class='data-field'>" . $registro['nivel_formacion'] . "</label>
                     <br>
                     <label class='label-identifier'>Fecha Inicio de Curso Ofertado</label>
                     <label class='data-field'>" . $registro['fecha_inicio'] . "</label>
@@ -1237,7 +1240,6 @@ switch ($_REQUEST['action'])
     
         print json_encode($jTableResult);
     break;
-    
     case 'MisOfertas':
         $jTableResult = array();
         $jTableResult['rs'] = "";
