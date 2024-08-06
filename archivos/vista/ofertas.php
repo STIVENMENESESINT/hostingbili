@@ -79,29 +79,25 @@ if (isset($_SESSION['id_userprofile'])){
                         ?>
                     </div>
                 </div>
-
                 <div class="card-body">
-                    <div class="navbar2">
+                    <div class="navbar2 d-flex justify-content-between align-items-center">
                         <!-- BUSCADOR -->
-                        <div class="col-sm-2">
+                        <div class="d-flex align-items-center">
                             <input type='text' name='dato_txt' id='dato_txt' title='Dato a buscar'
-                                placeholder='Dato a buscar' class="form-control mb-2 mr-sm-2 mb-sm-0">
-                        </div>
-                        <div class="col-sm-2">
+                                placeholder='Buscar...' class="form-control form-control-lg mr-2">
                             <button type="button" name='btn_Buscar' id='btn_Buscar'
-                                <?php echo $var_class_button_warnigB; ?>>
-                                <i class="fa fa-search-plus" aria-hidden="true"></i></button>
+                                class="btn btn-primary btn-lg">
+                                <i class="fa fa-search-plus" aria-hidden="true"></i>
+                            </button>
                         </div>
-                        <div class="col-sm-2">
-                            <button type="button" name='btn_Nuevo' id='btn_Nuevo' data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop" <?php echo $var_class_button_warnigN; ?>>
-                                <i class="fa fa-plus" aria-hidden="true"></i></button>
+                        <div>
+                            <button type="button" name="btn_Nuevo" id="btn_Nuevo" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Crear
+                            </button>
                         </div>
                     </div>
                 </div>
-                
                     <div id="oferta_curso"></div>';
-
                 <div id="solisB"></div>
             </div>
         </div>

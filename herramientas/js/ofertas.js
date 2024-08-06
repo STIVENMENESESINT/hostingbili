@@ -75,46 +75,4 @@ $(document).on("click", "#btn_pf",function ()	{
         }, 'json');	
     }
 );
-$(document).on("click", "#detalleOferta",function ()	{
-    var idSolicitud = $(this).data('id');
-    console.log("ID de la solicitud: " + idSolicitud);
-    $.post("../../include/cntrlSoli.php", {
-        action:'ListarOferta',
-        id_solicitud: idSolicitud
-    }, function(data){
-        if(data.rst=='1'){
-            $("#form_Of").html(data.ListOf);
-            AsignacionesCargar(idSolicitud)
-            $(document).on("click", "#subirNoti2",function ()	{
-                $.post("../../include/cntrlNoti.php", {
-                    action:'SubirContenido',
-                    id_solicitud: idSolicitud
-                }, function(data){
-                    if(data.rst=='1'){
-                        Swal.fire({
-                            icon: 'success',
-                            title: '¡Éxito!',
-                            text: data.ms,
-                            showConfirmButton: false,
-                            timer: 1500 // Tiempo en milisegundos (1.5 segundos)
-                        }).then(() => {
-                            location.reload();
-                        });
-                    }
-                        else { Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: data.ms
-                        }); }
-                    }, 'json');	
-                }
-            );
-        }
-            else { Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: data.ms
-            }); }
-        }, 'json');	
-    }
-);
+

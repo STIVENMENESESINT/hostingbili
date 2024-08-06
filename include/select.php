@@ -208,11 +208,42 @@ switch ($_REQUEST['action'])
         $jTableResult = array();                
         $jTableResult['lisTiposPF']="";
         $jTableResult['lisTiposPF']="<option value='0' selected >seleccione:.</option>";
-        $query="SELECT id_programaformacion, nombre FROM programaformacion WHERE id_estado = 8";
+        $query="SELECT id_programaformacion, nombre FROM programaformacion WHERE config = 1";
         $resultado = mysqli_query($conn, $query);
         while($registro = mysqli_fetch_array($resultado))
         {
             $jTableResult['lisTiposPF'].="<option value='".$registro['id_programaformacion']."'>".$registro['nombre']."</option>";
+        }
+        print json_encode($jTableResult);
+    break;
+    case 'crgrprogramaFormacion2':
+        $jTableResult = array();                
+        $jTableResult['lisDPF']="";
+        $id_programaformacion=  $_POST['id_programaformacion'];
+        $query="SELECT nombre, horas_curso, tipo_formacion, nivel_formacion, modalidad 
+        FROM programaformacion 
+        WHERE id_programaformacion='$id_programaformacion' AND config = 1";
+        $resultado = mysqli_query($conn, $query);
+        while($registro = mysqli_fetch_array($resultado))
+        {
+            $jTableResult['lisDPF'].='
+                    <div class="course-data-field">
+                        <label class="modal-title" for="id_modalidad">Modalidad</label>
+                        <label class="form-control" id="id_modalidad">"'.$registro['modalidad'].'"</label>
+                    </div>
+                    <div class="course-data-field">
+                        <label class="modal-title" for="id_jornada">Tipo de Formacion</label>
+                        <label class="form-control" id="tipo_formacion">"'.$registro['tipo_formacion'].'"</label>
+                    </div>
+                    <div class="course-data-field">
+                        <label class="modal-title" for="id_jornada">Nivel Formacion</label>
+                        <label class="form-control" id="nivel_formacion">"'.$registro['nivel_formacion'].'"</label>
+                    </div>
+                    <div class="course-data-field">
+                        <label class="modal-title" for="id_modalidad">Horas Totgales del Curso</label>
+                        <label class="form-control" id="horas_curso">"'.$registro['horas_curso'].'"</label>
+                    </div>
+                </div>';
         }
         print json_encode($jTableResult);
     break;

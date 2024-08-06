@@ -8,7 +8,7 @@ header('Content-Type: text/html; charset='.$charset);
 // Iniciar la sesión con el nombre de sesión configurado
 session_name($session_name);
 session_start();
-
+$conn=Conectarse();
 // Verificar si existe una sesión activa con el id_userprofile
 if (isset($_SESSION['id_userprofile'])){
 ?>
@@ -60,10 +60,18 @@ if (isset($_SESSION['id_userprofile'])){
                         echo'<a href="programar.php">Programacion</a>';
                     }
                     elseif($_SESSION['id_rol']=='3'){
-                        echo'<a href="programar.php">Programar</a>';
+                        echo'<a href="programar.php">Programar</a>
+                        <form id="uploadForm" action="upload_excel.php" method="post" enctype="multipart/form-data">
+                            <input type="file" name="file" id="file" accept=".xlsx, .xls" style="display: none;" onchange="document.getElementById("uploadForm").submit();">
+                            <label for="file">
+                                <i class="fas fa-upload" style="cursor: pointer; font-size: 24px;"></i>
+                            </label>
+                        </form>
+                        ';
                     }
                 ?>
                 
+
                 <div id="sin_contenido"></div>
             </div>
             <div id="pfB"></div>

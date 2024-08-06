@@ -78,11 +78,16 @@ $(document).on("click", "#publicar_noti2", function () {
                         confirm("¿Está seguro de Ofertar este Curso de " + $("#nombre").val() + "?");
                         var formData = new FormData();
                         formData.append("action", "registroCursoNew");
-                        formData.append("nombre", $("#titulo").val());
+                        var selectedOption = $("#id_programaformacion").find("option:selected");
+                        formData.append("id_programaformacion", selectedOption.val());
+                        formData.append("nombre", selectedOption.text());
                         formData.append("fecha_inicio", $("#fecha_inicio").val());
                         formData.append("fecha_cierre", $("#fecha_cierre").val());
                         formData.append("horas_curso", $("#horas").val());
-                        formData.append("id_modalidad", $("#id_modalidad").val());
+                        formData.append("modalidad", $("#modalidad").val());
+                        formData.append("nivel_formacion", $("#nivel_formacion").val());
+                        formData.append("tipo_formacion", $("#tipo_formacion").val());
+                        formData.append("horas_curso", $("#horas_curso").val());
                         formData.append("id_jornada", $("#id_jornada").val());
                         formData.append("titulo", $("#titulo").val());
                         formData.append("descripcion", $("#descripcion").val());
@@ -91,7 +96,6 @@ $(document).on("click", "#publicar_noti2", function () {
                         formData.append("fecha_inicio", $("#fecha_inicio").val());
                         formData.append("fecha_fin", $("#id_fecha_fin").val());
                         formData.append("url", $("#id_url").val());
-    
                         $.ajax({
                             url: "../../include/cntrlNoti.php",
                             type: 'POST',
@@ -204,6 +208,35 @@ $(document).ready(function(){
         console.error(error);
     });
 });
+function cargarcosas(){
+    $(document).on("change", "#id_programaformacion", function() {
+        $.post("../../include/select.php", {
+            action: 'crgrprogramaFormacion2',
+            id_programaformacion: $("#id_programaformacion").val()
+        },
+        function(data) {
+            $("#datos_pf").html(data.lisDPF);
+        },
+        'json'
+        ).fail(function(xhr, status, error) {
+            console.error(error);
+        });
+    });
+    
+    // Esta es la llamada separada para cargar los tipos de programas de formación en el select
+    $.post("../../include/select.php", {
+        action: 'crgrprogramaFormacion'
+    },
+    function(data) {
+        $("#id_programaformacion").html(data.lisTiposPF);
+    },
+    'json'
+    ).fail(function(xhr, status, error) {
+        console.error(error);
+    });
+    
+}
+
 $(document).on("click", "#MisSoliActivate", function () {
     $.post("../../include/select.php", {
         action: 'MisNoti' 
@@ -375,8 +408,8 @@ function MostrarTipo_Categoria() {
                 <div class="course-data-container">
                     <h2>DATOS DE CURSO</h2>
                     <div class="course-data-field">
-                        <label class="modal-title" for="nombre">Nombre curso</label>
-                        <input class="form-control" type="text" id="nombre" />
+                        <label class="modal-title" for="nombre">ProgramaFormacion</label>
+                        <select id="id_programaformacion"> </select>
                     </div>
                     <div class="course-data-field">
                         <label class="modal-title" for="fecha_inicio">Fecha inicio</label>
@@ -386,27 +419,19 @@ function MostrarTipo_Categoria() {
                         <label class="modal-title" for="fecha_cierre">Fecha cierre</label>
                         <input class="form-control" type="date" id="fecha_cierre" />
                     </div>
-                    <div class="course-data-field">
-                        <label class="modal-title" for="id_modalidad">Modalidad</label>
-                        <select class="form-control" id="id_modalidad"></select>
-                    </div>
-                    <div class="course-data-field">
-                        <label class="modal-title" for="id_jornada">Jornada</label>
-                        <select class="form-control" id="id_jornada"></select>
-                    </div>
-                </div>
+                    <div id="datos_pf"></div>
                 <div class="mb-3">
                     <label class="modal-title" for="id_fecha_mostrada">Fecha Fin Evento</label>
                     <input class="form-control" type="date" id="id_fecha_mostrada" name="fecha_inicio">
                 </div>
                 <div class="mb-3">
                     <a type="button" class="create-button" id="publicar_noti2">Publicar</a>
-                    <a type="button" class="close-button" href="" role="button">Cancelar</a>
+                    <a type="button" class="close-button" role="button">Cancelar</a>
                 </div>
             </div>
 
             `;
-            cargarDatos();
+            cargarcosas()
             break;
         // Agrega más casos según sea necesario para otras categorías
     }

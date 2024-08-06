@@ -44,7 +44,6 @@ if (isset($_SESSION['id_userprofile'])){
             <div class="content__page">
                 <div id="contenido">
                     <div class=" pt-16 rounded-container ">
-
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="navbar">
@@ -52,17 +51,16 @@ if (isset($_SESSION['id_userprofile'])){
                                         include_once('panel.php')
                                         ?>
                                 </div>
-
                                 <div class="card-body">
-                                    <div class="navbar2">
-                                        <div class="col-sm-2">
+                                    <div class="navbar2 d-flex align-items-center">
+                                        <div class="d-flex align-items-center mr-2">
                                             <input type='text' name='dato_txt' id='dato_txt' title='Dato a buscar'
-                                                placeholder='Dato a buscar' class="form-control mb-2 mr-sm-2 mb-sm-0">
+                                                placeholder='Buscar...' class="form-control form-control-lg">
                                         </div>
-                                        <div class="col-sm-2">
-                                            <button type="button" name='btn_Buscar' id='btn_Buscar'
-                                                <?php echo $var_class_button_warnigB; ?>>
-                                                <i class="fa fa-search-plus" aria-hidden="true"></i></button>
+                                        <div>
+                                            <button type="button" name='btn_Buscar' id='btn_Buscar' class="btn btn-primary btn-lg">
+                                                <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -75,34 +73,6 @@ if (isset($_SESSION['id_userprofile'])){
         </div>
 
     </div>
-    <style>
-        .modal-footer {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            cursor: pointer;
-            font-size: 16px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-        }
-
-        .btn-secondary {
-            background-color: #6c757d;
-        }
-    </style>
     <!-- MODAL GESTION DE PERMISOS -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">

@@ -238,16 +238,18 @@ switch ($_REQUEST['action']) {
         $jTableResult['msj'] = "";
     
         // Preparar la consulta SQL para insertar en programaformacion
-        $query = "INSERT INTO programaformacion (nombre, fecha_cierre, fecha_inicio, id_modalidad, id_jornada, id_estado) 
-                  VALUES (?, ?, ?, ?, ?, 9)";
+        $query = "INSERT INTO programaformacion (nombre, fecha_cierre, fecha_inicio, modalidad, nivel_formacion, tipo_formacion,horas_curso,id_estado) 
+                  VALUES (?, ?, ?, ?, ?, ?,?,3)";
         if ($stmt = mysqli_prepare($conn, $query)) {
-            mysqli_stmt_bind_param($stmt, "sssii",
-                $_POST['nombre'],
-                $_POST['fecha_cierre'],
-                $_POST['fecha_inicio'],
-                $_POST['id_modalidad'],
-                $_POST['id_jornada']
-            );
+                    mysqli_stmt_bind_param($stmt, "ssssssi",
+            $_POST['nombre'],
+            $_POST['fecha_cierre'],
+            $_POST['fecha_inicio'],
+            $_POST['modalidad'],
+            $_POST['nivel_formacion'],
+            $_POST['tipo_formacion'],
+            $_POST['horas_curso']
+        );
             if (mysqli_stmt_execute($stmt)) {
                 $id_programaformacion = mysqli_insert_id($conn);
     
