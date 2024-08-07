@@ -476,7 +476,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                      </div>
                                  </div>
                                  <div class="form-group">
-                                     <label>Clave:</label>
+                                     <label>Contraseña:</label>
                                      <div class="input-with-icon">
                                          <i class="fas fa-lock clave-icon"></i>
                                          <input type="password" class="form-control" id="clave" name="clave" title=''
@@ -485,7 +485,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                  </div>
                                  <div class="form-group form-check form-switch">
                                      <input class="form-check-input" type="checkbox" id="exampleSwitch">
-                                     <label class="form-check-label" for="exampleSwitch">Recordar clave</label>
+                                     <label class="form-check-label" for="exampleSwitch">Recordar Contraseña</label>
                                  </div>
                              </div>
                              <div class="card-footer" style="background-color: #ffffff;">
@@ -605,98 +605,87 @@ $varDateTime = date("Y-m-d H:i:s");
                                  </div>
                              </div>
                          </div>
+
                          <!-- FORMULARIO USUARIOS -->
                          <style>
-                         #formRegisUsu {
-                             display: flex;
-                             flex-direction: column;
+    .form-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 15px;
+    }
 
-                         }
+    .form-group {
+        flex: 1 1 45%; /* Ajusta este valor para controlar el ancho de las columnas */
+        display: flex;
+        flex-direction: column;
+    }
 
-                         .modal-dialog-scrollable .modal-content {
-                             max-height: calc(100vh - 3.5rem);
-                         }
+    .form-group-full {
+        flex: 1 1 100%;
+    }
 
-                         .form-group-group {
-                             display: flex;
-                             justify-content: space-between;
-                             gap: 15px;
-                         }
-
-                         .form-group {
-                             flex: 1;
-                         }
-
-                         .modal-footer {
-                             display: flex;
-                             justify-content: center;
-                             gap: 10px;
-                             margin-top: 20px;
-                         }
-                         </style>
-                         <div id="formRegisUsu">
-                             <div class="form-group-group">
-                                 <div class="form-group">
-                                     <label for="nameusu" class="form-label">Nombres Completos:</label>
-                                     <input type="text" class="form-input" id="nameusu" name="nameusu"
-                                         title="Primer Nombre" style="cursor:pointer;">
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="apellidoUsu" class="form-label">Apellidos Completos</label>
-                                     <input type="text" class="form-input" id="apellidoUsu" name="apellidoUsu"
-                                         title="Primer Apellido">
-                                 </div>
-                             </div>
-                             <div class="form-group-group">
-                                 <div class="form-group">
-                                     <label for="id_tpdoc" class="form-label">Tipo de Documento:</label>
-                                     <select class="form-input" id="id_tpdoc" name="id_tpdoc"
-                                         title="Tipo de Documento"></select>
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="numeroiden_registro" class="form-label">Número Documento:</label>
-                                     <input type="text" class="form-input" id="numeroiden_registro"
-                                         name="numeroiden_registro" title="" style="cursor:pointer;"
-                                         onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
-                                 </div>
-                             </div>
-                             <div class="form-group-group">
-                                 <div class="form-group">
-                                     <label class="form-label">Sexo:</label>
-                                     <select class="form-input" id="id_genero" name="id_genero"></select>
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="celular" class="form-label">Celular:</label>
-                                     <input type="text" class="form-input" id="celular" name="celular"
-                                         placeholder="Celular" title="Teléfono móvil">
-                                 </div>
-                             </div>
-                             <div class="form-group-group">
-                                 <div class="form-group">
-                                     <label for="correo_registro" class="form-label">Correo Electrónico:</label>
-                                     <input type="text" class="form-input" id="correo_registro" name="correo_registro"
-                                         placeholder="Correo Electrónico" title="@example.com">
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="cod_dpto" class="form-label">Departamento:</label>
-                                     <select class="form-input" id="cod_dpto" name="cod_dpto" title="Departamento"
-                                         style="cursor:pointer;"></select>
-                                 </div>
-                             </div>
-                             <div class="form-group-group">
-                                 <div class="form-group">
-                                     <label for="cod_municipio" class="form-label">Municipio:</label>
-                                     <select class="form-input" id="cod_municipio" name="cod_municipio"
-                                         title="Municipio" style="cursor:pointer;"></select>
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="cod_poblado" class="form-label">Poblado:</label>
-                                     <select class="form-input" id="cod_poblado" name="cod_poblado" title="Poblado"
-                                         style="cursor:pointer;"></select>
-                                 </div>
+    .modal-footer {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+        width: 100%;
+    }
+</style>
+                         <div id="formRegisUsu" class="form-container">
+                             <div class="form-group">
+                                 <label for="nameusu" class="form-label">Nombres Completos:</label>
+                                 <input type="text" class="form-input" id="nameusu" name="nameusu" title="Primer Nombre"
+                                     style="cursor:pointer;">
                              </div>
                              <div class="form-group">
-                                 <label for="clave_registro" class="form-label">Clave:</label>
+                                 <label for="apellidoUsu" class="form-label">Apellidos Completos</label>
+                                 <input type="text" class="form-input" id="apellidoUsu" name="apellidoUsu"
+                                     title="Primer Apellido">
+                             </div>
+                             <div class="form-group">
+                                 <label for="id_tpdoc" class="form-label">Tipo de Documento:</label>
+                                 <select class="form-input" id="id_tpdoc" name="id_tpdoc"
+                                     title="Tipo de Documento"></select>
+                             </div>
+                             <div class="form-group">
+                                 <label for="numeroiden_registro" class="form-label">Número Documento:</label>
+                                 <input type="text" class="form-input" id="numeroiden_registro"
+                                     name="numeroiden_registro" title="" style="cursor:pointer;"
+                                     onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                             </div>
+                             <div class="form-group">
+                                 <label class="form-label">Sexo:</label>
+                                 <select class="form-input" id="id_genero" name="id_genero"></select>
+                             </div>
+                             <div class="form-group">
+                                 <label for="celular" class="form-label">Celular:</label>
+                                 <input type="text" class="form-input" id="celular" name="celular" placeholder="Celular"
+                                     title="Teléfono móvil">
+                             </div>
+                             <div class="form-group">
+                                 <label for="correo_registro" class="form-label">Correo Electrónico:</label>
+                                 <input type="text" class="form-input" id="correo_registro" name="correo_registro"
+                                     placeholder="Correo Electrónico" title="@example.com">
+                             </div>
+                             <div class="form-group">
+                                 <label for="cod_dpto" class="form-label">Departamento:</label>
+                                 <select class="form-input" id="cod_dpto" name="cod_dpto" title="Departamento"
+                                     style="cursor:pointer;"></select>
+                             </div>
+                             <div class="form-group">
+                                 <label for="cod_municipio" class="form-label">Municipio:</label>
+                                 <select class="form-input" id="cod_municipio" name="cod_municipio" title="Municipio"
+                                     style="cursor:pointer;"></select>
+                             </div>
+                             <div class="form-group">
+                                 <label for="cod_poblado" class="form-label">Poblado:</label>
+                                 <select class="form-input" id="cod_poblado" name="cod_poblado" title="Poblado"
+                                     style="cursor:pointer;"></select>
+                             </div>
+                             <div class="form-group">
+                                 <label for="clave_registro" class="form-label">Contraseña:</label>
                                  <input type="password" class="form-input" id="clave_registro" name="clave"
                                      title="Clave">
                              </div>
@@ -711,7 +700,6 @@ $varDateTime = date("Y-m-d H:i:s");
                  </div>
              </div>
          </div>
-
          <!-- Restablecer contraseña Modal -->
          <div class="modal fade" id="RestablecerContraseña">
              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
