@@ -204,6 +204,11 @@ $varDateTime = date("Y-m-d H:i:s");
                                  /* Forma circular */
                                  padding: 10px;
                                  /* Espacio alrededor del ícono */
+
+                             }
+
+                             .uppercase-title {
+                                 text-transform: uppercase;
                              }
                              </style>
                              <div id="carouselExampleIndicators" class="carousel slide custom-carousel"
