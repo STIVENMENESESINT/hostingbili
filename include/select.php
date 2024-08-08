@@ -216,6 +216,18 @@ switch ($_REQUEST['action'])
         }
         print json_encode($jTableResult);
     break;
+    case 'crgrprogramaFormacion3':
+        $jTableResult = array();                
+        $jTableResult['lisTiposPF']="";
+        $jTableResult['lisTiposPF']="<option value='0' selected >seleccione:.</option>";
+        $query="SELECT id_programaformacion, nombre FROM programaformacion WHERE config = 2";
+        $resultado = mysqli_query($conn, $query);
+        while($registro = mysqli_fetch_array($resultado))
+        {
+            $jTableResult['lisTiposPF'].="<option value='".$registro['id_programaformacion']."'>".$registro['nombre']."</option>";
+        }
+        print json_encode($jTableResult);
+    break;
     case 'crgrprogramaFormacion2':
         $jTableResult = array();                
         $jTableResult['lisDPF']="";

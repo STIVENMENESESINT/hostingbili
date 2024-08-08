@@ -4,61 +4,213 @@
         <img src="../../imagenes/logo.jpg" />
     </a> -->
 
+    <?php
+        if ($_SESSION['id_rol'] == 3) {
+            echo '
+                <li>
+                    <a href="inicio.php">
+                        <span class="nav-item">
+                            <i class="fas fa-home "></i>
+                            Inicio
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="panelAcciones.php">
+                        <span class="nav-item">
+                            <i class="fas fa-th"></i>
+                            Acciones
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="instructor.php">
+                        <span class="nav-item">
+                            <i class="fas fa-users"></i>
+                            B-Team
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="home.php">
+                        <span class="nav-item">
+                            <i class="fas fa-book"></i>
+                            Biblíoteca
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="perfil.php">
+                        <span class="nav-item">
+                            <i class="fas fa-cog"></i>
+                            Perfíl
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a id="btnCerrarSession">
+                        <span class="nav-item">
+                            <i class="fas fa-sign-out-alt "></i>
+                            Salir
+                        </span>
+                    </a>
+                </li>
+            ';
+        }
+    ?>
+    <?php
+        if ($_SESSION['id_rol'] == 2) {
+            echo '
+                <li>
+                    <a href="inicio.php">
+                        <span class="nav-item">
+                            <i class="fas fa-home "></i>
+                            Inicio
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="panelAcciones.php">
+                        <span class="nav-item">
+                            <i class="fas fa-th"></i>
+                            Acciones
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="instructor.php">
+                        <span class="nav-item">
+                            <i class="fas fa-users"></i>
+                            B-Team
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="home.php">
+                        <span class="nav-item">
+                            <i class="fas fa-book"></i>
+                            Biblíoteca
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="perfil.php">
+                        <span class="nav-item">
+                            <i class="fas fa-cog"></i>
+                            Perfíl
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a id="btnCerrarSession">
+                        <span class="nav-item">
+                            <i class="fas fa-sign-out-alt "></i>
+                            Salir
+                        </span>
+                    </a>
+                </li>
+            ';
+        }
+    ?>
+    <?php
+        if ($_SESSION['id_rol'] == 1) {
+            echo '
+                <li>
+                    <a href="inicio.php">
+                        <span class="nav-item">
+                            <i class="fas fa-home "></i>
+                            Inicio
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="panelAcciones.php">
+                        <span class="nav-item">
+                            <i class="fas fa-th"></i>
+                            Acciones
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="instructor.php">
+                        <span class="nav-item">
+                            <i class="fas fa-users"></i>
+                            B-Team
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="perfil.php">
+                        <span class="nav-item">
+                            <i class="fas fa-cog"></i>
+                            Perfíl
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a id="btnCerrarSession">
+                        <span class="nav-item">
+                            <i class="fas fa-sign-out-alt "></i>
+                            Salir
+                        </span>
+                    </a>
+                </li>
+            ';
+        }
+    ?>
+    <?php
+        if ($_SESSION['id_rol'] == 5) {
+            echo '
+                <li>
+                    <a href="inicio.php">
+                        <span class="nav-item">
+                            <i class="fas fa-home "></i>
+                            Inicio
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="panelAcciones.php">
+                        <span class="nav-item">
+                            <i class="fas fa-th"></i>
+                            Acciones
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="instructor.php">
+                        <span class="nav-item">
+                            <i class="fas fa-users"></i>
+                            B-Team
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="perfil.php">
+                        <span class="nav-item">
+                            <i class="fas fa-cog"></i>
+                            Perfíl
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a id="btnCerrarSession">
+                        <span class="nav-item">
+                            <i class="fas fa-sign-out-alt "></i>
+                            Salir
+                        </span>
+                    </a>
+                </li>
+            ';
+        }
+    ?>
 
-    <li>
-        <a href="inicio.php">
-            <span class="nav-item">
-                <i class="fas fa-home "></i>
-                Inicio
-            </span>
-        </a>
-    </li>
 
-    <li>
-        <a href="panelAcciones.php">
 
-            <span class="nav-item">
-                <i class="fas fa-th"></i>
-                Acciones
-            </span>
-        </a>
-    </li>
-    <li>
-        <a href="instructor.php">
 
-            <span class="nav-item">
-                <i class="fas fa-users"></i>
-                B-Team
-            </span>
-        </a>
-    </li>
-    <li>
-        <a href="home.php">
-
-            <span class="nav-item">
-                <i class="fas fa-book"></i>
-                Biblíoteca
-            </span>
-        </a>
-    </li>
-    <li>
-        <a href="perfil.php">
-
-            <span class="nav-item">
-                <i class="fas fa-cog"></i>
-                Perfíl
-            </span>
-        </a>
-    </li>
-    <li>
-        <a id="btnCerrarSession">
-
-            <span class="nav-item">
-                <i class="fas fa-sign-out-alt "></i>
-                Salir
-            </span>
-        </a>
-    </li>
+    
+    
+    
 </nav>
 <script>
 $(document).ready(function() {

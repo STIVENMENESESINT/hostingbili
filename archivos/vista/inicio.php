@@ -244,16 +244,29 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="OfertModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="OfertaModal" tabindex="-1" aria-labelledby="createTipoSolicitudLabel"
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5">Ofetarme</h1>
+                    <h1 class="modal-title fs-5">Ofertarme</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div id="formdetalle_oferta"></div>
+                
+                    <!-- Aquí se puede cargar el contenido dinámico relacionado con la oferta -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Ofertarme</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="formdetalle_oferta">
+                    <!-- Aquí se puede cargar el contenido dinámico relacionado con la oferta -->
+                </div>
             </div>
         </div>
     </div>

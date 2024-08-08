@@ -252,6 +252,7 @@ function cargarJornadas() {
         });
     });
 }
+
 // Tipo SOlicitud
 function MostrarTipo_soli() {
     var radios = document.getElementsByName("tipo_solicitud");
@@ -299,16 +300,19 @@ function MostrarTipo_soli() {
                             <label class="modal-title" >Programa de Formacion de Interes</label><br>
                             <select  class="form-control modal-textbox"  id="id_programaformacion"></select>
                             <br>
+                            <div id="datospf"></div>
                             <label class="modal-title">Jornada de Interes</label><br>
                             <select class="form-control modal-textbox"  id="id_jornada"></select>
-                            <br>
-                            <label class="modal-title">Modalidad de Interes</label><br>
-                            <select class="form-control modal-textbox"  id="id_modalidad"></select>
                             <br>
                             <label class="modal-title">¿Requieres Cargar tus Usuarios interesados?</label>
                             <br>
                             <label class="modal-title" for="archivo">Cargar Archivo solicitud</label>
                             <input type="file" id="archivo" name="archivo" accept=".pdf">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="close-button" data-bs-dismiss="modal" name="btnVolver"
+                                id="btnVolver">Salir</button>
+                            <input class="create-button" type="submit" name="btnEnviar" id="btnEnviar" value="Enviar">
                         </div>
                     `;
                     Cargar();
@@ -323,7 +327,7 @@ function MostrarTipo_soli() {
                         <div class="form-container">
                             <div class="col-sm-12" >
                                 <h6 class="modal-title">Programa de Formacion<h6>
-                                <select class="form-control modal-textbox" id="id_programaformacion" name="id_programaformacion"  title='' style='cursor:pointer;'required >
+                                <select class="form-control modal-textbox" id="id_programaformacion3" title='' style='cursor:pointer;'required >
                                 </select>
                                 <h6 class="modal-title" >Ficha</h6><br>
                                 <input class="col-form-label" type="number" name="ficha" id="ficha" ><br>
@@ -342,6 +346,11 @@ function MostrarTipo_soli() {
                                 <label for="archivo">Cargar Archivo solicitud (solo archivos de tipo pdf)</label>
                                 <input type="file" id="archivo" name="archivo" accept=".pdf">
                             </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="close-button" data-bs-dismiss="modal" name="btnVolver"
+                                id="btnVolver">Salir</button>
+                            <input class="create-button" type="submit" name="btnEnviar" id="btnEnviar" value="Enviar">
                         </div>
                     `;
                     Cargar();
@@ -418,6 +427,11 @@ function MostrarTipo_soli() {
                                 <br>
                                 <label class="modal-title" for="archivo">Formato Admitido (pdf)</label>
                                 <input type="file" id="archivo" name="archivo" accept=".pdf">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="close-button" data-bs-dismiss="modal" name="btnVolver"
+                                    id="btnVolver">Salir</button>
+                                <input class="create-button" type="submit" name="btnEnviar" id="btnEnviar" value="Enviar">
                             </div>
                     `;
                     Cargar();
@@ -497,6 +511,11 @@ function MostrarTipo_soli() {
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="close-button" data-bs-dismiss="modal" name="btnVolver"
+                                    id="btnVolver">Salir</button>
+                                <input class="create-button" type="submit" name="btnEnviar" id="btnEnviar" value="Enviar">
                             </div>
                         `;
                         cargarJornadas();
@@ -774,6 +793,19 @@ $(document).on("click", "#btn_asign",function ()	{
 );
 
 function Cargar() {
+    $(document).on("change", "#id_programaformacion", function() {
+        $.post("../../include/select.php", {
+            action: 'crgrprogramaFormacion2',
+            id_programaformacion: $("#id_programaformacion").val()
+        },
+        function(data) {
+            $("#datospf").html(data.lisDPF);
+        },
+        'json'
+        ).fail(function(xhr, status, error) {
+            console.error(error);
+        });
+    });
     $.post("../../include/select.php", {
         action: 'crgrTiposModalidad'
     },
@@ -789,6 +821,16 @@ function Cargar() {
     },
     function(data) {
         $("#id_programaformacion").html(data.lisTiposPF);
+    },
+    'json'
+    ).fail(function(xhr, status, error) {
+        console.error(error);
+    });
+    $.post("../../include/select.php", {
+        action: 'crgrprogramaFormacion3'
+    },
+    function(data) {
+        $("#id_programaformacion3").html(data.lisTiposPF);
     },
     'json'
     ).fail(function(xhr, status, error) {

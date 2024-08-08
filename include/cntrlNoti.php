@@ -141,9 +141,13 @@ switch ($_REQUEST['action']) {
                             
             
                         if ($registro["id_categoria"] == 3) {
-                            if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 4) {
+                            if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 4 || $_SESSION['id_rol'] == 5) {
                                 $jTableResult['noticia'] .= '
-                                        <a class="cards__button btn btn-link p-0"><button type="button"  data-bs-toggle="modal" data-bs-target="#OfertModal" id="detalle_oferta" class="cards__button" data-id="' . $registro['id_solicitud'] . '">Me Interesa </button></a>
+                                        <a class="cards__button btn btn-link p-0">
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="detalle_oferta" class="cards__button" data-id="' . $registro['id_solicitud'] . '">
+                                                Me Interesa
+                                            </button>
+                                        </a>
                                         
                                     </div>
                                 </div>';
@@ -473,7 +477,10 @@ switch ($_REQUEST['action']) {
         pf.horas_curso,
         pf.fecha_inicio,
         pf.fecha_cierre,
-        r.nombre AS nom_rol
+        r.nombre AS nom_rol,
+        pf.nivel_formacion,
+        pf.tipo_formacion,
+        pf.modalidad
         FROM 
             solicitud s
         LEFT JOIN  
@@ -511,6 +518,7 @@ switch ($_REQUEST['action']) {
                 $jTableResult['ms'] = "Exitoso";
                 $jTableResult['Listof'] .= "
                     <form id='postulacionForm' enctype='multipart/form-data' class='form-container'>
+                        <h6 class='label-identifier'>Publicante </h6>
                         <label class='label-identifier'>Encargado</label>
                         <label id='solicitante' class='form-control'>
                             " . $registro['nombre'] . " " . $registro['nombre_dos'] . " " . $registro['apellido'] . "
@@ -527,11 +535,14 @@ switch ($_REQUEST['action']) {
                         <label class='label-identifier'>Nombre Curso Ofertado</label>
                         <h6 class='form-control'>" . $registro['nom_pf'] . "</h6>
                         <br>
-                        <label class='label-identifier'>Jornada Curso Ofertado</label>
-                        <h6 class='form-control'>" . $registro['nom_jornada'] . "</h6>
+                        <label class='label-identifier'>Nivel de Solicitud Oferta</label>
+                        <h6 class='form-control'>" . $registro['nivel_formacion'] . "</h6>
+                        <br>
+                        <label class='label-identifier'>Tipo de Solicitud Oferta</label>
+                        <h6 class='form-control'>" . $registro['tipo_formacion'] . "</h6>
                         <br>
                         <label class='label-identifier'>Modalidad Curso Ofertado</label>
-                        <h6 class='form-control'>" . $registro['nom_modalidad'] . "</h6>
+                        <h6 class='form-control'>" . $registro['modalidad'] . "</h6>
                         <br>
                         <label class='label-identifier'>Fecha Inicio de Curso Ofertado</label>
                         <h6 class='form-control'>" . $registro['fecha_inicio'] . "</h6>

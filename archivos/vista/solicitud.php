@@ -298,11 +298,6 @@ if (isset($_SESSION['id_userprofile'])){
                     <div id="id_tiposolicitud"></div>
                 </div>
                 <div id="tipo_soli"></div>
-                <div class="modal-footer">
-                    <button type="button" class="close-button" data-bs-dismiss="modal" name="btnVolver"
-                        id="btnVolver">Salir</button>
-                    <input class="create-button" type="submit" name="btnEnviar" id="btnEnviar" value="Enviar">
-                </div>
             </div>
         </div>
     </div>
