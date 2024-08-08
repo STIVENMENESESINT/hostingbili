@@ -21,15 +21,23 @@
     --bp-large: 1200px;
     --web-margin: 1366px;
 }
+
 /* estas en las tarjetas de las noticias no borrar y hacer response  */
 .imag {
-    max-width: 100%;  /* La imagen no excederá el 100% del ancho del contenedor */
-    height: auto;    /* La altura se ajustará automáticamente para mantener la proporción */
-    display: block;  /* Para eliminar el espacio inferior de la imagen en los contenedores en línea */
-    margin: 0 auto;  /* Centrará la imagen dentro del contenedor */
-    border: 5px solid #000;  /* Añade un borde de 5px de color negro */
-    box-sizing: border-box;  /* Incluye el borde en el tamaño total del elemento */
-  }
+    max-width: 100%;
+    /* La imagen no excederá el 100% del ancho del contenedor */
+    height: auto;
+    /* La altura se ajustará automáticamente para mantener la proporción */
+    display: block;
+    /* Para eliminar el espacio inferior de la imagen en los contenedores en línea */
+    margin: 0 auto;
+    /* Centrará la imagen dentro del contenedor */
+    border: 5px solid #000;
+    /* Añade un borde de 5px de color negro */
+    box-sizing: border-box;
+    /* Incluye el borde en el tamaño total del elemento */
+}
+
 .navbar-nav {
     margin-top: 1.5rem;
     display: -ms-flexbox;
@@ -86,7 +94,7 @@
 .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 2fr);
+    
     /* Dos columnas */
     gap: 78px;
     justify-items: center;
@@ -102,9 +110,11 @@
     background-color: #f2f2f2;
     padding: 19px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: auto; /* Ajuste inicial del ancho */
-    height: auto; /* Ajuste inicial del alto */
-  }
+    width: auto;
+    /* Ajuste inicial del ancho */
+    height: auto;
+    /* Ajuste inicial del alto */
+}
 
 /* estosson estilos de la tarjetas de noticias  */
 .cards {
@@ -124,13 +134,13 @@
     perspective: 1000px;
     box-shadow: 0 0 0 5px #ffffff80;
     transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-  
-  .cards img {
+}
+
+.cards img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
+}
 
 .cards svg {
     width: 48px;
@@ -157,7 +167,7 @@
     padding: 20px;
     box-sizing: border-box;
     background-color: var(--primary-background);
-    
+
     transform: rotateX(-90deg);
     transform-origin: bottom;
     transition: all 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -198,6 +208,7 @@
     color: #777;
     border: 1px solid #777;
 }
+
 #noticia_creada {
     width: 100%;
     /* Ajusta el ancho según sea necesario */
@@ -212,11 +223,28 @@
     padding: 10px;
     /* Añade padding si es necesario */
 }
+
 /* fin de las tarjetas de las noticias no borrar y hacer response  */
 
 /* estos son los stilos de los banner de los cursos */
+.banner {
+
+    top: 0;
+    left: 32px;
+    /* Cambia a right: 0; si prefieres que esté en el lado derecho */
+    width: 400px;
+    /* Ajusta el ancho según sea necesario */
+    height: 100%;
+    overflow-y: auto;
+    /* Permite desplazamiento vertical si los banners exceden la altura de la pantalla */
+    background-color: #f8f9fa;
+    /* Fondo opcional para destacar el contenedor */
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
 .bilingualism__english-cards-container {
-    max-width: 800px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f9f9f9;
@@ -227,7 +255,7 @@
 
 .bilingualism__english-cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(7, auto);
     /* Adjust the number of rows if needed */
     gap: 10px;
@@ -249,7 +277,10 @@
 
 .bilingualism__english-text {
     margin-top: 10px;
-    font-size: 1.3em;
+    font-size: 1.0em;
     color: #333;
 }
+
+
+
 /* fin de los estilos de los banner de los cursos */

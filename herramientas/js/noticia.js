@@ -349,8 +349,8 @@ function MostrarTipo_Categoria() {
         case "1":
             tipo_soliDiv.innerHTML = `
                 <div class="mb-3">
-                    <button type="button" class="btn btn-sm btn-outline-primary" id="publicar_noti">Publicar</button>
-                    <a type="button" class="btn btn-sm btn-outline-danger" href="" role="button">Cancelar</a>
+                    <button type="button" class="create-button" id="publicar_noti">Publicar</button>
+                    <a type="button" class="close-button" href="" role="button">Cancelar</a>
                 </div>
             `;
             crearPf()
@@ -359,87 +359,76 @@ function MostrarTipo_Categoria() {
         case "3":
             tipo_soliDiv.innerHTML = `
             <style>
-                .form-container {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 15px;
-                    padding: 15px;
-                    border: 1px solid #ced4da;
-                    border-radius: 4px;
-                    background-color: #f8f9fa;
-                }
 
-                .course-data-container {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 15px;
-                }
+.course-data-container {
+    display: flex;
+    flex-wrap: wrap;
+   
+    width: 100%; /* Ajusta el ancho según sea necesario */
+    max-width: 400px; /* Ajusta el ancho máximo según sea necesario */
+    height: auto; /* Ajusta la altura según sea necesario */
+    max-height: 80vh; /* Ajusta la altura máxima según sea necesario */
+    overflow-y: auto; /* Permite el desplazamiento si el contenido es demasiado alto */
+}
 
-                .course-data-field {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 5px;
-                }
+.course-data-field,
+.mb-3 {
+    width: 100%;
+    margin-bottom: 15px;
+}
 
-                .modal-title {
-                    font-weight: bold;
-                }
+.create-button, .close-button {
+    display: inline-block;
+    margin-right: 10px;
+}
 
-                .form-control, .col-form-label, .modal-textbox {
-                    width: 100%;
-                    padding: 8px;
-                    border: 1px solid #ced4da;
-                    border-radius: 4px;
-                }
+.create-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
 
-                .create-button, .close-button {
-                    padding: 10px 20px;
-                    border: none;
-                    border-radius: 4px;
-                    color: #fff;
-                    cursor: pointer;
-                    font-size: 16px;
-                    text-align: center;
-                    text-decoration: none;
-                    display: inline-block;
-                    margin-right: 10px;
-                }
-
-                .create-button {
-                    background-color: #28a745;
-                }
-
-                .close-button {
-                    background-color: #6c757d;
-                }
+.close-button {
+    background-color: #f44336;
+    color: white;
+    
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+                
             </style>
 
             <hr>
-            <div class="form-container">
-                <div class="course-data-container">
-                    <h2>DATOS DE CURSO</h2>
-                    <div class="course-data-field">
-                        <label class="modal-title" for="nombre">ProgramaFormacion</label>
-                        <select id="id_programaformacion"> </select>
-                    </div>
-                    <div class="course-data-field">
-                        <label class="modal-title" for="fecha_inicio">Fecha inicio</label>
-                        <input class="form-control" type="date" id="fecha_inicio" />
-                    </div>
-                    <div class="course-data-field">
-                        <label class="modal-title" for="fecha_cierre">Fecha cierre</label>
-                        <input class="form-control" type="date" id="fecha_cierre" />
-                    </div>
-                    <div id="datos_pf"></div>
-                <div class="mb-3">
-                    <label class="modal-title" for="id_fecha_mostrada">Fecha Fin Evento</label>
-                    <input class="form-control" type="date" id="id_fecha_mostrada" name="fecha_inicio">
-                </div>
-                <div class="mb-3">
-                    <a type="button" class="create-button" id="publicar_noti2">Publicar</a>
-                    <a type="button" class="close-button" role="button">Cancelar</a>
-                </div>
-            </div>
+           <div class="form ">
+    <div class="course-data-container">
+        <h2>DATOS DE CURSO</h2>
+        <div class="course-data-field">
+            <label class="modal-title" for="nombre">ProgramaFormacion</label>
+            <select id="id_programaformacion"> </select>
+        </div>
+        <div class="course-data-field">
+            <label class="modal-title" for="fecha_inicio">Fecha inicio</label>
+            <input class="form-control" type="date" id="fecha_inicio" />
+        </div>
+        <div class="course-data-field">
+            <label class="modal-title" for="fecha_cierre">Fecha cierre</label>
+            <input class="form-control" type="date" id="fecha_cierre" />
+        </div>
+        <div id="datos_pf"></div>
+        <div class="mb-3">
+            <label class="modal-title" for="id_fecha_mostrada">Fecha Fin Evento</label>
+            <input class="form-control" type="date" id="id_fecha_mostrada" name="fecha_inicio">
+        </div>
+        <div class="modal-footer">
+            <a type="button" class="create-button" id="publicar_noti2">Publicar</a>
+            <a type="button" class="close-button" role="button">Cancelar</a>
+        </div>
+    </div>
+</div>
 
             `;
             cargarcosas()

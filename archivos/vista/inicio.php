@@ -80,19 +80,61 @@ document.addEventListener("DOMContentLoaded", () => {
                 </select>
             </div>
             <div class="content__page">
-                <div class="">
-                    <!--este es mi carrucel principal -->
+                <!--este es mi carrucel principal -->
+                <div class="carousel-container">
+                    <style>
+                    /* Estilos para el carrusel */
+                    .carousel-inner img {
+                        max-width: 100%;
+                        max-height: 300px;
+                        /* Reducir la altura máxima */
+                        width: auto;
+                        height: auto;
+                        margin: 0 auto;
+                        border-radius: 16px;
+                        background-color: #f2f2f2;
+                        padding: 10px;
+                        /* Reducir el padding */
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    }
+
+                    .carousel-control-prev,
+                    .carousel-control-next {
+                        width: auto;
+                    }
+
+                    .carousel-control-prev-icon,
+                    .carousel-control-next-icon {
+                        background-color: rgba(0, 0, 0, 0.5);
+                        border-radius: 50%;
+                        padding: 10px;
+                    }
+
+                    /* Ajustes generales para el contenedor del carrusel */
+                    .carousel-container {
+                        max-width: 600px;
+                        /* Ajusta el ancho máximo del carrusel */
+
+                        padding: 20px;
+                        /* Añadir un padding alrededor del carrusel */
+                    }
+                    </style>
+                    <?php
+        include_once('calen.php');
+    ?>
                     <?php 
                         include_once('publicarnoticiacarrusel.php');
                     ?>
+
                 </div>
                 <!-- este es el traductor -->
-                <div class="divider"></div>
-                <!-- Cursos Sena Bilinguismo -->
+
+
                 <div>
                     <div id="revista">
                         <h1 class="title" data-lang-es="Revista Sena B-Team" data-lang-en="Sena B-Team Magazine"
                             data-lang-fr="Magazine de l'équipe B de Sena">Revista Sena B-Team </h1>
+                        <div class="divider"></div>
 
                         <a id="hideRevista" type="button" class="nav-link nav-item-hover">
                             <i class="fas fa-book nav-link"></i>
@@ -117,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <br>
                     </div>
 
-                    <!-- Fin Cursos Sena Bilinguismo -->
+
                     <!-- El contenido dinámico se cargará aquí -->
 
                     <div id="conten navbar">
@@ -131,10 +173,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     <?php 
                         include_once('../../chatp/index.php');
                     ?>
-                    <div class="divider"></div>
+
 
                     <h1 class="title" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">NOTICIAS
                     </h1>
+                    <div class="divider"></div>
 
 
 
@@ -150,10 +193,11 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="">Mis Publicaciones</h1>
+                <h1 class="modal-title" id="">Mis Publicaciones</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+
                 <div id="MisSoliForm"></div>
             </div>
             <div class="modal-footer">
@@ -162,84 +206,198 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
 </div>
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Article Writer with 10 Years of Experience</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div class="container bg-white pt-3">
+                    <div class="row px-3 pb-3 justify-content-center">
+                        <div class="col-md-8">
+                            <h2 class="mb-4 font-weight-bold">Article writer with 10 years of experience</h2>
+                            <img class="img-fluid float-left w-50 mr-4 mb-3" src="../../imagenes/img/grup/1.png"
+                                alt="Image">
+                            <p class="m-0">
+                                Takimata lorem et ut et diam amet dolor gubergren, amet dolor eirmod sea sea invidunt,
+                                sed no
+                                sed diam ipsum ut et. Sit nonumy est ut consetetur sed, labore dolor ipsum sed ea dolor
+                                lorem
+                                erat et erat, consetetur sed labore duo voluptua rebum sed gubergren. Dolores nonumy
+                                sanctus
+                                erat clita stet sed, dolore justo diam eos aliquyam diam. Clita nonumy rebum dolor dolor
+                                eos
+                                takimata labore diam sed, et voluptua et invidunt sanctus, elitr dolor nonumy tempor
+                                dolor elitr
+                                lorem no dolor ipsum, ut at gubergren dolor est aliquyam stet, et sea takimata rebum
+                                labore erat
+                                duo invidunt lorem. At takimata stet diam dolore accusam, kasd at diam aliquyam diam sed
+                                est
+                                dolor takimata. Sadipscing rebum diam ea et tempor, eirmod et et invidunt voluptua et
+                                dolor sit.
+                                Labore labore clita et amet sea sit et, est ipsum eirmod amet voluptua dolore, diam
+                                eirmod kasd
+                                lorem gubergren clita at amet, sea accusam vero amet lorem eos sed diam sit amet, nonumy
+                                ipsum
+                                et tempor magna dolores aliquyam vero eos ipsum. Ipsum ipsum sadipscing diam aliquyam
+                                diam et
+                                ipsum eos vero, gubergren magna elitr elitr clita dolor. Aliquyam vero sed sanctus sed
+                                dolore
+                                sanctus elitr no amet, ea magna ipsum.
+                            </p>
+                        </div>
+                        <div class="col-md-8 pt-4">
+                            <div class="d-flex flex-column skills">
+                                <div class="progress w-100 mb-4">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
+                                        aria-valuemax="100">Adaptability</div>
+                                </div>
+                                <div class="progress w-100 mb-4">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                        aria-valuemax="100">Research</div>
+                                </div>
+                                <div class="progress w-100">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                                        aria-valuemax="100">Editing</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 <!-- Noticia -->
+<style>
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+}
+
+.course-data-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.course-data-field {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1 1 45%;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.form-control,
+.col-form-label,
+.modal-textbox {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.create-button,
+.close-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.create-button {
+    background-color: #28a745;
+}
+
+.close-button {
+    background-color: #6c757d;
+}
+
+.form-group-full {
+    flex: 1 1 100%;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 20px;
+    width: 100%;
+}
+</style>
+
+
+
+
 <div class="modal fade" id="noticiaModal" tabindex="-1" aria-labelledby="noticiaModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="text-center" data-lang-es="Crear publicación" data-lang-en="Create Publication"
+                <h1 class="modal-title" data-lang-es="Crear publicación" data-lang-en="Create Publication"
                     data-lang-fr="Créer une publication">Crear publicación</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <style>
-
-                </style>
-
                 <div class="formulario" action="" method="post" enctype="multipart/form-data">
-                    <div class="form-group-group-2">
-                        <div class="form-group">
-                            <label class="form-label" for="titulo">Título:</label>
+                    <div class="form-container">
+                        <div class="form-group course-data-field">
+                            <label class="modal-title" for="titulo">Título:</label>
                             <input type="text" class="form-input form-control" id="titulo" name="titulo"
                                 placeholder="Título" required>
                         </div>
-                    </div>
-                    <div class="form-group-group-2">
-                        <div class="form-group">
-                            <label class="form-label" for="id_fecha_mostrada">Fecha a Mostrar:</label>
+                        <div class="form-group course-data-field">
+                            <label class="modal-title" for="id_fecha_mostrada">Fecha a Mostrar:</label>
                             <input type="date" class="form-input form-control" id="id_fecha_mostrada"
                                 name="fecha_inicio" required>
                         </div>
+                        <div class="form-group course-data-field form-group-full" id="descripcion">
+                            <label class="modal-title" for="descripcion">Descripción:</label>
+                            <textarea rows="10" class="form-input form-control" id="descripcion" name="descripcion"
+                                placeholder="Descripción" required></textarea>
+                        </div>
+                        <div class="form-group course-data-field">
+                            <label class="modal-title" for="imagen">Adjuntar Imagen:</label>
+                            <input type="file" class="form-input form-control" id="imagen" name="imagen" required>
+                        </div>
+                        <div class="form-group course-data-field">
+                            <label class="modal-title" for="id_categoria">Categoría:</label>
+                            <select class="form-input form-control" id="id_categoria" name="id_categoria"
+                                onchange="MostrarTipo_Categoria()">
+                                <!-- Opciones de categorías aquí -->
+                            </select>
+                        </div>
+                        <div class="form-group course-data-field form-group-full" id="tipo_cate">
+                            <!-- Contenido dependiente de la categoría -->
+                        </div>
                     </div>
-                    <div class="form-group-group-2">
-                        <label class="form-label">Descripción:</label>
-                        <textarea rows="10" class="form-input form-control" id="descripcion_Publi" 
-                            placeholder="Descripción" required></textarea>
-                    </div>
-                    <div class="form-group-group-2">
-                        <label class="form-label" for="imagen">Adjuntar Imagen:</label>
-                        <input type="file" class="form-input form-control" id="imagen" name="imagen" required>
-                    </div>
-                    <div class="form-group-group-2">
-                        <label class="form-label" for="id_categoria">Categoría:</label>
-                        <select class="form-input form-control" id="id_categoria" name="id_categoria"
-                            onchange="MostrarTipo_Categoria()">
-                            <!-- Opciones de categorías aquí -->
-                        </select>
-                    </div>
-                    <div class="form-group-group-2" id="tipo_cate">
-                        <!-- Contenido dependiente de la categoría -->
-                    </div>
-
-                    </for>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- revista -->
-    <div class="modal fade" id="revistaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" data-lang-es="Subir Nueva Revista"
-                        data-lang-en="Upload Carousel Images" data-lang-fr="Télécharger des Images pour le Carrousel">
-                        Subir Nueva Revista</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="pdf" data-lang-es="Selecciona un archivo PDF:" data-lang-en="Select a PDF file:"
-                            data-lang-fr="Sélectionnez un fichier PDF:">Selecciona un Archivo PDF:</label>
-                        <input type="file" name="pdf" id="pdf" class="form-control" accept=".pdf">
-                    </div>
-                </form>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-lang-es="Salir"
-                        data-lang-en="Exit" data-lang-fr="Sortir">Salir</button>
-                    <input class="btn btn-primary" type="button" id="actualizarPermisousu" value="Actualizar"
-                        data-lang-es="Actualizar" data-lang-en="Update" data-lang-fr="Mettre à jour">
                 </div>
             </div>
         </div>
@@ -341,11 +499,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['pdf'])) {
 
 </html>
 <style>
-.modal-content {
-    font-size: 2.1rem;
-    /* Aumenta el tamaño de la fuente para todo el contenido del modal */
-}
-
 .modal-header h1,
 .modal-body label,
 .modal-body input,

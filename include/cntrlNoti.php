@@ -118,9 +118,12 @@ switch ($_REQUEST['action']) {
                 $jTableResult['noticia'] .= '
                     <div class=" rounded-container"
                         <div class="row blog-item px-3 pb-5">
+                           <small class="modal-title"><i class="fa fa-calendar-alt"></i> ' . $registro["fecha_mostrada"] . '</small>
+                            <small class="modal-title"><i class="fa fa-folder"></i> Web Design</small>
+                            <small class="modal-title"><i class="fa fa-comments"></i> 15 Comments</small>
                         <div class="cards ">
                         
-                            <div class="img">
+                            <div class="img"> 
                                 <a href="">
                                     <img src="../../include/' . $registro["imagen"] . '" alt="Image">
                                 </a>
@@ -130,12 +133,11 @@ switch ($_REQUEST['action']) {
                             <div class="cards__content">
                                 <h3 class="cards__title">' . $registro["titulo"] . '</h3>
                                 <div class="cards__description">
-                                    <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> ' . $registro["fecha_mostrada"] . '</small>
-                                    <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web Design</small>
-                                    <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15 Comments</small>
+                                   
                                     <p>' . $registro["descripcion"] . '</p>
                                 </div>
                             </div>
+                            
                             ';
                             
                             
@@ -204,28 +206,36 @@ switch ($_REQUEST['action']) {
                 $jTableResult['noticia'] .= '
                     <div class="rounded-container">
                         <div class="row blog-item px-3 pb-5">
+                            <h3 class="cards__title uppercase-title">' . $registro["titulo"] . '</h3>
+
                             <div class="cards">
+                            
                                 <div class="img">
                                     <a href="">
                                         <img src="include/' . $registro["imagen"] . '" alt="Image">
                                     </a>
+                                    
                                 </div>
                                 <div class="cards__content">
-                                    <h3 class="cards__title">' . $registro["titulo"] . '</h3>
+                                    <br/><h3 class="cards__title">' . $registro["titulo"] . '</h3>
                                     <div class="cards__description">
-                                        <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> ' . $registro["fecha_mostrada"] . '</small>
-                                        <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web Design</small>
-                                        <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15 Comments</small>
+                                        
+                                        
                                         <p>' . $registro["descripcion"] . '</p>
-                                        <a class="cards__button btn btn-link p-0">
-                                            <button type="button" class="cards__button me-interesa-btn" data-id="' . $registro['id_solicitud'] . '">Me Interesa</button>
-                                        </a>
+                                        
                                     </div>
                                 </div>
-                               
+                              
                             </div>
-                        </div>
-                    </div>';
+                            
+                        </div> 
+                        <a class="cards__button btn btn-link p-0">
+                            <button type="button" class="cards__button me-interesa-btn" data-id="' . $registro['id_solicitud'] . '">Me Interesa</button>
+                        </a>
+                        <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> ' . $registro["fecha_mostrada"] . '</small>
+                        <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web </small>
+                        <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15</small></div>
+                                        ';
                     }
                 } else {
                     mysqli_rollback($conn);

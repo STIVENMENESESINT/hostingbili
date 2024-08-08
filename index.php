@@ -32,8 +32,22 @@ $varDateTime = date("Y-m-d H:i:s");
      }
 
      /* Añadir espacio superior al contenido para que no quede oculto detrás de la barra de navegación */
-     body {
-         padding-top: 70px;
+
+
+     .layout {
+         position: relative;
+         min-width: 1290px;
+         width: 90%;
+         height: 80vh;
+         min-height: 80vh;
+         margin: 9vh auto 2vh;
+         display: grid;
+         grid-template-areas:
+             "aside content";
+         grid-template-columns: 1% 99%;
+         border-radius: 4rem;
+         background-color: rgba(255, 255, 255, 0.8);
+         border: 2px solid var(--primary-text);
      }
 
      /* Estilos adicionales para la barra de navegación */
@@ -81,7 +95,7 @@ $varDateTime = date("Y-m-d H:i:s");
      <nav class="navbar navbar-expand-lg navbar-light bg-light background-color: var(--alternate-background)">
          <div class="container-fluid">
              <img src="imagenes/img/logo/log.jpg" alt="Logo">
-             <a class="navbar-brand" href="#">M-Team-Language</a>
+             <a class="navbar-brand" href="#">Multilingualism-Team</a>
              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                  <span class="navbar-toggler-icon"></span>
@@ -111,12 +125,9 @@ $varDateTime = date("Y-m-d H:i:s");
      <div>
 
          <div class="layout">
-             <aside class="layout__aside">
-                 <div class="aside__user-info">
 
-                 </div>
-             </aside>
              <div class="container layout__content">
+                 <!-- traductor -->
                  <div>
 
                      <select id="language-select">
@@ -126,254 +137,292 @@ $varDateTime = date("Y-m-d H:i:s");
                          <option value="fr">Français</option>
                      </select>
                  </div>
-                 <div class="content__page">
-                     <div class="">
-                         <!--este es mi carrucel principal -->
-                         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                             <div class="carousel-indicators">
-                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                                     class="active" aria-current="true" aria-label="Slide 1"></button>
-                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                                     aria-label="Slide 2"></button>
-                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                                     aria-label="Slide 3"></button>
-                             </div>
-                             <style>
-                             .carousel-inner img {
-                                 max-width: 100%;
-                                 max-height: 500px;
-                                 /* Ajusta esta altura según sea necesario */
-                                 width: auto;
-                                 height: auto;
-                                 margin: 0 auto;
-                                 /* Centra la imagen horizontalmente */
-                                 border-radius: 16px;
-                                 background-color: #f2f2f2;
-                                 padding: 28px;
-                                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                                 width: auto;
-                                 height: auto;
 
+                 <div class="content__page">
+
+
+
+
+                     <div class="main-container">
+
+
+                         <!--este es mi carrucel principal -->
+                         <div class="custom-carousel-container">
+                             <!--este es mi carrucel principal -->
+                             <style>
+                             .main-container {
+                                 display: flex;
+
+                                 align-items: center;
+                                 width: 100%;
+                                 height: 355px;
                              }
 
-                             .carousel-control-prev,
-                             .carousel-control-next {
+                             /* Contenedor personalizado para el carrusel */
+                             .custom-carousel-container {
+                                 position: relative;
+                                 top: 0;
+                                 width: 60%;
+                                 display: flex;
+                                 justify-content: center;
+                                 align-items: center;
+                                 padding: 10px;
+                                 /* Ajusta el padding superior e inferior según sea necesario */
+                             }
+
+                             /* Estilos personalizados para el carrusel */
+                             .custom-carousel {
+                                 max-width: 800px;
+                                 /* Ajusta el ancho máximo del carrusel */
+                                 margin: 0 auto;
+                             }
+
+                             .custom-carousel .carousel-inner img {
+                                 max-height: 500px;
+                                 /* Ajusta la altura máxima de las imágenes */
+                                 width: auto;
+                                 height: 300px;
+                                 margin: 0 auto;
+                                 border-radius: 16px;
+                                 background-color: #f2f2f2;
+                                 padding: 19px;
+                                 /* Ajusta el padding alrededor de las imágenes */
+                                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                             }
+
+                             .custom-carousel .carousel-control-prev,
+                             .custom-carousel .carousel-control-next {
                                  width: auto;
                                  /* Ajusta el ancho para que solo los íconos sean clicables */
                              }
 
-                             .carousel-control-prev-icon,
-                             .carousel-control-next-icon {
+                             .custom-carousel .carousel-control-prev-icon,
+                             .custom-carousel .carousel-control-next-icon {
                                  background-color: rgba(0, 0, 0, 0.5);
                                  /* Fondo semitransparente para mejor visibilidad */
                                  border-radius: 50%;
                                  /* Forma circular */
                                  padding: 10px;
                                  /* Espacio alrededor del ícono */
+
+                             }
+
+                             .uppercase-title {
+                                 text-transform: uppercase;
                              }
                              </style>
-                             <div class="carousel-inner movImg">
-                                 <div class="carousel-item active">
-                                     <img src="imagenes/img/banner/banner12-banner.webp" class="d-block w-100"
-                                         alt="...">
+                             <div id="carouselExampleIndicators" class="carousel slide custom-carousel"
+                                 data-bs-ride="carousel">
+                                 <div class="carousel-indicators">
+                                     <button type="button" data-bs-target="#carouselExampleIndicators"
+                                         data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+                                     <button type="button" data-bs-target="#carouselExampleIndicators"
+                                         data-bs-slide-to="1" aria-label="Slide 2" class="active"
+                                         aria-current="true"></button>
+                                     <button type="button" data-bs-target="#carouselExampleIndicators"
+                                         data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
                                  </div>
-                                 <div class="carousel-item">
-                                     <img src="imagenes/img/banner/banner11-banner.webp" class="d-block w-100"
-                                         alt="...">
+                                 <div class="carousel-inner">
+                                     <div class="carousel-item">
+                                         <img src="imagenes/img/banner/banner12-banner.webp" class="d-block w-100"
+                                             alt="...">
+                                     </div>
+                                     <div class="carousel-item active">
+                                         <img src="imagenes/img/banner/banner11-banner.webp" class="d-block w-100"
+                                             alt="...">
+                                     </div>
+                                     <div class="carousel-item">
+                                         <img src="imagenes/img/banner/BANNER-INGLES-BANNER.webp" class="d-block w-100"
+                                             alt="...">
+                                     </div>
                                  </div>
-                                 <div class="carousel-item">
-                                     <img src="imagenes/img/banner/BANNER-INGLES-BANNER.webp" class="d-block w-100"
-                                         alt="...">
-                                 </div>
+                                 <button class="carousel-control-prev" type="button"
+                                     data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                     <span class="visually-hidden">Previo</span>
+                                 </button>
+                                 <button class="carousel-control-next" type="button"
+                                     data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                     <span class="visually-hidden">Siguiente</span>
+                                 </button>
                              </div>
-                             <button class="carousel-control-prev" type="button"
-                                 data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                 <span class="visually-hidden">Previo</span>
-                             </button>
-                             <button class="carousel-control-next" type="button"
-                                 data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                 <span class="visually-hidden">Siguiente</span>
-                             </button>
                          </div>
+                         <div class="banner">
+
+
+                             <div class="bilingualism__english-cards-container">
+                                 <div class="bilingualism__english-cards">
+                                     <div class="bilingualism__english-levels">
+                                         <a target="_blank"
+                                             href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240087">
+                                             <img loading="lazy" src="imagenes/img/banner/ingles1-banner.webp"
+                                                 alt="English 1 banner" class="bilingualism__english-imgs">
+                                         </a>
+                                         <p class="bilingualism__english-text"
+                                             data-lang-es="Fortalecimiento de herramientas básicas para la comunicación en inglés."
+                                             data-lang-en="Strengthening basic tools for communication in English."
+                                             data-lang-fr="Renforcement des outils de base pour la communication en anglais.">
+                                             Fortalecimiento de herramientas básicas para la comunicación en inglés.
+                                         </p>
+                                     </div>
+                                     <div class="bilingualism__english-levels">
+                                         <a target="_blank"
+                                             href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240088">
+                                             <img loading="lazy" src="imagenes/img/banner/ingles2-banner.webp"
+                                                 alt="English 2 banner" class="bilingualism__english-imgs">
+                                         </a>
+                                         <p class="bilingualism__english-text"
+                                             data-lang-es="Comunicación en contextos personales y profesionales en inglés."
+                                             data-lang-en="Communication in personal and professional contexts in English."
+                                             data-lang-fr="Communication dans des contextes personnels et professionnels en anglais.">
+                                             Comunicación en contextos personales y profesionales en inglés.
+                                         </p>
+                                     </div>
+                                     <div class="bilingualism__english-levels">
+                                         <a target="_blank"
+                                             href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240089">
+                                             <img loading="lazy" src="imagenes/img/banner/ingles3-banner.webp"
+                                                 alt="English 3 banner" class="bilingualism__english-imgs">
+                                         </a>
+                                         <p class="bilingualism__english-text"
+                                             data-lang-es="Comunicación en contextos personales y profesionales en inglés."
+                                             data-lang-en="Communication in personal and professional contexts in English."
+                                             data-lang-fr="Communication dans des contextes personnels et professionnels en anglais.">
+                                             Comunicación en contextos personales y profesionales en inglés.
+                                         </p>
+                                     </div>
+                                     <div class="bilingualism__english-levels">
+                                         <a target="_blank"
+                                             href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240090">
+                                             <img loading="lazy" src="imagenes/img/banner/ingles4-banner.webp"
+                                                 alt="English 4 banner" class="bilingualism__english-imgs">
+                                         </a>
+                                         <p class="bilingualism__english-text"
+                                             data-lang-es="Consolidación y comprensión de diferentes textos orales y escritos en inglés."
+                                             data-lang-en="Consolidation and understanding of different oral and written texts in English."
+                                             data-lang-fr="Consolidation et compréhension de différents textes oraux et écrits en anglais.">
+                                             Consolidación y comprensión de diferentes textos orales y escritos en
+                                             inglés.
+                                         </p>
+                                     </div>
+                                     <div class="bilingualism__english-levels">
+                                         <a target="_blank"
+                                             href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240091">
+                                             <img loading="lazy" src="imagenes/img/banner/ingles5-banner.webp"
+                                                 alt="English 5 banner" class="bilingualism__english-imgs">
+                                         </a>
+                                         <p class="bilingualism__english-text"
+                                             data-lang-es="Interacción en diferentes contextos expresando gustos y preferencias en inglés."
+                                             data-lang-en="Interaction in different contexts expressing tastes and preferences in English."
+                                             data-lang-fr="Interaction dans différents contextes en exprimant des goûts et des préférences en anglais.">
+                                             Interacción en diferentes contextos expresando gustos y preferencias en
+                                             inglés.
+                                         </p>
+                                     </div>
+                                     <div class="bilingualism__english-levels">
+                                         <a target="_blank"
+                                             href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240092">
+                                             <img loading="lazy" src="imagenes/img/banner/ingles6-banner.webp"
+                                                 alt="English 6 banner" class="bilingualism__english-imgs">
+                                         </a>
+                                         <p class="bilingualism__english-text"
+                                             data-lang-es="Fortalecimiento de herramientas para la comunicación en inglés."
+                                             data-lang-en="Strengthening tools for communication in English."
+                                             data-lang-fr="Renforcement des outils pour la communication en anglais.">
+                                             Fortalecimiento de herramientas para la comunicación en inglés.
+                                         </p>
+                                     </div>
+                                     <div class="bilingualism__english-levels">
+                                         <a target="_blank"
+                                             href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240093">
+                                             <img loading="lazy" src="imagenes/img/banner/ingles7-banner.webp"
+                                                 alt="English 7 banner" class="bilingualism__english-imgs">
+                                         </a>
+                                         <p class="bilingualism__english-text"
+                                             data-lang-es="Consolidación de herramientas para la comunicación efectiva en diferentes contextos."
+                                             data-lang-en="Consolidation of tools for effective communication in different contexts."
+                                             data-lang-fr="Consolidation des outils pour une communication efficace dans différents contextes.">
+                                             Consolidación de herramientas para la comunicación efectiva en diferentes
+                                             contextos.
+                                         </p>
+                                     </div>
+                                     <div class="bilingualism__english-levels">
+                                         <a target="_blank"
+                                             href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240094">
+                                             <img loading="lazy" src="imagenes/img/banner/ingles8-banner.webp"
+                                                 alt="English 8 banner" class="bilingualism__english-imgs">
+                                         </a>
+                                         <p class="bilingualism__english-text"
+                                             data-lang-es="Construcción de textos orales y escritos según las características e intencionalidad del contexto."
+                                             data-lang-en="Construct oral and written texts according to the characteristics and intentionality of the context."
+                                             data-lang-fr="Construire des textes oraux et écrits selon les caractéristiques et l'intentionnalité du contexte.">
+                                             Construcción de textos orales y escritos según las características e
+                                             intencionalidad
+                                             del contexto.
+                                         </p>
+                                     </div>
+                                     <div class="bilingualism__english-levels">
+                                         <a target="_blank"
+                                             href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240095">
+                                             <img loading="lazy" src="imagenes/img/banner/ingles9-banner.webp"
+                                                 alt="English 9 banner" class="bilingualism__english-imgs">
+                                         </a>
+                                         <p class="bilingualism__english-text"
+                                             data-lang-es="Comentar sobre eventos que han ocurrido o están planificados en inglés basándose en textos narrativos."
+                                             data-lang-en="Comment on events that have occurred or are planned in English based on narrative texts."
+                                             data-lang-fr="Commenter des événements qui se sont produits ou sont prévus en anglais en se basant sur des textes narratifs.">
+                                             Comentar sobre eventos que han ocurrido o están planificados en inglés
+                                             basándose en
+                                             textos narrativos.
+                                         </p>
+                                     </div>
+                                     <div class="bilingualism__english-levels">
+                                         <a target="_blank"
+                                             href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240096">
+                                             <img loading="lazy" src="imagenes/img/banner/ingles10-banner.webp"
+                                                 alt="English 10 banner" class="bilingualism__english-imgs">
+                                         </a>
+                                         <p class="bilingualism__english-text"
+                                             data-lang-es="Construir textos orales y escritos en inglés sobre eventos futuros."
+                                             data-lang-en="Construct oral and written texts in English about future events."
+                                             data-lang-fr="Construire des textes oraux et écrits en anglais sur des événements futurs.">
+                                             Construir textos orales y escritos en inglés sobre eventos futuros.
+                                         </p>
+                                     </div>
+                                     <div class="bilingualism__english-levels">
+                                         <a target="_blank"
+                                             href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240097">
+                                             <img loading="lazy" src="imagenes/img/banner/ingles11-banner.webp"
+                                                 alt="English 11 banner" class="bilingualism__english-imgs">
+                                         </a>
+                                         <p class="bilingualism__english-text"
+                                             data-lang-es="Escribir textos argumentativos en inglés con coherencia y cohesión según la intencionalidad comunicativa."
+                                             data-lang-en="Write argumentative texts in English with coherence and cohesion according to the communicative intentionality."
+                                             data-lang-fr="Rédiger des textes argumentatifs en anglais avec cohérence et cohésion selon l'intentionnalité communicative.">
+                                             Escribir textos argumentativos en inglés con coherencia y cohesión según la
+                                             intencionalidad comunicativa.
+                                         </p>
+                                     </div>
+                                 </div>
+
+
+                             </div>
+                         </div>
+
                      </div>
-                     <!-- este es el traductor -->
+
+                     <h1 class="title" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">NOTICIAS
+                     </h1>
                      <div class="divider"></div>
-                     <div>
-                         <h1 class="title" data-lang-es="Cursos Virtuales Bilingüismo"
-                             data-lang-en="Virtual Bilingualism Courses" data-lang-fr=" Cours Virtuels de Bilinguisme">
-                             Cursos Virtuales Bilingüismo
-                         </h1>
+
+
+                     <div id="noticia_creada2" class=" grid-container ">
                      </div>
-                     <div class="bilingualism__english-cards-container">
-                         <div class="bilingualism__english-cards">
-                             <div class="bilingualism__english-levels">
-                                 <a target="_blank"
-                                     href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240087">
-                                     <img loading="lazy" src="imagenes/img/banner/ingles1-banner.webp"
-                                         alt="English 1 banner" class="bilingualism__english-imgs">
-                                 </a>
-                                 <p class="bilingualism__english-text"
-                                     data-lang-es="Fortalecimiento de herramientas básicas para la comunicación en inglés."
-                                     data-lang-en="Strengthening basic tools for communication in English."
-                                     data-lang-fr="Renforcement des outils de base pour la communication en anglais.">
-                                     Fortalecimiento de herramientas básicas para la comunicación en inglés.
-                                 </p>
-                             </div>
-                             <div class="bilingualism__english-levels">
-                                 <a target="_blank"
-                                     href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240088">
-                                     <img loading="lazy" src="imagenes/img/banner/ingles2-banner.webp"
-                                         alt="English 2 banner" class="bilingualism__english-imgs">
-                                 </a>
-                                 <p class="bilingualism__english-text"
-                                     data-lang-es="Comunicación en contextos personales y profesionales en inglés."
-                                     data-lang-en="Communication in personal and professional contexts in English."
-                                     data-lang-fr="Communication dans des contextes personnels et professionnels en anglais.">
-                                     Comunicación en contextos personales y profesionales en inglés.
-                                 </p>
-                             </div>
-                             <div class="bilingualism__english-levels">
-                                 <a target="_blank"
-                                     href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240089">
-                                     <img loading="lazy" src="imagenes/img/banner/ingles3-banner.webp"
-                                         alt="English 3 banner" class="bilingualism__english-imgs">
-                                 </a>
-                                 <p class="bilingualism__english-text"
-                                     data-lang-es="Comunicación en contextos personales y profesionales en inglés."
-                                     data-lang-en="Communication in personal and professional contexts in English."
-                                     data-lang-fr="Communication dans des contextes personnels et professionnels en anglais.">
-                                     Comunicación en contextos personales y profesionales en inglés.
-                                 </p>
-                             </div>
-                             <div class="bilingualism__english-levels">
-                                 <a target="_blank"
-                                     href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240090">
-                                     <img loading="lazy" src="imagenes/img/banner/ingles4-banner.webp"
-                                         alt="English 4 banner" class="bilingualism__english-imgs">
-                                 </a>
-                                 <p class="bilingualism__english-text"
-                                     data-lang-es="Consolidación y comprensión de diferentes textos orales y escritos en inglés."
-                                     data-lang-en="Consolidation and understanding of different oral and written texts in English."
-                                     data-lang-fr="Consolidation et compréhension de différents textes oraux et écrits en anglais.">
-                                     Consolidación y comprensión de diferentes textos orales y escritos en inglés.
-                                 </p>
-                             </div>
-                             <div class="bilingualism__english-levels">
-                                 <a target="_blank"
-                                     href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240091">
-                                     <img loading="lazy" src="imagenes/img/banner/ingles5-banner.webp"
-                                         alt="English 5 banner" class="bilingualism__english-imgs">
-                                 </a>
-                                 <p class="bilingualism__english-text"
-                                     data-lang-es="Interacción en diferentes contextos expresando gustos y preferencias en inglés."
-                                     data-lang-en="Interaction in different contexts expressing tastes and preferences in English."
-                                     data-lang-fr="Interaction dans différents contextes en exprimant des goûts et des préférences en anglais.">
-                                     Interacción en diferentes contextos expresando gustos y preferencias en inglés.
-                                 </p>
-                             </div>
-                             <div class="bilingualism__english-levels">
-                                 <a target="_blank"
-                                     href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240092">
-                                     <img loading="lazy" src="imagenes/img/banner/ingles6-banner.webp"
-                                         alt="English 6 banner" class="bilingualism__english-imgs">
-                                 </a>
-                                 <p class="bilingualism__english-text"
-                                     data-lang-es="Fortalecimiento de herramientas para la comunicación en inglés."
-                                     data-lang-en="Strengthening tools for communication in English."
-                                     data-lang-fr="Renforcement des outils pour la communication en anglais.">
-                                     Fortalecimiento de herramientas para la comunicación en inglés.
-                                 </p>
-                             </div>
-                             <div class="bilingualism__english-levels">
-                                 <a target="_blank"
-                                     href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240093">
-                                     <img loading="lazy" src="imagenes/img/banner/ingles7-banner.webp"
-                                         alt="English 7 banner" class="bilingualism__english-imgs">
-                                 </a>
-                                 <p class="bilingualism__english-text"
-                                     data-lang-es="Consolidación de herramientas para la comunicación efectiva en diferentes contextos."
-                                     data-lang-en="Consolidation of tools for effective communication in different contexts."
-                                     data-lang-fr="Consolidation des outils pour une communication efficace dans différents contextes.">
-                                     Consolidación de herramientas para la comunicación efectiva en diferentes
-                                     contextos.
-                                 </p>
-                             </div>
-                             <div class="bilingualism__english-levels">
-                                 <a target="_blank"
-                                     href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240094">
-                                     <img loading="lazy" src="imagenes/img/banner/ingles8-banner.webp"
-                                         alt="English 8 banner" class="bilingualism__english-imgs">
-                                 </a>
-                                 <p class="bilingualism__english-text"
-                                     data-lang-es="Construcción de textos orales y escritos según las características e intencionalidad del contexto."
-                                     data-lang-en="Construct oral and written texts according to the characteristics and intentionality of the context."
-                                     data-lang-fr="Construire des textes oraux et écrits selon les caractéristiques et l'intentionnalité du contexte.">
-                                     Construcción de textos orales y escritos según las características e
-                                     intencionalidad
-                                     del contexto.
-                                 </p>
-                             </div>
-                             <div class="bilingualism__english-levels">
-                                 <a target="_blank"
-                                     href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240095">
-                                     <img loading="lazy" src="imagenes/img/banner/ingles9-banner.webp"
-                                         alt="English 9 banner" class="bilingualism__english-imgs">
-                                 </a>
-                                 <p class="bilingualism__english-text"
-                                     data-lang-es="Comentar sobre eventos que han ocurrido o están planificados en inglés basándose en textos narrativos."
-                                     data-lang-en="Comment on events that have occurred or are planned in English based on narrative texts."
-                                     data-lang-fr="Commenter des événements qui se sont produits ou sont prévus en anglais en se basant sur des textes narratifs.">
-                                     Comentar sobre eventos que han ocurrido o están planificados en inglés basándose en
-                                     textos narrativos.
-                                 </p>
-                             </div>
-                             <div class="bilingualism__english-levels">
-                                 <a target="_blank"
-                                     href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240096">
-                                     <img loading="lazy" src="imagenes/img/banner/ingles10-banner.webp"
-                                         alt="English 10 banner" class="bilingualism__english-imgs">
-                                 </a>
-                                 <p class="bilingualism__english-text"
-                                     data-lang-es="Construir textos orales y escritos en inglés sobre eventos futuros."
-                                     data-lang-en="Construct oral and written texts in English about future events."
-                                     data-lang-fr="Construire des textes oraux et écrits en anglais sur des événements futurs.">
-                                     Construir textos orales y escritos en inglés sobre eventos futuros.
-                                 </p>
-                             </div>
-                             <div class="bilingualism__english-levels">
-                                 <a target="_blank"
-                                     href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240097">
-                                     <img loading="lazy" src="imagenes/img/banner/ingles11-banner.webp"
-                                         alt="English 11 banner" class="bilingualism__english-imgs">
-                                 </a>
-                                 <p class="bilingualism__english-text"
-                                     data-lang-es="Escribir textos argumentativos en inglés con coherencia y cohesión según la intencionalidad comunicativa."
-                                     data-lang-en="Write argumentative texts in English with coherence and cohesion according to the communicative intentionality."
-                                     data-lang-fr="Rédiger des textes argumentatifs en anglais avec cohérence et cohésion selon l'intentionnalité communicative.">
-                                     Escribir textos argumentativos en inglés con coherencia y cohesión según la
-                                     intencionalidad comunicativa.
-                                 </p>
-                             </div>
-                         </div>
-
-                         <div class="divider"></div>
-                     </div>
-
-
 
                      <!-- Fin Cursos Sena Bilinguismo -->
                  </div>
-                 <div class="divider"></div>
 
-                 <h1 class="title" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">NOTICIAS
-                 </h1>
-
-
-
-                 <div id="noticia_creada2" class=" grid-container ">
-                 </div>
              </div>
          </div>
          <script>
@@ -401,7 +450,7 @@ $varDateTime = date("Y-m-d H:i:s");
              <div class="modal-dialog">
                  <div class="modal-content">
                      <div class="modal-header">
-                         <h5 class="modal-title" id="loginModalLabel">M-Team-Language</h5>
+                         <h5 class="modal-title" id="loginModalLabel">Multilingualism-Team</h5>
                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                      </div>
                      <div class="modal-body">
@@ -427,7 +476,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                      </div>
                                  </div>
                                  <div class="form-group">
-                                     <label>Clave:</label>
+                                     <label>Contraseña:</label>
                                      <div class="input-with-icon">
                                          <i class="fas fa-lock clave-icon"></i>
                                          <input type="password" class="form-control" id="clave" name="clave" title=''
@@ -436,7 +485,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                  </div>
                                  <div class="form-group form-check form-switch">
                                      <input class="form-check-input" type="checkbox" id="exampleSwitch">
-                                     <label class="form-check-label" for="exampleSwitch">Recordar clave</label>
+                                     <label class="form-check-label" for="exampleSwitch">Recordar Contraseña</label>
                                  </div>
                              </div>
                              <div class="card-footer" style="background-color: #ffffff;">
@@ -556,26 +605,25 @@ $varDateTime = date("Y-m-d H:i:s");
                                  </div>
                              </div>
                          </div>
+
                          <!-- FORMULARIO USUARIOS -->
                          <style>
-                         #formRegisUsu {
+                         .form-container {
                              display: flex;
-                             flex-direction: column;
-
-                         }
-
-                         .modal-dialog-scrollable .modal-content {
-                             max-height: calc(100vh - 3.5rem);
-                         }
-
-                         .form-group-group {
-                             display: flex;
+                             flex-wrap: wrap;
                              justify-content: space-between;
-                             gap: 15px;
+
                          }
 
                          .form-group {
-                             flex: 1;
+                             flex: 1 1 46%;
+                             display: flex;
+                             flex-direction: column;
+                             padding: 7px;
+                         }
+
+                         .form-group-full {
+                             flex: 1 1 100%;
                          }
 
                          .modal-footer {
@@ -583,71 +631,102 @@ $varDateTime = date("Y-m-d H:i:s");
                              justify-content: center;
                              gap: 10px;
                              margin-top: 20px;
+                             width: 100%;
+                         }
+
+                         .modal-body {
+
+                             /* Increased padding for more space inside the card */
+                             max-width: 800px;
+                             /* Set a maximum width for the card */
+                             max-height: 90vh;
+                             /* Set a maximum height for the card */
+                             width: 100%;
+                             /* Make sure it takes the full available width */
+
+                         }
+
+                         .form-label {
+                             margin-bottom: 2px;
+                         }
+
+                         .form-input {
+                             padding: 6px;
+                             margin-bottom: -15px;
+                             border: 1px solid #ccc;
+                             border-radius: 4px;
+                         }
+
+                         .form-button {
+                             padding: 10px 20px;
+                             border: none;
+                             border-radius: 4px;
+                             cursor: pointer;
+                         }
+
+                         .btn-success {
+                             background-color: #28a745;
+                             color: white;
+                         }
+
+                         .form-button-reset {
+                             background-color: #dc3545;
+                             color: white;
                          }
                          </style>
-                         <div id="formRegisUsu">
-                             <div class="form-group-group">
-                                 <div class="form-group">
-                                     <label for="nameusu" class="form-label">Nombres Completos:</label>
-                                     <input type="text" class="form-input" id="nameusu" name="nameusu"
-                                         title="Primer Nombre" style="cursor:pointer;">
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="apellidoUsu" class="form-label">Apellidos Completos</label>
-                                     <input type="text" class="form-input" id="apellidoUsu" name="apellidoUsu"
-                                         title="Primer Apellido">
-                                 </div>
-                             </div>
-                             <div class="form-group-group">
-                                 <div class="form-group">
-                                     <label for="id_tpdoc" class="form-label">Tipo de Documento:</label>
-                                     <select class="form-input" id="id_tpdoc" name="id_tpdoc"
-                                         title="Tipo de Documento"></select>
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="numeroiden_registro" class="form-label">Número Documento:</label>
-                                     <input type="text" class="form-input" id="numeroiden_registro"
-                                         name="numeroiden_registro" title="" style="cursor:pointer;"
-                                         onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
-                                 </div>
-                             </div>
-                             <div class="form-group-group">
-                                 <div class="form-group">
-                                     <label class="form-label">Sexo:</label>
-                                     <select class="form-input" id="id_genero" name="id_genero"></select>
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="celular" class="form-label">Celular:</label>
-                                     <input type="text" class="form-input" id="celular" name="celular"
-                                         placeholder="Celular" title="Teléfono móvil">
-                                 </div>
-                             </div>
-                             <div class="form-group-group">
-                                 <div class="form-group">
-                                     <label for="correo_registro" class="form-label">Correo Electrónico:</label>
-                                     <input type="text" class="form-input" id="correo_registro" name="correo_registro"
-                                         placeholder="Correo Electrónico" title="@example.com">
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="cod_dpto" class="form-label">Departamento:</label>
-                                     <select class="form-input" id="cod_dpto" name="cod_dpto" title="Departamento"
-                                         style="cursor:pointer;"></select>
-                                 </div>
-                             </div>
-                             <div class="form-group-group">
-                                 <div class="form-group">
-                                     <label for="cod_municipio" class="form-label">Municipio:</label>
-                                     <select class="form-input" id="cod_municipio" name="cod_municipio"
-                                         title="Municipio" style="cursor:pointer;"></select>
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="cod_poblado" class="form-label">Poblado:</label>
-                                     <select class="form-input" id="cod_poblado" name="cod_poblado" title="Poblado"
-                                         style="cursor:pointer;"></select>
-                                 </div>
+                         <div id="formRegisUsu" class="form-container">
+                             <div class="form-group">
+                                 <label for="nameusu" class="form-label">Nombres Completos:</label>
+                                 <input type="text" class="form-input" id="nameusu" name="nameusu" title="Primer Nombre"
+                                     style="cursor:pointer;">
                              </div>
                              <div class="form-group">
-                                 <label for="clave_registro" class="form-label">Clave:</label>
+                                 <label for="apellidoUsu" class="form-label">Apellidos Completos:</label>
+                                 <input type="text" class="form-input" id="apellidoUsu" name="apellidoUsu"
+                                     title="Primer Apellido">
+                             </div>
+                             <div class="form-group">
+                                 <label for="id_tpdoc" class="form-label">Tipo de Documento:</label>
+                                 <select class="form-input" id="id_tpdoc" name="id_tpdoc"
+                                     title="Tipo de Documento"></select>
+                             </div>
+                             <div class="form-group">
+                                 <label for="numeroiden_registro" class="form-label">Número Documento:</label>
+                                 <input type="text" class="form-input" id="numeroiden_registro"
+                                     name="numeroiden_registro" title="" style="cursor:pointer;"
+                                     onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                             </div>
+                             <div class="form-group">
+                                 <label for="id_genero" class="form-label">Sexo:</label>
+                                 <select class="form-input" id="id_genero" name="id_genero"></select>
+                             </div>
+                             <div class="form-group">
+                                 <label for="celular" class="form-label">Celular:</label>
+                                 <input type="text" class="form-input" id="celular" name="celular" placeholder="Celular"
+                                     title="Teléfono móvil">
+                             </div>
+                             <div class="form-group">
+                                 <label for="correo_registro" class="form-label">Correo Electrónico:</label>
+                                 <input type="text" class="form-input" id="correo_registro" name="correo_registro"
+                                     placeholder="Correo Electrónico" title="@example.com">
+                             </div>
+                             <div class="form-group">
+                                 <label for="cod_dpto" class="form-label">Departamento:</label>
+                                 <select class="form-input" id="cod_dpto" name="cod_dpto" title="Departamento"
+                                     style="cursor:pointer;"></select>
+                             </div>
+                             <div class="form-group">
+                                 <label for="cod_municipio" class="form-label">Municipio:</label>
+                                 <select class="form-input" id="cod_municipio" name="cod_municipio" title="Municipio"
+                                     style="cursor:pointer;"></select>
+                             </div>
+                             <div class="form-group">
+                                 <label for="cod_poblado" class="form-label">Poblado:</label>
+                                 <select class="form-input" id="cod_poblado" name="cod_poblado" title="Poblado"
+                                     style="cursor:pointer;"></select>
+                             </div>
+                             <div class="form-group">
+                                 <label for="clave_registro" class="form-label">Contraseña:</label>
                                  <input type="password" class="form-input" id="clave_registro" name="clave"
                                      title="Clave">
                              </div>
@@ -662,7 +741,6 @@ $varDateTime = date("Y-m-d H:i:s");
                  </div>
              </div>
          </div>
-
          <!-- Restablecer contraseña Modal -->
          <div class="modal fade" id="RestablecerContraseña">
              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
