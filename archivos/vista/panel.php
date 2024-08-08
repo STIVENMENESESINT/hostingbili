@@ -76,10 +76,22 @@
     <?php
         if ($_SESSION['id_rol'] == 3) {
             echo '
+            <style>
+                .camilo{
+                left:13rem;
+                position: absolute;
+                    text-align: center;
+                }
+                .camilo2{
+                left:7rem;
+                position: absolute;
+                    text-align: center;
+                }
+            </style>
                 <li>
                     <a href="usuarios.php" class="nav-item ">
-                        <i class="fas fa-graduation-cap "></i>
-                        <span class="">
+                        <i class="fas fa-graduation-cap camilo2 "></i>
+                        <span class="camilo">
                             Administrar Usuarios
                             
                         </span>
