@@ -93,10 +93,11 @@ label.data-field {
 
 }
 .form-container {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    gap: 15px;
-    padding: 20px;
+    gap: 15px;  
+    esto me separa el modal en dos columnas*/
+    padding: 7px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
@@ -105,7 +106,7 @@ label.data-field {
 .course-data-field {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    
     margin-bottom: 15px;
 }
 
@@ -155,5 +156,5 @@ hr {
 
 .course-data-container {
     border-top: 2px solid #007bff;
-    padding-top: 15px;
+    
 }

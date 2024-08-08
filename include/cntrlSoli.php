@@ -1748,14 +1748,16 @@ switch ($_REQUEST['action'])
                     </div>
                     <div class="col-md-7">
                         <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">' . $registro["titulo"] . '</h3>
-                        <div class="d-flex mb-3">
-                            <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> ' . $registro["fecha_mostrada"] . '</small>
-                            <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web Design</small>
-                            <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15 Comments</small>
+                        
+                         <div class="d-flex mb-3">
+                            <p>' . $registro["descripcion"] . '</p>                                       
                         </div>
-                        <p>' . $registro["descripcion"] . '</p>
-                        <a class="btn btn-link p-0" href="">Read More <i class="fa fa-angle-right"></i></a>
-                        <div class="col-sm-2"></div>
+                        <div class="d-flex mb-3">
+                            <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> ' . $registro["fecha_mostrada"] . '</small>     
+                        </div>
+                        
+                        
+                        
                     </div>
                 </div>
                 <div class="modal-footer">

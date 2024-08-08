@@ -95,7 +95,7 @@ $varDateTime = date("Y-m-d H:i:s");
      <nav class="navbar navbar-expand-lg navbar-light bg-light background-color: var(--alternate-background)">
          <div class="container-fluid">
              <img src="imagenes/img/logo/log.jpg" alt="Logo">
-             <a class="navbar-brand" href="#">M-Team-Language</a>
+             <a class="navbar-brand" href="#">Multilingualism-Team</a>
              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                  <span class="navbar-toggler-icon"></span>
@@ -450,7 +450,7 @@ $varDateTime = date("Y-m-d H:i:s");
              <div class="modal-dialog">
                  <div class="modal-content">
                      <div class="modal-header">
-                         <h5 class="modal-title" id="loginModalLabel">M-Team-Language</h5>
+                         <h5 class="modal-title" id="loginModalLabel">Multilingualism-Team</h5>
                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                      </div>
                      <div class="modal-body">
@@ -608,31 +608,72 @@ $varDateTime = date("Y-m-d H:i:s");
 
                          <!-- FORMULARIO USUARIOS -->
                          <style>
-    .form-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 15px;
-    }
+                         .form-container {
+                             display: flex;
+                             flex-wrap: wrap;
+                             justify-content: space-between;
 
-    .form-group {
-        flex: 1 1 45%; /* Ajusta este valor para controlar el ancho de las columnas */
-        display: flex;
-        flex-direction: column;
-    }
+                         }
 
-    .form-group-full {
-        flex: 1 1 100%;
-    }
+                         .form-group {
+                             flex: 1 1 46%;
+                             display: flex;
+                             flex-direction: column;
+                             padding: 7px;
+                         }
 
-    .modal-footer {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 20px;
-        width: 100%;
-    }
-</style>
+                         .form-group-full {
+                             flex: 1 1 100%;
+                         }
+
+                         .modal-footer {
+                             display: flex;
+                             justify-content: center;
+                             gap: 10px;
+                             margin-top: 20px;
+                             width: 100%;
+                         }
+
+                         .modal-body {
+
+                             /* Increased padding for more space inside the card */
+                             max-width: 800px;
+                             /* Set a maximum width for the card */
+                             max-height: 90vh;
+                             /* Set a maximum height for the card */
+                             width: 100%;
+                             /* Make sure it takes the full available width */
+
+                         }
+
+                         .form-label {
+                             margin-bottom: 2px;
+                         }
+
+                         .form-input {
+                             padding: 6px;
+                             margin-bottom: -15px;
+                             border: 1px solid #ccc;
+                             border-radius: 4px;
+                         }
+
+                         .form-button {
+                             padding: 10px 20px;
+                             border: none;
+                             border-radius: 4px;
+                             cursor: pointer;
+                         }
+
+                         .btn-success {
+                             background-color: #28a745;
+                             color: white;
+                         }
+
+                         .form-button-reset {
+                             background-color: #dc3545;
+                             color: white;
+                         }
+                         </style>
                          <div id="formRegisUsu" class="form-container">
                              <div class="form-group">
                                  <label for="nameusu" class="form-label">Nombres Completos:</label>
@@ -640,7 +681,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                      style="cursor:pointer;">
                              </div>
                              <div class="form-group">
-                                 <label for="apellidoUsu" class="form-label">Apellidos Completos</label>
+                                 <label for="apellidoUsu" class="form-label">Apellidos Completos:</label>
                                  <input type="text" class="form-input" id="apellidoUsu" name="apellidoUsu"
                                      title="Primer Apellido">
                              </div>
@@ -656,7 +697,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                      onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
                              </div>
                              <div class="form-group">
-                                 <label class="form-label">Sexo:</label>
+                                 <label for="id_genero" class="form-label">Sexo:</label>
                                  <select class="form-input" id="id_genero" name="id_genero"></select>
                              </div>
                              <div class="form-group">

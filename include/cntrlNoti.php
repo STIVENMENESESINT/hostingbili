@@ -118,9 +118,12 @@ switch ($_REQUEST['action']) {
                 $jTableResult['noticia'] .= '
                     <div class=" rounded-container"
                         <div class="row blog-item px-3 pb-5">
+                           <small class="modal-title"><i class="fa fa-calendar-alt"></i> ' . $registro["fecha_mostrada"] . '</small>
+                            <small class="modal-title"><i class="fa fa-folder"></i> Web Design</small>
+                            <small class="modal-title"><i class="fa fa-comments"></i> 15 Comments</small>
                         <div class="cards ">
                         
-                            <div class="img">
+                            <div class="img"> 
                                 <a href="">
                                     <img src="../../include/' . $registro["imagen"] . '" alt="Image">
                                 </a>
@@ -130,36 +133,44 @@ switch ($_REQUEST['action']) {
                             <div class="cards__content">
                                 <h3 class="cards__title">' . $registro["titulo"] . '</h3>
                                 <div class="cards__description">
-                                    <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> ' . $registro["fecha_mostrada"] . '</small>
-                                    <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web Design</small>
-                                    <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15 Comments</small>
+                                   
                                     <p>' . $registro["descripcion"] . '</p>
                                 </div>
                             </div>
+                            
                             ';
                             
                             
             
-                        if ($registro["id_categoria"] == 3) {
-                            if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 4) {
-                                $jTableResult['noticia'] .= '
-                                        <a class="cards__button btn btn-link p-0"><button type="button"  data-bs-toggle="modal" data-bs-target="#OfertModal" id="detalle_oferta" class="cards__button" data-id="' . $registro['id_solicitud'] . '">Me Interesa </button></a>
+                            if ($registro["id_categoria"] == 3) {
+                                if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 4) {
+                                    $jTableResult['noticia'] .= '
+                                            <a class="cards__button btn btn-link p-0" href="../../archivos/vista/about.php"><button type="button"  data-bs-toggle="modal" data-bs-target="#OfertModal" id="detalle_oferta" class="cards__button" data-id="' . $registro['id_solicitud'] . '">Me Interesa </button></a>
+                                            
+                                        </div>
+                                    </div>';
+                                } else {
+                                    $jTableResult['noticia'] .= '
                                         
+                                        <div class="col-sm-2">
+                                            <button type="button" class="cards__button btn btn-link p-0" data-toggle="modal" data-target="#myModal">
+                                                Ver
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>';
+                                }
                             } else {
                                 $jTableResult['noticia'] .= '
-                                    <a class="cards__button btn btn-link p-0" href="">Read More <i class="fa fa-angle-right"></i></a>
-                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-2">
+                                        <button type="button" class="cards__button btn btn-link p-0" data-toggle="modal" data-target="#myModal">
+                                            Ver
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>';
-                            }
-                        } else {
-                            $jTableResult['noticia'] .= '
-                                <a class="cards__button btn btn-link p-0" href="">Read More <i class="fa fa-angle-right"></i></a>
-                                <div class="col-sm-2"></div>
-                        </div>
-                       </div>
+                            </div>
+
+                         
                         </div>';
                         }
                     }
