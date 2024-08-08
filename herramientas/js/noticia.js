@@ -1,11 +1,11 @@
 $(document).on("click", "#publicar_noti", function (event) {
-    if ($("#titulo").val() == "") {
+    if ($("#titulo1").val() == "") {
         Swal.fire({
             icon: 'error',
             title: 'Error',
             text: 'Debe ingresar el Titulo'
         });
-        $("#titulo").focus();
+        $("#titulo1").focus();
     } else {
         if ($("#imagen").val() == "") {
             Swal.fire({
@@ -17,7 +17,7 @@ $(document).on("click", "#publicar_noti", function (event) {
         } else {
             var formData = new FormData();
             formData.append("action", "guardarNoticia");
-            formData.append("titulo", $("#titulo").val());
+            formData.append("titulo", $("#titulo1").val());
             formData.append("descripcion", $("#descripcion_Publi").val());
             formData.append("fecha_fin", $("#fecha_fin").val());
             formData.append("imagen", $("#imagen")[0].files[0]);
@@ -64,9 +64,9 @@ $(document).on("click", "#publicar_noti", function (event) {
 function crearPf(){
     $(document).on("click", "#publicar_noti2", function () {
         // Validación de campos requeridos
-        if ($("#titulo").val() === "") {
+        if ($("#titulo1").val() === "") {
             alert('Debe ingresar Titulo a la Oferta');
-            $("#titulo").focus();
+            $("#titulo1").focus();
             return;
         } 
         if ($("#imagen").val() === "") {
@@ -98,7 +98,7 @@ function crearPf(){
         formData.append("nivel_formacion", $("#nivel_formacion_label").text().trim()); // Nivel de formación desde el label
         formData.append("tipo_formacion", $("#tipo_formacion_label").text().trim()); // Tipo de formación desde el label
         formData.append("horas_curso", $("#horas_curso_label").text().trim()); // Horas del curso desde el label
-        formData.append("titulo", $("#titulo").val());
+        formData.append("titulo", $("#titulo1").val());
         formData.append("descripcion", $("#descripcion_Publi").val());
         formData.append("fecha_mostrada", $("#id_fecha_mostrada").val());
         formData.append("imagen", $("#imagen")[0].files[0]);
@@ -147,34 +147,7 @@ $(document).ready(function() {
         $("#revista").hide();
     });
 // ALERTAS SM
-$(document).ready(function() {
-    $("#noticiaForm").on("submit", function(event) {
-        // Validación adicional con jQuery
-        let valid = true;
 
-        if ($("#titulo").val().trim() === "") {
-            alert("El título es requerido.");
-            valid = false;
-        }
-
-        if ($("#id_descripcion").val().trim() === "") {
-            alert("La descripción es requerida.");
-            valid = false;
-        }
-
-        if ($("#id_fecha_mostrada").val().trim() === "") {
-            alert("La fecha a mostrar es requerida.");
-            valid = false;
-        }
-
-        if ($("#imagen").val().trim() === "") {
-            alert("La imagen es requerida.");
-            valid = false;
-        }
-
-        return valid;
-    });
-});
 // Noticia fin
 $(document).ready(function(){  
     $.post("../../include/cntrlNoti.php", {
@@ -219,10 +192,10 @@ $(document).ready(function(){
     });
 });
 function cargarcosas(){
-    $(document).on("change", "#id_programaformacion", function() {
+    $(document).on("change", "#id_programaformacionorigi", function() {
         $.post("../../include/select.php", {
             action: 'crgrprogramaFormacion2',
-            id_programaformacion: $("#id_programaformacion").val()
+            id_programaformacion: $("#id_programaformacionorigi").val()
         },
         function(data) {
             $("#datos_pf").html(data.lisDPF);
@@ -238,7 +211,7 @@ function cargarcosas(){
         action: 'crgrprogramaFormacion'
     },
     function(data) {
-        $("#id_programaformacion").html(data.lisTiposPF);
+        $("#id_programaformacionorigi").html(data.lisTiposPF);
     },
     'json'
     ).fail(function(xhr, status, error) {
@@ -360,75 +333,75 @@ function MostrarTipo_Categoria() {
             tipo_soliDiv.innerHTML = `
             <style>
 
-.course-data-container {
-    display: flex;
-    flex-wrap: wrap;
-   
-    width: 100%; /* Ajusta el ancho según sea necesario */
-    max-width: 400px; /* Ajusta el ancho máximo según sea necesario */
-    height: auto; /* Ajusta la altura según sea necesario */
-    max-height: 80vh; /* Ajusta la altura máxima según sea necesario */
-    overflow-y: auto; /* Permite el desplazamiento si el contenido es demasiado alto */
-}
-
-.course-data-field,
-.mb-3 {
-    width: 100%;
-    margin-bottom: 15px;
-}
-
-.create-button, .close-button {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.create-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.close-button {
-    background-color: #f44336;
-    color: white;
-    
-    text-decoration: none;
-    border-radius: 5px;
-    text-align: center;
-}
+                .course-data-container {
+                    display: flex;
+                    flex-wrap: wrap;
                 
-            </style>
+                    width: 100%; /* Ajusta el ancho según sea necesario */
+                    max-width: 400px; /* Ajusta el ancho máximo según sea necesario */
+                    height: auto; /* Ajusta la altura según sea necesario */
+                    max-height: 80vh; /* Ajusta la altura máxima según sea necesario */
+                    overflow-y: auto; /* Permite el desplazamiento si el contenido es demasiado alto */
+                }
 
-            <hr>
-           <div class="form ">
-    <div class="course-data-container">
-        <h2>DATOS DE CURSO</h2>
-        <div class="course-data-field">
-            <label class="modal-title" for="nombre">ProgramaFormacion</label>
-            <select id="id_programaformacion"> </select>
-        </div>
-        <div class="course-data-field">
-            <label class="modal-title" for="fecha_inicio">Fecha inicio</label>
-            <input class="form-control" type="date" id="fecha_inicio" />
-        </div>
-        <div class="course-data-field">
-            <label class="modal-title" for="fecha_cierre">Fecha cierre</label>
-            <input class="form-control" type="date" id="fecha_cierre" />
-        </div>
-        <div id="datos_pf"></div>
-        <div class="mb-3">
-            <label class="modal-title" for="id_fecha_mostrada">Fecha Fin Evento</label>
-            <input class="form-control" type="date" id="id_fecha_mostrada" name="fecha_inicio">
-        </div>
-        <div class="modal-footer">
-            <a type="button" class="create-button" id="publicar_noti2">Publicar</a>
-            <a type="button" class="close-button" role="button">Cancelar</a>
-        </div>
-    </div>
-</div>
+                .course-data-field,
+                .mb-3 {
+                    width: 100%;
+                    margin-bottom: 15px;
+                }
+
+                .create-button, .close-button {
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+
+                .create-button {
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 10px 20px;
+                    text-decoration: none;
+                    border-radius: 5px;
+                    text-align: center;
+                }
+
+                .close-button {
+                    background-color: #f44336;
+                    color: white;
+                    
+                    text-decoration: none;
+                    border-radius: 5px;
+                    text-align: center;
+                }
+                                
+                            </style>
+
+                            <hr>
+                        <div class="form ">
+                    <div class="course-data-container">
+                        <h2>DATOS DE CURSO</h2>
+                        <div class="course-data-field">
+                            <label class="modal-title" for="nombre">ProgramaFormacion</label>
+                            <select id="id_programaformacionorigi"> </select>
+                        </div>
+                        <div class="course-data-field">
+                            <label class="modal-title" for="fecha_inicio">Fecha inicio</label>
+                            <input class="form-control" type="date" id="fecha_inicio" />
+                        </div>
+                        <div class="course-data-field">
+                            <label class="modal-title" for="fecha_cierre">Fecha cierre</label>
+                            <input class="form-control" type="date" id="fecha_cierre" />
+                        </div>
+                        <div id="datos_pf"></div>
+                        <div class="mb-3">
+                            <label class="modal-title" for="id_fecha_mostrada">Fecha Fin Evento</label>
+                            <input class="form-control" type="date" id="id_fecha_mostrada" name="fecha_inicio">
+                        </div>
+                        <div class="modal-footer">
+                            <a type="button" class="create-button" id="publicar_noti2">Publicar</a>
+                            <a type="button" class="close-button" role="button">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
 
             `;
             cargarcosas()

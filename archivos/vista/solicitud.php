@@ -115,6 +115,20 @@ if (isset($_SESSION['id_userprofile'])){
         </div>
     </div>
     </div>
+    <!-- MODAL CREAR OFERTA 5 USUARIOS -->
+    <div class="modal fade" id="OfertAlert" tabindex="-1" aria-labelledby="OfertAlertLabel"
+        aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editSolicitudLabel">Ofertar Programa</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="modalOf"></div>
+        </div>
+    </div>
+</div>
+
     <!-- solicitud 5  -->
     <div class="modal fade" id="AceptSolicitud5Modal" tabindex="-1" aria-labelledby="AceptSolicitudLabel"
         aria-hidden="true">

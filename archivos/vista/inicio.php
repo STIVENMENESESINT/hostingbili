@@ -369,8 +369,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="formulario" action="" method="post" enctype="multipart/form-data">
                     <div class="form-container">
                         <div class="form-group course-data-field">
-                            <label class="modal-title" for="titulo">Título:</label>
-                            <input type="text" class="form-input form-control" id="titulo" name="titulo"
+                            <label class="modal-title">Título:</label>
+                            <input type="text" class="form-input form-control" id="titulo1" name="titulo"
                                 placeholder="Título" required>
                         </div>
                         <div class="form-group course-data-field">

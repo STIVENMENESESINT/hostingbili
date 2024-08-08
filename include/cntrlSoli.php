@@ -1204,7 +1204,7 @@ switch ($_REQUEST['action'])
                     FROM solicitud s
                     JOIN detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
                     JOIN programaformacion pf ON ds.id_programaformacion = pf.id_programaformacion
-                    WHERE pf.nombre = '$programaformacion'";
+                    WHERE pf.nombre = '$programaformacion' AND s.id_estado = 3";
                 $result2 = mysqli_query($conn, $query2);
                 $row2 = mysqli_fetch_assoc($result2);
                 $total = $row2['total'];
@@ -1227,7 +1227,7 @@ switch ($_REQUEST['action'])
                     if ($registro['idtiposolicitud'] == 1) {
                         $jTableResult['tabla'] .= ' <button id="btn_asign" class="btn btn-success local" data-bs-toggle="modal" data-bs-target="#AceptSolicitudModal" data-id="' . $registro['id_solicitud'] . '">Asignar</button>';
                         if ($total > 5) {
-                            $jTableResult['tabla'] .= '<button id="subirNoti2" class="btn btn-success local" data-bs-toggle="modal" data-bs-target="#" data-id="' . $registro['id_solicitud'] . '">Ofertar</button>';
+                            $jTableResult['tabla'] .= '<button id="ModalCursoOf" class="btn btn-success local" data-bs-toggle="modal" data-bs-target="#OfertAlert" data-id="' . $registro['id_solicitud'] . '">Ofertar</button>';
                         }
                     } elseif ($registro['idtiposolicitud'] == 2) {
                         $jTableResult['tabla'] .= ' <button id="btn_pf" class="btn btn-success local" data-bs-toggle="modal" data-bs-target="#AceptSolicitud2Modal" data-id="' . $registro['id_solicitud'] . '">Asignar</button>';
@@ -1823,6 +1823,42 @@ switch ($_REQUEST['action'])
             $jTableResult['msj'] = "Error al Crear.";
             $jTableResult['rst'] = "0";
         }
+        print json_encode($jTableResult);
+    break;
+    case 'OfertarCursoModal':
+        $jTableResult = array();
+        $jTableResult['rst'] = "";
+        $jTableResult['msj'] = "";
+        $jTableResult['modal'] = "";
+        $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
+    
+        $query = "SELECT s.id_solicitud FROM solicitud s WHERE s.id_solicitud = '$id_solicitud'";
+        $result = mysqli_query($conn, $query);
+    
+        if (mysqli_num_rows($result) > 0) {
+            while ($registro = mysqli_fetch_array($result)) {
+                $jTableResult['msj'] = "Modal generado con éxito.";
+                $jTableResult['rst'] = "1";
+                $jTableResult['modal'] .= '
+                    <div class="modal-body">
+                        <div class="row mt-3">
+                            <div class="col-sm-12">
+                                <h6 class="modal-title">Mensaje de Confirmación...</h6>
+                                <textarea class="form-control modal-textbox" id="detalle_cancel" name="detalle_cancel"
+                                    placeholder="Motivo Solicitud" title="Motivo"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="create-button" id="subirNoti3" data-id="' . $registro['id_solicitud'] . '">Guardar Cambios</button>
+                    </div>';
+            }
+        } else {
+            $jTableResult['msj'] = "Error al generar el modal.";
+            $jTableResult['rst'] = "0";
+        }
+        
         print json_encode($jTableResult);
     break;
     case 'instructorProto':

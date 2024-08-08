@@ -619,9 +619,75 @@ switch ($_REQUEST['action']) {
             $jTableResult['rst'] = "2";
             $jTableResult['ms'] = "NO Ofertado con éxito: " . mysqli_error($conn);
         }
-    
         print json_encode($jTableResult);
-    break;    
+    break;   
+    case 'SubirContenidoOf':
+        $jTableResult = array();
+        $jTableResult['rst'] = "";
+        $jTableResult['ms'] = "";
+        $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
+        
+        $query_get = "
+        SELECT pf.nombre, pf.nivel_formacion,pf.tipo_formacion,pf.modalidad,pf.horas_curso
+            FROM programaformacion pf 
+            JOIN detallesolicitud ds ON pf.id_programaformacion = ds.id_programaformacion 
+            JOIN solicitud s ON ds.id_detallesolicitud = s.id_detallesolicitud 
+            WHERE ds.id_detallesolicitud = (
+                SELECT s.id_detallesolicitud 
+                FROM solicitud s 
+                WHERE s.id_solicitud = '$id_solicitud'
+        )";
+        
+        $result_get = mysqli_query($conn, $query_get);
+        $programaformacion = mysqli_fetch_assoc($result_get);
+        
+        // Paso 2: Insertar un nuevo registro en la tabla programaformacion con los mismos datos
+        $query_insert = "
+            INSERT INTO programaformacion (nombre, nivel_formacion, tipo_formacion, horas_curso, modalidad, id_estado)
+            VALUES ('".$programaformacion['nombre']."', '".$programaformacion['nivel_formacion']."', '".$programaformacion['tipo_formacion']."', '".$programaformacion['horas_curso']."', '".$programaformacion['modalidad']."', 9)";
+        mysqli_query($conn, $query_insert);
+        
+        // Obtener el nuevo id_programaformacion
+        $new_id_programaformacion = mysqli_insert_id($conn);
+        
+        // Paso 3: Actualizar id_programaformacion y el estado
+        $query_update = "
+            UPDATE solicitud s
+            JOIN detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
+            SET s.id_estado = 9, ds.id_programaformacion = '$new_id_programaformacion'
+            WHERE s.id_solicitud = '$id_solicitud'";
+        
+        if ($result = mysqli_query($conn, $query_update)) {
+            $query2 = "SELECT COUNT(*) AS total
+            FROM solicitud s
+                JOIN detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
+                JOIN programaformacion pf ON ds.id_programaformacion = pf.id_programaformacion
+            WHERE pf.nombre = '".$programaformacion['nombre']."'";
+            $result_count = mysqli_query($conn, $query2);
+            $count_data = mysqli_fetch_assoc($result_count);
+            
+            // Si hay usuarios, insertar en usersxoferta
+            if ($count_data['total'] > 0) {
+                $query_insert_usersxoferta = "
+                    INSERT INTO usersxoferta (id_solicitud, id_userprofile)
+                    SELECT '$id_solicitud', id_userprofile
+                    FROM usersxoferta
+                    WHERE id_solicitud = '$id_solicitud'";
+                mysqli_query($conn, $query_insert_usersxoferta);
+            }
+    
+            mysqli_commit($conn);
+            $jTableResult['rst'] = "1";
+            $jTableResult['ms'] = "Ofertado con éxito y añadido a usersxoferta";
+        } else {
+            $jTableResult['rst'] = "2";
+            $jTableResult['ms'] = "NO Ofertado con éxito: " . mysqli_error($conn);
+        }
+        
+        print json_encode($jTableResult);
+    break;
+    
+    
     case'SubirContenidoN':
         $jTableResult = array();
         $jTableResult['rst'] = "";
