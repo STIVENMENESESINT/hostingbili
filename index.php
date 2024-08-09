@@ -14,7 +14,7 @@ $varDateTime = date("Y-m-d H:i:s");
      <link rel="stylesheet" type="text/css" href="herramientas/css/index.css">
      <link rel="stylesheet" type="text/css" href="herramientas/css/inicio.css">
 
-
+ 
      <script type='text/javascript' src="herramientas/js/noticia.js"></script>
      <link rel="stylesheet" href="herramientas/css/solicitud.css">
      <link rel="stylesheet" href="herramientas/css/about.css">
@@ -88,39 +88,80 @@ $varDateTime = date("Y-m-d H:i:s");
      }
      </style>
  </head>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const languageSelect = document.getElementById("language-select");
 
+    languageSelect.addEventListener("change", (event) => {
+        const selectedLanguage = event.target.value;
+        setLanguage(selectedLanguage);
+    });
+
+    function setLanguage(language) {
+        document.querySelectorAll("[data-lang-es]").forEach(element => {
+            element.textContent = element.getAttribute(`data-lang-${language}`);
+        });
+    }
+
+    // Set default language
+    setLanguage(languageSelect.value);
+});
+</script>
 
  <body>
      <!-- Navigation Bar -->
      <nav class="navbar navbar-expand-lg navbar-light bg-light background-color: var(--alternate-background)">
-         <div class="container-fluid">
-             <img src="imagenes/img/logo/log.jpg" alt="Logo">
-             <a class="navbar-brand" href="#">Multilingualism-Team</a>
-             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                 <span class="navbar-toggler-icon"></span>
-             </button>
-             <div class="collapse navbar-collapse" id="navbarNav">
-                 <ul class="navbar-nav ms-auto">
-                     <li class="nav-item">
-                         <button class="btn btn-link nav-link" data-bs-toggle="modal"
-                             data-bs-target="#loginModal">Iniciar Sesión</button>
-                     </li>
-                     <li class="nav-item">
-                         <button class="btn btn-link nav-link" data-bs-toggle="modal"
-                             data-bs-target="#registroUsuario">Registrate</button>
-                     </li>
-                     <li class="nav-item">
-                         <button class="btn btn-link nav-link" data-bs-toggle="modal" data-bs-target="#registroUsuario"
-                             onclick="FormEmpresa()">Registra Tu Empresa</button>
-                     </li>
-                     <li class="nav-item">
-                         <button class="btn btn-link nav-link" data-bs-toggle="modal"
-                             data-bs-target="#RestablecerContraseña">Olvidaste Tu Contraseña</button>
-                     </li>
-                 </ul>
-             </div>
-         </div>
+     <div class="container-fluid">
+    <img src="imagenes/img/logo/log.jpg" alt="Logo">
+    <a class="navbar-brand" href="#" 
+       data-lang-es="Equipo de Multilingüismo"
+       data-lang-en="Multilingualism-Team"
+       data-lang-fr="Équipe Multilinguisme">
+       Equipo de Multilingüismo
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <button class="btn btn-link nav-link" data-bs-toggle="modal" data-bs-target="#loginModal"
+                    data-lang-es="Iniciar Sesión"
+                    data-lang-en="Login"
+                    data-lang-fr="Se Connecter">
+                    Iniciar Sesión
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-link nav-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                    data-lang-es="Regístrate"
+                    data-lang-en="Register"
+                    data-lang-fr="S'inscrire">
+                    Regístrate
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-link nav-link" data-bs-toggle="modal" data-bs-target="#registroUsuario"
+                    onclick="FormEmpresa()"
+                    data-lang-es="Registra Tu Empresa"
+                    data-lang-en="Register Your Company"
+                    data-lang-fr="Enregistrer Votre Entreprise">
+                    Registra Tu Empresa
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="btn btn-link nav-link" data-bs-toggle="modal" data-bs-target="#RestablecerContraseña"
+                    data-lang-es="Olvidaste Tu Contraseña"
+                    data-lang-en="Forgot Your Password"
+                    data-lang-fr="Mot de Passe Oublié">
+                    Olvidaste Tu Contraseña
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>
+
      </nav>
      <div>
 
