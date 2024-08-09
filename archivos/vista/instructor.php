@@ -31,7 +31,7 @@ if (isset($_SESSION['id_userprofile'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>instructores de bilinguismo</title>
-    
+
 </head>
 
 
@@ -49,7 +49,7 @@ if (isset($_SESSION['id_userprofile'])){
         <!-- Contenido principal -->
         <div class="container layout__content">
             <div class=" content__page">
-                <h1 class="title">INSTRUCTORES Bilingüismo<br> </h1>
+                <h1 class="title">Multilingualism-Team<br> </h1>
 
                 <div class="divider"></div>
 
@@ -64,7 +64,7 @@ if (isset($_SESSION['id_userprofile'])){
 
                     </div>
 
-                        <?php
+                    <?php
                         if ($_SESSION['id_rol'] == '2' || $_SESSION['id_rol'] == '3') {
                             include_once('chatpage.php');}
                         // Incluir el 
