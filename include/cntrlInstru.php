@@ -28,14 +28,14 @@ switch ($_REQUEST['action']) {
                 userprofile.id_rol = 2"; 
         
         $result = mysqli_query($conn, $query);
-
+        
 // Verificar si se encontraron resultados
 if (mysqli_num_rows($result) > 0) {
     while($registro = mysqli_fetch_array($result)) {
         $jTableResult['msj'] = "Instructor Creado con Éxito.";
         $jTableResult['rstl'] = "1";
                 // Verificar si la imagen existe y no está vacía
-                $rutaImagen = '../include/uploads/' . htmlspecialchars($registro['imagen']);
+                $rutaImagen = 'uploads/' . htmlspecialchars($registro['imagen']);
                 $imagenHTML = "";
 
                 if (!empty($registro['imagen']) && file_exists($rutaImagen)) {

@@ -98,7 +98,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="solicitud.php" class="nav-item ">
+                    <a href="solicitud.php" class="nav-item">
                         <i class="fas fa-check-double"></i>
                         <span class="">
                             Administrar Solicitudes

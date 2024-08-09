@@ -98,6 +98,7 @@ if (isset($_SESSION['id_userprofile'])){
                     </div>
                 </div>
                 <!-- NO TOCAR -->
+                <i class="fa-solid fa-cloud-arrow-down"></i>
                 <?php
                             if ($_SESSION['id_rol'] == 3) {
                                 echo '<div id="sin_contenido"></div>
