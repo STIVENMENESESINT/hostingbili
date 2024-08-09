@@ -79,7 +79,9 @@ label.data-field {
     text-align: center;
     vertical-align: middle;
 }
-
+.text{
+    font-size:2rem;
+    }
 .navbar2 {
     display: flex;
     justify-content: center;

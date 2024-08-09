@@ -136,7 +136,9 @@ textarea {
 input[type="file"] {
     padding: 5px;
 }
-
+.text{
+    font-size:2rem;
+    }
 input[type="number"] {
     padding: 8px;
     border: 1px solid #ddd;
