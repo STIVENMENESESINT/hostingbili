@@ -69,6 +69,15 @@
 }
 
 /* Estilo para el título principal */
+.title {
+    font-size: 6em; /* Aumenta el tamaño de la fuente aún más */
+    color: #3498db; /* Color del texto */
+    text-align: center; /* Centra el texto */
+    margin-bottom: 20px; /* Espacio debajo del título */
+    font-weight: bold; /* Asegura que el texto sea grueso */
+    line-height: 1.2; /* Controla la altura de la línea */
+    white-space: normal; /* Permite los saltos de línea */
+}
 
 
 
@@ -115,6 +124,9 @@
     overflow: hidden; /* Oculta el contenido que exceda el área del elemento */
 }
 
+
+/* NAVBAR */
+/* Estilos del menú de navegación */
 /* Estilos del menú de navegación */
 .navbar {
     display: flex;
@@ -122,6 +134,8 @@
     background-color: #04324d;
     padding: 15px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative; /* Asegura que los elementos hijos se mantengan dentro del contenedor */
+    z-index: 1000;
 }
 
 .navbar-item {
@@ -129,68 +143,91 @@
     margin: 0 15px;
 }
 
+/* Estilo para los enlaces del menú principal */
 .navbar-link {
     color: #ecf0f1;
     text-decoration: none;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 22px;
     display: flex;
     align-items: center;
     padding: 12px 20px;
     border-radius: 25px;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease; /* Cambia solo el color al pasar el mouse */
 }
 
 .navbar-link i {
     margin-left: 10px;
     font-size: 18px;
+    transition: color 0.3s ease; /* Transición del color del ícono */
 }
 
 .navbar-link:hover {
-    background-color: #34495e;
-    color: #2ecc71;
-    transform: translateY(-2px);
+    color: #2ecc71; /* Cambia solo el color del texto al pasar el mouse */
 }
 
+.navbar-link:hover i {
+    color: #2ecc71; /* Cambia el color del ícono al pasar el mouse */
+}
+
+/* Estilos para los menús desplegables */
 .navbar-dropdown {
-    display: none;
+    display: none; /* Oculta el dropdown por defecto */
     position: absolute;
     background-color: #34495e;
     border-radius: 8px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    top: 70%;
+    top: 100%; /* Ajusta la posición para que el dropdown esté justo debajo del ítem del menú */
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
-    width: 220px;
-    padding: 10px 0;
-    margin-top: 10px;
+    z-index: 999;
+    width: 240px; /* Ajusta el ancho del dropdown para ser uniforme */
+    padding: 10px 0; /* Espacio alrededor de los ítems */
 }
 
-.navbar-item:hover .navbar-dropdown {
+/* Muestra el dropdown solo para los elementos específicos cuando el mouse está sobre ellos */
+.navbar-item.has-dropdown:hover .navbar-dropdown {
     display: block;
-    animation: fadeIn 0.15s ease;
+    animation: fadeIn 0.15s ease; /* Muestra el dropdown con una animación suave */
 }
+
+/* Estilo para los ítems del dropdown */
+.navbar-dropdown-item {
+    padding: 12px 20px; /* Espacio alrededor del contenido */
+    color: #ecf0f1; /* Color del texto */
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    display: block; /* Asegura que los elementos ocupen toda la línea */
+    transition: background-color 0.25s ease, color 0.25s ease; /* Transiciones solo para fondo y color */
+    font-size: 14px; /* Tamaño de fuente uniforme */
+    border-radius: 4px; /* Bordes redondeados para un diseño más suave */
+}
+
+/* Cambios al pasar el mouse sobre los ítems del dropdown */
+.navbar-dropdown-item:hover {
+    background-color: #2c3e50; /* Fondo oscuro en hover */
+    color: #2ecc71; /* Color del texto en hover */
+    padding-left: 20px; /* Alineación consistente en hover */
+    padding-right: 20px; /* Mantén el padding derecho consistente */
+}
+
+
+
+
+
+
+
+
+
+
+
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px) translateX(-50%); }
     to { opacity: 1; transform: translateY(0) translateX(-50%); }
 }
 
-.navbar-dropdown-item {
-    padding: 12px 20px;
-    color: #ecf0f1;
-    text-decoration: none;
-    display: block;
-    transition: all 0.25s ease;
-    font-size: 14px;
-}
 
-.navbar-dropdown-item:hover {
-    background-color: #2c3e50;
-    color: #2ecc71;
-    padding-left: 25px;
-}
+
 
 /* Estilos para la imagen grande */
 .large-image {
@@ -324,7 +361,8 @@
 
 .description {
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 7px;
+    padding: 10px 0; /* Añade más espacio arriba y abajo del contenido dentro de .description */
 }
 .description2 {
     background-color: #fff;
@@ -333,6 +371,14 @@
 }
 .descripcion{
     font-size: 1rem;
+}
+
+
+
+
+.description p {
+    margin: 0; /* Asegura que no haya márgenes adicionales en el párrafo */
+    padding: 10px; /* Añade espacio adicional arriba y abajo del texto en el párrafo */
 }
 
 

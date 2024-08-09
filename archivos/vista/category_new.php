@@ -28,64 +28,71 @@ if (isset($_SESSION['id_userprofile'])){
 
 <body>
 
-    <div class="layout">
-        <!-- Menú de navegación -->
-        <aside class="layout__aside">
-            <div class="aside__user-info">
-                <?php
-                    // Incluir el menú de navegación
-                    include_once('menu.php');
-                    ?>
-            </div>
-        </aside> <button type="button" class="btn nav-link nav-item-hover fixed-top-right" onclick="goBack()">
-            <i class="fas fa-arrow-left fa-fw fa-lg"></i>
-            <span class="nav-item">Volver</span>
-        </button>
-        <script>
-        function goBack() {
-            window.history.back();
-        }
-        </script>
-        <!-- Contenido principal -->
-        <div class="container layout__content">
 
-            <div class="content__page">
+<div class="layout">
+    <!-- Menú de navegación -->
+    <aside class="layout__aside">
+        <div class="aside__user-info">
+            <?php
+                // Incluir el menú de navegación
+                include_once('menu.php');
+            ?>
+        </div>
+    </aside> 
 
+    <!-- Contenido principal -->
+    <div class="container layout__content">
+        <div class="content__page">
+            <!-- Botón de Volver dentro del contenido principal -->
+            <button type="button" class="btn nav-link nav-item-hover fixed-top-right" onclick="goBack()">
+                <i class="fas fa-arrow-left fa-fw fa-lg"></i>
+                <span class="nav-item">Volver</span>
+            </button>
 
             <div class="pb-6 pt-6">
-    <div class="is-fluid mb-6">
-        <h1 class="title">Biblioteca Bilingüismo<br>Secciones B-Team-Language</h1>
-    </div>
-    <div class="columns container">
-        <div class="column is-full">
-            <div class="field">
-                <label class="label">Nombre de la Sección a Ingresar:</label>
-                <div class="control">
-                    <input class="input" type="text" id="nombre"
-                        pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{4,50}" maxlength="50" required>
+                <div class="is-fluid mb-6">
+                    <h1 class="title">Biblioteca Bilingüismo<br>Secciones B-Team-Language</h1>
                 </div>
-            </div>
-            <div class="field">
-                <label class="label">Idioma:</label>
-                <div class="control">
-                    <select class="select" name="" id="id_idioma"></select>
+                <div class="columns container">
+                    <div class="column is-full">
+                        <div class="field">
+                            <label class="label">Nombre de la Sección a Ingresar:</label>
+                            <div class="control">
+                                <input class="input" type="text" id="nombre"
+                                    pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{4,50}" maxlength="50" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Idioma:</label>
+                            <div class="control">
+                                <select class="select" name="" id="id_idioma"></select>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Descripción:</label>
+                            <div class="control">
+                                <textarea class="textarea" id="descripcion"
+                                    pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{5,150}" maxlength="150"></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="field">
-                <label class="label">Descripción:</label>
-                <div class="control">
-                    <textarea class="textarea" id="descripcion"
-                        pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{5,150}" maxlength="150"></textarea>
+                <div class="field">
+                    <p class="control has-text-centered">
+                        <button type="button" id="guardar_seccion" class="create-button">Guardar</button>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="field">
-        <p class="control has-text-centered">
-            <button type="button" id="guardar_seccion" class="create-button">Guardar</button>
-        </p>
-    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </div>
+
 
 
 

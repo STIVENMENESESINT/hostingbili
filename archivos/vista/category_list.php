@@ -36,11 +36,14 @@ if (isset($_SESSION['id_userprofile'])){
     </aside>
     <!-- Contenido principal -->
 
-    <div class="container layout__content"> <button type="button" class="btn nav-link nav-item-hover fixed-top-right"
+    <div class="container layout__content"> 
+        
+        <button type="button" class="btn nav-link nav-item-hover fixed-top-right"
             onclick="goBack()">
             <i class="fas fa-arrow-left fa-fw fa-lg"></i>
             <span class="nav-item">Volver</span>
         </button>
+
         <script>
         function goBack() {
             window.history.back();

@@ -73,16 +73,9 @@ img {
   font-weight: 900;
 }
 /* inicio titulo */
-.title {
-  color: #3498db;
 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  font-weight: bold;
-  letter-spacing: 1px;
-  font-size: 3em;
-  text-align: center;
-  margin: -6px 0;
-}
+/* Estilo para el título principal */
+
 
 .divider {
   height: 6px;
