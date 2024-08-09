@@ -23,4 +23,5 @@ $session_name 	= "sesionBilinguismo";
             return $this->conexao;
         }
     }
+    
 ?>
