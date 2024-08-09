@@ -17,3 +17,7 @@
 .form-inline{
 	display: inline-flex;
 }
+::selection {
+	
+	background: #fd7d1c;
+	}

@@ -9,6 +9,10 @@
 	direction: ltr;
 	text-align: left;
 }
+::selection {
+	color: #fff;
+	background: #fd7d1c;
+	}
 
 .fc-rtl {
 	text-align: right;

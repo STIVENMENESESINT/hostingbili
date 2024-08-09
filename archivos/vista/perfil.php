@@ -136,6 +136,7 @@ if (isset($_SESSION['id_userprofile'])) {
 
                     <div class="row mt-3">
                         <?php
+                        
                         $rutaImagen = '../../include/uploads/' . htmlspecialchars($fila['imagen']);
                         if (file_exists($rutaImagen) && !empty($fila['imagen'])) {
                             echo '<img class="circle" src="' . $rutaImagen . '" alt="Foto de Perfil">

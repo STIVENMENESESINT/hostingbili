@@ -10,3 +10,7 @@
     margin-top: -34px;
     margin-left: 30%;
 }
+::selection {
+   
+    background: #fd7d1c;
+    }

@@ -1,17 +1,42 @@
 <?php
+
 // Incluir el archivo de configuración de conexión a la base de datos
-include_once('../../include/conex.php');
+require_once('../../calendario/action/conexao.php');
 
 // Establecer el tipo de contenido a HTML con el charset especificado en la configuración
-header('Content-Type: text/html; charset=' . $charset);
+header('Content-Type: text/html; charset='.$charset);
 
 // Iniciar la sesión con el nombre de sesión configurado
 session_name($session_name);
 session_start();
+if (!isset($_SESSION['id_userprofile'])) {
+    header('Location: ../../index.php');
+    exit;
+}
 
-// Verificar si existe una sesión activa con el id_userprofile
-if (isset($_SESSION['id_userprofile'])) {
+// Verificar si se ha enviado el ID del programa de formación
+
+    $id_user = $_SESSION['id_userprofile'];
+    date_default_timezone_set('America/Bogota');
+
+    $database = new Database();
+    $db = $database->conectar();
+
+    $sql = "SELECT id_evento, titulo, descricao, inicio, termino, cor, fk_id_destinatario, fk_id_remetente, status, id_programaformacion
+            FROM eventos as e
+            LEFT JOIN convites as c ON e.id_evento = c.fk_id_evento
+            WHERE fk_id_usuario = :id_user";
+
+    $req = $db->prepare($sql);
+    $req->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+    $req->execute();
+    $events = $req->fetchAll(PDO::FETCH_ASSOC); // Asegura que solo se devuelvan índices asociativos
+
+    // Depuración: Imprimir los eventos obtenidos
+    
+
 ?>
+
 <!Doctype html>
 <html lang="es">
 
@@ -119,24 +144,24 @@ document.addEventListener("DOMContentLoaded", () => {
                         /* Añadir un padding alrededor del carrusel */
                     }
                     </style>
-                    <?php
-        include_once('calen.php');
-    ?>
+
                     <?php 
                         include_once('publicarnoticiacarrusel.php');
                     ?>
 
                 </div>
-            <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Ofertarme</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                            <div id="formdetalle_oferta"></div>
+                                <div id="formdetalle_oferta"></div>
                             </div>
                         </div>
                     </div>
@@ -349,21 +374,21 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="modal fade" id="OfertModal">
         <div class="modal-dialog">
             <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Ofertarme</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div id="formdetalle_oferta"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ofertarme</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="formdetalle_oferta"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
-    
+
 
     <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['pdf'])) {
@@ -446,9 +471,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['pdf'])) {
     /* Ajusta el tamaño de la fuente para títulos y otros elementos específicos */
 }
 </style>
-<?php
-    // Si no hay sesión activa, redirigir al usuario a la página de inicio de sesión
-} else {
-    header("Location: ../../index.php");
-}
-?>

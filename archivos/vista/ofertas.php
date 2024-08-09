@@ -97,6 +97,7 @@ if (isset($_SESSION['id_userprofile'])){
                         </div>
                     </div>
                 </div>
+                <i class="fa-solid fa-cloud-arrow-down"></i>
                     <div id="oferta_curso"></div>';
                 <div id="solisB"></div>
             </div>

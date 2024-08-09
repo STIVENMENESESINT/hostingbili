@@ -12,7 +12,7 @@
 
 <body>
     <div class="wrapper">
-        <div class="title">Asistente Bili</div>
+        <div class="title">Bili</div>
         <div class="form">
             <div class="bot-inbox inbox">
                 <div class="icon">
