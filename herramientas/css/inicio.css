@@ -241,7 +241,10 @@
     color: rgba(0, 0, 0, 0.8);
     /* Color del texto */
   }
-  
+  ::selection {
+    color: #fff;
+    background: #fd7d1c;
+    }
   label {
     margin-right: 10px;
     /* Espaciado entre la etiqueta y el select */

@@ -15,7 +15,10 @@
   align-items: center;
   transition: transform .2s ease, opacity .2s ease;
  }
- 
+ ::selection {
+  color: #fff;
+  background: #fd7d1c;
+  }
  /*Image*/
  .card-avatar {
   --size: 60px;

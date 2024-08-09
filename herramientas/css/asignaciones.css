@@ -7,6 +7,10 @@
     margin: auto; /* Centra el formulario en la página */
     margin-top: 20px; /* Espacio superior */
 }
+::selection {
+   
+    background: #fd7d1c;
+    }
 
 /* Identificadores */
 .label-identifier {

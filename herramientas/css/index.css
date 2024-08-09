@@ -23,7 +23,10 @@
     --bp-large: 1200px;
     --web-margin: 1366px;
 }
-
+::selection {
+    color: #fff;
+    background: #fd7d1c;
+    }
 body {
     font-family: Arial, sans-serif;
     display: flex;

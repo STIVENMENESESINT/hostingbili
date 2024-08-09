@@ -21,7 +21,10 @@
     --bp-large: 1200px;
     --web-margin: 1366px;
 }
-
+::selection {
+    
+    background: #fd7d1c;
+    }
 /* estas en las tarjetas de las noticias no borrar y hacer response  */
 .imag {
     max-width: 100%;
