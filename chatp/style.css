@@ -1,23 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-
-
-::selection{
+::selection {
     color: #fff;
     background: #fd7d1c;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 3px;
     border-radius: 25px;
 }
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
     background: #ddd;
 }
-::-webkit-scrollbar-thumb:hover{
+::-webkit-scrollbar-thumb:hover {
     background: #ccc;
 }
 
@@ -106,6 +104,7 @@
     color: #333;
     background: #efefef;
 }
+
 .wrapper {
     position: fixed;
     bottom: 0;
