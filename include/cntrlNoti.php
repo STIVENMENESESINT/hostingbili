@@ -696,8 +696,6 @@ switch ($_REQUEST['action']) {
             }
         print json_encode($jTableResult);
     break;
-    
-    
     case'SubirContenidoN':
         $jTableResult = array();
         $jTableResult['rst'] = "";
