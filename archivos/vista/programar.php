@@ -36,7 +36,7 @@ if (!isset($_SESSION['id_userprofile'])) {
     
 
 ?>
-?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
