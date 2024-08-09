@@ -75,6 +75,32 @@ $(document).on("click", "#btn_pf",function ()	{
         }, 'json');	
     }
 );
+$(document).on("click", "#btnGuardarCambios2", function() {
+    var idSolicitud = $(this).data('id');
+    $.post("../../include/cntrlSoli.php", {
+        action: 'actualizarSolicitud',
+        id_solicitud: idSolicitud,
+        id_responsable:$("#id_responsable").val()
+    }, function(data) {
+        if (data.rstl == "1") {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Éxito!',
+                text: data.msj,
+                showConfirmButton: false,
+                timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+            }).then(() => {
+                location.reload();
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.msj
+            });
+        }
+    }, 'json');
+});
 $(document).on("click", "#detalleOferta",function ()	{
     var idSolicitud = $(this).data('id');
     console.log("ID de la solicitud: " + idSolicitud);
