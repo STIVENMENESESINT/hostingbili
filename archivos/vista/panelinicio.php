@@ -1,16 +1,24 @@
 <div class="navbar">
+    <style>
+        .panel_script{
+            color: white;
+            position: absolute;
+            left: 5rem;
+            bottom: 1.5rem;
+        }
+        .nav-link{
+            font-size: 3rem;
+            bottom:1rem ;
+        }
+    </style>
     <ul class="navbar-nav">
-        <a id="showRevista" type="button" class="nav-item ">
-
+        <a id="showRevista" type="button" class="nav-item">
             <i class="fas fa-book-open nav-link"><br>
-
-                <span class="" data-lang-es="Desplegar Revista" data-lang-en="Expand Magazine"
+                <span class="panel_script" data-lang-es="Desplegar Revista" data-lang-en="Expand Magazine"
                     data-lang-fr="Déplier le Magazine">
-                    Desplegar Revista
-
+                    Revista
                 </span>
             </i>
-
         </a>
         <?php
                                     if ($_SESSION['id_rol'] != 1 && $_SESSION['id_rol'] != 5) {
@@ -18,7 +26,7 @@
                                             <li>   
                                                 <a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-item">
                                                     <i class="fas fa-plus nav-link">
-                                                        <span class="" data-lang-es="Crear" data-lang-en="Create" data-lang-fr="Créer"> 
+                                                        <span class="panel_script" data-lang-es="Crear" data-lang-en="Create" data-lang-fr="Créer"> 
                                                             Crear  
                                                             
                                                         </span>
@@ -27,13 +35,10 @@
                                                 </a>
                                             </li>      
                                             <li>
-                                                <a type="button" class="nav-item">
-                                                
+                                                <a type="button" class="nav-item ">
                                                     <i class="fas fa-thin fa-folder-open nav-link">
-                                                        <span id="MisSoliActivate" data-bs-toggle="modal" data-bs-target="#MisSoli" class="title2" data-lang-es="Mis Publicaciones" data-lang-en="My Publications" data-lang-fr="Mes Publications">
+                                                        <span id="MisSoliActivate" data-bs-toggle="modal" data-bs-target="#MisSoli" class="panel_script" data-lang-es="Mis Publicaciones" data-lang-en="My Publications" data-lang-fr="Mes Publications">
                                                             Mis Publicaciones
-                                                        
-                                                            
                                                         </span>
                                                     </i>    
                                                     
