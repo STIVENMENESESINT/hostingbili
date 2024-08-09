@@ -372,6 +372,9 @@ switch ($_REQUEST['action'])
         // Devolver el resultado como JSON
         print json_encode($jTableResult);
     break;
+
+
+    // este modal esta en inicio
     case 'MisNoti':
         $jTableResult = array();
         $jTableResult['rs'] = "";
@@ -379,7 +382,7 @@ switch ($_REQUEST['action'])
         $jTableResult['tabla'] = ""; 
         // Iniciar la construcción de la tabla
         $jTableResult['tabla'] .= '
-            <div class="container">
+            <div class="">
                     <table class="table table-bordered table-striped table-hover text-center">
                         <thead class="thead-dark">
                             <tr>
