@@ -75,15 +75,19 @@ if (isset($_SESSION['id_userprofile'])) {
                         </select>
                         </div>
                         <div class="welcome-section">
-                        <h1 class="title" data-lang-es="Biblioteca Bilingüismo<br>B-Team-Language" data-lang-en="Bilingualism Library<br>B-Team-Language" data-lang-fr="Bibliothèque Bilinguisme<br>B-Team-Language">
-                            Biblioteca Bilingüismo<br>B-Team-Language
+                        <h1 class="title" 
+                            data-lang-es="Biblioteca Bilingüismo" 
+                            data-lang-en="Bilingualism Library" 
+                            data-lang-fr="Bibliothèque Bilinguisme">
+                            Biblioteca Bilingüismo  B-Team-Language
                         </h1>
+
                         <div class="divider"></div>
                         <h2 class="subtitle" data-lang-es="¡Bienvenido a tu espacio de conocimiento!" data-lang-en="Welcome to your space of knowledge!" data-lang-fr="Bienvenue dans votre espace de connaissance !">
                             ¡Bienvenido a tu espacio de conocimiento!
                         </h2>
                             <div class="info-cards">
-                                <div class="info-card">
+                                <div class="info-card" onclick="window.location.href='https://biblioteca.sena.edu.co/'">
                                     <div class="icon-circle">
                                         <i class="fas fa-search"></i>
                                     </div>
@@ -96,7 +100,8 @@ if (isset($_SESSION['id_userprofile'])) {
                                         </p>
                                     </div>
                                 </div>
-                                <div class="info-card">
+
+                                <div class="info-card" onclick="window.location.href='https://biblioteca.sena.edu.co/'">
                                     <div class="icon-circle">
                                         <i class="fas fa-book-reader"></i>
                                     </div>
@@ -109,7 +114,8 @@ if (isset($_SESSION['id_userprofile'])) {
                                         </p>
                                     </div>
                                 </div>
-                                <div class="info-card">
+
+                                <div class="info-card" onclick="window.location.href='https://biblioteca.sena.edu.co/'">
                                     <div class="icon-circle">
                                         <i class="fas fa-hands-helping"></i>
                                     </div>
@@ -122,6 +128,8 @@ if (isset($_SESSION['id_userprofile'])) {
                                         </p>
                                     </div>
                                 </div>
+
+
                             </div>
                             <p class="info-text" data-lang-es="Este sistema te permite publicar libros y contenidos que enriquecen nuestra comunidad educativa." data-lang-en="This system allows you to publish books and content that enrich our educational community." data-lang-fr="Ce système vous permet de publier des livres et du contenu qui enrichissent notre communauté éducative.">
                                 Este sistema te permite publicar libros y contenidos que enriquecen nuestra comunidad educativa.
@@ -130,6 +138,8 @@ if (isset($_SESSION['id_userprofile'])) {
                                 ¡Tu participación es fundamental para construir un entorno de aprendizaje colaborativo y accesible para todos!
                             </p>
                         </div>
+
+
                         <!-- Menú de navegación -->
                         <div class="navbar">
                             <div class="navbar-item has-dropdown is-hoverable">
@@ -164,15 +174,17 @@ if (isset($_SESSION['id_userprofile'])) {
                                 </div>
                             </div>
                         </div>
+
+                        
                         <!-- Imagen grande debajo del menú -->
                         <div class="large-image">
-                            <img src="../vista/img/biblioteca1.png" alt="Imagen Grande">
+                            <img src="../../imagenes/bibli-home.png" alt="Imagen Grande">
                         </div>
                         <!-- Footer -->
                         <footer class="footer">
                             <div class="footer-content">
                                 <div class="footer-left">
-                                    <img src="../vista/img/footer.png" alt="Logo">
+                                    <img src="../../imagenes/logo-home.png" alt="Logo">
                                 </div>
                                 <div class="footer-right">
                                 <p data-lang-es="Servicio Nacional de Aprendizaje SENA - Dirección General"

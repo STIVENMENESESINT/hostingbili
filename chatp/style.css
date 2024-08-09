@@ -1,4 +1,5 @@
-:root{--alternate-text: #919191;
+:root{
+    --alternate-text: #919191;
 --primary-background: #fff;
 --secondary-background: #E6E6E6;
 --alternate-background: #04324d;
@@ -28,21 +29,22 @@ background: #ccc;
 
 .wrapper {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 50px;
-    height: 50px;
+    bottom: 10px; /* Añadido un margen de 10px para separación */
+    left: 10px; /* Añadido un margen de 10px para separación */
+    width: 30px; /* Reducido el tamaño */
+    height: 30px; /* Reducido el tamaño */
     transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out;
-    transform: translateY(calc(100% - 50px));
+    transform: translateY(calc(100% - 30px)); /* Ajustado al nuevo tamaño */
     background-color: var(--alternate-background);
     border-radius: 5px;
-}
-
-.wrapper:hover {
-transform: translateY(0%);
-width: 50%;
-height: 500px;
-}
+    z-index: 10000; /* Asegura que se superpone a otros elementos */
+  }
+  
+  .wrapper:hover {
+    transform: translateY(0%);
+    width: 375px; /* Expande al tamaño completo */
+    height: 500px; /* Altura expandida */
+  }
 
 .wrapper .title {
     background-color: var(--alternate-background);
@@ -70,6 +72,8 @@ margin-bottom: 4%;
 overflow-y: auto;
 background-color: var(--primary-background);
 border-radius: 5px;
+top: 50px;
+left: 50px;
 }
 
 .wrapper .form .inbox {
@@ -113,23 +117,15 @@ color: #333;
 background: #efefef;
 }
 
-.wrapper .typing-field {
-display: flex;
-height: 60px;
-width: 100%;
-align-items: center;
-justify-content: space-evenly;
-background: #efefef;
-border-top: 1px solid #d9d9d9;
-border-radius: 0 0 5px 5px;
-}
+
 
 .wrapper .typing-field .input-data {
-height: 58px;
-width: 367px;
-position: relative;
-}
-
+    height: 64px;
+    width: 367px;
+    position: relative;
+    top: 55px;
+    left: 5px;
+  }
 .wrapper .typing-field .input-data input {
 height: 100%;
 width: 100%;
