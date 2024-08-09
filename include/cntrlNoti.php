@@ -213,33 +213,32 @@ switch ($_REQUEST['action']) {
                 // Concatenar el contenido HTML para las tarjetas
                 $jTableResult['noticia'] .= '
                     <div class="rounded-container">
-    <div class="row blog-item px-3 pb-5 card-clickable" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="' . $registro['id_solicitud'] . '">
-        <h3 class="cards__title uppercase-title">' . $registro["titulo"] . '</h3>
+                        <div class="row blog-item px-3 pb-5 card-clickable" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="' . $registro['id_solicitud'] . '">
+                            <h3 class="cards__title uppercase-title">' . $registro["titulo"] . '</h3>
 
-        <div class="cards">
-            <div class="img">
-                <a href="#">
-                    <img src="include/' . $registro["imagen"] . '" alt="Image">
-                </a>
-            </div>
-            <div class="cards__content">
-                <br/>
-                <h3 class="cards__title">' . $registro["titulo"] . '</h3>
-                <div class="cards__description">
-                    <p>' . $registro["descripcion"] . '</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <a class="cards__button btn btn-link p-0 card-clickable" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="' . $registro['id_solicitud'] . '">
-        <button type="button" class="cards__button me-interesa-btn" data-id="' . $registro['id_solicitud'] . '">Me Interesa</button>
-    </a>
-    
-    <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> ' . $registro["fecha_mostrada"] . '</small>
-    <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web </small>
-    <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15</small>
-</div>           ';
+                            <div class="cards">
+                                <div class="img">
+                                    <a href="#">
+                                        <img src="include/' . $registro["imagen"] . '" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="cards__content">
+                                    <br/>
+                                    <h3 class="cards__title">' . $registro["titulo"] . '</h3>
+                                    <div class="cards__description">
+                                        <p>' . $registro["descripcion"] . '</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="cards__button btn btn-link p-0 card-clickable" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="' . $registro['id_solicitud'] . '">
+                            <button type="button" class="cards__button me-interesa-btn" data-id="' . $registro['id_solicitud'] . '">Me Interesa</button>
+                        </a>
+                        
+                        <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> ' . $registro["fecha_mostrada"] . '</small>
+                        <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web </small>
+                        <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15</small>
+                    </div>           ';
                     }
                 } else {
                     mysqli_rollback($conn);
@@ -672,31 +671,20 @@ switch ($_REQUEST['action']) {
                 $jTableResult['rst'] = "1";
                 $jTableResult['ms'] = "Exitoso";
                 $jTableResult['ListNoti'] .= '
-                    <div class="container bg-white pt-3">
+                <style>
+                    .text{
+                    font-size:2rem;
+                    }
+                </style>
+                    <div class="">
                     <div class="row px-3 pb-3 justify-content-center">
                         <div class="col-md-8">
                             <h2 class="mb-4 font-weight-bold"></h2>
                             <img class="img-fluid float-left w-50 mr-4 mb-3" src="../../include/' . $registro['imagen'] . '"
                                 alt="Image">
-                            <p class="m-0">
+                            <p class="text">
                             ' . $registro['descripcion'] . '
                             </p>
-                        </div>
-                        <div class="col-md-8 pt-4">
-                            <div class="d-flex flex-column skills">
-                                <div class="progress w-100 mb-4">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
-                                        aria-valuemax="100">Adaptability</div>
-                                </div>
-                                <div class="progress w-100 mb-4">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-                                        aria-valuemax="100">Research</div>
-                                </div>
-                                <div class="progress w-100">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                                        aria-valuemax="100">Editing</div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

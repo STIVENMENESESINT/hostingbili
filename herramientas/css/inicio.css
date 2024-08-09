@@ -40,7 +40,9 @@
 }
 
 /* Estilos para el aside (barra lateral) */  
-
+.text{
+    font-size:2rem;
+    }
 
 /* Estilos para la información del usuario en el aside */
 .aside__user-info {

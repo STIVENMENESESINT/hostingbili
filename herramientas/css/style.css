@@ -91,7 +91,9 @@ img {
   margin: 30px auto;
   border-radius: 3px;
 }
-
+.text{
+  font-size:2rem;
+  }
 .carrousel {
   width: 99%;
   height: 90%;
