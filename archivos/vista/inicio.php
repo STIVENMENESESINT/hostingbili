@@ -69,6 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
         </aside>
         <!-- Contenido principal -->
         <div class="container layout__content">
+            <h1 class="title">Multilingualism-Team<br> </h1>
+            <div class="divider"></div>
 
             <div>
 

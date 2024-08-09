@@ -35,7 +35,7 @@ if (mysqli_num_rows($result) > 0) {
         $jTableResult['msj'] = "Instructor Creado con Éxito.";
         $jTableResult['rstl'] = "1";
                 // Verificar si la imagen existe y no está vacía
-                $rutaImagen = 'uploads/' . htmlspecialchars($registro['imagen']);
+                $rutaImagen = '../include/uploads/' . htmlspecialchars($registro['imagen']);
                 $imagenHTML = "";
 
                 if (!empty($registro['imagen']) && file_exists($rutaImagen)) {
