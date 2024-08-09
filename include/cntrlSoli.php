@@ -1284,7 +1284,7 @@ switch ($_REQUEST['action'])
                             JOIN detallesolicitud ON solicitud.id_detallesolicitud = detallesolicitud.id_detallesolicitud
                             JOIN tiposolicitud ON detallesolicitud.id_tiposolicitud = tiposolicitud.id_tiposolicitud
                             JOIN programaformacion ON detallesolicitud.id_programaformacion = programaformacion.id_programaformacion
-                            WHERE detallesolicitud.id_categoria = 3 AND solicitud.id_estado = 9 
+                            WHERE (detallesolicitud.id_categoria = 3 OR detallesolicitud.id_tiposolicitud= 1) AND solicitud.id_estado = 9 
                 ";
                     if ($_SESSION['id_rol'] != 3) {
                     $busqueda .= " AND solicitud.id_userprofile='" . $_SESSION['id_userprofile'] . "'";
