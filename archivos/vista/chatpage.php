@@ -82,7 +82,7 @@
         <div>
             <center>
 
-                <label>Acá puedes hablar tranquil@</label>
+                <label>Bienvenido </label>
             </center>
             <br />
             <div class="display-chat" id="display-chat">
