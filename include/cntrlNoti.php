@@ -145,15 +145,18 @@ switch ($_REQUEST['action']) {
                             if ($registro["id_categoria"] == 3) {
                                 if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 4) {
                                     $jTableResult['noticia'] .= '
-                                            <a class="cards__button btn btn-link p-0" href="../../archivos/vista/about.php"><button type="button"  data-bs-toggle="modal" data-bs-target="#OfertModal" id="detalle_oferta" class="cards__button" data-id="' . $registro['id_solicitud'] . '">Me Interesa </button></a>
-                                            
+                                            <a class="cards__button btn btn-link p-0">
+                                                <button type="button" id="noticiaful" data-bs-toggle="modal" data-bs-target="#exampleModal" id="detalle_oferta" class="cards__button" data-id="' . $registro['id_solicitud'] . '">
+                                                    Me Interesa
+                                                </button>
+                                            </a>
                                         </div>
                                     </div>';
                                 } else {
                                     $jTableResult['noticia'] .= '
                                         
                                         <div class="col-sm-2">
-                                            <button type="button" class="cards__button btn btn-link p-0" data-toggle="modal" data-target="#myModal">
+                                            <button type="button" id="noticiaful"class="cards__button btn btn-link p-0" data-toggle="modal" data-target="#myModal" data-id="' . $registro['id_solicitud'] . '">
                                                 Ver
                                             </button>
                                         </div>
@@ -163,7 +166,7 @@ switch ($_REQUEST['action']) {
                             } else {
                                 $jTableResult['noticia'] .= '
                                     <div class="col-sm-2">
-                                        <button type="button" class="cards__button btn btn-link p-0" data-toggle="modal" data-target="#myModal">
+                                        <button type="button" id="noticiaful" class="cards__button btn btn-link p-0" data-toggle="modal" data-target="#myModal" data-id="' . $registro['id_solicitud'] . '">
                                             Ver
                                         </button>
                                     </div>
@@ -534,7 +537,6 @@ switch ($_REQUEST['action']) {
                 $jTableResult['Listof'] .= "
                     <form id='postulacionForm' enctype='multipart/form-data' class='form-container'>
                         <h6 class='label-identifier'>Publicante </h6>
-                        <label class='label-identifier'>Encargado</label>
                         <label id='solicitante' class='form-control'>
                             " . $registro['nombre'] . " " . $registro['nombre_dos'] . " " . $registro['apellido'] . "
                         </label>
@@ -598,6 +600,111 @@ switch ($_REQUEST['action']) {
                     ";
                 }
                 $jTableResult['Listof'] .= "</form>";
+            }
+        } else {
+            $jTableResult['rst'] = "0";
+            $jTableResult['ms'] = "Error al obtener los datos.";
+        }
+        echo json_encode($jTableResult);
+    break;
+    case 'ListarNoticia':
+        $jTableResult = array();
+        $jTableResult['rst'] = "";
+        $jTableResult['ms'] = "";
+        $jTableResult['ListNoti'] = "";
+        $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
+        $query = "SELECT 
+        s.id_solicitud,
+        s.id_estado, 
+        u.nombre, 
+        u.id_rol,
+        j.nombre AS nom_jornada,
+        m.nombre AS nom_modalidad,
+        nf.nombre AS nom_nf,
+        d.nombre_dpto AS nom_dpto, 
+        m_municipio.nombre_municipio AS nom_muni, 
+        p.nombre_poblado AS nom_vereda, 
+        u.nombre_dos,
+        u.apellido, 
+        au.nombre AS area_usu, 
+        ts.nombre AS Nombre_Solicitud, 
+        ds.id_tiposolicitud,
+        ds.descripcion,
+        a.nombre AS nom_area,
+        pf.nombre AS nom_pf,
+        pf.horas_curso,
+        pf.fecha_inicio,
+        pf.fecha_cierre,
+        r.nombre AS nom_rol,
+        pf.nivel_formacion,
+        pf.tipo_formacion,
+        pf.modalidad,
+        ds.imagen
+        FROM 
+            solicitud s
+        LEFT JOIN  
+            userprofile u ON s.id_userprofile = u.id_userprofile
+        LEFT JOIN   
+            detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
+        LEFT JOIN
+            programaformacion pf ON ds.id_programaformacion = pf.id_programaformacion
+        LEFT JOIN  
+            departamentos d ON u.cod_dpto = d.cod_dpto
+        LEFT JOIN  
+            municipios m_municipio ON u.cod_municipio = m_municipio.cod_municipio
+        LEFT JOIN  
+            poblados p ON u.cod_poblado = p.cod_poblado
+        LEFT JOIN   
+            tiposolicitud ts ON ds.id_tiposolicitud = ts.id_tiposolicitud
+        LEFT JOIN  
+            area au ON u.id_area = au.id_area
+        LEFT JOIN  
+            area a ON pf.id_area = a.id_area
+        LEFT JOIN
+            jornada j ON pf.id_jornada = j.id_jornada
+        LEFT JOIN
+            modalidad m ON pf.id_modalidad = m.id_modalidad
+        LEFT JOIN
+            nivelformacion nf ON pf.id_nivel_formacion = nf.id_nivel_formacion
+            LEFT JOIN
+            rol r ON u.id_rol = r.id_rol
+        WHERE 
+            s.id_solicitud = '$id_solicitud' AND ds.id_tiposolicitud = 4";
+        $result = mysqli_query($conn, $query);
+        if ($result) {
+            while ($registro = mysqli_fetch_array($result)) {
+                $jTableResult['rst'] = "1";
+                $jTableResult['ms'] = "Exitoso";
+                $jTableResult['ListNoti'] .= '
+                    <div class="container bg-white pt-3">
+                    <div class="row px-3 pb-3 justify-content-center">
+                        <div class="col-md-8">
+                            <h2 class="mb-4 font-weight-bold"></h2>
+                            <img class="img-fluid float-left w-50 mr-4 mb-3" src="../../include/' . $registro['imagen'] . '"
+                                alt="Image">
+                            <p class="m-0">
+                            ' . $registro['descripcion'] . '
+                            </p>
+                        </div>
+                        <div class="col-md-8 pt-4">
+                            <div class="d-flex flex-column skills">
+                                <div class="progress w-100 mb-4">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"
+                                        aria-valuemax="100">Adaptability</div>
+                                </div>
+                                <div class="progress w-100 mb-4">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+                                        aria-valuemax="100">Research</div>
+                                </div>
+                                <div class="progress w-100">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                                        aria-valuemax="100">Editing</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    ';
             }
         } else {
             $jTableResult['rst'] = "0";

@@ -219,7 +219,28 @@ function cargarcosas(){
     });
     
 }
-
+$(document).on("click", "#noticiaful", function () {
+    var idSolicitud = $(this).data('id');
+    $.post("../../include/cntrlNoti.php", {
+        action: 'ListarNoticia',
+        id_solicitud: idSolicitud
+    },
+    function(data) {
+        if(data.rst=="1"){	
+            $("#noticiaFull").html(data.ListNoti); } 
+            else{	
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.ms
+                });
+            }
+    },
+    'json'
+    ).fail(function(xhr, status, error) {
+        console.error(error);
+    });
+});
 $(document).on("click", "#MisSoliActivate", function () {
     $.post("../../include/select.php", {
         action: 'MisNoti' 
@@ -262,6 +283,7 @@ $(document).on("click", "#detalle_oferta", function () {
     function(data) {
         if (data.rst=="1"){
             $("#formdetalle_oferta").html(data.Listof);
+            
             $(document).on("click", "#ofertarme", function() {
                 var formData = new FormData($('#postulacionForm')[0]);
                 formData.append('action', 'Postular');
