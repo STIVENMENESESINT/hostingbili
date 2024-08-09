@@ -44,7 +44,7 @@ switch ($_REQUEST['action'])
         }
         // Devolver el resultado como JSON
         print json_encode($jTableResult);
-        break;
+    break;
     case 'crgrMuni':
         $jTableResult = array();                
         $jTableResult['listMuni']="";
@@ -453,7 +453,7 @@ switch ($_REQUEST['action'])
         }
     
         print json_encode($jTableResult);
-break;
+    break;
     
 }
 mysqli_close($conn);
