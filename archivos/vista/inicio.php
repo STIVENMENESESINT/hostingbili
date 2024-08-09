@@ -120,8 +120,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                     </style>
                     <?php
-        include_once('calen.php');
-    ?>
+                        include_once('calen.php');
+                    ?>
                     <?php 
                         include_once('publicarnoticiacarrusel.php');
                     ?>

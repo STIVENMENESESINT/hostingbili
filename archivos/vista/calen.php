@@ -1,5 +1,4 @@
 <?php
-
 // Incluir el archivo de configuración de conexión a la base de datos
 require_once('../../calendario/action/conexao.php');
 
@@ -66,41 +65,38 @@ exit;
         }
         </script>
 
-        <br />
         <div class="cabecera_menu">
             <!-- INICIO CALENDARIO -->
-            <div class="container">
-                <div class="row">
+            <div class="row">
 
-                    <div class="col-lg-12 text-center">
-                        <p class="lead"></p>
-                        <div id="calendar" class="col-centered">
-                        </div>
+                <div class="col-lg-12 text-center">
+                    <p class="lead"></p>
+                    <div id="calendar" class="col-centered">
                     </div>
                 </div>
-                <!-- /.row -->
-                <!-- Valida data dos Modals -->
-                <script type="text/javascript">
-                function validaForm(erro) {
-                    if (erro.inicio.value > erro.termino.value) {
-                        alert('Data de Inicio deve ser menor ou igual a de termino.');
-                        return false;
-                    } else if (erro.inicio.value == erro.termino.value) {
-                        alert('Defina um horario de inicio e termino.(24h)');
-                        return false;
-                    }
-                }
-                </script>
-
-
-                <!-- Modal Adicionar Evento -->
-                <?php include_once('../../calendario/modal/modalAdd.php'); ?>
-
-
-                <!-- Modal Editar/Mostrar/Deletar Evento -->
-                <?php include_once('../../calendario/modal/modalEdit.php'); ?>
-
             </div>
+            <!-- /.row -->
+            <!-- Valida data dos Modals -->
+            <script type="text/javascript">
+            function validaForm(erro) {
+                if (erro.inicio.value > erro.termino.value) {
+                    alert('Data de Inicio deve ser menor ou igual a de termino.');
+                    return false;
+                } else if (erro.inicio.value == erro.termino.value) {
+                    alert('Defina um horario de inicio e termino.(24h)');
+                    return false;
+                }
+            }
+            </script>
+
+
+            <!-- Modal Adicionar Evento -->
+            <?php include_once('../../calendario/modal/modalAdd.php'); ?>
+
+
+            <!-- Modal Editar/Mostrar/Deletar Evento -->
+            <?php include_once('../../calendario/modal/modalEdit.php'); ?>
+
 
             <!-- jQuery Version 1.11.1 -->
             <script src="../../herramientas/js/jquery.js"></script>
@@ -120,5 +116,30 @@ exit;
 
 </body>
 
+<style>
+#calendar-container {
+    width: 100%;
+    /* Para asegurar que el contenedor ocupe todo el espacio de la columna */
+    height: 300px;
+    /* Ajusta la altura para que sea más pequeño */
+    overflow: hidden;
+    /* Para que cualquier contenido que sobre salga se oculte */
+}
+
+#calendar {
+    max-width: 300px;
+    /* Ajusta el ancho máximo del calendario */
+    height: 100%;
+    /* Hace que el calendario ocupe toda la altura del contenedor */
+    margin: 0 auto;
+    /* Centra el calendario dentro del contenedor */
+}
+
+
+.fc-day-grid-event .fc-content {
+    font-size: 0.8em;
+    /* Reduce el tamaño del texto para que se ajuste al espacio pequeño */
+}
+</style>
 
 </html>
