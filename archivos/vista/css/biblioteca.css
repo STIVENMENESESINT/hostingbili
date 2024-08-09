@@ -17,7 +17,11 @@
 
 /* Estilo para el elemento 'body' y 'html' */
 
-
+::selection {
+    color: #fff;
+    background: #fd7d1c;
+    }
+    
 /* Contenedor para la imagen de fondo */
 .background-image-container {
     background-image: url('../img/'); /* URL de la imagen de fondo */

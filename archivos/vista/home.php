@@ -24,7 +24,7 @@ if (isset($_SESSION['id_userprofile'])) {
         Sistema de biblioteca bilingüismo
     </title>
 
-    <link rel="stylesheet" href="../vista/css/biblioteca.css">
+    <link rel="stylesheet" href="css/biblioteca.css">
 
 
     <link rel="stylesheet" href="../../herramientas/css/style.css">

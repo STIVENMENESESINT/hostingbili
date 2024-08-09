@@ -27,6 +27,11 @@ if (isset($_SESSION['id_userprofile'])){
         left: 85%;
 
     }
+    ::selection {
+color: #fff;
+background: #fd7d1c;
+}
+
     </style>
 </head>
 
