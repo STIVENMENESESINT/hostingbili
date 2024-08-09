@@ -213,37 +213,33 @@ switch ($_REQUEST['action']) {
                 // Concatenar el contenido HTML para las tarjetas
                 $jTableResult['noticia'] .= '
                     <div class="rounded-container">
-                        <div class="row blog-item px-3 pb-5">
-                            <h3 class="cards__title uppercase-title">' . $registro["titulo"] . '</h3>
+    <div class="row blog-item px-3 pb-5 card-clickable" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="' . $registro['id_solicitud'] . '">
+        <h3 class="cards__title uppercase-title">' . $registro["titulo"] . '</h3>
 
-                            <div class="cards">
-                            
-                                <div class="img">
-                                    <a href="">
-                                        <img src="include/' . $registro["imagen"] . '" alt="Image">
-                                    </a>
-                                    
-                                </div>
-                                <div class="cards__content">
-                                    <br/><h3 class="cards__title">' . $registro["titulo"] . '</h3>
-                                    <div class="cards__description">
-                                        
-                                        
-                                        <p>' . $registro["descripcion"] . '</p>
-                                        
-                                    </div>
-                                </div>
-                              
-                            </div>
-                            
-                        </div> 
-                        <a class="cards__button btn btn-link p-0">
-                            <button type="button" class="cards__button me-interesa-btn" data-id="' . $registro['id_solicitud'] . '">Me Interesa</button>
-                        </a>
-                        <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> ' . $registro["fecha_mostrada"] . '</small>
-                        <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web </small>
-                        <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15</small></div>
-                                        ';
+        <div class="cards">
+            <div class="img">
+                <a href="#">
+                    <img src="include/' . $registro["imagen"] . '" alt="Image">
+                </a>
+            </div>
+            <div class="cards__content">
+                <br/>
+                <h3 class="cards__title">' . $registro["titulo"] . '</h3>
+                <div class="cards__description">
+                    <p>' . $registro["descripcion"] . '</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a class="cards__button btn btn-link p-0 card-clickable" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="' . $registro['id_solicitud'] . '">
+        <button type="button" class="cards__button me-interesa-btn" data-id="' . $registro['id_solicitud'] . '">Me Interesa</button>
+    </a>
+    
+    <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> ' . $registro["fecha_mostrada"] . '</small>
+    <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Web </small>
+    <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15</small>
+</div>           ';
                     }
                 } else {
                     mysqli_rollback($conn);

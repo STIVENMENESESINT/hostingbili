@@ -415,8 +415,6 @@ $varDateTime = date("Y-m-d H:i:s");
                      <h1 class="title" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">NOTICIAS
                      </h1>
                      <div class="divider"></div>
-
-
                      <div id="noticia_creada2" class=" grid-container ">
                      </div>
 
@@ -425,26 +423,7 @@ $varDateTime = date("Y-m-d H:i:s");
 
              </div>
          </div>
-         <script>
-         $(document).ready(function() {
-             $('.me-interesa-btn').on('click', function() {
-                 var solicitudId = $(this).data('id');
-
-                 // Aquí puedes verificar si el usuario está autenticado
-                 var isAuthenticated =
-                     <?php echo isset($_SESSION['id_userprofile']) ? 'true' : 'false'; ?>;
-
-                 if (!isAuthenticated) {
-                     // Mostrar el modal de login
-                     $('#loginModal').modal('show');
-                 } else {
-                     // Aquí puedes manejar la lógica si el usuario está autenticado
-                     // Por ejemplo, abrir un modal con los detalles de la oferta
-                     $('#OfertModal').modal('show');
-                 }
-             });
-         });
-         </script>
+         
          <!-- Login Modal -->
          <div class=" modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
              <div class="modal-dialog">
@@ -500,246 +479,247 @@ $varDateTime = date("Y-m-d H:i:s");
                  </div>
              </div>
          </div>
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <!-- Cabecera del diálogo -->
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Regístrate</h5>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="addNewForm" id="addNewForm"
+                                        value="yes" onclick="FormEmpresa()">
+                                    <h5 class="modal-title" id="exampleModalLabel">Registro Empresa</h5>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <!-- FORMULARIO DE EMPRESA -->
+                                <div id="formEmpresa" style="display: none;">
+                                    <div class="form-container">
+                                        <div class="form-group">
+                                            <label for="nombre" class="form-label">Empresa</label>
+                                            <input type="text" id="nombre_empresa" name="nombre" class="form-input"
+                                                placeholder="Nombre de la empresa">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nit" class="form-label">NIT</label>
+                                            <input type="text" id="numeroiden_empresa" name="numeroiden_empresa"
+                                                class="form-input" placeholder="123456789">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Contacto Empresa</label>
+                                            <input type="tel" id="telefono_empresa" class="form-input"
+                                                placeholder="empresa@gmail.com">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email" class="form-label">Correo Electrónico</label>
+                                            <input type="email" id="correo_empresa" name="correo_empresa" class="form-input"
+                                                placeholder="usuario@gmail.com">
+                                        </div>
+                                        <hr>
+                                        <!-- REPRESENTANTE LEGAL -->
+                                        <div class="form-group">
+                                            <h3 class="form-label"><strong>Representante Legal</strong></h3>
+                                        </div>
+                                        <!-- Nombres y Apellidos -->
+                                        <div class="form-group">
+                                            <label for="nameusu" class="form-label">Primer Nombre:</label>
+                                            <input type="text" class="form-input" id="nameusu_rep" name="nameusu"
+                                                title="Primer Nombre" style="cursor:pointer;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nombre_dos" class="form-label">Segundo Nombre:</label>
+                                            <input type="text" class="form-input" id="nombre_dos_rep" name="nombre_dos"
+                                                title="Segundo Nombre">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="apellidoUsu" class="form-label">Primer Apellido:</label>
+                                            <input type="text" class="form-input" id="apellidoUsu_rep" name="apellidoUsu"
+                                                title="Primer Apellido">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="apellidoUsu_dos" class="form-label">Segundo Apellido:</label>
+                                            <input type="text" class="form-input" id="apellidoUsu_dos_rep"
+                                                name="apellidoUsu_dos" title="Segundo Apellido">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="id_tpdoc" class="form-label">Tipo de Documento:</label>
+                                            <select class="form-input" id="id_tpdoc_rep" name="id_tpdoc"
+                                                title="Tipo de Documento"></select>
+                                        </div>
+                                        <!-- Número de Documento -->
+                                        <div class="form-group">
+                                            <label for="numeroiden_registro" class="form-label">Número Documento:</label>
+                                            <input type="text" class="form-input" id="numeroiden_registro_rep"
+                                                name="numeroiden_registro" title="" style="cursor:pointer;"
+                                                onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                                                placeholder="123456789">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="id_genero" class="form-label">Sexo:</label>
+                                            <select class="form-input" id="id_genero_rep" name="id_genero"></select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="celular" class="form-label">Celular:</label>
+                                            <input type="text" class="form-input" id="celular_rep" name="celular"
+                                                placeholder="Celular" title="Teléfono móvil" placeholder="+1 (555) 123-4567">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="correo_registro" class="form-label">Correo Electrónico:</label>
+                                            <input type="text" class="form-input" id="correo_registro_rep"
+                                                name="correo_registro" placeholder="Correo Electrónico" title="@example.com">
+                                        </div>
+                                        <!-- Clave-->
+                                        <div class="form-group">
+                                            <label for="clave_registro" class="form-label">Clave:</label>
+                                            <input type="password" class="form-input" id="clave_registro_rep" name="clave"
+                                                title="Clave">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="form-button form-button-submit" id='btnGuardarEmpresa'
+                                                name='btnGuardar'>Registrar</button>
+                                            <button type="reset" class="form-button form-button-reset"
+                                                data-bs-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
 
-         <!-- Registro Usuario Modal -->
-         <div class="modal fade" id="registroUsuario">
-             <div class="modal-dialog modal-dialog-scrollable">
-                 <div class="modal-content">
-                     <!-- Cabecera del diálogo -->
-                     <div class="modal-header">
-                         <h5 class="modal-title" id="exampleModalLabel">Regístrate</h5>
-                         <div class="form-check form-check-inline">
-                             <input class="form-check-input" type="checkbox" name="addNewForm" id="addNewForm"
-                                 value="yes" onclick="FormEmpresa()">
-                             <h5 class="modal-title" id="exampleModalLabel">Registro Empresa</h5>
-                         </div>
-                     </div>
-                     <div class="modal-body">
-                         <!-- FORMULARIO DE EMPRESA -->
-                         <div id="formEmpresa" style="display: none;">
-                             <div class="form-container">
-                                 <div class="form-group">
-                                     <label for="nombre" class="form-label">Empresa</label>
-                                     <input type="text" id="nombre_empresa" name="nombre" class="form-input"
-                                         placeholder="Nombre de la empresa">
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="nit" class="form-label">NIT</label>
-                                     <input type="text" id="numeroiden_empresa" name="numeroiden_empresa"
-                                         class="form-input" placeholder="123456789">
-                                 </div>
-                                 <div class="form-group">
-                                     <label class="form-label">Contacto Empresa</label>
-                                     <input type="tel" id="telefono_empresa" class="form-input"
-                                         placeholder="empresa@gmail.com">
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="email" class="form-label">Correo Electrónico</label>
-                                     <input type="email" id="correo_empresa" name="correo_empresa" class="form-input"
-                                         placeholder="usuario@gmail.com">
-                                 </div>
-                                 <hr>
-                                 <!-- REPRESENTANTE LEGAL -->
-                                 <div class="form-group">
-                                     <h3 class="form-label"><strong>Representante Legal</strong></h3>
-                                 </div>
-                                 <!-- Nombres y Apellidos -->
-                                 <div class="form-group">
-                                     <label for="nameusu" class="form-label">Primer Nombre:</label>
-                                     <input type="text" class="form-input" id="nameusu_rep" name="nameusu"
-                                         title="Primer Nombre" style="cursor:pointer;">
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="nombre_dos" class="form-label">Segundo Nombre:</label>
-                                     <input type="text" class="form-input" id="nombre_dos_rep" name="nombre_dos"
-                                         title="Segundo Nombre">
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="apellidoUsu" class="form-label">Primer Apellido:</label>
-                                     <input type="text" class="form-input" id="apellidoUsu_rep" name="apellidoUsu"
-                                         title="Primer Apellido">
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="apellidoUsu_dos" class="form-label">Segundo Apellido:</label>
-                                     <input type="text" class="form-input" id="apellidoUsu_dos_rep"
-                                         name="apellidoUsu_dos" title="Segundo Apellido">
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="id_tpdoc" class="form-label">Tipo de Documento:</label>
-                                     <select class="form-input" id="id_tpdoc_rep" name="id_tpdoc"
-                                         title="Tipo de Documento"></select>
-                                 </div>
-                                 <!-- Número de Documento -->
-                                 <div class="form-group">
-                                     <label for="numeroiden_registro" class="form-label">Número Documento:</label>
-                                     <input type="text" class="form-input" id="numeroiden_registro_rep"
-                                         name="numeroiden_registro" title="" style="cursor:pointer;"
-                                         onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
-                                         placeholder="123456789">
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="id_genero" class="form-label">Sexo:</label>
-                                     <select class="form-input" id="id_genero_rep" name="id_genero"></select>
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="celular" class="form-label">Celular:</label>
-                                     <input type="text" class="form-input" id="celular_rep" name="celular"
-                                         placeholder="Celular" title="Teléfono móvil" placeholder="+1 (555) 123-4567">
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="correo_registro" class="form-label">Correo Electrónico:</label>
-                                     <input type="text" class="form-input" id="correo_registro_rep"
-                                         name="correo_registro" placeholder="Correo Electrónico" title="@example.com">
-                                 </div>
-                                 <!-- Clave-->
-                                 <div class="form-group">
-                                     <label for="clave_registro" class="form-label">Clave:</label>
-                                     <input type="password" class="form-input" id="clave_registro_rep" name="clave"
-                                         title="Clave">
-                                 </div>
-                                 <div class="modal-footer">
-                                     <button type="submit" class="form-button form-button-submit" id='btnGuardarEmpresa'
-                                         name='btnGuardar'>Registrar</button>
-                                     <button type="reset" class="form-button form-button-reset"
-                                         data-bs-dismiss="modal">Cancelar</button>
-                                 </div>
-                             </div>
-                         </div>
+                                <!-- FORMULARIO USUARIOS -->
+                                <style>
+                                .form-container {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    justify-content: space-between;
 
-                         <!-- FORMULARIO USUARIOS -->
-                         <style>
-                         .form-container {
-                             display: flex;
-                             flex-wrap: wrap;
-                             justify-content: space-between;
+                                }
 
-                         }
+                                .form-group {
+                                    flex: 1 1 46%;
+                                    display: flex;
+                                    flex-direction: column;
+                                    padding: 7px;
+                                }
 
-                         .form-group {
-                             flex: 1 1 46%;
-                             display: flex;
-                             flex-direction: column;
-                             padding: 7px;
-                         }
+                                .form-group-full {
+                                    flex: 1 1 100%;
+                                }
 
-                         .form-group-full {
-                             flex: 1 1 100%;
-                         }
+                                .modal-footer {
+                                    display: flex;
+                                    justify-content: center;
+                                    gap: 10px;
+                                    margin-top: 20px;
+                                    width: 100%;
+                                }
 
-                         .modal-footer {
-                             display: flex;
-                             justify-content: center;
-                             gap: 10px;
-                             margin-top: 20px;
-                             width: 100%;
-                         }
+                                .modal-body {
 
-                         .modal-body {
+                                    /* Increased padding for more space inside the card */
+                                    max-width: 800px;
+                                    /* Set a maximum width for the card */
+                                    max-height: 90vh;
+                                    /* Set a maximum height for the card */
+                                    width: 100%;
+                                    /* Make sure it takes the full available width */
 
-                             /* Increased padding for more space inside the card */
-                             max-width: 800px;
-                             /* Set a maximum width for the card */
-                             max-height: 90vh;
-                             /* Set a maximum height for the card */
-                             width: 100%;
-                             /* Make sure it takes the full available width */
+                                }
 
-                         }
+                                .form-label {
+                                    margin-bottom: 2px;
+                                }
 
-                         .form-label {
-                             margin-bottom: 2px;
-                         }
+                                .form-input {
+                                    padding: 6px;
+                                    margin-bottom: -15px;
+                                    border: 1px solid #ccc;
+                                    border-radius: 4px;
+                                }
 
-                         .form-input {
-                             padding: 6px;
-                             margin-bottom: -15px;
-                             border: 1px solid #ccc;
-                             border-radius: 4px;
-                         }
+                                .form-button {
+                                    padding: 10px 20px;
+                                    border: none;
+                                    border-radius: 4px;
+                                    cursor: pointer;
+                                }
 
-                         .form-button {
-                             padding: 10px 20px;
-                             border: none;
-                             border-radius: 4px;
-                             cursor: pointer;
-                         }
+                                .btn-success {
+                                    background-color: #28a745;
+                                    color: white;
+                                }
 
-                         .btn-success {
-                             background-color: #28a745;
-                             color: white;
-                         }
-
-                         .form-button-reset {
-                             background-color: #dc3545;
-                             color: white;
-                         }
-                         </style>
-                         <div id="formRegisUsu" class="form-container">
-                             <div class="form-group">
-                                 <label for="nameusu" class="form-label">Nombres Completos:</label>
-                                 <input type="text" class="form-input" id="nameusu" name="nameusu" title="Primer Nombre"
-                                     style="cursor:pointer;">
-                             </div>
-                             <div class="form-group">
-                                 <label for="apellidoUsu" class="form-label">Apellidos Completos:</label>
-                                 <input type="text" class="form-input" id="apellidoUsu" name="apellidoUsu"
-                                     title="Primer Apellido">
-                             </div>
-                             <div class="form-group">
-                                 <label for="id_tpdoc" class="form-label">Tipo de Documento:</label>
-                                 <select class="form-input" id="id_tpdoc" name="id_tpdoc"
-                                     title="Tipo de Documento"></select>
-                             </div>
-                             <div class="form-group">
-                                 <label for="numeroiden_registro" class="form-label">Número Documento:</label>
-                                 <input type="text" class="form-input" id="numeroiden_registro"
-                                     name="numeroiden_registro" title="" style="cursor:pointer;"
-                                     onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
-                             </div>
-                             <div class="form-group">
-                                 <label for="id_genero" class="form-label">Sexo:</label>
-                                 <select class="form-input" id="id_genero" name="id_genero"></select>
-                             </div>
-                             <div class="form-group">
-                                 <label for="celular" class="form-label">Celular:</label>
-                                 <input type="text" class="form-input" id="celular" name="celular" placeholder="Celular"
-                                     title="Teléfono móvil">
-                             </div>
-                             <div class="form-group">
-                                 <label for="correo_registro" class="form-label">Correo Electrónico:</label>
-                                 <input type="text" class="form-input" id="correo_registro" name="correo_registro"
-                                     placeholder="Correo Electrónico" title="@example.com">
-                             </div>
-                             <div class="form-group">
-                                 <label for="cod_dpto" class="form-label">Departamento:</label>
-                                 <select class="form-input" id="cod_dpto" name="cod_dpto" title="Departamento"
-                                     style="cursor:pointer;"></select>
-                             </div>
-                             <div class="form-group">
-                                 <label for="cod_municipio" class="form-label">Municipio:</label>
-                                 <select class="form-input" id="cod_municipio" name="cod_municipio" title="Municipio"
-                                     style="cursor:pointer;"></select>
-                             </div>
-                             <div class="form-group">
-                                 <label for="cod_poblado" class="form-label">Poblado:</label>
-                                 <select class="form-input" id="cod_poblado" name="cod_poblado" title="Poblado"
-                                     style="cursor:pointer;"></select>
-                             </div>
-                             <div class="form-group">
-                                 <label for="clave_registro" class="form-label">Contraseña:</label>
-                                 <input type="password" class="form-input" id="clave_registro" name="clave"
-                                     title="Clave">
-                             </div>
-                             <div class="modal-footer">
-                                 <button type="submit" class="form-button btn-success" id="btnGuardar"
-                                     name="btnGuardar">Registrar</button>
-                                 <button type="reset" class="form-button form-button-reset"
-                                     data-bs-dismiss="modal">Cancelar</button>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
+                                .form-button-reset {
+                                    background-color: #dc3545;
+                                    color: white;
+                                }
+                                </style>
+                                <div id="formRegisUsu" class="form-container">
+                                    <div class="form-group">
+                                        <label for="nameusu" class="form-label">Nombres Completos:</label>
+                                        <input type="text" class="form-input" id="nameusu" name="nameusu" title="Primer Nombre"
+                                            style="cursor:pointer;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apellidoUsu" class="form-label">Apellidos Completos:</label>
+                                        <input type="text" class="form-input" id="apellidoUsu" name="apellidoUsu"
+                                            title="Primer Apellido">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_tpdoc" class="form-label">Tipo de Documento:</label>
+                                        <select class="form-input" id="id_tpdoc" name="id_tpdoc"
+                                            title="Tipo de Documento"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="numeroiden_registro" class="form-label">Número Documento:</label>
+                                        <input type="text" class="form-input" id="numeroiden_registro"
+                                            name="numeroiden_registro" title="" style="cursor:pointer;"
+                                            onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_genero" class="form-label">Sexo:</label>
+                                        <select class="form-input" id="id_genero" name="id_genero"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="celular" class="form-label">Celular:</label>
+                                        <input type="text" class="form-input" id="celular" name="celular" placeholder="Celular"
+                                            title="Teléfono móvil">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="correo_registro" class="form-label">Correo Electrónico:</label>
+                                        <input type="text" class="form-input" id="correo_registro" name="correo_registro"
+                                            placeholder="Correo Electrónico" title="@example.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cod_dpto" class="form-label">Departamento:</label>
+                                        <select class="form-input" id="cod_dpto" name="cod_dpto" title="Departamento"
+                                            style="cursor:pointer;"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cod_municipio" class="form-label">Municipio:</label>
+                                        <select class="form-input" id="cod_municipio" name="cod_municipio" title="Municipio"
+                                            style="cursor:pointer;"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cod_poblado" class="form-label">Poblado:</label>
+                                        <select class="form-input" id="cod_poblado" name="cod_poblado" title="Poblado"
+                                            style="cursor:pointer;"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="clave_registro" class="form-label">Contraseña:</label>
+                                        <input type="password" class="form-input" id="clave_registro" name="clave"
+                                            title="Clave">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="form-button btn-success" id="btnGuardar"
+                                            name="btnGuardar">Registrar</button>
+                                        <button type="reset" class="form-button form-button-reset"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
          </div>
          <!-- Restablecer contraseña Modal -->
          <div class="modal fade" id="RestablecerContraseña">

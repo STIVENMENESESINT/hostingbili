@@ -69,8 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </aside>
         <!-- Contenido principal -->
         <div class="container layout__content">
-            <h1 class="title">Multilingualism-Team<br> </h1>
-            <div class="divider"></div>
 
             <div>
 
@@ -122,8 +120,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                     </style>
                     <?php
-                        include_once('calen.php');
-                    ?>
+        include_once('calen.php');
+    ?>
                     <?php 
                         include_once('publicarnoticiacarrusel.php');
                     ?>
