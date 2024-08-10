@@ -82,7 +82,55 @@ switch ($_REQUEST['action'])
             
         print json_encode($jTableResult);
     break;
-    
+    case 'Usuarios':
+        $jTableResult = array();
+        $jTableResult['rstl']="";
+        $jTableResult['msj']="";
+        $jTableResult['Usu']='
+            <div class="container">
+                        
+                        <table class="table table-bordered table-striped table-hover text-center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Identificacion</th>
+                            <th>Correo</th>
+                            <th>Estado</th>
+                            <th>Permisos</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+            $query="SELECT u.id_userprofile, u.nombre, u.correo, u.apellido, u.numeroiden, e.nombre AS nom_estado FROM userprofile u JOIN estado e ON u.id_estado = e.id_estado WHERE u.id_estado=1";
+            $resultado = mysqli_query($conn, $query);
+            $numero = mysqli_num_rows($resultado);
+            if($numero==0){
+                $jTableResult['Usu']="<thead><tr><th scope='col'>&nbsp;&nbsp&nbsp;&nbsp;No Existen Usuarios Activos</th></tr></thead>";
+                $jTableResult['msj']= "NO EXISTEN DATOS.";
+                $jTableResult['rslt']= "0";						
+            }else{
+                while($registro = mysqli_fetch_array($resultado)){
+                    $jTableResult['rslt']= "1";
+                    $jTableResult['Usu'].="<tr>";
+                    $jTableResult['Usu'].="
+                                                <td>".$registro['id_userprofile']."</td>
+                                                <td>".$registro['nombre']."</td>
+                                                <td>".$registro['apellido']."</td>
+                                                <td>".$registro['numeroiden']."</td>
+                                                <td>".$registro['correo']."</td>
+                                                <td>".$registro['nom_estado']."</td>
+                                                <td><button id='btn_permiso'type='button'class='btn btn-success' data-id='".$registro['id_userprofile']."' data-bs-toggle='modal' data-bs-target='#staticBackdrop'>Gestionar</button></td>
+                                                ";
+                    $jTableResult['Usu'].="</tr>";
+                }
+                $jTableResult['Usu'].="</div>
+                </div>";
+                $jTableResult['msj']= "";
+            }
+            
+        print json_encode($jTableResult);
+    break;
     case 'permisoUsuario':
         $jTableResult = array();
         $jTableResult['rstl'] = "";

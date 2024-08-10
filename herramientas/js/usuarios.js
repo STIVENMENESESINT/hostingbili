@@ -3,8 +3,11 @@ $(document).on("click", "#btn_Buscar",function ()	{
     action:'buscarUsuario',
     dato_txt:$("#dato_txt").val()
     }, function(data){
-        if(data.rstl=='1'){ $("#usuarios").html(data.listaUsu); }
-        else { $("#usuarios").html(data.listaUsu); }
+        if(data.rstl=='1'){ 
+            $("#usuarios").hide();
+            $("#Busuarios").html(data.listaUsu); 
+        }
+        else { $("#Busuarios").html(data.listaUsu); }
     }, 'json');	
 });
 $(document).on("click", "#btn_permiso", function () {
@@ -17,6 +20,24 @@ $(document).on("click", "#btn_permiso", function () {
     }, function (data) {
         if (data.rstl == '1') {
             $("#id_permiso").html(data.listaPermiso);
+
+            // Llamar a función para cargar permisos y gestionar eventos de permisos
+            cargarPermisos(iduserprofile);
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.msj
+            });
+        }
+    }, 'json');
+});
+$(document).ready(function(){
+    $.post("../../include/cntrlUsuarios.php", {
+        action: 'Usuarios'
+    }, function (data) {
+        if (data.rslt == '1') {
+            $("#usuarios").html(data.Usu);
 
             // Llamar a función para cargar permisos y gestionar eventos de permisos
             cargarPermisos(iduserprofile);
