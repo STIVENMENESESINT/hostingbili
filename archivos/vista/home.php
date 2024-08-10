@@ -75,12 +75,14 @@ if (isset($_SESSION['id_userprofile'])) {
                         </select>
                         </div>
                         <div class="welcome-section">
+
                         <h1 class="title" 
-                            data-lang-es="Biblioteca Bilingüismo" 
-                            data-lang-en="Bilingualism Library" 
-                            data-lang-fr="Bibliothèque Bilinguisme">
-                            Biblioteca Bilingüismo  B-Team-Language
+                            data-lang-es="BIBLIOTECA MULTILINGUALISM TEAM" 
+                            data-lang-en="MULTILINGUALISM TEAM LIBRARY" 
+                            data-lang-fr="BIBLIOTHÈQUE DE L’ÉQUIPE MULTILINGUISME">
+                            BIBLIOTECA MULTILINGUALISM TEAM
                         </h1>
+
 
                         <div class="divider"></div>
                         <h2 class="subtitle" data-lang-es="¡Bienvenido a tu espacio de conocimiento!" data-lang-en="Welcome to your space of knowledge!" data-lang-fr="Bienvenue dans votre espace de connaissance !">
@@ -175,7 +177,7 @@ if (isset($_SESSION['id_userprofile'])) {
                             </div>
                         </div>
 
-                        
+
                         <!-- Imagen grande debajo del menú -->
                         <div class="large-image">
                             <img src="../../imagenes/bibli-home.png" alt="Imagen Grande">
