@@ -29,20 +29,21 @@ background: #ccc;
 
 .wrapper {
     position: fixed;
-    bottom: 10px; /* Añadido un margen de 10px para separación */
-    left: 10px; /* Añadido un margen de 10px para separación */
-    width: 30px; /* Reducido el tamaño */
-    height: 30px; /* Reducido el tamaño */
+    bottom: 0; /* Añadido un margen de 10px para separación */
+    left: 0; /* Añadido un margen de 10px para separación */
+    width: 70px;
+    height: 35px; /* Reducido el tamaño */
     transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out;
     transform: translateY(calc(100% - 30px)); /* Ajustado al nuevo tamaño */
     background-color: var(--alternate-background);
     border-radius: 5px;
+    border: 2px solid black;
     z-index: 10000; /* Asegura que se superpone a otros elementos */
   }
   
   .wrapper:hover {
     transform: translateY(0%);
-    width: 375px; /* Expande al tamaño completo */
+    width: 380px; /* Expande al tamaño completo */
     height: 500px; /* Altura expandida */
   }
 
@@ -67,8 +68,8 @@ display: block;
 
 .wrapper .form {
 padding: 20px 15px;
-height: 337px;
-margin-bottom: 4%;
+height: 353px;
+margin-bottom: -5%;
 overflow-y: auto;
 background-color: var(--primary-background);
 border-radius: 5px;
@@ -84,7 +85,7 @@ align-items: baseline;
 
 .wrapper .form .user-inbox {
 justify-content: flex-end;
-margin: 13px 0;
+margin: 1rem;
 }
 
 .wrapper .form .inbox .icon {
@@ -197,12 +198,4 @@ overflow: auto;
 padding: 26px;
 border-radius: 5px;
 background-color: var(--primary-background);
-}
-
-.message {
-background-color: var(--secondary-background);
-color: var(--alternate-text);
-border-radius: 5px;
-padding: 10px;
-margin-bottom: 10px;
 }
