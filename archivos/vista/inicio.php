@@ -168,20 +168,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <div>
                     <div id="revista">
-                        <h1 class="title" data-lang-es="Revista Sena B-Team" data-lang-en="Sena B-Team Magazine"
-                            data-lang-fr="Magazine de l'équipe B de Sena">Revista Sena B-Team </h1>
+                        <h1 class="title" data-lang-es="Revista SENA B-Team" data-lang-en="SENA B-Team Magazine"
+                            data-lang-fr="Magazine de l'équipe B de SENA">Revista SENA B-Team </h1>
                         <div class="divider"></div>
 
                         <a id="hideRevista" type="button" class="nav-link nav-item-hover">
                             <i class="fas fa-book nav-link"></i>
-                            <span class="nav-item" data-lang-es="Ocultar Revista" data-lang-en="Hide Magazine"
-                                data-lang-fr="Cacher le Magazine">Ocultar
-                                Revista</span>
+                            <span class="nav-item" data-lang-es="Ocultar" data-lang-en="Hide"
+                                data-lang-fr="Cacher">Ocultar
+                            </span>
                         </a>
+
+
                         <?php
                             if ($_SESSION['id_rol'] == 3) {
                                 echo '
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#revistaModal" class="nav-link nav-item-hover">
+                                     <a type="button" data-bs-toggle="modal" data-bs-target="#revistaModal" class="nav-link nav-item-hover"> 
                                         <i class="fas fa-plus nav-link" ></i>
                                         <span class="nav-item"  data-lang-es="Nueva Revista" data-lang-en="New Magazine" data-lang-fr="Nouveau Magazine">Nueva Revista</span>
                                     </a>
@@ -233,7 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <!-- Modal Header -->
             <div class="modal-header">
                 <h4 class="modal-title">Noticias/Articulos
-                    
+
                 </h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
@@ -394,7 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['pdf'])) {
     $file = $_FILES['pdf'];
     $uploadDir = '../../imagenes/'; // Cambia esto a la ruta donde quieras guardar el archivo
-    $uploadFile = $uploadDir . basename($file['name']);
+    $uploadFile = $uploadDir . baSENAme($file['name']);
     
     // Verifica que el archivo sea un PDF
     if ($file['type'] === 'application/pdf') {

@@ -179,16 +179,10 @@ pointer-events: auto;
 background: #fd7d1c;
 }
 
-h2 {
-color: var(--alternate-text);
-}
 
-label {
-color: white;
-}
 
 span {
-color: #673;
+
 font-weight: bold;
 }
 

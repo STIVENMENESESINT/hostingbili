@@ -89,8 +89,8 @@
                 }
             </style>
                 <li>
-                    <a href="usuarios.php" class="nav-item ">
-                        <i class="fas fa-graduation-cap camilo2 "></i>
+                    <a href="usuarios.php" class="nav-link nav-item-hover">
+                        <i class="fas fa-graduation-cap camilo2"></i>
                         <span class="camilo">
                             Administrar Usuarios
                             
@@ -98,8 +98,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="solicitud.php" class="nav-item">
-                        <i class="fas fa-check-double"></i>
+                    <a href="solicitud.php" class="nav-link nav-item-hover">
+                        <i class="fas fa-check-double nav-link"></i>
                         <span class="">
                             Administrar Solicitudes
                             
@@ -107,8 +107,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="GprogramaFormacion.php" class="nav-item ">
-                        <i class="fas fa-graduation-cap "></i>
+                    <a href="GprogramaFormacion.php" class="nav-link nav-item-hover">
+                        <i class="fas fa-graduation-cap nav-link"></i>
                         <span class="">
                             Programa Formación
                             
@@ -116,8 +116,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="ofertas.php" class="nav-item ">
-                        <i class="fas fa-graduation-cap "></i>
+                    <a href="ofertas.php" class="nav-link nav-item-hover ">
+                        <i class="fas fa-graduation-cap nav-link"></i>
                         <span class="">
                             Ofertas
                         </span>
@@ -130,24 +130,24 @@
         if ($_SESSION['id_rol'] == 2) {
             echo '
                 <li>
-                    <a href="solicitud.php" class="nav-item">
-                        <i class="fas fa-check-double "></i>
+                    <a href="solicitud.php" class="nav-link nav-item-hover">
+                        <i class="fas fa-check-double nav-link "></i>
                         <span class="">Solicitudes
                             
                         </span>
                     </a>
                 </li>
                 <li>
-                    <a href="asignaciones.php" class="nav-item">
-                        <i class="fas fa-check-double fa-fw fa-lg"></i>
+                    <a href="asignaciones.php" class="nav-link nav-item-hover">
+                        <i class="fas fa-check-double fa-fw fa-lg nav-link"></i>
                         <span class="">Asignaciones
                         
                         </span>
                     </a>
                 </li>
                 <li>
-                    <a href="GprogramaFormacion.php" class="nav-item ">
-                        <i class="fas fa-graduation-cap fa-fw fa-lg"></i>
+                    <a href="GprogramaFormacion.php" class="nav-link nav-item-hover">
+                        <i class="fas fa-graduation-cap fa-fw fa-lg nav-link" ></i>
                         <span class="">Programa Formación
                             
                         </span>
@@ -160,8 +160,8 @@
         if ($_SESSION['id_rol'] == 1) {
             echo '
                 <li>
-                    <a href="solicitud.php" class="nav-item">
-                        <i class="fas fa-check-double fa-fw fa-lg"></i>
+                    <a href="solicitud.php" class="nav-link nav-item-hover">
+                        <i class="fas fa-check-double fa-fw fa-lg nav-lin"></i>
                         <span class="">Solicitudes
                             
                         </span>
@@ -174,8 +174,8 @@
         if ($_SESSION['id_rol'] == 5) {
             echo '
                 <li>
-                    <a href="solicitud.php" class="nav-item">
-                        <i class="fas fa-check-double fa-fw fa-lg"></i>
+                    <a href="solicitud.php" class="nav-link nav-item-hover">
+                        <i class="fas fa-check-double fa-fw fa-lg nav-link"></i>
                         <span class="">Solicitudes
                             
                         </span>

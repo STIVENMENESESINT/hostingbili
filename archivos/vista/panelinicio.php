@@ -1,70 +1,65 @@
 <div class="navbar">
-    <style>
-        .panel_script{
-            color: white;
-            position: absolute;
-            left: 5rem;
-            bottom: 1.5rem;
-        }
-        .nav-link{
-            font-size: 3rem;
-            bottom:1rem ;
-        }
-    </style>
+
     <ul class="navbar-nav">
-        <a id="showRevista" type="button" class="nav-item">
-            <i class="fas fa-book-open nav-link"><br>
-                <span class="panel_script" data-lang-es="Desplegar Revista" data-lang-en="Expand Magazine"
-                    data-lang-fr="Déplier le Magazine">
+
+        <li>
+            <a id="showRevista" type="button" class="nav-link nav-item-hover">
+                <i class="fas fa-graduation-cap nav-link"></i>
+                <span class="nav-item panel_script" data-lang-es="Revista" data-lang-en="Magazine"
+                    data-lang-fr="Magazine">
                     Revista
+
                 </span>
-            </i>
-        </a>
+            </a>
+        </li>
+
         <?php
                                     if ($_SESSION['id_rol'] != 1 && $_SESSION['id_rol'] != 5) {
                                         echo '
                                             <li>   
-                                                <a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-item">
-                                                    <i class="fas fa-plus nav-link">
-                                                        <span class="panel_script" data-lang-es="Crear" data-lang-en="Create" data-lang-fr="Créer"> 
+                                                <a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-link nav-item-hover">
+                                                    <i class="fas fa-plus nav-link "> </i>
+                                                        <span class="nav-item panel_script" data-lang-es="Crear" data-lang-en="Create" data-lang-fr="Créer"> 
                                                             Crear  
                                                             
                                                         </span>
-                                                    </i>
+                                                   
                                                     
                                                 </a>
-                                            </li>      
+                                            </li>  
+                                          
                                             <li>
-                                                <a type="button" class="nav-item ">
-                                                    <i class="fas fa-thin fa-folder-open nav-link">
-                                                        <span id="MisSoliActivate" data-bs-toggle="modal" data-bs-target="#MisSoli" class="panel_script" data-lang-es="Mis Publicaciones" data-lang-en="My Publications" data-lang-fr="Mes Publications">
+                                                <a type="button" class="nav-link nav-item-hover">
+                                                    <i class="fas fa-thin fa-folder-open nav-link"></i> 
+                                                        <span id="MisSoliActivate" data-bs-toggle="modal" data-bs-target="#MisSoli" class="nav-item panel_script" data-lang-es="Mis Publicaciones" data-lang-en="My Publications" data-lang-fr="Mes Publications">
                                                             Mis Publicaciones
                                                         </span>
-                                                    </i>    
+                                                       
                                                     
                                                 </a>
+                                               
                                             </li> 
                                     ';
                                     }
                                 ?>
 
-<div class="modal fade" id="MisSoli" tabindex="-1" aria-labelledby="MisSoliLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title" id="">Mis Publicaciones</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
+        <div class="modal fade" id="MisSoli" tabindex="-1" aria-labelledby="MisSoliLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="">Mis Publicaciones</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
 
-                <div id="MisSoliForm"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
+                        <div id="MisSoliForm"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
     </ul>
 </div>
 <style>
