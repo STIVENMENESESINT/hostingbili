@@ -30,28 +30,9 @@ $(document).on("click", "#btn_permiso", function () {
     }, 'json');
 });
 $(document).on("click", "#ExportarUsu", function () {
-    $.post("../../include/cntrlUsuarios.php", {
-        action: 'exportarUsuarios'
-    }, function (data) {
-        if (data.rstl == '1') {
-            Swal.fire({
-                icon: 'success',
-                title: '¡Éxito!',
-                text: data.msj,
-                showConfirmButton: false,
-                timer: 1500 // Tiempo en milisegundos (1.5 segundos)
-            }).then(() => {
-                window.location.href = data.fileUrl; // Redirigir a la descarga del archivo
-            });
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: data.msj
-            });
-        }
-    }, 'json');
+    window.location.href = "../../include/cntrlUsuarios.php?action=exportarUsuarios";
 });
+
 
 
 function cargarPermisos(iduserprofile) {

@@ -7,13 +7,13 @@ session_name($session_name);
 session_start();
 $conn=Conectarse();
 function obtenerUsuarios() {
-    $conn=Conectarse();
+    $conn = Conectarse();
     if (!$conn) {
         die("Conexión fallida: " . mysqli_connect_error());
     }
 
     // Consulta a la tabla userprofile
-    $sql = "SELECT nombre, apellido,correo FROM userprofile";
+    $sql = "SELECT nombre, apellido, correo FROM userprofile";
     $resultado = mysqli_query($conn, $sql);
 
     if (!$resultado) {
@@ -29,39 +29,6 @@ function obtenerUsuarios() {
     mysqli_close($conn);
 
     return $usuarios;
-}
-function exportarUsuarios($usuarios) {
-    // Directorio donde se guardarán los archivos exportados
-    $directorio = "../../exports/";
-    
-    // Asegúrate de que el directorio exista
-    if (!is_dir($directorio)) {
-        mkdir($directorio, 0777, true);
-    }
-
-    // Nombre del archivo con timestamp
-    $filename = $directorio . "usuarios_" . date('YmdHis') . ".xls";
-
-    // Intentar abrir el archivo para escritura
-    $file = fopen($filename, 'w');
-    if (!$file) {
-        die("No se pudo abrir el archivo para escribir.");
-    }
-
-    // Escribir los encabezados (nombres de las columnas)
-    if (!empty($usuarios)) {
-        fputcsv($file, array_keys($usuarios[0]), "\t");
-    }
-
-    // Escribir los datos de los usuarios
-    foreach ($usuarios as $usuario) {
-        fputcsv($file, $usuario, "\t");
-    }
-
-    // Cerrar el archivo
-    fclose($file);
-
-    return $filename;
 }
 switch ($_REQUEST['action']) 
 {
@@ -276,8 +243,11 @@ switch ($_REQUEST['action'])
         print json_encode($jTableResult);
     break;
     case 'exportarUsuarios':
+        // Limpiar cualquier salida previa
+        ob_clean();
+    
         // Realiza la consulta para obtener los datos que deseas exportar
-        $usuarios = obtenerUsuarios(); // Supón que esta función devuelve un array de usuarios
+        $usuarios = obtenerUsuarios();
     
         if (!empty($usuarios)) {
             // Nombre del archivo con timestamp
@@ -286,31 +256,36 @@ switch ($_REQUEST['action'])
             // Establece los encabezados para forzar la descarga del archivo
             header("Content-Type: application/vnd.ms-excel");
             header("Content-Disposition: attachment; filename=$filename");
+            header("Pragma: no-cache");
+            header("Expires: 0");
     
             // Abre un flujo de salida (output stream)
             $output = fopen("php://output", "w");
     
-            // Escribe las columnas
-            $mostrar_columnas = false;
+            // Escribe los nombres de las columnas manualmente
+            $columnas = ["Nombre", "Apellido", "Correo Electrónico"];
+            fputcsv($output, $columnas, "\t");
+    
+            // Escribe los valores de cada fila
             foreach ($usuarios as $usuario) {
-                if (!$mostrar_columnas) {
-                    fputcsv($output, array_keys($usuario), "\t");
-                    $mostrar_columnas = true;
-                }
-                fputcsv($output, array_values($usuario), "\t");
+                $fila = [
+                    $usuario['nombre'],
+                    $usuario['apellido'],
+                    $usuario['correo']
+                ];
+                fputcsv($output, $fila, "\t");
             }
-            
+    
             // Cierra el flujo de salida
             fclose($output);
+            exit;
         } else {
             echo json_encode([
                 'rstl' => '0',
                 'msj' => 'No hay datos a exportar.'
             ]);
         }
-        exit;
-        break;
-    
+    break;
 }
 
 mysqli_close($conn);
