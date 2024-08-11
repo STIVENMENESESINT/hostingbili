@@ -6,6 +6,53 @@ header('Cache-Control: no-cache, must-revalidate');
 session_name($session_name);
 session_start();
 $conn=Conectarse();
+function obtenerSolicitud() {
+    $conn = Conectarse();
+    if (!$conn) {
+        die("Conexión fallida: " . mysqli_connect_error());
+    }
+
+    // Obtener el filtro desde $_POST o $_GET
+    $filtro = isset($_POST['dato_filtro']) ? $_POST['dato_filtro'] : (isset($_GET['dato_filtro']) ? $_GET['dato_filtro'] : '');
+
+
+    // Consulta a la tabla userprofile
+    $sql = "SELECT ts.nombre AS nom_Soli, u.apellido, u.nombre AS nom_user, u.correo AS correo_U, pbl.nombre_poblacion AS nom_pblc,
+                    s.fecha_creacion, ur.nombre AS nom_Ures, ur.correo AS correo_Ures, s.fecha_respuesta, s.fecha_asignada, s.fecha_cancelada
+                FROM 
+                    solicitud s
+                LEFT JOIN
+                    detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
+                LEFT JOIN
+                    tiposolicitud ts ON ds.id_tiposolicitud = ts.id_tiposolicitud
+                LEFT JOIN 
+                    userprofile u ON s.id_userprofile = u.id_userprofile
+                LEFT JOIN
+                    poblacion pbl ON u.cod_poblacion = pbl.cod_poblacion
+                LEFT JOIN
+                    userprofile ur ON s.id_responsable = ur.id_userprofile
+                LEFT JOIN
+                    estado e ON s.id_estado = e.id_estado
+                WHERE e.nombre = '$filtro'";
+
+    $resultado = mysqli_query($conn, $sql);
+
+    if (!$resultado) {
+        die("Error en la consulta: " . mysqli_error($conn));
+    }
+
+    $solicitudes = array();
+    while ($row = mysqli_fetch_assoc($resultado)) {
+        $solicitudes[] = $row;
+    }
+
+    // Cierra la conexión
+    mysqli_close($conn);
+
+    return $solicitudes;
+}
+
+
 switch ($_REQUEST['action']) 
 {
 
@@ -481,7 +528,7 @@ switch ($_REQUEST['action'])
                     </div>
                     <div class='modal-footer'>
                         <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
-                        <button type='button' class='create-button' id='btnGuardarCambios2'>Asignar</button>
+                        <button type='button' class='create-button' id='btnGuardarCambios2' data-id='". $registro['id_solicitud'] . "'>Asignar</button>
                     </div>
                 ";
             }
@@ -540,51 +587,48 @@ switch ($_REQUEST['action'])
                 $jTableResult['ms'] = "Exitoso";
                 $jTableResult['ListPf'] .= "
                     <div class='form-container'>
-                <label class='label-identifier'>Solicitante</label>
-                <label class='data-field' id='solicitante'></label>
-                <br>
-                <h5 class='label-identifier'><strong>Ubicación Solicitante</strong></h5>
-                <div class='row mt-3'>
-                    <div class='col-sm-12'>
-                        <h6 class='modal-title'>Departamento</h6>
-                        <label class='data-field'></label>
+                        <label class='label-identifier'>Solicitante</label>
+                        <label class='data-field' id='solicitante'></label>
+                        <br>
+                        <h5 class='label-identifier'><strong>Ubicación Solicitante</strong></h5>
+                        <div class='row mt-3'>
+                            <div class='col-sm-12'>
+                                <h6 class='modal-title'>Departamento</h6>
+                                <label class='data-field'></label>
+                            </div>
+                        </div>
+                        <div class='row mt-3'>
+                            <div class='col-sm-12'>
+                                <h6 class='modal-title'>Municipio</h6>
+                                <label class='data-field'></label>
+                            </div>
+                        </div>
+                        <div class='row mt-3'>
+                            <div class='col-sm-12'>
+                                <h6 class='modal-title'>Vereda</h6>
+                                <label class='data-field'></label>
+                            </div>
+                        </div>
+                        <br>
+                        <label class='label-identifier' for='detalles'>Detalles</label>
+                        <br>
+                        <textarea id='detalles' name='detalles'></textarea>
+                        <br>
+                        <hr>
+                        <h3 class='label-identifier'>Asignación</h3>
+                        <hr>
+                        <h6 class='label-identifier'>Responsable</h6>
+                        <select id='id_responsable'></select>
+                        <h3 class='label-identifier'>Responder</h3>
+                        <hr>
+                        <h6 class='label-identifier'>Detalle Respuesta</h6>
+                        <textarea id='detalle_respuesta' name='detalles'></textarea>
+                        <h6 class='label-identifier'>Cargar Información</h6>
+                        <label class='label-identifier' for='archivo'>Cargar Archivo Respuesta solicitud (solo archivos de tipo pdf)</label>
+                        <input type='file' id='archivo' name='archivo' accept='.pdf'>
+                        <br/>
+                        <button id='btnAceptarSoli' class='create-button' data-id='". $registro['id_solicitud'] . "'>Dar Respuesta</button>
                     </div>
-                </div>
-                <div class='row mt-3'>
-                    <div class='col-sm-12'>
-                        <h6 class='modal-title'>Municipio</h6>
-                        <label class='data-field'></label>
-                    </div>
-                </div>
-                <div class='row mt-3'>
-                    <div class='col-sm-12'>
-                        <h6 class='modal-title'>Vereda</h6>
-                        <label class='data-field'></label>
-                    </div>
-                </div>
-                <br>
-                <label class='label-identifier' for='detalles'>Detalles</label>
-                <br>
-                <textarea id='detalles' name='detalles'></textarea>
-                <br>
-                <hr>
-                <h3 class='label-identifier'>Asignación</h3>
-                <hr>
-                <h6 class='label-identifier'>Responsable</h6>
-                <select id='id_responsable'></select>
-                <h6 class='label-identifier'>Estado</h6>
-                <select id='id_estado'></select>
-                <hr>
-                <h3 class='label-identifier'>Responder</h3>
-                <hr>
-                <h6 class='label-identifier'>Detalle Respuesta</h6>
-                <textarea id='detalle_respuesta' name='detalles'></textarea>
-                <h6 class='label-identifier'>Cargar Información</h6>
-                <label class='label-identifier' for='archivo'>Cargar Archivo Respuesta solicitud (solo archivos de tipo pdf)</label>
-                <input type='file' id='archivo' name='archivo' accept='.pdf'>
-                <br/>
-                <button id='btnAceptarSoli' class='create-button' data-id=''>Dar Respuesta</button>
-            </div>
             ";
             }
         } else {
@@ -783,15 +827,23 @@ switch ($_REQUEST['action'])
                             </div>";
                     } elseif ($registro['id_rol'] == '2') {
                         $jTableResult['ListOf'] .= "
+                            <hr>
+                            <h3 class='label-identifier'>Asignacion</h3>
+                            <h6 class='label-identifier'>Detalle Asignacion</h6>
+                            <textarea id='detalle_respuesta' name='detalles'></textarea>
+                            <h6 class='label-identifier'>Responsable</h6>
+                            <select id='id_responsable'></select>
+                            <div class='course-buttons'>
+                                <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
+                                <button type='button' class='create-button' id='btnGuardarCambios2' data-id='" . $registro['id_solicitud'] . "'>Asignar</button>
+                            </div>
+                            <hr>
                             <h3 class='label-identifier'>Responder</h3>
                             <h6 class='label-identifier'>Ficha</h6>
                             <textarea id='ficha' name='ficha'></textarea>
                             <br>
                             <h6 class='label-identifier'>Detalle Respuesta</h6>
                             <input type='text' id='detalle_respuesta' name='detalles'></input><br/>
-                            <h6>Cargue Archivo de Aprendices</h6>
-                            <label class='modal-title' for='archivo'>Cargar Archivo solicitud</label>
-                            <input type='file' id='archivo' name='archivo'>
                             <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
                             <button id='btnAceptarSoliOf' class='create-button' data-id='" . $registro['id_solicitud'] . "'>Dar Respuesta</button>
                             ";
@@ -1018,7 +1070,7 @@ switch ($_REQUEST['action'])
         $mensaje = $_POST['detalle_cancel'];
         $correo=$_SESSION['correo'];
         $query = "UPDATE solicitud 
-        SET id_estado = 5
+        SET id_estado = 5, fecha_cancelada = NOW()
         WHERE id_solicitud = '$id_solicitud'";
         if ($result = mysqli_query($conn, $query)) {
             mysqli_commit($conn);
@@ -1376,7 +1428,8 @@ switch ($_REQUEST['action'])
                             JOIN userprofile ON solicitud.id_userprofile = userprofile.id_userprofile
                             JOIN detallesolicitud ON solicitud.id_detallesolicitud = detallesolicitud.id_detallesolicitud
                             JOIN tiposolicitud ON detallesolicitud.id_tiposolicitud = tiposolicitud.id_tiposolicitud
-                            WHERE $whereClause";
+                            WHERE $whereClause 
+                            ORDER BY solicitud.id_solicitud DESC";
             $resultado = mysqli_query($conn, $query);
             $numero = mysqli_num_rows($resultado);
             if($numero==0){
@@ -1407,6 +1460,100 @@ switch ($_REQUEST['action'])
                 $jTableResult['msj']= "";
                 $jTableResult['rstl']= "1";						
             }
+        print json_encode($jTableResult);
+    break;
+    case 'FiltroSolicitud':
+        $jTableResult = array();
+        $jTableResult['rstl'] = "";
+        $jTableResult['msj'] = "";
+        $jTableResult['listaSoli'] = '
+                <table class="table table-bordered table-striped table-hover text-center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>';
+        if ($_SESSION['id_rol'] == 3) {
+            $jTableResult['listaSoli'] .= '<th>Tipo Solicitud</th>
+                                            <th>Solicitante</th>';
+        } else {
+            $jTableResult['listaSoli'] .= '<th>Tipo Solicitud</th>';
+        }
+        $jTableResult['listaSoli'] .= '
+                            <th>Descripción</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                <tbody>';
+    
+        $id_rol = $_SESSION['id_rol'];
+        $id_userprofile = $_SESSION['id_userprofile'];
+        $dato_txt = $_POST['dato_filtro'];
+    
+        // Construir la cláusula WHERE en función del rol del usuario
+        $whereClause = "";
+        if ($id_rol != 3) {
+            $whereClause .= "solicitud.id_userprofile = '$id_userprofile' AND ";
+        }
+    
+        // Manejar múltiples filtros
+        $filtros = explode(',', $dato_txt);
+        $filterConditions = array();
+        foreach ($filtros as $filtro) {
+            $filterConditions[] = "estado.nombre = '$filtro'";
+        }
+        $whereClause .= '(' . implode(' OR ', $filterConditions) . ')';
+    
+        // Construir la consulta completa
+        $query = "SELECT 
+                    solicitud.id_solicitud, 
+                    userprofile.nombre AS solicitante_nom, 
+                    userprofile.nombre_dos AS solicitante_nomdos, 
+                    userprofile.correo AS solicitante_correo, 
+                    userprofile.apellido AS solicitante_apellido, 
+                    userprofile.numeroiden AS solicitante_iden, 
+                    estado.nombre AS nombre_estado, 
+                    tiposolicitud.nombre AS nombre_tipo, 
+                    detallesolicitud.descripcion, 
+                    detallesolicitud.id_tiposolicitud,
+                    solicitud.id_estado
+                FROM solicitud
+                JOIN estado ON solicitud.id_estado = estado.id_estado 
+                JOIN userprofile ON solicitud.id_userprofile = userprofile.id_userprofile
+                JOIN detallesolicitud ON solicitud.id_detallesolicitud = detallesolicitud.id_detallesolicitud
+                JOIN tiposolicitud ON detallesolicitud.id_tiposolicitud = tiposolicitud.id_tiposolicitud
+                WHERE $whereClause 
+                ORDER BY solicitud.id_solicitud DESC";
+    
+        $resultado = mysqli_query($conn, $query);
+        $numero = mysqli_num_rows($resultado);
+    
+        if ($numero == 0) {
+            $jTableResult['listaSoli'] = "<thead><tr><th scope='col'>&nbsp;&nbsp&nbsp;&nbsp;No existe respuesta de Filtro.</th></tr></thead>";
+            $jTableResult['msj'] = "NO EXISTEN DATOS PARA ESTE FILTRO.";
+            $jTableResult['rslt'] = "0";						
+        } else {
+            while ($registro = mysqli_fetch_array($resultado)) {
+                $jTableResult['listaSoli'] .= "<tr>
+                                                    <td>" . $registro['id_solicitud'] . "</td>
+                                                    <td>" . $registro['nombre_tipo'] . "</td>";
+                if ($_SESSION['id_rol'] == 3) {
+                    $jTableResult['listaSoli'] .= "<td>" . $registro['solicitante_nom'] . "</td>";
+                }
+                $jTableResult['listaSoli'] .= "<td>" . $registro['descripcion'] . "</td>
+                                                <td>" . $registro['nombre_estado'] . "</td>
+                                                <td>";
+                if ($registro['id_estado'] == 4) {
+                    $jTableResult['listaSoli'] .= '<button id="detalleSolicitud" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#detallesolicitud" data-id="' . $registro['id_solicitud'] . '">Ver Soli</button>';
+                } else {
+                    $jTableResult['listaSoli'] .= '
+                                                    <button id="btnEliminarSoli" class="btn btn-danger btn-sm">Cancelar</button>';
+                }
+                $jTableResult['listaSoli'] .= "</tr>";
+            }
+            $jTableResult['msj'] = "";
+            $jTableResult['rstl'] = "1";						
+        }
+    
         print json_encode($jTableResult);
     break;
     case 'asignaciones':
@@ -1448,7 +1595,8 @@ switch ($_REQUEST['action'])
                             JOIN userprofile ON solicitud.id_userprofile = userprofile.id_userprofile
                             JOIN detallesolicitud ON solicitud.id_detallesolicitud = detallesolicitud.id_detallesolicitud
                             JOIN tiposolicitud ON detallesolicitud.id_tiposolicitud = tiposolicitud.id_tiposolicitud
-                            WHERE solicitud.id_responsable='" . $_SESSION['id_userprofile'] . "' AND solicitud.id_estado=6";
+                            WHERE solicitud.id_responsable='" . $_SESSION['id_userprofile'] . "' AND solicitud.id_estado=6
+                            ORDER BY solicitud.id_solicitud DESC";
             $result = mysqli_query($conn, $busqueda);
             
             if (mysqli_num_rows($result) > 0) {
@@ -2225,7 +2373,68 @@ switch ($_REQUEST['action'])
         }
         echo json_encode($jTableResult);
     break;
-
+    case 'exportarSolicitud':
+        // Limpiar cualquier salida previa
+        ob_clean();
+        
+        // Realiza la consulta para obtener los datos que deseas exportar
+        $solicitudes = obtenerSolicitud();
+    
+        if (!empty($solicitudes)) {
+            // Nombre del archivo con timestamp
+            $filename = "solicitudes_" . date('YmdHis') . ".xls";
+        
+            // Establece los encabezados para forzar la descarga del archivo
+            header("Content-Type: application/vnd.ms-excel");
+            header("Content-Disposition: attachment; filename=$filename");
+            header("Pragma: no-cache");
+            header("Expires: 0");
+        
+            // Abre un flujo de salida (output stream)
+            $output = fopen("php://output", "w");
+        
+            // Escribe los nombres de las columnas manualmente
+            $columnas = ["Nombre", "Apellido", "Correo Electrónico", "Tipo Solicitud", 
+            "Fecha Creacion Solicitud", "Poblacion", "Fecha Asignada", "Nombre Responsable", "Correo Responsable",
+            "Fecha Cancelada", "Fecha Respuesta"];
+            fputcsv($output, $columnas, "\t");
+        
+            // Escribe los valores de cada fila, eliminando filas con datos vacíos
+            foreach ($solicitudes as $solicitud) {
+                $fila = [
+                    $solicitud['nom_user'],
+                    $solicitud['apellido'],
+                    $solicitud['correo_U'],
+                    $solicitud['nom_Soli'],
+                    date('Y-m-d', strtotime($solicitud['fecha_creacion'])),
+                    $solicitud['nom_pblc'],
+                    date('Y-m-d', strtotime($solicitud['fecha_asignada'])),
+                    $solicitud['nom_Ures'],
+                    $solicitud['correo_Ures'],
+                    date('Y-m-d', strtotime($solicitud['fecha_cancelada'])),
+                    date('Y-m-d', strtotime($solicitud['fecha_respuesta']))
+                ];
+    
+                // Filtrar datos vacíos
+                if (!array_filter($fila)) {
+                    continue;
+                }
+    
+                fputcsv($output, $fila, "\t");
+            }
+        
+            // Cierra el flujo de salida
+            fclose($output);
+            exit;
+        } else {
+            echo json_encode([
+                'rstl' => '0',
+                'msj' => 'No hay datos a exportar.'
+            ]);
+        }
+    break;
+    
+    
 }
 mysqli_close($conn);
 ?>

@@ -13,7 +13,7 @@ function obtenerUsuarios() {
     }
 
     // Consulta a la tabla userprofile
-    $sql = "SELECT nombre, apellido, correo FROM userprofile";
+    $sql = "SELECT u.nombre, u.apellido, u.correo, pbl.nombre_poblacion FROM userprofile u LEFT JOIN poblacion pbl ON u.cod_poblacion = pbl.cod_poblacion";
     $resultado = mysqli_query($conn, $sql);
 
     if (!$resultado) {
@@ -311,7 +311,7 @@ switch ($_REQUEST['action'])
             $output = fopen("php://output", "w");
     
             // Escribe los nombres de las columnas manualmente
-            $columnas = ["Nombre", "Apellido", "Correo Electrónico"];
+            $columnas = ["Nombre", "Apellido", "Correo Electrónico", "Poblacion"];
             fputcsv($output, $columnas, "\t");
     
             // Escribe los valores de cada fila
@@ -319,7 +319,9 @@ switch ($_REQUEST['action'])
                 $fila = [
                     $usuario['nombre'],
                     $usuario['apellido'],
-                    $usuario['correo']
+                    $usuario['correo'],
+                    $usuario['nombre_poblacion']
+
                 ];
                 fputcsv($output, $fila, "\t");
             }
@@ -334,6 +336,7 @@ switch ($_REQUEST['action'])
             ]);
         }
     break;
+    
 }
 
 mysqli_close($conn);

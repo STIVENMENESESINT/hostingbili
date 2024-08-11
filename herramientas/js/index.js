@@ -116,6 +116,18 @@ $(document).ready(function(){
 							console.error(error);
 						});
 					});
+                    $(document).ready(function(){  
+                        $.post("include/select.php", {
+                            action: 'crgrPoblacion' 
+                        },
+                        function(data) {
+                            $("#cod_poblacion").html(data.listPoblacion);
+                            },
+                            'json'
+                            ).fail(function(xhr, status, error) {
+                                console.error(error);
+                            });
+                        });
 			$(document).ready(function(){  
 			$.post("include/select.php", {
 				action: 'crgrDepto' 
@@ -552,22 +564,6 @@ $(document).on("click", "#btnGuardarEmpresa", function() {
 
     limpiar(); // Llamar a la función para limpiar los campos si es necesario
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	
 // Restablecer contraseña 

@@ -89,9 +89,12 @@ function crearPf(){
         var formData = new FormData();
         formData.append("action", "registroCursoNew");
 
+        // Capturar el valor y el nombre del programa de formación seleccionado
         var selectedOption = $("#id_programaformacion").find("option:selected");
-        formData.append("id_programaformacion", selectedOption.val());
-        formData.append("nombre", selectedOption.text());
+        formData.append("id_programaformacion", selectedOption.val()); // ID del programa de formación
+        formData.append("nombre_programa", selectedOption.text()); // Nombre del programa de formación
+
+        // Agregar otros campos al FormData
         formData.append("fecha_inicio", $("#fecha_inicio").val());
         formData.append("fecha_cierre", $("#fecha_cierre").val());
         formData.append("modalidad", $("#id_modalidad_label").text().trim()); // Modalidad desde el label
@@ -135,6 +138,7 @@ function crearPf(){
         });
     });
 }
+
 
 
     $(document).on("click", "#hideRevista", function () {

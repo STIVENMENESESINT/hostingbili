@@ -107,19 +107,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="GprogramaFormacion.php" class="nav-link nav-item-hover">
-                        <i class="fas fa-graduation-cap nav-link"></i>
-                        <span class="">
-                            Programa Formación
-                            
-                        </span>
-                    </a>
-                </li>
-                <li>
                     <a href="ofertas.php" class="nav-link nav-item-hover ">
                         <i class="fas fa-graduation-cap nav-link"></i>
                         <span class="">
                             Ofertas
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="GprogramaFormacion.php" class="nav-link nav-item-hover">
+                        <i class="fas fa-graduation-cap nav-link"></i>
+                        <span class="">
+                            Programacion
+                            
                         </span>
                     </a>
                 </li>

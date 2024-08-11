@@ -73,7 +73,7 @@ $(document).on("click", "#btnEditarSoli", function() {
         }
 
         $(document).on("click", "#btnGuardarCambios", function() {
-            
+            var idSolicitud = $(this).data('id');
             // Crear un objeto para los datos de la solicitud
             var updatedData = {
                 action: 'actualizarSolicitud',
@@ -705,6 +705,66 @@ $(document).on("click", "#btn_Buscar",function ()	{
         }, 'json');	
     }
 );
+
+let selectedFilters = [];
+
+$(document).on("click", "#btn_Filtro", function () {
+    $("#sin_contenido").hide();
+    $("#oferta_curso").hide();
+    $("#contenido").hide();
+
+    // Capturar valores seleccionados de los checkboxes
+    selectedFilters = [];
+    $("#filterOptions input[type='checkbox']:checked").each(function () {
+        selectedFilters.push($(this).val());
+    });
+
+    $.post("../../include/cntrlSoli.php", {
+        action: 'FiltroSolicitud',
+        dato_filtro: selectedFilters.join(',')
+    }, function (data) {
+        if (data.rstl == '1') {
+            $("#solisF").html(data.listaSoli);
+        } else {
+            $("#solisF").html(data.listaSoli);
+        }
+    }, 'json');
+});
+
+$(document).on("click", "#ExportarSoli", function () {
+    // Verificar si hay filtros seleccionados
+    let url = "../../include/cntrlSoli.php?action=exportarSolicitud";
+    if (selectedFilters.length > 0) {
+        url += "&dato_filtro=" + encodeURIComponent(selectedFilters.join(','));
+    }
+
+    // Realizar la solicitud AJAX para generar el archivo Excel
+    $.ajax({
+        url: url,
+        method: 'GET',
+        xhrFields: {
+            responseType: 'blob' // Para manejar la respuesta como un archivo
+        },
+        success: function (data) {
+            // Crear un enlace temporal para descargar el archivo
+            let a = document.createElement('a');
+            let url = window.URL.createObjectURL(data);
+            a.href = url;
+            a.download = "solicitudes_" + new Date().toISOString().slice(0, 19).replace(/:/g, "-") + ".xls";
+            document.body.append(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url); // Liberar la memoria
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error al descargar el archivo: ' + textStatus);
+        }
+    });
+});
+
+
+
+
 $(document).ready(function(){  
     $.post("../../include/select.php", {
         action: 'crgrResponsable',
@@ -791,6 +851,26 @@ $(document).on("click", "#btn_asign",function ()	{
         }, 'json');	
     }
 );
+$(document).ready(function () {
+    // Mostrar u ocultar las opciones de filtro al hacer clic en el botón
+    $('#filterButton').on('click', function () {
+        $('#filterOptions').toggle();
+    });
+
+    // Aplicar los filtros seleccionados al hacer clic en "Aplicar filtros"
+    $('#applyFilters').on('click', function () {
+        var selectedFilters = [];
+        $('#filterOptions input[type="checkbox"]:checked').each(function () {
+            selectedFilters.push($(this).val());
+        });
+
+        // Aquí puedes enviar los filtros seleccionados al servidor o aplicarlos localmente
+        console.log('Filtros seleccionados:', selectedFilters);
+
+        // Cerrar el menú de opciones después de aplicar los filtros
+        $('#filterOptions').hide();
+    });
+});
 
 function Cargar() {
     $(document).on("change", "#id_programaformacion", function() {
@@ -1287,3 +1367,4 @@ $(document).on("click", "#Ecompetencia",function ()	{
         }, 'json');	
     }
 );
+

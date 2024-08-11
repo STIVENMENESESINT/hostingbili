@@ -6,6 +6,59 @@ header('Cache-Control: no-cache, must-revalidate');
 session_name($session_name);
 session_start();
 $conn=Conectarse();
+function obtenerProgramacion() {
+    $conn = Conectarse();
+    if (!$conn) {
+        die("Conexión fallida: " . mysqli_connect_error());
+    }
+    // Consulta a la tabla userprofile
+    $sql = "SELECT  
+            pf.id_programaformacion,
+            pf.fecha_inicio,
+            pf.fecha_cierre,
+            u.nombre AS nom_usu, 
+            u.numeroiden,
+            u.apellido, 
+            pf.nombre AS nom_pf,
+            c.nombre AS nom_compe,
+            ra.nombre AS nom_ra,
+            pf.modalidad,
+            pf.matriculados,
+            r.nombre AS nom_rol,
+            pf.ficha,
+            e.inicio,
+            e.termino
+        FROM 
+            convites cv
+        LEFT JOIN
+            eventos e ON cv.fk_id_evento = e.id_evento
+        LEFT JOIN 
+            programaformacion pf ON e.id_programaformacion = pf.id_programaformacion
+        LEFT JOIN  
+            userprofile u ON pf.fk_programado = u.id_userprofile
+        LEFT JOIN
+            competencia c ON pf.id_competencia = c.id_competencia
+        LEFT JOIN
+            resultadosaprendizaje ra ON pf.id_resultado_aprendizaje = ra.id_resultado_aprendizaje
+        LEFT JOIN
+            rol r ON u.id_rol = r.id_rol";
+            
+    $resultado = mysqli_query($conn, $sql);
+
+    if (!$resultado) {
+        die("Error en la consulta: " . mysqli_error($conn));
+    }
+
+    $programaciones = array();
+    while ($row = mysqli_fetch_assoc($resultado)) {
+        $programaciones[] = $row;
+    }
+
+    // Cierra la conexión
+    mysqli_close($conn);
+
+    return $programaciones;
+}
 switch ($_REQUEST['action']) 
 {
     case 'buscarPrograma':
@@ -246,20 +299,24 @@ switch ($_REQUEST['action'])
             pf.nombre AS nom_pf,
             c.nombre AS nom_compe,
             ra.nombre AS nom_ra,
-            m.nombre AS nom_modalidad,
+            pf.modalidad,
             pf.matriculados,
             r.nombre AS nom_rol,
-            pf.ficha
+            pf.ficha,
+            e.inicio,
+            e.termino
         FROM 
-            programaformacion pf
+            convites cv
+        LEFT JOIN
+            eventos e ON cv.fk_id_evento = e.id_evento
+        LEFT JOIN 
+            programaformacion pf ON e.id_programaformacion = pf.id_programaformacion
         LEFT JOIN  
             userprofile u ON pf.fk_programado = u.id_userprofile
         LEFT JOIN
             competencia c ON pf.id_competencia = c.id_competencia
         LEFT JOIN
             resultadosaprendizaje ra ON pf.id_resultado_aprendizaje = ra.id_resultado_aprendizaje
-        LEFT JOIN
-            modalidad m ON pf.id_modalidad = m.id_modalidad
         LEFT JOIN
             rol r ON u.id_rol = r.id_rol
         WHERE 
@@ -272,50 +329,63 @@ switch ($_REQUEST['action'])
                 $jTableResult['ms'] = "Exitoso";
                 $jTableResult['ListPf'] .= "
                     <div class='form-container'>
-                        <label> Nombre Programa de Formacion</label><br>
-                        <label id='solicitante'>
+                        <label class='label-identifier'> Nombre Programa de Formacion</label><br>
+                        <label id='solicitante' class='data-field'>
                         " . $registro['nom_pf'] . "</label>
                         <br>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
-                                <h6 class='modal-title'>Fecha inicio Programa</h6>
-                                <h6 class='modal-title'>" . $registro['fecha_inicio'] . "</h6>
+                                <h6 class='label-identifier'>Fecha inicio Programa de Formacion</h6>
+                                <h6 class='data-field'>" . $registro['fecha_inicio'] . "</h6>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
-                                <h6 class='modal-title'>Fecha Fin Programa</h6>
-                                <h6 class='modal-title'>" . $registro['fecha_cierre'] . "</h6>
+                                <h6 class='label-identifier'>Fecha Fin Programa de Formacion</h6>
+                                <h6 class='data-field'>" . $registro['fecha_cierre'] . "</h6>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
-                                <h6 class='modal-title'>Competencia</h6>
-                                <h6 class='modal-title'>" . $registro['nom_compe'] . "
+                                <h6 class='label-identifier'>Inicio Prgoramacion</h6>
+                                <h6 class='data-field'>" . $registro['inicio'] . "</h6>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
-                                <h6 class='modal-title'>Resultado de Aprendizaje</h6>
-                                <h6 class='modal-title'>" . $registro['nom_ra'] . "</h6>
+                                <h6 class='label-identifier'>Competencia</h6>
+                                <h6 class='data-field'>" . $registro['nom_compe'] . "
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
-                                <h6 class='modal-title'>Modalidad</h6>
-                                <h6 class='modal-title'>" . $registro['nom_modalidad'] . "</h6>
+                                <h6 class='label-identifier'>Resultado de Aprendizaje</h6>
+                                <h6 class='data-field'>" . $registro['nom_ra'] . "</h6>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
-                                <h6 class='modal-title'>Numero Matriculados</h6>
-                                <h6 class='modal-title'>" . $registro['matriculados'] . "</h6>
+                                <h6 class='label-identifier'>Fin Programacion</h6>
+                                <h6 class='data-field'>" . $registro['termino'] . "</h6>
+                            </div>
+                        </div>
+                        
+                        <div class='row mt-3'>
+                            <div class='col-sm-12'>
+                                <h6 class='label-identifier'>Modalidad</h6>
+                                <h6 class='data-field'>" . $registro['modalidad'] . "</h6>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
-                                <h6 class='modal-title'>Ficha</h6>
-                                <h6 class='modal-title'>" . $registro['ficha'] . "</h6>
+                                <h6 class='label-identifier'>Numero Matriculados</h6>
+                                <h6 class='data-field'>" . $registro['matriculados'] . "</h6>
+                            </div>
+                        </div>
+                        <div class='row mt-3'>
+                            <div class='col-sm-12'>
+                                <h6 class='label-identifier'>Ficha</h6>
+                                <h6 class='data-field'>" . $registro['ficha'] . "</h6>
                             </div>
                         </div>
                         <div class='row mt-3'>
@@ -328,41 +398,41 @@ switch ($_REQUEST['action'])
                         <label>" . $registro['nom_usu'] . "</label>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
-                                <h6 class='modal-title'>Numero de Documento</h6>
-                                <h6 class='modal-title'>" . $registro['numeroiden'] . "</h6>
+                                <h6 class='label-identifier'>Numero de Documento</h6>
+                                <h6 class='data-field'>" . $registro['numeroiden'] . "</h6>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
-                                <h6 class='modal-title'>Cargo en el Aplicativo</h6>
-                                <h6 class='modal-title'>" . $registro['nom_rol'] . "</h6>
+                                <h6 class='label-identifier'>Cargo en el Aplicativo</h6>
+                                <h6 class='data-field'>" . $registro['nom_rol'] . "</h6>
                             </div>
                         </div>
                         <br>
-                        <label>Detalles</label>
+                        <label class='label-identifier'>Detalles</label>
                         <hr>
-                        <h3>Control de Desercion</h3>
+                        <h3 class='label-identifier'>Control de Desercion</h3>
                         <hr>
                         <div id='form_container'></div>
-                        <h6>Nombre Completo</h6>
+                        <h6 class='label-identifier'>Nombre Completo</h6>
                         <input type='text'><br>
-                        <h6>Numero de identificacion</h6>
+                        <h6 class='label-identifier'>Numero de identificacion</h6>
                         <input type='number'>
-                        <h6>Correo Electronico</h6>
+                        <h6 class='label-identifier'>Correo Electronico</h6>
                         <input type='text'><br>
                         <h6>Nuevo</h6>
                         <button class='create-button' id='create'> Agregar</button>
                         <button id='btnAceptarSoli' class='close-button'  >Desertar</button>
                         <hr>
                     </div>
-                                    <div class='modal-footer'>
-                    <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
-                    <button type='button' class='create-button' id='btnGuardarCambios3' data-id='" . $registro['id_programaformacion'] ." '>Terminar</button>
-                </div>";
+                    <div class='modal-footer'>
+                        <button type='button' class='close-button' data-bs-dismiss='modal'>Cerrar</button>
+                        <button type='button' class='create-button' id='btnGuardarCambios3' data-id='" . $registro['id_programaformacion'] ." '>Terminar</button>
+                    </div>";
             }
         } else {
             $jTableResult['rst'] = "0";
-            $jTableResult['ms'] = "Error al obtener los datos.";
+            $jTableResult['ms'] = "NO HAS PROGRAMADO NADA PARA ESTA FICHA.";
         }
         echo json_encode($jTableResult);
     break;
@@ -387,8 +457,66 @@ switch ($_REQUEST['action'])
             $jTableResult['rstl'] = "0";
         }
         print json_encode($jTableResult);
-break;
- 
+    break;
+    case 'exportarProgramacion':
+        // Limpiar cualquier salida previa
+        ob_clean();
+        
+        // Realiza la consulta para obtener los datos que deseas exportar
+        $programaciones = obtenerProgramacion();
+    
+        if (!empty($programaciones)) {
+            // Nombre del archivo con timestamp
+            $filename = "programacion_" . date('YmdHis') . ".xls";
+        
+            // Establece los encabezados para forzar la descarga del archivo
+            header("Content-Type: application/vnd.ms-excel");
+            header("Content-Disposition: attachment; filename=$filename");
+            header("Pragma: no-cache");
+            header("Expires: 0");
+        
+            // Abre un flujo de salida (output stream)
+            $output = fopen("php://output", "w");
+        
+            // Escribe los nombres de las columnas manualmente
+            $columnas = ["Nombre Programa", "Fecha Inicio Programa", "Fecha Fin Programa",  "Inicio Programacion", "Competencia", "Resultado de Aprendizaje", "Fin Programacion", "Modalidad", "Ficha", "Nombre Responsable", "Identificacion Responsable", "Cargo"];
+            fputcsv($output, $columnas, "\t");
+        
+            // Escribe los valores de cada fila, eliminando filas con datos vacíos
+            foreach ($programaciones as $solicitud) {
+                $fila = [
+                    $solicitud['nom_pf'],
+                    date('Y-m-d', strtotime($solicitud['fecha_inicio'])),
+                    date('Y-m-d', strtotime($solicitud['fecha_cierre'])),
+                    date('Y-m-d', strtotime($solicitud['inicio'])),
+                    $solicitud['nom_compe'],
+                    $solicitud['nom_ra'],
+                    date('Y-m-d', strtotime($solicitud['termino'])),
+                    $solicitud['modalidad'],
+                    $solicitud['ficha'],
+                    $solicitud['nom_usu'],
+                    $solicitud['numeroiden'],
+                    $solicitud['nom_rol']
+                ];
+    
+                // Filtrar datos vacíos
+                if (!array_filter($fila)) {
+                    continue;
+                }
+    
+                fputcsv($output, $fila, "\t");
+            }
+        
+            // Cierra el flujo de salida
+            fclose($output);
+            exit;
+        } else {
+            echo json_encode([
+                'rstl' => '0',
+                'msj' => 'No hay datos a exportar.'
+            ]);
+        }
+    break;
 }
 
 mysqli_close($conn);

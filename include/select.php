@@ -69,6 +69,18 @@ switch ($_REQUEST['action'])
         }
         print json_encode($jTableResult);
     break;
+    case 'crgrPoblacion':
+        $jTableResult = array();                
+        $jTableResult['listPoblacion']="";
+        $jTableResult['listPoblacion']="<option value='0' selected >seleccione:.</option>";
+        $query="SELECT cod_poblacion, nombre_poblacion FROM poblacion";
+        $resultado = mysqli_query($conn, $query);
+        while($registro = mysqli_fetch_array($resultado))
+        {
+            $jTableResult['listPoblacion'].="<option value='".$registro['cod_poblacion']."'>".$registro['nombre_poblacion']."</option>";
+        }
+        print json_encode($jTableResult);
+    break;
     case 'CrgrEmpresa':
         $jTableResult = array();                
         $jTableResult['listEmpresa']="";
@@ -216,6 +228,18 @@ switch ($_REQUEST['action'])
         }
         print json_encode($jTableResult);
     break;
+    case 'crgrprogramaFormacion4':
+        $jTableResult = array();                
+        $jTableResult['lisTiposPF']="";
+        $jTableResult['lisTiposPF']="<option value='0' selected >seleccione:.</option>";
+        $query="SELECT id_programaformacion, nombre FROM programaformacion WHERE id_estado=7";
+        $resultado = mysqli_query($conn, $query);
+        while($registro = mysqli_fetch_array($resultado))
+        {
+            $jTableResult['lisTiposPF'].="<option value='".$registro['id_programaformacion']."'>".$registro['nombre']."</option>";
+        }
+        print json_encode($jTableResult);
+    break;
     case 'crgrprogramaFormacion3':
         $jTableResult = array();                
         $jTableResult['lisTiposPF']="";
@@ -258,6 +282,26 @@ switch ($_REQUEST['action'])
                 <label class="modal-title" for="id_modalidad">Horas Totales del Curso</label>
                 <label class="form-control" id="horas_curso_label">'.$registro['horas_curso'].'</label>
                 <input type="hidden" id="horas_curso" name="horas_curso" value="'.$registro['horas_curso'].'">
+            </div>';
+
+        }
+        print json_encode($jTableResult);
+    break;
+    case 'CrgrFichas':
+        $jTableResult = array();                
+        $jTableResult['listFicha']="";
+        $id_programaformacion=  $_POST['id_programaformacion'];
+        $query="SELECT id_programaformacion, ficha 
+        FROM programaformacion 
+        WHERE id_programaformacion='$id_programaformacion' AND id_estado = 7";
+        $resultado = mysqli_query($conn, $query);
+        while($registro = mysqli_fetch_array($resultado))
+        {
+            $jTableResult['listFicha'].='
+            <div class="course-data-field">
+                <label class="modal-title" >Ficha</label>
+                <label class="form-control" id="ficha">'.$registro['ficha'].'</label>
+                <input type="hidden" id="ficha" name="ficha" value="'.$registro['ficha'].'">
             </div>';
 
         }

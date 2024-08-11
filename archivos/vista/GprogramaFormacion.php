@@ -61,17 +61,14 @@ if (isset($_SESSION['id_userprofile'])){
                     }
                     elseif($_SESSION['id_rol']=='3'){
                         echo'<a href="programar.php">Programar</a>
-                        <form id="uploadForm" action="upload_excel.php" method="post" enctype="multipart/form-data">
-                            <input type="file" name="file" id="file" accept=".xlsx, .xls" style="display: none;" onchange="document.getElementById("uploadForm").submit();">
-                            <label for="file">
-                                <i class="fas fa-upload" style="cursor: pointer; font-size: 24px;"></i>
-                            </label>
-                        </form>
+                        <div>
+                            <button type="button" name="btn_Nuevo" id="ExportarProgramacion" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#">
+                                <i class="fa-solid fa-cloud-arrow-down"></i> Exportar
+                            </button>
+                        </div>
                         ';
                     }
                 ?>
-                
-
                 <div id="sin_contenido"></div>
             </div>
             <div id="pfB"></div>
