@@ -15,6 +15,9 @@ $(document).ready(function(){
         }
     }, 'json');
 });
+$(document).on("click", "#ExportarProgramacion", function () {
+    window.location.href = "../../include/cntrlGprogramaformacion.php?action=exportarProgramacion";
+});
 $(document).on("click", "#btn_ListPf", function () { 
     var id_programaformacion = $(this).data('id');
     $.post("../../include/cntrlGprogramaFormacion.php", {
@@ -26,9 +29,11 @@ $(document).on("click", "#btn_ListPf", function () {
             $("#List_Gestion").html(
                 data.ListPf
             );
-        } else {
-            alert("Error")
-        }
+        } else { Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: data.ms
+        }); }
     }, 'json');
 });
 $(document).on("click", "#calendario", function() {

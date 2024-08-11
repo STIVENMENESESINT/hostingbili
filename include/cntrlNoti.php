@@ -264,7 +264,7 @@ switch ($_REQUEST['action']) {
                 VALUES (?, ?, ?, ?, ?, ?, ?, 3)";
                     if ($stmt = mysqli_prepare($conn, $query)) {
                         mysqli_stmt_bind_param($stmt, "ssssssi",
-                            $_POST['nombre'],
+                            $_POST['nombre_programa'],
                             $_POST['fecha_cierre'],
                             $_POST['fecha_inicio'],
                             $_POST['modalidad'],

@@ -733,6 +733,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                          style="cursor:pointer;"></select>
                                  </div>
                                  <div class="form-group">
+                                     <label for="cod_poblacion" class="form-label">Tipo De Poblacion:</label>
+                                     <select class="form-input" id="cod_poblacion" name="cod_poblacion" title="Departamento"
+                                         style="cursor:pointer;"></select>
+                                 </div>
+                                 <div class="form-group">
                                      <label for="clave_registro" class="form-label">Contraseña:</label>
                                      <input type="password" class="form-input" id="clave_registro" name="clave"
                                          title="Clave">

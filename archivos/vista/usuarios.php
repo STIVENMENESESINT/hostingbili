@@ -57,15 +57,20 @@ if (isset($_SESSION['id_userprofile'])){
                                             <input type='text' name='dato_txt' id='dato_txt' title='Dato a buscar'
                                                 placeholder='Buscar...' class="form-control form-control-lg">
                                         </div>
-                                        <div>
-                                            <button type="button" name='btn_Buscar' id='btn_Buscar' class="btn btn-primary btn-lg">
-                                                <i class="fa fa-search-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
+                                        <?php
+                                            if ($_SESSION['id_rol'] == 3) {
+                                                echo '
+                                                    <div>
+                                                        <button type="button" name="btn_Buscar" id="btn_Buscar" class="btn btn-primary btn-lg">
+                                                            <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                                        </button>
+                                                    </div>'
+                                                ;
+                                            }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
-                            
                             <div>
                                 <button type="button" name="btn_Nuevo" id="ExportarUsu" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#">
                                 <i class="fa-solid fa-cloud-arrow-down"></i> Exportar

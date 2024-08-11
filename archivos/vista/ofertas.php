@@ -79,24 +79,6 @@ if (isset($_SESSION['id_userprofile'])){
                         ?>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="navbar2 d-flex justify-content-between align-items-center">
-                        <!-- BUSCADOR -->
-                        <div class="d-flex align-items-center">
-                            <input type='text' name='dato_txt' id='dato_txt' title='Dato a buscar'
-                                placeholder='Buscar...' class="form-control form-control-lg mr-2">
-                            <button type="button" name='btn_Buscar' id='btn_Buscar'
-                                class="btn btn-primary btn-lg">
-                                <i class="fa fa-search-plus" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                        <div>
-                            <button type="button" name="btn_Nuevo" id="btn_Nuevo" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <i class="fa fa-plus" aria-hidden="true"></i> Crear
-                            </button>
-                        </div>
-                    </div>
-                </div>
                 <i class="fa-solid fa-cloud-arrow-down"></i>
                     <div id="oferta_curso"></div>';
                 <div id="solisB"></div>

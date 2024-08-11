@@ -375,7 +375,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                         <div class="form-group course-data-field form-group-full" id="descripcion">
                             <label class="modal-title" for="descripcion">Descripción:</label>
-                            <textarea rows="10" class="form-input form-control" id="descripcion" name="descripcion"
+                            <textarea rows="10" class="form-input form-control" id="descripcion_Publi" name="descripcion"
                                 placeholder="Descripción" required></textarea>
                         </div>
                         <div class="form-group course-data-field">

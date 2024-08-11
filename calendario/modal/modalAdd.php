@@ -10,10 +10,23 @@
                     <script>
                         $(document).ready(function(){  
                             $.post("../../include/select.php", {
-                                action: 'crgrprogramaFormacion' 
+                                action: 'crgrprogramaFormacion4' 
                             },
                             function(data) {
                                 $("#id_programaformacion").html(data.lisTiposPF);
+                                },
+                                'json'
+                            ).fail(function(xhr, status, error) {
+                                console.error(error);
+                            });
+                        });
+                        $(document).on("change", "#id_programaformacion", function() { 
+                            $.post("../../include/select.php", {
+                                action: 'CrgrFichas',
+                                id_programaformacion: $("#id_programaformacion").val()
+                            },
+                            function(data) {
+                                $("#ficha").html(data.listFicha);
                                 },
                                 'json'
                             ).fail(function(xhr, status, error) {
@@ -96,10 +109,12 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Programa de Formacion</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="id_programaformacion">
+                            <select name="id_programaformacion" class="form-control" id="id_programaformacion" required>
                                 <option value="">seleccione...</option>
                             </select>
                         </div>
+                    </div>
+                    <div id="ficha" class="form-group">
                     </div>
                     <div class="form-group">
                         <label for="id_competencia" class="col-sm-2 control-label">Competencia</label>

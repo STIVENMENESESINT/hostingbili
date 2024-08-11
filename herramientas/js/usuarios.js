@@ -54,6 +54,26 @@ $(document).on("click", "#ExportarUsu", function () {
     window.location.href = "../../include/cntrlUsuarios.php?action=exportarUsuarios";
 });
 
+$(document).ready(function () {
+    // Mostrar u ocultar las opciones de filtro al hacer clic en el botón
+    $('#filterButton').on('click', function () {
+        $('#filterOptions').toggle();
+    });
+
+    // Aplicar los filtros seleccionados al hacer clic en "Aplicar filtros"
+    $('#applyFilters').on('click', function () {
+        var selectedFilters = [];
+        $('#filterOptions input[type="checkbox"]:checked').each(function () {
+            selectedFilters.push($(this).val());
+        });
+
+        // Aquí puedes enviar los filtros seleccionados al servidor o aplicarlos localmente
+        console.log('Filtros seleccionados:', selectedFilters);
+
+        // Cerrar el menú de opciones después de aplicar los filtros
+        $('#filterOptions').hide();
+    });
+});
 
 
 function cargarPermisos(iduserprofile) {

@@ -95,14 +95,33 @@ if (isset($_SESSION['id_userprofile'])){
                                 <i class="fa fa-plus" aria-hidden="true"></i> Crear
                             </button>
                         </div>
+                        <div class="filter-container">
+                            <button id="filterButton" class="btn btn-success btn-lg">
+                                <i class="fas fa-filter"></i> Filtro
+                            </button>
+                            <div id="filterOptions" class="filter-options">
+                                <label><input type="checkbox" value="Asignada">Asignadas</label>
+                                <label><input type="checkbox" value="Aceptado">Aceptadas</label>
+                                <label><input type="checkbox" value="Denegado">Denegadas</label>
+                                <button id="btn_Filtro" class="btn btn-success btn-lg">Aplicar filtros</button>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
                 <!-- NO TOCAR -->
                 <i class="fa-solid fa-cloud-arrow-down"></i>
                 <?php
                             if ($_SESSION['id_rol'] == 3) {
-                                echo '<div id="sin_contenido"></div>
-                                <div id="oferta_curso"></div>';
+                                echo '
+                                    <div>
+                                        <button type="button" name="btn_Nuevo" id="ExportarSoli" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#">
+                                            <i class="fa-solid fa-cloud-arrow-down"></i> Exportar
+                                        </button>
+                                    </div>
+                                    <div id="sin_contenido"></div>
+                                    <div id="oferta_curso"></div>'
+                                ;
                             }
                         ?>
                 <?php
@@ -110,7 +129,7 @@ if (isset($_SESSION['id_userprofile'])){
                                 echo '<div id="contenido"></div>';
                             }
                         ?>
-
+                <div id="solisF"></div>
                 <div id="solisB"></div>
             </div>
         </div>
@@ -119,17 +138,16 @@ if (isset($_SESSION['id_userprofile'])){
     <!-- MODAL CREAR OFERTA 5 USUARIOS -->
     <div class="modal fade" id="OfertAlert" tabindex="-1" aria-labelledby="OfertAlertLabel"
         aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="editSolicitudLabel">Ofertar Programa</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editSolicitudLabel">Ofertar Programa</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="modalOf"></div>
             </div>
-            <div id="modalOf"></div>
         </div>
     </div>
-</div>
-
     <!-- solicitud 5  -->
     <div class="modal fade" id="AceptSolicitud5Modal" tabindex="-1" aria-labelledby="AceptSolicitudLabel"
         aria-hidden="true">
