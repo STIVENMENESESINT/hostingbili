@@ -277,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
                          <div class="banner">
 
 
-                             <div class="bilingualism__english-cards-container">
+                             <div class="bilingualism">
                                  <div class="bilingualism__english-cards">
                                      <div class="bilingualism__english-levels">
                                          <a target="_blank"

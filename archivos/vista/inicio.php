@@ -107,19 +107,52 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="content__page">
                 <!--este es mi carrucel principal -->
                 <div class="carousel-container">
+                    <div class="carousel-wrapper">
+                        <div class="carousel-container carousel-70">
+                            <?php 
+            include_once('publicarnoticiacarrusel.php');
+        ?>
+                        </div>
+
+                        <div class="carousel-container carousel-30">
+                            <?php
+            include_once('banner.php');
+        ?>
+                        </div>
+                    </div>
+
                     <style>
-                    /* Estilos para el carrusel */
+                    .carousel-wrapper {
+                        display: flex;
+                        width: 100%;
+                    }
+
+                    .carousel-container {
+                        padding: 0;
+                        /* Elimina padding para evitar desalineación */
+                        box-sizing: border-box;
+                        /* Incluye el padding en el tamaño total */
+                    }
+
+                    .carousel-70 {
+                        flex: 0 0 70%;
+                        /* Ajusta el ancho al 70% */
+                    }
+
+                    .carousel-30 {
+                        flex: 0 0 30%;
+                        /* Ajusta el ancho al 30% */
+                    }
+
                     .carousel-inner img {
                         max-width: 100%;
                         max-height: 300px;
-                        /* Reducir la altura máxima */
                         width: auto;
                         height: auto;
                         margin: 0 auto;
                         border-radius: 16px;
                         background-color: #f2f2f2;
                         padding: 10px;
-                        /* Reducir el padding */
                         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                     }
 
@@ -134,22 +167,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         border-radius: 50%;
                         padding: 10px;
                     }
-
-                    /* Ajustes generales para el contenedor del carrusel */
-                    .carousel-container {
-                        max-width: 600px;
-                        /* Ajusta el ancho máximo del carrusel */
-
-                        padding: 20px;
-                        /* Añadir un padding alrededor del carrusel */
-                    }
                     </style>
 
-                    <?php 
-                        include_once('publicarnoticiacarrusel.php');
-                    ?>
 
                 </div>
+
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -207,13 +229,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     </div>
 
+
                     <!-- Bili asistente virtual -->
                     <?php 
                         include_once('../../chatp/index.php');
                     ?>
 
 
-                    <h1 class="title" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">NOTICIAS
+                    <h1 class="title" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">
+                        NOTICIAS
                     </h1>
                     <div class="divider"></div>
 
