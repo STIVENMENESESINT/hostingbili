@@ -138,8 +138,8 @@
     .wrapper .typing-field .input-data {
         height: 64px;
         width: 367px;
-        position: relative;
-        top: 55px;
+        position: absolute;
+
         left: 5px;
     }
 
