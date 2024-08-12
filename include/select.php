@@ -477,14 +477,12 @@ switch ($_REQUEST['action'])
                                                                                         <td>" . $registro['nombre_estado'] . "</td>
                                                                                         <td>";
                                                             if ($_SESSION['id_rol'] == 3) {
-                                                                $jTableResult['tabla'] .= '<button id="btnEditarSoli" class="btn btn-warning btn-sm  local" data-bs-toggle="modal" data-bs-target="#editSolicitudModal" data-id="' . $registro['id_solicitud'] . '">Ver Soli</button>
-                                                                                            <button id="modalCancel" class="btn btn-danger btn-sm  local" data-bs-toggle="modal" data-bs-target="#cancelSolicitudModal" data-id="' . $registro['id_solicitud'] . '">Denegar Soli</button>
-                                                                                            <button id="btnAceptarSoli" class="btn btn-success cursor:pointer;  local" data-id="' . $registro['id_solicitud'] . '">Aceptar Soli</button>';
+                                                                $jTableResult['tabla'] .= '<button id="btnEditarSoli" class="btn btn-warning btn-sm  local" data-bs-toggle="modal" data-bs-target="#editSolicitudModal" data-id="' . $registro['id_solicitud'] . '">Ver Soli</button>';
                                                             } elseif ($registro['id_estado'] == 4){
                                                                 $jTableResult['tabla'].='<button id="detalleSolicitud" class="btn btn-warning btn-sm  local" data-bs-toggle="modal" data-bs-target="#detallesolicitud" data-id="' . $registro['id_solicitud'] . '">Ver Solicitud</button>';
                                                             }
                                                             else {
-                                                                $jTableResult['tabla'] .= '<button id="btnEditarSoli" class="btn btn-warning btn-sm  local" data-bs-toggle="modal" data-bs-target="#editSolicitudModal"  data-id="' . $registro['id_solicitud'] . '">Editar</button>
+                                                                $jTableResult['tabla'] .= '
                                                                                             <button id="btnEliminarSoli" class="btn btn-danger btn-sm  local">Cancelar</button>';
                                                             }
                             $jTableResult['tabla'] .= "</td></tr>";
