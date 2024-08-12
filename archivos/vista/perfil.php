@@ -208,7 +208,6 @@ if (isset($_SESSION['id_userprofile'])) {
                             </div> -->
 
 
-
                     <div class="modal-footer">
                         <button type="button" class="close-button" data-bs-dismiss="modal">Cancelar</button>
                         <button type="button" class="create-button" name="btnActualizarUsuario"
