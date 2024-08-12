@@ -1746,27 +1746,27 @@ switch ($_REQUEST['action'])
                         <h2 class='label-identifier'>DATOS DE CURSO</h2>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Nombre curso</label>
-                            <label class='data-field' id='nombre_programa'>" . $registro['nom_pf'] . "</label>
+                            <label class='data-field' id='nombre_programa2'>" . $registro['nom_pf'] . "</label>
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Fecha inicio</label>
-                            <input type='date' id='fecha_inicio' class='form-control' />
+                            <input type='date' id='fecha_inicio2' class='form-control' />
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Fecha cierre</label>
-                            <input type='date' id='fecha_cierre' class='form-control' />
+                            <input type='date' id='fecha_cierre2' class='form-control' />
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Numero de ficha</label>
-                            <input type='number' id='ficha' value='' class='form-control' />
+                            <input type='number' id='ficha2' value='' class='form-control' />
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Horas de curso</label>
-                            <label class='data-field' id='horas_curso_label'>" . $registro['horas_curso'] . "</label>
+                            <label class='data-field' id='horas_curso_label2'>" . $registro['horas_curso'] . "</label>
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Modalidad</label>
-                            <label class='data-field' id='id_modalidad_label'>" . $registro['modalidad'] . "</label>
+                            <label class='data-field' id='id_modalidad_label2'>" . $registro['modalidad'] . "</label>
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Jornada</label>
@@ -1775,11 +1775,11 @@ switch ($_REQUEST['action'])
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Nivel de Formacion</label>
-                            <label class='data-field' id='nivel_formacion_label'>" . $registro['nivel_formacion'] . "</label>
+                            <label class='data-field' id='nivel_formacion_label2'>" . $registro['nivel_formacion'] . "</label>
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Tipo de Formacion</label>
-                            <label class='data-field' id='tipo_formacion_label'>" . $registro['tipo_formacion'] . "</label>
+                            <label class='data-field' id='tipo_formacion_label2'>" . $registro['tipo_formacion'] . "</label>
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Matriculados</label>

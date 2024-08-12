@@ -87,19 +87,14 @@ $(document).on("click", "#btn_curso", function() {
         if (confirmacion) {
             var formData = new FormData();
             formData.append("action", "registroCursoNew");
-            formData.append("fecha_inicio", $("#fecha_inicio").val());
-            formData.append("nombre_programa", $("#nombre_programa").val());
-            formData.append("fecha_cierre", $("#fecha_cierre").val());
-            formData.append("modalidad", $("#id_modalidad_label").text().trim());
-            formData.append("nivel_formacion", $("#nivel_formacion_label").text().trim());
-            formData.append("tipo_formacion", $("#tipo_formacion_label").text().trim());
-            formData.append("horas_curso", $("#horas_curso_label").text().trim());
-            formData.append("titulo", $("#titulo1").val());
+            formData.append("fecha_inicio", $("#fecha_inicio2").val());
+            formData.append("nombre_programa", $("#nombre_programa2").val());
+            formData.append("fecha_cierre", $("#fecha_cierre2").val());
+            formData.append("modalidad", $("#id_modalidad_label2").text().trim());
+            formData.append("nivel_formacion", $("#nivel_formacion_label2").text().trim());
+            formData.append("tipo_formacion", $("#tipo_formacion_label2").text().trim());
+            formData.append("horas_curso", $("#horas_curso_label2").text().trim());
             formData.append("ficha", $("#ficha").val());
-            formData.append("descripcion", $("#descripcion_Publi").val());
-            formData.append("fecha_mostrada", $("#id_fecha_mostrada").val());
-            formData.append("fecha_fin", $("#id_fecha_fin").val());
-            formData.append("url", $("#id_url").val());
             formData.append("id_solicitud", idSolicitud);
 
             $.ajax({
