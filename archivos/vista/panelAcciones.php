@@ -27,11 +27,11 @@ if (isset($_SESSION['id_userprofile'])){
         left: 85%;
 
     }
-    ::selection {
-color: #fff;
-background: #fd7d1c;
-}
 
+    ::selection {
+        color: #fff;
+        background: #fd7d1c;
+    }
     </style>
 </head>
 
@@ -69,95 +69,7 @@ background: #fd7d1c;
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <h1>Dashboard general</h1>
-                            </div>
-                            <div class="col-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <img class="img-fluid" src="../../imagenes/money.png" alt="">
-                                            </div>
-                                        </div>
 
-                                        <h6 class="card-subtitle mb-2 text-muted">Total ventas</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <img class="img-fluid" src="../../imagenes/target.png" alt="">
-                                            </div>
-                                        </div>
-
-                                        <h6 class="card-subtitle mb-2 text-muted">Clientes registrados</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <img class="img-fluid" src="../../imagenes/customer.png" alt="">
-                                            </div>
-                                        </div>
-
-                                        <h6 class="card-subtitle mb-2 text-muted">Clientes en los últimos 30 días</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <img class="img-fluid" src="../../imagenes/meeting.png" alt="">
-                                            </div>
-                                        </div>
-
-                                        <h6 class="card-subtitle mb-2 text-muted">Clientes en el último año</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 my-2">
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <h3>Clientes por departamento</h3>
-                                        <canvas id="grafica"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 my-2">
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <h3>Edad</h3>
-                                        <canvas id="graficaEdad"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 my-2">
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <h3>Ventas del año actual</h3>
-                                        <canvas id="graficaVentas"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 my-2">
-                                <div class="card text-center">
-                                    <div class="card-body">
-                                        <h3>Clientes por año</h3>
-                                        <canvas id="graficaClientes"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

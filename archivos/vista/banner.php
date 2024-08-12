@@ -1,141 +1,88 @@
-<div class="bilingualism__english-cards-container">
-    <div class="bilingualism__english-cards">
-        <div class="bilingualism__english-levels">
-            <a target="_blank" href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240087">
-                <img loading="lazy" src="../../imagenes/img/banner/ingles1-banner.webp" alt="English 1 banner"
-                    class="bilingualism__english-imgs">
+<style>
+.carousel-item img {
+    width: 60%;
+    margin: 0 auto;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.carousel {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+}
+</style>
+
+<div id="carousel" class="carousel carousel-dark slide">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true"
+            aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    </div>
+    <div class="carousel-inner">
+        <!-- Nivel 1 -->
+        <div class="carousel-item active" data-bs-interval="10000">
+            <a href="https://acortar.link/6jnmhv" target="_blank">
+                <img src="../../imagenes/img/banner/IMG-20240805-WA0037.jpg" class="d-block w-100" alt="Nivel 1 banner">
             </a>
-            <p class="bilingualism__english-text"
-                data-lang-es="Fortalecimiento de herramientas básicas para la comunicación en inglés."
-                data-lang-en="Strengthening basic tools for communication in English."
-                data-lang-fr="Renforcement des outils de base pour la communication en anglais.">
-                Fortalecimiento de herramientas básicas para la comunicación en inglés.
-            </p>
+            <div class="carousel-caption d-none">
+                <h5>Nivel 1</h5>
+                <p>Descripción del nivel 1.</p>
+            </div>
         </div>
-        <div class="bilingualism__english-levels">
-            <a target="_blank" href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240088">
-                <img loading="lazy" src="../../imagenes/img/banner/ingles2-banner.webp" alt="English 2 banner"
-                    class="bilingualism__english-imgs">
+        <!-- Nivel 2 -->
+        <div class="carousel-item" data-bs-interval="2000">
+            <a href="https://acortar.link/XQLHX3" target="_blank">
+                <img src="../../imagenes/img/banner/IMG-20240805-WA0035.jpg" class="d-block w-100" alt="Nivel 2 banner">
             </a>
-            <p class="bilingualism__english-text"
-                data-lang-es="Comunicación en contextos personales y profesionales en inglés."
-                data-lang-en="Communication in personal and professional contexts in English."
-                data-lang-fr="Communication dans des contextes personnels et professionnels en anglais.">
-                Comunicación en contextos personales y profesionales en inglés.
-            </p>
+            <div class="carousel-caption d-none ">
+                <h5>Nivel 2</h5>
+                <p>Descripción del nivel 2.</p>
+            </div>
         </div>
-        <div class="bilingualism__english-levels">
-            <a target="_blank" href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240089">
-                <img loading="lazy" src="../../imagenes/img/banner/ingles3-banner.webp" alt="English 3 banner"
-                    class="bilingualism__english-imgs">
+        <!-- Nivel 3 -->
+        <div class="carousel-item">
+            <a href="https://acortar.link/W3Ofol" target="_blank">
+                <img src="../../imagenes/img/banner/IMG-20240805-WA0036.jpg" class="d-block w-100" alt="Nivel 3 banner">
             </a>
-            <p class="bilingualism__english-text"
-                data-lang-es="Comunicación en contextos personales y profesionales en inglés."
-                data-lang-en="Communication in personal and professional contexts in English."
-                data-lang-fr="Communication dans des contextes personnels et professionnels en anglais.">
-                Comunicación en contextos personales y profesionales en inglés.
-            </p>
+            <div class="carousel-caption d-none ">
+                <h5>Nivel 3</h5>
+                <p>Descripción del nivel 3.</p>
+            </div>
         </div>
-        <div class="bilingualism__english-levels">
-            <a target="_blank" href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240090">
-                <img loading="lazy" src="../../imagenes/img/banner/ingles4-banner.webp" alt="English 4 banner"
-                    class="bilingualism__english-imgs">
+        <!-- Nivel 4 -->
+        <div class="carousel-item">
+            <a href="https://acortar.link/hIEptE" target="_blank">
+                <img src="../../imagenes/img/banner/IMG-20240805-WA0038.jpg" class="d-block w-100" alt="Nivel 4 banner">
             </a>
-            <p class="bilingualism__english-text"
-                data-lang-es="Consolidación y comprensión de diferentes textos orales y escritos en inglés."
-                data-lang-en="Consolidation and understanding of different oral and written texts in English."
-                data-lang-fr="Consolidation et compréhension de différents textes oraux et écrits en anglais.">
-                Consolidación y comprensión de diferentes textos orales y escritos en inglés.
-            </p>
+            <div class="carousel-caption d-none ">
+                <h5>Nivel 4</h5>
+                <p>Descripción del nivel 4.</p>
+            </div>
         </div>
-        <div class="bilingualism__english-levels">
-            <a target="_blank" href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240091">
-                <img loading="lazy" src="../../imagenes/img/banner/ingles5-banner.webp" alt="English 5 banner"
-                    class="bilingualism__english-imgs">
+        <!-- Nivel 5 -->
+        <div class="carousel-item">
+            <a href="https://acortar.link/A11ycj" target="_blank">
+                <img src="../../imagenes/img/banner/IMG-20240805-WA0039.jpg" class="d-block w-100" alt="Nivel 5 banner">
             </a>
-            <p class="bilingualism__english-text"
-                data-lang-es="Interacción en diferentes contextos expresando gustos y preferencias en inglés."
-                data-lang-en="Interaction in different contexts expressing tastes and preferences in English."
-                data-lang-fr="Interaction dans différents contextes en exprimant des goûts et des préférences en anglais.">
-                Interacción en diferentes contextos expresando gustos y preferencias en inglés.
-            </p>
-        </div>
-        <div class="bilingualism__english-levels">
-            <a target="_blank" href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240092">
-                <img loading="lazy" src="../../imagenes/img/banner/ingles6-banner.webp" alt="English 6 banner"
-                    class="bilingualism__english-imgs">
-            </a>
-            <p class="bilingualism__english-text"
-                data-lang-es="Fortalecimiento de herramientas para la comunicación en inglés."
-                data-lang-en="Strengthening tools for communication in English."
-                data-lang-fr="Renforcement des outils pour la communication en anglais.">
-                Fortalecimiento de herramientas para la comunicación en inglés.
-            </p>
-        </div>
-        <div class="bilingualism__english-levels">
-            <a target="_blank" href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240093">
-                <img loading="lazy" src="../../imagenes/img/banner/ingles7-banner.webp" alt="English 7 banner"
-                    class="bilingualism__english-imgs">
-            </a>
-            <p class="bilingualism__english-text"
-                data-lang-es="Consolidación de herramientas para la comunicación efectiva en diferentes contextos."
-                data-lang-en="Consolidation of tools for effective communication in different contexts."
-                data-lang-fr="Consolidation des outils pour une communication efficace dans différents contextes.">
-                Consolidación de herramientas para la comunicación efectiva en diferentes contextos.
-            </p>
-        </div>
-        <div class="bilingualism__english-levels">
-            <a target="_blank" href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240094">
-                <img loading="lazy" src="../../imagenes/img/banner/ingles8-banner.webp" alt="English 8 banner"
-                    class="bilingualism__english-imgs">
-            </a>
-            <p class="bilingualism__english-text"
-                data-lang-es="Construcción de textos orales y escritos según las características e intencionalidad del contexto."
-                data-lang-en="Construct oral and written texts according to the characteristics and intentionality of the context."
-                data-lang-fr="Construire des textes oraux et écrits selon les caractéristiques et l'intentionnalité du contexte.">
-                Construcción de textos orales y escritos según las características e intencionalidad
-                del contexto.
-            </p>
-        </div>
-        <div class="bilingualism__english-levels">
-            <a target="_blank" href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240095">
-                <img loading="lazy" src="../../imagenes/img/banner/ingles9-banner.webp" alt="English 9 banner"
-                    class="bilingualism__english-imgs">
-            </a>
-            <p class="bilingualism__english-text"
-                data-lang-es="Comentar sobre eventos que han ocurrido o están planificados en inglés basándose en textos narrativos."
-                data-lang-en="Comment on events that have occurred or are planned in English based on narrative texts."
-                data-lang-fr="Commenter des événements qui se sont produits ou sont prévus en anglais en se basant sur des textes narratifs.">
-                Comentar sobre eventos que han ocurrido o están planificados en inglés basándose en
-                textos narrativos.
-            </p>
-        </div>
-        <div class="bilingualism__english-levels">
-            <a target="_blank" href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240096">
-                <img loading="lazy" src="../../imagenes/img/banner/ingles10-banner.webp" alt="English 10 banner"
-                    class="bilingualism__english-imgs">
-            </a>
-            <p class="bilingualism__english-text"
-                data-lang-es="Construir textos orales y escritos en inglés sobre eventos futuros."
-                data-lang-en="Construct oral and written texts in English about future events."
-                data-lang-fr="Construire des textes oraux et écrits en anglais sur des événements futurs.">
-                Construir textos orales y escritos en inglés sobre eventos futuros.
-            </p>
-        </div>
-        <div class="bilingualism__english-levels">
-            <a target="_blank" href="https://comunidades.netlab-sena.net/cursos-cortos/inscripcion-sofia/51240097">
-                <img loading="lazy" src="../../imagenes/img/banner/ingles11-banner.webp" alt="English 11 banner"
-                    class="bilingualism__english-imgs">
-            </a>
-            <p class="bilingualism__english-text"
-                data-lang-es="Escribir textos argumentativos en inglés con coherencia y cohesión según la intencionalidad comunicativa."
-                data-lang-en="Write argumentative texts in English with coherence and cohesion according to the communicative intentionality."
-                data-lang-fr="Rédiger des textes argumentatifs en anglais avec cohérence et cohésion selon l'intentionnalité communicative.">
-                Escribir textos argumentativos en inglés con coherencia y cohesión según la
-                intencionalidad comunicativa.
-            </p>
+            <div class="carousel-caption d-none">
+                <h5>Nivel 5</h5>
+                <p>Descripción del nivel 5.</p>
+            </div>
         </div>
     </div>
 
-    <div class="divider"></div>
 </div>
