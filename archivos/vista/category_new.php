@@ -28,7 +28,6 @@ if (isset($_SESSION['id_userprofile'])){
 
 <body>
 
-
 <div class="layout">
     <!-- Menú de navegación -->
     <aside class="layout__aside">
