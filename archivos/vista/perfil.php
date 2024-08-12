@@ -128,7 +128,7 @@ if (isset($_SESSION['id_userprofile'])) {
                 <!-- Campos del formulario -->
 
 
-                <div class="container">
+                
                     <h1 class="title">Actualizar Usuario</h1>
                     <h2 class="title">Bienvenido <span>
                             <?php echo htmlspecialchars($fila['nombre']); ?>!</span>
@@ -213,7 +213,7 @@ if (isset($_SESSION['id_userprofile'])) {
                         <button type="button" class="create-button" name="btnActualizarUsuario"
                             id="btnActualizarUsuario">Actualizar</button>
                     </div>
-                </div>
+                
 
             </div>
 
