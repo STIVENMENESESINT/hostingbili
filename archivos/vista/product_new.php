@@ -44,20 +44,32 @@ if (isset($_SESSION['id_userprofile'])){
     </aside>
 
     <!-- Contenido principal -->
-    <div class="container layout__content">
-        <div class="content__page">
-            <!-- Botón de Volver dentro del contenido principal -->
-            <button type="button" class="btn nav-link nav-item-hover fixed-top-right" onclick="goBack()">
-                <i class="fas fa-arrow-left fa-fw fa-lg"></i>
-                <span class="nav-item">Volver</span>
-            </button>
+    <div class="content__page">
+        <div class="container">
+            <div class="is-fluid mb-6">
+                <!-- Botón de Volver -->
+                <button type="button" class="btn nav-link nav-item-hover fixed-top-right" onclick="goBack()">
+                    <i class="fas fa-arrow-left fa-fw fa-lg"></i>
+                    <span class="nav-item">Volver</span>
+                </button>
+                <script>
+                    function goBack() {
+                        window.history.back();
+                    }
+                </script>
 
-            <div class="pb-6 pt-6">
-                <div class="is-fluid mb-6">
-                    <h1 class="title">Biblioteca Bilingüismo<br>Nuevo libro B-Team-Language</h1>
+                <!-- Título -->
+                <h1 class="title">Biblioteca Bilingüismo<br>Nuevo libro B-Team-Language</h1>
+
+                <!-- Botón Publicar Libro -->
+                <div class="buttons">
+                    <a href="" class="navbar-item">Publicar Libro</a>
                 </div>
+            </div>
 
-                <div class="columns container">
+            <!-- Formulario para añadir un libro -->
+            <form id="addBookForm" enctype="multipart/form-data">
+                <div class="columns">
                     <div class="column is-half">
                         <div class="field">
                             <label class="label">Título:</label>
@@ -65,52 +77,44 @@ if (isset($_SESSION['id_userprofile'])){
                                 <input class="input" type="text" name="titulo" required>
                             </div>
                         </div>
-
                         <div class="field">
                             <label class="label">Prologo Corto del Libro:</label>
                             <div class="control">
                                 <input class="input" type="text" name="prologo" required>
                             </div>
                         </div>
-
                         <div class="field">
                             <label class="label">Autor:</label>
                             <div class="control">
                                 <input class="input" type="text" name="autor" required>
                             </div>
                         </div>
-
                         <div class="field">
                             <label class="label">Descripcion Corta Autor:</label>
                             <div class="control">
                                 <input class="input" type="text" name="descripcion_autor" required>
                             </div>
                         </div>
-
                         <div class="field">
                             <label class="label">Año de Publicación:</label>
                             <div class="control">
                                 <input class="input" type="number" name="anio_publicacion" required>
                             </div>
                         </div>
-
                         <div class="field">
                             <label class="label">Sección:</label>
                             <div class="control">
                                 <select id="fk_seccion"></select>
                             </div>
                         </div>
-
                         <div class="field">
                             <label class="label">Archivo PDF:</label>
                             <div class="control">
                                 <input class="input" type="file" name="archivo_pdf" accept="application/pdf" required>
                             </div>
                         </div>
-
                         <input type="hidden" name="fk_publicante" value="1">
                         <!-- ID del usuario publicante -->
-
                         <div class="field">
                             <p class="control has-text-centered">
                                 <button type="button" id="guardar_libro" class="create-button">Guardar</button>
@@ -118,10 +122,22 @@ if (isset($_SESSION['id_userprofile'])){
                         </div>
                     </div> <!-- .column -->
                 </div> <!-- .columns -->
-            </div> <!-- .pb-6 pt-6 -->
-        </div> <!-- .content__page -->
-    </div> <!-- .container layout__content -->
+            </form>
+        </div> <!-- .container -->
+    </div> <!-- .content__page -->
 </div> <!-- .layout -->
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
     function goBack() {
