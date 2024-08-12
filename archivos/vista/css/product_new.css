@@ -1,87 +1,48 @@
-/* CONFIGURACIÓN GENERAL PARA EL CONTENEDOR DEL FORMULARIO */
-#addBookForm {
-    max-width: 800px; /* LIMITA EL ANCHO MÁXIMO PARA MEJORAR LA LEGIBILIDAD */
-    margin: 0 auto; /* CENTRA EL FORMULARIO */
-    padding: 20px; /* AGREGA ESPACIO DENTRO DEL CONTENEDOR */
-    background-color: #fff; /* UTILIZA EL COLOR DE FONDO TERCIARIO */
-    border-radius: 10px; /* AGREGA ESQUINAS REDONDEADAS */
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.2); /* AGREGA UNA SOMBRA SUTIL PARA DAR PROFUNDIDAD */
-}
 
-/* ESTILO DEL TÍTULO */
-.title {
-    font-size: 4.5em; /* AUMENTA EL TAMAÑO DE LA FUENTE PARA MEJOR VISIBILIDAD */
-    color: #3498db; /* UTILIZA EL COLOR DE ÉXITO */
-    text-align: center; /* CENTRA EL TÍTULO */
-    margin-bottom: 20px; /* AGREGA ESPACIO DEBAJO DEL TÍTULO */
-}
 
-/* ESTILO DE LAS ETIQUETAS (LABELS) */
+/* Estilo de las etiquetas de los campos */
 .label {
-    font-size: 1.2em; /* AUMENTA EL TAMAÑO DE LA FUENTE PARA MEJOR LEGIBILIDAD */
-    color: #333; /* UTILIZA EL COLOR DE TEXTO PRIMARIO */
-    margin-bottom: 5px; /* AGREGA ESPACIO DEBAJO DE LAS ETIQUETAS */
+    color: #29690b; /* Alternate color */
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-/* ESTILO DE LOS INPUTS Y SELECTS */
-.input,
-select {
-    font-size: 1em; /* ESTABLECE EL TAMAÑO DE LA FUENTE */
-    padding: 10px; /* AGREGA PADDING PARA MEJORAR LA INTERACTIVIDAD */
-    border: 2px solid #3498db; /* AGREGA UN BORDE CON EL COLOR DE ÉXITO */
-    border-radius: 5px; /* AGREGA ESQUINAS REDONDEADAS */
-    width: 100%; /* HACE QUE LOS INPUTS Y SELECTS OCUPEN EL ANCHO COMPLETO */
-    box-sizing: border-box; /* ASEGURA QUE EL PADDING Y EL BORDE ESTÉN INCLUIDOS EN EL ANCHO */
+/* Estilo de los campos de entrada */
+.input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
 }
 
-/* AGREGA EFECTOS DE ENFOQUE (FOCUS) PARA INPUTS Y SELECTS */
-.input:focus,
-select:focus {
-    border-color: #3498db; /* CAMBIA EL COLOR DEL BORDE AL ENFOCAR */
-    outline: none; /* ELIMINA EL OUTLINE PREDETERMINADO */
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* AGREGA UNA SOMBRA AL ENFOCAR */
+.input:focus, select:focus {
+    border-color: #3498db; /* Color-info */
+    outline: none;
 }
 
-/* ESTILO DEL BOTÓN */
+/* Estilo del botón de guardar */
 .create-button {
-    background-color: #3498db; /* Cambia el color de fondo del botón */
-    color: #fff; /* Cambia el color del texto del botón */
-    border: 2px solid #3498db; /* Cambia el color del borde del botón */
-    padding: 10px 20px; /* Ajusta el espaciado del botón */
-    border-radius: 5px; /* Ajusta los bordes redondeados del botón */
-    font-size: 16px; /* Ajusta el tamaño de la fuente del botón */
-    cursor: pointer; /* Cambia el cursor cuando se pasa sobre el botón */
-    transition: background-color 0.3s ease; /* Agrega una transición suave para el cambio de color */
+    background-color: #3498db; /* Color-info */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* EFECTO DE HOVER EN EL BOTÓN */
-.create-button:hover {
-    background-color: #2980b9; /* Cambia el color de fondo del botón cuando se pasa el ratón sobre él */
-}
 
-/* CENTRAR EL BOTÓN */
-.control.has-text-centered {
-    text-align: center; /* CENTRA EL TEXTO DENTRO DEL CONTROL */
-    margin-top: 30px; /* AGREGA MÁS ESPACIO ARRIBA DEL BOTÓN PARA BAJARLO MÁS */
-}
 
-/* ESTILO DE LAS COLUMNAS */
-.columns {
-    display: flex; /* UTILIZA FLEXBOX PARA EL LAYOUT */
-    flex-wrap: wrap; /* PERMITE QUE LAS COLUMNAS SE ENVUELVAN EN PANTALLAS MÁS PEQUEÑAS */
-}
-
-/* ESTILO DE LAS COLUMNAS INDIVIDUALES */
-.column.is-full {
-    flex: 0 0 100%; /* Asegura que la columna ocupe todo el ancho disponible */
-}
-
-.field {
-    margin-bottom: 20px; /* Espaciado entre los campos */
-}
-
-/* ESTILO PARA EL CONTENEDOR DE BOTONES */
-.buttons {
-    text-align: center; /* CENTRA EL CONTENIDO DE LOS BOTONES */
-    margin-bottom: 20px; /* AGREGA ESPACIO ABAJO DEL CONTENEDOR DE BOTONES */
+/* Estilo para el título principal */
+.title {
+    font-size: 6em; /* Aumenta el tamaño de la fuente aún más */
+    color: #3498db; /* Color del texto */
+    text-align: center; /* Centra el texto */
+    margin-bottom: 20px; /* Espacio debajo del título */
+    font-weight: bold; /* Asegura que el texto sea grueso */
+    line-height: 1.2; /* Controla la altura de la línea */
+    white-space: normal; /* Permite los saltos de línea */
 }
