@@ -4,85 +4,64 @@ $(document).ready(function(){
     }, function(data) {
         if (data.rs === "1") {
             $("#tablecontenido").html(
-                `<h1 class="text-center my-4">Tus Solicitudes Asignadas</h1>` +
+                `<h1 class="title">Tus Solicitudes Asignadas</h1>` +
                 data.tabla
             );
         } else {
             // mirar actualizar perfil
             $("#tablecontenido").html(`
-                <h4>No hay Solicitudes Asignadas</h4>
+                <h4 class="title">No hay Solicitudes Asignadas</h4>
             `);
         }
     }, 'json');
 });
+// $(document).ready(function(){  
+//     $.post("../../include/select.php", {
+//         action: 'crgrResponsable',
+//         id_solicitud: idSolicitud 
+//     },
+//     function(data) {
+//         $("#id_responsable").html(data.listResponsable);
+//         },
+//         'json'
+//         ).fail(function(xhr, status, error) {
+//             console.error(error);
+//     });
+// });
+$(document).on("click", "#btn_pf", function () {
+    var idSolicitud = $(this).data('id');
+    console.log("ID de la solicitud: " + idSolicitud);
+    $.post("../../include/cntrlSoli.php", {
+        action: 'ListarSolicitud_pf',
+        id_solicitud: idSolicitud
+    }, function(data) {
+        if (data.rst == '1') {
+            $("#form_pf").html(data.ListPf);
+            AsignacionesCargar(idSolicitud);
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.ms
+            });
+        }
+    }, 'json');	
+});
+
 $(document).on("click", "#btn_asign", function() {
     var idSolicitud = $(this).data('id');
     console.log("ID de la solicitud: " + idSolicitud);
+    
     $.post("../../include/cntrlSoli.php", {
         action: 'Asignado_Crear',
         id_solicitud: idSolicitud
     }, function(data) {
         if (data.rst == '1') {
             $("#asignado").html(data.Asignform);
-            cargarMetadatos()
-            $(document).on("click", "#btn_curso",function (){
-                console.log("ID de la solicitud: " + idSolicitud);
-                if($("#ficha").val()==""){
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Debe ingresar la ficha del curso'
-                    });
-                    $("#ficha").focus();
-                }
-                else
-                {
-                    if($("#nombre").val()=="" ){
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'Debe Digitar un Nombre de Curso'
-                        });
-                        $("#nombre").focus();
-                    }
-                    else
-                    {
-                        // seguir preguntando con otra caja de texto. 
-                        // los demas lo hacen ustedes.
-                        confirm("Esta seguro de Crear este Curso de" + $("#nombre"))
-                        $.post("../../include/cntrlSoli.php", {
-                        action:'registroCursoNew',
-                        nombre:$("#nombre").val(),
-                        fecha_inicio:$("#fecha_inicio").val(),
-                        fecha_cierre:$("#fecha_cierre").val(),
-                        ficha:$("#ficha").val(),
-                        horas_curso:$("#horas").val(),
-                        id_modalidad:$("#id_modalidad").val(),
-                        id_jornada:$("#id_jornada").val(),
-                        id_nivel_formacion:$("#id_nivel_formacion").val(),
-                        matriculados:$("#matriculados").val(),
-                        id_estado:$("#id_estado").val(),
-                        id_solicitud: idSolicitud
-                        }, function(data){
-                            if(data.rstl=="1"){	
-                                Swal.fire({
-                                icon: 'success',
-                                title: '¡Éxito!',
-                                text: data.msj,
-                                showConfirmButton: false,
-                                timer: 1500 // Tiempo en milisegundos (1.5 segundos)
-                            }).then(() => {
-                                location.reload();
-                            });} else{	
-                                Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: data.msj
-                            }); }
-                        }, 'json');
-                    }
-                }
-            });
+            cargarMetadatos();
+
+            
+            
         } else {
             Swal.fire({
                 icon: 'error',
@@ -91,6 +70,70 @@ $(document).on("click", "#btn_asign", function() {
             });
         }
     }, 'json');
+});
+$(document).on("click", "#btn_curso", function() {
+    var idSolicitud = $(this).attr('id');
+    console.log("ID de la solicitud: " + idSolicitud); // Verifica que el ID sea el correcto
+    
+    if ($("#ficha").val() == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debe ingresar la ficha del curso'
+        });
+        $("#ficha").focus();
+    } else {
+        var confirmacion = confirm("Esta seguro de Crear este Curso de " + $("#nombre_programa").val());
+        if (confirmacion) {
+            var formData = new FormData();
+            formData.append("action", "registroCursoNew");
+            formData.append("fecha_inicio", $("#fecha_inicio2").val());
+            formData.append("nombre_programa", $("#nombre_programa2").val());
+            formData.append("fecha_cierre", $("#fecha_cierre2").val());
+            formData.append("modalidad", $("#id_modalidad_label2").text().trim());
+            formData.append("nivel_formacion", $("#nivel_formacion_label2").text().trim());
+            formData.append("tipo_formacion", $("#tipo_formacion_label2").text().trim());
+            formData.append("horas_curso", $("#horas_curso_label2").text().trim());
+            formData.append("ficha", $("#ficha").val());
+            formData.append("id_solicitud", idSolicitud);
+
+            $.ajax({
+                url: "../../include/cntrlSoli.php",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: 'json',
+                success: function(data) {
+                    if (data.rstl == "1") {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Éxito!',
+                            text: data.msj,
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: data.msj
+                        });
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('Error en la solicitud:', textStatus, errorThrown);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Hubo un problema al intentar crear el curso.'
+                    });
+                }
+            });
+        }
+    }
 });
 
 function cargarMetadatos() {

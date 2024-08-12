@@ -143,7 +143,7 @@ switch ($_REQUEST['action']) {
                             
             
                             if ($registro["id_categoria"] == 3) {
-                                if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 4) {
+                                if ($_SESSION['id_rol'] == 1 || $_SESSION['id_rol'] == 4 || $_SESSION['id_rol'] == 5) {
                                     $jTableResult['noticia'] .= '
                                             <a class="cards__button btn btn-link p-0">
                                                 <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="detalle_oferta" class="cards__button" data-id="' . $registro['id_solicitud'] . '">
@@ -154,11 +154,10 @@ switch ($_REQUEST['action']) {
                                     </div>';
                                 } else {
                                     $jTableResult['noticia'] .= '
-                                        
                                         <div class="col-sm-2">
-                                            <button type="button" id="noticiaful"class="cards__button btn btn-link p-0" data-toggle="modal" data-target="#myModal" data-id="' . $registro['id_solicitud'] . '">
-                                                Ver
-                                            </button>
+                                            <button type="button" id="noticiaful" class="cards__button btn btn-link p-0" data-toggle="modal" data-target="#myModal" data-id="' . $registro['id_solicitud'] . '">
+                                            Ver
+                                        </button>
                                         </div>
                                     </div>
                                 </div>';
@@ -608,7 +607,7 @@ switch ($_REQUEST['action']) {
         $jTableResult['ms'] = "";
         $jTableResult['ListNoti'] = "";
         $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
-        $query = "SELECT 
+        echo $query = "SELECT 
         s.id_solicitud,
         s.id_estado, 
         u.nombre, 
@@ -664,7 +663,7 @@ switch ($_REQUEST['action']) {
             LEFT JOIN
             rol r ON u.id_rol = r.id_rol
         WHERE 
-            s.id_solicitud = '$id_solicitud' AND ds.id_tiposolicitud = 4";
+            s.id_solicitud = '$id_solicitud' AND ds.id_tiposolicitud = 4";exit();
         $result = mysqli_query($conn, $query);
         if ($result) {
             while ($registro = mysqli_fetch_array($result)) {

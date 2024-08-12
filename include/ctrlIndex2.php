@@ -86,7 +86,6 @@ switch ($_REQUEST['action'])
 		
 			print json_encode($jTableResult);
 		break;
-		
 		case 'registroUsuNew': 
 			$jTableResult = array();
 			$jTableResult['rstl'] = "";
@@ -96,21 +95,35 @@ switch ($_REQUEST['action'])
 			$clave = password_hash($_POST['clave_registro'], PASSWORD_BCRYPT);
 		
 			// Construir la consulta SQL
+			$id_tpdoc = isset($_POST['id_tpdoc']) && !empty($_POST['id_tpdoc']) ? $_POST['id_tpdoc'] : NULL;
+			$numeroiden_registro = isset($_POST['numeroiden_registro']) && !empty($_POST['numeroiden_registro']) ? $_POST['numeroiden_registro'] : NULL;
+			$clave = isset($clave) && !empty($clave) ? $clave : NULL; // Asumiendo que $clave ya está definida previamente
+			$nameusu = isset($_POST['nameusu']) && !empty($_POST['nameusu']) ? $_POST['nameusu'] : NULL;
+			$cod_poblacion_regis = isset($_POST['cod_poblacion_regis']) && !empty($_POST['cod_poblacion_regis']) ? $_POST['cod_poblacion_regis'] : NULL;
+			$id_genero = isset($_POST['id_genero']) && !empty($_POST['id_genero']) ? $_POST['id_genero'] : NULL;
+			$celular = isset($_POST['celular']) && !empty($_POST['celular']) ? $_POST['celular'] : NULL;
+			$correo_registro = isset($_POST['correo_registro']) && !empty($_POST['correo_registro']) ? $_POST['correo_registro'] : NULL;
+			$apellidoUsu = isset($_POST['apellidoUsu']) && !empty($_POST['apellidoUsu']) ? $_POST['apellidoUsu'] : NULL;
+			$cod_dpto = isset($_POST['cod_dpto']) && !empty($_POST['cod_dpto']) ? $_POST['cod_dpto'] : NULL;
+			$cod_municipio = isset($_POST['cod_municipio']) && !empty($_POST['cod_municipio']) ? $_POST['cod_municipio'] : NULL;
+			$cod_poblado = isset($_POST['cod_poblado']) && !empty($_POST['cod_poblado']) ? $_POST['cod_poblado'] : NULL;
+
 			$query = "INSERT INTO userprofile SET
-					id_doc = '".$_POST['id_tpdoc']."', 
-					numeroiden = '".$_POST['numeroiden_registro']."', 
-					clave = '".$clave."', 
-					nombre = '".$_POST['nameusu']."', 
-					fecha_registro = NOW(),
-					id_estado = 1,
-					id_rol = 5,
-					id_genero = '".$_POST['id_genero']."',
-					celular = '".$_POST['celular']."',
-					correo = '".$_POST['correo_registro']."',
-					apellido = '".$_POST['apellidoUsu']."', 
-					cod_dpto = '".$_POST['cod_dpto']."', 
-					cod_municipio = '".$_POST['cod_municipio']."', 
-					cod_poblado = '".$_POST['cod_poblado']."';";
+				id_doc = ".($id_tpdoc !== NULL ? "'$id_tpdoc'" : "NULL").", 
+				numeroiden = ".($numeroiden_registro !== NULL ? "'$numeroiden_registro'" : "NULL").", 
+				clave = ".($clave !== NULL ? "'$clave'" : "NULL").", 
+				nombre = ".($nameusu !== NULL ? "'$nameusu'" : "NULL").", 
+				fecha_registro = NOW(),
+				id_estado = 1,
+				id_rol = 5,
+				cod_poblacion = ".($cod_poblacion_regis !== NULL ? "'$cod_poblacion_regis'" : "NULL").",
+				id_genero = ".($id_genero !== NULL ? "'$id_genero'" : "NULL").",
+				celular = ".($celular !== NULL ? "'$celular'" : "NULL").",
+				correo = ".($correo_registro !== NULL ? "'$correo_registro'" : "NULL").",
+				apellido = ".($apellidoUsu !== NULL ? "'$apellidoUsu'" : "NULL").", 
+				cod_dpto = ".($cod_dpto !== NULL ? "'$cod_dpto'" : "NULL").", 
+				cod_municipio = ".($cod_municipio !== NULL ? "'$cod_municipio'" : "NULL").", 
+				cod_poblado = ".($cod_poblado !== NULL ? "'$cod_poblado'" : "NULL").";";
 		
 			try {
 				if ($result = mysqli_query($conn, $query)) {

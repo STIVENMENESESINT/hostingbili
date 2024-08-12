@@ -174,22 +174,20 @@ $(document).ready(function(){
 
 			function clear() {
 				$("#fechaNacimientoUsu").val("");                    
-				$("#id_tpdoc").val("0");
-				$("#numeroiden_registro").val("");
-				$("#nameusu").val("");
-				$("#nombre_dos").val("");
-				$("#apellidoUsu").val("");
-				$("#apellidoUsu_dos").val("");
-				$("#id_genero").val(""); 
-				$("#estadoCivil").val(""); 
-				$("#celular").val("");
-				$("#cod_dpto").val("0");
-				$("#cod_municipio").val("0");
-				$("#cod_poblado").val("0");
-				$("#direccion").val("");
-				$("#correo_registro").val("");
-				$("#correo1").val("");
-				$("#clave_registro").val("");
+                $("#id_tpdoc").val("0");
+                $("#numeroiden_registro").val("");
+                $("#nameusu").val("");
+                $("#apellidoUsu").val("");
+                $("#apellidoUsu_dos").val("");
+                $("#id_genero").val(""); 
+                $("#celular").val("");
+                $("#cod_dpto").val("0");
+                $("#cod_municipio").val("0");
+                $("#cod_poblacion").val("0");
+                $("#cod_poblado").val("0");
+                $("#correo_registro").val("");
+                $("#clave_registro").val("");
+
 			}
 				
 				$(document).on("click", "#btnCerrar",function (){
@@ -365,6 +363,7 @@ $(document).on("click", "#btnGuardar", function () {
             celular: $("#celular").val(),
             id_genero: $("#id_genero").val(),
             cod_municipio: $("#cod_municipio").val(),
+            cod_poblacion: $("#cod_poblacion").val(),
             cod_poblado: $("#cod_poblado").val(),
             clave_registro: $("#clave_registro").val()
         }, function (data) {
@@ -378,12 +377,14 @@ $(document).on("click", "#btnGuardar", function () {
                 }).then(() => {
                     location.reload();
                 });
+                clear()
             } else {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
                     text: data.msj
                 });
+                
             }
         }, 'json').fail(function (jqXHR, textStatus, errorThrown) {
             Swal.fire({

@@ -4,13 +4,13 @@ $(document).ready(function(){
     }, function(data) {
         if (data.rs === "1") {
             $("#sin_contenido").html(
-                `<h1 class="text-center my-4">Tus Programa de Formacion en Curso</h1>` +
+                `<h1 class="title">Tus Programa de Formacion en Curso</h1>` +
                 data.tabla
             );
         } else {
             // mirar actualizar perfil
             $("#sin_contenido").html(`
-                <h4>No hay Solicitudes Pendientes</h4>
+                <h4 class="title">No hay Programas en Curso/h4>
             `);
         }
     }, 'json');

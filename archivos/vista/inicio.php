@@ -112,6 +112,63 @@ document.addEventListener("DOMContentLoaded", () => {
                             <?php 
             include_once('publicarnoticiacarrusel.php');
         ?>
+                            <?php
+    // Verificar que la sesión del usuario esté iniciada
+    if (isset($_SESSION['id_rol'])) {
+        // Obtener el rol del usuario
+        $rol = $_SESSION['id_rol'];
+        
+        // Switch para mostrar el mensaje según el rol
+        switch ($rol) {
+            case 1:
+                echo '
+                    
+                        <span class="tite" data-lang-es="Bienvenido Aprendiz" data-lang-en="Welcome Apprentice" data-lang-fr="Bienvenue Apprenti">Bienvenido Aprendiz</span>
+                    
+                ';
+                break;
+            case 2:
+                echo '
+                    
+                        <span class="tite" data-lang-es="Bienvenido Instructor" data-lang-en="Welcome Instructor" data-lang-fr="Bienvenue Instructeur">Bienvenido Instructor</span>
+                   
+                ';
+                break;
+            case 3:
+                echo '
+                    <span class="tite" data-lang-es="Bienvenido Coordinador" data-lang-en="Welcome Coordinator" data-lang-fr="Bienvenue Coordinateur">Bienvenido Coordinador</span>
+                ';
+            break;
+            case 4:
+                echo '
+                   
+                        <span class="tite" data-lang-es="Bienvenido Empresa" data-lang-en="Welcome Company" data-lang-fr="Bienvenue Entreprise">Bienvenido Empresa</span>
+                   
+                ';
+                break;
+            case 5:
+                echo '
+                    
+                        <span class="tite" data-lang-es="Bienvenido " data-lang-en="Welcome" data-lang-fr="Bienvenue ">Bienvenido </span>
+                    
+                ';
+                break;
+            default:
+                echo '
+                          <span class="tite" data-lang-es="Rol no reconocido" data-lang-en="Role not recognized" data-lang-fr="Rôle non reconnu">Rol no reconocido</span>
+                    
+                ';
+                break;
+        }
+    } else {
+        echo '
+            
+                
+                <span class="tite" data-lang-es="Inicie sesión" data-lang-en="Log in" data-lang-fr="Connectez-vous">Inicie sesión</span>
+        
+        ';
+    }
+?>
                         </div>
 
                         <div class="carousel-container carousel-30">
@@ -236,7 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     ?>
 
 
-                    <h1 class="title" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">
+                    <h1 class="tite" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">
                         NOTICIAS
                     </h1>
                     <div class="divider"></div>
@@ -375,8 +432,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                         <div class="form-group course-data-field form-group-full" id="descripcion">
                             <label class="modal-title" for="descripcion">Descripción:</label>
-                            <textarea rows="10" class="form-input form-control" id="descripcion_Publi" name="descripcion"
-                                placeholder="Descripción" required></textarea>
+                            <textarea rows="10" class="form-input form-control" id="descripcion_Publi"
+                                name="descripcion" placeholder="Descripción" required></textarea>
                         </div>
                         <div class="form-group course-data-field">
                             <label class="modal-title" for="imagen">Adjuntar Imagen:</label>
