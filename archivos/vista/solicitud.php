@@ -79,36 +79,61 @@ if (isset($_SESSION['id_userprofile'])){
                         ?>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="navbar2 d-flex justify-content-between align-items-center">
-                        <!-- BUSCADOR -->
-                        <div class="d-flex align-items-center">
-                            <input type='text' name='dato_txt' id='dato_txt' title='Dato a buscar'
-                                placeholder='Buscar...' class="form-control form-control-lg mr-2">
-                            <button type="button" name='btn_Buscar' id='btn_Buscar'
-                                class="btn btn-primary btn-lg">
-                                <i class="fa fa-search-plus" aria-hidden="true"></i>
-                            </button>
+                <div class="d-flex justify-content-center align-items-center">
+                    <!-- Barra de búsqueda con botón de búsqueda -->
+                    <div class="d-flex align-items-center mr-2">
+                        <input type='text' name='dato_txt' id='dato_txt' title='Dato a buscar' placeholder='Buscar...'
+                            class="form-control form-control-lg mr-2">
+                        <button type="button" name='btn_Buscar' id='btn_Buscar' class="btn btn-primary btn-lg">
+                            <i class="fa fa-search-plus" aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+                    <!-- Botón para crear nuevo elemento -->
+                    <div class="mr-2">
+                        <button type="button" name="btn_Nuevo" id="btn_Nuevo" class="btn btn-success btn-lg"
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Crear
+                        </button>
+                    </div>
+
+                    <!-- Contenedor del filtro con menú desplegable -->
+                    <div class="filter-container">
+                        <button id="filterButton" class="btn btn-success btn-lg">
+                            <i class="fa fa-filter"></i> Filtro
+                        </button>
+                        <div id="filterOptions" class="filter-options">
+                            <label><input type="checkbox" value="Asignada"> Asignadas</label><br>
+                            <label><input type="checkbox" value="Aceptado"> Aceptadas</label><br>
+                            <label><input type="checkbox" value="Denegado"> Denegadas</label><br>
+                            <button id="btn_Filtro" class="btn btn-success btn-lg mt-2">Aplicar filtros</button>
                         </div>
-                        <div>
-                            <button type="button" name="btn_Nuevo" id="btn_Nuevo" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <i class="fa fa-plus" aria-hidden="true"></i> Crear
-                            </button>
-                        </div>
-                        <div class="filter-container">
-                            <button id="filterButton" class="btn btn-success btn-lg">
-                                <i class="fas fa-filter"></i> Filtro
-                            </button>
-                            <div id="filterOptions" class="filter-options">
-                                <label><input type="checkbox" value="Asignada">Asignadas</label>
-                                <label><input type="checkbox" value="Aceptado">Aceptadas</label>
-                                <label><input type="checkbox" value="Denegado">Denegadas</label>
-                                <button id="btn_Filtro" class="btn btn-success btn-lg">Aplicar filtros</button>
-                            </div>
-                        </div>
-                        
                     </div>
                 </div>
+
+                <style>
+                .d-flex {
+                    gap: 10px;
+                    /* Espacio entre los elementos */
+                }
+
+                .filter-container {
+                    position: relative;
+                }
+
+
+
+                .filter-container:hover .filter-options {
+                    display: block;
+                }
+
+                .d-flex .btn,
+                .d-flex .form-control {
+                    height: calc(2.875rem + 2px);
+                    /* Asegura que todos los elementos tengan la misma altura */
+                }
+                </style>
+
                 <!-- NO TOCAR -->
                 <i class="fa-solid fa-cloud-arrow-down"></i>
                 <?php
@@ -136,8 +161,7 @@ if (isset($_SESSION['id_userprofile'])){
     </div>
     </div>
     <!-- MODAL CREAR OFERTA 5 USUARIOS -->
-    <div class="modal fade" id="OfertAlert" tabindex="-1" aria-labelledby="OfertAlertLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="OfertAlert" tabindex="-1" aria-labelledby="OfertAlertLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
