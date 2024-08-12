@@ -111,7 +111,7 @@ if (isset($_SESSION['id_userprofile'])){
         </div>
     </div>
     <!-- rA -->
-    <div class="modal fade" id="ListEcAsignModal" tabindex="-1" aria-labelledby="ListEcAsignLabel
+    <div class="modal fade" id="ListEcAsignModal" tabindex="-1" aria-labelledby="ListEcAsignLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -121,6 +121,21 @@ if (isset($_SESSION['id_userprofile'])){
                 </div>
                 <div class="modal-body">
                     <div id="form_Ec"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL 5 ASIGNACIONES [2]-->
+    <div class="modal fade" id="AceptSolicitud2Modal" tabindex="-1" aria-labelledby="AceptSolicitudLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id=""> </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="form_pf"></div>
                 </div>
             </div>
         </div>

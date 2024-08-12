@@ -558,28 +558,29 @@ switch ($_REQUEST['action'])
                                     ds.descripcion,
                                     a.nombre AS nom_area,
                                     pf.nombre AS nom_pf
-                                FROM 
-                                    solicitud s
-                                LEFT JOIN
-                                    programaformacion pf ON s.id_programaformacion = pf.id_programaformacion
-                                LEFT JOIN  
-                                    userprofile u ON s.id_userprofile = u.id_userprofile
-                                LEFT JOIN   
-                                    detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
-                                LEFT JOIN  
-                                    departamentos d ON u.cod_dpto = d.cod_dpto
-                                LEFT JOIN  
-                                    municipios m ON u.cod_municipio = m.cod_municipio
-                                LEFT JOIN  
-                                    poblados p ON u.cod_poblado = p.cod_poblado
-                                LEFT JOIN   
-                                    empresa e ON u.id_empresa = e.id_empresa
-                                LEFT JOIN   
-                                    tiposolicitud ts ON ds.id_tiposolicitud = ts.id_tiposolicitud
-                                LEFT JOIN  
-                                    area a ON pf.id_area = a.id_area
-                                WHERE 
-                                    s.id_solicitud = '$id_solicitud';";
+                                    FROM 
+                                        solicitud s
+                                        LEFT JOIN
+                                            programaformacion pf ON s.id_programaformacion = pf.id_programaformacion
+                                        LEFT JOIN  
+                                            userprofile u ON s.id_userprofile = u.id_userprofile
+                                        LEFT JOIN   
+                                            detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
+                                        LEFT JOIN  
+                                            departamentos d ON u.cod_dpto = d.cod_dpto
+                                        LEFT JOIN  
+                                            municipios m ON u.cod_municipio = m.cod_municipio
+                                        LEFT JOIN  
+                                            poblados p ON u.cod_poblado = p.cod_poblado
+                                        LEFT JOIN   
+                                            empresa e ON u.id_empresa = e.id_empresa
+                                        LEFT JOIN   
+                                            tiposolicitud ts ON ds.id_tiposolicitud = ts.id_tiposolicitud
+                                        LEFT JOIN  
+                                            area a ON pf.id_area = a.id_area
+                                    WHERE 
+                                        s.id_solicitud = '$id_solicitud';
+                                ";
         $result = mysqli_query($conn, $query);
         if ($result) {
             while ($registro = mysqli_fetch_array($result)) {
@@ -588,31 +589,31 @@ switch ($_REQUEST['action'])
                 $jTableResult['ListPf'] .= "
                     <div class='form-container'>
                         <label class='label-identifier'>Solicitante</label>
-                        <label class='data-field' id='solicitante'></label>
+                        <label class='data-field' id='solicitante'>" . $registro['nombre'] . "</label>
                         <br>
                         <h5 class='label-identifier'><strong>Ubicación Solicitante</strong></h5>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='modal-title'>Departamento</h6>
-                                <label class='data-field'></label>
+                                <label class='data-field'>" . $registro['nom_dpto'] . "</label>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='modal-title'>Municipio</h6>
-                                <label class='data-field'></label>
+                                <label class='data-field'> ". $registro['nom_muni'] . "</label>
                             </div>
                         </div>
                         <div class='row mt-3'>
                             <div class='col-sm-12'>
                                 <h6 class='modal-title'>Vereda</h6>
-                                <label class='data-field'></label>
+                                <label class='data-field'>". $registro['nom_vereda'] . "</label>
                             </div>
                         </div>
                         <br>
                         <label class='label-identifier' for='detalles'>Detalles</label>
                         <br>
-                        <textarea id='detalles' name='detalles'></textarea>
+                        <textarea id='detalles' name='detalles'>". $registro['descripcion'] . "</textarea>
                         <br>
                         <hr>
                         <h3 class='label-identifier'>Asignación</h3>
@@ -767,7 +768,7 @@ switch ($_REQUEST['action'])
                     <br>
                     <label class='label-identifier'>Detalles</label>
                     <br>
-                    <textarea id='detalles' name='detalles'>" . $registro['descripcion'] . "</textarea>
+                    <textarea class='data-field' id='detalles' name='detalles'>" . $registro['descripcion'] . "</textarea>
                     <br>
                 ";
 
@@ -818,7 +819,7 @@ switch ($_REQUEST['action'])
                             <hr>
                             <h3 class='label-identifier'>Asignacion</h3>
                             <h6 class='label-identifier'>Detalle Asignacion</h6>
-                            <textarea id='detalle_respuesta' name='detalles'></textarea>
+                            <textarea  class='data-field' id='detalle_respuesta' name='detalles'></textarea>
                             <h6 class='label-identifier'>Responsable</h6>
                             <select id='id_responsable'></select>
                             <div class='course-buttons'>
@@ -830,7 +831,7 @@ switch ($_REQUEST['action'])
                             <hr>
                             <h3 class='label-identifier'>Asignacion</h3>
                             <h6 class='label-identifier'>Detalle Asignacion</h6>
-                            <textarea id='detalle_respuesta' name='detalles'></textarea>
+                            <textarea id='detalle_respuesta' name='detalles' class='data-field'></textarea>
                             <h6 class='label-identifier'>Responsable</h6>
                             <select id='id_responsable'></select>
                             <div class='course-buttons'>
@@ -1623,8 +1624,8 @@ switch ($_REQUEST['action'])
                                                                     $jTableResult['tabla'] .= ' id="btn_LRa" data-bs-toggle="modal" data-bs-target="#ListRaAsignModal" data-id="' . $registro['id_solicitud'] . '"> Dar Respuesta</button>';
                                                                 }elseif ($registro['idtiposolicitud'] == 5) {
                                                                     $jTableResult['tabla'] .= ' id="btn_LEc"  data-bs-toggle="modal" data-bs-target="#ListEcAsignModal" data-id="' . $registro['id_solicitud'] . '">  Dar Respuesta</button>';
-                                                                }elseif ($registro['idtiposolicitud'] == 10) {
-                                                                    $jTableResult['tabla'] .= ' id="" data-bs-toggle="modal" data-bs-target="#AceptSolicitudModal" data-id="' . $registro['id_solicitud'] . '"> Responder</button>';
+                                                                }elseif ($registro['idtiposolicitud'] == 23) {
+                                                                    $jTableResult['tabla'] .= ' <button id="btn_pf" class="btn btn-success local" data-bs-toggle="modal" data-bs-target="#AceptSolicitud2Modal" data-id="' . $registro['id_solicitud'] . '">Asignar</button>';
                                                                 }
                     $jTableResult['tabla'] .= "</td></tr>";
                 }
@@ -1659,7 +1660,14 @@ switch ($_REQUEST['action'])
                                     ts.nombre AS Nombre_Solicitud, 
                                     ds.id_tiposolicitud,
                                     ds.descripcion,
-                                    a.nombre AS nom_area
+                                    a.nombre AS nom_area,
+                                    pf.nombre AS nom_pf,
+                                    pf.modalidad,
+                                    pf.tipo_formacion,
+                                    pf.nivel_formacion,
+                                    pf.fecha_inicio,
+                                    pf.fecha_cierre,
+                                    pf.horas_curso
                                 FROM 
                                     solicitud s
                                 LEFT JOIN  
@@ -1682,6 +1690,8 @@ switch ($_REQUEST['action'])
                                     tiposolicitud ts ON ds.id_tiposolicitud = ts.id_tiposolicitud
                                 LEFT JOIN 
                                     area a ON ds.id_area = a.id_area
+                                LEFT JOIN
+                                    programaformacion pf ON ds.id_programaformacion = pf.id_programaformacion
                                 WHERE 
                                     s.id_solicitud = '$id_solicitud';
                         ";
@@ -1736,7 +1746,7 @@ switch ($_REQUEST['action'])
                         <h2 class='label-identifier'>DATOS DE CURSO</h2>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Nombre curso</label>
-                            <input type='text' id='nombre' class='form-control' />
+                            <label class='data-field' id='nombre_programa'>" . $registro['nom_pf'] . "</label>
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Fecha inicio</label>
@@ -1752,12 +1762,11 @@ switch ($_REQUEST['action'])
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Horas de curso</label>
-                            <input type='number' id='horas' value='0' class='form-control' />
+                            <label class='data-field' id='horas_curso_label'>" . $registro['horas_curso'] . "</label>
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Modalidad</label>
-                            <select id='id_modalidad' class='form-control'>
-                            </select>
+                            <label class='data-field' id='id_modalidad_label'>" . $registro['modalidad'] . "</label>
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Jornada</label>
@@ -1766,22 +1775,15 @@ switch ($_REQUEST['action'])
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Nivel de Formacion</label>
-                            <select id='id_nivel_formacion' class='form-control'>
-                            </select>
+                            <label class='data-field' id='nivel_formacion_label'>" . $registro['nivel_formacion'] . "</label>
+                        </div>
+                        <div class='course-data-field'>
+                            <label class='label-identifier'>Tipo de Formacion</label>
+                            <label class='data-field' id='tipo_formacion_label'>" . $registro['tipo_formacion'] . "</label>
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Matriculados</label>
                             <input type='number' id='matriculados' value='0' class='form-control' />
-                        </div>
-                        <div class='course-data-field'>
-                            <label class='label-identifier'>Estado</label>
-                            <select id='id_estado' class='form-control'>
-                                <option value='0' selected >seleccione:.</option>
-                            </select>
-                        </div>
-                        <div class='course-data-field'>
-                            <label class='label-identifier'>Certificados</label>
-                            <input type='number' id='certificates' value='0' class='form-control' />
                         </div>
                     </div>
                 ";
@@ -1800,19 +1802,20 @@ switch ($_REQUEST['action'])
         $id_solicitud = $_POST['id_solicitud'];
     
         // Preparar la consulta SQL para insertar en programaformacion
-        $query = "INSERT INTO programaformacion (nombre, fecha_cierre, fecha_inicio, id_modalidad, id_jornada, id_nivel_formacion, matriculados, id_estado, horas_curso, ficha) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, 7, ?, ?)";
+        $query = "INSERT INTO programaformacion (nombre, fecha_cierre, fecha_inicio, modalidad, id_jornada, nivel_formacion,tipo_formacion, matriculados, id_estado, horas_curso, ficha) 
+                    VALUES (?, ?, ?, ?,?, ?, ?, ?, 7, ?, ?)";
     
         // Preparar la consulta SQL
         if ($stmt = mysqli_prepare($conn, $query)) {
             // Bindear los parámetros
-            mysqli_stmt_bind_param($stmt, "sssiiiiiii",
-                $_POST['nombre'],
+            mysqli_stmt_bind_param($stmt, "ssssissiii",
+                $_POST['nombre_programa'],
                 $_POST['fecha_cierre'],
                 $_POST['fecha_inicio'],
-                $_POST['id_modalidad'],
+                $_POST['modalidad'],
                 $_POST['id_jornada'],
-                $_POST['id_nivel_formacion'],
+                $_POST['nivel_formacion'],
+                $_POST['tipo_formacion'],
                 $_POST['matriculados'],
                 $_POST['horas_curso'],
                 $_POST['ficha']

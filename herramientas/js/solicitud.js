@@ -1043,25 +1043,26 @@ $(document).on("click", "#detalleSolicitud", function() {
         }
     }, 'json');
 });
-// $(document).on("click", "#btn_pf",function ()	{
-//     var idSolicitud = $(this).data('id');
-//     console.log("ID de la solicitud: " + idSolicitud);
-//     $.post("../../include/cntrlSoli.php", {
-//         action:'ListarSolicitud_pf',
-//         id_solicitud: idSolicitud
-//     }, function(data){
-//         if(data.rst=='1'){
-//             $("#form_pf").html(data.ListPf);
-//             AsignacionesCargar(idSolicitud)
-//         }
-//             else { Swal.fire({
-//                 icon: 'error',
-//                 title: 'Error',
-//                 text: data.ms
-//             }); }
-//         }, 'json');	
-//     }
-// );
+$(document).on("click", "#btn_pf", function () {
+    var idSolicitud = $(this).data('id');
+    console.log("ID de la solicitud: " + idSolicitud);
+    $.post("../../include/cntrlSoli.php", {
+        action: 'ListarSolicitud_pf',
+        id_solicitud: idSolicitud
+    }, function(data) {
+        if (data.rst == '1') {
+            $("#form_pf").html(data.ListPf);
+            AsignacionesCargar(idSolicitud);
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.ms
+            });
+        }
+    }, 'json');	
+});
+
 $(document).on("click", "#detalleOferta", function () {
     var idSolicitud = $(this).data('id');
     console.log("ID de la solicitud: " + idSolicitud);

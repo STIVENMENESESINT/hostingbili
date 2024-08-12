@@ -733,8 +733,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                          style="cursor:pointer;"></select>
                                  </div>
                                  <div class="form-group">
-                                     <label for="cod_poblacion" class="form-label">Tipo De Poblacion:</label>
-                                     <select class="form-input" id="cod_poblacion" name="cod_poblacion" title="Departamento"
+                                     <label class="form-label">Tipo De Poblacion:</label>
+                                     <select class="form-input" id="cod_poblacion_regis" name="cod_poblacion" title="caracterizacion"
                                          style="cursor:pointer;"></select>
                                  </div>
                                  <div class="form-group">
