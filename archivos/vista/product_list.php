@@ -24,6 +24,10 @@ if (isset($_SESSION['id_userprofile'])){
     <script src="../../herramientas/js/biblioteca.js"></script>
     <link rel="stylesheet" href="../../herramientas/css/style.css">
 
+    
+    <link rel="stylesheet" href="css/product_list.css">
+
+
     <title>Libros</title>
 </head>
 
@@ -49,10 +53,17 @@ if (isset($_SESSION['id_userprofile'])){
                 window.history.back();
             }
             </script>
+            
+            <h1 class="title">Biblioteca Bilingüismo<br>Secciones B-Team-Language </h1>
+            <div class="divider"></div>
+
             <h1 class="title">Libros</h1>
             <h2 class="subtitle">Lista De libros</h2>
             <div id="libros"></div>
         </div>
+
+
+        
 </body>
 
 </html>

@@ -22,6 +22,8 @@ if (isset($_SESSION['id_userprofile'])){
     <script src="../../herramientas/js/biblioteca.js"></script>
     <link rel="stylesheet" href="../../herramientas/css/style.css">
 
+    <link rel="stylesheet" href="css/category_list.css">
+
 </head>
 
 <div class="layout">
@@ -60,6 +62,8 @@ if (isset($_SESSION['id_userprofile'])){
         </div>
     </div>
 </div>
+
+
 <?php
     // Si no hay sesión activa, redirigir al usuario a la página de inicio de sesión
 } else {

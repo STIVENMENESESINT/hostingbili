@@ -11,12 +11,16 @@
     box-shadow: #3498db; /* AGREGA UNA SOMBRA SUTIL PARA DAR PROFUNDIDAD */
 }
 
+
 /* ESTILO DEL TÍTULO */
 .title {
-    font-size: 4.5em; /* AUMENTA EL TAMAÑO DE LA FUENTE PARA MEJOR VISIBILIDAD */
-    color: #3498db; /* UTILIZA EL COLOR DE ÉXITO */
-    text-align: center; /* CENTRA EL TÍTULO */
-    margin-bottom: 20px; /* AGREGA ESPACIO DEBAJO DEL TÍTULO */
+    font-size: 6em; /* Aumenta el tamaño de la fuente aún más */
+    color: #3498db; /* Color del texto */
+    text-align: center; /* Centra el texto */
+    margin-bottom: 20px; /* Espacio debajo del título */
+    font-weight: bold; /* Asegura que el texto sea grueso */
+    line-height: 1.2; /* Controla la altura de la línea */
+    white-space: normal; /* Permite los saltos de línea */
 }
 
 /* ESTILO DE LAS ETIQUETAS (LABELS) */
