@@ -1758,7 +1758,7 @@ switch ($_REQUEST['action'])
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Numero de ficha</label>
-                            <input type='number' id='ficha' value='0' class='form-control' />
+                            <input type='number' id='ficha' value='' class='form-control' />
                         </div>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Horas de curso</label>
@@ -1784,6 +1784,12 @@ switch ($_REQUEST['action'])
                         <div class='course-data-field'>
                             <label class='label-identifier'>Matriculados</label>
                             <input type='number' id='matriculados' value='0' class='form-control' />
+                        </div>
+                    </div>
+                    <div class='modal-footer'>
+                        <div class='course-buttons'>
+                            <button class='create-button' id='btn_curso' data-id='" . $registro['id_solicitud'] . "'>CREAR CURSO</button>
+                            <button class='close-button' type='button'  data-bs-dismiss='modal'>CERRAR</button>
                         </div>
                     </div>
                 ";

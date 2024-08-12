@@ -64,16 +64,11 @@ if (isset($_SESSION['id_userprofile'])){
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="">GESTION DE PERMISOS</h1>
+                        <h1 class="modal-title fs-5" id="">GESTION DE Estados</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                         <div id="asignado"></div>
-                    <div class="modal-footer">
-                        <div class='course-buttons'>
-                            <button class='create-button' id="btn_curso" >CREAR CURSO</button>
-                            <button class='close-button' type="button"  data-bs-dismiss="modal">CERRAR</button>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
     </div>

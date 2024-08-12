@@ -4,16 +4,16 @@ $(document).ready(function(){
     }, function(data) {
         if (data.rs == "1") {
             $("#contenido").html(
-                `<h1 class="text-center my-4">Tus Solicitudes</h1>` + data.tabla
+                `<h1 class="title">Tus Solicitudes</h1>` + data.tabla
             );
         } else if (data.rs === "2") {
             $("#contenido").html(`
-                <h4>Tu Solicitud aun no tiene Asignada una Respuesta.</h4>
+                <h4 class="title">Tu Solicitud aun no tiene Asignada una Respuesta.</h4>
             `);
         } else {
             // mirar actualizar perfil
             $("#contenido").html(`
-                <h4>No has realizado ninguna Solicitud</h4>
+                <h4 class="title">No has realizado ninguna Solicitud</h4>
                 <div class="col-sm-2">
                     <h3>Creala...</h3>
                 </div>
@@ -27,13 +27,13 @@ $(document).ready(function(){
     }, function(data) {
         if (data.rs === "1") {
             $("#sin_contenido").html(
-                `<h1 class="text-center my-4">Tus Solicitudes Pendientes</h1>` +
+                `<h1 class="title">Tus Solicitudes Pendientes</h1>` +
                 data.tabla
             );
         } else {
             // mirar actualizar perfil
             $("#sin_contenido").html(`
-                <h4>No hay Solicitudes Pendientes</h4>
+                <h4 class="title">No hay Solicitudes Pendientes</h4>
             `);
         }
     }, 'json');

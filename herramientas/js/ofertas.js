@@ -29,7 +29,7 @@ $(document).ready(function(){
     }, function(data) {
         if (data.rs === "1") {
             $("#oferta_curso").html(
-                `<h1 class="text-center my-4">Tus Cursos Ofertados</h1>` +
+                `<h1 class="title">Tus Cursos Ofertados</h1>` +
                 data.tabla
             );
         } else {
