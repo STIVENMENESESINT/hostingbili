@@ -63,16 +63,25 @@
 
 
 
+
+
+
+
+
 h1.title {
-    font-size: 2rem;
-    color: #29690b;
+    font-size: 6em;  /* Tamaño más grande para el título */
+    color: #3498db;  /* Color azul */
     margin-bottom: 20px;
+    font-weight: bold;  /* Negrita para destacar */
+    text-align: center;  /* Centrado */
 }
 
 h2.title {
-    font-size: 1.5rem;
-    color: #39a900;
+    font-size: 4em;  /* Tamaño más grande para el subtítulo */
+    color: #29690b;  /* Color verde oscuro */
     margin-bottom: 10px;
+    text-align: center;  /* Centrado */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);  /* Sombra suave */
 }
 
 .upload-container {
@@ -92,13 +101,14 @@ h2.title {
 }
 
 .upload-label {
-    margin-top: 15px;
+    margin-top: 20px;  /* Aumentar margen superior */
     font-weight: bold;
     color: #5d5d5d;
+    font-size: 1.5rem;  /* Tamaño de fuente más grande */
 }
 
 .upload-icon {
-    font-size: 1.5rem;
+    font-size: 2rem;  /* Tamaño de ícono más grande */
     color: #3498db;
     cursor: pointer;
 }
@@ -117,22 +127,28 @@ h2.title {
 
 .form-control {
     width: 100%;
-    padding: 10px;
+    padding: 15px;  /* Aumentar padding */
     border-radius: 5px;
     border: 1px solid #ccc;
     background-color: #f9f9f9;
+    font-size: 1.2rem;  /* Tamaño de fuente más grande */
+}
+
+textarea.form-control {
+    height: auto;  /* Ajustar altura automáticamente */
 }
 
 .create-button,
 .close-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 15px 30px;  /* Aumentar padding */
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
     text-align: center;
     margin-right: 10px;
     transition: background-color 0.3s ease;
+    font-size: 1.2rem;  /* Tamaño de fuente más grande */
 }
 
 .create-button {
