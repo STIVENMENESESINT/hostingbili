@@ -44,31 +44,12 @@ if (isset($_SESSION['id_userprofile'])){
     </aside>
 
     <!-- Contenido principal -->
-    <div class="content__page">
-        <div class="container">
-            <div class="is-fluid mb-6">
-                <!-- Botón de Volver -->
-                <button type="button" class="btn nav-link nav-item-hover fixed-top-right" onclick="goBack()">
-                    <i class="fas fa-arrow-left fa-fw fa-lg"></i>
-                    <span class="nav-item">Volver</span>
-                </button>
-                <script>
-                    function goBack() {
-                        window.history.back();
-                    }
-                </script>
-
-                <!-- Título -->
+    <div class="layout__content">
+            <div class="container content__page">
+                <br />
                 <h1 class="title">Biblioteca Bilingüismo<br>Nuevo libro B-Team-Language</h1>
 
-                <!-- Botón Publicar Libro -->
-                <div class="buttons">
-                    <a href="" class="navbar-item">Publicar Libro</a>
-                </div>
-            </div>
-
-            <!-- Formulario para añadir un libro -->
-            <form id="addBookForm" enctype="multipart/form-data">
+                <form id="addBookForm" enctype="multipart/form-data">
                 <div class="columns">
                     <div class="column is-half">
                         <div class="field">
@@ -123,6 +104,11 @@ if (isset($_SESSION['id_userprofile'])){
                     </div> <!-- .column -->
                 </div> <!-- .columns -->
             </form>
+            </div>
+        </div>
+
+            <!-- Formulario para añadir un libro -->
+            
         </div> <!-- .container -->
     </div> <!-- .content__page -->
 </div> <!-- .layout -->
