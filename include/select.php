@@ -477,13 +477,13 @@ switch ($_REQUEST['action'])
                                                                                         <td>" . $registro['nombre_estado'] . "</td>
                                                                                         <td>";
                                                             if ($_SESSION['id_rol'] == 3) {
-                                                                $jTableResult['tabla'] .= '<button id="btnEditarSoli" class="btn btn-warning btn-sm  local" data-bs-toggle="modal" data-bs-target="#editSolicitudModal" data-id="' . $registro['id_solicitud'] . '">Ver Soli</button>';
+                                                                $jTableResult['tabla'] .= '<button id="noticiaful" class="cards__button btn btn-link p-0" data-toggle="modal" data-target="#myModal" data-id="' . $registro['id_solicitud'] . '">Ver Soli</button>';
                                                             } elseif ($registro['id_estado'] == 4){
-                                                                $jTableResult['tabla'].='<button id="detalleSolicitud" class="btn btn-warning btn-sm  local" data-bs-toggle="modal" data-bs-target="#detallesolicitud" data-id="' . $registro['id_solicitud'] . '">Ver Solicitud</button>';
+                                                                $jTableResult['tabla'].='<button id="noticiaful" class="cards__button btn btn-link p-0" data-toggle="modal" data-target="#myModal" data-id="' . $registro['id_solicitud'] . '">ver Soli</button>';
                                                             }
                                                             else {
                                                                 $jTableResult['tabla'] .= '
-                                                                                            <button id="btnEliminarSoli" class="btn btn-danger btn-sm  local">Cancelar</button>';
+                                                                                            <button id="noticiaful" class="cards__button btn btn-link p-0" data-toggle="modal" data-target="#myModal" data-id="' . $registro['id_solicitud'] . '">Cancelar</button>';
                                                             }
                             $jTableResult['tabla'] .= "</td></tr>";
                         }
