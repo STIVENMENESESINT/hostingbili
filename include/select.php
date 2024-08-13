@@ -453,10 +453,10 @@ switch ($_REQUEST['action'])
                     $busqueda = "SELECT solicitud.id_solicitud, detallesolicitud.descripcion, solicitud.id_estado, estado.nombre AS nombre_estado,
                                     tiposolicitud.nombre AS nombre_tipo, userprofile.nombre AS nombre_autor, detallesolicitud.fecha_inicio
                                 FROM solicitud
-                                JOIN estado ON solicitud.id_estado = estado.id_estado 
-                                JOIN userprofile ON solicitud.id_userprofile = userprofile.id_userprofile
-                                JOIN detallesolicitud ON solicitud.id_detallesolicitud = detallesolicitud.id_detallesolicitud
-                                JOIN tiposolicitud ON detallesolicitud.id_tiposolicitud = tiposolicitud.id_tiposolicitud
+                                LEFT JOIN estado ON solicitud.id_estado = estado.id_estado 
+                                LEFT JOIN userprofile ON solicitud.id_userprofile = userprofile.id_userprofile
+                                LEFT JOIN detallesolicitud ON solicitud.id_detallesolicitud = detallesolicitud.id_detallesolicitud
+                                LEFT JOIN tiposolicitud ON detallesolicitud.id_tiposolicitud = tiposolicitud.id_tiposolicitud
                                 WHERE  solicitud.id_estado != 3 AND solicitud.id_estado != 9 AND solicitud.id_estado != 6 
                                 ";
                                 if ($_SESSION['id_rol'] != 3) {
