@@ -1958,7 +1958,7 @@ switch ($_REQUEST['action'])
                                                                 }elseif ($registro['idtiposolicitud'] == 5) {
                                                                     $jTableResult['tabla'] .= ' id="btn_LEc"  data-bs-toggle="modal" data-bs-target="#ListEcAsignModal" data-id="' . $registro['id_solicitud'] . '">  Dar Respuesta</button>';
                                                                 }elseif ($registro['idtiposolicitud'] == 23) {
-                                                                    $jTableResult['tabla'] .= ' <button id="btn_pf" class="btn btn-success local" data-bs-toggle="modal" data-bs-target="#AceptSolicitud2Modal" data-id="' . $registro['id_solicitud'] . '">Asignar</button>';
+                                                                    $jTableResult['tabla'] .= ' <button id="btn_pf" class="btn btn-success local" data-bs-toggle="modal" data-bs-target="#AceptSolicitud2Modal" data-id="' . $registro['id_solicitud'] . '">Dar Respuesta</button>';
                                                                 }
                     $jTableResult['tabla'] .= "</td></tr>";
                 }

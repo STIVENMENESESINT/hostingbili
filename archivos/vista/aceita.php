@@ -23,7 +23,7 @@
 
         $inicio = date('Y/d/m H:i:s', strtotime($inicio));
 		$termino= date('Y/m/d H:i:s', strtotime($termino));
-		$sql = "INSERT INTO eventos(id_userprofile, titulo, descricao, inicio, termino, cor) values ('$id_usuario', '$titulo', '$descricao', '$inicio', '$termino', '$cor')";
+		$sql = "INSERT INTO eventos(fk_id_usuario, titulo, descricao, inicio, termino, cor) values ('$id_usuario', '$titulo', '$descricao', '$inicio', '$termino', '$cor')";
 		
 		echo $sql;
 		

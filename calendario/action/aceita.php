@@ -4,7 +4,7 @@
     }
     date_default_timezone_set('America/Sao_Paulo');
 
-	require_once('../evento/action/conexao.php');
+	require_once('conexao.php');
 	$database = new Database();
 	$db = $database->conectar();
 
@@ -16,7 +16,7 @@
         $termino = $_POST['termino'];
         $cor = $_POST['cor'];
         $id_usuario2 = $_POST['id_usuario2'];
-        $id_usuario = $_SESSION['idUsuario'];
+        $id_usuario = $_SESSION['id_userprofile'];
         $status = 1;
         $id_convite = $_POST['id_convite'];
 
