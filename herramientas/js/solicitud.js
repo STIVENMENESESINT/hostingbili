@@ -1033,7 +1033,7 @@ $(document).on("click", "#detalleSolicitud", function() {
         id_solicitud: idSolicitud
     }, function(data) {
         if (data.rst == '1') {
-            $("#datlleSolicitud").html(data.ListDetalle);
+            $("#datalleSolicitudF").html(data.ListDetalle);
         } else {
             Swal.fire({
                 icon: 'error',
