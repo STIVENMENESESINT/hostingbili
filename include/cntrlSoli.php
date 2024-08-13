@@ -856,7 +856,7 @@ switch ($_REQUEST['action'])
                 $jTableResult['rst'] = "1";
                 $jTableResult['ms'] = "Exitoso";
                 $jTableResult['ListOf'] .= "
-                <div class=''>
+                <div class='form-container'>
                     <br>
                     <h5><strong>Informacion y Estado</strong></h5>
                     <label class='label-identifier'>Nombre Curso Ofertado</label>

@@ -431,8 +431,8 @@ switch ($_REQUEST['action'])
                     </div>";
             }
         } else {
-            $jTableResult['rst'] = "0";
-            $jTableResult['ms'] = "NO HAS PROGRAMADO NADA PARA ESTA FICHA.";
+            $jTableResult['rst'] = "";
+            $jTableResult['ms'] = "NO HAN PROGRAMADO NADA PARA ESTA FICHA.";
         }
         echo json_encode($jTableResult);
     break;
