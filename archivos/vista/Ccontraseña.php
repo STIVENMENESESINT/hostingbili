@@ -108,55 +108,60 @@ if (isset($_SESSION['id_userprofile'])){
                 </div>
         </div>
         <script>
-           $(document).on("click", "#contraNew", function () {
-    if (!validarClave($("#contraseña").val())) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'La clave debe tener al menos 6 letras y un número',
-        }).then(() => {
-            $("#contraseña").focus();
-        });
-    } else {
-        // Envío de datos al servidor
-        $.post("include/ctrlIndex2.php", {
-            action: 'actualizarContraseña',
-            nueva_clave: $("#contraseña").val()
-        }, function (data) {
-            if (data.validacion == "no") {
-                // Manejo de errores del servidor
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Credenciales de acceso no existen',
-                });
-                limpiar();
-            } else {
-                if (data.estado == "I") {
-                    // Usuario inactivo
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Advertencia',
-                        text: 'El usuario existe pero está inactivo',
-                    });
-                    limpiar();
-                } else if (data.estado == "A") {
-                    // Contraseña actualizada con éxito
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Éxito',
-                        text: 'Contraseña actualizada correctamente',
-                        showConfirmButton: false,
-                        timer: 1500 // Tiempo en milisegundos (1.5 segundos)
-                    });
-                    setTimeout(function () {
-                        location.href = "archivos/vista/inicio.php";
-                    }, 1500); // Redirige después de mostrar la alerta
+            function validarClave(clave) {
+		// Expresión regular para validar que haya al menos 6 letras y un número
+                    const regexClave = /^(?=.*[A-Za-z]{6,})(?=.*\d)[A-Za-z\d]{7,20}$/;
+                    return regexClave.test(clave);
                 }
-            }
-        }, 'json');
-    }
-});
+            $(document).on("click", "#contraNew", function () {
+                if (!validarClave($("#contraseña").val())) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'La clave debe tener al menos 6 letras y un número',
+                    }).then(() => {
+                        $("#contraseña").focus();
+                    });
+                } else {
+                    // Envío de datos al servidor
+                    $.post("../../include/ctrlIndex2.php", {
+                        action: 'actualizarContraseña',
+                        nuevaContraseña: $("#contraseña").val()
+                    }, function (data) {
+                        if (data.validacion == "no") {
+                            // Manejo de errores del servidor
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'Credenciales de acceso no existen',
+                            });
+                            limpiar();
+                        } else {
+                            if (data.estado == "I") {
+                                // Usuario inactivo
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'Advertencia',
+                                    text: 'El usuario existe pero está inactivo',
+                                });
+                                limpiar();
+                            } else if (data.estado == "A") {
+                                // Contraseña actualizada con éxito
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Éxito',
+                                    text: 'Contraseña actualizada correctamente',
+                                    showConfirmButton: false,
+                                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                                });
+                                setTimeout(function () {
+                                    location.href = "inicio.php";
+                                }, 1500); // Redirige después de mostrar la alerta
+                            }
+                        }
+                    }, 'json');
+                }
+            });
 
         </script>
 </body>

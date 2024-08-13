@@ -6,6 +6,28 @@ header('Cache-Control: no-cache, must-revalidate');
 session_name($session_name);
 session_start();
 $conn=Conectarse();
+function generarClave($longitud = 8) {
+	$caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	$longitud_caracteres = strlen($caracteres);
+	$clave = '';
+	for ($i = 0; $i < $longitud; $i++) {
+		$clave .= $caracteres[rand(0, $longitud_caracteres - 1)];
+	}
+	return $clave;
+}
+
+function enviarCorreo($correo, $mensaje) {
+	$asunto = "Restablecimiento de contraseña";
+	$headers = "From: no-reply@tu-dominio.com\r\n";
+	$headers .= "Reply-To: no-reply@tu-dominio.com\r\n";
+	$headers .= "Content-type: text/html; charset=UTF-8\r\n";
+
+	if (mail($correo, $asunto, $mensaje, $headers)) {
+		return true;
+	} else {
+		return false;
+	}
+}
 switch ($_REQUEST['action']) 
 	{
 		case 'confirmar':
@@ -74,6 +96,7 @@ switch ($_REQUEST['action'])
 				$stmt->bind_param("si", $nuevaContraseñaHash, $idUsuario);
 				
 				if ($stmt->execute()) {
+					$jTableResult['estado'] = "A";
 					$jTableResult['validacion'] = "si";
 					$jTableResult['msj'] = "Contraseña actualizada con éxito.";
 				} else {
@@ -310,7 +333,7 @@ switch ($_REQUEST['action'])
 		
 			// Devuelve el resultado como JSON
 			echo json_encode($jTableResult);
-
+		break;
 
 		case 'salir':	
 			$jTableResult = array();
@@ -321,18 +344,6 @@ switch ($_REQUEST['action'])
 				session_destroy();						
 			print json_encode($jTableResult);
 		break;
-
-	
-
-
-
-
-
-
-
-
-
-
 		case 'PublicarNoticia': 
 			$jTableResult = array();
 			$jTableResult['rstl']="";
@@ -362,85 +373,71 @@ switch ($_REQUEST['action'])
 						$jTableResult['rstl']= "0";  }
 			print json_encode($jTableResult);
 		break;
-
-
-
-
-
-
-
-
-
-		case 'PublicarNoticia': 
-			$jTableResult = array();
-			$jTableResult['rstl']="";
-			$jTableResult['msj']="";
-				$query="INSERT INTO detallesolicitud SET
-						
-						
-						id_tiposolicitud = 4,
-					
-						titulo = '".$_POST['titulo']."',
-						
-						id_imagen = '".$_POST['id_imagen']."',
-						fecha_inicio = '".$_POST['id_fecha_inicio']."',
-						fecha_fin = '".$_POST['id_fecha_fin']."',
-						url = '".$_POST['id_url']."',
-						
-						
-						descripcion = '".$_POST['descripcion']."';";
-						
-				if($result= mysqli_query($conn,$query)){
-						mysqli_commit($conn);
-						$jTableResult['msj']= "Registro guardado con exito.";
-						$jTableResult['rstl']= "1"; }
-				else{
-						mysqli_rollback($conn);
-						$jTableResult['msj']= "Error al guardar.";				
-						$jTableResult['rstl']= "0";  }
-			print json_encode($jTableResult);
-		break;
-
-
-
-
-
-
 // Restablecer contraseña
-		case 'RestablecerContraseña':
+	case 'RestablecerContraseña':
 			$jTableResult = array();
 			$jTableResult['rstl'] = "";
 			$jTableResult['msj'] = "";
+
 			if (!isset($_POST['numeroiden']) || !isset($_POST['correo'])) {
 				$jTableResult['msj'] = "Todos los campos son obligatorios.";
 				$jTableResult['rstl'] = "0";
 				print json_encode($jTableResult);
 				exit;
 			}
+
 			$identificacion = $_POST['numeroiden'];
 			$correo = $_POST['correo'];
-			enviarCorreo($correo, "Su nueva contraseña es: " . $nueva_contraseña); 
-			$jTableResult['msj'] = "Se ha enviado un correo electrónico con instrucciones para restablecer la contraseña.";
-			$jTableResult['rstl'] = "1";
-			print json_encode($jTableResult);
-			exit;
-			break;	
-		function generarClave($longitud = 8) {
-			$caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-			$longitud_caracteres = strlen($caracteres);
-			$clave = '';
-			for ($i = 0; $i < $longitud; $i++) {
-				$clave .= $caracteres[rand(0, $longitud_caracteres - 1)];
-			}
-			return $clave;
-		}
-		function enviarCorreo($correo, $mensaje) {
-		}
 
+		// Verificar si existe un usuario con los datos proporcionados
+			$query = "SELECT id_userprofile FROM userprofile WHERE numeroiden = ? AND correo = ?";
+				if ($stmt = mysqli_prepare($conn, $query)) {
+					mysqli_stmt_bind_param($stmt, "ss", $identificacion, $correo);
+					mysqli_stmt_execute($stmt);
+					mysqli_stmt_store_result($stmt);
 
+					if (mysqli_stmt_num_rows($stmt) > 0) {
+						// Usuario encontrado, generar una nueva contraseña
+						$nueva_contraseña = generarClave();
 
+						// Actualizar la contraseña en la base de datos
+						$updateQuery = "UPDATE userprofile SET clave = ? WHERE numeroiden = ? AND correo = ?";
+						if ($stmt_update = mysqli_prepare($conn, $updateQuery)) {
+							// Cifrar la nueva contraseña antes de guardarla
+							$hashedPassword = password_hash($nueva_contraseña, PASSWORD_DEFAULT);
+							mysqli_stmt_bind_param($stmt_update, "sss", $hashedPassword, $identificacion, $correo);
 
+							if (mysqli_stmt_execute($stmt_update)) {
+								// Enviar el correo con la nueva contraseña
+								enviarCorreo($correo, "Su nueva contraseña es: " . $nueva_contraseña);
 
+								$jTableResult['msj'] = "Se ha enviado un correo electrónico con instrucciones para restablecer la contraseña.";
+								$jTableResult['rstl'] = "1";
+							} else {
+								$jTableResult['msj'] = "Error al actualizar la contraseña.";
+								$jTableResult['rstl'] = "0";
+							}
+
+							mysqli_stmt_close($stmt_update);
+						} else {
+							$jTableResult['msj'] = "Error al preparar la consulta de actualización.";
+							$jTableResult['rstl'] = "0";
+						}
+					} else {
+						// No se encontró el usuario con los datos proporcionados
+						$jTableResult['msj'] = "No se encontró un usuario con los datos proporcionados.";
+						$jTableResult['rstl'] = "0";
+					}
+
+					mysqli_stmt_close($stmt);
+				} else {
+					$jTableResult['msj'] = "Error al preparar la consulta de selección.";
+					$jTableResult['rstl'] = "0";
+				}
+
+				print json_encode($jTableResult);
+				exit;
+	break;
 	}
 
 mysqli_close($conn);

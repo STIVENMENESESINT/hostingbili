@@ -1,4 +1,5 @@
 $(document).ready(function(){ 
+    
 	
 	function calcularEdad() {	
 		fecha = $('#fechaNacimientoUsu').val();
@@ -200,7 +201,6 @@ $(document).ready(function(){
 
 
 //GUARDAR - USUARIO 
-
 
 $(document).on("click", "#btnGuardar", function () {
     // Función para validar el correo electrónico
@@ -439,12 +439,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	
 // Restablecer contraseña 
-$(document).ready(function() {
+
     // Acción al hacer clic en el botón de recordar clave
-    $(document).on("click", "#btnRecordarClave", function() {
+    $(document).on("click", "#btnRecordar", function() {
+        function validarCorreo(correo) {
+            const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regexCorreo.test(correo);
+        }
         // Validar que todos los campos estén completados
         if ($("#numeroiden_OC").val() === "" || $("#correo_OC").val() === "") {
-            alert('Todos los campos son obligatorios. Por favor, complete todos los campos.');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Todos los campos son obligatorios. Por favor, complete todos los campos.',
+            }).then(() => {
+                $("#numeroiden_OC").focus();
+            });
             return;
         } else if (!validarCorreo($("#correo_OC").val())) {
             Swal.fire({
@@ -455,28 +465,50 @@ $(document).ready(function() {
                 $("#correo_OC").focus();
             });
         } else {
+            // Agregar console.log para verificar que se ingresa en el bloque correcto
+            console.log("Enviando datos al controlador");
+    
             // Enviar solicitud AJAX para restablecer la clave
-            $.post("../../include/ctrlIndex2.php", {
+            $.post("include/ctrlIndex2.php", {
                 action: 'RestablecerContraseña',
                 numeroiden: $("#numeroiden_OC").val(),
                 correo: $("#correo_OC").val()
             }, function(data) {
+                console.log("Respuesta del servidor:", data);
                 if (data.rstl == "1") {
-                    alert('Se ha restablecido la contraseña con éxito. Verifique su correo electrónico.');
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        text: 'Se ha restablecido la contraseña con éxito. Verifique su correo electrónico.',
+                        showConfirmButton: false,
+                        timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                    }).then(() => {
+                        location.reload();
+                    });
                 } else {
-                    alert('Error al restablecer la contraseña: ' + data.msj);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Error al restablecer la contraseña: ' + data.msj
+                    });
                 }
-            }, 'json');
+            }, 'json').fail(function(jqXHR, textStatus, errorThrown) {
+                console.log("Error en la solicitud AJAX:", textStatus, errorThrown);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un problema al comunicarse con el servidor. Por favor, inténtelo de nuevo más tarde.'
+                });
+            });
         }
     });
-});
+    
+
 
 
 
 /* "Recordar clave - checkbox"  */
 
-$(document).ready(function() {
-    // Acción al hacer clic en el nuevo switch
     $(document).on("change", "#exampleSwitch", function() {
         if ($(this).is(":checked")) {
             console.log('Switch activado');
@@ -486,6 +518,6 @@ $(document).ready(function() {
             // Aquí puedes agregar acciones adicionales cuando el switch está desactivado
         }
     });
-});
+
 
 
