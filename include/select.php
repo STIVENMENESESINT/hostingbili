@@ -451,7 +451,7 @@ switch ($_REQUEST['action'])
                 if (mysqli_num_rows($resultado) > 0) {
                     // Consulta para obtener las solicitudes y sus detalles asociados
                     $busqueda = "SELECT solicitud.id_solicitud, detallesolicitud.descripcion, solicitud.id_estado, estado.nombre AS nombre_estado,
-                                    tiposolicitud.nombre AS nombre_tipo, userprofile.nombre AS nombre_autor
+                                    tiposolicitud.nombre AS nombre_tipo, userprofile.nombre AS nombre_autor, detallesolicitud.fecha_inicio
                                 FROM solicitud
                                 JOIN estado ON solicitud.id_estado = estado.id_estado 
                                 JOIN userprofile ON solicitud.id_userprofile = userprofile.id_userprofile
@@ -474,7 +474,7 @@ switch ($_REQUEST['action'])
                                                                 $jTableResult['tabla'] .= "<td>" . $registro['nombre_autor'] . "</td>";
                                                             }
                                                             $jTableResult['tabla'] .= "<td>" . $registro['descripcion'] . "</td>
-                                                                                        <td>" . $registro['nombre_estado'] . "</td>
+                                                                                        <td>" . $registro['fecha_inicio'] . "</td>
                                                                                         <td>";
                                                             if ($_SESSION['id_rol'] == 3) {
                                                                 $jTableResult['tabla'] .= '<button id="noticiaful" class="cards__button btn btn-link p-0" data-toggle="modal" data-target="#myModal" data-id="' . $registro['id_solicitud'] . '">Ver Soli</button>';
