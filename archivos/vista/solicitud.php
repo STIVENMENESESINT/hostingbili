@@ -165,7 +165,7 @@ if (isset($_SESSION['id_userprofile'])){
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="editSolicitudLabel">Ofertar Programa</h1>
+                    <h1 class="title fs-5" id="editSolicitudLabel">Ofertar Programa</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div id="modalOf"></div>
@@ -178,7 +178,7 @@ if (isset($_SESSION['id_userprofile'])){
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id=""> Evaluacion Por Competencia</h1>
+                    <h1 class="title fs-5" id=""> Evaluacion Por Competencia</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -193,7 +193,7 @@ if (isset($_SESSION['id_userprofile'])){
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id=""> Prototipo de Instructor</h1>
+                    <h1 class="title fs-5" id=""> Prototipo de Instructor</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -208,7 +208,7 @@ if (isset($_SESSION['id_userprofile'])){
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="">Manejo de Respuesta</h1>
+                    <h1 class="title fs-5" id="">Manejo de Respuesta</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -222,7 +222,7 @@ if (isset($_SESSION['id_userprofile'])){
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id=""> Oferta Curso</h1>
+                    <h1 class="title fs-5" id=""> Oferta Curso</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -237,7 +237,7 @@ if (isset($_SESSION['id_userprofile'])){
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id=""> Prototipo de Noticia/Oferta</h1>
+                    <h1 class="title fs-5" id=""> Prototipo de Noticia/Oferta</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -252,7 +252,7 @@ if (isset($_SESSION['id_userprofile'])){
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="">Detalle SOLICITUD</h1>
+                    <h1 class="title fs-5" id="">Detalle SOLICITUD</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -267,7 +267,7 @@ if (isset($_SESSION['id_userprofile'])){
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="">GESTIONAR Estado SOLICITUD</h1>
+                    <h1 class="title fs-5" id="">GESTIONAR Estado SOLICITUD</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -282,7 +282,7 @@ if (isset($_SESSION['id_userprofile'])){
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Estas Seguro de Denegar la Solicitud?
+                    <h1 class="title fs-5" id="staticBackdropLabel">Estas Seguro de Denegar la Solicitud?
                     </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
