@@ -200,8 +200,6 @@ $(document).on("click", "#btnActualizarContraseña", function() {
                         </div>
                         <div class="card-footer">
 
-
-
                             <div class="modal-footer"> <button type="button" class="create-button"
                                     name="btnActualizarUsuario" data-bs-toggle="modal"
                                     data-bs-target="#CambiarCModal">Cambiar contraseña</button>
