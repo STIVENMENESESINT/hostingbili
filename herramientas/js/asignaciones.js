@@ -15,19 +15,38 @@ $(document).ready(function(){
         }
     }, 'json');
 });
-// $(document).ready(function(){  
-//     $.post("../../include/select.php", {
-//         action: 'crgrResponsable',
-//         id_solicitud: idSolicitud 
-//     },
-//     function(data) {
-//         $("#id_responsable").html(data.listResponsable);
-//         },
-//         'json'
-//         ).fail(function(xhr, status, error) {
-//             console.error(error);
-//     });
-// });
+
+$(document).on("click", "#btn_Inicurso", function () {
+    var idSolicitud = $(this).data('id');
+    console.log("ID de la solicitud: " + idSolicitud);
+    $.post("../../include/cntrlSoli.php", {
+        action: 'IniCursoAsign',
+        id_jornada: $("#id_jornada").val(),
+        matriculados: $("#matriculados").val(),
+        ficha: $("#ficha").val(),
+        id_solicitud: idSolicitud
+    }, function (data) {
+        if (data.rstl == "1") {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Éxito!',
+                text: 'Registro guardado con éxito',
+                showConfirmButton: false,
+                timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+            }).then(() => {
+                location.reload();
+            });
+            clear()
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.msj
+            });
+            
+        }
+    }, 'json');	
+});
 $(document).on("click", "#btn_pf", function () {
     var idSolicitud = $(this).data('id');
     console.log("ID de la solicitud: " + idSolicitud);
@@ -37,7 +56,7 @@ $(document).on("click", "#btn_pf", function () {
     }, function(data) {
         if (data.rst == '1') {
             $("#form_pf").html(data.ListPf);
-            AsignacionesCargar(idSolicitud);
+            cargarMetadatos();
         } else {
             Swal.fire({
                 icon: 'error',
@@ -47,7 +66,6 @@ $(document).on("click", "#btn_pf", function () {
         }
     }, 'json');	
 });
-
 $(document).on("click", "#btn_asign", function() {
     var idSolicitud = $(this).data('id');
     console.log("ID de la solicitud: " + idSolicitud);
@@ -72,29 +90,30 @@ $(document).on("click", "#btn_asign", function() {
     }, 'json');
 });
 $(document).on("click", "#btn_curso", function() {
-    var idSolicitud = $(this).attr('id');
+    var idSolicitud = $(this).data('id');
     console.log("ID de la solicitud: " + idSolicitud); // Verifica que el ID sea el correcto
     
-    if ($("#ficha").val() == "") {
+    if ($("#ficha2").val() == "") {
         Swal.fire({
             icon: 'error',
             title: 'Error',
             text: 'Debe ingresar la ficha del curso'
         });
-        $("#ficha").focus();
+        $("#ficha2").focus();
     } else {
-        var confirmacion = confirm("Esta seguro de Crear este Curso de " + $("#nombre_programa").val());
+        var confirmacion = confirm("Esta seguro de Crear este Curso de " + $("#nombre_programa2").text().trim());
         if (confirmacion) {
             var formData = new FormData();
             formData.append("action", "registroCursoNew");
             formData.append("fecha_inicio", $("#fecha_inicio2").val());
-            formData.append("nombre_programa", $("#nombre_programa2").val());
+            formData.append("nombre_programa", $("#nombre_programa2").text().trim());
             formData.append("fecha_cierre", $("#fecha_cierre2").val());
+            formData.append("id_jornada", $("#id_jornada").val());
             formData.append("modalidad", $("#id_modalidad_label2").text().trim());
             formData.append("nivel_formacion", $("#nivel_formacion_label2").text().trim());
             formData.append("tipo_formacion", $("#tipo_formacion_label2").text().trim());
             formData.append("horas_curso", $("#horas_curso_label2").text().trim());
-            formData.append("ficha", $("#ficha").val());
+            formData.append("ficha", $("#ficha2").val());
             formData.append("id_solicitud", idSolicitud);
 
             $.ajax({

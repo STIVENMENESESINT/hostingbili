@@ -10,7 +10,7 @@ $(document).ready(function(){
         } else {
             // mirar actualizar perfil
             $("#sin_contenido").html(`
-                <h4 class="title">No hay Programas en Curso/h4>
+                <h4 class="title">No hay Programas en Curso</h4>
             `);
         }
     }, 'json');

@@ -8,7 +8,7 @@ session_start();
 $conn = Conectarse();
 if($_POST)
 {
-	$name=$_SESSION['nombre'];
+	$name = $_SESSION['usuLog'];
     $msg=$_POST['msg'];
     
 	$sql="INSERT INTO `chat`(`name`, `message`) VALUES ('".$name."', '".$msg."')";

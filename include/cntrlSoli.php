@@ -544,92 +544,203 @@ switch ($_REQUEST['action'])
         $jTableResult['ms'] = "";
         $jTableResult['ListPf'] = "";
         $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
-                        $query = "SELECT 
-                                    s.id_solicitud, 
-                                    u.nombre, 
-                                    d.nombre_dpto AS nom_dpto, 
-                                    m.nombre_municipio AS nom_muni, 
-                                    p.nombre_poblado AS nom_vereda, 
-                                    u.nombre_dos,
-                                    u.apellido, 
-                                    e.nombre AS nom_Empresa, 
-                                    ts.nombre AS Nombre_Solicitud, 
-                                    ds.id_tiposolicitud,
-                                    ds.descripcion,
-                                    a.nombre AS nom_area,
-                                    pf.nombre AS nom_pf
-                                    FROM 
-                                        solicitud s
-                                        LEFT JOIN
-                                            programaformacion pf ON s.id_programaformacion = pf.id_programaformacion
-                                        LEFT JOIN  
-                                            userprofile u ON s.id_userprofile = u.id_userprofile
-                                        LEFT JOIN   
-                                            detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
-                                        LEFT JOIN  
-                                            departamentos d ON u.cod_dpto = d.cod_dpto
-                                        LEFT JOIN  
-                                            municipios m ON u.cod_municipio = m.cod_municipio
-                                        LEFT JOIN  
-                                            poblados p ON u.cod_poblado = p.cod_poblado
-                                        LEFT JOIN   
-                                            empresa e ON u.id_empresa = e.id_empresa
-                                        LEFT JOIN   
-                                            tiposolicitud ts ON ds.id_tiposolicitud = ts.id_tiposolicitud
-                                        LEFT JOIN  
-                                            area a ON pf.id_area = a.id_area
-                                    WHERE 
-                                        s.id_solicitud = '$id_solicitud';
-                                ";
+        $query = "SELECT 
+            s.id_solicitud, 
+            u.nombre,
+            u.id_rol, 
+            d.nombre_dpto AS nom_dpto, 
+            m.nombre_municipio AS nom_muni, 
+            p.nombre_poblado AS nom_vereda, 
+            et.nombre AS nom_estado, 
+            u.nombre_dos,
+            u.apellido,
+            ur.nombre_dos AS nom_dosR,
+            ur.apellido AS apellidoR,
+            ur.nombre AS nomR,
+            e.nombre AS nom_Empresa, 
+            ts.nombre AS Nombre_Solicitud, 
+            ds.id_tiposolicitud,
+            ds.descripcion,
+            ds.documento,
+            a.nombre AS nom_area,
+            pf.nombre AS nom_pf,
+            pf.modalidad,
+            pf.tipo_formacion,
+            pf.nivel_formacion,
+            pf.fecha_inicio,
+            pf.fecha_cierre,
+            pf.horas_curso,
+            pf.id_programaformacion
+            FROM 
+                solicitud s
+            LEFT JOIN  
+                estado et ON s.id_estado = et.id_estado
+            LEFT JOIN  
+                userprofile ur ON s.id_responsable = ur.id_userprofile
+            LEFT JOIN  
+                userprofile u ON s.id_userprofile = u.id_userprofile
+            LEFT JOIN  
+                detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
+            LEFT JOIN  
+                departamentos d ON ds.cod_dpto = d.cod_dpto
+            LEFT JOIN  
+                municipios m ON ds.cod_municipio = m.cod_municipio
+            LEFT JOIN  
+                poblados p ON ds.cod_poblado = p.cod_poblado
+            LEFT JOIN  
+                empresa e ON s.id_empresa = e.id_empresa
+            LEFT JOIN  
+                tiposolicitud ts ON ds.id_tiposolicitud = ts.id_tiposolicitud
+            LEFT JOIN 
+                area a ON ds.id_area = a.id_area
+            LEFT JOIN
+                programaformacion pf ON ds.id_programaformacion = pf.id_programaformacion
+            WHERE 
+                s.id_solicitud = '$id_solicitud'
+        ";
         $result = mysqli_query($conn, $query);
         if ($result) {
             while ($registro = mysqli_fetch_array($result)) {
                 $jTableResult['rst'] = "1";
                 $jTableResult['ms'] = "Exitoso";
                 $jTableResult['ListPf'] .= "
-                    <div class='form-container'>
-                        <label class='label-identifier'>Solicitante</label>
-                        <label class='data-field' id='solicitante'>" . $registro['nombre'] . "</label>
+                    <div class='container'>";
+                        if ($registro['id_rol'] == 4){
+                            echo
+                            "
+                            <label class='label-identifier'>Empresa</label>
+                            <label class='data-field'>" . $registro['nom_Empresa'] . "</label>";
+                        }
+                        
+                        $jTableResult['ListPf'] .= "
+                        
                         <br>
-                        <h5 class='label-identifier'><strong>Ubicación Solicitante</strong></h5>
-                        <div class='row mt-3'>
-                            <div class='col-sm-12'>
-                                <h6 class='modal-title'>Departamento</h6>
-                                <label class='data-field'>" . $registro['nom_dpto'] . "</label>
-                            </div>
-                        </div>
-                        <div class='row mt-3'>
-                            <div class='col-sm-12'>
-                                <h6 class='modal-title'>Municipio</h6>
-                                <label class='data-field'> ". $registro['nom_muni'] . "</label>
-                            </div>
-                        </div>
-                        <div class='row mt-3'>
-                            <div class='col-sm-12'>
-                                <h6 class='modal-title'>Vereda</h6>
-                                <label class='data-field'>". $registro['nom_vereda'] . "</label>
-                            </div>
+                        <div class='course-data-field'>
+                            <label class='label-identifier' for='detalles'>Detalles</label>
+                            <br>
+                            <textarea id='detalles' name='detalles' class='form-control'>" . $registro['descripcion'] . "</textarea>
                         </div>
                         <br>
-                        <label class='label-identifier' for='detalles'>Detalles</label>
-                        <br>
-                        <textarea id='detalles' name='detalles'>". $registro['descripcion'] . "</textarea>
-                        <br>
-                        <hr>
-                        <h3 class='label-identifier'>Asignación</h3>
-                        <hr>
-                        <h6 class='label-identifier'>Responsable</h6>
-                        <select id='id_responsable'></select>
-                        <h3 class='label-identifier'>Responder</h3>
-                        <hr>
-                        <h6 class='label-identifier'>Detalle Respuesta</h6>
-                        <textarea id='detalle_respuesta' name='detalles'></textarea>
-                        <h6 class='label-identifier'>Cargar Información</h6>
-                        <label class='label-identifier' for='archivo'>Cargar Archivo Respuesta solicitud (solo archivos de tipo pdf)</label>
-                        <input type='file' id='archivo' name='archivo' accept='.pdf'>
-                        <br/>
-                        <button id='btnAceptarSoli' class='create-button' data-id='". $registro['id_solicitud'] . "'>Dar Respuesta</button>
-                    </div>
+                        <div class='course-data-field'>
+                            <h1 class='label-identifier'>Documento para Descargar</h1>
+                            <label class='data-field'><a href='../../include/" . $registro['documento'] . "' download>Descargar Documento</a></label>
+                        </div>
+                        <div class='course-data-field'>
+                            <h6 class='label-identifier'>Responsable</h6>
+                            <label class='form-control'>" . $registro['nomR'] . "  " . $registro['apellidoR'] . "</label>
+                        </div>
+                        <div class='course-data-field'>
+                            <h6 class='label-identifier'>Estado</h6>
+                            <label class=form-control'>" . $registro['nom_estado'] . "</label>
+                        </div><br>
+                        <h2 class='label-identifier'>DATOS DE CURSO</h2>
+                        <div class='course-data-field'>
+                            <label class='label-identifier'>Nombre Curso</label>
+                            <label class='data-field' id='nombre_programa2'>" . $registro['nom_pf'] . "</label>
+                        </div>
+                        <div class='course-data-field'>
+                            <label class='label-identifier'>Fecha inicio</label>
+                            <label class=form-control'>" . $registro['fecha_inicio'] . "</label>
+                        </div>
+                        <div class='course-data-field'>
+                            <label class='label-identifier'>Fecha cierre</label>
+                            <label class=form-control'>" . $registro['fecha_cierre'] . "</label>
+                        </div>
+                        <div class='course-data-field'>
+                            <label class='label-identifier'>Horas de curso</label>
+                            <label class='data-field' id='horas_curso_label2'>" . $registro['horas_curso'] . "</label>
+                        </div>
+                        <div class='course-data-field'>
+                            <label class='label-identifier'>Modalidad</label>
+                            <label class='data-field' id='id_modalidad_label2'>" . $registro['modalidad'] . "</label>
+                        </div>
+                        <div class='course-data-field'>
+                            <label class='label-identifier'>Nivel de Formacion</label>
+                            <label class='data-field' id='nivel_formacion_label2'>" . $registro['nivel_formacion'] . "</label>
+                        </div>
+                        <div class='course-data-field'>
+                            <label class='label-identifier'>Tipo de Formacion</label>
+                            <label class='data-field' id='tipo_formacion_label2'>" . $registro['tipo_formacion'] . "</label>
+                        </div>
+                        <div class='course-data-field'>
+                            <label class='label-identifier'>Numero de ficha</label>
+                            <input type='number' id='ficha' value='' class='form-control' />
+                        </div>
+                        <div class='course-data-field'>
+                            <label class='label-identifier'>Jornada</label>
+                            <select id='id_jornada' class='form-control'>
+                            </select>
+                        </div>
+                        <div class='course-data-field'>
+                            <label class='label-identifier'>Matriculados</label>
+                            <input type='number' id='matriculados' value='0' class='form-control' />
+                        </div>
+                    ";
+
+                if ($registro['id_tiposolicitud'] == '23') {
+                    $queryUsuarios = "SELECT u.nombre AS nom_Uof, s.id_solicitud, uf.documento, u.correo, u.celular, td.nombre AS nom_doc, u.numeroiden
+                                        FROM usersxoferta uf 
+                                        JOIN solicitud s ON uf.id_solicitud = s.id_solicitud
+                                        JOIN userprofile u ON uf.id_userprofile = u.id_userprofile
+                                        JOIN tipodocumento td ON u.id_doc = td.id_doc
+                                        WHERE uf.id_solicitud ='$id_solicitud'";
+                    $resultado = mysqli_query($conn, $queryUsuarios);
+
+                    if ($resultado) {
+                        if (mysqli_num_rows($resultado) > 0) {
+                            while ($regis = mysqli_fetch_array($resultado)) {
+                                $jTableResult['rst'] = "1";
+                                $jTableResult['ms'] = "Exitoso";
+                                $jTableResult['ListPf'] .= "
+                                <div id='usuarios'> 
+                                    <hr>
+                                    <h2 class='label-identifier'>Usuarios Interesados</h2>
+                                    <h5 class='label-identifier'>Nombre</h5>
+                                    <label class='data-field'>" . $regis['nom_Uof'] . "</label>
+                                    <h5 class='label-identifier'>Correo</h5>
+                                    <label class='data-field'>" . $regis['correo'] . "</label>
+                                    <h5 class='label-identifier'>Telefono</h5>
+                                    <label class='data-field'>" . $regis['celular'] . "</label>
+                                    <h5 class='label-identifier'>Tipo de Documento</h5>
+                                    <label class='data-field'>" . $regis['nom_doc'] . "</label>
+                                    <h5 class='label-identifier'>Numero de Documento</h5>
+                                    <label class='data-field'>" . $regis['numeroiden'] . "</label>
+                                    
+                                    <h4 class='label-identifier'>Documento para Descargar</h4>
+                                    <label class='data-field'><a href='../../include/" . $regis['documento'] . "' download>Descargar Documento</a></label>
+                                </div>";
+                            }
+                        } else {
+                            $jTableResult['ListPf'] .= "
+                                <h5 class='label-identifier'> no hay Usuarios Registrados Interesados en la Oferta</h5>";
+                        }
+                    } else {
+                        $jTableResult['rst'] = "0";
+                        $jTableResult['ms'] = "Error en la consulta de usuarios interesados: " . mysqli_error($conn);
+                    }
+                    // Bloques else if para verificar id_rol, solo si id_estado es 9
+                    if ($registro['id_rol'] == '2') {
+                        $jTableResult['ListPf'] .= "
+                            <div class='modal-footer'>
+                                <div class='course-buttons'>
+                                    <button class='create-button' id='btn_Inicurso' data-id='" . $registro['id_solicitud'] . "'>Iniciar CURSO</button>
+                                    <button class='close-button' type='button'  data-bs-dismiss='modal'>CERRAR</button>
+                                </div>
+                            </div>
+                            ";
+                    } 
+                    
+                }else  {
+                    $jTableResult['ListPf'].="
+                    <div class='modal-footer'>
+                        <div class='course-buttons'>
+                            <button class='create-button' id='btn_Inicurso' data-id='" . $registro['id_solicitud'] . "'>Iniciar CURSO</button>
+                            <button class='close-button' type='button'  data-bs-dismiss='modal'>CERRAR</button>
+                        </div>
+                    </div>";
+                }
+                $jTableResult['ListPf'] .= "</div>
+                    
             ";
             }
         } else {
@@ -789,6 +900,7 @@ switch ($_REQUEST['action'])
                                 $documentURL = str_replace('C:/xampp/htdocs', '', $regis['documento']);
 
                                 $jTableResult['ListOf'] .= "
+                                <div id='usuarios'> 
                                     <hr>
                                     <h2 class='label-identifier'>Usuarios Interesados</h2>
                                     <h5 class='label-identifier'>Nombre</h5>
@@ -803,7 +915,8 @@ switch ($_REQUEST['action'])
                                     <label class='data-field'>" . $regis['numeroiden'] . "</label>
                                     
                                     <h1 class='label-identifier'>Documento para Descargar</h1>
-                                    <label class='data-field'><a href='../../include/" . $regis['documento'] . "' download>Descargar Documento</a></label>";
+                                    <label class='data-field'><a href='../../include/" . $regis['documento'] . "' download>Descargar Documento</a></label>
+                                </div>";
                             }
                         } else {
                             $jTableResult['ListOf'] .= "
@@ -1104,6 +1217,55 @@ switch ($_REQUEST['action'])
                         JOIN tiposolicitud ON detallesolicitud.id_tiposolicitud = tiposolicitud.id_tiposolicitud
                         SET solicitud.id_estado=6, $updateQuery
                         WHERE solicitud.id_solicitud = '$id_solicitud'";
+    
+            if ($result = mysqli_query($conn, $query)) {
+                    $query = "UPDATE solicitud
+                                SET fecha_asignada = NOW()
+                                WHERE id_solicitud = '$id_solicitud'";
+                    $resultado = mysqli_query($conn, $query);
+                mysqli_commit($conn);
+                $jTableResult['msj'] = "Realizado Con Exito.";
+                $jTableResult['rstl'] = "1";
+            } else {
+                mysqli_rollback($conn);
+                $jTableResult['msj'] = "Cancelado.";
+                $jTableResult['rstl'] = "0";
+            }
+        } else {
+            $jTableResult['msj'] = "No se proporcionaron datos para actualizar.";
+            $jTableResult['rstl'] = "0";
+        }
+    
+        print json_encode($jTableResult);
+    break;
+    case 'IniCursoAsign':
+        $jTableResult = array();
+        $jTableResult['msj'] = "";
+        $jTableResult['rstl'] = "";
+        $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
+        $ficha = isset($_POST['ficha']) ? $_POST['ficha'] : null;
+        $jornada = isset($_POST['id_jornada']) ? $_POST['id_jornada'] : null;
+        $matriculados = isset($_POST['matriculados']) ? $_POST['matriculados'] : null;
+        $updateFields = [];
+        if ($ficha !== null) {
+            $updateFields[] = "pf.ficha = '$ficha'";
+        }
+        if ($jornada !== null) {
+            $updateFields[] = "pf.id_jornada = '$jornada'";
+        }
+        if ($matriculados !== null) {
+            $updateFields[] = "pf.matriculados = '$matriculados'";
+        }
+    
+        if (!empty($updateFields)) {
+            $updateQuery = implode(", ", $updateFields);
+            $query = "UPDATE solicitud s
+                        JOIN
+                            detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
+                        JOIN
+                            programaformacion pf ON ds.id_programaformacion = pf.id_programaformacion
+                        SET s.id_estado=4, pf.id_estado =7, $updateQuery
+                        WHERE s.id_solicitud = '$id_solicitud'";
     
             if ($result = mysqli_query($conn, $query)) {
                     $query = "UPDATE solicitud
@@ -1646,7 +1808,8 @@ switch ($_REQUEST['action'])
         $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
                         $query = "SELECT 
                                     s.id_solicitud, 
-                                    u.nombre, 
+                                    u.nombre,
+                                    u.id_rol, 
                                     d.nombre_dpto AS nom_dpto, 
                                     m.nombre_municipio AS nom_muni, 
                                     p.nombre_poblado AS nom_vereda, 
@@ -1660,6 +1823,7 @@ switch ($_REQUEST['action'])
                                     ts.nombre AS Nombre_Solicitud, 
                                     ds.id_tiposolicitud,
                                     ds.descripcion,
+                                    ds.documento,
                                     a.nombre AS nom_area,
                                     pf.nombre AS nom_pf,
                                     pf.modalidad,
@@ -1701,11 +1865,15 @@ switch ($_REQUEST['action'])
                 $jTableResult['rst'] = "1";
                 $jTableResult['ms'] = "Exitoso";
                 $jTableResult['Asignform'] .= "
-                    <div class='container'>
-                        <div class='course-data-field'>
+                    <div class='container'>";
+                        if ($registro['id_rol'] == 4){
+                            echo
+                            "
                             <label class='label-identifier'>Empresa</label>
-                            <label class='data-field'>" . $registro['nom_Empresa'] . "</label>
-                        </div>
+                            <label class='data-field'>" . $registro['nom_Empresa'] . "</label>";
+                        }
+                        
+                        $jTableResult['Asignform'] .= "
                         <div class='course-data-field'>
                             <label class='label-identifier'>Solicitante</label>
                             <label id='solicitante' class='form-control'>" . $registro['nombre'] . " " . $registro['nombre_dos'] . " " . $registro['apellido'] . "</label>
@@ -1732,12 +1900,12 @@ switch ($_REQUEST['action'])
                         </div>
                         <br>
                         <div class='course-data-field'>
-                            <label class='label-identifier' for='archivo'>Cargar Archivo solicitud (solo archivos de tipo pdf)</label>
-                            <input type='file' id='archivo' name='archivo' accept='.pdf' class='form-control'>
+                            <h4 class='label-identifier'>Documento para Descargar</h4>
+                            <label class='data-field'><a href='../../include/" . $registro['documento'] . "' download>Descargar Documento</a></label>
                         </div>
                         <div class='course-data-field'>
                             <h6 class='label-identifier'>Responsable</h6>
-                            <label class='form-control'>" . $registro['nomR'] . " " . $registro['nom_dosR'] . " " . $registro['apellidoR'] . "</label>
+                            <label class='form-control'>" . $registro['nomR'] . "  " . $registro['apellidoR'] . "</label>
                         </div>
                         <div class='course-data-field'>
                             <h6 class='label-identifier'>Estado</h6>
@@ -1745,7 +1913,7 @@ switch ($_REQUEST['action'])
                         </div><br>
                         <h2 class='label-identifier'>DATOS DE CURSO</h2>
                         <div class='course-data-field'>
-                            <label class='label-identifier'>Nombre curso</label>
+                            <label class='label-identifier'>Nombre Curso</label>
                             <label class='data-field' id='nombre_programa2'>" . $registro['nom_pf'] . "</label>
                         </div>
                         <div class='course-data-field'>
@@ -1805,7 +1973,7 @@ switch ($_REQUEST['action'])
         $jTableResult = array();
         $jTableResult['rstl'] = "";
         $jTableResult['msj'] = "";
-        $id_solicitud = $_POST['id_solicitud'];
+        $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
     
         // Preparar la consulta SQL para insertar en programaformacion
         $query = "INSERT INTO programaformacion (nombre, fecha_cierre, fecha_inicio, modalidad, id_jornada, nivel_formacion,tipo_formacion, matriculados, id_estado, horas_curso, ficha) 
@@ -1833,7 +2001,12 @@ switch ($_REQUEST['action'])
                 $id_programaformacion = mysqli_insert_id($conn);
     
                 // Preparar la consulta para actualizar la solicitud
-                $query_update = "UPDATE solicitud SET id_estado = 4, fecha_respuesta = NOW(), id_programaformacion = ? WHERE id_solicitud = ?";
+                $query_update = "UPDATE solicitud s
+                JOIN detallesolicitud ds ON s.id_detallesolicitud = ds.id_detallesolicitud
+                SET s.id_estado = 4, 
+                    s.fecha_respuesta = NOW(), 
+                    ds.id_programaformacion = ?
+                WHERE s.id_solicitud = ?";
     
                 // Inicializar la declaración
                 if ($stmt_update = mysqli_prepare($conn, $query_update)) {
