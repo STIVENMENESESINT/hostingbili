@@ -437,161 +437,40 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 	);
 
-// EMPRESA - REGISTRO
-
-
-$(document).on("click", "#btnGuardarEmpresa", function() {
-    // Validación del campo nombre_empresa
-    if ($("#nombre_empresa").val() === "") {
-        Swal.fire({
-            icon: 'warning',
-            title: 'Campo Vacío',
-            text: 'Debe ingresar el nombre de la empresa',
-            confirmButtonText: 'Ok'
-        }).then(() => {
-            $("#nombre_empresa").focus();
-        });
-        return; // Salir de la función si hay un error
-    }
-    
-    // Validación del campo numeroiden_empresa
-    var nit = $("#numeroiden_empresa").val();
-    if (nit === "0" || nit.length < 6) {
-        Swal.fire({
-            icon: 'warning',
-            title: 'Campo Inválido',
-            text: 'El NIT debe tener al menos 6 dígitos',
-            confirmButtonText: 'Ok'
-        }).then(() => {
-            $("#numeroiden_empresa").focus();
-        });
-        return; // Salir de la función si hay un error
-    }
-    
-    // Validación del campo correo_empresa
-    var email = $("#correo_empresa").val();
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        Swal.fire({
-            icon: 'warning',
-            title: 'Correo Inválido',
-            text: 'Debe ingresar un correo electrónico válido',
-            confirmButtonText: 'Ok'
-        }).then(() => {
-            $("#correo_empresa").focus();
-        });
-        return; // Salir de la función si hay un error
-    }
-    
-    // Enviar datos si no hay errores
-    $.post("include/ctrlIndex2.php", {
-        action: 'registroEmpNew',
-        nombre_empresa: $("#nombre_empresa").val(),
-        numeroiden_empresa: $("#numeroiden_empresa").val(),
-        telefono_empresa: $("#telefono_empresa").val(),
-        correo_empresa: $("#correo_empresa").val()
-    }, function(data) {
-        if (data.rstl === "1") {
-            // Validación del campo numeroiden_registro_rep
-            if ($("#numeroiden_registro_rep").val() === "") {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Campo Vacío',
-                    text: 'Debe ingresar su número de identificación',
-                    confirmButtonText: 'Ok'
-                }).then(() => {
-                    $("#numeroiden_registro_rep").focus();
-                });
-                return; // Salir de la función si hay un error
-            }
-            
-            // Validación del campo id_tpdoc_rep
-            if ($("#id_tpdoc_rep").val() === "0") {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Campo Vacío',
-                    text: 'Debe seleccionar un tipo de documento',
-                    confirmButtonText: 'Ok'
-                }).then(() => {
-                    $("#id_tpdoc_rep").focus();
-                });
-                return; // Salir de la función si hay un error
-            }
-            
-            // Validación de la clave_registro
-            var clave = $("#clave_registro_rep").val();
-            if (clave.length < 6 || !/\d/.test(clave)) {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Clave Inválida',
-                    text: 'La clave debe tener al menos 6 caracteres y contener al menos un número',
-                    confirmButtonText: 'Ok'
-                }).then(() => {
-                    $("#clave_registro_rep").focus();
-                });
-                return; // Salir de la función si hay un error
-            }
-            
-            // Enviar datos si no hay errores
-            $.post("include/ctrlIndex2.php", {
-                action: 'registroUsuNewE',
-                id_tpdoc: $("#id_tpdoc_rep").val(),
-                numeroiden_registro: $("#numeroiden_registro_rep").val(),
-                nameusu: $("#nameusu_rep").val(),
-                nombre_dos: $("#nombre_dos_rep").val(),
-                apellidoUsu: $("#apellidoUsu_rep").val(),
-                apellidoUsu_dos: $("#apellidoUsu_dos_rep").val(),
-                correo_registro: $("#correo_registro_rep").val(),
-                celular: $("#celular_rep").val(),
-                id_genero: $("#id_genero_rep").val(),
-                clave_registro: $("#clave_registro_rep").val()
-            }, function(data) {
-                Swal.fire({
-                    icon: data.rstl === "1" ? 'success' : 'error',
-                    title: data.rstl === "1" ? 'Éxito' : 'Error',
-                    text: data.msj,
-                    confirmButtonText: 'Ok'
-                });
-            }, 'json');
-        } else {
+	
+// Restablecer contraseña 
+$(document).ready(function() {
+    // Acción al hacer clic en el botón de recordar clave
+    $(document).on("click", "#btnRecordarClave", function() {
+        // Validar que todos los campos estén completados
+        if ($("#numeroiden_OC").val() === "" || $("#correo_OC").val() === "") {
+            alert('Todos los campos son obligatorios. Por favor, complete todos los campos.');
+            return;
+        } else if (!validarCorreo($("#correo_OC").val())) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: data.msj,
-                confirmButtonText: 'Ok'
+                text: 'El formato del correo electrónico es inválido',
+            }).then(() => {
+                $("#correo_OC").focus();
             });
+        } else {
+            // Enviar solicitud AJAX para restablecer la clave
+            $.post("../../include/ctrlIndex2.php", {
+                action: 'RestablecerContraseña',
+                numeroiden: $("#numeroiden_OC").val(),
+                correo: $("#correo_OC").val()
+            }, function(data) {
+                if (data.rstl == "1") {
+                    alert('Se ha restablecido la contraseña con éxito. Verifique su correo electrónico.');
+                } else {
+                    alert('Error al restablecer la contraseña: ' + data.msj);
+                }
+            }, 'json');
         }
-    }, 'json');
-
-    limpiar(); // Llamar a la función para limpiar los campos si es necesario
+    });
 });
 
-	
-// Restablecer contraseña 
-	$(document).ready(function() {
-		// Acción al hacer clic en el botón de recordar clave
-		$(document).on("click", "#btnRecordarClave", function() {
-			// Validar que todos los campos estén completados
-			if ($("#numeroiden").val() === "" || $("#correo").val() === "") {
-				alert('Todos los campos son obligatorios. Por favor, complete todos los campos.');
-				return;
-			}
-	
-			// Enviar solicitud AJAX para restablecer la clave
-			$.post("../../include/ctrlIndex2.php", {
-				action: 'RestablecerContraseña',
-				numeroiden: $("#numeroiden").val(),
-				correo: $("#correo").val()
-			}, function(data) {
-				if (data.rstl == "1") {
-					alert('Se ha restablecido la contraseña con éxito. Verifique su correo electrónico.');
-				} else {
-					alert('Error al restablecer la contraseña: ' + data.msj);
-				}
-			}, 'json');
-		});
-	});
-	
 
 
 /* "Recordar clave - checkbox"  */
