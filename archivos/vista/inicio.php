@@ -105,14 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </select>
             </div>
             <div class="content__page">
-                <!--este es mi carrucel principal -->
-                <div class="carousel-container">
-                    <div class="carousel-wrapper">
-                        <div class="carousel-container carousel-70">
-                            <?php 
-            include_once('publicarnoticiacarrusel.php');
-        ?>
-                            <?php
+                <?php
     // Verificar que la sesión del usuario esté iniciada
     if (isset($_SESSION['id_rol'])) {
         // Obtener el rol del usuario
@@ -122,53 +115,51 @@ document.addEventListener("DOMContentLoaded", () => {
         switch ($rol) {
             case 1:
                 echo '
-                    
-                        <span class="tite" data-lang-es="Bienvenido Aprendiz" data-lang-en="Welcome Apprentice" data-lang-fr="Bienvenue Apprenti">Bienvenido Aprendiz</span>
-                    
+                    <span class="title centered large" data-lang-es="Bienvenido Aprendiz" data-lang-en="Welcome Apprentice" data-lang-fr="Bienvenue Apprenti">Bienvenido Aprendiz</span>
                 ';
                 break;
             case 2:
                 echo '
-                    
-                        <span class="tite" data-lang-es="Bienvenido Instructor" data-lang-en="Welcome Instructor" data-lang-fr="Bienvenue Instructeur">Bienvenido Instructor</span>
-                   
+                    <span class="title centered large" data-lang-es="Bienvenido Instructor" data-lang-en="Welcome Instructor" data-lang-fr="Bienvenue Instructeur">Bienvenido Instructor</span>
                 ';
                 break;
             case 3:
                 echo '
-                    <span class="tite" data-lang-es="Bienvenido Coordinador" data-lang-en="Welcome Coordinator" data-lang-fr="Bienvenue Coordinateur">Bienvenido Coordinador</span>
+                    <span class="title centered large" data-lang-es="Bienvenido Coordinador" data-lang-en="Welcome Coordinator" data-lang-fr="Bienvenue Coordinateur">Bienvenido Coordinador</span>
                 ';
-            break;
+                break;
             case 4:
                 echo '
-                   
-                        <span class="tite" data-lang-es="Bienvenido Empresa" data-lang-en="Welcome Company" data-lang-fr="Bienvenue Entreprise">Bienvenido Empresa</span>
-                   
+                    <span class="title centered large" data-lang-es="Bienvenido Empresa" data-lang-en="Welcome Company" data-lang-fr="Bienvenue Entreprise">Bienvenido Empresa</span>
                 ';
                 break;
             case 5:
                 echo '
-                    
-                        <span class="tite" data-lang-es="Bienvenido " data-lang-en="Welcome" data-lang-fr="Bienvenue ">Bienvenido </span>
-                    
+                    <span class="title centered large" data-lang-es="Bienvenido" data-lang-en="Welcome" data-lang-fr="Bienvenue">Bienvenido</span>
                 ';
                 break;
             default:
                 echo '
-                          <span class="tite" data-lang-es="Rol no reconocido" data-lang-en="Role not recognized" data-lang-fr="Rôle non reconnu">Rol no reconocido</span>
-                    
+                    <span class="title centered large" data-lang-es="Rol no reconocido" data-lang-en="Role not recognized" data-lang-fr="Rôle non reconnu">Rol no reconocido</span>
                 ';
                 break;
         }
     } else {
         echo '
-            
-                
-                <span class="tite" data-lang-es="Inicie sesión" data-lang-en="Log in" data-lang-fr="Connectez-vous">Inicie sesión</span>
-        
+            <span class="title centered large" data-lang-es="Inicie sesión" data-lang-en="Log in" data-lang-fr="Connectez-vous">Inicie sesión</span>
         ';
     }
 ?>
+
+                <div class="divider"></div>
+                <!--este es mi carrucel principal -->
+                <div class="carousel-container">
+                    <div class="carousel-wrapper">
+                        <div class="carousel-container carousel-70">
+                            <?php 
+            include_once('publicarnoticiacarrusel.php');
+        ?>
+
                         </div>
 
                         <div class="carousel-container carousel-30">
@@ -179,6 +170,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
 
                     <style>
+                    .centered {
+                        display: block;
+                        text-align: center;
+                        margin: 0 auto;
+                    }
+
+                    .large {
+                        font-size: 4em;
+                        font-weight: bold;
+                    }
+
+
+
                     .carousel-wrapper {
                         display: flex;
                         width: 100%;
@@ -292,7 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         include_once('../../chatp/index.php');
                     ?>
 
-
+                    <br></br>
                     <h1 class="tite" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">
                         NOTICIAS
                     </h1>
