@@ -437,7 +437,7 @@ document.addEventListener("DOMContentLoaded", () => {
                          </div>
 
                      </div>
-
+                     <br>
                      <h1 class="title" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">NOTICIAS
                      </h1>
                      <div class="divider"></div>
@@ -734,8 +734,8 @@ document.addEventListener("DOMContentLoaded", () => {
                                  </div>
                                  <div class="form-group">
                                      <label class="form-label">Tipo De Poblacion:</label>
-                                     <select class="form-input" id="cod_poblacion_regis" name="cod_poblacion" title="caracterizacion"
-                                         style="cursor:pointer;"></select>
+                                     <select class="form-input" id="cod_poblacion_regis" name="cod_poblacion"
+                                         title="caracterizacion" style="cursor:pointer;"></select>
                                  </div>
                                  <div class="form-group">
                                      <label for="clave_registro" class="form-label">Contraseña:</label>

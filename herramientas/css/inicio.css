@@ -253,3 +253,89 @@
     /* Color del texto de la etiqueta */
   }
   /* Fin de estilo de cambio de idioma */
+
+
+
+  @media (max-width: 768px) {
+    .custom-carousel-container {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .custom-carousel .carousel-inner img {
+        height: auto;
+        max-height: 250px;
+    }
+
+    .bilingualism__english-cards {
+        flex-direction: column;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .bilingualism__english-levels {
+        margin-bottom: 15px;
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .main-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .custom-carousel .carousel-inner img {
+        width: 100%;
+        height: auto;
+    }
+
+    .bilingualism__english-imgs {
+        width: 100%;
+        height: auto;
+    }
+
+    #language-select {
+        width: 100%;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner {
+        display: none;
+    }
+
+    .custom-carousel-container {
+        padding: 2px;
+    }
+
+    .custom-carousel .carousel-inner img {
+        max-height: 200px; /* Ajusta la altura máxima de las imágenes */
+    }
+
+    .bilingualism__english-levels {
+        margin-bottom: 10px; /* Ajusta el margen para mejorar la disposición */
+    }
+
+    .bilingualism__english-cards {
+        flex-direction: column; /* Asegura que las tarjetas estén en una sola columna */
+    }
+
+    #language-select {
+        font-size: 14px; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+    }
+}
+@media (max-width: 320px) {
+    .custom-carousel .carousel-inner img {
+        max-height: 150px; /* Reduce la altura máxima para pantallas más pequeñas */
+    }
+
+    .bilingualism__english-levels {
+        margin-bottom: 5px; /* Reduce el margen para aprovechar mejor el espacio */
+    }
+
+    #language-select {
+        font-size: 12px; /* Reduce aún más el tamaño del texto */
+    }
+}
