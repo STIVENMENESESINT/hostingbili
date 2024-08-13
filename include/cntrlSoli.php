@@ -223,6 +223,7 @@ switch ($_REQUEST['action'])
                                 ts.nombre AS Nombre_Solicitud, 
                                 ds.id_tiposolicitud,
                                 ds.descripcion,
+                                ds.imagen,
                                 ds.documento,
                                 a.nombre AS nom_area,
                                 pf.nombre AS nom_pgf,
@@ -279,33 +280,117 @@ switch ($_REQUEST['action'])
                 $jTableResult['ms'] = "Exitoso";
                 if ($registro['id_tiposolicitud'] == 1){
                     $jTableResult['ListDetalle'] .= "
+                                                        <div class='form-container'>
+                                                            <div class='course-data-field'>
+                                                                <label class='label-identifier'>Fecha Realizacion Solicitud</label>
+                                                                <label class='data-field'>" . $registro['fecha_creacion'] . "</label>
+                                                            </div>
+                                                                            <div class='course-data-field'>
+                                                                                <label class='label-identifier'>Empresa</label>
+                                                                                <label class='data-field'>" . $registro['nom_Empresa'] . "</label>
+                                                                            </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Solicitante</label>
+                                                                    <label class='data-field' id='solicitante'>" . $registro['nombre_U'] . "</label>
+                                                                </div>
+                                                                <br>
+                                                                    <h5 class='label-identifier'><strong>Ubicación Sugerida Para Solicitud</strong></h5>
+                                                                        <div class='course-data-field'>
+                                                                            <h6 class='label-identifier'>Departamento</h6>
+                                                                            <label class='data-field'>" . $registro['nom_dpto'] . "</label>
+                                                                        </div>
+                                                                        <div class='course-data-field'>
+                                                                            <h6 class='label-identifier'>Municipio</h6>
+                                                                            <label class='data-field'>" . $registro['nom_muni'] . "</label>
+                                                                        </div>
+                                                                        <div class='course-data-field'>
+                                                                            <h6 class='label-identifier'>Vereda</h6>
+                                                                            <label class='data-field'>" . $registro['nom_vereda'] . "</label>
+                                                                        </div><br>
+                                                            <div class='course-data-field'>
+                                                                <label class='label-identifier' for='detalles'>Detalles</label>
+                                                                <br>
+                                                                <textarea id='detalles' name='detalles'>" . $registro['descripcion'] . "</textarea>
+                                                            </div>
+                                                            <br>
+                                                            <div class='course-data-field'>
+                                                                <h4 class='label-identifier'>Documento para Descargar</h4>
+                                                                <label class='data-field'><a href='../../include/" . $registro['documento'] . "' download>Descargar Documento</a></label>
+                                                            </div>
+                                                            <div class='course-data-field'>
+                                                                <h6 class='label-identifier'>Responsable</h6>
+                                                                <label class='data-field'>" . $registro['nomR'] . "" . $registro['apellidoR'] . "</label>
+                                                            </div>
+                                                            <hr>
+                                                            <div class='course-data-container'>
+                                                                <h2 class='label-identifier'>DATOS DE CURSO</h2>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Fecha Asignacion</label>
+                                                                    <label class='data-field'>" . $registro['fecha_asignada'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Nombre curso</label>
+                                                                    <label class='data-field'>" . $registro['nom_pgf'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Fecha inicio</label>
+                                                                    <label class='data-field'>" . $registro['fecha_iniPf'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Fecha cierre</label>
+                                                                    <label class='data-field'>" . $registro['fecha_cierre'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Numero de ficha</label>
+                                                                    <label class='data-field'>" . $registro['ficha'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Horas de curso</label>
+                                                                    <label class='data-field'>" . $registro['horas_curso'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Modalidad</label>
+                                                                    <label class='data-field'>" . $registro['modalidad'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Jornada</label>
+                                                                    <label class='data-field'>" . $registro['nom_jornada'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Nivel de Formacion</label>
+                                                                    <label class='data-field'>" . $registro['nivel_formacion'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Tipo de Formacion</label>
+                                                                    <label class='data-field'>" . $registro['tipo_formacion'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Matriculados</label>
+                                                                    <label class='data-field'>" . $registro['matriculados'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Estado</label>
+                                                                    <label class='data-field'>" . $registro['estado_nom_pgf'] . "</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class='course-data-field'>
+                                                                <label class='label-identifier'>Fecha Respuesta Solicitud</label>
+                                                                <label class='data-field'>" . $registro['fecha_respuesta'] . "</label>
+                                                            </div>
+                                                        </div>
+                                                    ";
+                }elseif($registro['id_tiposolicitud'] == 3){
+                    $jTableResult['ListDetalle'] .= "
                     <div class='form-container'>
                         <div class='course-data-field'>
                             <label class='label-identifier'>Fecha Realizacion Solicitud</label>
                             <label class='data-field'>" . $registro['fecha_creacion'] . "</label>
                         </div>
-                                        <div class='course-data-field'>
-                                            <label class='label-identifier'>Empresa</label>
-                                            <label class='data-field'>" . $registro['nom_Empresa'] . "</label>
-                                        </div>
                             <div class='course-data-field'>
                                 <label class='label-identifier'>Solicitante</label>
                                 <label class='data-field' id='solicitante'>" . $registro['nombre_U'] . "</label>
                             </div>
                             <br>
-                                <h5 class='label-identifier'><strong>Ubicación Sugerida Para Solicitud</strong></h5>
-                                    <div class='course-data-field'>
-                                        <h6 class='label-identifier'>Departamento</h6>
-                                        <label class='data-field'>" . $registro['nom_dpto'] . "</label>
-                                    </div>
-                                    <div class='course-data-field'>
-                                        <h6 class='label-identifier'>Municipio</h6>
-                                        <label class='data-field'>" . $registro['nom_muni'] . "</label>
-                                    </div>
-                                    <div class='course-data-field'>
-                                        <h6 class='label-identifier'>Vereda</h6>
-                                        <label class='data-field'>" . $registro['nom_vereda'] . "</label>
-                                    </div><br>
                         <div class='course-data-field'>
                             <label class='label-identifier' for='detalles'>Detalles</label>
                             <br>
@@ -321,52 +406,6 @@ switch ($_REQUEST['action'])
                             <label class='data-field'>" . $registro['nomR'] . "" . $registro['apellidoR'] . "</label>
                         </div>
                         <hr>
-                        <div class='course-data-container'>
-                            <h2 class='label-identifier'>DATOS DE CURSO</h2>
-                            <div class='course-data-field'>
-                                <label class='label-identifier'>Fecha Asignacion</label>
-                                <label class='data-field'>" . $registro['fecha_asignada'] . "</label>
-                            </div>
-                            <div class='course-data-field'>
-                                <label class='label-identifier'>Nombre curso</label>
-                                <label class='data-field'>" . $registro['nom_pgf'] . "</label>
-                            </div>
-                            <div class='course-data-field'>
-                                <label class='label-identifier'>Fecha inicio</label>
-                                <label class='data-field'>" . $registro['fecha_iniPf'] . "</label>
-                            </div>
-                            <div class='course-data-field'>
-                                <label class='label-identifier'>Fecha cierre</label>
-                                <label class='data-field'>" . $registro['fecha_cierre'] . "</label>
-                            </div>
-                            <div class='course-data-field'>
-                                <label class='label-identifier'>Numero de ficha</label>
-                                <label class='data-field'>" . $registro['ficha'] . "</label>
-                            </div>
-                            <div class='course-data-field'>
-                                <label class='label-identifier'>Horas de curso</label>
-                                <label class='data-field'>" . $registro['horas_curso'] . "</label>
-                            </div>
-                            <div class='course-data-field'>
-                                <label class='label-identifier'>Modalidad</label>
-                                <label class='data-field'>" . $registro['modalidad'] . "</label>
-                            </div>
-                            <div class='course-data-field'>
-                                <label class='label-identifier'>Jornada</label>
-                                <label class='data-field'>" . $registro['nom_jornada'] . "</label>
-                            </div>
-                            <div class='course-data-field'>
-                                <label class='label-identifier'>Nivel de Formacion</label>
-                                <label class='data-field'>" . $registro['nivel_formacion'] . "</label>
-                            </div>
-                            <div class='course-data-field'>
-                                <label class='label-identifier'>Tipo de Formacion</label>
-                                <label class='data-field'>" . $registro['tipo_formacion'] . "</label>
-                            </div>
-                            <div class='course-data-field'>
-                                <label class='label-identifier'>Matriculados</label>
-                                <label class='data-field'>" . $registro['matriculados'] . "</label>
-                            </div>
                             <div class='course-data-field'>
                                 <label class='label-identifier'>Estado</label>
                                 <label class='data-field'>" . $registro['estado_nom_pgf'] . "</label>
@@ -377,15 +416,153 @@ switch ($_REQUEST['action'])
                             <label class='data-field'>" . $registro['fecha_respuesta'] . "</label>
                         </div>
                     </div>
-
-                ";
-                }elseif($registro['id_tiposolicitud'] == 2){
-                    $jTableResult['ListDetalle'] .= "
-                    <h1>No hay</h1>
                     ";
+                }elseif($registro['id_tiposolicitud'] == 4){
+                    $jTableResult['ListDetalle'] .= '
+                            <style>
+                                .text{
+                                font-size:2rem;
+                                }
+                            </style>
+                                <div class="">
+                                <div class="row px-3 pb-3 justify-content-center">
+                                    <div class="col-md-8">
+                                        <h2 class="mb-4 font-weight-bold"></h2>
+                                        <img class="img-fluid float-left w-50 mr-4 mb-3" src="../../include/' . $registro['imagen'] . '"
+                                            alt="Image">
+                                        <p class="text">
+                                        ' . $registro['descripcion'] . '
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                    ';
+                }elseif($registro['id_tiposolicitud'] == 5){
+                    $jTableResult['ListDetalle'] .= "
+                    <div class='form-container'>
+                        <div class='course-data-field'>
+                            <label class='label-identifier'>Fecha Realizacion Solicitud</label>
+                            <label class='data-field'>" . $registro['fecha_creacion'] . "</label>
+                        </div>
+                            <div class='course-data-field'>
+                                <label class='label-identifier'>Solicitante</label>
+                                <label class='data-field' id='solicitante'>" . $registro['nombre_U'] . "</label>
+                            </div>
+                            <br>
+                        <div class='course-data-field'>
+                            <label class='label-identifier' for='detalles'>Detalles</label>
+                            <br>
+                            <textarea id='detalles' name='detalles'>" . $registro['descripcion'] . "</textarea>
+                        </div>
+                        <br>
+                        <div class='course-data-field'>
+                            <h4 class='label-identifier'>Documento para Descargar</h4>
+                            <label class='data-field'><a href='../../include/" . $registro['documento'] . "' download>Descargar Documento</a></label>
+                        </div>
+                        <div class='course-data-field'>
+                            <h6 class='label-identifier'>Responsable</h6>
+                            <label class='data-field'>" . $registro['nomR'] . "" . $registro['apellidoR'] . "</label>
+                        </div>
+                        <hr>
+                            <div class='course-data-field'>
+                                <label class='label-identifier'>Estado</label>
+                                <label class='data-field'>" . $registro['estado_nom_pgf'] . "</label>
+                            </div>
+                        </div>
+                        <div class='course-data-field'>
+                            <label class='label-identifier'>Fecha Respuesta Solicitud</label>
+                            <label class='data-field'>" . $registro['fecha_respuesta'] . "</label>
+                        </div>
+                    </div>
+                    ";
+                }elseif($registro['id_tiposolicitud'] == 23){
+                    $jTableResult['ListDetalle'] .= "
+                                                        <div class='form-container'>
+                                                            <div class='course-data-field'>
+                                                                <label class='label-identifier'>Fecha Realizacion Solicitud</label>
+                                                                <label class='data-field'>" . $registro['fecha_creacion'] . "</label>
+                                                            </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Solicitante</label>
+                                                                    <label class='data-field' id='solicitante'>" . $registro['nombre_U'] . "</label>
+                                                                </div>
+                                                                <br>
+                                                            <div class='course-data-field'>
+                                                                <label class='label-identifier' for='detalles'>Detalles</label>
+                                                                <br>
+                                                                <textarea id='detalles' name='detalles'>" . $registro['descripcion'] . "</textarea>
+                                                            </div>
+                                                            <br>
+                                                            <div class='course-data-field'>
+                                                                <h4 class='label-identifier'>Documento para Descargar</h4>
+                                                                <label class='data-field'><a href='../../include/" . $registro['documento'] . "' download>Descargar Documento</a></label>
+                                                            </div>
+                                                            <div class='course-data-field'>
+                                                                <h6 class='label-identifier'>Responsable</h6>
+                                                                <label class='data-field'>" . $registro['nomR'] . "" . $registro['apellidoR'] . "</label>
+                                                            </div>
+                                                            <hr>
+                                                            <div class='course-data-container'>
+                                                                <h2 class='label-identifier'>DATOS DE CURSO</h2>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Fecha Asignacion</label>
+                                                                    <label class='data-field'>" . $registro['fecha_asignada'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Nombre curso</label>
+                                                                    <label class='data-field'>" . $registro['nom_pgf'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Fecha inicio</label>
+                                                                    <label class='data-field'>" . $registro['fecha_iniPf'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Fecha cierre</label>
+                                                                    <label class='data-field'>" . $registro['fecha_cierre'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Numero de ficha</label>
+                                                                    <label class='data-field'>" . $registro['ficha'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Horas de curso</label>
+                                                                    <label class='data-field'>" . $registro['horas_curso'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Modalidad</label>
+                                                                    <label class='data-field'>" . $registro['modalidad'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Jornada</label>
+                                                                    <label class='data-field'>" . $registro['nom_jornada'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Nivel de Formacion</label>
+                                                                    <label class='data-field'>" . $registro['nivel_formacion'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Tipo de Formacion</label>
+                                                                    <label class='data-field'>" . $registro['tipo_formacion'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Matriculados</label>
+                                                                    <label class='data-field'>" . $registro['matriculados'] . "</label>
+                                                                </div>
+                                                                <div class='course-data-field'>
+                                                                    <label class='label-identifier'>Estado</label>
+                                                                    <label class='data-field'>" . $registro['estado_nom_pgf'] . "</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class='course-data-field'>
+                                                                <label class='label-identifier'>Fecha Respuesta Solicitud</label>
+                                                                <label class='data-field'>" . $registro['fecha_respuesta'] . "</label>
+                                                            </div>
+                                                        </div>
+                                                    ";
                 }
-                }
-            }else {
+
+            }
+        }else {
             $jTableResult['rst'] = "0";
             $jTableResult['ms'] = "Error al obtener los datos.";
         }
