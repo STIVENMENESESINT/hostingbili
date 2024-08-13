@@ -607,7 +607,7 @@ switch ($_REQUEST['action']) {
         $jTableResult['ms'] = "";
         $jTableResult['ListNoti'] = "";
         $id_solicitud = mysqli_real_escape_string($conn, $_POST['id_solicitud']);
-        echo $query = "SELECT 
+        $query = "SELECT 
         s.id_solicitud,
         s.id_estado, 
         u.nombre, 
@@ -663,7 +663,7 @@ switch ($_REQUEST['action']) {
             LEFT JOIN
             rol r ON u.id_rol = r.id_rol
         WHERE 
-            s.id_solicitud = '$id_solicitud' AND ds.id_tiposolicitud = 4";exit();
+            s.id_solicitud = '$id_solicitud' AND (ds.id_tiposolicitud = 4 OR ds.id_tiposolicitud = 23)";
         $result = mysqli_query($conn, $query);
         if ($result) {
             while ($registro = mysqli_fetch_array($result)) {
