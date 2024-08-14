@@ -82,8 +82,6 @@ if (isset($_SESSION['id_userprofile'])) {
                             data-lang-fr="BIBLIOTHÈQUE DE L’ÉQUIPE MULTILINGUISME">
                             BIBLIOTECA MULTILINGUALISM TEAM
                         </h1>
-
-
                         <div class="divider"></div>
                         <h2 class="subtitle" data-lang-es="¡Bienvenido a tu espacio de conocimiento!" data-lang-en="Welcome to your space of knowledge!" data-lang-fr="Bienvenue dans votre espace de connaissance !">
                             ¡Bienvenido a tu espacio de conocimiento!
@@ -150,7 +148,7 @@ if (isset($_SESSION['id_userprofile'])) {
                                 </a>
                                 <div class="navbar-dropdown">
                                     <?php
-                                    if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1') {
+                                    if ($_SESSION['id_rol'] == '3') {
                                         echo '<a href="category_new.php" class="navbar-dropdown-item" data-lang-es="Ingresar Nueva Sesión" data-lang-en="Enter New Session" data-lang-fr="Entrer Nouvelle Session">Ingresar Nueva Sesión</a>';
                                     }
                                     ?>
@@ -166,7 +164,7 @@ if (isset($_SESSION['id_userprofile'])) {
                                 </a>
                                 <div class="navbar-dropdown">
                                     <?php
-                                    if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] != '1') {
+                                    if (-$_SESSION['id_rol'] != '3') {
                                         echo '<a href="product_new.php" class="navbar-dropdown-item" data-lang-es="Nuevo Libro" data-lang-en="New Book" data-lang-fr="Nouveau Livre">Nuevo Libro</a>';
                                     }
                                     ?>

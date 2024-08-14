@@ -148,6 +148,7 @@ $(document).on("click", "#showRevista", function () {
         $("#revista").show();
     });
 $(document).ready(function() {
+    
         $("#revista").hide();
     });
 // ALERTAS SM
