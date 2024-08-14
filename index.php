@@ -798,17 +798,6 @@ $varDateTime = date("Y-m-d H:i:s");
 
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-            <script>
-            function FormEmpresa() {
-                var checkBox = document.getElementById("addNewForm");
-                var formEmpresa = document.getElementById("formEmpresa");
-                if (checkBox.checked == true) {
-                    formEmpresa.style.display = "block";
-                } else {
-                    formEmpresa.style.display = "none";
-                }
-            }
-            </script>
         </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous">
