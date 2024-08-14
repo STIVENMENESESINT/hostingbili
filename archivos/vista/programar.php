@@ -55,6 +55,8 @@ if (!isset($_SESSION['id_userprofile'])) {
     <link href='../../herramientas/css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
     <!-- Custom CSS Calendario -->
     <link href='../../herramientas/css/calendar.css' rel='stylesheet' />
+    <!-- Archivo Calendario -->
+
 </head>
 
 <body>
