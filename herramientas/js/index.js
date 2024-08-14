@@ -1,26 +1,69 @@
-$(document).ready(function(){ 
+$(document).ready(function() { 
     
-	
-	function calcularEdad() {	
-		fecha = $('#fechaNacimientoUsu').val();
-		var hoy = new Date();
-		var cumpleanos = new Date(fecha);
-		var edad = hoy.getFullYear() - cumpleanos.getFullYear();
-		var m = hoy.getMonth() - cumpleanos.getMonth();
-
-				if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
-					edad--;
-				}
-				$('#edadUsu').val(edad);
-			}
-			
-			$(document).on("change", "#fechaNacimientoUsu",function (){
-				calcularEdad();
-			});	
-				function limpiar(){
-					document.getElementById("nameUsu").value = "";
-					document.getElementById("identificacion").value = "";
-				}
+        $.post("include/select.php", {
+            action: 'crgrDepto' 
+        },
+        function(data) {
+            $("#cod_dpto").html(data.listDepto);
+            },
+            'json'
+            ).fail(function(xhr, status, error) {
+                console.error(error);
+            });
+        
+        
+            $.post("include/select.php", {
+                action: 'crgrTiposDoc' 
+            },
+            function(data) {
+                $("#id_tpdoc").html(data.lisTiposD);
+                $("#id_tpdoc_rep").html(data.lisTiposD);
+            },
+            'json'
+            ).fail(function(xhr, status, error) {
+                console.error(error);
+            });
+            
+            $.post("include/cntrlNoti.php", {
+                action: 'noticiaCreado2' 
+            },
+            function(data) {
+                if(data.rstl=="1"){	
+                    $("#noticia_creada2").html(data.noticia); } 
+                    else{	
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: data.msj
+                        });
+                    }
+            },
+            'json'
+            ).fail(function(xhr, status, error) {
+                console.error(error);
+            });
+            $.post("include/select.php", {
+                action: 'CrgrTipoGenero' 
+            },
+            function(data) {
+                $("#id_genero").html(data.lisTiposG);
+                $("#id_genero_rep").html(data.lisTiposG);
+                },
+                'json'
+                ).fail(function(xhr, status, error) {
+                    console.error(error);
+                });
+                
+                $.post("include/select.php", {
+                    action: 'crgrPoblacion' 
+                },
+                function(data) {
+                    $("#cod_poblacion").html(data.listPoblacion);
+                    },
+                    'json'
+                    ).fail(function(xhr, status, error) {
+                        console.error(error);
+                    });
 
 				$(document).on("click", "#btnEntrar", function () {
 					if ($("#numeroiden").val() == "") {
@@ -104,57 +147,9 @@ $(document).ready(function(){
 					return re.test(email);
 				}
 				
-				$(document).ready(function(){  
-					$.post("include/select.php", {
-						action: 'CrgrTipoGenero' 
-					},
-					function(data) {
-						$("#id_genero").html(data.lisTiposG);
-						$("#id_genero_rep").html(data.lisTiposG);
-						},
-						'json'
-						).fail(function(xhr, status, error) {
-							console.error(error);
-						});
-					});
-                    $(document).ready(function(){  
-                        $.post("include/select.php", {
-                            action: 'crgrPoblacion' 
-                        },
-                        function(data) {
-                            $("#cod_poblacion").html(data.listPoblacion);
-                            },
-                            'json'
-                            ).fail(function(xhr, status, error) {
-                                console.error(error);
-                            });
-                        });
-			$(document).ready(function(){  
-			$.post("include/select.php", {
-				action: 'crgrDepto' 
-			},
-			function(data) {
-				$("#cod_dpto").html(data.listDepto);
-				},
-				'json'
-				).fail(function(xhr, status, error) {
-					console.error(error);
-				});
-			});
-			$(document).ready(function(){  
-				$.post("include/select.php", {
-					action: 'crgrTiposDoc' 
-				},
-				function(data) {
-					$("#id_tpdoc").html(data.lisTiposD);
-					$("#id_tpdoc_rep").html(data.lisTiposD);
-				},
-				'json'
-				).fail(function(xhr, status, error) {
-					console.error(error);
-				});
-			});
-            
+					
+			
+			
 			$(document).on("change", "#cod_dpto",
 			function (){
 					$.post("include/select.php", {
@@ -200,212 +195,206 @@ $(document).ready(function(){
 
 
 
-//GUARDAR - USUARIO 
+        //GUARDAR - USUARIO 
 
-$(document).on("click", "#btnGuardar", function () {
-    // Función para validar el correo electrónico
-    function validarCorreo(correo) {
-        const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return regexCorreo.test(correo);
-    }
+        $(document).on("click", "#btnGuardar", function () {
+            // Función para validar el correo electrónico
+            function validarCorreo(correo) {
+                const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return regexCorreo.test(correo);
+            }
 
-	function validarClave(clave) {
-		// Expresión regular para validar que haya al menos 6 letras y un número
-		const regexClave = /^(?=.*[A-Za-z]{6,})(?=.*\d)[A-Za-z\d]{7,20}$/;
-		return regexClave.test(clave);
-	}
+            function validarClave(clave) {
+                // Expresión regular para validar que haya al menos 6 letras y un número
+                const regexClave = /^(?=.*[A-Za-z]{6,})(?=.*\d)[A-Za-z\d]{7,20}$/;
+                return regexClave.test(clave);
+            }
 
-// Función para validar el número de documento
-	function validarNumeroDocumento(numero) {
-		return numero.length >= 8 && numero.length <= 15;
-	}
+        // Función para validar el número de documento
+            function validarNumeroDocumento(numero) {
+                return numero.length >= 8 && numero.length <= 15;
+            }
 
 
-    if ($("#edadUsu").val() == "") {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Debe ingresar la fecha de nacimiento',
-        }).then(() => {
-            $("#fechaNacimientoUsu").focus();
-        });
-    } else if ($("#id_tpdoc").val() == "0") {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Debe seleccionar un tipo de documento',
-        }).then(() => {
-            $("#id_tpdoc").focus();
-        });
-    } else if ($("#numeroiden_registro").val() == "") {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Debe ingresar el número de identificación',
-        }).then(() => {
-            $("#numeroiden_registro").focus();
-        });
-    } else if (!validarNumeroDocumento($("#numeroiden_registro").val())) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'El número de documento debe tener al menos 8 caracteres',
-        }).then(() => {
-            $("#numeroiden_registro").focus();
-        });
-    } else if ($("#nameusu").val() == "") {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Debe ingresar el nombre',
-        }).then(() => {
-            $("#nameusu").focus();
-        });
-    } else if ($("#apellidoUsu").val() == "") {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Debe ingresar el primer apellido',
-        }).then(() => {
-            $("#apellidoUsu").focus();
-        });
-    } else if ($("#apellidoUsu_dos").val() == "") {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Debe ingresar el segundo apellido',
-        }).then(() => {
-            $("#apellidoUsu_dos").focus();
-        });
-    } else if ($("#cod_dpto").val() == "0") {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Debe seleccionar un departamento',
-        }).then(() => {
-            $("#cod_dpto").focus();
-        });
-    } else if ($("#correo_registro").val() == "") {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Debe ingresar el correo electrónico',
-        }).then(() => {
-            $("#correo_registro").focus();
-        });
-    } else if (!validarCorreo($("#correo_registro").val())) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'El formato del correo electrónico es inválido',
-        }).then(() => {
-            $("#correo_registro").focus();
-        });
-    } else if ($("#celular").val() == "") {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Debe ingresar el número de celular',
-        }).then(() => {
-            $("#celular").focus();
-        });
-    } else if ($("#id_genero").val() == "0") {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Debe seleccionar un género',
-        }).then(() => {
-            $("#id_genero").focus();
-        });
-    } else if ($("#cod_municipio").val() == "0") {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Debe seleccionar un municipio',
-        }).then(() => {
-            $("#cod_municipio").focus();
-        });
-    } else if ($("#cod_poblado").val() == "0") {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Debe seleccionar un poblado',
-        }).then(() => {
-            $("#cod_poblado").focus();
-        });
-    } else if ($("#clave_registro").val() == "") {
-		Swal.fire({
-			icon: 'error',
-			title: 'Error',
-			text: 'Debe ingresar la clave',
-		}).then(() => {
-			$("#clave_registro").focus();
-		});
-	} else if (!validarClave($("#clave_registro").val())) {
-		Swal.fire({
-			icon: 'error',
-			title: 'Error',
-			text: 'La clave debe tener al menos 6 letras y un número',
-		}).then(() => {
-			$("#clave_registro").focus();
-		});
-
-    } else {
-        $.post("include/ctrlIndex2.php", {
-            action: 'registroUsuNew',
-            id_tpdoc: $("#id_tpdoc").val(),
-            numeroiden_registro: $("#numeroiden_registro").val(),
-            nameusu: $("#nameusu").val(),
-            apellidoUsu: $("#apellidoUsu").val(),
-            apellidoUsu_dos: $("#apellidoUsu_dos").val(),
-            cod_dpto: $("#cod_dpto").val(),
-            correo_registro: $("#correo_registro").val(),
-            celular: $("#celular").val(),
-            id_genero: $("#id_genero").val(),
-            cod_municipio: $("#cod_municipio").val(),
-            cod_poblacion: $("#cod_poblacion").val(),
-            cod_poblado: $("#cod_poblado").val(),
-            clave_registro: $("#clave_registro").val()
-        }, function (data) {
-            if (data.rstl == "1") {
-                Swal.fire({
-                    icon: 'success',
-                    title: '¡Éxito!',
-                    text: 'Registro guardado con éxito',
-                    showConfirmButton: false,
-                    timer: 1500 // Tiempo en milisegundos (1.5 segundos)
-                }).then(() => {
-                    location.reload();
-                });
-                clear()
-            } else {
+            if ($("#edadUsu").val() == "") {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',
-                    text: data.msj
+                    text: 'Debe ingresar la fecha de nacimiento',
+                }).then(() => {
+                    $("#fechaNacimientoUsu").focus();
                 });
+            } else if ($("#id_tpdoc").val() == "0") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Debe seleccionar un tipo de documento',
+                }).then(() => {
+                    $("#id_tpdoc").focus();
+                });
+            } else if ($("#numeroiden_registro").val() == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Debe ingresar el número de identificación',
+                }).then(() => {
+                    $("#numeroiden_registro").focus();
+                });
+            } else if (!validarNumeroDocumento($("#numeroiden_registro").val())) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'El número de documento debe tener al menos 8 caracteres',
+                }).then(() => {
+                    $("#numeroiden_registro").focus();
+                });
+            } else if ($("#nameusu").val() == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Debe ingresar el nombre',
+                }).then(() => {
+                    $("#nameusu").focus();
+                });
+            } else if ($("#apellidoUsu").val() == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Debe ingresar el primer apellido',
+                }).then(() => {
+                    $("#apellidoUsu").focus();
+                });
+            } else if ($("#apellidoUsu_dos").val() == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Debe ingresar el segundo apellido',
+                }).then(() => {
+                    $("#apellidoUsu_dos").focus();
+                });
+            } else if ($("#cod_dpto").val() == "0") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Debe seleccionar un departamento',
+                }).then(() => {
+                    $("#cod_dpto").focus();
+                });
+            } else if ($("#correo_registro").val() == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Debe ingresar el correo electrónico',
+                }).then(() => {
+                    $("#correo_registro").focus();
+                });
+            } else if (!validarCorreo($("#correo_registro").val())) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'El formato del correo electrónico es inválido',
+                }).then(() => {
+                    $("#correo_registro").focus();
+                });
+            } else if ($("#celular").val() == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Debe ingresar el número de celular',
+                }).then(() => {
+                    $("#celular").focus();
+                });
+            } else if ($("#id_genero").val() == "0") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Debe seleccionar un género',
+                }).then(() => {
+                    $("#id_genero").focus();
+                });
+            } else if ($("#cod_municipio").val() == "0") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Debe seleccionar un municipio',
+                }).then(() => {
+                    $("#cod_municipio").focus();
+                });
+            } else if ($("#cod_poblado").val() == "0") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Debe seleccionar un poblado',
+                }).then(() => {
+                    $("#cod_poblado").focus();
+                });
+            } else if ($("#clave_registro").val() == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Debe ingresar la clave',
+                }).then(() => {
+                    $("#clave_registro").focus();
+                });
+            } else if (!validarClave($("#clave_registro").val())) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'La clave debe tener al menos 6 letras y un número',
+                }).then(() => {
+                    $("#clave_registro").focus();
+                });
+
+            } else {
+                $.post("include/ctrlIndex2.php", {
+                    action: 'registroUsuNew',
+                    id_tpdoc: $("#id_tpdoc").val(),
+                    numeroiden_registro: $("#numeroiden_registro").val(),
+                    nameusu: $("#nameusu").val(),
+                    apellidoUsu: $("#apellidoUsu").val(),
+                    apellidoUsu_dos: $("#apellidoUsu_dos").val(),
+                    cod_dpto: $("#cod_dpto").val(),
+                    correo_registro: $("#correo_registro").val(),
+                    celular: $("#celular").val(),
+                    id_genero: $("#id_genero").val(),
+                    cod_municipio: $("#cod_municipio").val(),
+                    cod_poblacion: $("#cod_poblacion").val(),
+                    cod_poblado: $("#cod_poblado").val(),
+                    clave_registro: $("#clave_registro").val()
+                }, function (data) {
+                    if (data.rstl == "1") {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Éxito!',
+                            text: 'Registro guardado con éxito',
+                            showConfirmButton: false,
+                            timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                        }).then(() => {
+                            location.reload();
+                        });
+                        clear()
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: data.msj
+                        });
+                        
+                    }
+                }, 'json').fail(function (jqXHR, textStatus, errorThrown) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ocurrió un error en la solicitud'
+                    });
+                });
+
+
+                
                 
             }
-        }, 'json').fail(function (jqXHR, textStatus, errorThrown) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Ocurrió un error en la solicitud'
-            });
         });
-
-
-		
-		
-    }
-});
-
-
-
-
-			});
-			
-				
+        				
 					function clear(){
 						// $("#fechaNacimientoUsu").val("");					
 						//$("#id_tiposolicitud").val("0");
@@ -418,9 +407,9 @@ $(document).on("click", "#btnGuardar", function () {
 					$(document).on("click", "#btnVolver",function (){
 						// alert('clear entrando');
 						clear();
-});
+                    });
 
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
             function FormEmpresa() {
                 const checkbox = document.getElementById('addNewForm');
                 const formEmpresa = document.getElementById('formEmpresa');
@@ -520,4 +509,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
+});
 

@@ -173,28 +173,7 @@ $(document).ready(function(){
         console.error(error);
     });
 });
-// aqui inicia el index
 
-$(document).ready(function(){  
-    $.post("include/cntrlNoti.php", {
-        action: 'noticiaCreado2' 
-    },
-    function(data) {
-        if(data.rstl=="1"){	
-            $("#noticia_creada2").html(data.noticia); } 
-            else{	
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: data.msj
-                });
-            }
-    },
-    'json'
-    ).fail(function(xhr, status, error) {
-        console.error(error);
-    });
-});
 function cargarcosas(){
     $(document).on("change", "#id_programaformacionorigi", function() {
         $.post("../../include/select.php", {

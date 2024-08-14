@@ -1,7 +1,5 @@
 <script src='https://code.jquery.com/jquery-3.7.0.js'></script>
-<link rel="stylesheet" href="herramientas/css/assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css ">
-<!-- Archivo de estilos de Font Awesome -->
-<link rel="stylesheet" href="../../herramientas/css/assets/fonts/poppins/poppins.css ">
+
 <!-- Archivo de estilos de la fuente Poppins -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 <!-- Archivo Calendario -->
@@ -44,15 +42,11 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet" />
 <!-- OJOOOOOO -->
 <script src='https://code.jquery.com/jquery-3.7.0.js'></script>
-<link rel="stylesheet" href="herramientas/css/assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css ">
-<!-- Archivo de estilos de Font Awesome -->
-<link rel="stylesheet" href="herramientas/css/assets/fonts/poppins/poppins.css ">
+
 <!-- Archivo de estilos de la fuente Poppins -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 <!-- Archivo de estilos de Bootstrap Icons -->
 
-<!-- CSS Libraries -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 <!-- Hojas de estilo de Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
