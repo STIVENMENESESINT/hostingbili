@@ -1,5 +1,50 @@
-$(document).ready(function(){ 
-    
+$(document).ready(function(){
+    $.post("../../include/select.php", {
+        action: 'crgrTipoRol' 
+    },
+    function(data) {
+        $("#id_rol").html(data.lisTiposR);
+    },
+    'json'
+    ).fail(function(xhr, status, error) {
+        console.error(error);
+    }); 
+    $.post("../../include/cntrlSoli.php", {
+        action: 'crgrTipoSolicitud' 
+    },
+    function(data) {
+        $("#id_tiposolicitud").html(data.lisTiposS);
+    },
+    'json'
+    ).fail(function(xhr, status, error) {
+        console.error(error);
+    });
+    $.post("../../include/cntrlSoli.php", {
+        action: 'MisSoli_sin'
+    }, function(data) {
+        if (data.rs === "1") {
+            $("#sin_contenido").html(
+                `<h1 class="title">Tus Solicitudes Pendientes</h1>` +
+                data.tabla
+            );
+        } else {
+            // mirar actualizar perfil
+            $("#sin_contenido").html(`
+                <h4 class="title">No hay Solicitudes Pendientes</h4>
+            `);
+        }
+    }, 'json');
+    $.post("../../include/select.php", {
+        action: 'crgrResponsable',
+        id_solicitud: idSolicitud 
+    },
+    function(data) {
+        $("#id_responsable").html(data.listResponsable);
+        },
+        'json'
+        ).fail(function(xhr, status, error) {
+            console.error(error);
+    });
     $.post("../../include/cntrlSoli.php", {
         action: 'MisSoli'
     }, function(data) {
@@ -22,23 +67,7 @@ $(document).ready(function(){
         }
     }, 'json');
 });
-$(document).ready(function(){ 
-    $.post("../../include/cntrlSoli.php", {
-        action: 'MisSoli_sin'
-    }, function(data) {
-        if (data.rs === "1") {
-            $("#sin_contenido").html(
-                `<h1 class="title">Tus Solicitudes Pendientes</h1>` +
-                data.tabla
-            );
-        } else {
-            // mirar actualizar perfil
-            $("#sin_contenido").html(`
-                <h4 class="title">No hay Solicitudes Pendientes</h4>
-            `);
-        }
-    }, 'json');
-});
+
 $(document).on("click", "#btnEditarSoli", function() {
     var idSolicitud = $(this).data('id');
     console.log("ID de la solicitud: " + idSolicitud); // Puedes eliminar esto después de verificar que el ID se captura correctamente
@@ -675,31 +704,6 @@ $(document).on("click", "#btnEnviar", function() {
         });
     }
 });
-$(document).ready(function(){  
-            $.post("../../include/cntrlSoli.php", {
-                action: 'crgrTipoSolicitud' 
-            },
-            function(data) {
-                $("#id_tiposolicitud").html(data.lisTiposS);
-            },
-            'json'
-            ).fail(function(xhr, status, error) {
-                console.error(error);
-            });
-});
-$(document).ready(function(){  
-            $.post("../../include/select.php", {
-                action: 'crgrTipoRol' 
-            },
-            function(data) {
-                $("#id_rol").html(data.lisTiposR);
-            },
-            'json'
-            ).fail(function(xhr, status, error) {
-                console.error(error);
-            });
-});
-// BUSCADOR
 $(document).on("click", "#btn_Buscar",function ()	{
     $("#sin_contenido").hide();
     $("#oferta_curso").hide();
@@ -713,9 +717,7 @@ $(document).on("click", "#btn_Buscar",function ()	{
         }, 'json');	
     }
 );
-
 let selectedFilters = [];
-
 $(document).on("click", "#btn_Filtro", function () {
     $("#sin_contenido").hide();
     $("#oferta_curso").hide();
@@ -767,23 +769,6 @@ $(document).on("click", "#ExportarSoli", function () {
         error: function (jqXHR, textStatus, errorThrown) {
             alert('Error al descargar el archivo: ' + textStatus);
         }
-    });
-});
-
-
-
-
-$(document).ready(function(){  
-    $.post("../../include/select.php", {
-        action: 'crgrResponsable',
-        id_solicitud: idSolicitud 
-    },
-    function(data) {
-        $("#id_responsable").html(data.listResponsable);
-        },
-        'json'
-        ).fail(function(xhr, status, error) {
-            console.error(error);
     });
 });
 function AsignacionesCargar(idSolicitud){
@@ -879,7 +864,6 @@ $(document).ready(function () {
         $('#filterOptions').hide();
     });
 });
-
 function Cargar() {
     $(document).on("change", "#id_programaformacion", function() {
         $.post("../../include/select.php", {
@@ -1032,7 +1016,6 @@ function Cargar() {
         });
     });
 }
-
 $(document).on("click", "#detalleSolicitud", function() {
     var idSolicitud = $(this).data('id');
     console.log("ID de la solicitud: " + idSolicitud);
@@ -1134,7 +1117,6 @@ $(document).on("click", "#BtnAsesoramientoA",function ()	{
         }, 'json');	
     }
 );
-
             $(document).on("click", "#subirNoti2",function ()	{
                 var idSolicitud = $(this).data('id');
                 $.post("../../include/cntrlNoti.php", {
@@ -1202,8 +1184,6 @@ $(document).on("click", "#BtnAsesoramientoA",function ()	{
                     }, 'json');	
                 }
             );
-
-
 $(document).on("click", "#btn_subir",function ()	{
     var idSolicitud = $(this).data('id');
     console.log("ID de la solicitud: " + idSolicitud);

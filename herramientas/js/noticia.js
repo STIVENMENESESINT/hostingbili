@@ -148,13 +148,16 @@ $(document).on("click", "#showRevista", function () {
         $("#revista").show();
     });
 $(document).ready(function() {
-    
-        $("#revista").hide();
+    $.post("../../include/select.php", {
+        action: 'crgrTipoCategoria' 
+    },
+    function(data) {
+        $("#id_categoria").html(data.lisTiposC);
+    },
+    'json'
+    ).fail(function(xhr, status, error) {
+        console.error(error);
     });
-// ALERTAS SM
-
-// Noticia fin
-$(document).ready(function(){  
     $.post("../../include/cntrlNoti.php", {
         action: 'noticiaCreado' 
     },
@@ -173,7 +176,9 @@ $(document).ready(function(){
     ).fail(function(xhr, status, error) {
         console.error(error);
     });
-});
+        $("#revista").hide();
+    });
+// ALERTAS SM
 
 function cargarcosas(){
     $(document).on("change", "#id_programaformacionorigi", function() {
@@ -239,18 +244,6 @@ $(document).on("click", "#MisSoliActivate", function () {
                     text: data.ms
                 });
             }
-    },
-    'json'
-    ).fail(function(xhr, status, error) {
-        console.error(error);
-    });
-});
-$(document).ready(function(){  
-    $.post("../../include/select.php", {
-        action: 'crgrTipoCategoria' 
-    },
-    function(data) {
-        $("#id_categoria").html(data.lisTiposC);
     },
     'json'
     ).fail(function(xhr, status, error) {

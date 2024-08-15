@@ -1,6 +1,20 @@
 // alertas ofertas
 $(document).ready(function(){ 
     $.post("../../include/cntrlSoli.php", {
+        action: 'MisOfertas'
+    }, function(data) {
+        if (data.rs === "1") {
+            $("#oferta_curso").html(
+                `<h1 class="title">Tus Cursos Ofertados</h1>` +
+                data.tabla
+            );
+        } else {
+            // mirar actualizar perfil
+            $("#oferta_curso").hide();
+            
+        }
+    }, 'json');
+    $.post("../../include/cntrlSoli.php", {
         action: 'AlertaOferta'
     }, function(data) {
         if (data.rst === "1") {
@@ -20,23 +34,6 @@ $(document).ready(function(){
                     timer: 1500 // Tiempo en milisegundos (1.5 segundos)
                 });
             }
-    }, 'json');
-});
-// TABLA
-$(document).ready(function(){ 
-    $.post("../../include/cntrlSoli.php", {
-        action: 'MisOfertas'
-    }, function(data) {
-        if (data.rs === "1") {
-            $("#oferta_curso").html(
-                `<h1 class="title">Tus Cursos Ofertados</h1>` +
-                data.tabla
-            );
-        } else {
-            // mirar actualizar perfil
-            $("#oferta_curso").hide();
-            
-        }
     }, 'json');
 });
 function AsignacionesCargar(idSolicitud){
