@@ -147,3 +147,12 @@ label {
   /* Color del texto de la etiqueta */
 }
 /* Fin de estilo de cambio de idioma */
+.modal-header h1,
+.modal-body label,
+.modal-body input,
+.modal-body textarea,
+.modal-body select,
+.modal-footer button {
+    font-size: 1.5rem;
+    /* Ajusta el tamaño de la fuente para títulos y otros elementos específicos */
+}

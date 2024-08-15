@@ -154,40 +154,41 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="divider"></div>
                 <!--este es mi carrucel principal -->
                 <style>
-                    @media (max-width: 768px) {
-                        .carousel-wrapper {
-                            flex-direction: column;
-                        }
-
-                        .carousel-70 {
-                            flex: 0 0 100%;
-                        }
-
-                        .carousel-container {
-                            margin-bottom: 15px;
-                        }
+                @media (max-width: 768px) {
+                    .carousel-wrapper {
+                        flex-direction: column;
                     }
 
-                    .carousel-container img {
-                        width: 100%;
-                        height: auto;
+                    .carousel-70 {
+                        flex: 0 0 100%;
                     }
 
-                    /* Estilos para banner.php */
-                    .carousel-item img {
-                        max-height: 300px; /* Ajusta la altura máxima del banner */
+                    .carousel-container {
+                        margin-bottom: 15px;
                     }
+                }
 
-                    .carousel-caption {
-                        background: rgba(0, 0, 0, 0.5);
-                        border-radius: 10px;
-                        padding: 10px;
-                    }
+                .carousel-container img {
+                    width: 100%;
+                    height: auto;
+                }
 
-                    .carousel {
-                        max-width: 100%;
-                        margin: 0 auto;
-                    }
+                /* Estilos para banner.php */
+                .carousel-item img {
+                    max-height: 300px;
+                    /* Ajusta la altura máxima del banner */
+                }
+
+                .carousel-caption {
+                    background: rgba(0, 0, 0, 0.5);
+                    border-radius: 10px;
+                    padding: 10px;
+                }
+
+                .carousel {
+                    max-width: 100%;
+                    margin: 0 auto;
+                }
                 </style>
                 <div class="carousel-container">
                     <div class="carousel-wrapper">
@@ -206,82 +207,85 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
 
                     <style>
-                        
-                        .centered {
-                            display: block;
-                            text-align: center;
-                            margin: 0 auto;
-                        }
+                    .centered {
+                        display: block;
+                        text-align: center;
+                        margin: 0 auto;
+                    }
 
-                        .large {
-                            font-size: 4em;
-                            font-weight: bold;
-                        }
-
+                    .large {
+                        font-size: 4em;
+                        font-weight: bold;
+                    }
 
 
-                        .carousel-wrapper {
-                            display: flex;
-                            width: 100%;
+
+                    .carousel-wrapper {
+                        display: flex;
+                        width: 100%;
+                    }
+
+                    .carousel-container {
+                        padding: 0;
+                        /* Elimina padding para evitar desalineación */
+                        box-sizing: border-box;
+                        /* Incluye el padding en el tamaño total */
+                    }
+
+                    .carousel-70 {
+                        flex: 0 0 70%;
+                        /* Ajusta el ancho al 70% */
+                    }
+
+
+
+                    .carousel-inner img {
+                        width: 100%;
+                        height: 500px;
+
+                        height: auto;
+                        margin: 0 auto;
+                        border-radius: 16px;
+                        background-color: #f2f2f2;
+                        padding: 10px;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    }
+
+                    .carousel-control-prev,
+                    .carousel-control-next {
+                        width: auto;
+                    }
+
+                    .carousel-control-prev-icon,
+                    .carousel-control-next-icon {
+                        background-color: rgba(0, 0, 0, 0.5);
+                        border-radius: 50%;
+                        padding: 10px;
+                    }
+
+                    @media (max-width: 768px) {
+                        .title {
+                            font-size: 1.2em;
                         }
 
-                        .carousel-container {
-                            padding: 0;
-                            /* Elimina padding para evitar desalineación */
-                            box-sizing: border-box;
-                            /* Incluye el padding en el tamaño total */
+                        .pdf-container embed {
+                            height: 300px;
                         }
 
-                        .carousel-70 {
-                            flex: 0 0 70%;
-                            /* Ajusta el ancho al 70% */
+                        #conten-navbar {
+                            margin-top: 10px;
+                        }
+                    }
+
+                    @media (max-width: 480px) {
+                        .title {
+                            font-size: 1em;
                         }
 
-                        
-                        
-                        .carousel-inner img {
-                            width: 100%;
-                            height: 500px;
-                            
-                            height: auto;
-                            margin: 0 auto;
-                            border-radius: 16px;
-                            background-color: #f2f2f2;
-                            padding: 10px;
-                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                        .pdf-container embed {
+                            height: 200px;
                         }
-
-                        .carousel-control-prev,
-                        .carousel-control-next {
-                            width: auto;
-                        }
-
-                        .carousel-control-prev-icon,
-                        .carousel-control-next-icon {
-                            background-color: rgba(0, 0, 0, 0.5);
-                            border-radius: 50%;
-                            padding: 10px;
-                        }
-                        @media (max-width: 768px) {
-                            .title {
-                                font-size: 1.2em;
-                            }
-                            .pdf-container embed {
-                                height: 300px;
-                            }
-                            #conten-navbar {
-                                margin-top: 10px;
-                            }
-                        }
-                        @media (max-width: 480px) {
-                            .title {
-                                font-size: 1em;
-                            }
-                            .pdf-container embed {
-                                height: 200px;
-                            }
-                        }
-                        
+                    }
                     </style>
 
 
@@ -526,86 +530,74 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </div>
     </div>
+</div>
 
-
-    <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['pdf'])) {
-    $file = $_FILES['pdf'];
-    $uploadDir = '../../imagenes/'; // Cambia esto a la ruta donde quieras guardar el archivo
-    $uploadFile = $uploadDir . baSENAme($file['name']);
-    
-    // Verifica que el archivo sea un PDF
-    if ($file['type'] === 'application/pdf') {
-        if (move_uploaded_file($file['tmp_name'], $uploadFile)) {
-            echo "El archivo ha sido cargado con éxito.";
+<?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['pdf'])) {
+        $file = $_FILES['pdf'];
+        $uploadDir = '../../imagenes/'; // Cambia esto a la ruta donde quieras guardar el archivo
+        $uploadFile = $uploadDir . baSENAme($file['name']);
+        
+        // Verifica que el archivo sea un PDF
+        if ($file['type'] === 'application/pdf') {
+            if (move_uploaded_file($file['tmp_name'], $uploadFile)) {
+                echo "El archivo ha sido cargado con éxito.";
+            } else {
+                echo "Error al cargar el archivo.";
+            }
         } else {
-            echo "Error al cargar el archivo.";
+            echo "Por favor, sube un archivo PDF.";
         }
-    } else {
-        echo "Por favor, sube un archivo PDF.";
     }
-}
-?>
+    ?>
 
-    <script>
-    $(document).on("click", "#actualizarPermisousu", function() {
-        // Obtén el formulario
-        // Obtén el formulario
-        var form = document.getElementById('uploadForm');
+<script>
+$(document).on("click", "#actualizarPermisousu", function() {
+    // Obtén el formulario
+    // Obtén el formulario
+    var form = document.getElementById('uploadForm');
 
-        // Verifica si el formulario se ha encontrado correctamente
-        if (!form) {
-            console.error('Formulario no encontrado.');
-            return;
-        }
+    // Verifica si el formulario se ha encontrado correctamente
+    if (!form) {
+        console.error('Formulario no encontrado.');
+        return;
+    }
 
-        // Verifica si el formulario es un objeto HTMLFormElement
-        if (!(form instanceof HTMLFormElement)) {
-            console.error('El elemento con el ID "uploadForm" no es un formulario.');
-            return;
-        }
+    // Verifica si el formulario es un objeto HTMLFormElement
+    if (!(form instanceof HTMLFormElement)) {
+        console.error('El elemento con el ID "uploadForm" no es un formulario.');
+        return;
+    }
 
-        // Verifica si hay un archivo seleccionado
-        var fileInput = document.getElementById('pdf');
-        if (fileInput.files.length === 0) {
-            alert('Por favor selecciona un archivo PDF.');
-            return;
-        }
+    // Verifica si hay un archivo seleccionado
+    var fileInput = document.getElementById('pdf');
+    if (fileInput.files.length === 0) {
+        alert('Por favor selecciona un archivo PDF.');
+        return;
+    }
 
-        // Envía el formulario usando AJAX
-        var formData = new FormData(form);
+    // Envía el formulario usando AJAX
+    var formData = new FormData(form);
 
-        fetch(form.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(result => {
-                // Muestra el resultado de la carga
-                alert(result);
-                // Actualiza el PDF en la página
-                document.getElementById('pdfEmbed').src = '../../imagenes/Revista B2.pdf?' + new Date()
-                    .getTime();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    });
-    </script>
-
+    fetch(form.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(result => {
+            // Muestra el resultado de la carga
+            alert(result);
+            // Actualiza el PDF en la página
+            document.getElementById('pdfEmbed').src = '../../imagenes/Revista B2.pdf?' + new Date()
+                .getTime();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+});
+</script>
 
 
 
 
 </html>
-<style>
-.modal-header h1,
-.modal-body label,
-.modal-body input,
-.modal-body textarea,
-.modal-body select,
-.modal-footer button {
-    font-size: 1.5rem;
-    /* Ajusta el tamaño de la fuente para títulos y otros elementos específicos */
-}
-</style>
