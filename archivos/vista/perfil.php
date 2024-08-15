@@ -33,6 +33,60 @@ if (isset($_SESSION['id_userprofile'])) {
     <title>Actualizar Usuario </title>
     <link rel="stylesheet" href="../../herramientas/css/perfil.css">
 </head>
+<style>
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .layout__aside {
+        display: none; /* Oculta el menú lateral en pantallas pequeñas */
+    }
+    .input-with-icon {
+        position: relative;
+    }
+
+    .input-with-icon i {
+        position: relative;
+    }
+    .layout__content {
+        padding: 10px;
+    }
+
+    .card {
+        padding: 10px;
+    }
+
+    .circle {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        padding: 5px;
+    }
+
+    .circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    .create-button, .close-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+    }
+}
+@media (max-width: 768px) {
+    .card {
+        padding: 10px;
+    }
+
+    .upload-container {
+        margin: 10px auto;
+    }
+}
+</style>
 <script>
 $(document).on("click", "#btnActualizarContraseña", function() {
     if ($("#numeroiden").val() == "") {

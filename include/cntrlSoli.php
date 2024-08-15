@@ -202,8 +202,7 @@ switch ($_REQUEST['action'])
         }
         
         print json_encode($jTableResult);
-        break;
-    
+    break;
     case 'detalleSolicitud':
         $jTableResult = array();
         $jTableResult['rst'] = "";

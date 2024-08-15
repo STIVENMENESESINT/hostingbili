@@ -87,7 +87,7 @@ switch ($_REQUEST['action'])
         $jTableResult['rstl']="";
         $jTableResult['msj']="";
         $jTableResult['Usu']='
-            <div class="container">
+            <div class="container table-responsive">
                         
                         <table class="table table-bordered table-striped table-hover text-center">
                     <thead class="thead-dark">

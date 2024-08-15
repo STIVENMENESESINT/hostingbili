@@ -1,9 +1,7 @@
 <style>
 .navbar-nav {
     margin-top: 1.5rem;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: column;
     flex-direction: row;
     padding-left: 0;
     margin-bottom: 0;
@@ -12,7 +10,6 @@
 
 .navbar-dark .navbar-nav {
     display: flex;
-
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -20,7 +17,6 @@
     padding: 18px 15px;
     text-decoration: none;
     display: inline-block;
-    /* Asegura que los enlaces estén en línea */
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
@@ -29,48 +25,58 @@
 
 .navbar-dark .navbar-nav li {
     display: inline-block;
-    /* Asegura que los elementos de la lista estén en línea */
 }
 
-
-/* hover iconos */
 .nav-item-hover:hover {
     transform: scale(1.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
-
 .fixed-top-right {
     position: absolute;
     top: 10px;
-    /* Ajusta este valor según necesites */
     right: 10px;
-    /* Ajusta este valor según necesites */
     z-index: 1000;
-    /* Asegura que esté por encima de otros elementos */
     padding: 5px 10px;
-    /* Espaciado interno */
 }
 
 .fixed-top-right .btn i {
     margin-right: 5px;
-    /* Espacio entre el icono y el texto */
 }
-
 
 .grid-container {
     display: grid;
-
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 2fr);
     gap: 3px;
     justify-items: center;
-    /* Centrar elementos horizontalmente */
     align-items: center;
-    /* Centrar elementos verticalmente */
     border-radius: 15px;
 }
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+        padding: 10px 15px;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    
+    .camilo, .camilo2 {
+        left: 0;
+        position: relative;
+        
+    }
+}
+
 </style>
 <ul class="navbar-nav">
     <?php
@@ -78,13 +84,15 @@
             echo '
             <style>
                 .camilo{
-                left:13rem;
-                position: absolute;
+                top:1.5rem;
+                left:5rem;
+                position: relative;
                     text-align: center;
                 }
                 .camilo2{
-                left:7rem;
-                position: absolute;
+                top:3rem;
+                left:6rem;
+                position: relative;
                     text-align: center;
                 }
             </style>

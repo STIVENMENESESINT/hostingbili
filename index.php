@@ -226,11 +226,9 @@ $varDateTime = date("Y-m-d H:i:s");
             <div>
 
                 <div class="layout">
-
                     <div class="container layout__content">
                         <!-- traductor -->
                         <div>
-
                             <select id="language-select">
                                 <option value="es"><label for="language-select">Idioma:</label></option>
                                 <option value="es">Español</option>
@@ -251,66 +249,90 @@ $varDateTime = date("Y-m-d H:i:s");
                                 <div class="custom-carousel-container">
                                     <!--este es mi carrucel principal -->
                                     <style>
-                                    .main-container {
-                                        display: flex;
+                                        /* Estilos para pantallas pequeñas */
+                                        @media (max-width: 778px) {
+                                            .navbar-nav {
+                                                display: flex;
+                                                flex-direction: column;
+                                                position: absolute;
+                                                top: 100%;
+                                                right: 0;
+                                                width: 100%;
+                                                background-color: var(--background-color); /* O el color de fondo que prefieras */
+                                                border-top: 1px solid #ddd;
+                                            }
+                                            
+                                            .navbar-nav .nav-item {
+                                                margin: 0;
+                                            }
+                                            
+                                            .navbar-nav .nav-item .btn {
+                                                padding: 10px 15px;
+                                                text-align: center;
+                                                width: 100%;
+                                            }
+                                        }
 
-                                        align-items: center;
-                                        width: 100%;
-                                        height: 355px;
-                                    }
+                                        .main-container {
+                                            display: flex;
 
-                                    /* Contenedor personalizado para el carrusel */
-                                    .custom-carousel-container {
-                                        position: relative;
-                                        top: 0;
-                                        width: 60%;
-                                        display: flex;
-                                        justify-content: center;
-                                        align-items: center;
-                                        padding: 10px;
-                                        /* Ajusta el padding superior e inferior según sea necesario */
-                                    }
+                                            align-items: center;
+                                            width: 100%;
+                                            height: 355px;
+                                        }
 
-                                    /* Estilos personalizados para el carrusel */
-                                    .custom-carousel {
-                                        max-width: 800px;
-                                        /* Ajusta el ancho máximo del carrusel */
-                                        margin: 0 auto;
-                                    }
+                                        /* Contenedor personalizado para el carrusel */
+                                        .custom-carousel-container {
+                                            position: relative;
+                                            top: 0;
+                                            width: 60%;
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            padding: 10px;
+                                            /* Ajusta el padding superior e inferior según sea necesario */
+                                        }
 
-                                    .custom-carousel .carousel-inner img {
-                                        max-height: 500px;
-                                        /* Ajusta la altura máxima de las imágenes */
-                                        width: auto;
-                                        height: 300px;
-                                        margin: 0 auto;
-                                        border-radius: 16px;
-                                        background-color: #f2f2f2;
-                                        padding: 19px;
-                                        /* Ajusta el padding alrededor de las imágenes */
-                                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                                    }
+                                        /* Estilos personalizados para el carrusel */
+                                        .custom-carousel {
+                                            max-width: 800px;
+                                            /* Ajusta el ancho máximo del carrusel */
+                                            margin: 0 auto;
+                                        }
 
-                                    .custom-carousel .carousel-control-prev,
-                                    .custom-carousel .carousel-control-next {
-                                        width: auto;
-                                        /* Ajusta el ancho para que solo los íconos sean clicables */
-                                    }
+                                        .custom-carousel .carousel-inner img {
+                                            max-height: 500px;
+                                            /* Ajusta la altura máxima de las imágenes */
+                                            width: auto;
+                                            height: 300px;
+                                            margin: 0 auto;
+                                            border-radius: 16px;
+                                            background-color: #f2f2f2;
+                                            padding: 19px;
+                                            /* Ajusta el padding alrededor de las imágenes */
+                                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                                        }
 
-                                    .custom-carousel .carousel-control-prev-icon,
-                                    .custom-carousel .carousel-control-next-icon {
-                                        background-color: rgba(0, 0, 0, 0.5);
-                                        /* Fondo semitransparente para mejor visibilidad */
-                                        border-radius: 50%;
-                                        /* Forma circular */
-                                        padding: 10px;
-                                        /* Espacio alrededor del ícono */
+                                        .custom-carousel .carousel-control-prev,
+                                        .custom-carousel .carousel-control-next {
+                                            width: auto;
+                                            /* Ajusta el ancho para que solo los íconos sean clicables */
+                                        }
 
-                                    }
+                                        .custom-carousel .carousel-control-prev-icon,
+                                        .custom-carousel .carousel-control-next-icon {
+                                            background-color: rgba(0, 0, 0, 0.5);
+                                            /* Fondo semitransparente para mejor visibilidad */
+                                            border-radius: 50%;
+                                            /* Forma circular */
+                                            padding: 10px;
+                                            /* Espacio alrededor del ícono */
 
-                                    .uppercase-title {
-                                        text-transform: uppercase;
-                                    }
+                                        }
+
+                                        .uppercase-title {
+                                            text-transform: uppercase;
+                                        }
                                     </style>
                                     <div id="carouselExampleIndicators" class="carousel slide custom-carousel"
                                         data-bs-ride="carousel">
@@ -764,33 +786,6 @@ $varDateTime = date("Y-m-d H:i:s");
                                 name='btnRecordar'>Recordar</button>
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id='btnCancelar'
                                 name='btnCancelar'>Cancelar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- resvista modal -->
-            <div class="modal fade" id="revistaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" data-lang-es="Subir Imágenes al Carrusel"
-                                data-lang-en="Upload Carousel Images" data-lang-fr="Télécharger des Images pour le Carrousel">
-                                Subir Nueva Revista</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="pdf" data-lang-es="Selecciona un archivo PDF:" data-lang-en="Select a PDF file:"
-                                    data-lang-fr="Sélectionnez un fichier PDF:">Selecciona un Archivo PDF:</label>
-                                <input type="file" name="pdf" id="pdf" class="form-control" accept=".pdf">
-                            </div>
-                        </form>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-lang-es="Salir"
-                                data-lang-en="Exit" data-lang-fr="Sortir">Salir</button>
-                            <input class="btn btn-primary" type="button" id="actualizarPermisousu" value="Actualizar"
-                                data-lang-es="Actualizar" data-lang-en="Update" data-lang-fr="Mettre à jour">
                         </div>
                     </div>
                 </div>

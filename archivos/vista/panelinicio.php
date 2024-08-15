@@ -135,4 +135,25 @@
     /* Centrar elementos verticalmente */
     border-radius: 15px;
 }
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+        padding: 10px 15px;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    
+    .camilo, .camilo2 {
+        left: 0;
+        position: relative;
+        
+    }
+}
 </style>

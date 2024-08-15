@@ -106,128 +106,182 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="content__page">
                 <?php
-    // Verificar que la sesión del usuario esté iniciada
-    if (isset($_SESSION['id_rol'])) {
-        // Obtener el rol del usuario
-        $rol = $_SESSION['id_rol'];
-        
-        // Switch para mostrar el mensaje según el rol
-        switch ($rol) {
-            case 1:
-                echo '
-                    <span class="title centered large" data-lang-es="Bienvenido Aprendiz" data-lang-en="Welcome Apprentice" data-lang-fr="Bienvenue Apprenti">Bienvenido Aprendiz</span>
-                ';
-                break;
-            case 2:
-                echo '
-                    <span class="title centered large" data-lang-es="Bienvenido Instructor" data-lang-en="Welcome Instructor" data-lang-fr="Bienvenue Instructeur">Bienvenido Instructor</span>
-                ';
-                break;
-            case 3:
-                echo '
-                    <span class="title centered large" data-lang-es="Bienvenido Coordinador" data-lang-en="Welcome Coordinator" data-lang-fr="Bienvenue Coordinateur">Bienvenido Coordinador</span>
-                ';
-                break;
-            case 4:
-                echo '
-                    <span class="title centered large" data-lang-es="Bienvenido Empresa" data-lang-en="Welcome Company" data-lang-fr="Bienvenue Entreprise">Bienvenido Empresa</span>
-                ';
-                break;
-            case 5:
-                echo '
-                    <span class="title centered large" data-lang-es="Bienvenido" data-lang-en="Welcome" data-lang-fr="Bienvenue">Bienvenido</span>
-                ';
-                break;
-            default:
-                echo '
-                    <span class="title centered large" data-lang-es="Rol no reconocido" data-lang-en="Role not recognized" data-lang-fr="Rôle non reconnu">Rol no reconocido</span>
-                ';
-                break;
-        }
-    } else {
-        echo '
-            <span class="title centered large" data-lang-es="Inicie sesión" data-lang-en="Log in" data-lang-fr="Connectez-vous">Inicie sesión</span>
-        ';
-    }
-?>
+                    // Verificar que la sesión del usuario esté iniciada
+                    if (isset($_SESSION['id_rol'])) {
+                        // Obtener el rol del usuario
+                        $rol = $_SESSION['id_rol'];
+                        
+                        // Switch para mostrar el mensaje según el rol
+                        switch ($rol) {
+                            case 1:
+                                echo '
+                                    <span class="title centered large" data-lang-es="Bienvenido Aprendiz" data-lang-en="Welcome Apprentice" data-lang-fr="Bienvenue Apprenti">Bienvenido Aprendiz</span>
+                                ';
+                                break;
+                            case 2:
+                                echo '
+                                    <span class="title centered large" data-lang-es="Bienvenido Instructor" data-lang-en="Welcome Instructor" data-lang-fr="Bienvenue Instructeur">Bienvenido Instructor</span>
+                                ';
+                                break;
+                            case 3:
+                                echo '
+                                    <span class="title centered large" data-lang-es="Bienvenido Coordinador" data-lang-en="Welcome Coordinator" data-lang-fr="Bienvenue Coordinateur">Bienvenido Coordinador</span>
+                                ';
+                                break;
+                            case 4:
+                                echo '
+                                    <span class="title centered large" data-lang-es="Bienvenido Empresa" data-lang-en="Welcome Company" data-lang-fr="Bienvenue Entreprise">Bienvenido Empresa</span>
+                                ';
+                                break;
+                            case 5:
+                                echo '
+                                    <span class="title centered large" data-lang-es="Bienvenido" data-lang-en="Welcome" data-lang-fr="Bienvenue">Bienvenido</span>
+                                ';
+                                break;
+                            default:
+                                echo '
+                                    <span class="title centered large" data-lang-es="Rol no reconocido" data-lang-en="Role not recognized" data-lang-fr="Rôle non reconnu">Rol no reconocido</span>
+                                ';
+                                break;
+                        }
+                    } else {
+                        echo '
+                            <span class="title centered large" data-lang-es="Inicie sesión" data-lang-en="Log in" data-lang-fr="Connectez-vous">Inicie sesión</span>
+                        ';
+                    }
+                ?>
 
                 <div class="divider"></div>
                 <!--este es mi carrucel principal -->
+                <style>
+                    @media (max-width: 768px) {
+                        .carousel-wrapper {
+                            flex-direction: column;
+                        }
+
+                        .carousel-70 {
+                            flex: 0 0 100%;
+                        }
+
+                        .carousel-container {
+                            margin-bottom: 15px;
+                        }
+                    }
+
+                    .carousel-container img {
+                        width: 100%;
+                        height: auto;
+                    }
+
+                    /* Estilos para banner.php */
+                    .carousel-item img {
+                        max-height: 300px; /* Ajusta la altura máxima del banner */
+                    }
+
+                    .carousel-caption {
+                        background: rgba(0, 0, 0, 0.5);
+                        border-radius: 10px;
+                        padding: 10px;
+                    }
+
+                    .carousel {
+                        max-width: 100%;
+                        margin: 0 auto;
+                    }
+                </style>
                 <div class="carousel-container">
                     <div class="carousel-wrapper">
                         <div class="carousel-container carousel-70">
                             <?php 
-            include_once('publicarnoticiacarrusel.php');
-        ?>
+                                include_once('publicarnoticiacarrusel.php');
+                            ?>
 
                         </div>
 
-                        <div class="carousel-container carousel-30">
+                        <div class="carousel-container ">
                             <?php
-            include_once('banner.php');
-        ?>
+                                include_once('banner.php');
+                            ?>
                         </div>
                     </div>
 
                     <style>
-                    .centered {
-                        display: block;
-                        text-align: center;
-                        margin: 0 auto;
-                    }
+                        
+                        .centered {
+                            display: block;
+                            text-align: center;
+                            margin: 0 auto;
+                        }
 
-                    .large {
-                        font-size: 4em;
-                        font-weight: bold;
-                    }
+                        .large {
+                            font-size: 4em;
+                            font-weight: bold;
+                        }
 
 
 
-                    .carousel-wrapper {
-                        display: flex;
-                        width: 100%;
-                    }
+                        .carousel-wrapper {
+                            display: flex;
+                            width: 100%;
+                        }
 
-                    .carousel-container {
-                        padding: 0;
-                        /* Elimina padding para evitar desalineación */
-                        box-sizing: border-box;
-                        /* Incluye el padding en el tamaño total */
-                    }
+                        .carousel-container {
+                            padding: 0;
+                            /* Elimina padding para evitar desalineación */
+                            box-sizing: border-box;
+                            /* Incluye el padding en el tamaño total */
+                        }
 
-                    .carousel-70 {
-                        flex: 0 0 70%;
-                        /* Ajusta el ancho al 70% */
-                    }
+                        .carousel-70 {
+                            flex: 0 0 70%;
+                            /* Ajusta el ancho al 70% */
+                        }
 
-                    .carousel-30 {
-                        flex: 0 0 30%;
-                        /* Ajusta el ancho al 30% */
-                    }
+                        
+                        
+                        .carousel-inner img {
+                            width: 100%;
+                            height: 500px;
+                            
+                            height: auto;
+                            margin: 0 auto;
+                            border-radius: 16px;
+                            background-color: #f2f2f2;
+                            padding: 10px;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                        }
 
-                    .carousel-inner img {
-                        max-width: 100%;
-                        max-height: 300px;
-                        width: auto;
-                        height: auto;
-                        margin: 0 auto;
-                        border-radius: 16px;
-                        background-color: #f2f2f2;
-                        padding: 10px;
-                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                    }
+                        .carousel-control-prev,
+                        .carousel-control-next {
+                            width: auto;
+                        }
 
-                    .carousel-control-prev,
-                    .carousel-control-next {
-                        width: auto;
-                    }
-
-                    .carousel-control-prev-icon,
-                    .carousel-control-next-icon {
-                        background-color: rgba(0, 0, 0, 0.5);
-                        border-radius: 50%;
-                        padding: 10px;
-                    }
+                        .carousel-control-prev-icon,
+                        .carousel-control-next-icon {
+                            background-color: rgba(0, 0, 0, 0.5);
+                            border-radius: 50%;
+                            padding: 10px;
+                        }
+                        @media (max-width: 768px) {
+                            .title {
+                                font-size: 1.2em;
+                            }
+                            .pdf-container embed {
+                                height: 300px;
+                            }
+                            #conten-navbar {
+                                margin-top: 10px;
+                            }
+                        }
+                        @media (max-width: 480px) {
+                            .title {
+                                font-size: 1em;
+                            }
+                            .pdf-container embed {
+                                height: 200px;
+                            }
+                        }
+                        
                     </style>
 
 
@@ -254,15 +308,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         <h1 class="title" data-lang-es="Revista SENA B-Team" data-lang-en="SENA B-Team Magazine"
                             data-lang-fr="Magazine de l'équipe B de SENA">Revista SENA B-Team </h1>
                         <div class="divider"></div>
-
-                        <a id="hideRevista" type="button" class="nav-link nav-item-hover">
-                            <i class="fas fa-book nav-link"></i>
-                            <span class="nav-item" data-lang-es="Ocultar" data-lang-en="Hide"
-                                data-lang-fr="Cacher">Ocultar
-                            </span>
-                        </a>
-
-
                         <?php
                             if ($_SESSION['id_rol'] == 3) {
                                 echo '
@@ -273,6 +318,12 @@ document.addEventListener("DOMContentLoaded", () => {
                             ';
                         }
                         ?>
+                        <a id="hideRevista" type="button" class="nav-link nav-item-hover">
+                            <i class="fas fa-book nav-link"></i>
+                            <span class="nav-item" data-lang-es="Ocultar" data-lang-en="Hide"
+                                data-lang-fr="Cacher">Ocultar
+                            </span>
+                        </a>
                         <center>
                             <embed d="pdfEmbed" src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%"
                                 height="500px" />

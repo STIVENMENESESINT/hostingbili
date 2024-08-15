@@ -95,13 +95,26 @@
     font-weight: lighter;
     color: var(--color-subtitle);
 }
+@media (max-width: 768px) {
+    .carousel-70 {
+        flex: 0 0 70%;
+        /* Ajusta el ancho al 70% */
+    }
+
+    .carousel-inner {
+        position: absolute;
+        /* Ajusta el ancho al 30% */
+    }
+}
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
     html {
         font-size: 8px; /* Reducir tamaño de fuente base para pantallas más pequeñas */
     }
-
+    .title{
+        top: 2rem;
+    }
     .layout {
         width: 95%;
         height: auto;
