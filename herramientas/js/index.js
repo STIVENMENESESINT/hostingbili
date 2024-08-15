@@ -113,7 +113,7 @@ $(document).ready(function() {
 									title: 'Error',
 									text: 'Credenciales de acceso no existen',
 								});
-								limpiar();
+								clear();
 							} else {
 								if (data.estado == "I") {
 									// Usuario inactivo
@@ -169,25 +169,28 @@ $(document).ready(function() {
 			});	
 
 			function clear() {
-				$("#fechaNacimientoUsu").val("");                    
+				$("#correo").val("");                    
                 $("#id_tpdoc").val("0");
                 $("#numeroiden_registro").val("");
                 $("#nameusu").val("");
                 $("#apellidoUsu").val("");
-                $("#apellidoUsu_dos").val("");
+                $("#numeroiden_OC").val("");
+                $("#numeroiden").val("");
                 $("#id_genero").val(""); 
                 $("#celular").val("");
+                $("#correo_OC").val("");
                 $("#cod_dpto").val("0");
                 $("#cod_municipio").val("0");
                 $("#cod_poblacion").val("0");
                 $("#cod_poblado").val("0");
                 $("#correo_registro").val("");
                 $("#clave_registro").val("");
+                $("#clave").val("");
 
 			}
 				
 				$(document).on("click", "#btnCerrar",function (){
-					// alert('clear entrando');
+					
 					clear();
 				});
 				
@@ -395,15 +398,6 @@ $(document).ready(function() {
             }
         });
         				
-					function clear(){
-						// $("#fechaNacimientoUsu").val("");					
-						//$("#id_tiposolicitud").val("0");
-						$("#descripcion").val("");
-						$("#id_tiposolicitud").val("0");
-						$("#nombre").val("");
-						
-						// alert('clear SALIENDO');
-					}
 					$(document).on("click", "#btnVolver",function (){
 						// alert('clear entrando');
 						clear();

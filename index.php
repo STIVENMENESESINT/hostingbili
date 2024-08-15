@@ -6,93 +6,39 @@ $varDateTime = date("Y-m-d H:i:s");
     <html>
 
         <head>
-            <script src='https://code.jquery.com/jquery-3.7.0.js'></script>
-
             <!-- Archivo de estilos de la fuente Poppins -->
             <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 
             <!-- ALERTAS SWal -->
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-            <!-- revisar -->
-
-            <!-- Incluye Bootstrap CSS -->
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-                integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
             <!-- Incluye jQuery -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+            <!-- Hojas de estilo de Bootstrap y Bootstrap Icons -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
             <!-- Incluye Bootstrap JS -->
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-                integrity="sha384-b4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy0sF/xTkqlj6Qrg/x2O9f7E3UJFpxoY+J" crossorigin="anonymous">
-            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-            <!-- CSS Libraries -->
-            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-            <!-- Hojas de estilo de Bootstrap -->
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-            </script>
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-                integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+            <!-- Meta para el diseño responsivo -->
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
-                integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet" />
-            <!-- OJOOOOOO -->
-            <script src='https://code.jquery.com/jquery-3.7.0.js'></script>
 
-            <!-- Archivo de estilos de la fuente Poppins -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
-            <!-- Archivo de estilos de Bootstrap Icons -->
-
-            <!-- Hojas de estilo de Bootstrap -->
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-            </script>
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-                integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
-                integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet" />
-
-
-            <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
-            <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700'>
-            <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css'
-                integrity='sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT' crossorigin='anonymous'>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-            </script>
-            <!-- OJOOOOOO -->
-
-
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-            <!--opciones de la work -->
-
+            <!-- Otras librerías CSS -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
             <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-            <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-            <script type='text/javascript' src="herramientas/js/index.js"></script>
 
-            <link rel="stylesheet" type="text/css" href="herramientas/css/index.css">
+            <!-- Otras librerías JS -->
+            <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+            <!-- Archivos locales de estilos y scripts -->
+            <script type='text/javascript' src="herramientas/js/index.js"></script>
             <link rel="stylesheet" type="text/css" href="herramientas/css/inicio.css">
             <link rel="stylesheet" href="herramientas/css/solicitud.css">
             <link rel="stylesheet" href="herramientas/css/about.css">
-            <script src='https://code.jquery.com/jquery-3.7.0.js'></script>
+
             
             <style>
                 /* Estilo para fijar la barra de navegación en la parte superior */
@@ -238,41 +184,13 @@ $varDateTime = date("Y-m-d H:i:s");
                         </div>
 
                         <div class="content__page">
-
-
-
-
                             <div class="main-container">
-
-
                                 <!--este es mi carrucel principal -->
                                 <div class="custom-carousel-container">
                                     <!--este es mi carrucel principal -->
                                     <style>
-                                        /* Estilos para pantallas pequeñas */
-                                        @media (max-width: 778px) {
-                                            .navbar-nav {
-                                                display: flex;
-                                                flex-direction: column;
-                                                position: absolute;
-                                                top: 100%;
-                                                right: 0;
-                                                width: 100%;
-                                                background-color: var(--background-color); /* O el color de fondo que prefieras */
-                                                border-top: 1px solid #ddd;
-                                            }
-                                            
-                                            .navbar-nav .nav-item {
-                                                margin: 0;
-                                            }
-                                            
-                                            .navbar-nav .nav-item .btn {
-                                                padding: 10px 15px;
-                                                text-align: center;
-                                                width: 100%;
-                                            }
-                                        }
-
+                                        
+                                        
                                         .main-container {
                                             display: flex;
 
@@ -372,8 +290,6 @@ $varDateTime = date("Y-m-d H:i:s");
                                     </div>
                                 </div>
                                 <div class="banner">
-
-
                                     <div class="bilingualism">
                                         <div class="bilingualism__english-cards">
                                             <div class="bilingualism__english-levels">
@@ -532,7 +448,7 @@ $varDateTime = date("Y-m-d H:i:s");
 
                                     </div>
                                 </div>
-
+                                
                             </div>
                             <br>
                             <h1 class="title" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">NOTICIAS
@@ -553,7 +469,7 @@ $varDateTime = date("Y-m-d H:i:s");
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="loginModalLabel">Multilingualism-Team</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnVolver"></button>
                             </div>
                             <div class="modal-body">
                                 <!-- Aquí va tu formulario -->
@@ -602,7 +518,7 @@ $varDateTime = date("Y-m-d H:i:s");
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="true" data-bs-keyboard="true" tabindex="-1"
                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-dialog modal-dialog-scrollable">
@@ -610,6 +526,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                 <!-- Cabecera del diálogo -->
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Regístrate</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnVolver"></button>
                                 </div>
                                 <div class="modal-body">
                                     <!-- FORMULARIO USUARIOS -->
@@ -682,14 +599,14 @@ $varDateTime = date("Y-m-d H:i:s");
                                     </style>
                                     <div id="formRegisUsu" class="form-container">
                                         <div class="form-group">
-                                            <label for="nameusu" class="form-label">Nombres Completos:</label>
-                                            <input type="text" class="form-input" id="nameusu" name="nameusu"
-                                                title="Primer Nombre" style="cursor:pointer;">
+                                            <label class="form-label">Nombres Completos:</label>
+                                            <input type="text" class="form-input" id="nameusu" 
+                                                title=" Nombres" style="cursor:pointer;">
                                         </div>
                                         <div class="form-group">
                                             <label for="apellidoUsu" class="form-label">Apellidos Completos:</label>
                                             <input type="text" class="form-input" id="apellidoUsu" name="apellidoUsu"
-                                                title="Primer Apellido">
+                                                title=" Apellidos">
                                         </div>
                                         <div class="form-group">
                                             <label for="id_tpdoc" class="form-label">Tipo de Documento:</label>
@@ -744,7 +661,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                         <div class="modal-footer">
                                             <button type="submit" class="form-button btn-success" id="btnGuardar"
                                                 name="btnGuardar">Registrar</button>
-                                            <button type="reset" class="form-button form-button-reset"
+                                            <button type="button" class="form-button form-button-reset"
                                                 data-bs-dismiss="modal" id="btnCerrar">Cancelar</button>
                                         </div>
                                     </div>
@@ -760,14 +677,14 @@ $varDateTime = date("Y-m-d H:i:s");
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Restablecer contraseña</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" id="btnCerrar"></button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
                                 <label> Identificación: </label>
                                 <div class="input-with-icon">
                                     <i class="fas fa-id-card identificacion-icon"></i>
-                                    <input type="text" class="form-control" id="numeroiden_OC" name="numeroiden"
+                                    <input type="text" class="form-control" id="numeroiden_OC" 
                                         title='Ingrese solo números' placeholder="" style='cursor:pointer;'
                                         oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                 </div>
@@ -784,7 +701,7 @@ $varDateTime = date("Y-m-d H:i:s");
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success" data-bs-dismiss="modal" id='btnRecordar'
                                 name='btnRecordar'>Recordar</button>
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id='btnCancelar'
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id='btnCerrar'
                                 name='btnCancelar'>Cancelar</button>
                         </div>
                     </div>

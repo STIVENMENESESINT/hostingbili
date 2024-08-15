@@ -191,7 +191,7 @@ if (isset($_SESSION['id_userprofile'])){
         </div>
     </div>
     <!--MODAL4 Cancelar SOLI-->
-    <div class="modal fade" id="cancelSolicitudModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="cancelSolicitudModal" data-bs-backdrop="true" data-bs-keyboard="true" tabindex="-1"
         aria-labelledby="cancelSolicitudLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -250,7 +250,7 @@ if (isset($_SESSION['id_userprofile'])){
         </div>
     </div>
     <!-- Modal1 -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" tabindex="-1" data-bs-keyboard="false"
+    <div class="modal fade" id="staticBackdrop" tabindex="-1" data-bs-backdrop="true" data-bs-keyboard="true"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

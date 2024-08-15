@@ -91,7 +91,7 @@ if (isset($_SESSION['id_userprofile'])){
 
                     <!-- Botón para crear nuevo elemento -->
                     <div class="mr-2">
-                        <button type="button" name="btn_Nuevo" id="btn_Nuevo" class="btn btn-success btn-lg"
+                        <button type="button" name="btn_Nuevo" id="btn_Nuevo" class="btn btn-success btn-lg" data-bs-backdrop="true" data-bs-keyboard="true"
                             data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             <i class="fa fa-plus" aria-hidden="true"></i> Crear
                         </button>
@@ -277,7 +277,7 @@ if (isset($_SESSION['id_userprofile'])){
         </div>
     </div>
     <!--MODAL4 Cancelar SOLI-->
-    <div class="modal fade" id="cancelSolicitudModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="cancelSolicitudModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" data-bs-backdrop="true" data-bs-keyboard="true"
         aria-labelledby="cancelSolicitudLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -336,8 +336,8 @@ if (isset($_SESSION['id_userprofile'])){
         </div>
     </div>
     <!-- Modal1 -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" tabindex="-1" data-bs-keyboard="false"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true" data-bs-backdrop="true" data-bs-keyboard="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -352,7 +352,7 @@ if (isset($_SESSION['id_userprofile'])){
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" onchange="MostrarTipo_soli()">
-                    <div id="id_tiposolicitud"></div>
+                    <div id="id_tiposolicitud" class="container"></div>
                 </div>
                 <div id="tipo_soli"></div>
             </div>
