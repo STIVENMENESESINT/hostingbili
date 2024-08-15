@@ -642,8 +642,7 @@ $(document).on("click", "#btnEnviar", function() {
             success: function(data) {
                 if (data.rst == "1") {
                     $.post("../../include/cntrlSoli.php", {
-                        action: 'Solicitud',
-                        id_empresa: $("#id_empresa").val()
+                        action: 'Solicitud'
                     }, function(data) {
                         if (data.rst == "1") {
                             Swal.fire({

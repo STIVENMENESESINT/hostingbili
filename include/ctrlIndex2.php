@@ -5,6 +5,7 @@ header('Content-Type: text/html; charset='.$charset);
 header('Cache-Control: no-cache, must-revalidate');
 session_name($session_name);
 session_start();
+
 $conn=Conectarse();
 function generarClave($longitud = 8) {
 	$caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -16,18 +17,44 @@ function generarClave($longitud = 8) {
 	return $clave;
 }
 
-function enviarCorreo($correo, $mensaje) {
-	$asunto = "Restablecimiento de contraseña";
-	$headers = "From: no-reply@tu-dominio.com\r\n";
-	$headers .= "Reply-To: no-reply@tu-dominio.com\r\n";
-	$headers .= "Content-type: text/html; charset=UTF-8\r\n";
+require '../PHPMailer-master/src/Exception.php';
+require '../PHPMailer-master/src/PHPMailer.php';
+require '../PHPMailer-master/src/SMTP.php';
 
-	if (mail($correo, $asunto, $mensaje, $headers)) {
-		return true;
-	} else {
-		return false;
-	}
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+function enviarCorreo($correo, $nueva_contraseña) {
+    $mail = new PHPMailer(true);
+
+    try {
+        // Configuración del servidor SMTP
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; // Servidor SMTP de Gmail
+        $mail->SMTPAuth = true;
+        $mail->Username = 'flortasconjersoncamilo@gmail.com'; // Tu dirección de correo de Gmail
+        $mail->Password = 'goeh dnhu zzcu gkbm'; // Tu contraseña de Gmail
+        $mail->SMTPSecure = 'tls'; // Activa la encriptación TLS
+        $mail->Port = 587; // Puerto TCP para TLS
+
+        // Remitente y destinatario
+        $mail->setFrom('flortasconjersoncamilo@gmail.com', 'Camilo');
+        $mail->addAddress($correo);
+
+        // Contenido del correo
+        $mail->isHTML(true);
+        $mail->Subject = 'Restablecimiento de contraseña';
+        $mail->Body    = $nueva_contraseña;
+
+        // Enviar el correo
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        echo "No se pudo enviar el correo. Error: {$mail->ErrorInfo}";
+        return false;
+    }
 }
+
 switch ($_REQUEST['action']) 
 	{
 		case 'confirmar':

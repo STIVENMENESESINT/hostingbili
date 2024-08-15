@@ -681,7 +681,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                                 onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
                                         </div>
                                         <div class="form-group">
-                                            <label for="id_genero" class="form-label">Sexo:</label>
+                                            <label for="id_genero" class="form-label">Genero:</label>
                                             <select class="form-input" id="id_genero" name="id_genero"></select>
                                         </div>
                                         <div class="form-group">
@@ -723,7 +723,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                             <button type="submit" class="form-button btn-success" id="btnGuardar"
                                                 name="btnGuardar">Registrar</button>
                                             <button type="reset" class="form-button form-button-reset"
-                                                data-bs-dismiss="modal">Cancelar</button>
+                                                data-bs-dismiss="modal" id="btnCerrar">Cancelar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -746,7 +746,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                 <div class="input-with-icon">
                                     <i class="fas fa-id-card identificacion-icon"></i>
                                     <input type="text" class="form-control" id="numeroiden_OC" name="numeroiden"
-                                        title='Ingrese solo números' placeholder="123456789" style='cursor:pointer;'
+                                        title='Ingrese solo números' placeholder="" style='cursor:pointer;'
                                         oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                 </div>
                             </div>

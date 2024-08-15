@@ -162,29 +162,34 @@ switch ($_REQUEST['action'])
     case 'Solicitud':
         $jTableResult['rst'] = "";
         $jTableResult['ms'] = "";
-        
-        $empresa = isset($_POST['id_empresa']) && !empty($_POST['id_empresa']) ? $_POST['id_empresa'] : NULL;
-        $responsable = isset($_POST['id_responsable']) && !empty($_POST['id_responsable']) ? $_POST['id_responsable'] : NULL;
-
+    
         $query = "SELECT MAX(id_detallesolicitud) as lastId FROM detallesolicitud;"; 
         $arreglo = mysqli_query($conn, $query);
         if ($arreglo) {
             $result = mysqli_fetch_array($arreglo);
             if ($result) {
                 $varid = $result['lastId'];
-                $query = "INSERT INTO solicitud (id_detallesolicitud, id_estado, id_userprofile, fecha_creacion, id_empresa, id_responsable) 
-                            VALUES ('$varid', 3, '".$_SESSION['id_userprofile']."', NOW(), ?, ?)";
+                
+                // Corregir la consulta SQL, cerrando el paréntesis en VALUES
+                $query = "INSERT INTO solicitud (id_detallesolicitud, id_estado, id_userprofile, fecha_creacion) 
+                            VALUES (?, 3, ?, NOW())";
                 
                 $stmt = mysqli_prepare($conn, $query);
-                mysqli_stmt_bind_param($stmt, "ii", $empresa, $responsable);
-    
-                if (mysqli_stmt_execute($stmt)) {
-                    mysqli_commit($conn);
-                    $jTableResult['ms'] = "Solicitud guardada con éxito.";
-                    $jTableResult['rst'] = "1";
+                if ($stmt) {
+                    // Enlazar las variables a la declaración preparada
+                    mysqli_stmt_bind_param($stmt, 'ii', $varid, $_SESSION['id_userprofile']);
+                    
+                    if (mysqli_stmt_execute($stmt)) {
+                        mysqli_commit($conn);
+                        $jTableResult['ms'] = "Solicitud guardada con éxito.";
+                        $jTableResult['rst'] = "1";
+                    } else {
+                        mysqli_rollback($conn);
+                        $jTableResult['ms'] = "Error al guardar metadatos.";
+                        $jTableResult['rst'] = "0";
+                    }
                 } else {
-                    mysqli_rollback($conn);
-                    $jTableResult['ms'] = "Error al guardar metadatos.";
+                    $jTableResult['ms'] = "Error al preparar la consulta.";
                     $jTableResult['rst'] = "0";
                 }
             } else {
@@ -197,7 +202,8 @@ switch ($_REQUEST['action'])
         }
         
         print json_encode($jTableResult);
-    break;
+        break;
+    
     case 'detalleSolicitud':
         $jTableResult = array();
         $jTableResult['rst'] = "";

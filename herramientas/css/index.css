@@ -39,7 +39,195 @@ body {
     background-size: cover;
     
 }
+/* otros */
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
+}
+
+.form-group {
+    flex: 1 1 46%;
+    display: flex;
+    flex-direction: column;
+    padding: 7px;
+}
+
+.form-group-full {
+    flex: 1 1 100%;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.modal-body {
+
+    /* Increased padding for more space inside the card */
+    max-width: 800px;
+    /* Set a maximum width for the card */
+    max-height: 90vh;
+    /* Set a maximum height for the card */
+    width: 100%;
+    /* Make sure it takes the full available width */
+
+}
+.main-container {
+    display: flex;
+
+    align-items: center;
+    width: 100%;
+    height: 355px;
+}
+
+/* Contenedor personalizado para el carrusel */
+.custom-carousel-container {
+    position: relative;
+    top: 0;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    /* Ajusta el padding superior e inferior según sea necesario */
+}
+
+/* Estilos personalizados para el carrusel */
+.custom-carousel {
+    max-width: 800px;
+    /* Ajusta el ancho máximo del carrusel */
+    margin: 0 auto;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #04324d;
+    /* Fondo blanco suave y semitransparente */
+}
+
+/* Añadir espacio superior al contenido para que no quede oculto detrás de la barra de navegación */
+
+
+.layout {
+    position: relative;
+    min-width: 1290px;
+    width: 90%;
+    height: 80vh;
+    min-height: 80vh;
+    margin: 9vh auto 2vh;
+    display: grid;
+    grid-template-areas:
+        "aside content";
+    grid-template-columns: 1% 99%;
+    border-radius: 4rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid var(--primary-text);
+}
+
+/* Estilos adicionales para la barra de navegación */
+
+img {
+    vertical-align: middle;
+    /* Centra verticalmente la imagen */
+    border-style: hidden;
+    /* Oculta el borde de la imagen */
+    height: 75px;
+    /* Ajusta la altura de la imagen según lo necesites */
+    width: auto;
+    /* Mantiene la proporción original de la imagen */
+    display: block;
+    /* Hace que la imagen se comporte como un bloque */
+    margin-left: auto;
+    /* Ajusta el margen izquierdo automáticamente */
+    margin-right: auto;
+    /* Ajusta el margen derecho automáticamente */
+    max-width: 100%;
+    /* Asegura que la imagen no sea más grande que su contenedor */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+
+}
+
+.nav-item .btn-link {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.nav-item .btn-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+.custom-carousel .carousel-inner img {
+    max-height: 500px;
+    /* Ajusta la altura máxima de las imágenes */
+    width: auto;
+    height: 300px;
+    margin: 0 auto;
+    border-radius: 16px;
+    background-color: #f2f2f2;
+    padding: 19px;
+    /* Ajusta el padding alrededor de las imágenes */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-carousel .carousel-control-prev,
+.custom-carousel .carousel-control-next {
+    width: auto;
+    /* Ajusta el ancho para que solo los íconos sean clicables */
+}
+
+.custom-carousel .carousel-control-prev-icon,
+.custom-carousel .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fondo semitransparente para mejor visibilidad */
+    border-radius: 50%;
+    /* Forma circular */
+    padding: 10px;
+    /* Espacio alrededor del ícono */
+
+}
+
+.uppercase-title {
+    text-transform: uppercase;
+}
+.form-label {
+    margin-bottom: 2px;
+}
+
+.form-input {
+    padding: 6px;
+    margin-bottom: -15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.form-button-reset {
+    background-color: #dc3545;
+    color: white;
+}
 .form-container {
     background-color: black;
     padding: 20px;
