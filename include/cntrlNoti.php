@@ -215,7 +215,7 @@ switch ($_REQUEST['action']) {
                         <div class="row blog-item px-3 pb-5 card-clickable" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="' . $registro['id_solicitud'] . '">
                             <h3 class="cards__title uppercase-title">' . $registro["titulo"] . '</h3>
 
-                            <div class="cards">
+                            <div class="cards col-lg-4 col-md-6 col-sm-12 mb-4">
                                 <div class="img">
                                     <a href="#">
                                         <img src="include/' . $registro["imagen"] . '" alt="Image">
