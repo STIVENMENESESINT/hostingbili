@@ -177,7 +177,7 @@ transform: translateY(-2px);
 }
 
 /* Media Queries para dispositivos móviles */
-@media (max-width: 768px) {
+@media (max-width: 458px) {
     .menu__list {
         display: none;
         position: absolute;
