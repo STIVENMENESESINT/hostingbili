@@ -128,47 +128,50 @@ $varDateTime = date("Y-m-d H:i:s");
                 setLanguage(languageSelect.value);
             });
         </script>
-
+<style>
+    @media (max-width: 768px) {
+        .columna{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+</style> 
         <body>
             <!-- Navigation Bar -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light background-color: var(--alternate-background)">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <img src="imagenes/img/logo/log.jpg" alt="Logo">
-                    <a class="navbar-brand" href="#" data-lang-es="Equipo de Multilingüismo"
-                        data-lang-en="Multilingualism-Team" data-lang-fr="Équipe Multilinguisme">
-                        Equipo de Multilingüismo
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <div class="columna ">
+                        <a class="navbar-brand" href="#">
+                            <img src="imagenes/img/logo/log.jpg" alt="Logo" style="height: 40px;">
+                            Equipo de Multilingüismo
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
-                                <button class="btn btn-link nav-link" data-bs-toggle="modal" data-bs-target="#loginModal"
-                                    data-lang-es="Iniciar Sesión" data-lang-en="Login" data-lang-fr="Se Connecter">
+                                <button class="btn btn-link nav-link" data-bs-toggle="modal" data-bs-target="#loginModal" data-lang-es="Iniciar Sesión" data-lang-en="Login" data-lang-fr="Se Connecter">
                                     Iniciar Sesión
                                 </button>
                             </li>
                             <li class="nav-item">
-                                <button class="btn btn-link nav-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                                    data-lang-es="Regístrate" data-lang-en="Register" data-lang-fr="S'inscrire">
+                                <button class="btn btn-link nav-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-lang-es="Regístrate" data-lang-en="Register" data-lang-fr="S'inscrire">
                                     Regístrate
                                 </button>
                             </li>
-
                             <li class="nav-item">
-                                <button class="btn btn-link nav-link" data-bs-toggle="modal"
-                                    data-bs-target="#RestablecerContraseña" data-lang-es="Olvidaste Tu Contraseña"
-                                    data-lang-en="Forgot Your Password" data-lang-fr="Mot de Passe Oublié">
+                                <button class="btn btn-link nav-link" data-bs-toggle="modal" data-bs-target="#RestablecerContraseña" data-lang-es="Olvidaste Tu Contraseña" data-lang-en="Forgot Your Password" data-lang-fr="Mot de Passe Oublié">
                                     Olvidaste Tu Contraseña
                                 </button>
                             </li>
                         </ul>
                     </div>
                 </div>
-
             </nav>
+
             <div>
 
                 <div class="layout">
@@ -186,11 +189,36 @@ $varDateTime = date("Y-m-d H:i:s");
                         <div class="content__page">
                             <div class="main-container">
                                 <!--este es mi carrucel principal -->
+                                
                                 <div class="custom-carousel-container">
                                     <!--este es mi carrucel principal -->
                                     <style>
                                         
-                                        
+                                        @media (max-width: 768px) {
+                                            /* Cuando la pantalla sea menor o igual a 768px */
+                                            
+                                            .main-container {
+                                                flex-direction: column;
+                                                align-items: flex-start;
+                                            }
+
+                                            .custom-carousel-container,
+                                            .banner {
+                                                width: 100%;
+                                                margin-bottom: 20px; /* Espacio entre los elementos */
+                                            }
+                                            
+                                            .custom-carousel-container {
+                                                padding: 0;
+                                            }
+
+                                            .custom-carousel .carousel-inner img {
+                                                width: 100%;
+                                                height: auto;
+                                                max-height: none; /* Permite que la imagen se ajuste al ancho */
+                                                padding: 10px;
+                                            }
+                                        }
                                         .main-container {
                                             display: flex;
 
@@ -250,6 +278,27 @@ $varDateTime = date("Y-m-d H:i:s");
 
                                         .uppercase-title {
                                             text-transform: uppercase;
+                                        }
+                                        
+                                        /* Responsividad para pantallas pequeñas */
+                                        @media (max-width: 768px) {
+                                            .responsive-title {
+                                                font-size: 2rem; /* Tamaño de fuente más pequeño para pantallas medianas */
+                                            }
+                                            .responsive-divider {
+                                                width: 70%; /* Aumenta el ancho de la línea divisoria para pantallas medianas */
+                                            }
+                                        }
+
+                                        /* Responsividad para pantallas muy pequeñas */
+                                        @media (max-width: 480px) {
+                                            .responsive-title {
+                                                font-size: 1.5rem; /* Tamaño de fuente aún más pequeño para pantallas pequeñas */
+                                                text-align: left;
+                                            }
+                                            .responsive-divider {
+                                                width: 90%; /* Ancho de la línea divisoria casi completo para pantallas pequeñas */
+                                            }
                                         }
                                     </style>
                                     <div id="carouselExampleIndicators" class="carousel slide custom-carousel"
@@ -451,9 +500,9 @@ $varDateTime = date("Y-m-d H:i:s");
                                 
                             </div>
                             <br>
-                            <h1 class="title" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">NOTICIAS
-                            </h1>
-                            <div class="divider"></div>
+                            <h1 class="title responsive-title" data-lang-es="NOTICIAS" data-lang-en="NEWS" data-lang-fr="ACTUALITÉS">NOTICIAS</h1>
+                            <div class="divider responsive-divider"></div>
+
                             <div id="noticia_creada2" class=" grid-container ">
                             </div>
 
