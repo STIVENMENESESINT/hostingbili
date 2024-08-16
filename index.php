@@ -779,7 +779,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                     return; // Salir de la función si hay un error
                                 }
                                 
-                                // Enviar datos si no hay errores
+                                // Envia    r datos si no hay errores
                                 $.post("../../../include/ctrlIndex2.php", {
                                     action: 'registroEmpNew',
                                     nombre_empresa: $("#nombre_empresa").val(),
@@ -859,74 +859,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                     }
                                 }, 'json'); 
                             });
-                            $(document).ready(function(){  
-                            $.post("../../../include/select.php", {
-                                action: 'CrgrTipoGenero' 
-                            },
-                            function(data) {
-                                $("#id_genero").html(data.lisTiposG);
-                                $("#id_genero_rep").html(data.lisTiposG);
-                                },
-                                'json'
-                                ).fail(function(xhr, status, error) {
-                                    console.error(error);
-                                });
-                            });
-                            $(document).ready(function(){  
-                                $.post("../../../include/select.php", {
-                                    action: 'crgrPoblacion' 
-                                },
-                                function(data) {
-                                    $("#cod_poblacion").html(data.listPoblacion);
-                                    },
-                                    'json'
-                                    ).fail(function(xhr, status, error) {
-                                        console.error(error);
-                                    });
-                                });
-                            $(document).ready(function(){  
-                            $.post("../../../include/select.php", {
-                                action: 'crgrDepto' 
-                            },
-                            function(data) {
-                                $("#cod_dpto").html(data.listDepto);
-                                },
-                                'json'
-                                ).fail(function(xhr, status, error) {
-                                    console.error(error);
-                                });
-                            });
-                            $(document).ready(function(){  
-                                $.post("../../../include/select.php", {
-                                    action: 'crgrTiposDoc' 
-                                },
-                                function(data) {
-                                    $("#id_tpdoc").html(data.lisTiposD);
-                                    $("#id_tpdoc_rep").html(data.lisTiposD);
-                                },
-                                'json'
-                                ).fail(function(xhr, status, error) {
-                                    console.error(error);
-                                });
-                            });
                             
-                            $(document).on("change", "#cod_dpto",
-                            function (){
-                                    $.post("../../../include/select.php", {
-                                    action:'crgrMuni',
-                                    cod_dpto:$("#cod_dpto").val()
-                                    }, function(data){ 
-                                        $("#cod_municipio").html(data.listMuni);
-                                    }, 'json');	
-                                });	
-                            $(document).on("change", "#cod_municipio",function (){
-                                $.post("../../../include/select.php", {
-                                action:'crgrPoblados',
-                                cod_municipio:$("#cod_municipio").val()
-                                }, function(data){ 
-                                    $("#cod_poblado").html(data.listPoblado);
-                                }, 'json');	
-                            });	
                         </script>
                 <!-- Campos del formulario -->
                             <style>
