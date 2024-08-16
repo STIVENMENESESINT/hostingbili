@@ -32,18 +32,18 @@ function enviarCorreo($correo, $nueva_contraseña) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; // Servidor SMTP de Gmail
         $mail->SMTPAuth = true;
-        $mail->Username = 'flortasconjersoncamilo@gmail.com'; // Tu dirección de correo de Gmail
-        $mail->Password = 'goeh dnhu zzcu gkbm'; // Tu contraseña de Gmail
+        $mail->Username = 'biliabmin12@gmail.com'; // Tu dirección de correo de Gmail
+        $mail->Password = 'tott wiwi dnua cxgl'; // Tu contraseña de Gmail
         $mail->SMTPSecure = 'tls'; // Activa la encriptación TLS
         $mail->Port = 587; // Puerto TCP para TLS
 
         // Remitente y destinatario
-        $mail->setFrom('flortasconjersoncamilo@gmail.com', 'Camilo');
+        $mail->setFrom('fbiliabmin12@gmail.com', 'Bili');
         $mail->addAddress($correo);
 
         // Contenido del correo
         $mail->isHTML(true);
-        $mail->Subject = 'Restablecimiento de contraseña';
+        $mail->Subject = 'Restablecimiento de Clave';
         $mail->Body    = $nueva_contraseña;
 
         // Enviar el correo
@@ -401,70 +401,70 @@ switch ($_REQUEST['action'])
 			print json_encode($jTableResult);
 		break;
 // Restablecer contraseña
-	case 'RestablecerContraseña':
-			$jTableResult = array();
-			$jTableResult['rstl'] = "";
-			$jTableResult['msj'] = "";
+		case 'RestablecerContraseña':
+				$jTableResult = array();
+				$jTableResult['rstl'] = "";
+				$jTableResult['msj'] = "";
 
-			if (!isset($_POST['numeroiden']) || !isset($_POST['correo'])) {
-				$jTableResult['msj'] = "Todos los campos son obligatorios.";
-				$jTableResult['rstl'] = "0";
-				print json_encode($jTableResult);
-				exit;
-			}
+				if (!isset($_POST['numeroiden']) || !isset($_POST['correo'])) {
+					$jTableResult['msj'] = "Todos los campos son obligatorios.";
+					$jTableResult['rstl'] = "0";
+					print json_encode($jTableResult);
+					exit;
+				}
 
-			$identificacion = $_POST['numeroiden'];
-			$correo = $_POST['correo'];
+				$identificacion = $_POST['numeroiden'];
+				$correo = $_POST['correo'];
 
-		// Verificar si existe un usuario con los datos proporcionados
-			$query = "SELECT id_userprofile FROM userprofile WHERE numeroiden = ? AND correo = ?";
-				if ($stmt = mysqli_prepare($conn, $query)) {
-					mysqli_stmt_bind_param($stmt, "ss", $identificacion, $correo);
-					mysqli_stmt_execute($stmt);
-					mysqli_stmt_store_result($stmt);
+			// Verificar si existe un usuario con los datos proporcionados
+				$query = "SELECT id_userprofile FROM userprofile WHERE numeroiden = ? AND correo = ?";
+					if ($stmt = mysqli_prepare($conn, $query)) {
+						mysqli_stmt_bind_param($stmt, "ss", $identificacion, $correo);
+						mysqli_stmt_execute($stmt);
+						mysqli_stmt_store_result($stmt);
 
-					if (mysqli_stmt_num_rows($stmt) > 0) {
-						// Usuario encontrado, generar una nueva contraseña
-						$nueva_contraseña = generarClave();
+						if (mysqli_stmt_num_rows($stmt) > 0) {
+							// Usuario encontrado, generar una nueva contraseña
+							$nueva_contraseña = generarClave();
 
-						// Actualizar la contraseña en la base de datos
-						$updateQuery = "UPDATE userprofile SET clave = ? WHERE numeroiden = ? AND correo = ?";
-						if ($stmt_update = mysqli_prepare($conn, $updateQuery)) {
-							// Cifrar la nueva contraseña antes de guardarla
-							$hashedPassword = password_hash($nueva_contraseña, PASSWORD_DEFAULT);
-							mysqli_stmt_bind_param($stmt_update, "sss", $hashedPassword, $identificacion, $correo);
+							// Actualizar la contraseña en la base de datos
+							$updateQuery = "UPDATE userprofile SET clave = ? WHERE numeroiden = ? AND correo = ?";
+							if ($stmt_update = mysqli_prepare($conn, $updateQuery)) {
+								// Cifrar la nueva contraseña antes de guardarla
+								$hashedPassword = password_hash($nueva_contraseña, PASSWORD_DEFAULT);
+								mysqli_stmt_bind_param($stmt_update, "sss", $hashedPassword, $identificacion, $correo);
 
-							if (mysqli_stmt_execute($stmt_update)) {
-								// Enviar el correo con la nueva contraseña
-								enviarCorreo($correo, "Su nueva contraseña es: " . $nueva_contraseña);
+								if (mysqli_stmt_execute($stmt_update)) {
+									// Enviar el correo con la nueva contraseña
+									enviarCorreo($correo, "Su nueva contraseña es: " . $nueva_contraseña);
 
-								$jTableResult['msj'] = "Se ha enviado un correo electrónico con instrucciones para restablecer la contraseña.";
-								$jTableResult['rstl'] = "1";
+									$jTableResult['msj'] = "Se ha enviado un correo electrónico con instrucciones para restablecer la contraseña.";
+									$jTableResult['rstl'] = "1";
+								} else {
+									$jTableResult['msj'] = "Error al actualizar la contraseña.";
+									$jTableResult['rstl'] = "0";
+								}
+
+								mysqli_stmt_close($stmt_update);
 							} else {
-								$jTableResult['msj'] = "Error al actualizar la contraseña.";
+								$jTableResult['msj'] = "Error al preparar la consulta de actualización.";
 								$jTableResult['rstl'] = "0";
 							}
-
-							mysqli_stmt_close($stmt_update);
 						} else {
-							$jTableResult['msj'] = "Error al preparar la consulta de actualización.";
+							// No se encontró el usuario con los datos proporcionados
+							$jTableResult['msj'] = "No se encontró un usuario con los datos proporcionados.";
 							$jTableResult['rstl'] = "0";
 						}
+
+						mysqli_stmt_close($stmt);
 					} else {
-						// No se encontró el usuario con los datos proporcionados
-						$jTableResult['msj'] = "No se encontró un usuario con los datos proporcionados.";
+						$jTableResult['msj'] = "Error al preparar la consulta de selección.";
 						$jTableResult['rstl'] = "0";
 					}
 
-					mysqli_stmt_close($stmt);
-				} else {
-					$jTableResult['msj'] = "Error al preparar la consulta de selección.";
-					$jTableResult['rstl'] = "0";
-				}
-
-				print json_encode($jTableResult);
-				exit;
-	break;
-	}
+					print json_encode($jTableResult);
+					exit;
+		break;
+		}
 
 mysqli_close($conn);

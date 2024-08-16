@@ -16,7 +16,6 @@
 
 
 </head>
-
 <body>
     <div class="layout">
 
@@ -25,7 +24,7 @@
             <div class="content__page">
                 <script>
                     $(document).on("click", "#btnGuardarEmpresa", function() {
-    // Validación del campo nombre_empresa
+                        // Validación del campo nombre_empresa
                         if ($("#nombre_empresa").val() === "") {
                             Swal.fire({
                                 icon: 'warning',
@@ -172,52 +171,52 @@
                                 console.error(error);
                             });
                         });
-			$(document).ready(function(){  
-			$.post("../../../include/select.php", {
-				action: 'crgrDepto' 
-			},
-			function(data) {
-				$("#cod_dpto").html(data.listDepto);
-				},
-				'json'
-				).fail(function(xhr, status, error) {
-					console.error(error);
-				});
-			});
-			$(document).ready(function(){  
-				$.post("../../../include/select.php", {
-					action: 'crgrTiposDoc' 
-				},
-				function(data) {
-					$("#id_tpdoc").html(data.lisTiposD);
-					$("#id_tpdoc_rep").html(data.lisTiposD);
-				},
-				'json'
-				).fail(function(xhr, status, error) {
-					console.error(error);
-				});
-			});
-            
-			$(document).on("change", "#cod_dpto",
-			function (){
-					$.post("../../../include/select.php", {
-					action:'crgrMuni',
-					cod_dpto:$("#cod_dpto").val()
-					}, function(data){ 
-						$("#cod_municipio").html(data.listMuni);
-					}, 'json');	
-				});	
-			$(document).on("change", "#cod_municipio",function (){
-				$.post("../../../include/select.php", {
-				action:'crgrPoblados',
-				cod_municipio:$("#cod_municipio").val()
-				}, function(data){ 
-					$("#cod_poblado").html(data.listPoblado);
-				}, 'json');	
-			});	
+                    $(document).ready(function(){  
+                    $.post("../../../include/select.php", {
+                        action: 'crgrDepto' 
+                    },
+                    function(data) {
+                        $("#cod_dpto").html(data.listDepto);
+                        },
+                        'json'
+                        ).fail(function(xhr, status, error) {
+                            console.error(error);
+                        });
+                    });
+                    $(document).ready(function(){  
+                        $.post("../../../include/select.php", {
+                            action: 'crgrTiposDoc' 
+                        },
+                        function(data) {
+                            $("#id_tpdoc").html(data.lisTiposD);
+                            $("#id_tpdoc_rep").html(data.lisTiposD);
+                        },
+                        'json'
+                        ).fail(function(xhr, status, error) {
+                            console.error(error);
+                        });
+                    });
+                    
+                    $(document).on("change", "#cod_dpto",
+                    function (){
+                            $.post("../../../include/select.php", {
+                            action:'crgrMuni',
+                            cod_dpto:$("#cod_dpto").val()
+                            }, function(data){ 
+                                $("#cod_municipio").html(data.listMuni);
+                            }, 'json');	
+                        });	
+                    $(document).on("change", "#cod_municipio",function (){
+                        $.post("../../../include/select.php", {
+                        action:'crgrPoblados',
+                        cod_municipio:$("#cod_municipio").val()
+                        }, function(data){ 
+                            $("#cod_poblado").html(data.listPoblado);
+                        }, 'json');	
+                    });	
                 </script>
                 <!-- Campos del formulario -->
-                <style>
+                        <style>
                              .form-container {
                                  display: flex;
                                  flex-wrap: wrap;
@@ -283,98 +282,8 @@
                                  background-color: #dc3545;
                                  color: white;
                              }
-                             </style>
-                <div id="formEmpresa">
-                                 <div class="form-container">
-                                     <div class="form-group">
-                                         <label for="nombre" class="form-label">Empresa</label>
-                                         <input type="text" id="nombre_empresa" name="nombre" class="form-input"
-                                             placeholder="Nombre de la empresa">
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="nit" class="form-label">NIT</label>
-                                         <input type="text" id="numeroiden_empresa" name="numeroiden_empresa"
-                                             class="form-input" placeholder="123456789">
-                                     </div>
-                                     <div class="form-group">
-                                         <label class="form-label">Contacto Empresa</label>
-                                         <input type="tel" id="telefono_empresa" class="form-input"
-                                             placeholder="empresa@gmail.com">
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="email" class="form-label">Correo Electrónico</label>
-                                         <input type="email" id="correo_empresa" name="correo_empresa"
-                                             class="form-input" placeholder="usuario@gmail.com">
-                                     </div>
-                                     <hr>
-                                     <!-- REPRESENTANTE LEGAL -->
-                                     <div class="form-group">
-                                         <h3 class="form-label"><strong>Representante Legal</strong></h3>
-                                     </div>
-                                     <!-- Nombres y Apellidos -->
-                                     <div class="form-group">
-                                         <label for="nameusu" class="form-label">Primer Nombre:</label>
-                                         <input type="text" class="form-input" id="nameusu_rep" name="nameusu"
-                                             title="Primer Nombre" style="cursor:pointer;">
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="nombre_dos" class="form-label">Segundo Nombre:</label>
-                                         <input type="text" class="form-input" id="nombre_dos_rep" name="nombre_dos"
-                                             title="Segundo Nombre">
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="apellidoUsu" class="form-label">Primer Apellido:</label>
-                                         <input type="text" class="form-input" id="apellidoUsu_rep" name="apellidoUsu"
-                                             title="Primer Apellido">
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="apellidoUsu_dos" class="form-label">Segundo Apellido:</label>
-                                         <input type="text" class="form-input" id="apellidoUsu_dos_rep"
-                                             name="apellidoUsu_dos" title="Segundo Apellido">
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="id_tpdoc" class="form-label">Tipo de Documento:</label>
-                                         <select class="form-input" id="id_tpdoc_rep" name="id_tpdoc"
-                                             title="Tipo de Documento"></select>
-                                     </div>
-                                     <!-- Número de Documento -->
-                                     <div class="form-group">
-                                         <label for="numeroiden_registro" class="form-label">Número Documento:</label>
-                                         <input type="text" class="form-input" id="numeroiden_registro_rep"
-                                             name="numeroiden_registro" title="" style="cursor:pointer;"
-                                             onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
-                                             placeholder="123456789">
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="id_genero" class="form-label">Sexo:</label>
-                                         <select class="form-input" id="id_genero_rep" name="id_genero"></select>
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="celular" class="form-label">Celular:</label>
-                                         <input type="text" class="form-input" id="celular_rep" name="celular"
-                                             placeholder="Celular" title="Teléfono móvil"
-                                             placeholder="+1 (555) 123-4567">
-                                     </div>
-                                     <div class="form-group">
-                                         <label for="correo_registro" class="form-label">Correo Electrónico:</label>
-                                         <input type="text" class="form-input" id="correo_registro_rep"
-                                             name="correo_registro" placeholder="Correo Electrónico"
-                                             title="@example.com">
-                                     </div>
-                                     <!-- Clave-->
-                                     <div class="form-group">
-                                         <label for="clave_registro" class="form-label">Clave:</label>
-                                         <input type="password" class="form-input" id="clave_registro_rep" name="clave"
-                                             title="Clave">
-                                     </div>
-                                     <div class="modal-footer">
-                                         <button type="submit" class="create-button"
-                                             id='btnGuardarEmpresa' name='btnGuardar'>Registrar</button>
-                                         <button type="reset" class="close-button"
-                                             data-bs-dismiss="modal">Cancelar</button>
-                                     </div>
-                                 </div>
-                             </div>
+                        </style>
+                            
 
 
             </div>

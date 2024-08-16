@@ -38,6 +38,7 @@ $varDateTime = date("Y-m-d H:i:s");
             <link rel="stylesheet" type="text/css" href="herramientas/css/inicio.css">
             <link rel="stylesheet" href="herramientas/css/solicitud.css">
             <link rel="stylesheet" href="herramientas/css/about.css">
+            
 
             
             <style>
@@ -110,6 +111,16 @@ $varDateTime = date("Y-m-d H:i:s");
             </style>
         </head>
         <script>
+            document.getElementById("toggleButton").addEventListener("click", function() {
+    var hiddenDiv = document.getElementById("formEmpresa");
+    if (hiddenDiv.style.display === "none" || hiddenDiv.style.display === "") {
+        hiddenDiv.style.display = "block"; // Muestra el div
+        this.textContent = "Ocultar Contenido"; // Cambia el texto del botón
+    } else {
+        hiddenDiv.style.display = "none"; // Oculta el div
+        this.textContent = "Mostrar Contenido"; // Cambia el texto del botón
+    }
+});
             document.addEventListener("DOMContentLoaded", () => {
                 const languageSelect = document.getElementById("language-select");
 
@@ -128,14 +139,14 @@ $varDateTime = date("Y-m-d H:i:s");
                 setLanguage(languageSelect.value);
             });
         </script>
-<style>
-    @media (max-width: 768px) {
-        .columna{
-            display: flex;
-            flex-direction: column;
-        }
-    }
-</style> 
+        <style>
+            @media (max-width: 768px) {
+                .columna{
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        </style> 
         <body>
             <!-- Navigation Bar -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -567,6 +578,7 @@ $varDateTime = date("Y-m-d H:i:s");
                         </div>
                     </div>
                 </div>
+                <!-- REGISTRO  -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="true" data-bs-keyboard="true" tabindex="-1"
                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -575,76 +587,81 @@ $varDateTime = date("Y-m-d H:i:s");
                                 <!-- Cabecera del diálogo -->
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Regístrate</h5>
+                                    <button id="toggleButton" class="btn">Eres Representante de una empresa?<br>
+                                        registrate aqui</button>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnVolver"></button>
                                 </div>
                                 <div class="modal-body">
                                     <!-- FORMULARIO USUARIOS -->
                                     <style>
-                                    .form-container {
-                                        display: flex;
-                                        flex-wrap: wrap;
-                                        justify-content: space-between;
+                                        #formEmpresa {
+                                            display: none; /* Oculta el div por defecto */
+                                        }
+                                        .form-container {
+                                            display: flex;
+                                            flex-wrap: wrap;
+                                            justify-content: space-between;
 
-                                    }
+                                        }
 
-                                    .form-group {
-                                        flex: 1 1 46%;
-                                        display: flex;
-                                        flex-direction: column;
-                                        padding: 7px;
-                                    }
+                                        .form-group {
+                                            flex: 1 1 46%;
+                                            display: flex;
+                                            flex-direction: column;
+                                            padding: 7px;
+                                        }
 
-                                    .form-group-full {
-                                        flex: 1 1 100%;
-                                    }
+                                        .form-group-full {
+                                            flex: 1 1 100%;
+                                        }
 
-                                    .modal-footer {
-                                        display: flex;
-                                        justify-content: center;
-                                        gap: 10px;
-                                        margin-top: 20px;
-                                        width: 100%;
-                                    }
+                                        .modal-footer {
+                                            display: flex;
+                                            justify-content: center;
+                                            gap: 10px;
+                                            margin-top: 20px;
+                                            width: 100%;
+                                        }
 
-                                    .modal-body {
+                                        .modal-body {
 
-                                        /* Increased padding for more space inside the card */
-                                        max-width: 800px;
-                                        /* Set a maximum width for the card */
-                                        max-height: 90vh;
-                                        /* Set a maximum height for the card */
-                                        width: 100%;
-                                        /* Make sure it takes the full available width */
+                                            /* Increased padding for more space inside the card */
+                                            max-width: 800px;
+                                            /* Set a maximum width for the card */
+                                            max-height: 90vh;
+                                            /* Set a maximum height for the card */
+                                            width: 100%;
+                                            /* Make sure it takes the full available width */
 
-                                    }
+                                        }
 
-                                    .form-label {
-                                        margin-bottom: 2px;
-                                    }
+                                        .form-label {
+                                            margin-bottom: 2px;
+                                        }
 
-                                    .form-input {
-                                        padding: 6px;
-                                        margin-bottom: -15px;
-                                        border: 1px solid #ccc;
-                                        border-radius: 4px;
-                                    }
+                                        .form-input {
+                                            padding: 6px;
+                                            margin-bottom: -15px;
+                                            border: 1px solid #ccc;
+                                            border-radius: 4px;
+                                        }
 
-                                    .form-button {
-                                        padding: 10px 20px;
-                                        border: none;
-                                        border-radius: 4px;
-                                        cursor: pointer;
-                                    }
+                                        .form-button {
+                                            padding: 10px 20px;
+                                            border: none;
+                                            border-radius: 4px;
+                                            cursor: pointer;
+                                        }
 
-                                    .btn-success {
-                                        background-color: #28a745;
-                                        color: white;
-                                    }
+                                        .btn-success {
+                                            background-color: #28a745;
+                                            color: white;
+                                        }
 
-                                    .form-button-reset {
-                                        background-color: #dc3545;
-                                        color: white;
-                                    }
+                                        .form-button-reset {
+                                            background-color: #dc3545;
+                                            color: white;
+                                        }
                                     </style>
                                     <div id="formRegisUsu" class="form-container">
                                         <div class="form-group">
@@ -714,6 +731,97 @@ $varDateTime = date("Y-m-d H:i:s");
                                                 data-bs-dismiss="modal" id="btnCerrar">Cancelar</button>
                                         </div>
                                     </div>
+                                    <div id="formEmpresa">
+                                        <div class="form-container">
+                                        <div class="form-group">
+                                            <label for="nombre" class="form-label">Empresa</label>
+                                            <input type="text" id="nombre_empresa" name="nombre" class="form-input"
+                                                placeholder="Nombre de la empresa">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nit" class="form-label">NIT</label>
+                                            <input type="text" id="numeroiden_empresa" name="numeroiden_empresa"
+                                                class="form-input" placeholder="123456789">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Contacto Empresa</label>
+                                            <input type="tel" id="telefono_empresa" class="form-input"
+                                                placeholder="empresa@gmail.com">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email" class="form-label">Correo Electrónico</label>
+                                            <input type="email" id="correo_empresa" name="correo_empresa"
+                                                class="form-input" placeholder="usuario@gmail.com">
+                                        </div>
+                                        <hr>
+                                        <!-- REPRESENTANTE LEGAL -->
+                                        <div class="form-group">
+                                            <h3 class="form-label"><strong>Representante Legal</strong></h3>
+                                        </div>
+                                        <!-- Nombres y Apellidos -->
+                                        <div class="form-group">
+                                            <label for="nameusu" class="form-label">Primer Nombre:</label>
+                                            <input type="text" class="form-input" id="nameusu_rep" name="nameusu"
+                                                title="Primer Nombre" style="cursor:pointer;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nombre_dos" class="form-label">Segundo Nombre:</label>
+                                            <input type="text" class="form-input" id="nombre_dos_rep" name="nombre_dos"
+                                                title="Segundo Nombre">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="apellidoUsu" class="form-label">Primer Apellido:</label>
+                                            <input type="text" class="form-input" id="apellidoUsu_rep" name="apellidoUsu"
+                                                title="Primer Apellido">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="apellidoUsu_dos" class="form-label">Segundo Apellido:</label>
+                                            <input type="text" class="form-input" id="apellidoUsu_dos_rep"
+                                                name="apellidoUsu_dos" title="Segundo Apellido">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="id_tpdoc" class="form-label">Tipo de Documento:</label>
+                                            <select class="form-input" id="id_tpdoc_rep" name="id_tpdoc"
+                                                title="Tipo de Documento"></select>
+                                        </div>
+                                        <!-- Número de Documento -->
+                                        <div class="form-group">
+                                            <label for="numeroiden_registro" class="form-label">Número Documento:</label>
+                                            <input type="text" class="form-input" id="numeroiden_registro_rep"
+                                                name="numeroiden_registro" title="" style="cursor:pointer;"
+                                                onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                                                placeholder="123456789">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="id_genero" class="form-label">Sexo:</label>
+                                            <select class="form-input" id="id_genero_rep" name="id_genero"></select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="celular" class="form-label">Celular:</label>
+                                            <input type="text" class="form-input" id="celular_rep" name="celular"
+                                                placeholder="Celular" title="Teléfono móvil"
+                                                placeholder="+1 (555) 123-4567">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="correo_registro" class="form-label">Correo Electrónico:</label>
+                                            <input type="text" class="form-input" id="correo_registro_rep"
+                                                name="correo_registro" placeholder="Correo Electrónico"
+                                                title="@example.com">
+                                        </div>
+                                        <!-- Clave-->
+                                        <div class="form-group">
+                                            <label for="clave_registro" class="form-label">Clave:</label>
+                                            <input type="password" class="form-input" id="clave_registro_rep" name="clave"
+                                                title="Clave">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="create-button"
+                                                id='btnGuardarEmpresa' name='btnGuardar'>Registrar</button>
+                                            <button type="reset" class="close-button"
+                                                data-bs-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </div>
+                            </div>
                                 </div>
                             </div>
                         </div>

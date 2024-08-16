@@ -1,5 +1,5 @@
 $(document).ready(function() { 
-    
+    clear();
         $.post("include/select.php", {
             action: 'crgrDepto' 
         },
