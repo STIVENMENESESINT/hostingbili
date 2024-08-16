@@ -583,8 +583,6 @@ $varDateTime = date("Y-m-d H:i:s");
                                 <!-- Cabecera del diálogo -->
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Regístrate</h5>
-                                    <a href="imagenes/img/img/empresa.php">Representas </a>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnVolver"></button>
                                 </div>
                                 <div class="modal-body">
                                     <!-- FORMULARIO USUARIOS -->
