@@ -352,9 +352,9 @@ function MostrarTipo_soli() {
                         <div class="form-container">
                             <div class="card text-center shadow-sm">
                                 <div class="card-body">
-                                    <h5 class="title">Consulta de Certificados del SENA</h5>
+                                    <h5 class="title">Consulta Certificados del SENA</h5>
                                     <p class="card-text">¿Necesitas verificar o consultar tu certificado del SENA? Puedes hacerlo de manera rápida y sencilla a través del siguiente enlace.</p>
-                                    <a href="https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer" target="_blank" class="btn btn-primary">Consultar Certificado</a>
+                                    <a href="https://certificados.sena.edu.co/CertificadoDigital/com.sena.consultacer" target="_blank" class="create-button">Consultar Certificado</a>
                                 </div>
                             </div>
                         </div>

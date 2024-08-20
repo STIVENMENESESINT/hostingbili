@@ -32,13 +32,13 @@ function enviarCorreo($correo, $nueva_contraseña) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; // Servidor SMTP de Gmail
         $mail->SMTPAuth = true;
-        $mail->Username = 'biliabmin12@gmail.com'; // Tu dirección de correo de Gmail
-        $mail->Password = 'tott wiwi dnua cxgl'; // Tu contraseña de Gmail
+        $mail->Username = 'flortasconjersoncamilo@gmail.com'; // Tu dirección de correo de Gmail
+        $mail->Password = 'goeh dnhu zzcu gkbm'; // Tu contraseña de Gmail
         $mail->SMTPSecure = 'tls'; // Activa la encriptación TLS
         $mail->Port = 587; // Puerto TCP para TLS
 
         // Remitente y destinatario
-        $mail->setFrom('fbiliabmin12@gmail.com', 'Bili');
+        $mail->setFrom('flortasconjersoncamilo@gmail.com', 'Bili');
         $mail->addAddress($correo);
 
         // Contenido del correo
