@@ -216,6 +216,59 @@ switch ($_REQUEST['action'])
         }
         print json_encode($jTableResult);
     break;
+    case 'crgrRevista':
+        $jTableResult = array();                
+        $jTableResult['Revista'] = '';
+    
+        // Consulta para obtener las revistas
+        $query = "SELECT id_mcer, nombre FROM mcer";
+        $resultado = mysqli_query($conn, $query);
+        
+        $revistas = [];
+        while ($registro = mysqli_fetch_array($resultado)) {
+            $revistas[] = $registro['nombre'];
+        }
+    
+        // Si hay más de una revista, construir el carrusel
+        if (count($revistas) > 1) {
+            $jTableResult['Revista'] .= '
+            <div id="revistaCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">';
+    
+            foreach ($revistas as $index => $revista) {
+                $jTableResult['Revista'] .= '
+                <div class="carousel-item ' . ($index === 0 ? 'active' : '') . '">
+                    <center>
+                        <embed src="../../include/' . $revista . '" type="application/pdf" width="90%" height="500px" />
+                    </center>
+                </div>';
+            }
+    
+            $jTableResult['Revista'] .= '
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#revistaCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#revistaCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>';
+        } else if (count($revistas) === 1) {
+            // Si solo hay una revista, mostrarla sin carrusel
+            $jTableResult['Revista'] .= '
+            <center>
+                <embed src="../../include/' . $revistas[0] . '" type="application/pdf" width="90%" height="500px" />
+            </center>';
+        } else {
+            // Si no hay revistas
+            $jTableResult['Revista'] .= '<p>No hay revistas disponibles.</p>';
+        }
+    
+        print json_encode($jTableResult);
+    break;
+    
     case 'crgrprogramaFormacion':
         $jTableResult = array();                
         $jTableResult['lisTiposPF']="";

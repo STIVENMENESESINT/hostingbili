@@ -60,23 +60,77 @@ if (!isset($_SESSION['id_userprofile'])) {
 
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const languageSelect = document.getElementById("language-select");
+    $(document).on("click", "#uploadBtn", function() {
+        var fileInput = document.getElementById('imagen');
+        if (fileInput && fileInput.files.length > 0) {
+            var formData = new FormData();
+            formData.append('action', 'UploadRevista');  // Acción para el switch-case en PHP
+            formData.append('revista', fileInput.files[0]);  // Añadir el archivo seleccionado al formData
 
-    languageSelect.addEventListener("change", (event) => {
-        const selectedLanguage = event.target.value;
-        setLanguage(selectedLanguage);
+            $.ajax({
+                url: '../../include/cntrlNoti.php',  // Ruta al archivo PHP que procesará la solicitud
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    if (data.rst == "1") {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Éxito!',
+                            text: data.ms,
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: data.ms
+                        });
+                    }
+                },
+                dataType: 'json'
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Debe seleccionar un archivo PDF para subir.'
+            });
+        }
     });
+    $(document).ready(function() {
+        $.post("../../include/select.php", {
+            action: 'crgrRevista' 
+        },
+        function(data) {
+            $("#resvitarl").html(data.Revista);
+            },
+            'json'
+            ).fail(function(xhr, status, error) {
+                console.error(error);
+            });
+    });
+    document.addEventListener("DOMContentLoaded", () => {
+        const languageSelect = document.getElementById("language-select");
 
-    function setLanguage(language) {
-        document.querySelectorAll("[data-lang-es]").forEach(element => {
-            element.textContent = element.getAttribute(`data-lang-${language}`);
+        languageSelect.addEventListener("change", (event) => {
+            const selectedLanguage = event.target.value;
+            setLanguage(selectedLanguage);
         });
-    }
 
-    // Set default language
-    setLanguage(languageSelect.value);
-});
+        function setLanguage(language) {
+            document.querySelectorAll("[data-lang-es]").forEach(element => {
+                element.textContent = element.getAttribute(`data-lang-${language}`);
+            });
+        }
+
+        // Set default language
+        setLanguage(languageSelect.value);
+    });
 </script>
 
 <body>
@@ -154,41 +208,51 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="divider"></div>
                 <!--este es mi carrucel principal -->
                 <style>
-                @media (max-width: 768px) {
-                    .carousel-wrapper {
-                        flex-direction: column;
+                    /* botones */
+                    .create-button {
+                        background-color: #4CAF50;
+                        color: white;
                     }
 
-                    .carousel-70 {
-                        flex: 0 0 100%;
+                    .close-button {
+                        background-color: #f44336;
+                        color: white;
+                    }
+                    @media (max-width: 768px) {
+                        .carousel-wrapper {
+                            flex-direction: column;
+                        }
+
+                        .carousel-70 {
+                            flex: 0 0 100%;
+                        }
+
+                        .carousel-container {
+                            margin-bottom: 15px;
+                        }
                     }
 
-                    .carousel-container {
-                        margin-bottom: 15px;
+                    .carousel-container img {
+                        width: 100%;
+                        height: auto;
                     }
-                }
 
-                .carousel-container img {
-                    width: 100%;
-                    height: auto;
-                }
+                    /* Estilos para banner.php */
+                    .carousel-item img {
+                        max-height: 300px;
+                        /* Ajusta la altura máxima del banner */
+                    }
 
-                /* Estilos para banner.php */
-                .carousel-item img {
-                    max-height: 300px;
-                    /* Ajusta la altura máxima del banner */
-                }
+                    .carousel-caption {
+                        background: rgba(0, 0, 0, 0.5);
+                        border-radius: 10px;
+                        padding: 10px;
+                    }
 
-                .carousel-caption {
-                    background: rgba(0, 0, 0, 0.5);
-                    border-radius: 10px;
-                    padding: 10px;
-                }
-
-                .carousel {
-                    max-width: 100%;
-                    margin: 0 auto;
-                }
+                    .carousel {
+                        max-width: 100%;
+                        margin: 0 auto;
+                    }
                 </style>
                 <div class="carousel-container">
                     <div class="carousel-wrapper">
@@ -328,10 +392,13 @@ document.addEventListener("DOMContentLoaded", () => {
                                 data-lang-fr="Cacher">Ocultar
                             </span>
                         </a>
-                        <center>
-                            <embed d="pdfEmbed" src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%"
-                                height="500px" />
-                        </center>
+                        <div id="resvitarl">
+                            <center>
+                                <embed d="pdfEmbed" src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%"
+                                    height="500px" />
+                            </center>
+                        </div>
+                        
                         <br>
                     </div>
 
@@ -394,80 +461,121 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
 <!-- Noticia -->
 <style>
-.form-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    padding: 15px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    background-color: #f8f9fa;
-}
+    .form-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 15px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        background-color: #f8f9fa;
+    }
 
-.course-data-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
+    .course-data-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
 
-.course-data-field {
-    display: flex;
-    flex-direction: column;
+    .course-data-field {
+        display: flex;
+        flex-direction: column;
 
-    flex: 1 1 45%;
-}
+        flex: 1 1 45%;
+    }
 
-.modal-title {
-    font-weight: bold;
-}
+    .modal-title {
+        font-weight: bold;
+    }
 
-.form-control,
-.col-form-label,
-.modal-textbox {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-}
+    .form-control,
+    .col-form-label,
+    .modal-textbox {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+    }
 
-.create-button,
-.close-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin-right: 10px;
-}
+    .create-button,
+    .close-button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin-right: 10px;
+    }
 
-.create-button {
-    background-color: #28a745;
-}
+    .create-button {
+        background-color: #28a745;
+    }
 
-.close-button {
-    background-color: #6c757d;
-}
+    .close-button {
+        background-color: #6c757d;
+    }
 
-.form-group-full {
-    flex: 1 1 100%;
-}
+    .form-group-full {
+        flex: 1 1 100%;
+    }
 
-.modal-footer {
-    display: flex;
-    justify-content: center;
+    .modal-footer {
+        display: flex;
+        justify-content: center;
 
-    margin-top: 20px;
-    width: 100%;
-}
+        margin-top: 20px;
+        width: 100%;
+    }
 </style>
 
 
 
-
+<div class="modal fade" id="revistaModal" tabindex="-1" aria-labelledby="revistaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" data-lang-es="Crear publicación" data-lang-en="Create Publication"
+                    data-lang-fr="Créer une publication">Subir Volumen de Revista</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <div class="formulario">
+                        <div class="form-container">
+                            <div class="form-group course-data-field">
+                                <label class="modal-title" for="imagen">Adjuntar Revista:</label>
+                                <input type="file" class="form-input form-control" id="imagen" name="imagen" accept=".pdf" required>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                    <button type="button" class="close-button" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" id="uploadBtn" class="create-button">Subir</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="OfertModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ofertarme</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="formdetalle_oferta"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="noticiaModal" tabindex="-1" aria-labelledby="noticiaModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -552,49 +660,49 @@ document.addEventListener("DOMContentLoaded", () => {
     ?>
 
 <script>
-$(document).on("click", "#actualizarPermisousu", function() {
-    // Obtén el formulario
-    // Obtén el formulario
-    var form = document.getElementById('uploadForm');
+    $(document).on("click", "#actualizarPermisousu", function() {
+        // Obtén el formulario
+        // Obtén el formulario
+        var form = document.getElementById('uploadForm');
 
-    // Verifica si el formulario se ha encontrado correctamente
-    if (!form) {
-        console.error('Formulario no encontrado.');
-        return;
-    }
+        // Verifica si el formulario se ha encontrado correctamente
+        if (!form) {
+            console.error('Formulario no encontrado.');
+            return;
+        }
 
-    // Verifica si el formulario es un objeto HTMLFormElement
-    if (!(form instanceof HTMLFormElement)) {
-        console.error('El elemento con el ID "uploadForm" no es un formulario.');
-        return;
-    }
+        // Verifica si el formulario es un objeto HTMLFormElement
+        if (!(form instanceof HTMLFormElement)) {
+            console.error('El elemento con el ID "uploadForm" no es un formulario.');
+            return;
+        }
 
-    // Verifica si hay un archivo seleccionado
-    var fileInput = document.getElementById('pdf');
-    if (fileInput.files.length === 0) {
-        alert('Por favor selecciona un archivo PDF.');
-        return;
-    }
+        // Verifica si hay un archivo seleccionado
+        var fileInput = document.getElementById('pdf');
+        if (fileInput.files.length === 0) {
+            alert('Por favor selecciona un archivo PDF.');
+            return;
+        }
 
-    // Envía el formulario usando AJAX
-    var formData = new FormData(form);
+        // Envía el formulario usando AJAX
+        var formData = new FormData(form);
 
-    fetch(form.action, {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.text())
-        .then(result => {
-            // Muestra el resultado de la carga
-            alert(result);
-            // Actualiza el PDF en la página
-            document.getElementById('pdfEmbed').src = '../../imagenes/Revista B2.pdf?' + new Date()
-                .getTime();
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-});
+        fetch(form.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => {
+                // Muestra el resultado de la carga
+                alert(result);
+                // Actualiza el PDF en la página
+                document.getElementById('pdfEmbed').src = '../../imagenes/Revista B2.pdf?' + new Date()
+                    .getTime();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
 </script>
 
 

@@ -805,6 +805,46 @@ switch ($_REQUEST['action']) {
         }
         print json_encode($jTableResult);
     break;
+    case 'UploadRevista':
+        if (isset($_FILES['revista']) && $_FILES['revista']['error'] == 0) {
+            $allowed = array('pdf' => 'application/pdf');
+            $filename = $_FILES['revista']['name'];
+            $filetype = $_FILES['revista']['type'];
+            $filesize = $_FILES['revista']['size'];
+
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            if (!array_key_exists($ext, $allowed)) {
+                echo json_encode(['rst' => '0', 'ms' => 'Error: Solo se permiten archivos PDF.']);
+                exit;
+            }
+
+            
+            $new_filename = uniqid() . '.' . $ext;
+            $upload_dir = 'uploads/';
+            $upload_file = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($_FILES['revista']['tmp_name'], $upload_file)) {
+                $stmt = $conn->prepare("INSERT INTO mcer(nombre) VALUES (?)");
+                $stmt->bind_param('s', $upload_file);
+
+                if ($stmt->execute()) {
+                    echo json_encode(['rst' => '1', 'ms' => 'La revista ha sido subida correctamente.']);
+                } else {
+                    echo json_encode(['rst' => '0', 'ms' => 'Error al guardar en la base de datos.']);
+                }
+            } else {
+                echo json_encode(['rst' => '0', 'ms' => 'Error: No se pudo subir el archivo.']);
+            }
+        } else {
+            echo json_encode(['rst' => '0', 'ms' => 'Error: No se ha subido ningún archivo.']);
+        }
+        break;
+
+    // Otros casos aquí...
+
+    default:
+        echo json_encode(['rst' => '0', 'ms' => 'Acción no reconocida.']);
+        break;
 }
 mysqli_close($conn);
     ?>
