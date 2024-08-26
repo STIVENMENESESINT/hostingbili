@@ -733,7 +733,6 @@ switch ($_REQUEST['action'])
             ur.nombre_dos AS nom_dosR,
             ur.apellido AS apellidoR,
             ur.nombre AS nomR,
-            e.nombre AS nom_Empresa, 
             ts.nombre AS Nombre_Solicitud, 
             ds.id_tiposolicitud,
             ds.descripcion,
@@ -763,8 +762,6 @@ switch ($_REQUEST['action'])
                 municipios m ON ds.cod_municipio = m.cod_municipio
             LEFT JOIN  
                 poblados p ON ds.cod_poblado = p.cod_poblado
-            LEFT JOIN  
-                empresa e ON s.id_empresa = e.id_empresa
             LEFT JOIN  
                 tiposolicitud ts ON ds.id_tiposolicitud = ts.id_tiposolicitud
             LEFT JOIN 

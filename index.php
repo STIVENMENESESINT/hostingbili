@@ -809,7 +809,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                 }
                                 
                                 // Envia    r datos si no hay errores
-                                $.post("../../../include/ctrlIndex2.php", {
+                                $.post("include/ctrlIndex2.php", {
                                     action: 'registroEmpNew',
                                     nombre_empresa: $("#nombre_empresa").val(),
                                     numeroiden_empresa: $("#numeroiden_empresa").val(),
@@ -858,7 +858,7 @@ $varDateTime = date("Y-m-d H:i:s");
                                         }
                                         
                                         // Enviar datos si no hay errores
-                                        $.post("../../../include/ctrlIndex2.php", {
+                                        $.post("include/ctrlIndex2.php", {
                                             action: 'registroUsuNewE',
                                             id_tpdoc: $("#id_tpdoc_rep").val(),
                                             numeroiden_registro: $("#numeroiden_registro_rep").val(),

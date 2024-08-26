@@ -96,9 +96,9 @@ if (isset($_SESSION['id_userprofile'])){
                 </div>
                 <div id="id_permiso"></div>
                 <div class="modal-footer">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" name="btnVolver"
+                    <button type="button" class="close-button" data-bs-dismiss="modal" name="btnVolver"
                         id="btnVolver">Salir</button>
-                    <input class="btn-create" type="submit" id="actualizarPermisousu" value="Gestionar">
+                    <input class="create-button" type="submit" id="actualizarPermisousu" value="Gestionar">
                 </div>
             </div>
         </div>
