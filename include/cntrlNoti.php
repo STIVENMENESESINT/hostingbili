@@ -695,6 +695,24 @@ switch ($_REQUEST['action']) {
         }
         echo json_encode($jTableResult);
     break;
+    case 'eliminarRevista':
+        $jTableResult = array();
+        $jTableResult['rst'] = "";
+        $jTableResult['ms'] = "";
+        $id_revista = mysqli_real_escape_string($conn, $_POST['id_revista']);
+        $query = "DELETE FROM mcer WHERE id_mcer = '$id_revista'";
+
+
+        if ($result = mysqli_query($conn, $query)) {
+            mysqli_commit($conn);
+            $jTableResult['rstl'] = "1";
+            $jTableResult['ms'] = "Cancelado con éxito";
+        } else {
+            $jTableResult['rstl'] = "2";
+            $jTableResult['ms'] = "NO Cancelado Error " . mysqli_error($conn);
+        }
+        print json_encode($jTableResult);
+    break;  
     case 'SubirContenido':
         $jTableResult = array();
         $jTableResult['rst'] = "";
@@ -840,11 +858,11 @@ switch ($_REQUEST['action']) {
         }
         break;
 
-    // Otros casos aquí...
+        // Otros casos aquí...
 
-    default:
+        default:
         echo json_encode(['rst' => '0', 'ms' => 'Acción no reconocida.']);
-        break;
+    break;
 }
 mysqli_close($conn);
     ?>

@@ -60,6 +60,33 @@ if (!isset($_SESSION['id_userprofile'])) {
 
 
 <script>
+    $(document).on("click", "#EliminarRevista",function ()	{
+        var idRevista = $(this).data('id');
+        console.log("ID de la Revista: " + idRevista);
+        $.post("../../include/cntrlNoti.php", {
+            action:'eliminarRevista',
+            id_revista: idRevista,
+            }, function(data) {
+                if (data.rstl == "1") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        text: data.ms,
+                        showConfirmButton: false,
+                        timer: 1500 // Tiempo en milisegundos (1.5 segundos)
+                    }).then(() => {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: data.ms
+                    });
+                }
+            }, 'json');	
+        }
+    );
     $(document).on("click", "#uploadBtn", function() {
         var fileInput = document.getElementById('imagen');
         if (fileInput && fileInput.files.length > 0) {
@@ -393,10 +420,6 @@ if (!isset($_SESSION['id_userprofile'])) {
                             </span>
                         </a>
                         <div id="resvitarl">
-                            <center>
-                                <embed d="pdfEmbed" src="../../imagenes/Revista B2.pdf" type="application/pdf" width="90%"
-                                    height="500px" />
-                            </center>
                         </div>
                         
                         <br>
