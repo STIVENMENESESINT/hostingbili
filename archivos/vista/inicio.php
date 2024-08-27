@@ -88,7 +88,7 @@ if (!isset($_SESSION['id_userprofile'])) {
         }
     );
     $(document).on("click", "#uploadBtn", function() {
-        var fileInput = document.getElementById('imagen');
+        var fileInput = document.getElementById('imagenR');
         if (fileInput && fileInput.files.length > 0) {
             var formData = new FormData();
             formData.append('action', 'UploadRevista');  // Acción para el switch-case en PHP
@@ -569,8 +569,8 @@ if (!isset($_SESSION['id_userprofile'])) {
             <div class="formulario">
                         <div class="form-container">
                             <div class="form-group course-data-field">
-                                <label class="modal-title" for="imagen">Adjuntar Revista:</label>
-                                <input type="file" class="form-input form-control" id="imagen" name="imagen" accept=".pdf" required>
+                                <label class="modal-title" >Adjuntar Revista:</label>
+                                <input type="file" class="form-input form-control" id="imagenR" name="imagenR" accept=".pdf" required>
                             </div>
                         </div>
                     </div>

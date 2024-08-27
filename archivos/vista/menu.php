@@ -27,7 +27,7 @@
                     <a href="instructor.php">
                         <span class="nav-item">
                             <i class="fas fa-users"></i>
-                            B-Team
+                            M-Team
                         </span>
                     </a>
                 </li>
@@ -81,7 +81,7 @@
                     <a href="instructor.php">
                         <span class="nav-item">
                             <i class="fas fa-users"></i>
-                            B-Team
+                            M-Team
                         </span>
                     </a>
                 </li>
@@ -135,7 +135,7 @@
                     <a href="instructor.php">
                         <span class="nav-item">
                             <i class="fas fa-users"></i>
-                            B-Team
+                            M-Team
                         </span>
                     </a>
                 </li>
