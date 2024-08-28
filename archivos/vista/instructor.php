@@ -48,7 +48,7 @@ if (isset($_SESSION['id_userprofile'])){
         </aside>
         <!-- Contenido principal -->
         <div class="container layout__content">
-            <div class=" content__page">
+            <div class="content__page">
                 <h1 class="title">Multilingualism-Team<br> </h1>
 
                 <div class="divider"></div>

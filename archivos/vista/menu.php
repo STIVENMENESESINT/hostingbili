@@ -204,6 +204,52 @@
             ';
         }
     ?>
+    <?php
+        if ($_SESSION['id_rol'] == 4) {
+            echo '
+                <li>
+                    <a href="inicio.php">
+                        <span class="nav-item">
+                            <i class="fas fa-home "></i>
+                            Inicio
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="panelAcciones.php">
+                        <span class="nav-item">
+                            <i class="fas fa-th"></i>
+                            Acciones
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="instructor.php">
+                        <span class="nav-item">
+                            <i class="fas fa-users"></i>
+                            M-Team
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="perfil.php">
+                        <span class="nav-item">
+                            <i class="fas fa-cog"></i>
+                            Perfíl
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a id="btnCerrarSession">
+                        <span class="nav-item">
+                            <i class="fas fa-sign-out-alt "></i>
+                            Salir
+                        </span>
+                    </a>
+                </li>
+            ';
+        }
+    ?>
 
 
 

@@ -6,6 +6,12 @@ header('Cache-Control: no-cache, must-revalidate');
 session_name($session_name);
 session_start();
 $conn=Conectarse();
+require '../PHPMailer-master/src/Exception.php';
+require '../PHPMailer-master/src/PHPMailer.php';
+require '../PHPMailer-master/src/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 function obtenerSolicitud() {
     $conn = Conectarse();
     if (!$conn) {
@@ -51,7 +57,36 @@ function obtenerSolicitud() {
 
     return $solicitudes;
 }
+function enviarCorreo($correo, $nueva_contraseña) {
+    $mail = new PHPMailer(true);
 
+    try {
+        // Configuración del servidor SMTP
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; // Servidor SMTP de Gmail
+        $mail->SMTPAuth = true;
+        $mail->Username = 'flortasconjersoncamilo@gmail.com'; // Tu dirección de correo de Gmail
+        $mail->Password = 'goeh dnhu zzcu gkbm'; // Tu contraseña de Gmail
+        $mail->SMTPSecure = 'tls'; // Activa la encriptación TLS
+        $mail->Port = 587; // Puerto TCP para TLS
+
+        // Remitente y destinatario
+        $mail->setFrom('flortasconjersoncamilo@gmail.com', 'Bili');
+        $mail->addAddress($correo);
+
+        // Contenido del correo
+        $mail->isHTML(true);
+        $mail->Subject = 'Solicitud Aceptada ';
+        $mail->Body    = $nueva_contraseña;
+
+        // Enviar el correo
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        echo "No se pudo enviar la Solicitud. Error: {$mail->ErrorInfo}";
+        return false;
+    }
+}
 
 switch ($_REQUEST['action']) 
 {
@@ -654,7 +689,7 @@ switch ($_REQUEST['action'])
                     <div class='form-container'>
                         ";
                         if ($registro['id_rol'] == 4){
-                            echo
+                            
                             "
                             <label class='label-identifier'>Empresa</label>
                             <label class='data-field'>" . $registro['nom_Empresa'] . "</label>";
@@ -892,7 +927,7 @@ switch ($_REQUEST['action'])
                         $jTableResult['ms'] = "Error en la consulta de usuarios interesados: " . mysqli_error($conn);
                     }
                     // Bloques else if para verificar id_rol, solo si id_estado es 9
-                    if ($registro['id_rol'] == '2') {
+               
                         $jTableResult['ListPf'] .= "
                             <div class='modal-footer'>
                                 <div class='course-buttons'>
@@ -901,16 +936,8 @@ switch ($_REQUEST['action'])
                                 </div>
                             </div>
                             ";
-                    } 
                     
-                }else  {
-                    $jTableResult['ListPf'].="
-                    <div class='modal-footer'>
-                        <div class='course-buttons'>
-                            <button class='create-button' id='btn_Inicurso' data-id='" . $registro['id_solicitud'] . "'>Iniciar CURSO</button>
-                            <button class='close-button' type='button'  data-bs-dismiss='modal'>CERRAR</button>
-                        </div>
-                    </div>";
+                    
                 }
                 $jTableResult['ListPf'] .= "</div>
                     
@@ -1287,29 +1314,56 @@ switch ($_REQUEST['action'])
         print json_encode($jTableResult);
     break;
     case 'aceptarSolicitud':
-                $jTableResult = array();
-                $jTableResult['rstl'] = "";
-                $jTableResult['msj'] = "";
-                $id_solicitud = $_POST['id_solicitud'];
-                $mensaje = $_POST['detalle_respuesta'];
-                $correo=$_SESSION['correo'];
-                // $mensaje = $_POST['mensaje'];
-                $query = "UPDATE solicitud 
-                SET id_estado = 4, fecha_respuesta = NOW() 
-                WHERE id_solicitud = '$id_solicitud'";
-                if ($result = mysqli_query($conn, $query)) {
-                    mysqli_commit($conn);
-                    // enviar correo URGENTE MIRAR SI SE HACE DESDE PHPMAILER O SOLO EMAIL
-                    @mail($correo, 'Solicitud Exitosa', $mensaje);
-                    $jTableResult['msj'] = "Solicitud Confimada con éxito.";
+        $jTableResult = array();
+        $jTableResult['rstl'] = "";
+        $jTableResult['msj'] = "";
+    
+        $id_solicitud = $_POST['id_solicitud'];
+        $mensaje = $_POST['detalle_respuesta'];
+    
+        // Actualiza el estado de la solicitud
+        $query = "UPDATE solicitud 
+                  SET id_estado = 4, fecha_respuesta = NOW() 
+                  WHERE id_solicitud = '$id_solicitud'";
+    
+        // Recupera el correo del usuario relacionado con la solicitud
+        $query2 = "SELECT u.correo 
+                   FROM solicitud s 
+                   JOIN userprofile u ON s.id_userprofile = u.id_userprofile 
+                   WHERE s.id_solicitud = '$id_solicitud'";
+    
+        // Ejecutar la primera consulta para actualizar la solicitud
+        if ($result = mysqli_query($conn, $query)) {
+            // Ejecutar la segunda consulta para obtener el correo
+            $result2 = mysqli_query($conn, $query2);
+    
+            if ($result2 && mysqli_num_rows($result2) > 0) {
+                $row = mysqli_fetch_assoc($result2);
+                $correo = $row['correo'];
+    
+                // Enviar correo usando la función enviarCorreo
+                if (enviarCorreo($correo, $mensaje)) {
+                    $jTableResult['msj'] = "Solicitud confirmada con éxito y correo enviado.";
                     $jTableResult['rstl'] = "1";
                 } else {
-                    mysqli_rollback($conn);
-                    $jTableResult['msj'] = "Error al Confirmar la solicitud.";
+                    $jTableResult['msj'] = "Solicitud confirmada, pero no se pudo enviar el correo.";
                     $jTableResult['rstl'] = "0";
                 }
-                print json_encode($jTableResult);
-    break;
+            } else {
+                $jTableResult['msj'] = "Solicitud confirmada, pero no se pudo obtener el correo.";
+                $jTableResult['rstl'] = "0";
+            }
+    
+            mysqli_commit($conn);
+        } else {
+            mysqli_rollback($conn);
+            $jTableResult['msj'] = "Error al confirmar la solicitud.";
+            $jTableResult['rstl'] = "0";
+        }
+    
+        print json_encode($jTableResult);
+        break;
+    
     case 'crgrTipoSolicitud':
         $jTableResult = array();                
         $jTableResult['lisTiposS']="";
@@ -2555,7 +2609,7 @@ switch ($_REQUEST['action'])
                             <h3 class='label-identifier'>Asignacion</h3>
                             <hr>
                             <h6 class='label-identifier'>Detalle Asignacion</h6>
-                            <textarea id='detalle_respuesta' name='detalles'></textarea>
+                            <textarea id='detalle_asignacion' name='detalles'></textarea>
                             <h6 class='label-identifier'>Responsable</h6>
                             <select id='id_responsable'></select>
                             <div class='course-buttons'>

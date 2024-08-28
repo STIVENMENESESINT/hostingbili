@@ -14,7 +14,7 @@
         </li>
 
         <?php
-                                    if ($_SESSION['id_rol'] != 1 && $_SESSION['id_rol'] != 5) {
+                                    if ($_SESSION['id_rol'] != 1 && $_SESSION['id_rol'] != 5 && $_SESSION['id_rol'] != 4) {
                                         echo '
                                             <li>   
                                                 <a type="button" data-bs-toggle="modal" data-bs-target="#noticiaModal" class="nav-link nav-item-hover">

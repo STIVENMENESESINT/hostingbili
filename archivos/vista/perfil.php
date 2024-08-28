@@ -32,61 +32,10 @@ if (isset($_SESSION['id_userprofile'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar Usuario </title>
     <link rel="stylesheet" href="../../herramientas/css/perfil.css">
+    <link rel="stylesheet" href="../../herramientas/css/style.css">
+
 </head>
-<style>
 
-/* Estilos responsivos */
-@media (max-width: 768px) {
-    .layout__aside {
-        display: none; /* Oculta el menú lateral en pantallas pequeñas */
-    }
-    .input-with-icon {
-        position: relative;
-    }
-
-    .input-with-icon i {
-        position: relative;
-    }
-    .layout__content {
-        padding: 10px;
-    }
-
-    .card {
-        padding: 10px;
-    }
-
-    .circle {
-        width: 80px;
-        height: 80px;
-    }
-}
-
-@media (max-width: 576px) {
-    .card {
-        padding: 5px;
-    }
-
-    .circle {
-        width: 60px;
-        height: 60px;
-    }
-
-    .create-button, .close-button {
-        width: 100%;
-        padding: 10px;
-        font-size: 1rem;
-    }
-}
-@media (max-width: 768px) {
-    .card {
-        padding: 10px;
-    }
-
-    .upload-container {
-        margin: 10px auto;
-    }
-}
-</style>
 <script>
 $(document).on("click", "#btnActualizarContraseña", function() {
     if ($("#numeroiden").val() == "") {
@@ -176,14 +125,11 @@ $(document).on("click", "#btnActualizarContraseña", function() {
         <!-- Contenido principal -->
         <div class="container layout__content">
             <div class="content__page">
-                <div id="contenido">
-                    <!-- Sección para mostrar y editar el perfil del usuario -->
-
-                </div>
+              
                 <!-- Campos del formulario -->
 
 
-                <div class="">
+                <div class="contenido">
                     <!-- Tarjeta de información del usuario -->
                     <div class="card">
                         <div class="card-header">

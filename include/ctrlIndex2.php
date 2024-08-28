@@ -199,6 +199,7 @@ switch ($_REQUEST['action'])
 			$jTableResult = array();
 			$jTableResult['rstl']="";
 			$jTableResult['msj']="";
+			$clave = password_hash($_POST['clave_registro'], PASSWORD_BCRYPT);
 			$query = "SELECT MAX(id_empresa) as lastId FROM empresa;";
 			if ($arreglo=mysqli_query($conn,$query)){
 				while($result=mysqli_fetch_array($arreglo)){
@@ -206,7 +207,7 @@ switch ($_REQUEST['action'])
 					$query="INSERT INTO userprofile SET
 						id_doc='".$_POST['id_tpdoc']."', 
 						numeroiden ='".$_POST['numeroiden_registro']."', 
-						clave ='".$_POST['clave_registro']."', 
+						clave ='".$clave."', 
 						nombre ='".$_POST['nameusu']."', 
 						nombre_dos ='".$_POST['nombre_dos']."', 
 						fecha_registro = NOW(),

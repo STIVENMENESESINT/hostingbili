@@ -1,18 +1,3 @@
-.container {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 50px;
-    padding-right: 50px;
-    padding-left: 50px;
-    border-radius: 30px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 1s ease-out;
-    max-width: 1400px;
-    width: 95%;
-}
-.upload-container {
-    text-align: center;
-    margin-top: 20px;
-}
 
 .circle {
     width: 120px;
@@ -206,34 +191,6 @@ button[name="btnActualizarUsuario"] {
     margin-right: 0;
 }
 /* Estilos generales */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-}
-
-.layout {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    margin: 0 auto;
-}
-
-.layout__aside {
-    width: 100%;
-    max-width: 250px; /* Ajusta según el diseño deseado */
-    background-color: #f8f9fa;
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.layout__content {
-    flex: 1;
-    padding: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1200px; /* Ancho máximo para el contenido */
-}
 
 .card {
     background: #fff;
@@ -330,13 +287,8 @@ body {
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
-    .layout__aside {
-        display: none; /* Oculta el menú lateral en pantallas pequeñas */
-    }
-
-    .layout__content {
-        padding: 10px;
-    }
+ 
+    
 
     .card {
         padding: 10px;
